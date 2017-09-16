@@ -130,13 +130,25 @@ class Pixity_Builder_Core{
     /**
      * Save content of page/post to the database
      *
+     * @param $models - shortcode models
      * @param $id - post/page ID
      *
      * @return void
      * @since 1.0.0
      */
     public function save_post_content( $models, $id ) {
-        
+        $post_content = $this->generate_post_content($models);
+        $current_item = array(
+            'ID'           => $id,
+            'post_content' => $post_content,
+        );
+        $post_id = wp_update_post( $current_item, true );
+        if (is_wp_error($post_id)) {
+            $errors = $post_id->get_error_messages();
+            return false;
+        }else{
+            return true;
+        }
     }
 
     /**
