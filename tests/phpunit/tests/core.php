@@ -18,7 +18,6 @@ class Tests_Core extends WP_UnitTestCase {
         $shortcode = "[test_shortcode color = 'red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub-title='this is a subtitle\'s test'] Test Content Goes here[/test_shortcode]";
         $shortcode2 = "[test_shortcode color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub-title='this is a subtitle\'s test']";
         $shortcode3 = "[test_shortcode]";
-
         $shortcode4 = "[test_shortcode color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub-title='this is a subtitle\'s test'";
 
 
