@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
+  triggers { pollSCM('H 4/* 0 0 1-5') }
   stages {
     stage('Automation Test') {
       steps {
