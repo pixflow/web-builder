@@ -3,9 +3,9 @@ pipeline {
   stages {
     stage('Automation Test') {
       steps {
-        sh '''cd /var/www/html/karma-builder/src/wp-content/plugins/karma-builder
+        sh '''cd /var/www/html/karma-test/src/wp-content/plugins/karma-builder
 git pull
-cd /var/www/html/karma-builder/
+cd /var/www/html/karma-test/
 ./vendor/phpunit/phpunit/phpunit'''
       }
     }
