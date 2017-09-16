@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Automation Test') {
       steps {
-        sh '/var/www/html/karma-builder/vendor/phpunit/phpunit/phpunit'
+        sh '''cd /var/www/html/karma-builder/
+./vendor/phpunit/phpunit/phpunit'''
       }
     }
   }
