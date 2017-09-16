@@ -1,6 +1,8 @@
 pipeline {
   agent any
-  triggers { pollSCM('H 4/* 0 0 1-5') }
+  triggers {
+    cron('H/15 * * * *')
+  }
   stages {
     stage('Automation Test') {
       steps {
