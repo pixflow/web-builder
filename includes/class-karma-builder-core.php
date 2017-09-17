@@ -124,26 +124,27 @@ class Pixity_Builder_Core{
      * @since 1.0.0
      */
     public function generate_post_content( $models ) {
-        $content = '';
-        $this->models = json_decode(stripslashes($models),true);
 
-        // Find Childs
-        $this->find_model_childs();
+        $models = json_decode( stripslashes( $models ),true );
+
+        // Find Childes
+        $models = $this->find_model_childes( $models );
 
         // Sort Row Models
-        $this->sort_row_models();
+        $models = $this->sort_row_models( $models );
 
         // Generate Content
-        foreach ($this->models as $id=>$model) {
-            if($this->models[$id]['flag']){
+        $content = '';
+        foreach ($models as $id=>$model) {
+            if($models[$id]['flag']){
                 continue;
             }else{
-                $this->models[$id]['flag'] = true;
+                $models[$id]['flag'] = true;
             }
-            $this->convert_model_to_shortcode_pattern($id);
+            $content .= $this->convert_model_to_shortcode_pattern( $models, $id );
         }
 
-        return $this->content;
+        return $content;
     }
 
     /**
@@ -151,18 +152,18 @@ class Pixity_Builder_Core{
      *
      * @param $models - shortcode models
      *
-     * @return void
+     * @return array - array of shortcode models that has childes index
      * @since 1.0.0
      */
-    protected function find_model_childs( ) {
+    protected function find_model_childes($models ) {
 
-        foreach ($this->models as $id=>$model) {
+        foreach ($models as $id=>$model) {
             $current_id = $id;
-            $this->models[$id]['flag'] = false;
-            $this->models[$id]['id'] = $id;
+            $models[$id]['flag'] = false;
+            $models[$id]['id'] = $id;
             // Find childes
             $childes = array();
-            foreach ($this->models as $key2=>$model2) {
+            foreach ($models as $key2=>$model2) {
                 $el = $model2;
                 if(isset($el['parentId'])){
                     if($el['parentId'] == $current_id){
@@ -170,8 +171,9 @@ class Pixity_Builder_Core{
                     }
                 }
             }
-            $this->sort_childes_models();
+            $models[$id]['childes'] = $this->sort_childes_models( $models, $childes );
         }
+        return $models;
 
     }
 
@@ -179,28 +181,29 @@ class Pixity_Builder_Core{
      * Sort Childes of each model
      *
      * @param $models - shortcode models
+     * @param $childes - shortcode childes models
      *
-     * @return void
+     * @return array - array of ordered childes
      * @since 1.0.0
      */
-    protected function sort_childes_models( ) {
+    protected function sort_childes_models( $models, $childes ) {
 
         $orderedChildes = array();
         $o = 1;
-        // Ordering Childs
+        // Ordering Childes
         foreach($childes as $child){
-            if(array_key_exists('order', $this->models[$child])){
-                if(isset($orderedChildes[$this->models[$child]['order']])){
-                    $orderedChildes[++$this->models[$child]['order']] = $child;
+            if(array_key_exists('order', $models[$child])){
+                if(isset($orderedChildes[$models[$child]['order']])){
+                    $orderedChildes[++$models[$child]['order']] = $child;
                 }else{
-                    $orderedChildes[$this->models[$child]['order']] = $child;
+                    $orderedChildes[$models[$child]['order']] = $child;
                 }
             }else{
                 $orderedChildes[$o++] = $child;
             }
         }
         ksort($orderedChildes);
-        $this->models[$id]['childes'] = $orderedChildes;
+        return $orderedChildes;
 
     }
 
@@ -209,63 +212,68 @@ class Pixity_Builder_Core{
      *
      * @param $models - shortcode models
      *
-     * @return void
+     * @return array
      * @since 1.0.0
      */
-    protected function sort_row_models( ) {
+    protected function sort_row_models( $models ) {
 
-        $els = $this->models;
+        $els = $models;
         $rows = array();
 
         // Sort Rows
-        foreach($this->models as $key=>$item){
+        foreach($models as $key=>$item){
             if($item['type'] == 'karma_row'){
                 $rows[$key] = $item['order'];
-                unset($this->models[$key]);
+                unset($models[$key]);
             }
         }
         arsort($rows);
 
         foreach($rows as $key=>$item){
-            $this->models = array($key=>$els[$key])+$this->models;
+            $models = array($key=>$els[$key])+$models;
         }
+
+        return $models;
 
     }
 
     /**
      * convert shortcode models with WordPress shortcode pattern
      *
+     * @param $models - Shortcode models
      * @param $id - Shortcode model ID
      *
-     * @return void
+     * @return string - shortcode string pattern of model
      * @since 1.0.0
      */
-    protected function convert_model_to_shortcode_pattern($id){
-        $type = trim($this->models[$id]['type']);
-        $attr = trim($this->models[$id]['attr']);
+    protected function convert_model_to_shortcode_pattern( $models, $id ){
+        static $content = '';
+        $type = trim($models[$id]['type']);
+        $attr = trim($models[$id]['attr']);
         $pat = '~el_id=".*?"~s';
         $attr = trim(preg_replace($pat,'', $attr));
-        $childes = $this->models[$id]['childes'];
-        $content = $this->models[$id]['content'];
+        $childes = $models[$id]['childes'];
+        $shortcode_content = $models[$id]['content'];
         $attr = ($attr != '')?' '.$attr:$attr;
-        $this->content .= '['.$type.$attr.']';
+        $content .= '['.$type.$attr.']';
 
         if(count($childes)){
             foreach ($childes as $child) {
-                if( $this->models[$child]['flag']){
+                if( $models[$child]['flag']){
                     continue;
                 }else{
-                    $this->models[$child]['flag'] = true;
+                    $models[$child]['flag'] = true;
                 }
-                $this->content .= $this->convert_model_to_shortcode_pattern($child);
+                $content .= $this->convert_model_to_shortcode_pattern( $models, $child );
             }
         }
 
-        if($content != ''){
-            $this->content .= $content;
+        if($shortcode_content != ''){
+            $content .= $shortcode_content;
         }
 
-        $this->content .='[/'.$type.']';
+        $content .='[/'.$type.']';
+        return $content;
     }
 
     /**
@@ -274,7 +282,7 @@ class Pixity_Builder_Core{
      * @param $models - shortcode models
      * @param $id - post/page ID
      *
-     * @return void
+     * @return boolean
      * @since 1.0.0
      */
     public function save_post_content( $models, $id ) {
@@ -293,7 +301,7 @@ class Pixity_Builder_Core{
     }
 
     /**
-     * replace shortcode models with wordpress shortcode pattern
+     * replace shortcode models with WordPress shortcode pattern
      *
      * @param $id - Shortcode model ID
      *
