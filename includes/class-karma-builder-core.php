@@ -33,6 +33,16 @@ class Pixity_Builder_Core{
 	 */
     private static $instance;
 
+
+	/**
+	 * The shortcode attributes regex.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $shortcode_attr_pattern	The regex pattern for get the shortcode attributes.
+	 */
+    protected $shortcode_attr_pattern = '/([\w-]+)\s*=\s*\'((.|\')*?)(?<!\\\\)\'|([\w-]+)\s*=\s*"((.|\")*?)(?<!\\\\)"|([\w-]+)\s*=\s*([^\s\'"]+)(?:\s|$)/s';
+
 	/**
 	 * It is an array that contains shortcode models
 	 *
@@ -111,9 +121,139 @@ class Pixity_Builder_Core{
         
     }
 
-    public static function parse_shortcode( $shortcode ) {
-        
+	/**
+	 * Convert shortcode attributes to array model
+	 *
+	 * If there are no shortcode tags defined, then the function will be returned
+	 * false without any filtering.
+	 *
+	 * @param string	$shortcode_attributes	Shortcode string
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return mixed - model of shortcode or false if shortcode syntax is incorrect
+	 */
+    public function parse_shortcode( $shortcode_attributes ) {
+    	if ( ! $this->validate_shortcode_syntax( $shortcode_attributes ) ){
+    		return false;
+		}
+		$shortcode_models = array();
+		preg_match_all( '@\[([^<>&/\[\]\x00-\x20=]++)@', $shortcode_attributes , $matches );
+    	$shortcode_models["shortcode_name"] = $matches[1][0];
+		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $shortcode_attributes );
+		$shortcode_models['content'] = $this->get_shortcode_content( $shortcode_attributes );
+		return $shortcode_models;
     }
+
+	/**
+	 * Get shortcode conetnt if exists
+	 *
+	 *
+	 * @param string	$shortcode_attributes	Shortcode string
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string - shortocode content and if not exists return empty string
+	 */
+    private function get_shortcode_content( $shortcode_attributes ){
+    	$pattern = '/(?<=(\s])|])(.*?)(?=(\s\[)|\[)/' ;
+		preg_match_all( $pattern, $shortcode_attributes , $matches );
+		if( $matches ){
+			return $matches[0][0];
+		}
+		return '' ;
+	}
+
+	/**
+	 * Remove empty values
+	 *
+	 * It s call back function for array_filter function that used in merge_attributes_matches and
+	 * avoid of delete false boolean type
+	 *
+	 * @param string - $value - value of current index in array
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string - correct value
+	 */
+    private function remove_empty_value( $value ){
+		return $value !== "";
+	}
+
+
+	/**
+	 * Combine the attributes and values of shortcode
+	 *
+	 *
+	 * @param array	$matches attributes of shortcodes
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array - that contains the attributes and values of shortcode
+	 */
+    private function merge_attributes_matches( $matches ){
+		$first_group_attributes = array_filter( $matches[1] ,array($this, 'remove_empty_value') );
+		$second_group_attributes = array_filter( $matches[4] ,array($this, 'remove_empty_value') );
+		$third_group_attributes = array_filter( $matches[7] ,array($this, 'remove_empty_value') );
+		$all_group_attribute = array_merge( $first_group_attributes , $second_group_attributes , $third_group_attributes );
+		$first_group_value =  array_filter( $matches[2] ,array($this, 'remove_empty_value') );
+		$second_group_value =  array_filter( $matches[5] ,array($this, 'remove_empty_value') );
+		$third_group_value =  array_filter( $matches[8] ,array($this, 'remove_empty_value') );
+		$all_group_value = array_merge( $first_group_value, $second_group_value, $third_group_value );
+		$result = array(
+			'attributes' => $all_group_attribute,
+			'values' => $all_group_value
+		);
+		return $result;
+	}
+
+	/**
+	 * Get all shortcode attributes with their values
+	 *
+	 * If the function dose not found any attribute return empty array
+	 *
+	 * @param string	$shortcode_attributes	Shortcode string
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array - The group of attributes of shortcode
+	 */
+    private function get_shortcode_attributes( $shortcode_attributes ){
+    	$atts = array();
+		preg_match_all( $this->shortcode_attr_pattern , $shortcode_attributes , $matches );
+		if( $matches ){
+			$shortcode_group_attribute = $this->merge_attributes_matches( $matches );
+			foreach ( $shortcode_group_attribute['attributes'] as $attr ) {
+				$atts[ $attr ] =  $shortcode_group_attribute['values'][ current(array_keys( $shortcode_group_attribute['attributes'], $attr )) ];
+			}
+		}
+		return $atts;
+	}
+
+	/**
+	 * Check the shortcode format
+	 *
+	 *
+	 * @param string	$shortcode_attributes	Shortcode string
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return boolean - false if shortcode format is incorrect and true if is correct
+	 */
+    private function validate_shortcode_syntax( $shortcode_attributes  ){
+
+		if ( false === strpos( $shortcode_attributes  , '[' )
+			|| false === strpos( $shortcode_attributes  , ']' ) ) {
+			return false;
+		}
+
+		if ( empty( $shortcode_attributes )
+			|| is_array( $shortcode_attributes ) ){
+			return false;
+		}
+
+		return true;
+	}
 
     /**
      * Prepare content from models
