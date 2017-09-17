@@ -267,8 +267,6 @@ class Pixity_Builder_Core{
      */
     public function generate_post_content( $models ) {
 
-        $models = json_decode( stripslashes( $models ),true );
-
         // Find Childes
         $models = $this->find_model_childes( $models );
 
