@@ -218,13 +218,13 @@ class Pixity_Builder_Core{
 	 *
 	 * @return array - The group of attributes of shortcode
 	 */
-    private function get_shortcode_attributes( $shortcode_attributes ){
-    	$atts = array();
+	private function get_shortcode_attributes( $shortcode_attributes ){
+		$atts = array();
 		preg_match_all( $this->shortcode_attr_pattern , $shortcode_attributes , $matches );
 		if( $matches ){
 			$shortcode_group_attribute = $this->merge_attributes_matches( $matches );
-			foreach ( $shortcode_group_attribute['attributes'] as $attr ) {
-				$atts[ $attr ] =  $shortcode_group_attribute['values'][ current(array_keys( $shortcode_group_attribute['attributes'], $attr )) ];
+			for( $count = 0 ; $count < count( $shortcode_group_attribute['attributes'] ); $count++ ){
+				$atts[ $shortcode_group_attribute['attributes'][ $count ] ] =  $shortcode_group_attribute['values'][ $count ];
 			}
 		}
 		return $atts;
@@ -479,3 +479,5 @@ class Pixity_Builder_Core{
     }
 
 }
+
+
