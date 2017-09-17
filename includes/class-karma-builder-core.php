@@ -141,7 +141,7 @@ class Pixity_Builder_Core{
 		preg_match_all( '@\[([^<>&/\[\]\x00-\x20=]++)@', $shortcode_attributes , $matches );
     	$shortcode_models["shortcode_name"] = $matches[1][0];
 		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $shortcode_attributes );
-		$shortcode_models['content'] = $this->get_shortcode_content( $shortcode_attributes );
+		$shortcode_models['shortcode_content'] = $this->get_shortcode_content( $shortcode_attributes );
 		return $shortcode_models;
     }
 
@@ -158,7 +158,9 @@ class Pixity_Builder_Core{
     private function get_shortcode_content( $shortcode_attributes ){
     	$pattern = '/(?<=(\s])|])(.*?)(?=(\s\[)|\[)/' ;
 		preg_match_all( $pattern, $shortcode_attributes , $matches );
-		if( $matches ){
+		if( $matches
+			&& isset( $matches[0] )
+			&& isset($matches[0][0]) ){
 			return $matches[0][0];
 		}
 		return '' ;
@@ -224,7 +226,7 @@ class Pixity_Builder_Core{
 		if( $matches ){
 			$shortcode_group_attribute = $this->merge_attributes_matches( $matches );
 			for( $count = 0 ; $count < count( $shortcode_group_attribute['attributes'] ); $count++ ){
-				$atts[ $shortcode_group_attribute['attributes'][ $count ] ] =  $shortcode_group_attribute['values'][ $count ];
+				$atts[ $shortcode_group_attribute['attributes'][ $count ] ] =  stripslashes( $shortcode_group_attribute['values'][ $count ] );
 			}
 		}
 		return $atts;
@@ -479,5 +481,3 @@ class Pixity_Builder_Core{
     }
 
 }
-
-
