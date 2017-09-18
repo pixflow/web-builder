@@ -43,6 +43,7 @@ class Pixity_Builder_Core{
 	 */
     protected $shortcode_attr_pattern = '/([\w-]+)\s*=\s*\'((.|\')*?)(?<!\\\\)\'|([\w-]+)\s*=\s*"((.|\")*?)(?<!\\\\)"|([\w-]+)\s*=\s*([^\s\'"]+)(?:\s|$)/s';
 
+
 	/**
 	 * It is an array that contains shortcode models
 	 *
@@ -122,6 +123,84 @@ class Pixity_Builder_Core{
     }
 
 	/**
+	 * Retrieve the shortcode regular expression for searching.
+	 *
+	 * The regular expression combines the shortcode tags in the regular expression
+	 *
+	 *
+	 * @param string $shortcode_name The name of shortcode
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string The shortcode search regular expression
+	 */
+    private function get_shortcode_regex( $shortcode_name ){
+
+    	return  '/\[(\[?)(' . $shortcode_name . ')(?![\w-])([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)/';
+    	
+	}
+
+	/**
+	 * check the shortcode have any child or not
+	 *
+	 *
+	 * @param string	$shortcode_content	Shortcode content
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return boolean	true if any childes found otherwise return false
+	 */
+	private function is_parent_shortcode( $shortcode_content ){
+
+		if ( preg_match('/(\[\/.*?])/' , $shortcode_content ) ){
+			return true ;
+		}else{
+			return false;
+		}
+
+	}
+
+	/**
+	 * Convert the list of shortcodes to their models
+	 *
+	 *
+	 * @param string	$content	Shortcode string
+	 * @param integer	$parent_id	Contain the id of parent shortcode for any child ( default = 0 )
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array - model of shortcodes
+	 */
+    public function parse_shortcodes( $content, $parent_id = 0 ){
+
+		static $id = 0;
+		preg_match_all( $this->get_shortcode_regex('.*?'), $content, $shortcodes );
+		$index = 0;
+		$models = array();
+		foreach ( $shortcodes[0] as $shortcode ){
+			$is_parent = false;
+			$id++;
+			$model = $this->parse_shortcode( $shortcode );
+			$model['shortcode_id'] = $id;
+			if( ! $this->is_parent_shortcode(  $shortcodes[5][$index] ) ){
+				$model['shortcode_content'] = $shortcodes[5][$index];
+			}else{
+				unset($model['shortcode_content']);
+				$is_parent = true;
+			}
+			$model['parent_id'] = $parent_id;
+			$models[] = $model;
+			if( $is_parent ){
+				$models = array_merge($models, $this->parse_shortcodes( $shortcodes[5][$index], $id ));
+			}
+			$index++;
+
+		}
+		return $models;
+
+	}
+
+	/**
 	 * Convert shortcode attributes to array model
 	 *
 	 * If there are no shortcode tags defined, then the function will be returned
@@ -138,33 +217,14 @@ class Pixity_Builder_Core{
     		return false;
 		}
 		$shortcode_models = array();
-		preg_match_all( '@\[([^<>&/\[\]\x00-\x20=]++)@', $shortcode_attributes , $matches );
-    	$shortcode_models["shortcode_name"] = $matches[1][0];
-		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $shortcode_attributes );
-		$shortcode_models['shortcode_content'] = $this->get_shortcode_content( $shortcode_attributes );
+		$pattern = $this->get_shortcode_regex('.*?');
+		preg_match_all( $pattern , $shortcode_attributes , $matches );
+    	$shortcode_models["shortcode_name"] = $matches[2][0];
+		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[0][0] );
+		$shortcode_models['shortcode_content'] = $matches[5][0];
 		return $shortcode_models;
     }
 
-	/**
-	 * Get shortcode conetnt if exists
-	 *
-	 *
-	 * @param string	$shortcode_attributes	Shortcode string
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string - shortocode content and if not exists return empty string
-	 */
-    private function get_shortcode_content( $shortcode_attributes ){
-    	$pattern = '/(?<=(\s])|])(.*?)(?=(\s\[)|\[)/' ;
-		preg_match_all( $pattern, $shortcode_attributes , $matches );
-		if( $matches
-			&& isset( $matches[0] )
-			&& isset($matches[0][0]) ){
-			return $matches[0][0];
-		}
-		return '' ;
-	}
 
 	/**
 	 * Remove empty values

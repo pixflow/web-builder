@@ -28,7 +28,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"font"      =>  "arial",
 				"bg"        =>  "#000fff",
 				"style"     =>  'font-family: "tahoma";',
-				"radius"    =>  18,
+				"radius"    =>  '18',
 				"title"     =>  'this is a " title " ',
 				"sub_title" =>  "this is a subtitle's test"
 			),
@@ -43,7 +43,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"font"      =>  "arial",
 				"bg"        =>  "#000fff",
 				"style"     =>  'font-family: "tahoma";',
-				"radius"    =>  18,
+				"radius"    =>  '18',
 				"title"     =>  'this is a " title " ',
 				"sub_title" =>  "this is a subtitle's test"
 			),
@@ -62,53 +62,60 @@ class Tests_Core extends WP_UnitTestCase {
 	public function test_parse_shortcodes(){
 
 		$shortcodes =
-			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub-title="this is a subtitle\'s test"]'
+			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]'
 			.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
-			.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub-title="this is a subtitle\'s test"][/shortcode_test4]'
+			.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
 
 		$expect = array(
-			1 => array(
+			array(
 				"shortcode_name"        => "shortcode_test",
-				"children"              =>  array(2,3),
-				"order"                 => 1,
 				"shortcode_attributes"  =>  array(
 					"color"     =>  "red",
 					"font"      =>  "arial",
 					"bg"        =>  "#000fff",
 					"style"     =>  'font-family: "tahoma";',
-					"radius"    =>  18,
+					"radius"    =>  '18',
 					"title"     =>  'this is a " title " ',
 					"sub_title" =>  "this is a subtitle's test"
-				)
+				) ,
+				"shortcode_id" 	=> 1 ,
+				"parent_id"		=> 0
 			),
-			2 => array(
-				"shortcode_attributes"  =>  array(),
+			array(
 				"shortcode_name"        => "shortcode_test2",
+				"shortcode_attributes"  =>  array(),
 				"shortcode_content"     => " Test Content Goes here",
-				"order"                 => 1
+				"shortcode_id" 			=> 2 ,
+				"parent_id"				=> 1
 			),
-			3 => array(
+			array(
 				"shortcode_name"        => "shortcode_test4",
 				"shortcode_attributes"  =>  array(
 					"color"     =>  "red",
 					"font"      =>  "arial",
 					"bg"        =>  "#000fff",
 					"style"     =>  'font-family: "tahoma";',
-					"radius"    =>  18,
+					"radius"    =>  '18',
 					"title"     =>  'this is a " title " ',
 					"sub_title" =>  "this is a subtitle's test"
 				),
-				"order"                 => "2"
+				'shortcode_content' => '' ,
+				"parent_id"			=> 1,
+				"shortcode_id" 		=> 3 ,
 			),
-			4 => array(
+			array(
 				"shortcode_name"        => "shortcode_test3",
-				"order"                 => "2"
+				"shortcode_attributes"  =>  array(),
+				'shortcode_content' 	=> '' ,
+				"shortcode_id" 			=> 4 ,
+				"parent_id"				=> 0,
+
 			),
 		);
 
-		$this->assertEquals($this->builder->generate_post_content( $shortcodes ), $expect);
+		$this->assertEquals($this->builder->parse_shortcodes( $shortcodes ), $expect);
 
 	}
 
@@ -133,7 +140,8 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_attributes"  =>  array(),
 				"shortcode_name"        => "shortcode_test2",
 				"shortcode_content"     => " Test Content Goes here",
-				"order"                 => 1
+				"order"                 => 1,
+				"parent"                => 1
 			),
 			3 => array(
 				"shortcode_name"        => "shortcode_test3",
