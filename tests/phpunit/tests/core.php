@@ -81,6 +81,7 @@ class Tests_Core extends WP_UnitTestCase {
 					"sub_title" =>  "this is a subtitle's test"
 				) ,
 				"shortcode_id" 	=> 1 ,
+				"order"			=> 1 ,
 				"parent_id"		=> 0
 			),
 			array(
@@ -88,6 +89,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_attributes"  =>  array(),
 				"shortcode_content"     => " Test Content Goes here",
 				"shortcode_id" 			=> 2 ,
+				"order"					=> 1 ,
 				"parent_id"				=> 1
 			),
 			array(
@@ -102,6 +104,7 @@ class Tests_Core extends WP_UnitTestCase {
 					"sub_title" =>  "this is a subtitle's test"
 				),
 				'shortcode_content' => '' ,
+				"order"				=> 2,
 				"parent_id"			=> 1,
 				"shortcode_id" 		=> 3 ,
 			),
@@ -110,6 +113,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_attributes"  =>  array(),
 				'shortcode_content' 	=> '' ,
 				"shortcode_id" 			=> 4 ,
+				"order"				=> 2,
 				"parent_id"				=> 0,
 
 			),
