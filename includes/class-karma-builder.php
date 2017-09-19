@@ -217,6 +217,57 @@ class Pixity_Builder {
 	public function run() {
 		//$this->core->run();
 		$this->loader->run();
+		if ( self::is_in_builder() && $this->user_have_access_page() ){
+			$this->genrate_page_model();
+		}
+	}
+
+	/**
+	 * Check the user roles.
+	 *
+	 * @since     1.0.0
+	 * @return    boolean	true if user has access or not.
+	 */
+	private function user_have_access_page(){
+
+		$current_user = wp_get_current_user();
+		if ( user_can( $current_user, 'administrator' ) && ! post_password_required() ){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check the builder is load or not.
+	 *
+	 * @since     1.0.0
+	 * @return    boolean	true if builder is load otherwise false.
+	 */
+	public static function is_in_builder(){
+
+		if( isset( $_GET['load_builder'] ) && true === (boolean) $_GET['load_builder']  ){
+			return true ;
+		}else{
+			return false;
+		}
+
+	}
+
+	/**
+	 * Generate shortcode page models and localize it for builder
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	private function genrate_page_model(){
+
+		$page_id = get_the_id();
+		$post_object = get_post ( $page_id );
+		$content = $post_object->post_excerpt;
+		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
+		wp_localize_script( $this->get_plugin_name(), 'builder_models', $page_model );
+
 	}
 
 	/**
