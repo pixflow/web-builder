@@ -571,13 +571,3 @@ class Pixity_Builder_Core{
     }
 
 }
-$shortcodes =
-	'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]'
-	.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
-	.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]sdsdsd[/shortcode_test4]'
-	.'[/shortcode_test]'
-	.'[shortcode_test3][/shortcode_test3]';
-
-$n = Pixity_Builder_Core::get_instance();
-$d = $n->parse_shortcodes( $shortcodes );
-die;
