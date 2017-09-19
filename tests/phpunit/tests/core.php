@@ -188,7 +188,7 @@ class Tests_Core extends WP_UnitTestCase {
 			1 => array(
 				"shortcode_name"        => "shortcode_test",
 				"children"              =>  array(2,40),
-				"order"                 => 1,
+				"order"                 => "1",
 				"shortcode_attributes"  =>  array(
 					"color"     =>  "red",
 					"font"      =>  "arial",
@@ -203,7 +203,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_attributes"  =>  array(),
 				"shortcode_name"        => "shortcode_test2",
 				"shortcode_content"     => " Test Content Goes here",
-				"order"                 => 1
+				"order"                 => "1"
 			),
 			3 => array(
 				"shortcode_name"        => "shortcode_test3",

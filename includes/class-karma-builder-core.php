@@ -174,6 +174,8 @@ class Pixity_Builder_Core{
     public function parse_shortcodes( $content, $parent_id = 0 ){
 
 		static $id = 0;
+		static $child_order =  1 ;
+		static $parent_order = 1 ;
 		preg_match_all( $this->get_shortcode_regex('.*?'), $content, $shortcodes );
 		$index = 0;
 		$models = array();
@@ -188,15 +190,46 @@ class Pixity_Builder_Core{
 				unset($model['shortcode_content']);
 				$is_parent = true;
 			}
+			$shortcode_order = $this->order_shortcode( $model, array( 'child_order' => $child_order , 'parent_order' => $parent_order ), $parent_id );
+			list( $model, $child_order, $parent_order ) = $shortcode_order;
 			$model['parent_id'] = $parent_id;
 			$models[] = $model;
 			if( $is_parent ){
 				$models = array_merge($models, $this->parse_shortcodes( $shortcodes[5][$index], $id ));
+				$child_order = 1 ;
 			}
 			$index++;
 
 		}
+
 		return $models;
+
+	}
+
+	/**
+	 * Order the shortcodes by parent and child
+	 *
+	 *
+	 * @param array 	$model 		Contain the model of current shortcode
+	 * @param array		$order 		current index of child and parent
+	 * @param integer 	$parent_id	current index of parent id
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array - new model of shortcode given with order attribute
+	 */
+	private function order_shortcode( $model, $order, $parent_id ){
+
+		if( 0 != $parent_id ){
+			$model['order'] = $order['child_order'] ;
+			$order['child_order']++;
+		}else{
+			$model['order'] = $order['parent_order'] ;
+			$order['parent_order'] ++ ;
+		}
+
+		$result = array( $model, $order['child_order'], $order['parent_order']);
+		return $result;
 
 	}
 
@@ -538,3 +571,13 @@ class Pixity_Builder_Core{
     }
 
 }
+$shortcodes =
+	'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]'
+	.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
+	.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]sdsdsd[/shortcode_test4]'
+	.'[/shortcode_test]'
+	.'[shortcode_test3][/shortcode_test3]';
+
+$n = Pixity_Builder_Core::get_instance();
+$d = $n->parse_shortcodes( $shortcodes );
+die;
