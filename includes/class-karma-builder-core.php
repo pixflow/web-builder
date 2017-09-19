@@ -556,7 +556,7 @@ class Pixity_Builder_Core{
 	public function shortcode_map() {
 
     }
-    
+
     /**
      * Generate static JS and CSS for each page based on their shortcodes after publish
      *
