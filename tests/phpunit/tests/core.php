@@ -126,50 +126,56 @@ class Tests_Core extends WP_UnitTestCase {
 	public function test_generate_post_content(){
 
 		$models = array(
-			1 => array(
-				"shortcode_name"        => "shortcode_test",
-				"children"              =>  array(2,40),
+			array(
+				"shortcode_id"			=> 1,
+				"shortcode_name"		=> "shortcode_test",
+				"parent_id"				=> 0,
 				"order"                 => 1,
-				"shortcode_attributes"  =>  array(
-					"color"     =>  "red",
-					"font"      =>  "arial",
-					"bg"        =>  "#000fff",
-					"style"     =>  'font-family: "tahoma";',
-					"radius"    =>  18,
-					"title"     =>  'this is a " title " ',
-					"sub_title" =>  "this is a subtitle's test"
+				"shortcode_attributes"	=> array(
+					"color"		=> "red",
+					"font"		=> "arial",
+					"bg"		=> "#000fff",
+					"style"		=> 'font-family: "tahoma";',
+					"radius"	=> 18,
+					"title"		=> 'this is a " title " ',
+					"sub_title"	=> "this is a subtitle's test"
 				)
 			),
-			2 => array(
-				"shortcode_attributes"  =>  array(),
-				"shortcode_name"        => "shortcode_test2",
-				"shortcode_content"     => " Test Content Goes here",
-				"order"                 => 1,
-				"parent"                => 1
+			array(
+				"shortcode_id"			=>	2,
+				"shortcode_attributes"	=>	array(),
+				"shortcode_name"		=>	"shortcode_test2",
+				"shortcode_content"		=>	" Test Content Goes here",
+				"parent_id"				=>	1,
+				"order"					=>	1
 			),
-			3 => array(
-				"shortcode_name"        => "shortcode_test3",
-				"order"                 => "2"
+			array(
+				"shortcode_id"		=>	3,
+				"shortcode_name"	=>	"shortcode_test3",
+				"parent_id"			=>	0,
+				"order"				=>	"2"
 			),
-			40 => array(
-				"shortcode_name"        => "shortcode_test4",
-				"shortcode_attributes"  =>  array(
-					"color"     =>  "red",
-					"font"      =>  "arial",
-					"bg"        =>  "#000fff",
-					"style"     =>  'font-family: "tahoma";',
-					"radius"    =>  18,
-					"title"     =>  'this is a " title " ',
-					"sub_title" =>  "this is a subtitle's test"
+			array(
+				"shortcode_id"			=> 40,
+				"shortcode_name"		=> "shortcode_test4",
+				"shortcode_attributes"	=>	array(
+					"color"		=>	"red",
+					"font"		=>	"arial",
+					"bg"		=>	"#000fff",
+					"style"		=>	'font-family: "tahoma";',
+					"radius"	=>	18,
+					"title"		=>	'this is a " title " ',
+					"sub_title"	=>	"this is a subtitle's test"
 				),
-				"order"                 => "2"
+				"parent_id"	=>	1,
+				"order"		=>	"2"
 			),
 		);
 
 		$expect =
-			'[shortcode_test color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub-title="this is a subtitle\'s test"]'
+			'[shortcode_test bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "]'
 			.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
-			.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub-title="this is a subtitle\'s test"][/shortcode_test4]'
+			.'[shortcode_test4 bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
 		$this->assertEquals($this->builder->generate_post_content( $models ), $expect);
@@ -189,49 +195,56 @@ class Tests_Core extends WP_UnitTestCase {
 		$id = wp_insert_post( $my_post );
 
 		$models = array(
-			1 => array(
-				"shortcode_name"        => "shortcode_test",
-				"children"              =>  array(2,40),
-				"order"                 => "1",
-				"shortcode_attributes"  =>  array(
-					"color"     =>  "red",
-					"font"      =>  "arial",
-					"bg"        =>  "#000fff",
-					"style"     =>  'font-family: "tahoma";',
-					"radius"    =>  18,
-					"title"     =>  'this is a " title " ',
-					"sub_title" =>  "this is a subtitle's test"
+			array(
+				"shortcode_id"			=> 1,
+				"shortcode_name"		=> "shortcode_test",
+				"parent_id"				=> 0,
+				"order"                 => 1,
+				"shortcode_attributes"	=> array(
+					"color"		=> "red",
+					"font"		=> "arial",
+					"bg"		=> "#000fff",
+					"style"		=> 'font-family: "tahoma";',
+					"radius"	=> 18,
+					"title"		=> 'this is a " title " ',
+					"sub_title"	=> "this is a subtitle's test"
 				)
 			),
-			2 => array(
-				"shortcode_attributes"  =>  array(),
-				"shortcode_name"        => "shortcode_test2",
-				"shortcode_content"     => " Test Content Goes here",
-				"order"                 => "1"
+			array(
+				"shortcode_id"			=>	2,
+				"shortcode_attributes"	=>	array(),
+				"shortcode_name"		=>	"shortcode_test2",
+				"shortcode_content"		=>	" Test Content Goes here",
+				"parent_id"				=>	1,
+				"order"					=>	1
 			),
-			3 => array(
-				"shortcode_name"        => "shortcode_test3",
-				"order"                 => "2"
+			array(
+				"shortcode_id"		=>	3,
+				"shortcode_name"	=>	"shortcode_test3",
+				"parent_id"			=>	0,
+				"order"				=>	"2"
 			),
-			40 => array(
-				"shortcode_name"        => "shortcode_test4",
-				"shortcode_attributes"  =>  array(
-					"color"     =>  "red",
-					"font"      =>  "arial",
-					"bg"        =>  "#000fff",
-					"style"     =>  'font-family: "tahoma";',
-					"radius"    =>  18,
-					"title"     =>  'this is a " title " ',
-					"sub_title" =>  "this is a subtitle's test"
+			array(
+				"shortcode_id"			=> 40,
+				"shortcode_name"		=> "shortcode_test4",
+				"shortcode_attributes"	=>	array(
+					"color"		=>	"red",
+					"font"		=>	"arial",
+					"bg"		=>	"#000fff",
+					"style"		=>	'font-family: "tahoma";',
+					"radius"	=>	18,
+					"title"		=>	'this is a " title " ',
+					"sub_title"	=>	"this is a subtitle's test"
 				),
-				"order"                 => "2"
+				"parent_id"	=>	1,
+				"order"		=>	"2"
 			),
 		);
 
 		$expect =
-			'[shortcode_test color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub-title="this is a subtitle\'s test"]'
+			'[shortcode_test bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "]'
 			.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
-			.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub-title="this is a subtitle\'s test"][/shortcode_test4]'
+			.'[shortcode_test4 bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
 
