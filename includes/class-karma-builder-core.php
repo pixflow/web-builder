@@ -361,7 +361,7 @@ class Pixity_Builder_Core{
 
 		// Build Parent & childes tree
 		$models = $this->build_models_tree( $models );
-
+        var_dump($models);
 		// Sort models by order
 		$this->sort_models_by_order( $models );
 
