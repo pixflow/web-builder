@@ -21,7 +21,7 @@ class Tests_Core extends WP_UnitTestCase {
 		$shortcode4 = "[test_shortcode color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test'";
 
 
-		$this->assertEquals( $this->builder->parse_shortcode( $shortcode ),array(
+		$this->assertEquals( array(
 			"shortcode_name"        =>  "test_shortcode",
 			"shortcode_attributes"  =>  array(
 				"color"     =>  "red",
@@ -33,7 +33,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"sub_title" =>  "this is a subtitle's test"
 			),
 			"shortcode_content"             =>  " Test Content Goes here"
-		) );
+		), $this->builder->parse_shortcode( $shortcode ) );
 
 
 		$this->assertEquals( $this->builder->parse_shortcode( $shortcode2 ),array(
@@ -56,7 +56,7 @@ class Tests_Core extends WP_UnitTestCase {
 			"shortcode_content"     =>  ""
 		) );
 
-		$this->assertEquals( $this->builder->parse_shortcode( $shortcode4 ), false);
+		$this->assertEquals( false, $this->builder->parse_shortcode( $shortcode4 ) );
 	}
 
 	public function test_parse_shortcodes(){
@@ -119,7 +119,7 @@ class Tests_Core extends WP_UnitTestCase {
 			),
 		);
 
-		$this->assertEquals($this->builder->parse_shortcodes( $shortcodes ), $expect);
+		$this->assertEquals( $expect, $this->builder->parse_shortcodes( $shortcodes ) );
 
 	}
 
@@ -173,8 +173,12 @@ class Tests_Core extends WP_UnitTestCase {
 		);
 
 		$expect =
-			'test';
-		$this->assertEquals($this->builder->generate_post_content( $models ), $expect);
+			'[shortcode_test bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "]'
+			.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
+			.'[shortcode_test4 bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
+			.'[/shortcode_test]'
+			.'[shortcode_test3][/shortcode_test3]';
+		$this->assertEquals( 'test2', $this->builder->generate_post_content( $models ) );
 
 	}
 
