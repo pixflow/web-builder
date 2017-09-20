@@ -386,12 +386,13 @@ class Pixity_Builder_Core{
 
 		foreach ( $models as $model ) {
 
-			if ( $model['parent_id'] == $parent_id && ( ! isset($model['status']) || 'processed' != $model['status'] ) ) {
-				$children = $this->build_models_tree($models, $model['shortcode_id']);
-				if ($children) {
+			if ( $model['parent_id'] == $parent_id && ( ! isset( $model['status'] )
+					|| 'processed' != $model['status'] ) ) {
+				$children = $this->build_models_tree( $models, $model['shortcode_id'] );
+				if ( $children ) {
 					$model['children'] = $children;
 				}
-				$tree[$model['order']] = $model;
+				$tree[ $model['order'] ] = $model;
 				$model['status'] = 'processed';
 			}
 		}
@@ -410,7 +411,7 @@ class Pixity_Builder_Core{
 	 */
 	protected function sort_models_by_order( &$models ) {
 
-		foreach ($models as &$value) {
+		foreach ( $models as &$value ) {
 
 			if ( is_array( $value ) ){
 				$this->sort_models_by_order($value);
@@ -435,18 +436,18 @@ class Pixity_Builder_Core{
 		$content = '';
 		foreach( $models as $model ) {
 
-			$shortcode_name = trim($model['shortcode_name']);
+			$shortcode_name = trim( $model['shortcode_name'] );
 			$shortcode_attributes = '';
 
 			if( isset( $model['shortcode_attributes'] ) ) {
-				foreach($model['shortcode_attributes'] as $attribute_name=>$attribute_value){
+				foreach( $model['shortcode_attributes'] as $attribute_name => $attribute_value ){
 					$shortcode_attributes .= $attribute_name . '="' . str_replace('"', '\"', $attribute_value ) . '" ';
 				}
 			}
 
-			$shortcode_attributes = trim($shortcode_attributes);
-			$shortcode_attributes = ($shortcode_attributes != '')?' '.$shortcode_attributes:'';
-			$content .= '['.$shortcode_name.$shortcode_attributes.']';
+			$shortcode_attributes = trim( $shortcode_attributes );
+			$shortcode_attributes = ( $shortcode_attributes != '' ) ? ' ' . $shortcode_attributes : '';
+			$content .= '[' . $shortcode_name . $shortcode_attributes . ']';
 
 			if( isset( $model['children'] ) && is_array( $model['children'] ) ){
 				$content .= $this->convert_model_to_shortcode_pattern( $model['children'] );
@@ -458,7 +459,7 @@ class Pixity_Builder_Core{
 				$content .= $shortcode_content;
 			}
 
-			$content .='[/'.$shortcode_name.']';
+			$content .= '[/' . $shortcode_name . ']';
 		}
 		return $content;
 
