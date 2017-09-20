@@ -252,7 +252,7 @@ class Pixity_Builder_Core{
 		$shortcode_models = array();
 		$pattern = $this->get_shortcode_regex('.*?');
 		preg_match_all( $pattern , $shortcode_attributes , $matches );
-    	$shortcode_models["shortcode_name"] = $matches[2][0];
+		$shortcode_models["shortcode_name"] = $matches[2][0];
 		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[0][0] );
 		$shortcode_models['shortcode_content'] = $matches[5][0];
 		return $shortcode_models;
@@ -361,7 +361,7 @@ class Pixity_Builder_Core{
 
 		// Build Parent & childes tree
 		$models = $this->build_models_tree( $models );
-        var_dump($models);
+
 		// Sort models by order
 		$this->sort_models_by_order( $models );
 
@@ -385,13 +385,14 @@ class Pixity_Builder_Core{
 		$tree = array();
 
 		foreach ( $models as $model ) {
-			if ( $model['parent_id'] == $parent_id ) {
+
+			if ( $model['parent_id'] == $parent_id && ( ! isset($model['status']) || 'processed' != $model['status'] ) ) {
 				$children = $this->build_models_tree($models, $model['shortcode_id']);
 				if ($children) {
 					$model['children'] = $children;
 				}
 				$tree[$model['order']] = $model;
-				unset($models[$model['shortcode_id']]);
+				$model['status'] = 'processed';
 			}
 		}
 
