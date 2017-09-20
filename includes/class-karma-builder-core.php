@@ -368,7 +368,7 @@ class Pixity_Builder_Core{
 		// Generate Content
 		$content = $this->convert_model_to_shortcode_pattern( $models );
 
-		return $content;
+		return 'test2';
 	}
 
 	/**
