@@ -36,7 +36,7 @@ class Tests_Core extends WP_UnitTestCase {
 		), $this->builder->parse_shortcode( $shortcode ) );
 
 
-		$this->assertEquals( $this->builder->parse_shortcode( $shortcode2 ),array(
+		$this->assertEquals( array(
 			"shortcode_name"        =>  "test_shortcode",
 			"shortcode_attributes"  =>  array(
 				"color"     =>  "red",
@@ -48,13 +48,13 @@ class Tests_Core extends WP_UnitTestCase {
 				"sub_title" =>  "this is a subtitle's test"
 			),
 			"shortcode_content"             =>  ""
-		) );
+		), $this->builder->parse_shortcode( $shortcode2 ) );
 
-		$this->assertEquals( $this->builder->parse_shortcode( $shortcode3 ), array(
+		$this->assertEquals( array(
 			"shortcode_name"        =>  "test_shortcode",
 			"shortcode_attributes"  =>  array(),
 			"shortcode_content"     =>  ""
-		) );
+		), $this->builder->parse_shortcode( $shortcode3 ) );
 
 		$this->assertEquals( false, $this->builder->parse_shortcode( $shortcode4 ) );
 	}
@@ -178,7 +178,7 @@ class Tests_Core extends WP_UnitTestCase {
 			.'[shortcode_test4 bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
-		$this->assertEquals( 'test2', $this->builder->generate_post_content( $models ) );
+		$this->assertEquals( $expect, $this->builder->generate_post_content( $models ) );
 
 	}
 
@@ -252,7 +252,7 @@ class Tests_Core extends WP_UnitTestCase {
 		$this->builder->save_post_content( $models, $id );
 		$post = get_post($id);
 
-		$this->assertEquals( $post->post_content, $expect );
+		$this->assertEquals( $expect, $post->post_content );
 	}
 
 }
