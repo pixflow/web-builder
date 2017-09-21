@@ -352,7 +352,7 @@ class Pixity_Builder_Core{
 	/**
 	 * Prepare content from models
 	 *
-	 * @param $models - shortcode models
+	 * @param array $models - shortcode models
 	 *
 	 * @return string - content of the page by shortcode tags
 	 * @since 1.0.0
@@ -374,8 +374,8 @@ class Pixity_Builder_Core{
 	/**
 	 * Build multidimensional array of parent and children
 	 *
-	 * @param $models - shortcode models
-	 * @param $parent_id - parent model id
+	 * @param 	array	$models - shortcode models
+	 * @param	integer $parent_id - parent model id
 	 *
 	 * @return array - array of shortcode models tree
 	 * @since 1.0.0
@@ -404,7 +404,7 @@ class Pixity_Builder_Core{
 	/**
 	 * Sort Models by order
 	 *
-	 * @param $models - shortcode models
+	 * @param array $models - shortcode models
 	 *
 	 * @return void
 	 * @since 1.0.0
@@ -426,7 +426,7 @@ class Pixity_Builder_Core{
 	/**
 	 * convert shortcode models with WordPress shortcode pattern
 	 *
-	 * @param $models - Shortcode models
+	 * @param array $models - Shortcode models
 	 *
 	 * @return string - shortcode string pattern of model
 	 * @since 1.0.0
@@ -468,8 +468,8 @@ class Pixity_Builder_Core{
 	/**
 	 * Save content of page/post to the database
 	 *
-	 * @param $models - shortcode models
-	 * @param $id - post/page ID
+	 * @param array		$models - shortcode models
+	 * @param integer	$id - post/page ID
 	 *
 	 * @return boolean
 	 * @since 1.0.0
@@ -483,7 +483,8 @@ class Pixity_Builder_Core{
 		);
 		$post_id = wp_update_post( $current_item, true );
 		if (is_wp_error($post_id)) {
-			$errors = $post_id->get_error_messages();
+			// Remove comments from below line for error handling
+			//$errors = $post_id->get_error_messages();
 			return false;
 		}else{
 			return true;
