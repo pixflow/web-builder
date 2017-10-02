@@ -96,8 +96,19 @@ class Pixity_Builder_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/karma-builder-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'react', plugin_dir_url( __FILE__ ) . 'js/react.min.js', null, $this->version, false );
+		wp_enqueue_script( 'react-dom', plugin_dir_url( __FILE__ ) . 'js/react-dom.min.js', null, $this->version, false );
+		wp_enqueue_script( 'babel', plugin_dir_url( __FILE__ ) . 'js/babel.min.js', null, $this->version, false );
+		wp_enqueue_script( $this->plugin_name . '_babel', plugin_dir_url( __FILE__ ) . 'js/karma-builder-public.jsx', array( 'jquery' ), $this->version, false );
+		add_filter('script_loader_tag', array( $this, 'add_babel_attribute' ), 10, 2);
+
 
 	}
 
+	public function add_babel_attribute($tag, $handle) {
+		if ( preg_match('/[.]jsx/', $tag) ) {
+			return str_replace('text/javascript', 'text/babel', $tag);
+		}
+		return $tag;
+	}
 }
