@@ -218,8 +218,8 @@ class Pixity_Builder {
 	public function render_content( $content ){
 		$return =  "<div id='root'></div>"
 					."<script type='text/babel'>"
-					."	const karmaContent = (<div>" . get_the_content() ."</div>);"
-					."	const render = ReactDOM.render(karmaContent, document.getElementById('root'))"
+					."	const content = (<KarmaApp>" . get_the_content() ."</KarmaApp>);"
+					."	const render = ReactDOM.render(content, document.getElementById('root')); console.log(render)"
 					."</script>";
 		return $return;
 	}
