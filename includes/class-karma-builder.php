@@ -208,37 +208,22 @@ class Pixity_Builder {
 		$this->core = Pixity_Builder_Core::get_instance();
 
 	}
-
-
-
-	/**
-	 *
-	 * Add Karma root div
-	 */
-	public function render_content( $content ){
-		$return =  "<div id='root'></div>"
-					."<script type='text/babel'>"
-					."	const content = (<KarmaApp>" . get_the_content() ."</KarmaApp>);"
-					."	const render = ReactDOM.render(content, document.getElementById('root')); console.log(render)"
-					."</script>";
-		return $return;
-	}
-
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
 	 * @since    1.0.0
 	 */
 	public function run() {
-		//$this->core->run();
-		remove_filter('the_content','wpautop');
-		add_filter( 'the_content', array( $this, 'render_content' ),-9 );
+
 		if ( self::is_in_builder() && $this->user_have_access_page() ){
+
 			$this->genrate_page_model();
 			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
 
 		}
+		$this->core->run();
 		$this->loader->run();
+
 	}
 
 
