@@ -10,6 +10,7 @@ class Tests_Core extends WP_UnitTestCase {
 	protected $builder;
 
 	public function setUp() {
+		run_pixity_builder();
 		$this->builder = Pixity_Builder_Core::get_instance();
 	}
 
