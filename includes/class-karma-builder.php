@@ -233,11 +233,14 @@ class Pixity_Builder {
 		//$this->core->run();
 		remove_filter('the_content','wpautop');
 		add_filter( 'the_content', array( $this, 'render_content' ),-9 );
-		$this->loader->run();
 		if ( self::is_in_builder() && $this->user_have_access_page() ){
 			$this->genrate_page_model();
+			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
+
 		}
+		$this->loader->run();
 	}
+
 
 	/**
 	 * Check the user roles.
@@ -248,7 +251,7 @@ class Pixity_Builder {
 	private function user_have_access_page(){
 
 		$current_user = wp_get_current_user();
-		if ( user_can( $current_user, 'administrator' ) && ! post_password_required() ){
+		if ( user_can( $current_user, 'edit_post' ) && ! post_password_required() ){
 			return true;
 		}
 
@@ -286,6 +289,39 @@ class Pixity_Builder {
 		wp_localize_script( $this->get_plugin_name(), 'builder_models', $page_model );
 
 	}
+
+
+	/**
+	 * Convert shortcodes in page as Karma shortcode format
+	 *
+	 * @param	string	$output	Html source of each shortocde
+	 * @param	string	$tag	The name of shortcode
+	 * @param 	string	$attr	The attribute of shortcode
+	 *
+	 * @since     1.0.0
+	 * @return    string	the correct html source for builder
+	 */
+	public function create_builder_element_model( $output, $tag, $attr ){
+
+		$shortcode_info = array(
+			'shortcode_name' 	=> $tag,
+			'attributes'		=> $attr,
+			'output'			=> $output,
+		);
+		do_action( 'karma_before_shortcode_apply' . $tag, $shortcode_info );
+		static $uniqe_id = 1 ;
+		$karma_builder_output = "<div class=\"karma-builder-element\" data-name=\"{$tag}\" "
+			. "data-element-id={$uniqe_id} >"
+			. $output
+			. '</div>' ;
+		$shortcode_info['output'] = $karma_builder_output;
+		do_action( 'karma_after_shortcode_apply' . $tag, $shortcode_info );
+		$uniqe_id ++ ;
+		return $karma_builder_output;
+
+	}
+
+
 
 	/**
 	 * The name of the plugin used to uniquely identify it within the context of
