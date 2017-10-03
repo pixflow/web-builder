@@ -1,7 +1,19 @@
-QUnit.test("parseAttribute", function( assert ) {
-    assert.equal(parseAttribute( {'title':'this is a test'}, 'title' ), 'this is a test');
-});
+QUnit.test("karmaCreateModel",function (assert) {
 
-QUnit.test("removeFirstChr", function (assert) {
-    assert.equal(removeFirstChr("ermia"),"rmia");
-});
+
+    var kamraModelResult = {
+        1 : {
+            "type" : "shortcode_test",
+            "parentId" : "0",
+            "attr" : "color:'red' font:'arial' bg:'#000fff' "
+
+        }
+
+    }
+
+    var model = {"type" : "shortcode_test", "parentId" : "0", "attr" : "color:'red' font:'arial' bg:'#000fff' "};
+
+	var builder = new karmaBuilder();
+
+    assert.ok(builder.createShortcode(model),kamraModelResult)
+})

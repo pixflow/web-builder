@@ -1,7 +1,4 @@
-(function( $ ) {
-	'use strict';
-
-	/**
+/**
 	 * All of the code for your public-facing JavaScript source
 	 * should reside in this file.
 	 *
@@ -29,4 +26,19 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-})( jQuery );
+var karmaBuilder =  function () {
+
+	this.karmaModel = {}
+
+}
+
+karmaBuilder.prototype.createShortcode = function (model) {
+	var len = this.karmaModel.length;
+	len++;
+	this.karmaModel[len] = model;
+	return this.karmaModel;
+
+}
+
+
+>>>>>>> 6073c0e33869b42b8459c1a51e29b75e95743459
