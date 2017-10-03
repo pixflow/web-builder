@@ -39,4 +39,11 @@ QUnit.test("karmaDeleteModel",function (assert) {
     }
 
     assert.deepEqual( builder.deleteShortcode( 2 ),karmaDeleteResult );
-})
+});
+
+
+QUnit.test( "karmaSaveContent", function ( assert ) {
+
+	assert.deepEqual( builder.saveContent(),true);
+
+});
