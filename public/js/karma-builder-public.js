@@ -33,12 +33,9 @@ var karmaBuilder =  function () {
 }
 
 karmaBuilder.prototype.createShortcode = function (model) {
-	var len = this.karmaModel.length;
-	len++;
-	this.karmaModel[len] = model;
+	var length = this.karmaModel.length;
+	length++;
+	this.karmaModel[length] = model;
 	return this.karmaModel;
-
 }
 
-
->>>>>>> 6073c0e33869b42b8459c1a51e29b75e95743459
