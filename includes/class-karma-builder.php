@@ -235,8 +235,7 @@ class Pixity_Builder {
 	 */
 	private function user_have_access_page(){
 
-		$current_user = wp_get_current_user();
-		if ( user_can( $current_user, 'edit_post' ) && ! post_password_required() ){
+		if ( current_user_can( 'edit_posts' ) && ! post_password_required() ){
 			return true;
 		}
 
