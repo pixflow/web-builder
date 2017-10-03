@@ -32,10 +32,31 @@ var karmaBuilder =  function () {
 
 }
 
-karmaBuilder.prototype.createShortcode = function (model) {
-	var length = this.karmaModel.length;
+karmaBuilder.prototype.createShortcode = function ( model ) {
+
+	var length = Object.keys( this.karmaModel ).length;
 	length++;
 	this.karmaModel[length] = model;
 	return this.karmaModel;
+
+}
+
+
+
+//delete elements
+karmaBuilder.prototype.deleteShortcode = function ( elementId ) {
+
+    var $selectedElement = $( '.karma-builder-element[data-element-id=' + elementId + ']' ),
+		that = this;
+    $selectedElement.find( '.karma-builder-element' ).each( function () {
+		var childId = $( this ).attr( 'data-element-id' );
+        delete that.karmaModel[ childId ];
+    });
+
+    delete this.karmaModel[ elementId ];
+    $selectedElement.remove();
+
+	return this.karmaModel;
+
 }
 
