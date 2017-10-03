@@ -313,6 +313,7 @@ class Pixity_Builder_Core{
 	 * @return array - The group of attributes of shortcode
 	 */
 	private function get_shortcode_attributes( $shortcode_attributes ){
+
 		$atts = array();
 		preg_match_all( $this->shortcode_attr_pattern , $shortcode_attributes , $matches );
 		if( $matches ){
@@ -322,6 +323,7 @@ class Pixity_Builder_Core{
 			}
 		}
 		return $atts;
+
 	}
 
 	/**
@@ -347,6 +349,7 @@ class Pixity_Builder_Core{
 		}
 
 		return true;
+
 	}
 
 	/**
@@ -369,6 +372,7 @@ class Pixity_Builder_Core{
 		$content = $this->convert_model_to_shortcode_pattern( $models );
 
 		return $content;
+
 	}
 
 	/**

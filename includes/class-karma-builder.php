@@ -221,7 +221,6 @@ class Pixity_Builder {
 			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
 
 		}
-		$this->core->run();
 		$this->loader->run();
 
 	}
