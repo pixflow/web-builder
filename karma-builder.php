@@ -10,10 +10,10 @@
  *
  * @link              http://pixflow.net
  * @since             1.0.0
- * @package           Pixity_Builder
+ * @package           Karma_Builder
  *
  * @wordpress-plugin
- * Plugin Name:       Pixity Builder
+ * Plugin Name:       Karma Builder
  * Plugin URI:        http://pixflow.net/products/karma-builder
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
@@ -72,4 +72,4 @@ function run_pixity_builder() {
 	$plugin->run();
 
 }
-run_pixity_builder();
+add_action('init','run_pixity_builder');
