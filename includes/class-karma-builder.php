@@ -163,6 +163,7 @@ class Pixity_Builder {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_ajax_save_content', $plugin_admin, 'save_content' );
 
 	}
 
@@ -257,6 +258,7 @@ class Pixity_Builder {
 		}
 
 	}
+
 
 	/**
 	 * Generate shortcode page models and localize it for builder

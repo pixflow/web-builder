@@ -100,4 +100,26 @@ class Pixity_Builder_Admin {
 
 	}
 
+
+	/**
+	 * Save the content of page
+	 *
+	 * @since     1.0.0
+	 * @return    Json	The result of save content
+	 */
+	public function save_content(){
+
+		$models = $_POST['models'];
+		$id = $_POST['id'];
+		$builder_core = Pixity_Builder_Core::get_instance();
+
+		if ( $builder_core->save_post_content( $models, $id ) ){
+			echo '{ "result" : "true", "msg" : "success" }';
+		}else{
+			echo '{ "result" : "false", "msg" : "error" }';
+		}
+
+		wp_die();
+	}
+
 }
