@@ -54,6 +54,15 @@ class Pixity_Builder_Core{
 	protected $models;
 
 	/**
+	 * It is an array that contains elements map
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      array    $elements_map    elements map.
+	 */
+	public $elements_map;
+
+	/**
 	 * It is an array that contains used shortcodes in the content of post
 	 *
 	 * @since    1.0.0
@@ -515,10 +524,6 @@ class Pixity_Builder_Core{
 
 	}
 
-	public function shortcode_map() {
-
-    }
-    
 	/**
 	 * Generate static JS and CSS for each page based on their shortcodes after publish
 	 *
@@ -530,6 +535,18 @@ class Pixity_Builder_Core{
 	 */
 	public function generate_static_js_css($id){
 		return true;
+	}
+
+	/**
+	 * Map element
+	 *
+	 * @return void
+	 * @since 1.0.0
+	 */
+	public function element_map() {
+		$elements_map = array();
+		$elements_map = apply_filters( 'karma_elements_map', $elements_map );
+		$this->elements_map = $elements_map;
 	}
 
 }
