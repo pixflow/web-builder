@@ -186,6 +186,10 @@ QUnit.test ( "karmaDeleteModel", function ( assert ) {
 
 });
 
+/**
+ * It is Save Elements Test
+ */
+
 var ajaxurl = 'test.txt';
 QUnit.test("assert.async() saveContent", function (assert) {
 
@@ -195,5 +199,104 @@ QUnit.test("assert.async() saveContent", function (assert) {
 		assert.equal(response.result, "true");
 	});
 	done();
+
+});
+
+/**
+ * It is Update Elements Test
+ */
+
+QUnit.test ( "karmaUpdateModel", function ( assert ) {
+	builder.karmaModel = {
+		1: {
+			"shortcode_id"          : 1,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
+		},
+
+		2 : {
+			"shortcode_id"          : 2,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
+		},
+
+		3 : {
+			"shortcode_id"          : 3,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
+		},
+
+		4 :  {
+			"shortcode_id"          : 4,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
+		}
+	};
+	builder.updateShortcode( 2,{
+		"font"			: "tahoma",
+		"bg"			: "green",
+		"style"        	: 'font-family: "sans-serif";',
+	} )
+
+	assert.deepEqual( builder.karmaModel[2], {
+		"shortcode_id"          : 2,
+		"shortcode_name"        : "shortcode_test",
+		"parent_id"             : 0,
+		"order"                 : 1,
+		"shortcode_attributes" : {
+			"color"        	: "red",
+			"font"        	: "tahoma",
+			"bg"        	: "green",
+			"style"        	: 'font-family: "sans-serif";',
+			"radius"    	: '18',
+			"title"        	: 'this is a " title " ',
+			"sub_title"    	: "this is a subtitle's test"
+		},
+		"shortcode_content" : ""
+	} );
 
 });

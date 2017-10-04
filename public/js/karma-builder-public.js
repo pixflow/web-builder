@@ -45,7 +45,7 @@ karmaBuilder.prototype.addShortcodeModel = function ( model, placeHolder ) {
 
 	var shortcodeId = model['shortcode_id'] ;
 	this.karmaModel[ shortcodeId ] = model;
-	this.renderShortcodeHtml( placeHolder, model );
+	this.createShortcodeHtml( placeHolder, model );
 	return this.karmaModel;
 
 }
@@ -53,14 +53,14 @@ karmaBuilder.prototype.addShortcodeModel = function ( model, placeHolder ) {
  * Build shortcode in the placeholder that given.
  *
  * @param	{object | string}	placeHolder	placeholder to drop shortcode.
- * @param	object				shortcode	shortcode model
+ * @param	object				model	shortcode model
  *
  * @since 1.0.0
  * @return true
 */
-karmaBuilder.prototype.renderShortcodeHtml = function ( placeHolder, shortcode ) {
+karmaBuilder.prototype.createShortcodeHtml = function ( placeHolder, model ) {
 
-	$('body').trigger( 'finish_render_html', [ shortcode ] );
+	$('body').trigger( 'finish_render_html', [ model ] );
 	return true ;
 }
 
@@ -87,6 +87,13 @@ karmaBuilder.prototype.deleteShortcode = function( elementId ) {
 
 }
 
+/**
+ * Create and send ajax
+ *
+ * @since 1.0.0
+ *
+ * @return XHR - jquery ajax object
+ */
 
 karmaBuilder.prototype.prepareAjax = function () {
 
@@ -103,6 +110,13 @@ karmaBuilder.prototype.prepareAjax = function () {
 
 }
 
+/**
+ * Save element model and html
+ *
+ * @since 1.0.0
+ *
+ * @return Boolean - Return true or false from AJAX request
+ */
 
 karmaBuilder.prototype.saveContent = function () {
 
@@ -118,3 +132,39 @@ karmaBuilder.prototype.saveContent = function () {
 }
 
 
+/**
+ * Update shortcode model and html
+ *
+ * @param	integer id of element
+ *
+ * @param	Object newAttributes list of new attribute
+ *
+ * @since 1.0.0
+ *
+ * @return Object - Model of shortcodes
+ */
+karmaBuilder.prototype.updateShortcode = function( id, newAttributes ){
+
+	var model = this.karmaModel[ id ];
+	for( var attr in newAttributes ){
+		model["shortcode_attributes"][ attr ] = newAttributes[ attr ];
+	}
+	this.renderShortcodeHtml( model );
+	return this.karmaModel;
+
+}
+
+/**
+ * render shortcode after update model.
+ *
+ * @param	{object | string}	placeHolder	placeholder to drop shortcode.
+ * @param	object				model	shortcode model
+ *
+ * @since 1.0.0
+ * @return true
+ */
+karmaBuilder.prototype.createShortcodeHtml = function ( model ) {
+
+	$('body').trigger( 'finish_render_html', [ model ] );
+	return true ;
+}
