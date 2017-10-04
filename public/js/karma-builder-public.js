@@ -32,28 +32,27 @@ var karmaBuilder = function () {
 
 }
 
-karmaBuilder.prototype.createShortcode = function (model) {
+karmaBuilder.prototype.createShortcode = function ( model ) {
 
-	var length = Object.keys(this.karmaModel).length;
+	var length = Object.keys( this.karmaModel ).length;
 	length++;
-	this.karmaModel[length] = model;
+	this.karmaModel[ length ] = model;
 	return this.karmaModel;
 
 }
 
 
-//delete elements
-karmaBuilder.prototype.deleteShortcode = function (elementId) {
+karmaBuilder.prototype.deleteShortcode = function( element_id ) {
 
-	var $selectedElement = $('.karma-builder-element[data-element-id=' + elementId + ']'),
+	var $selectedElement = $('.karma-builder-element[data-element-id=' + element_id + ']'),
 		that = this;
-	$selectedElement.find('.karma-builder-element').each(function () {
-		var childId = $(this).attr('data-element-id');
-		delete that.karmaModel[childId];
+	$selectedElement.find( '.karma-builder-element' ) .each( function () {
+		var childId = $( this ) .attr( 'data-element-id' ) ;
+		delete that.karmaModel[ childId ] ;
 	});
 
-	delete this.karmaModel[elementId];
-	$selectedElement.remove();
+	delete this.karmaModel[ element_id ] ;
+	$selectedElement.remove ();
 
 	return this.karmaModel;
 
@@ -64,15 +63,14 @@ karmaBuilder.prototype.saveContent = function () {
 	 var that = this
 
 	$.ajax({
-		type: 'post',
-		url: 'test.txt',
-		data: {
+		'type': 'post',
+		'url': 'test.txt',
+		'data': {
 			models: JSON.stringify( that.karmaModel )
-			// id: $( 'meta[name="post-id"]' ).attr( 'content' ),
 		},
-		success: function ( response ) {
 
-			var result = JSON.parse( response );
+		success: function( response ) {
+			var result = JSON.parse( response ) ;
 			if( result.result == "true" ){
 				return true;
 			}else
@@ -83,4 +81,4 @@ karmaBuilder.prototype.saveContent = function () {
 
 	});
 
-}
+};

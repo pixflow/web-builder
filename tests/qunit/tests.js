@@ -1,5 +1,9 @@
+/**
+ * It is Create Elements Test
+ */
+
 var builder = new karmaBuilder();
-QUnit.test ( 'karmaCreateModel',function ( assert ) {
+QUnit.test ( 'karmaCreateModel', function ( assert ) {
 
     var kamraModelResult = {
         1 : {
@@ -11,12 +15,15 @@ QUnit.test ( 'karmaCreateModel',function ( assert ) {
     };
 
     var model = { type : 'shortcode_test', parent_id : '0', attr : 'color:\'red\' font:\'arial\' bg:\'#000fff\'' };
-    assert.deepEqual ( builder.createShortcode ( model ) ,kamraModelResult );
+    assert.deepEqual ( builder.createShortcode ( model ), kamraModelResult );
 
 });
 
-//delete test
-QUnit.test ( "karmaDeleteModel",function ( assert ) {
+/**
+ * It is Delete Elements Test
+ */
+
+QUnit.test ( "karmaDeleteModel", function ( assert ) {
 
     var karmaDeleteResult = {
 		1 : {
@@ -38,13 +45,15 @@ QUnit.test ( "karmaDeleteModel",function ( assert ) {
         }
     };
 
-    assert.deepEqual( builder.deleteShortcode( 2 ),karmaDeleteResult );
+    assert.deepEqual( builder.deleteShortcode( 2 ), karmaDeleteResult );
 
 });
 
-
+/**
+ * It is save Content Test
+ */
 QUnit.test( "karmaSaveContent", function ( assert ) {
 
-	assert.deepEqual( builder.saveContent(),true);
-    
+	assert.deepEqual( builder.saveContent(), true);
+
 });
