@@ -85,12 +85,13 @@ QUnit.test ( "karmaDeleteModel", function ( assert ) {
 	assert.equal( document.querySelectorAll('.shortcode').length, 0 );
 });
 
+var ajaxurl = 'test.txt';
 QUnit.test("assert.async() saveContent", function (assert) {
 
 	var done = assert.async();
 	builder.prepareAjax().done( function ( response ) {
 		response = JSON.parse( response );
-		assert.equal( response.result, true );
+		assert.equal( response.result, "true" );
 	})
 	done();
 

@@ -70,7 +70,8 @@ karmaBuilder.prototype.prepareAjax = function () {
 	var that = this
 	return $.ajax({
 		type: 'post',
-		url: 'test.txt',
+		url: ajaxurl,
+		action: 'save_content',
 		data: {
 			models: JSON.stringify( that.karmaModel ),
 			id: $( 'meta[name="post-id"]' ).attr( 'content' )
