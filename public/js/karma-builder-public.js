@@ -41,19 +41,25 @@ karmaBuilder.prototype.createShortcode = function ( model ) {
 
 }
 
+/**
+ * Delete shortcode model and html
+ *
+ * @param	integer	elementId	The shortcode id
+ *
+ * @since 1.0.0
+ *
+ * @return Object - Model of shortcodes
+ */
+karmaBuilder.prototype.deleteShortcode = function( elementId ) {
 
-karmaBuilder.prototype.deleteShortcode = function( element_id ) {
-
-	var $selectedElement = $('.karma-builder-element[data-element-id=' + element_id + ']'),
+	var $selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']'),
 		that = this;
 	$selectedElement.find( '.karma-builder-element' ) .each( function () {
-		var childId = $( this ) .attr( 'data-element-id' ) ;
+		var childId = $( this ).attr( 'data-element-id' ) ;
 		delete that.karmaModel[ childId ] ;
 	});
-
-	delete this.karmaModel[ element_id ] ;
+	delete this.karmaModel[ elementId ] ;
 	$selectedElement.remove ();
-
 	return this.karmaModel;
 
 }
@@ -76,10 +82,9 @@ karmaBuilder.prototype.prepareAjax = function () {
 
 karmaBuilder.prototype.saveContent = function () {
 
-
 	this.prepareAjax().done( function ( response ) {
-		var result = JSON.parse(response);
-		if ( true === result.result) {
+		var result = JSON.parse( response );
+		if ( true === result.result ) {
 			return true;
 		} else {
 			return false;
