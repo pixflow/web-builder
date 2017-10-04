@@ -32,13 +32,36 @@ var karmaBuilder = function () {
 
 }
 
-karmaBuilder.prototype.createShortcode = function ( model ) {
+/**
+ * Add new shortcode model to karma models
+ *
+ * @param	object	model		Shortcode model
+ * @param	object 	placeHolder	Placeholder to drop shortcode.
+ *
+ * @since 1.0.0
+ * @return true
+ */
+karmaBuilder.prototype.addShortcodeModel = function ( model, placeHolder ) {
 
-	var length = Object.keys( this.karmaModel ).length;
-	length++;
-	this.karmaModel[ length ] = model;
+	var shortcodeId = model['shortcode_id'] ;
+	this.karmaModel[ shortcodeId ] = model;
+	this.renderShortcodeHtml( placeHolder, model );
 	return this.karmaModel;
 
+}
+/**
+ * Build shortcode in the placeholder that given.
+ *
+ * @param	{object | string}	placeHolder	placeholder to drop shortcode.
+ * @param	object				shortcode	shortcode model
+ *
+ * @since 1.0.0
+ * @return true
+*/
+karmaBuilder.prototype.renderShortcodeHtml = function ( placeHolder, shortcode ) {
+
+	$('body').trigger( 'finish_render_html', [ shortcode ] );
+	return true ;
 }
 
 /**
