@@ -112,7 +112,7 @@ class Pixity_Builder_Admin {
 		$models = $_POST['models'];
 		$id = $_POST['id'];
 		$builder_core = Pixity_Builder_Core::get_instance();
-
+		$models = json_decode( $models );
 		if ( $builder_core->save_post_content( $models, $id ) ){
 			echo '{ "result" : "true", "msg" : "success" }';
 		}else{
