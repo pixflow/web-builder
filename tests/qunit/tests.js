@@ -55,58 +55,128 @@ QUnit.test('addShortcodeModel', function ( assert ) {
 
 QUnit.test ( "karmaDeleteModel", function ( assert ) {
 	var row = document.createElement( 'div' );
-    row.setAttribute( 'data-element-id' , '1' );
-    row.setAttribute( 'class' , 'karma-vc-row karma-builder-element' );
+	row.setAttribute( 'data-element-id' , '1' );
+	row.setAttribute( 'class' , 'karma-vc-row karma-builder-element' );
 	document.body.appendChild( row );
 
 	var column = document.createElement( 'div' );
-    column.setAttribute( 'data-element-id' , '2' );
-    column.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
-    row.appendChild( column );
+	column.setAttribute( 'data-element-id' , '2' );
+	column.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
+	row.appendChild( column );
 
 	var column2 = document.createElement( 'div' );
-    column2.setAttribute( 'data-element-id' , '3' );
-    column2.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
-    row.appendChild( column2 );
+	column2.setAttribute( 'data-element-id' , '3' );
+	column2.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
+	row.appendChild( column2 );
 
 	var shortcode = document.createElement( 'div' );
-    shortcode.setAttribute( 'data-element-id' , '4' );
-    shortcode.setAttribute( 'class' , 'shortcode karma-builder-element' );
-    column.appendChild( shortcode );
+	shortcode.setAttribute( 'data-element-id' , '4' );
+	shortcode.setAttribute( 'class' , 'shortcode karma-builder-element' );
+	column.appendChild( shortcode );
 
 	var karmaDeleteResult = {
 		1 : {
-			'type'       : 'shortcode_test',
-			'parent_id'  : '0',
-			'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			"shortcode_id"          : 1,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
 		},
+
 		3 : {
-			'type': 'shortcode_test',
-			'parent_id': '1',
-			'attr': 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			"shortcode_id"          : 3,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
 		}
-	}
+	};
+
 	builder.karmaModel = {
 		1: {
-			'type': 'shortcode_test',
-			'parent_id': '0',
-			'attr': 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			"shortcode_id"          : 1,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
 		},
 
 		2 : {
-			'type'       : 'shortcode_test',
-			'parent_id'  : '1',
-			'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			"shortcode_id"          : 2,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
 		},
+
 		3 : {
-			'type'       : 'shortcode_test',
-			'parent_id'  : '1',
-			'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			"shortcode_id"          : 3,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
 		},
-        4 : {
-			'type'       : 'shortcode_test',
-			'parent_id'  : '1',
-			'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+
+		4 :  {
+			"shortcode_id"          : 4,
+			"shortcode_name"        : "shortcode_test",
+			"parent_id"             : 0,
+			"order"                 : 1,
+			"shortcode_attributes" : {
+				"color"        	: "red",
+				"font"        	: "arial",
+				"bg"        	: "#000fff",
+				"style"        	: 'font-family: "tahoma";',
+				"radius"    	: '18',
+				"title"        	: 'this is a " title " ',
+				"sub_title"    	: "this is a subtitle's test"
+			},
+			"shortcode_content" : ""
 		}
 	};
 
