@@ -1,0 +1,159 @@
+
+/**
+ * Media queries
+ * @group helpers
+ * @param {String} $size - kind of size such as: small
+ * @param {string} $type - Max or Min for width
+ * @param {Number} $pixels - when use custom use this pixels
+ * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
+ * @output media query for responsive
+ */
+
+@mixin screen($size, $type: max, $pixels: $breakpoint-small) {
+  @if $size == 'small' {
+    @media screen and ($type + -width: $breakpoint-small) {
+        @content;
+    }
+  }
+  @else if $size == 'med-small' {
+    @media screen and ($type + -width: $breakpoint-med-small) {
+        @content;
+    }
+  }
+  @else if $size == 'med' {
+    @media screen and ($type + -width: $breakpoint-med) {
+        @content;
+    }
+  }
+ @else if $size == 'large' {
+    @media screen and ($type + -width: $breakpoint-med) {
+        @content;
+    }
+  }
+  @else if $size == 'custom' {
+    @media screen and ($type + -width: $pixels + px) {
+     @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+
+/**
+ * Centering elements
+ * @group helpers
+ * @param {String} $position - kind of center alignment such as: vertical
+ * @output top left and transform of element
+ */
+
+
+@mixin center($position) {
+  position: absolute;
+
+
+ @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+
+/**
+ * External fonts
+ * @group helpers
+ * @param {String} $font-name - name of font
+ * @param {string} $file-name - url of font sorce
+ * @param {Number} $weight - weight of font
+ * @param {string}  $style - style of font
+ * @output read font and give it font-weight and font-style
+ */
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) { 
+  @font-face {
+    font-family: quote($font-name);
+    src: url($file-name + '.eot');
+    src: url($file-name + '.eot?#iefix')  format('embedded-opentype'),
+         url($file-name + '.woff') format('woff'),
+         url($file-name + '.ttf')  format('truetype'),
+         url($file-name + '.svg##{$font-name}')  format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+ }
+
+
+/**
+ * Adding dimensions
+ * @group helpers
+ * @param {Number} $width - width of box(element) 
+ * @param {Number}  $height - height of box
+ * @output give width and height 
+ */
+
+@mixin box($width, $height:$width) {
+  width: $width;
+  height: $height;
+}
+
+/**
+ * padding mixin
+ * @group helpers
+ * @param {Number} $top - set padding top
+ * @param {Number} $right - set padding right
+ * @param {Number} $bottom - set padding bottom
+ * @param {Number} $left - set padding left
+ * @output all side padding
+ */
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+/**
+ * margin mixin
+ * @group helpers
+ * @param {Number} $top - set margin top
+ * @param {Number} $right - set margin right
+ * @param {Number} $bottom - set margin bottom
+ * @param {Number} $left - set margin left
+ * @output all side margin
+ */
+
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+/**
+ * Centering a block
+ * @group helpers
+ * @output with display block and margin center element
+ */
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
