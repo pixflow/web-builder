@@ -58,27 +58,34 @@ karmaBuilder.prototype.deleteShortcode = function( element_id ) {
 
 }
 
-karmaBuilder.prototype.saveContent = function () {
 
-	 var that = this
+karmaBuilder.prototype.prepareAjax = function () {
 
-	$.ajax({
-		'type': 'post',
-		'url': 'test.txt',
-		'data': {
-			models: JSON.stringify( that.karmaModel )
-		},
-
-		success: function( response ) {
-			var result = JSON.parse( response ) ;
-			if( result.result == "true" ){
-				return true;
-			}else
-			{
-				return false;
-			}
+	var that = this
+	return $.ajax({
+		type: 'post',
+		url: 'test.txt',
+		data: {
+			models: JSON.stringify( that.karmaModel ),
+			id: $( 'meta[name="post-id"]' ).attr( 'content' )
 		}
-
 	});
 
-};
+}
+
+
+karmaBuilder.prototype.saveContent = function () {
+
+
+	this.prepareAjax().done( function ( response ) {
+		var result = JSON.parse(response);
+		if ( true === result.result) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+
+}
+
+
