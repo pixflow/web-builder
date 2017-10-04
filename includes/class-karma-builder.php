@@ -129,6 +129,11 @@ class Pixity_Builder {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-karma-builder-public.php';
 
+		/**
+		 * The class responsible for Loading templates in frontend
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-views.php';
+
 		$this->loader = new Pixity_Builder_Loader();
 
 	}
@@ -209,6 +214,7 @@ class Pixity_Builder {
 		$this->core = Pixity_Builder_Core::get_instance();
 
 	}
+
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
@@ -217,15 +223,31 @@ class Pixity_Builder {
 	public function run() {
 
 		if ( self::is_in_builder() && $this->user_have_access_page() ){
-
 			$this->genrate_page_model();
 			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
-
+			$this->prevent_from_loading_wordpress();
 		}
 		$this->loader->run();
 
 	}
 
+	/**
+	 * Prevent from load builder and load Karma views
+	 *
+	 * @since    1.0.0
+	 *
+	 * @return void
+	 */
+	private function prevent_from_loading_wordpress() {
+
+		// Don't display the admin bar when in live editor mode
+		add_filter( 'show_admin_bar', '__return_false' );
+
+		$builder_views = new Karma_Views();
+		$builder_views->load_builder_templates();
+		die();
+
+	}
 
 	/**
 	 * Check the user roles.
@@ -250,12 +272,30 @@ class Pixity_Builder {
 	 */
 	public static function is_in_builder(){
 
-		if( isset( $_GET['load_builder'] ) && true === (boolean) $_GET['load_builder']  ){
+		if( isset( $_GET['load_builder'] )
+			&& true === (boolean) $_GET['load_builder']
+			&& self::check_preview_mode()  ){
 			return true ;
 		}else{
 			return false;
 		}
 
+	}
+
+	/**
+	 * Check for the ajax request and customize mode
+	 *
+	 * @since     1.0.0
+	 * @return    boolean	true if it is not ajax request and customizer preview
+	 */
+	public static function check_preview_mode(){
+
+		// Skip load Builder if its not in customizer
+		if( is_customize_preview() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 
