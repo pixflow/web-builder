@@ -7,9 +7,9 @@ QUnit.test ( 'karmaCreateModel', function ( assert ) {
 
     var kamraModelResult = {
         1 : {
-            'type' : 'shortcode_test',
-            'parent_id' : '0',
-            'attr' : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+            'type'       : 'shortcode_test',
+            'parent_id'  : '0',
+            'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
 
         }
     };
@@ -27,21 +27,21 @@ QUnit.test ( "karmaDeleteModel", function ( assert ) {
 
     var karmaDeleteResult = {
 		1 : {
-			'type' : 'shortcode_test',
-			'parent_id' : '0',
-			'attr' : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			'type'       : 'shortcode_test',
+			'parent_id'  : '0',
+			'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
         }
     };
     builder.karmaModel = {
         1 : {
-            'type' : 'shortcode_test',
-            'parent_id' : '0',
-            'attr' : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+			'type'       : 'shortcode_test',
+			'parent_id'  : '0',
+			'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
         },
        2 : {
-           'type' : 'shortcode_test',
-           'parent_id' : '0',
-           'attr' : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
+		   'type'       : 'shortcode_test',
+		   'parent_id'  : '0',
+		   'attr'       : 'color:\'red\' font:\'arial\' bg:\'#000fff\''
         }
     };
 
