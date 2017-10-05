@@ -44,7 +44,7 @@ QUnit.test('addShortcodeModel', function ( assert ) {
 		},
 		"shortcode_content" : ""
 	};
-
+	builder.karmaModel = {};
 	assert.deepEqual( builder.addShortcodeModel( model ), kamraModelResult );
 
 });
