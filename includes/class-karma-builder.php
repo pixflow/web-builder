@@ -223,11 +223,33 @@ class Pixity_Builder {
 	public function run() {
 
 		if ( self::is_in_builder() && $this->user_have_access_page() ){
-			$this->genrate_page_model();
-			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
 			$this->prevent_from_loading_wordpress();
 		}
+
+		if( $this->is_in_iframe() ){
+			// Don't display the admin bar when in live editor mode
+			add_filter( 'show_admin_bar', '__return_false' );
+			$this->genrate_page_model();
+			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
+		}
+
 		$this->loader->run();
+
+	}
+
+	/**
+	 * Check for loading script and styles for builder
+	 *
+	 * @since     1.0.0
+	 * @return    boolean	true if should load otherwise false.
+	 */
+	private function is_in_iframe(){
+
+		if( isset( $_GET['in_builder'] ) && true === (boolean) $_GET['in_builder'] ){
+			return true ;
+		}else {
+			return false;
+		}
 
 	}
 
