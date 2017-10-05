@@ -1,6 +1,6 @@
 
-<div class="karma-top-nav" >
-
+<div class="karma-top-nav" style="width: 100%;height: 50px;background:  purple;color:white;" >
+This is just top nav :)
 </div>
 <?php
 

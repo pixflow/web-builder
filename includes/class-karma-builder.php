@@ -372,7 +372,7 @@ class Pixity_Builder {
 		);
 		do_action( 'karma_before_shortcode_apply' . $tag, $shortcode_info );
 		static $uniqe_id = 1 ;
-		$karma_builder_output = "<div class=\"karma-builder-element\" data-name=\"{$tag}\" "
+		$karma_builder_output = "<div class=\"karma-builder-element\" style='border:1px solid brown' data-name=\"{$tag}\" "
 			. "data-element-id={$uniqe_id} >"
 			. $output
 			. '</div>' ;
