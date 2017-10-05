@@ -163,7 +163,7 @@ karmaBuilder.prototype.updateShortcode = function( id, newAttributes ){
  * @since 1.0.0
  * @return true
  */
-karmaBuilder.prototype.createShortcodeHtml = function ( model ) {
+karmaBuilder.prototype.renderShortcodeHtml = function ( model ) {
 
 	$('body').trigger( 'finish_render_html', [ model ] );
 	return true ;
