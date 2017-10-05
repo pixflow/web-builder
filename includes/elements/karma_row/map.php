@@ -11,7 +11,6 @@ function karma_element_row_map( $elements_map ) {
 
 	$map = array(
 		"name"		=> "Row",
-		"base"		=> "karma_row",
 		"params"	=> array(
 
 			array(
@@ -46,7 +45,7 @@ function karma_element_row_map( $elements_map ) {
 			)
 		)
 	);
-	$elements_map[$map['base']] = $map;
+	$elements_map['karma_row'] = $map;
 	return $elements_map;
 
 }
