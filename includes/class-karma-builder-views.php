@@ -51,7 +51,7 @@ class Karma_Views {
 	 */
 	public function load_navbar_template(){
 
-		include plugin_dir_path( dirname( __FILE__ ) ) . 'public/templates/navbar-template.php';
+		include plugin_dir_path( dirname( __FILE__ ) ) . 'public/templates/main-template.php';
 
 	}
 

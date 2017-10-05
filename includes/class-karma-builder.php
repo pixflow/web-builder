@@ -242,10 +242,25 @@ class Pixity_Builder {
 
 		// Don't display the admin bar when in live editor mode
 		add_filter( 'show_admin_bar', '__return_false' );
-
 		$builder_views = new Karma_Views();
 		$builder_views->load_builder_templates();
 		die();
+
+	}
+
+
+	/**
+	 * Get the current page url
+	 *
+	 * @since    1.0.0
+	 *
+	 * @return String	Permalink of current page
+	 */
+	public static function get_current_page_url(){
+
+		$page_id = url_to_postid( "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
+		$current_url = get_page_link( $page_id );
+		return esc_url( $current_url );
 
 	}
 
