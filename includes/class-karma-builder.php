@@ -151,7 +151,7 @@ class Pixity_Builder {
 
 		$plugin_i18n = new Pixity_Builder_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
 	}
 
@@ -166,9 +166,10 @@ class Pixity_Builder {
 
 		$plugin_admin = new Pixity_Builder_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'wp_ajax_save_content', $plugin_admin, 'save_content' );
+		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
+		add_action( 'wp_ajax_save_content', array( $plugin_admin, 'save_content' ) );
+		add_action( 'karma_before_load_builder_window', array( $plugin_admin, 'load_builder_assets' ) );
 
 	}
 
@@ -183,8 +184,8 @@ class Pixity_Builder {
 
 		$plugin_public = new Pixity_Builder_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
 
 	}
 
@@ -229,11 +230,9 @@ class Pixity_Builder {
 		if( $this->is_in_iframe() ){
 			// Don't display the admin bar when in live editor mode
 			add_filter( 'show_admin_bar', '__return_false' );
-			$this->genrate_page_model();
-			$this->loader->add_filter( 'do_shortcode_tag', $this, 'create_builder_element_model', 10, 3 );
+			$this->generate_page_model();
+			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 		}
-
-		$this->loader->run();
 
 	}
 
@@ -264,6 +263,7 @@ class Pixity_Builder {
 
 		// Don't display the admin bar when in live editor mode
 		add_filter( 'show_admin_bar', '__return_false' );
+		do_action( 'karma_before_load_builder_window' );
 		$builder_views = new Karma_Views();
 		$builder_views->load_builder_templates();
 		die();
@@ -342,7 +342,7 @@ class Pixity_Builder {
 	 * @since     1.0.0
 	 * @return    void
 	 */
-	private function genrate_page_model(){
+	private function generate_page_model(){
 
 		$page_id = get_the_id();
 		$post_object = get_post ( $page_id );

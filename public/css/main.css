@@ -1,0 +1,98 @@
+/*
+This file is used to contain all vendor imports.
+*/
+/*
+This file is used to contain all vendor imports.
+*/
+/*
+This file is used to contain all helper imports.
+Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
+*/
+.flex, .karma-builder .karma-top-nav {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  align-items: center; }
+
+/**
+ * Media queries
+ * @group helpers
+ * @param {String} $size - kind of size such as: small
+ * @param {string} $type - Max or Min for width
+ * @param {Number} $pixels - when use custom use this pixels
+ * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
+ * @output media query for responsive
+ */
+/**
+ * Centering elements
+ * @group helpers
+ * @param {String} $position - kind of center alignment such as: vertical
+ * @output top left and transform of element
+ */
+/**
+ * External fonts
+ * @group helpers
+ * @param {String} $font-name - name of font
+ * @param {string} $file-name - url of font sorce
+ * @param {Number} $weight - weight of font
+ * @param {string}  $style - style of font
+ * @output read font and give it font-weight and font-style
+ */
+/**
+ * Adding dimensions
+ * @group helpers
+ * @param {Number} $width - width of box(element) 
+ * @param {Number}  $height - height of box
+ * @output give width and height 
+ */
+/**
+ * padding mixin
+ * @group helpers
+ * @param {Number} $top - set padding top
+ * @param {Number} $right - set padding right
+ * @param {Number} $bottom - set padding bottom
+ * @param {Number} $left - set padding left
+ * @output all side padding
+ */
+/**
+ * margin mixin
+ * @group helpers
+ * @param {Number} $top - set margin top
+ * @param {Number} $right - set margin right
+ * @param {Number} $bottom - set margin bottom
+ * @param {Number} $left - set margin left
+ * @output all side margin
+ */
+/**
+ * Centering a block
+ * @group helpers
+ * @output with display block and margin center element
+ */
+/* _-_-_- base/RESET -_-_-_ */
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* _-_-_- base/BASE -_-_-_ */
+/* _-_-_- base/TYPOGRAPHY -_-_-_ */
+/* _-_-_- layout/FOOTER -_-_-_ */
+/* _-_-_- layout/FORMS -_-_-_ */
+/* _-_-_- layout/GRID -_-_-_ */
+/* _-_-_- layout/HEADER -_-_-_ */
+.karma-builder .karma-top-nav {
+  height: 10vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.32); }
+
+/* _-_-_- layout/NAVIGATION -_-_-_ */
+/* _-_-_- layout/SIDEBAR -_-_-_ */
+/* _-_-_- modules/BUTTONS -_-_-_ */
+/* _-_-_- modules/DROPDOWN -_-_-_ */
+/* _-_-_- modules/THUMBNAILS -_-_-_ */
+/* _-_-_- pages/CONTACT -_-_-_ */
+/* _-_-_- pages/HOME -_-_-_ */
+/* _-_-_- pages/CONTACT -_-_-_ */
+/* _-_-_- pages/HOME -_-_-_ */
+
+/*# sourceMappingURL=main.css.map */

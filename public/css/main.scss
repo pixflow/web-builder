@@ -4,10 +4,10 @@
 @import 'vendors/import-vendors';
 
 // User modifications of above frameworks
-@import 'vendors-extensions/import-vendors-extensions';
+@import 'vendors/import-vendors';
 
 // Sass-related functions, mixins, variables, etc.
-@import 'helpers/import-helper';
+@import 'helpers/import-utils';
 
 // Small changes that apply across all pages
 @import 'base/import-base';
@@ -21,5 +21,5 @@
 // Page-specific styles
 @import 'pages/import-pages';
 
-// Changing site templates
-@import 'themes/import-themes';
+// Page-specific styles
+@import 'pages/import-pages';

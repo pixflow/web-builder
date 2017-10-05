@@ -122,4 +122,10 @@ class Pixity_Builder_Admin {
 		wp_die();
 	}
 
+
+	public function load_builder_assets(){
+
+		wp_enqueue_style( $this->plugin_name . 'karma-builder', plugin_dir_url( __FILE__ ) . 'css/karma-builder.css', $this->version, false );
+
+	}
 }
