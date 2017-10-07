@@ -134,7 +134,7 @@ class Pixity_Builder {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-views.php';
 
-		$this->loader = new Pixity_Builder_Loader();
+		$this->loader = new Pixity_Builder_Loader( $this->get_plugin_name() );
 
 	}
 
@@ -227,30 +227,10 @@ class Pixity_Builder {
 			$this->prevent_from_loading_wordpress();
 		}
 
-		if( $this->is_in_iframe() ){
-			// Don't display the admin bar when in live editor mode
-			add_filter( 'show_admin_bar', '__return_false' );
-			$this->generate_page_model();
-			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
-		}
+		$this->loader->load_builder();
 
 	}
 
-	/**
-	 * Check for loading script and styles for builder
-	 *
-	 * @since     1.0.0
-	 * @return    boolean	true if should load otherwise false.
-	 */
-	private function is_in_iframe(){
-
-		if( isset( $_GET['in_builder'] ) && true === (boolean) $_GET['in_builder'] ){
-			return true ;
-		}else {
-			return false;
-		}
-
-	}
 
 	/**
 	 * Prevent from load builder and load Karma views
@@ -334,55 +314,6 @@ class Pixity_Builder {
 
 		return true;
 	}
-
-
-	/**
-	 * Generate shortcode page models and localize it for builder
-	 *
-	 * @since     1.0.0
-	 * @return    void
-	 */
-	private function generate_page_model(){
-
-		$page_id = get_the_id();
-		$post_object = get_post ( $page_id );
-		$content = $post_object->post_excerpt;
-		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
-		wp_localize_script( $this->get_plugin_name(), 'builder_models', $page_model );
-
-	}
-
-
-	/**
-	 * Convert shortcodes in page as Karma shortcode format
-	 *
-	 * @param	string	$output	Html source of each shortocde
-	 * @param	string	$tag	The name of shortcode
-	 * @param 	string	$attr	The attribute of shortcode
-	 *
-	 * @since     1.0.0
-	 * @return    string	the correct html source for builder
-	 */
-	public function create_builder_element_model( $output, $tag, $attr ){
-
-		$shortcode_info = array(
-			'shortcode_name' 	=> $tag,
-			'attributes'		=> $attr,
-			'output'			=> $output,
-		);
-		do_action( 'karma_before_shortcode_apply' . $tag, $shortcode_info );
-		static $uniqe_id = 1 ;
-		$karma_builder_output = "<div class=\"karma-builder-element\" style='border:1px solid brown' data-name=\"{$tag}\" "
-			. "data-element-id={$uniqe_id} >"
-			. $output
-			. '</div>' ;
-		$shortcode_info['output'] = $karma_builder_output;
-		do_action( 'karma_after_shortcode_apply' . $tag, $shortcode_info );
-		$uniqe_id ++ ;
-		return $karma_builder_output;
-
-	}
-
 
 
 	/**
