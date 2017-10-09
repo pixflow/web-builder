@@ -25,6 +25,12 @@
 
 class Karma_Views {
 
+	/**
+	 * The list of template names
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
 	private $templates = array(
 		'header',
 		'navbar',
@@ -34,7 +40,7 @@ class Karma_Views {
 	/*
 	 * Print navbar html source to the builder
 	 *
-	 * @return boolean	true if load successfully
+	 * @return	void
 	 */
 	public function load_builder_templates(){
 

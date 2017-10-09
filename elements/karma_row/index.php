@@ -1,6 +1,8 @@
 <?php
 
-class Karma_Row {
+class Karma_Row extends Karma_Shortcode_Base {
+
+	public $element_name = 'karma_row';
 
 	public function __construct() {
 

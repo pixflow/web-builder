@@ -101,9 +101,24 @@ class Pixity_Builder_Loader {
 			$this->generate_page_model();
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
+			$this->load_elements();
 		}
 
 	}
+
+	/**
+	 * Load builder functionality
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	private function load_elements(){
+
+		$elements = new Karma_Shortcode_Base();
+		$elements->load_js_templates();
+
+	}
+
 
 	/**
 	 * Add custom meta tags in header 
