@@ -35,11 +35,11 @@ var karmaBuilder = function () {
 /**
  * Add new shortcode model to karma models
  *
- * @param	object	model		Shortcode model
- * @param	object 	placeHolder	Placeholder to drop shortcode.
+ * @param	object	model		Elements model
+ * @param	object 	placeHolder	Placeholder to drop Elements.
  *
  * @since 1.0.0
- * @return true
+ * @return object	Model of Elements
  */
 karmaBuilder.prototype.addShortcodeModel = function ( model, placeHolder ) {
 
@@ -50,7 +50,7 @@ karmaBuilder.prototype.addShortcodeModel = function ( model, placeHolder ) {
 
 }
 /**
- * Build shortcode in the placeholder that given.
+ * Build elements in the placeholder that given.
  *
  * @param	{object | string}	placeHolder	placeholder to drop shortcode.
  * @param	object				model	shortcode model
@@ -65,24 +65,24 @@ karmaBuilder.prototype.createShortcodeHtml = function ( placeHolder, model ) {
 }
 
 /**
- * Delete shortcode model and html
+ * Delete Elements model and html
  *
- * @param	integer	elementId	The shortcode id
+ * @param	integer	elementId	The Elements id
  *
  * @since 1.0.0
  *
- * @return Object - Model of shortcodes
+ * @return Object - Model of Elements
  */
 karmaBuilder.prototype.deleteShortcode = function( elementId ) {
 
 	var $selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']'),
 		that = this;
-	$selectedElement.find( '.karma-builder-element' ) .each( function () {
+	$selectedElement.find( '.karma-builder-element' ).each( function () {
 		var childId = $( this ).attr( 'data-element-id' ) ;
 		delete that.karmaModel[ childId ] ;
 	});
 	delete this.karmaModel[ elementId ] ;
-	$selectedElement.remove ();
+	$selectedElement.remove();
 	return this.karmaModel;
 
 }
@@ -99,12 +99,12 @@ karmaBuilder.prototype.prepareAjax = function () {
 
 	var that = this
 	return $.ajax({
-		type: 'post',
-		url: ajaxurl,
-		action: 'save_content',
-		data: {
-			models: JSON.stringify( that.karmaModel ),
-			id: $( 'meta[name="post-id"]' ).attr( 'content' )
+		type	: 'post',
+		url		: ajaxurl,
+		action	: 'save_content',
+		data	: {
+			models	: JSON.stringify( that.karmaModel ),
+			id		: $( 'meta[name="post-id"]' ).attr( 'content' )
 		}
 	});
 
@@ -121,19 +121,21 @@ karmaBuilder.prototype.prepareAjax = function () {
 karmaBuilder.prototype.saveContent = function () {
 
 	this.prepareAjax().done( function ( response ) {
+
 		var result = JSON.parse( response );
 		if ( true === result.result ) {
 			return true;
 		} else {
 			return false;
 		}
+
 	});
 
 }
 
 
 /**
- * Update shortcode model and html
+ * Update element model and html
  *
  * @param	integer id of element
  *
@@ -141,7 +143,7 @@ karmaBuilder.prototype.saveContent = function () {
  *
  * @since 1.0.0
  *
- * @return Object - Model of shortcodes
+ * @return Object - Model of element
  */
 karmaBuilder.prototype.updateShortcode = function( id, newAttributes ){
 
@@ -155,10 +157,9 @@ karmaBuilder.prototype.updateShortcode = function( id, newAttributes ){
 }
 
 /**
- * render shortcode after update model.
+ * Render element after update model.
  *
- * @param	{object | string}	placeHolder	placeholder to drop shortcode.
- * @param	object				model	shortcode model
+ * @param	object				model	Element model
  *
  * @since 1.0.0
  * @return true
@@ -167,4 +168,5 @@ karmaBuilder.prototype.renderShortcodeHtml = function ( model ) {
 
 	$('body').trigger( 'finish_render_html', [ model ] );
 	return true ;
+	
 }
