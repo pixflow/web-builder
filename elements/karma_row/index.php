@@ -31,7 +31,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 				array(
 					"name"		=> "structure",
-					"type"		=> "select_image",
+					"type"		=> Karma_Controller::Image,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"options"	=> array(
@@ -42,7 +42,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 				array(
 					"name"		=> "space",
-					"type"		=> "range_slider",
+					"type"		=> Karma_Controller::Range ,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -55,7 +55,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 			,array(
 					"name"		=> "extra_class",
-					"type"		=> "text",
+					"type"		=> Karma_Controller::Text,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)

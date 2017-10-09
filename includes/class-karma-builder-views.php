@@ -100,5 +100,21 @@ class Karma_Views {
 	}
 
 
+	/*
+	 * Print controller js template
+	 *
+	 * @return void
+	 */
+	public function load_controller_js_templates( $controller ){
+
+		?>
+		<script type="text/html" id="tmpl-karma-<?php echo $controller; ?>-controller" >
+			<?php include plugin_dir_path( dirname( __FILE__ ) ) . "public/templates/controller/{$controller}-controller-template.php"; ?>
+		</script>
+		<?php
+
+	}
+
+
 
 }

@@ -130,6 +130,12 @@ class Pixity_Builder {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-karma-builder-public.php';
 
 		/**
+		 * The class responsible for define all elements controllers
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-controller.php';
+
+
+		/**
 		 * The class responsible for Loading all shortcode files
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-shortcode-base.php';

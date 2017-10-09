@@ -116,7 +116,9 @@ class Pixity_Builder_Loader {
 	private function load_builder_js_templates(){
 
 		$karma_views = new Karma_Views();
+		$controller = new Karma_Controller();
 		$karma_views->load_elements_setting_panel();
+		$controller->register_controllers();
 
 	}
 
