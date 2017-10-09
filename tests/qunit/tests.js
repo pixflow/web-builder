@@ -53,7 +53,8 @@ QUnit.test('addShortcodeModel', function ( assert ) {
  * It is Delete Elements Test
  */
 
-QUnit.test ( "karmaDeleteModel", function ( assert ) {
+QUnit.test( "karmaDeleteModel", function ( assert ) {
+
 	var row = document.createElement( 'div' );
 	row.setAttribute( 'data-element-id' , '1' );
 	row.setAttribute( 'class' , 'karma-vc-row karma-builder-element' );
@@ -206,7 +207,8 @@ QUnit.test("assert.async() saveContent", function (assert) {
  * It is Update Elements Test
  */
 
-QUnit.test ( "karmaUpdateModel", function ( assert ) {
+QUnit.test( "karmaUpdateModel", function ( assert ) {
+
 	builder.karmaModel = {
 		1: {
 			"shortcode_id"          : 1,

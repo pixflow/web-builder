@@ -168,5 +168,5 @@ karmaBuilder.prototype.renderShortcodeHtml = function ( model ) {
 
 	$('body').trigger( 'finish_render_html', [ model ] );
 	return true ;
-	
+
 }
