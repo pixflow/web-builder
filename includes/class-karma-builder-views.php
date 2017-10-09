@@ -83,4 +83,22 @@ class Karma_Views {
 
 	}
 
+
+	/*
+	 * Print element setting panel source
+	 *
+	 * @return void
+	 */
+	public function load_elements_setting_panel(){
+
+		?>
+		<script type="text/html" id="tmpl-karma-element-setting-panel" >
+		<?php include plugin_dir_path( dirname( __FILE__ ) ) . 'public/templates/element-setting-panel-template.php'; ?>
+		</script>
+		<?php
+
+	}
+
+
+
 }

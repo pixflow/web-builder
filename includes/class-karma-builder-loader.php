@@ -102,7 +102,21 @@ class Pixity_Builder_Loader {
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
 			$this->load_elements();
+			$this->load_builder_js_templates();
 		}
+
+	}
+
+	/**
+	 * Load builder JS templates
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	private function load_builder_js_templates(){
+
+		$karma_views = new Karma_Views();
+		$karma_views->load_elements_setting_panel();
 
 	}
 
