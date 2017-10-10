@@ -29,7 +29,7 @@
 
 var karmaBuilder = karmaBuilder || {};
 
-(function ($, karmaBuilder) {
+(function ( $, karmaBuilder ) {
 	'use strict';
 
 	karmaBuilder.view = Backbone.View.extend({
@@ -50,15 +50,17 @@ var karmaBuilder = karmaBuilder || {};
 		 * @return XHR - jquery ajax object
 		 */
 		prepareAjax : function () {
+
 			return $.ajax({
-				type    : 'post',
-				url        : ajaxurl,
-				action    : 'save_content',
+				type	: 'post',
+				url		: ajaxurl,
+				action	: 'save_content',
 				data    : {
 					models    : JSON.stringify( karmaBuilder.karmaModel ),
 					id        : $( 'meta[name="post-id"]' ).attr( 'content' )
 				}
 			});
+
 		},
 
 		/**
@@ -120,12 +122,12 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.model = Backbone.Model.extend({
 		defaults:{
-			"shortcode_id" : 0,
-			"shortcode_name" : '',
-			"parent_id" : 0,
-			"order" : 1,
-			"shortcode_attributes" : {},
-			"shortcode_content" : ""
+			"shortcode_id"			: 0,
+			"shortcode_name"		: '',
+			"parent_id" 			: 0,
+			"order" 				: 1,
+			"shortcode_attributes" 	: {},
+			"shortcode_content" 	: "",
 		}
 	});
 
@@ -134,8 +136,10 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Set defaults in create
 		 */
-		initialize: function(options) {
+		initialize: function( options ) {
+
 			this.template = options.template;
+
 		},
 
 		/**
@@ -146,12 +150,12 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * Create new shortcode model to karma models
+		 * Create new elements model to karma models
 		 *
 		 * @param	object 	placeHolder	Placeholder to drop shortcode.
 		 *
 		 * @since 1.0.0
-		 * @return true
+		 * @return object	New elements model
 		 */
 		create : function( placeHolder ){
 
@@ -164,7 +168,7 @@ var karmaBuilder = karmaBuilder || {};
 
 
 		/**
-		 * Render new shortcode in defined placeHolder
+		 * Render new elements in defined placeHolder
 		 *
 		 * @param	object 	placeHolder	Placeholder to drop shortcode.
 		 *
@@ -182,7 +186,7 @@ var karmaBuilder = karmaBuilder || {};
 
 
 		/**
-		 * Delete shortcode model and html
+		 * Delete elements model and html
 		 *
 		 * @param	object	model	The shortcode model
 		 *
@@ -192,15 +196,17 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		deleteShortcode : function( model ) {
 
-			var elementId = _.keys(model)[0];
-			var $selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']'),
-				that = this;
-			$selectedElement.find( '.karma-builder-element' ) .each( function () {
-				var childId = $( this ).attr( 'data-element-id' ) ;
-					karmaBuilder.karmaModels.remove();
+			var elementId = _.keys(model)[0],
+				$selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']');
+
+			$selectedElement.find( '.karma-builder-element' ).each( function () {
+
+				karmaBuilder.karmaModels.remove();
+
 			});
-			$selectedElement.remove ();
-			karmaBuilder.karmaModels.remove(model);
+
+			$selectedElement.remove();
+			karmaBuilder.karmaModels.remove( model );
 			return karmaBuilder.karmaModels;
 
 		},
@@ -214,7 +220,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return Object - Model of shortcodes
+		 * @return Object - Model of elements
 		 */
 		updateShortcode : function( id, newAttributes ){
 
@@ -224,10 +230,9 @@ var karmaBuilder = karmaBuilder || {};
 			}
 			this.renderShortcodeHtml( model );
 			return this.karmaModel;
-
 		}
 
-	})
+	});
 
 	var KarmaShortcodesCollection = Backbone.Collection.extend({
 		model : karmaBuilder.model
