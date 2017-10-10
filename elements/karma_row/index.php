@@ -28,7 +28,6 @@ class Karma_Row extends Karma_Shortcode_Base {
 		$map = array(
 			"name"		=> "Row",
 			"params"	=> array(
-
 				array(
 					"name"		=> "structure",
 					"type"		=> Karma_Controller::Image,
@@ -39,7 +38,6 @@ class Karma_Row extends Karma_Shortcode_Base {
 						'container'	=> "container.png"
 					)
 				),
-
 				array(
 					"name"		=> "space",
 					"type"		=> Karma_Controller::Range ,
@@ -51,9 +49,8 @@ class Karma_Row extends Karma_Shortcode_Base {
 						'step'	=> 1,
 						'unit'	=> 'px'
 					)
-				)
-
-			,array(
+				),
+				array(
 					"name"		=> "extra_class",
 					"type"		=> Karma_Controller::Text,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),

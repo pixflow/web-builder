@@ -25,10 +25,9 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public function map() {
 
-		$map = array(
-			"name"		=> "Column",
-			"params"	=> array(
-
+		$map                          = array(
+			"name"   => "Column",
+			"params" => array(
 				array(
 					"name"		=> "width",
 					"type"		=> Karma_Controller::Text,
@@ -39,7 +38,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 						'container'	=> "container.png"
 					)
 				),
-
 				array(
 					"name"		=> "space",
 					"type"		=> Karma_Controller::Range,
