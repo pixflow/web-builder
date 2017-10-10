@@ -2,9 +2,6 @@
 This file is used to contain all vendor imports.
 */
 /*
-This file is used to contain all vendor imports.
-*/
-/*
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
@@ -87,12 +84,34 @@ footer, header, hgroup, menu, nav, section {
 
 /* _-_-_- layout/NAVIGATION -_-_-_ */
 /* _-_-_- layout/SIDEBAR -_-_-_ */
+/* _-_-_- layout/FOOTER -_-_-_ */
+iframe {
+  width: 100%;
+  height: 200vh; }
+
+#karma-element-setting-panel-container {
+  position: absolute;
+  background-color: antiquewhite;
+  display: flex; }
+  #karma-element-setting-panel-container .karma-element-setting-panel {
+    height: 407.55px;
+    width: 285px;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
+    margin: 30px; }
+    #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header {
+      height: 46px;
+      width: 285px;
+      background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
+      border-radius: 7px 7px 0 0; }
+  #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
+    list-style: none; }
+
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
-/* _-_-_- pages/CONTACT -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */
-/* _-_-_- pages/CONTACT -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */
 
 /*# sourceMappingURL=main.css.map */

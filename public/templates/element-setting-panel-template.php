@@ -8,10 +8,10 @@
 	</div>
 		<div class="karma-shortcode-setting-panel-extra">
 			<ul>
-				<li><span>Add to library</span></li>
-				<li><span>Delete</span></li>
-				<li><span>Duplicate</span></li>
-				<li><span>Help</span></li>
+				<li><div>i</div><span>Add to library</span></li>
+				<li><div>i</div><span>Delete</span></li>
+				<li><div>i</div><span>Duplicate</span></li>
+				<li><div>i</div><span>Help</span></li>
 			</ul>
 		</div>
 </div>
