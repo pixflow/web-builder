@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
+ * @package    Karma_Builder
  * @subpackage Karma_Controller/includes
  */
 
@@ -47,7 +47,7 @@ class Karma_Controller {
 		$class_info = new ReflectionClass( __CLASS__ );
 		$available_controller = $class_info->getConstants();
 		$available_controller  = apply_filters( 'karma_controller', $available_controller  );
-		$karma_view = new Karma_Views();
+		$karma_view = Karma_Factory_Pattern::$builder_views;
 		foreach ( $available_controller as $controller ){
 			$karma_view->load_controller_js_templates( $controller );
 		}

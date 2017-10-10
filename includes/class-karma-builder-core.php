@@ -7,8 +7,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  */
 
 /**
@@ -18,18 +18,18 @@
  *
  *
  * @since      1.0.0
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Pixity_Builder_Core{
+class Karma_Builder_Core{
 
 	/**
-	 * A static variable that contains an instance of Pixity_Builder_Core builder
+	 * A static variable that contains an instance of Karma_Builder_Core builder
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      Pixity_Builder_Core    $instance    The reference to *Singleton* instance of this class.
+	 * @var      Karma_Builder_Core    $instance    The reference to *Singleton* instance of this class.
 	 */
 	private static $instance;
 
@@ -84,15 +84,15 @@ class Pixity_Builder_Core{
 	 * Returns the *Singleton* instance of this class.
 	 *
 	 * @access   public
-	 * @return   Pixity_Builder_Core - The *Singleton* instance.
+	 * @return   Karma_Builder_Core - The *Singleton* instance.
 	 * @since    1.0.0
 	 */
 	public static function get_instance() {
-		if ( null === Pixity_Builder_Core::$instance ) {
-			Pixity_Builder_Core::$instance = new Pixity_Builder_Core();
+		if ( null === Karma_Builder_Core::$instance ) {
+			Karma_Builder_Core::$instance = new Karma_Builder_Core();
 		}
 
-		return Pixity_Builder_Core::$instance;
+		return Karma_Builder_Core::$instance;
 	}
 
 	/**
@@ -115,7 +115,7 @@ class Pixity_Builder_Core{
 	private function __wakeup(){}
 
 	/**
-	 * MBuilder constructor.
+	 * Karma constructor.
 	 */
 	protected function __construct(){
 

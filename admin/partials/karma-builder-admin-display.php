@@ -8,8 +8,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/admin/partials
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/admin/partials
  */
 ?>
 

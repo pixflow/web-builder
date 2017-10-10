@@ -9,8 +9,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Pixity_Builder_i18n {
+class Karma_Builder_i18n {
 
 
 	/**

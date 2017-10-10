@@ -6,8 +6,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Pixity_Builder_Loader {
+class Karma_Builder_Loader {
 
 
 	/**
@@ -29,7 +29,7 @@ class Pixity_Builder_Loader {
 	 *
 	 * @since    1.0.0
 	 * @access   public
-	 * @var      Pixity_Builder_Core    $core    Core of the builder.
+	 * @var      Karma_Builder_Core    $core    Core of the builder.
 	 */
 	public $core;
 
@@ -39,10 +39,20 @@ class Pixity_Builder_Loader {
 	 *
 	 * @since    1.0.0
 	 * @access   public
-	 * @var      Pixity_Builder_Loader    $plugin_name    The name of plugin
+	 * @var      Karma_Builder_Loader    $plugin_name    The name of plugin
 	 */
 	public $plugin_name;
 
+	/**
+	 * The list of elements name
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 */
+	public static $element_filename = array(
+		'row',
+		'column',
+	);
 
 	/**
 	 * Define the core functionality of the builder.
@@ -52,9 +62,9 @@ class Pixity_Builder_Loader {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct( $plugin_name ) {
+	public function __construct() {
 
-		$this->plugin_name = $plugin_name ;
+		$this->plugin_name = 'karma-builder';
 		$this->load_core();
 
 	}
@@ -64,10 +74,10 @@ class Pixity_Builder_Loader {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Pixity_Builder_Loader. Orchestrates the hooks of the plugin.
-	 * - Pixity_Builder_i18n. Defines internationalization functionality.
-	 * - Pixity_Builder_Admin. Defines all hooks for the admin area.
-	 * - Pixity_Builder_Public. Defines all hooks for the public side of the site.
+	 * - Karma_Builder_Loader. Orchestrates the hooks of the plugin.
+	 * - Karma_Builder_i18n. Defines internationalization functionality.
+	 * - Karma_Builder_Admin. Defines all hooks for the admin area.
+	 * - Karma_Builder_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -77,12 +87,7 @@ class Pixity_Builder_Loader {
 	 */
 	private function load_core() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-core.php';
-		$this->core = Pixity_Builder_Core::get_instance();
+		$this->core = Karma_Factory_Pattern::$builder_core;
 
 	}
 
@@ -101,7 +106,8 @@ class Pixity_Builder_Loader {
 			$this->generate_page_model();
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
-			$this->load_elements();
+			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
+			$this->init_elements();
 			$this->load_builder_js_templates();
 		}
 
@@ -115,23 +121,28 @@ class Pixity_Builder_Loader {
 	 */
 	private function load_builder_js_templates(){
 
-		$karma_views = new Karma_Views();
-		$controller = new Karma_Controller();
+		$karma_views = Karma_Factory_Pattern::$builder_views;
+		$controller = Karma_Factory_Pattern::$builder_controller;
 		$karma_views->load_elements_setting_panel();
 		$controller->register_controllers();
 
 	}
 
-	/**
-	 * Load builder functionality
-	 *
-	 * @since     1.0.0
-	 * @return    void
-	 */
-	private function load_elements(){
 
-		$elements = new Karma_Shortcode_Base();
-		$elements->load_js_templates();
+	/*
+	 * Load elements files and create their instance
+	 *
+	 * @since    1.0.0
+	 * @return	 void
+	 */
+	public function init_elements(){
+
+		self::$element_filename = apply_filters( 'karma_elements', self::$element_filename );
+		foreach ( self::$element_filename as $element ){
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'elements/karma_' . $element . '/index.php';
+			$class_name  = 'Karma_' . ucfirst( $element ) ;
+			$class_name::get_instance() ;
+		}
 
 	}
 

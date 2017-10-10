@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
+ * @package    Karma_Builder
  * @subpackage Karma_Shortcode_Base/includes
  */
 
@@ -34,58 +34,44 @@ class Karma_Shortcode_Base {
 
 
 	/**
-	 * The list of elements name
+	 * The instance of all elements class
 	 *
 	 * @since    1.0.0
-	 * @access   public
+	 * @access   protected
+	 * @var      array
 	 */
-	public static $element_filename = array(
-		'row',
-		'column',
-	);
+	protected static $instance = array();
 
 
 	/**
-	 * The list of elements instance
+	 * Class builder admin instance
 	 *
 	 * @since    1.0.0
 	 * @access   public
+	 * @return	object	Instance of current element class
 	 */
-	public static $element_instance = array();
+	public static function get_instance() {
 
-
-	/**
-	 * Define the core functionality of the elements.
-	 *
-	 * Call and register their functionality of elements
-	 * Load the dependencies, and set the hooks for elements.
-	 *
-	 * @since    1.0.0
-	 */
-	public function __construct(){
-
-		$this->init_elements();
-
-	}
-
-	/*
-	 * Load elements files and create their instance
-	 *
-	 * @since    1.0.0
-	 * @return	 void
-	 */
-	protected function init_elements(){
-
-		self::$element_filename = apply_filters( 'karma_elements', self::$element_filename );
-		foreach ( self::$element_filename as $element ){
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'elements/karma_' . $element . '/index.php';
-			$class_name  = 'Karma_' . ucfirst( $element ) ;
-			self::$element_instance[ $class_name ] = new $class_name() ;
+		if ( ! static::$instance[ static::$element_name ] ) {
+			static::$instance[ static::$element_name ] = new static();
 		}
+		return static::$instance[ static::$element_name ];
 
 	}
 
+	/**
+	 * Defines hook and action for register and load JS templates of each elements
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 */
+	protected function __construct(){
 
+		add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
+		add_filter( 'karma_elements_map', array( $this, 'map' ) );
+		add_shortcode( $this->element_name, array( $this, 'render' ) );
+
+	}
 	/*
 	 * Load underscore templates of each elements in builder for using instance render
 	 *
@@ -94,13 +80,11 @@ class Karma_Shortcode_Base {
 	 */
 	public function load_js_templates(){
 
-		foreach ( self::$element_instance as $element_instance ):
-			?>
-			<script type="text/html" id="tmpl-karma-element-<?php echo $element_instance->element_name; ?>">
-				<?php echo $element_instance->js_render(); ?>
-			</script>
-			<?php
-		endforeach;
+		?>
+		<script type="text/html" id="tmpl-karma-element-<?php echo static::$element_name; ?>">
+			<?php echo $this->js_render(); ?>
+		</script>
+		<?php
 
 	}
 

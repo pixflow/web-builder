@@ -6,8 +6,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Pixity_Builder_Activator {
+class Karma_Builder_Activator {
 
 	/**
 	 * Short Description. (use period)

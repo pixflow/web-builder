@@ -6,8 +6,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/admin
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/admin
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/admin
  * @author     Pixflow <info@pixflow.net>
  */
-class Pixity_Builder_Admin {
+class Karma_Builder_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -44,14 +44,11 @@ class Pixity_Builder_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct() {
 
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-
+		$this->plugin_name = 'karma-builder';
+		$this->version = '1.0.0';
 	}
 
 	/**
@@ -65,10 +62,10 @@ class Pixity_Builder_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Pixity_Builder_Loader as all of the hooks are defined
+		 * defined in Karma_Builder_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Pixity_Builder_Loader will then create the relationship
+		 * The Karma_Builder_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -88,10 +85,10 @@ class Pixity_Builder_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Pixity_Builder_Loader as all of the hooks are defined
+		 * defined in Karma_Builder_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Pixity_Builder_Loader will then create the relationship
+		 * The Karma_Builder_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -111,7 +108,7 @@ class Pixity_Builder_Admin {
 
 		$models = $_POST['models'];
 		$id = $_POST['id'];
-		$builder_core = Pixity_Builder_Core::get_instance();
+		$builder_core = Karma_Builder_Core::get_instance();
 		$models = json_decode( $models );
 		if ( $builder_core->save_post_content( $models, $id ) ){
 			echo '{ "result" : "true", "msg" : "success" }';

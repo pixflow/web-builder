@@ -9,8 +9,8 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Pixity_Builder
- * @subpackage Pixity_Builder/includes
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Pixity_Builder {
+class Karma_Builder {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Pixity_Builder {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Pixity_Builder_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Karma_Builder_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Pixity_Builder {
 	 *
 	 * @since    1.0.0
 	 * @access   public
-	 * @var      Pixity_Builder_Core    $core    Core of the builder.
+	 * @var      Karma_Builder_Core    $core    Core of the builder.
 	 */
 	public $core;
 
@@ -75,16 +75,20 @@ class Pixity_Builder {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
+	public function __construct( $factory ) {
 
 		$this->plugin_name = 'karma-builder';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
+		Karma_Factory_Pattern::$builder = $this;
+		$factory->set_builder_class_instance();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->load_core();
+
+		$this->loader = Karma_Factory_Pattern::$builder_loader;
 
 	}
 
@@ -93,10 +97,10 @@ class Pixity_Builder {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Pixity_Builder_Loader. Orchestrates the hooks of the plugin.
-	 * - Pixity_Builder_i18n. Defines internationalization functionality.
-	 * - Pixity_Builder_Admin. Defines all hooks for the admin area.
-	 * - Pixity_Builder_Public. Defines all hooks for the public side of the site.
+	 * - Karma_Builder_Loader. Orchestrates the hooks of the plugin.
+	 * - Karma_Builder_i18n. Defines internationalization functionality.
+	 * - Karma_Builder_Admin. Defines all hooks for the admin area.
+	 * - Karma_Builder_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -130,29 +134,35 @@ class Pixity_Builder {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-karma-builder-public.php';
 
 		/**
+		 * The class responsible for orchestrating the actions and filters of the
+		 * core plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-core.php';
+
+		/**
 		 * The class responsible for define all elements controllers
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-controller.php';
 
 
 		/**
-		 * The class responsible for Loading all shortcode files
+		 * The class responsible for define all elements controllers
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-shortcode-base.php';
+
 
 		/**
 		 * The class responsible for Loading templates in frontend
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-views.php';
 
-		$this->loader = new Pixity_Builder_Loader( $this->get_plugin_name() );
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Pixity_Builder_i18n class in order to set the domain and to register the hook
+	 * Uses the Karma_Builder_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -160,7 +170,7 @@ class Pixity_Builder {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Pixity_Builder_i18n();
+		$plugin_i18n = Karma_Factory_Pattern::$builder_i18n;
 
 		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
@@ -175,7 +185,7 @@ class Pixity_Builder {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Pixity_Builder_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = Karma_Factory_Pattern::$builder_admin;
 
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
@@ -193,7 +203,7 @@ class Pixity_Builder {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Pixity_Builder_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = Karma_Factory_Pattern::$builder_public;
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
@@ -205,10 +215,10 @@ class Pixity_Builder {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Pixity_Builder_Loader. Orchestrates the hooks of the plugin.
-	 * - Pixity_Builder_i18n. Defines internationalization functionality.
-	 * - Pixity_Builder_Admin. Defines all hooks for the admin area.
-	 * - Pixity_Builder_Public. Defines all hooks for the public side of the site.
+	 * - Karma_Builder_Loader. Orchestrates the hooks of the plugin.
+	 * - Karma_Builder_i18n. Defines internationalization functionality.
+	 * - Karma_Builder_Admin. Defines all hooks for the admin area.
+	 * - Karma_Builder_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -223,7 +233,7 @@ class Pixity_Builder {
 		 * core plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-core.php';
-		$this->core = Pixity_Builder_Core::get_instance();
+		$this->core = Karma_Builder_Core::get_instance();
 
 	}
 
@@ -255,7 +265,7 @@ class Pixity_Builder {
 		// Don't display the admin bar when in live editor mode
 		add_filter( 'show_admin_bar', '__return_false' );
 		do_action( 'karma_before_load_builder_window' );
-		$builder_views = new Karma_Views();
+		$builder_views = Karma_Factory_Pattern::$builder_views;
 		$builder_views->load_builder_templates();
 		die();
 
@@ -342,7 +352,7 @@ class Pixity_Builder {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Pixity_Builder_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Karma_Builder_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

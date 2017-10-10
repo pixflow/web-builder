@@ -2,22 +2,15 @@
 
 class Karma_Column extends Karma_Shortcode_Base {
 
-	public $element_name = 'karma_column';
+	public static $element_name = 'karma_column';
 
-	public function __construct() {
-
-		add_filter( 'karma_elements_map', array( $this, 'map' ) );
-		add_shortcode( 'karma_column', array( $this, 'render' ) );
-
-	}
-
-	public function render( $atts, $content ) {
+	public static function render( $atts, $content ) {
 
 		return "<div class='karma_column'> $content </div>";
 
 	}
 
-	public function js_render() {
+	public static function js_render() {
 
 		return "<div class='karma_column'> {{ attributes.shortcode_content }} </div>";
 
@@ -30,7 +23,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 			"params" => array(
 				array(
 					"name"		=> "width",
-					"type"		=> Karma_Controller::Text,
+					"type"		=> Karma_Controller::TEXT,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"options"	=> array(
@@ -40,7 +33,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Controller::Range,
+					"type"		=> Karma_Controller::RANGE,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -53,7 +46,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 			,array(
 					"name"		=> "extra_class",
-					"type"		=> Karma_Controller::Text,
+					"type"		=> Karma_Controller::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)

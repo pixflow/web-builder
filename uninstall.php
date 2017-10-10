@@ -22,7 +22,7 @@
  * @link       http://pixflow.net
  * @since      1.0.0
  *
- * @package    Pixity_Builder
+ * @package    Karma_Builder
  */
 
 // If uninstall not called from WordPress, then exit.

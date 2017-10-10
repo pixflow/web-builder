@@ -34,28 +34,34 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-karma-builder-activator.php
  */
-function activate_pixity_builder() {
+function activate_karma_builder() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-karma-builder-activator.php';
-	Pixity_Builder_Activator::activate();
+	Karma_Builder_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-karma-builder-deactivator.php
  */
-function deactivate_pixity_builder() {
+function deactivate_karma_builder() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-karma-builder-deactivator.php';
-	Pixity_Builder_Deactivator::deactivate();
+	Karma_Builder_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_pixity_builder' );
-register_deactivation_hook( __FILE__, 'deactivate_pixity_builder' );
+register_activation_hook( __FILE__, 'activate_Karma_builder' );
+register_deactivation_hook( __FILE__, 'deactivate_Karma_builder' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-karma-builder.php';
+
+/**
+ * The class responsible for explain about factory design pattern.
+ */
+require_once plugin_dir_path( __FILE__ )  . 'includes/class-karma-factory-pattern.php';
+
 
 /**
  * Begins execution of the plugin.
@@ -66,10 +72,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-karma-builder.php';
  *
  * @since    1.0.0
  */
-function run_pixity_builder() {
+function run_karma_builder() {
 
-	$plugin = new Pixity_Builder();
+	$class_factory = new Karma_Factory_Pattern();
+	$plugin = $class_factory::$builder;
 	$plugin->run();
 
 }
-add_action('init','run_pixity_builder');
+add_action('init','run_karma_builder');

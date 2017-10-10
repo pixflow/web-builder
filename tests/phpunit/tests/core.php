@@ -10,8 +10,8 @@ class Tests_Core extends WP_UnitTestCase {
 	protected $builder;
 
 	public function setUp() {
-		run_pixity_builder();
-		$this->builder = Pixity_Builder_Core::get_instance();
+		run_karma_builder();
+		$this->builder = Karma_Builder_Core::get_instance();
 	}
 
 	public function test_parse_shortcode(){

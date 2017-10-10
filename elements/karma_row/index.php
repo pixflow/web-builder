@@ -2,14 +2,7 @@
 
 class Karma_Row extends Karma_Shortcode_Base {
 
-	public $element_name = 'karma_row';
-
-	public function __construct() {
-
-		add_filter( 'karma_elements_map', array( $this, 'map' ) );
-		add_shortcode( 'karma_row', array( $this, 'render' ) );
-
-	}
+	public static $element_name = 'karma_row';
 
 	public function render( $atts, $content ) {
 
@@ -30,7 +23,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 			"params"	=> array(
 				array(
 					"name"		=> "structure",
-					"type"		=> Karma_Controller::Image,
+					"type"		=> Karma_Controller::IMAGE,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"options"	=> array(
@@ -40,7 +33,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Controller::Range ,
+					"type"		=> Karma_Controller::RANGE,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -52,7 +45,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "extra_class",
-					"type"		=> Karma_Controller::Text,
+					"type"		=> Karma_Controller::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)
