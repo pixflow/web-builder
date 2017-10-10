@@ -31,9 +31,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Karma_Controller {
 
-	const Text = 'text';
-	const Image = 'image';
-	const Range = 'range';
+	const TEXT = 'text';
+	const IMAGE = 'image';
+	const RANGE = 'range';
 
 
 	/**
