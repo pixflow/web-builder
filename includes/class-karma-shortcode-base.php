@@ -94,13 +94,13 @@ class Karma_Shortcode_Base {
 	 */
 	public function load_js_templates(){
 
-		foreach ( self::$element_instance as $element_instance ){
+		foreach ( self::$element_instance as $element_instance ):
 			?>
 			<script type="text/html" id="tmpl-karma-element-<?php echo $element_instance->element_name; ?>">
 				<?php echo $element_instance->js_render(); ?>
 			</script>
 			<?php
-		}
+		endforeach;
 
 	}
 
