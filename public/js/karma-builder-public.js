@@ -26,155 +26,217 @@
  * practising this, we should strive to set a better example in our own work.
  */
 
-var karmaBuilder = function () {
 
-	this.karmaModel = {}
+var karmaBuilder = karmaBuilder || {};
 
-}
+(function ($, karmaBuilder) {
+	'use strict';
 
-/**
- * Add new shortcode model to karma models
- *
- * @param	object	model		Elements model
- * @param	object 	placeHolder	Placeholder to drop Elements.
- *
- * @since 1.0.0
- * @return object	Model of Elements
- */
-karmaBuilder.prototype.addShortcodeModel = function ( model, placeHolder ) {
+	karmaBuilder.view = Backbone.View.extend({
+		initialize : function () {
+		},
 
-	var shortcodeId = model['shortcode_id'] ;
-	this.karmaModel[ shortcodeId ] = model;
-	this.createShortcodeHtml( placeHolder, model );
-	return this.karmaModel;
+		/**
+		 * Define Karma-Builder events
+		 */
+		events : {
+		},
 
-}
-/**
- * Build elements in the placeholder that given.
- *
- * @param	{object | string}	placeHolder	placeholder to drop shortcode.
- * @param	object				model	shortcode model
- *
- * @since 1.0.0
- * @return true
-*/
-karmaBuilder.prototype.createShortcodeHtml = function ( placeHolder, model ) {
+		/**
+		 * Create and send ajax
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return XHR - jquery ajax object
+		 */
+		prepareAjax : function () {
+			return $.ajax({
+				type    : 'post',
+				url        : ajaxurl,
+				action    : 'save_content',
+				data    : {
+					models    : JSON.stringify( karmaBuilder.karmaModel ),
+					id        : $( 'meta[name="post-id"]' ).attr( 'content' )
+				}
+			});
+		},
 
-	$('body').trigger( 'finish_render_html', [ model ] );
-	return true ;
-}
+		/**
+		 * Save element model and html
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return Boolean - Return true or false from AJAX request
+		 */
+		saveContent : function () {
 
-/**
- * Delete Elements model and html
- *
- * @param	integer	elementId	The Elements id
- *
- * @since 1.0.0
- *
- * @return Object - Model of Elements
- */
-karmaBuilder.prototype.deleteShortcode = function( elementId ) {
+			this.prepareAjax().done( function ( response ) {
+				var result = JSON.parse( response );
+				if ( true === result.result ) {
+					return true;
+				} else {
+					return false;
+				}
+			});
 
-	var $selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']'),
-		that = this;
-	$selectedElement.find( '.karma-builder-element' ).each( function () {
-		var childId = $( this ).attr( 'data-element-id' ) ;
-		delete that.karmaModel[ childId ] ;
+		},
+
+		/**
+		 * Drag Element from Shortcodes collection
+		 *
+		 * @since 1.0.0
+		 * @return true
+		 */
+		dragElement: function(){
+
+		},
+
+		/**
+		 * Drop Element function
+		 *
+		 * @param	object 	droppedElement	Element to drop in placeHolder.
+		 * @param	object 	placeHolder	Placeholder to drop shortcode.
+		 *
+		 * @since 1.0.0
+		 * @return true
+		 */
+		dropElement: function( droppedElement, placeHolder ){
+
+			var shortcodeName = droppedElement.getAttribute('data-name');
+			var shortcodeId = karmaBuilder.karmaModels.length + 1;
+			var newModel =  new karmaBuilder.model({
+				"shortcode_id" : shortcodeId,
+				"shortcode_name" : shortcodeName
+			});
+			var newElement = new karmaBuilder.shortcodes( {
+				//@TODO : template : wp.template(shortcodeName)
+				template: _.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' ),
+				model: newModel
+			});
+			newElement.create( placeHolder );
+		}
+
 	});
-	delete this.karmaModel[ elementId ] ;
-	$selectedElement.remove();
-	return this.karmaModel;
 
-}
-
-/**
- * Create and send ajax
- *
- * @since 1.0.0
- *
- * @return XHR - jquery ajax object
- */
-
-karmaBuilder.prototype.prepareAjax = function () {
-
-	var that = this
-	return $.ajax({
-		type	: 'post',
-		url		: ajaxurl,
-		action	: 'save_content',
-		data	: {
-			models	: JSON.stringify( that.karmaModel ),
-			id		: $( 'meta[name="post-id"]' ).attr( 'content' )
+	karmaBuilder.model = Backbone.Model.extend({
+		defaults:{
+			"shortcode_id" : 0,
+			"shortcode_name" : '',
+			"parent_id" : 0,
+			"order" : 1,
+			"shortcode_attributes" : {},
+			"shortcode_content" : ""
 		}
 	});
 
-}
+	karmaBuilder.shortcodes = Backbone.View.extend({
 
-/**
- * Save element model and html
- *
- * @since 1.0.0
- *
- * @return Boolean - Return true or false from AJAX request
- */
+		/**
+		 * Set defaults in create
+		 */
+		initialize: function(options) {
+			this.template = options.template;
+		},
 
-karmaBuilder.prototype.saveContent = function () {
+		/**
+		 * Define shortcodes events
+		 */
+		events : {
+			"click .delete-elements" : "deleteShortcode"
+		},
 
-	this.prepareAjax().done( function ( response ) {
+		/**
+		 * Create new shortcode model to karma models
+		 *
+		 * @param	object 	placeHolder	Placeholder to drop shortcode.
+		 *
+		 * @since 1.0.0
+		 * @return true
+		 */
+		create : function( placeHolder ){
 
-		var result = JSON.parse( response );
-		if ( true === result.result ) {
+			karmaBuilder.karmaModels.add(this.model);
+			this.render( placeHolder );
+			$('body').trigger( 'finish_render_html', [ model ] );
+			return karmaBuilder.karmaModel;
+
+		},
+
+
+		/**
+		 * Render new shortcode in defined placeHolder
+		 *
+		 * @param	object 	placeHolder	Placeholder to drop shortcode.
+		 *
+		 * @since 1.0.0
+		 * @return true
+		 */
+		render : function ( placeHolder ) {
+
+			this.el.innerHTML = this.template( this.model );
+			placeHolder.appendChild( this.el );
+			$('body').trigger( 'finish_render_html', [ model ] );
 			return true;
-		} else {
-			return false;
+
+		},
+
+
+		/**
+		 * Delete shortcode model and html
+		 *
+		 * @param	object	model	The shortcode model
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return Object - Model of shortcodes
+		 */
+		deleteShortcode : function( model ) {
+
+			var elementId = _.keys(model)[0];
+			var $selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']'),
+				that = this;
+			$selectedElement.find( '.karma-builder-element' ) .each( function () {
+				var childId = $( this ).attr( 'data-element-id' ) ;
+					karmaBuilder.karmaModels.remove();
+			});
+			$selectedElement.remove ();
+			karmaBuilder.karmaModels.remove(model);
+			return karmaBuilder.karmaModels;
+
+		},
+
+		/**
+		 * Update shortcode model and html
+		 *
+		 * @param	integer id of element
+		 *
+		 * @param	Object newAttributes list of new attribute
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return Object - Model of shortcodes
+		 */
+		updateShortcode : function( id, newAttributes ){
+
+			var model = this.karmaModel[ id ];
+			for( var attr in newAttributes ){
+				model["shortcode_attributes"][ attr ] = newAttributes[ attr ];
+			}
+			this.renderShortcodeHtml( model );
+			return this.karmaModel;
+
 		}
 
+	})
+
+	var KarmaShortcodesCollection = Backbone.Collection.extend({
+		model : karmaBuilder.model
 	});
 
-}
+	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
 
 
-/**
- * Update element model and html
- *
- * @param	integer id of element
- *
- * @param	Object newAttributes list of new attribute
- *
- * @since 1.0.0
- *
- * @return Object - Model of element
- */
-karmaBuilder.prototype.updateShortcode = function( id, newAttributes ){
+})(jQuery,karmaBuilder);
 
-	var model = this.karmaModel[ id ];
-	for( var attr in newAttributes ){
-		model["shortcode_attributes"][ attr ] = newAttributes[ attr ];
-	}
-	this.renderShortcodeHtml( model );
-	return this.karmaModel;
 
-}
 
-/**
- * Render element after update model.
- *
- * @param	object				model	Element model
- *
- * @since 1.0.0
- * @return true
- */
-karmaBuilder.prototype.renderShortcodeHtml = function ( model ) {
-
-	$('body').trigger( 'finish_render_html', [ model ] );
-	return true ;
-
-}
-
-document.addEventListener(  'DOMContentLoaded',function () {
-	var temp =    wp.template('karma-element-setting-panel');
-	var $html = document.createElement('div');
-	$html.innerHTML =  temp( { headerTitle : "Section Setting" } );
-	document.getElementById('page').appendChild( $html );
-
-});
