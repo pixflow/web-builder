@@ -34,6 +34,8 @@ class Karma_Controller {
 	const TEXT = 'text';
 	const IMAGE = 'image';
 	const RANGE = 'range';
+	const INPUT = 'input';
+	const LABEL = 'label';
 
 
 	/**

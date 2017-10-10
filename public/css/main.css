@@ -65,6 +65,39 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output with display block and margin center element
  */
+@font-face {
+  font-family: HelveticaNeu_Bold;
+  src: url(../font/Helvetica_Neu_Bold.ttf); }
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../font/HelveticaNeue.ttf); }
+@font-face {
+  font-family: HelveticaNeue_BlackCond;
+  src: url(../font/HelveticaNeue_BlackCond.ttf); }
+@font-face {
+  font-family: HelveticaNeue_Light;
+  src: url(../font/HelveticaNeue_Light.ttf); }
+@font-face {
+  font-family: HelveticaNeue_Medium;
+  src: url(../font/HelveticaNeue_Medium.ttf); }
+@font-face {
+  font-family: HelveticaNeue_Thin;
+  src: url(../font/HelveticaNeue_Thin.ttf); }
+@font-face {
+  font-family: HelveticaNeueBd;
+  src: url(../font/HelveticaNeueBd.ttf); }
+@font-face {
+  font-family: HelveticaNeueHv;
+  src: url(../font/HelveticaNeueHv.ttf); }
+@font-face {
+  font-family: HelveticaNeueIt;
+  src: url(../font/HelveticaNeueIt.ttf); }
+@font-face {
+  font-family: HelveticaNeueLt;
+  src: url(../font/HelveticaNeueLt.ttf); }
+@font-face {
+  font-family: HelveticaNeueMed;
+  src: url(../font/HelveticaNeueMed.ttf); }
 /* _-_-_- base/RESET -_-_-_ */
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -111,6 +144,23 @@ iframe {
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
+.karma-text-input-controller input.karma-text-input-field {
+  width: 245px;
+  height: 36px;
+  color: rgba(57, 73, 89, 0.6);
+  background: #fff;
+  border: 1px solid rgba(57, 73, 89, 0.2);
+  border-radius: 20px;
+  font-family: HelveticaNeue;
+  line-height: 14px; }
+
+.karma-label-controller label.karma-label-field {
+  color: rgba(57, 73, 89, 0.8);
+  font-family: HelveticaNeue_Medium;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 17px; }
+
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */
 
