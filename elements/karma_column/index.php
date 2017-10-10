@@ -18,7 +18,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public function map() {
 
-		$map                          = array(
+		$map = array(
 			"name"   => "Column",
 			"params" => array(
 				array(
