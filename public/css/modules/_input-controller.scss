@@ -2,10 +2,10 @@
 .karma-text-input-controller input.karma-text-input-field{
 
   @include box(245px, 36px);
-  color: rgba(57,73,89,0.6);
   background: #fff;
   border: 1px solid rgba(57,73,89,0.2);
   border-radius: 20px;
+  color: rgba(57,73,89,0.6);
   font-family: HelveticaNeue;
   line-height: 14px;
 
