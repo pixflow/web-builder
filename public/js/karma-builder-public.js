@@ -29,10 +29,12 @@
 
 var karmaBuilder = karmaBuilder || {};
 
-(function ( $, karmaBuilder ) {
+
+(function ( $ , karmaBuilder ) {
 	'use strict';
 
 	karmaBuilder.view = Backbone.View.extend({
+
 		initialize : function () {
 		},
 
@@ -55,9 +57,9 @@ var karmaBuilder = karmaBuilder || {};
 				type	: 'post',
 				url		: ajaxurl,
 				action	: 'save_content',
-				data    : {
-					models    : JSON.stringify( karmaBuilder.karmaModel ),
-					id        : $( 'meta[name="post-id"]' ).attr( 'content' )
+				data	: {
+					models	: JSON.stringify( karmaBuilder.karmaModel ),
+					id		: $( 'meta[name="post-id"]' ).attr( 'content' )
 				}
 			});
 
@@ -89,7 +91,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @since 1.0.0
 		 * @return true
 		 */
-		dragElement: function(){
+		dragElement : function(){
 
 		},
 
@@ -102,20 +104,22 @@ var karmaBuilder = karmaBuilder || {};
 		 * @since 1.0.0
 		 * @return true
 		 */
-		dropElement: function( droppedElement, placeHolder ){
+		dropElement : function( droppedElement, placeHolder ){
 
-			var shortcodeName = droppedElement.getAttribute('data-name');
-			var shortcodeId = karmaBuilder.karmaModels.length + 1;
-			var newModel =  new karmaBuilder.model({
-				"shortcode_id" : shortcodeId,
-				"shortcode_name" : shortcodeName
+			var shortcodeName 	= droppedElement.getAttribute('data-name');
+			var shortcodeId		= karmaBuilder.karmaModels.length + 1;
+			var newModel 		=  new karmaBuilder.model({
+				"shortcode_id"		: shortcodeId,
+				"shortcode_name" 	: shortcodeName,
 			});
 			var newElement = new karmaBuilder.shortcodes( {
 				//@TODO : template : wp.template(shortcodeName)
-				template: _.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' ),
-				model: newModel
+				template	:	_.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' ),
+				model		:	newModel,
 			});
+
 			newElement.create( placeHolder );
+
 		}
 
 	});
@@ -136,7 +140,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Set defaults in create
 		 */
-		initialize: function( options ) {
+		initialize : function( options ) {
 
 			this.template = options.template;
 
@@ -146,7 +150,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * Define shortcodes events
 		 */
 		events : {
-			"click .delete-elements" : "deleteShortcode"
+			"click .delete-elements" : "deleteShortcode",
 		},
 
 		/**
@@ -159,10 +163,9 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		create : function( placeHolder ){
 
-			karmaBuilder.karmaModels.add(this.model);
+			karmaBuilder.karmaModels.add( this.model );
 			this.render( placeHolder );
-			$('body').trigger( 'finish_render_html', [ model ] );
-			return karmaBuilder.karmaModel;
+			return karmaBuilder.karmaModels;
 
 		},
 
@@ -179,7 +182,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.el.innerHTML = this.template( this.model );
 			placeHolder.appendChild( this.el );
-			$('body').trigger( 'finish_render_html', [ model ] );
+			$('body').trigger( 'finish_render_html', [ this.model ] );
 			return true;
 
 		},
@@ -196,17 +199,18 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		deleteShortcode : function( model ) {
 
-			var elementId = _.keys(model)[0],
-				$selectedElement = $('.karma-builder-element [data-element-id=' + elementId + ']');
+			var elementId = model.attributes['shortcode_id'];
+			var $selectedElement = $( '.karma-builder-element [data-element-id=' + elementId + ']' );
 
-			$selectedElement.find( '.karma-builder-element' ).each( function () {
+			$selectedElement.find( '.karma-builder-element' ) .each( function () {
 
-				karmaBuilder.karmaModels.remove();
+				var childId = $( this ).attr( 'data-element-id' ) ;
+				karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( childId ) } ) );
 
 			});
 
 			$selectedElement.remove();
-			karmaBuilder.karmaModels.remove( model );
+			karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( elementId ) } ) );
 			return karmaBuilder.karmaModels;
 
 		},
@@ -224,18 +228,28 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		updateShortcode : function( id, newAttributes ){
 
-			var model = this.karmaModel[ id ];
+			var model = karmaBuilder.karmaModels.where({"shortcode_id" : id})[0];
+			var shortcodeAtrributes = model.attributes.shortcode_attributes;
+
 			for( var attr in newAttributes ){
-				model["shortcode_attributes"][ attr ] = newAttributes[ attr ];
+
+				shortcodeAtrributes[attr] = newAttributes[attr]
+
 			}
-			this.renderShortcodeHtml( model );
-			return this.karmaModel;
+
+			model.set({'shortcode_attributes' : shortcodeAtrributes})
+			this.model = model;
+			this.render( document.querySelectorAll( '*[data-element-id="'+id+'"]' )[0] );
+			return karmaBuilder.karmaModels;
+
 		}
 
 	});
 
 	var KarmaShortcodesCollection = Backbone.Collection.extend({
+
 		model : karmaBuilder.model
+
 	});
 
 	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
