@@ -5,7 +5,8 @@ This file is used to contain all vendor imports.
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.flex, .karma-builder .karma-top-nav {
+.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg,
+#karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
   justify-content: center;
   display: flex;
   text-align: center;
@@ -58,6 +59,15 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @param {Number} $right - set margin right
  * @param {Number} $bottom - set margin bottom
  * @param {Number} $left - set margin left
+ * @output all side margin
+ */
+/**
+ * Element Direction mixin
+ * @group helpers
+ * @param {Number} $top - set Element Direction top
+ * @param {Number} $right - set Element Direction right
+ * @param {Number} $bottom - set Element Direction bottom
+ * @param {Number} $left - set Element Direction left
  * @output all side margin
  */
 /**
@@ -117,29 +127,114 @@ footer, header, hgroup, menu, nav, section {
 
 /* _-_-_- layout/NAVIGATION -_-_-_ */
 /* _-_-_- layout/SIDEBAR -_-_-_ */
-/* _-_-_- layout/FOOTER -_-_-_ */
 iframe {
-  width: 100%;
-  height: 200vh; }
+  height: 200vh;
+  width: 100%; }
 
+/*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
+  display: flex;
   position: absolute;
-  background-color: antiquewhite;
-  display: flex; }
+  /*** Style of setting panel extra ***/ }
   #karma-element-setting-panel-container .karma-element-setting-panel {
-    height: 407.55px;
     width: 285px;
+    height: 407.55px;
     border-radius: 7px;
-    background-color: #FFFFFF;
+    background-color: #fff;
     box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
-    margin: 30px; }
+    margin: 17px; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header {
-      height: 46px;
       width: 285px;
+      height: 46px;
       background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
-      border-radius: 7px 7px 0 0; }
-  #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
-    list-style: none; }
+      border-radius: 7px 7px 0 0;
+      position: relative; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title {
+        color: #fff;
+        font-size: 17px;
+        letter-spacing: 0.8px;
+        padding: 12.77px 0 0 20.43px;
+        text-align: left; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg {
+        top: 11.51px;
+        right: 7px;
+        bottom: auto;
+        left: auto;
+        cursor: pointer;
+        position: absolute; }
+        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg,
+        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg {
+          width: 24.49px;
+          height: 24.49px;
+          top: 9.51px;
+          right: 7px;
+          bottom: auto;
+          left: auto;
+          background-color: rgba(255, 255, 255, 0.18);
+          border-radius: 19px;
+          margin-right: 5px; }
+          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg,
+          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg {
+            width: 12px;
+            height: 12px; }
+            #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg *,
+            #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
+              stroke: #fff; }
+  #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
+    display: flex; }
+    #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 30px; }
+      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add {
+        background-color: #8578FC; }
+        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add .svg-extra svg * {
+          stroke: #fff; }
+        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add:hover .svg-extra svg * {
+          stroke: #fff; }
+        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add:hover span {
+          color: #fff;
+          transition-duration: 0.2s; }
+      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li {
+        border-radius: 19px;
+        background-color: #fff;
+        box-shadow: 0 -2px 5px 2px rgba(57, 73, 89, 0.11);
+        display: inline-flex;
+        height: 33px;
+        max-width: 33px;
+        margin-bottom: 6px;
+        padding: 6px;
+        position: relative;
+        transition: max-width .3s, background .3s; }
+        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover {
+          max-width: 150px; }
+          #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover .svg-extra svg * {
+            stroke: #394959; }
+          #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover span {
+            color: #394959;
+            left: 33px;
+            opacity: 1;
+            transition-duration: 0.2s; }
+        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li span {
+          font-size: 12px;
+          font-family: HelveticaNeue;
+          left: 33px;
+          letter-spacing: 0.8px;
+          opacity: 0;
+          padding: 2px;
+          white-space: nowrap; }
+        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
+          padding-top: 0;
+          padding-right: 8px;
+          padding-bottom: 0;
+          padding-left: 5px; }
+          #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra svg {
+            width: 12px;
+            height: 12px; }
+            #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra svg * {
+              stroke: #394959; }
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */

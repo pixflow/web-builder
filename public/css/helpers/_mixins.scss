@@ -129,6 +129,7 @@
   padding-left: $left;
 }
 
+
 /**
  * margin mixin
  * @group helpers
@@ -144,6 +145,23 @@
   margin-right: $right;
   margin-bottom: $bottom;
   margin-left: $left;
+}
+
+/**
+ * Element Direction mixin
+ * @group helpers
+ * @param {Number} $top - set Element Direction top
+ * @param {Number} $right - set Element Direction right
+ * @param {Number} $bottom - set Element Direction bottom
+ * @param {Number} $left - set Element Direction left
+ * @output all side margin
+ */
+
+@mixin element_direction($top:auto, $right:auto, $bottom:auto, $left:auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
 }
 
 /**

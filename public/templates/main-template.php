@@ -7,4 +7,4 @@
  $page_url .= ( false === strpos( $page_url, '?' ) ) ? '?in_builder=true' : '&in_builder=true' ;
 
  ?>
-<iframe src="<?php echo  $page_url; ?>" ></iframe>
+<iframe width="100%" height="1080px" src="<?php echo  $page_url; ?>" ></iframe>

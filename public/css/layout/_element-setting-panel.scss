@@ -1,36 +1,147 @@
-/* _-_-_- layout/FOOTER -_-_-_ */
+
 iframe{
-  width: 100%;
   height: 200vh;
+  width: 100%;
 }
-
-
+/*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
-  position: absolute;
-  background-color: antiquewhite;
   display: flex;
+  position: absolute;
 
-  .karma-element-setting-panel{
-		height: 407.55px;
-		width: 285px;
-		border-radius: 7px;
-		background-color: #FFFFFF;
-		box-shadow: 0 2px 7px 3px rgba(0,0,0,0.13);
-		margin: 30px;
+  .karma-element-setting-panel {
+	@include box(285px, 407.55px);
+	border-radius: 7px;
+	background-color: $white-color;
+	box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
+	margin: 17px;
 
-	.karma-element-setting-panel-header{
-	  height: 46px;
-	  width: 285px;
+	.karma-element-setting-panel-header {
+	  @include box(285px, 46px);
 	  background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
 	  border-radius: 7px 7px 0 0;
+	  position: relative;
+
+	  .karma-element-setting-panel-header-title {
+		color: $white-color;
+		font-size: 17px;
+		letter-spacing: 0.8px;
+		padding: 12.77px 0 0 20.43px;
+		text-align: left;
+	  }
+
+	  .karma-element-setting-panel-header-svg {
+		@extend .flex;
+		@include element_direction(11.51px, 7px);
+		cursor: pointer;
+		position: absolute;
+
+		.revert-svg,
+		.close-svg {
+		  @extend .flex;
+		  @include box(24.49px, 24.49px);
+		  @include element_direction(9.51px, 7px);
+		  background-color: rgba(255, 255, 255, 0.18);
+		  border-radius: 19px;
+		  margin-right: 5px;
+		  svg {
+			@include box(12px, 12px);
+			* {
+			  stroke: $white-color;
+			}
+		  }
+		}
+	  }
 	}
   }
 
-  .karma-shortcode-setting-panel-extra{
+  /*** Style of setting panel extra ***/
+  .karma-shortcode-setting-panel-extra {
+	display: flex;
 
-	ul{
+	ul {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
 	  list-style: none;
+	  margin-bottom: 30px;
+
+	  .svg-extra-add{
+		background-color: #8578FC;
+
+		.svg-extra {
+		  svg {
+			* {
+			  stroke: $white-color;
+			}
+		  }
+		}
+		&:hover{
+		  .svg-extra {
+			svg {
+			  * {
+				stroke: $white-color;
+			  }
+			}
+		  }
+
+		  span {
+			color: $white-color;
+			transition-duration: 0.2s;
+		  }
+		}
+	  }
+
+	  li {
+		border-radius: 19px;
+		background-color: $white-color;
+		box-shadow: 0 -2px 5px 2px rgba(57,73,89,0.11);
+		display: inline-flex;
+		height: 33px;
+		max-width: 33px;
+		margin-bottom: 6px;
+		padding: 6px;
+		position: relative;
+		transition: max-width .3s, background .3s;
+
+		&:hover {
+		  max-width: 150px;
+		  .svg-extra {
+			svg{
+			  *{
+				stroke: #394959;
+			  }
+			}
+		  }
+
+		  span {
+			color: #394959;
+			left: 33px;
+			opacity: 1;
+			transition-duration: 0.2s;
+		  }
+		}
+
+		span {
+		  font-size: 12px;
+		  font-family: HelveticaNeue;
+		  left: 33px;
+		  letter-spacing: 0.8px;
+		  opacity: 0;
+		  padding: 2px;
+		  white-space: nowrap;
+		}
+
+		.svg-extra {
+		  @extend .flex;
+		  @include padding(0,8px,0,5px);
+		  svg {
+			@include box(12px, 12px);
+			* {
+			  stroke: #394959;
+			}
+		  }
+		}
+	  }
 	}
   }
-
 }
