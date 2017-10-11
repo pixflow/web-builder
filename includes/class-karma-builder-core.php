@@ -54,15 +54,6 @@ class Karma_Builder_Core{
 	protected $models;
 
 	/**
-	 * It is an array that contains elements map
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      array    $elements_map    elements map.
-	 */
-	public $elements_map;
-
-	/**
 	 * It is an array that contains used shortcodes in the content of post
 	 *
 	 * @since    1.0.0
@@ -540,13 +531,13 @@ class Karma_Builder_Core{
 	/**
 	 * Map element
 	 *
-	 * @return void
+	 * @return array - array of elements map
 	 * @since 1.0.0
 	 */
 	public function element_map() {
 		$elements_map = array();
 		$elements_map = apply_filters( 'karma_elements_map', $elements_map );
-		$this->elements_map = $elements_map;
+		return $elements_map;
 	}
 
 }

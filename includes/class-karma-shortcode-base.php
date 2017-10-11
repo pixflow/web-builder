@@ -34,6 +34,15 @@ class Karma_Shortcode_Base {
 
 
 	/**
+	 * It is an array that contains elements map
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      array    $elements_map    elements map.
+	 */
+    public static $elements_map = array();
+
+    /**
 	 * The instance of all elements class
 	 *
 	 * @since    1.0.0
@@ -52,7 +61,7 @@ class Karma_Shortcode_Base {
 	 */
 	public static function get_instance() {
 
-		if ( ! static::$instance[ static::$element_name ] ) {
+		if ( ! isset( static::$instance[ static::$element_name ] ) ) {
 			static::$instance[ static::$element_name ] = new static();
 		}
 		return static::$instance[ static::$element_name ];
@@ -69,7 +78,7 @@ class Karma_Shortcode_Base {
 
 		add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
 		add_filter( 'karma_elements_map', array( $this, 'map' ) );
-		add_shortcode( $this->element_name, array( $this, 'render' ) );
+		add_shortcode( static::$element_name , array( $this, 'render' ) );
 
 	}
 	/*

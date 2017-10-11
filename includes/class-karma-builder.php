@@ -207,6 +207,7 @@ class Karma_Builder {
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( Karma_Factory_Pattern::$builder_loader, 'send_localize_value' ) );
 
 	}
 

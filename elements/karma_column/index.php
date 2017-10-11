@@ -52,8 +52,9 @@ class Karma_Column extends Karma_Shortcode_Base {
 				)
 			)
 		);
-		$elements_map['karma_column'] = $map;
-		return $elements_map;
+
+		parent::$elements_map['karma_column'] = $map;
+		return parent::$elements_map;
 
 	}
 

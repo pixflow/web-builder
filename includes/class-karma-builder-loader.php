@@ -103,7 +103,7 @@ class Karma_Builder_Loader {
 		if( $this->is_in_iframe() ){
 			// Don't display the admin bar when in live editor mode
 			add_filter( 'show_admin_bar', '__return_false' );
-			$this->generate_page_model();
+
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
@@ -186,13 +186,38 @@ class Karma_Builder_Loader {
 	 */
 	private function generate_page_model(){
 
-		$page_id = get_the_id();
+		$page_id = get_the_ID();
 		$post_object = get_post ( $page_id );
 		$content = $post_object->post_excerpt;
 		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
 		wp_localize_script( $this->plugin_name, 'builder_models', $page_model );
 
 	}
+
+	/**
+	 * localize elements maps for builder
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	private function send_elements_map(){
+
+		$elements_map = json_encode( $this->core->element_map() );
+		wp_localize_script( $this->plugin_name, 'builder_maps', $elements_map );
+
+	}
+
+	/**
+	 * Send localize value in front end
+	 *
+	 * @since     1.0.0
+	 */
+	public function send_localize_value(){
+
+		$this->send_elements_map();
+	    $this->generate_page_model();
+
+    }
 
 	/**
 	 * Convert shortcodes in page as Karma shortcode format

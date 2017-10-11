@@ -256,4 +256,156 @@ class Tests_Core extends WP_UnitTestCase {
 		$this->assertEquals( $expect, $post->post_content );
 	}
 
+	public function map_elements(){
+		$elements_map = array();
+		$row_map = array(
+			"name"		=> "Row",
+			"params"	=> array(
+				array(
+					"name"		=> "structure",
+					"type"		=> Karma_Controller::IMAGE,
+					"label"		=> esc_attr__( "Structure", 'karma' ),
+					"value"		=> 'full',
+					"options"	=> array(
+						'full'		=> "full.png",
+						'container'	=> "container.png"
+					)
+				),
+				array(
+					"name"		=> "space",
+					"type"		=> Karma_Controller::RANGE,
+					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
+					'value'		=> 0,
+					"options"	=> array(
+						'min'	=> 0,
+						'max'	=> 600,
+						'step'	=> 1,
+						'unit'	=> 'px'
+					)
+				),
+				array(
+					"name"		=> "extra_class",
+					"type"		=> Karma_Controller::TEXT,
+					"label"		=> esc_attr__( "Class Name", 'karma' ),
+					'value'		=> ''
+				)
+			)
+		);
+		$elements_map['karma_row'] = $row_map;
+		$column_map = array(
+			"name"   => "Column",
+			"params" => array(
+				array(
+					"name"		=> "width",
+					"type"		=> Karma_Controller::TEXT,
+					"label"		=> esc_attr__( "Structure", 'karma' ),
+					"value"		=> 'full',
+					"options"	=> array(
+						'full'		=> "full.png",
+						'container'	=> "container.png"
+					)
+				),
+				array(
+					"name"		=> "space",
+					"type"		=> Karma_Controller::RANGE,
+					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
+					'value'		=> 0,
+					"options"	=> array(
+						'min'	=> 0,
+						'max'	=> 600,
+						'step'	=> 1,
+						'unit'	=> 'px'
+					)
+				)
+
+			,array(
+					"name"		=> "extra_class",
+					"type"		=> Karma_Controller::TEXT,
+					"label"		=> esc_attr__( "Class Name", 'karma' ),
+					'value'		=> ''
+				)
+			)
+		);
+		$elements_map['karma_column'] = $column_map;
+		return $elements_map;
+	}
+
+	public function test_element_map(){
+
+		add_filter( 'karma_elements_map', array( $this, 'map_elements' ) );
+		$elements_map = array();
+		$elements_map = apply_filters( 'karma_elements_map', $elements_map );
+		$expect = array(
+			'karma_row'		=> array(
+				"name"		=> "Row",
+				"params"	=> array(
+					array(
+						"name"		=> "structure",
+						"type"		=> Karma_Controller::IMAGE,
+						"label"		=> esc_attr__( "Structure", 'karma' ),
+						"value"		=> 'full',
+						"options"	=> array(
+							'full'		=> "full.png",
+							'container'	=> "container.png"
+						)
+					),
+					array(
+						"name"		=> "space",
+						"type"		=> Karma_Controller::RANGE,
+						"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+							'min'	=> 0,
+							'max'	=> 600,
+							'step'	=> 1,
+							'unit'	=> 'px'
+						)
+					),
+					array(
+						"name"		=> "extra_class",
+						"type"		=> Karma_Controller::TEXT,
+						"label"		=> esc_attr__( "Class Name", 'karma' ),
+						'value'		=> ''
+					)
+				)
+			),
+			'karma_column'	=> array(
+				"name"   => "Column",
+				"params" => array(
+					array(
+						"name"		=> "width",
+						"type"		=> Karma_Controller::TEXT,
+						"label"		=> esc_attr__( "Structure", 'karma' ),
+						"value"		=> 'full',
+						"options"	=> array(
+							'full'		=> "full.png",
+							'container'	=> "container.png"
+						)
+					),
+					array(
+						"name"		=> "space",
+						"type"		=> Karma_Controller::RANGE,
+						"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+							'min'	=> 0,
+							'max'	=> 600,
+							'step'	=> 1,
+							'unit'	=> 'px'
+						)
+					)
+
+				,array(
+						"name"		=> "extra_class",
+						"type"		=> Karma_Controller::TEXT,
+						"label"		=> esc_attr__( "Class Name", 'karma' ),
+						'value'		=> ''
+					)
+				)
+			)
+		);
+
+		$this->assertEquals( $expect, $elements_map );
+	}
+
 }

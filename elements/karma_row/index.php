@@ -51,9 +51,10 @@ class Karma_Row extends Karma_Shortcode_Base {
 				)
 			)
 		);
-		$elements_map['karma_row'] = $map;
-		return $elements_map;
 
+
+		parent::$elements_map['karma_row'] = $map;
+		return parent::$elements_map;
 	}
 
 }
