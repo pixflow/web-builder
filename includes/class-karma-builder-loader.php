@@ -103,12 +103,10 @@ class Karma_Builder_Loader {
 		if( $this->is_in_iframe() ){
 			// Don't display the admin bar when in live editor mode
 			add_filter( 'show_admin_bar', '__return_false' );
-
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
-			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
+			add_action( 'wp_head', array( $this, 'load_builder_js_templates' ) );
 			$this->init_elements();
-			$this->load_builder_js_templates();
 		}
 
 	}
@@ -119,7 +117,7 @@ class Karma_Builder_Loader {
 	 * @since     1.0.0
 	 * @return    void
 	 */
-	private function load_builder_js_templates(){
+	public function load_builder_js_templates(){
 
 		$karma_views = Karma_Factory_Pattern::$builder_views;
 		$controller = Karma_Factory_Pattern::$builder_controller;
