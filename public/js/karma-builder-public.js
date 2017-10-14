@@ -35,7 +35,13 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.view = Backbone.View.extend({
 
+		shortcodeParams : {},
+
 		initialize : function () {
+
+			var pageModel = JSON.parse( builderModels );
+			karmaBuilder.karmaModels.add( pageModel );
+
 		},
 
 		/**
@@ -120,11 +126,88 @@ var karmaBuilder = karmaBuilder || {};
 
 			newElement.create( placeHolder );
 
+		},
+
+
+		getElementMap: function ( shortcodeName ) {
+
+			if( this.shortcodeParams ) {
+				this.shortcodeParams = JSON.parse( builderMaps );
+			}
+
+			return this.shortcodeParams[ shortcodeName ];
+
+		},
+
+		getWpTemplate: function ( templateName, templateParams ) {
+
+			if( null === templateParams ){
+				templateParams = {} ;
+			}
+
+			var tempObject = wp.template( templateName ),
+				tempHtml = tempObject( templateParams );
+
+			return tempHtml;
+
+		},
+
+		formBuilder : function ( shortcodeId ) {
+			console.log(shortcodeId);
+
+
+			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
+				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
+				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off">',
+				groupHtml = '';
+			console.log(ShortcodeParams.params);
+			for( var counter in ShortcodeParams.params ){
+				switch ( ShortcodeParams.params[ counter ].type ){
+					case 'text' :
+						groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', {
+							labelHeading : ShortcodeParams.params[counter].label,
+							name: ShortcodeParams.params[counter].name
+						} );
+						break;
+
+					case 'title' :
+						groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', {
+							title: ShortcodeParams.params[counter].label,
+							name: ShortcodeParams.params[counter].name
+						} );
+						break;
+
+					case 'radio-image' :
+						groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', {
+							field : ShortcodeParams.params[counter].field,
+							column : ShortcodeParams.params[counter].columns
+						} );
+						break;
+
+					default:
+						break;
+
+				}
+
+
+			}
+
+
+			karmaformhtml += '<div id="elementRow" >' +  groupHtml + "</div>" ;
+			var popup = document.createElement('div');
+			popup.innerHTML = karmaformhtml;
+			return popup.innerHTML;
+
+
+
+
 		}
 
 	});
 
 	karmaBuilder.model = Backbone.Model.extend({
+
+
 		defaults:{
 			"shortcode_id"			: 0,
 			"shortcode_name"		: '',
@@ -256,12 +339,15 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
 
-	document.addEventListener(  'DOMContentLoaded',function () {
+
+	window.onload = function () {
 		var temp =    wp.template('karma-element-setting-panel');
 		var $html = document.createElement('div');
-		$html.innerHTML =  temp( { headerTitle : "Section Setting" } );
+		$html.innerHTML =  temp( { headerTitle : "Section Setting" , shortcodeId : 1});
 		document.getElementById('page').appendChild( $html );
-	});
+	}
+
+
 
 })(jQuery,karmaBuilder);
 

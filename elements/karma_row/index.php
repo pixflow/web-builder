@@ -1,5 +1,4 @@
 <?php
-
 class Karma_Row extends Karma_Shortcode_Base {
 
 	public static $element_name = 'karma_row';
@@ -46,6 +45,29 @@ class Karma_Row extends Karma_Shortcode_Base {
 				array(
 					"name"		=> "extra_class",
 					"type"		=> Karma_Controller::TEXT,
+					"label"		=> esc_attr__( "Class Name", 'karma' ),
+					'value'		=> ''
+				),
+				array(
+					"name"		=> "radio-image",
+					"type"		=> Karma_Controller::RADIO_IMAGE,
+					"label"		=> esc_attr__( "images", 'karma' ),
+					"columns"    => 1,
+					'value'		=> 0,
+					"field"		=> array(
+						array(
+							'image' => '1.jpg',
+							'title' => "Full width"
+						),
+						array(
+							'image' => '2.jpg',
+							'title' => "Container width"
+						)
+					)
+				),
+				array(
+					"name"		=> "title",
+					"type"		=> Karma_Controller::TITLE,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)

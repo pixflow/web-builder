@@ -185,10 +185,11 @@ class Karma_Builder_Loader {
 	private function generate_page_model(){
 
 		$page_id = get_the_ID();
+
 		$post_object = get_post ( $page_id );
-		$content = $post_object->post_excerpt;
+		$content = $post_object->post_content;
 		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
-		wp_localize_script( $this->plugin_name, 'builder_models', $page_model );
+		wp_localize_script( $this->plugin_name, 'builderModels', $page_model );
 
 	}
 
@@ -201,7 +202,7 @@ class Karma_Builder_Loader {
 	private function send_elements_map(){
 
 		$elements_map = json_encode( $this->core->element_map() );
-		wp_localize_script( $this->plugin_name, 'builder_maps', $elements_map );
+		wp_localize_script( $this->plugin_name, 'builderMaps', $elements_map );
 
 	}
 

@@ -1,4 +1,4 @@
 
-<div class="karma-label-controller">
-	<div class="karma-label-field"> {{{data.labelHeading}}} </div>
+<div class="karma-text-controller">
+	<div class="karma-text-field"> {{{data.labelHeading}}} </div>
 </div>

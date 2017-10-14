@@ -26,7 +26,10 @@
 
 			</div>
 		</div>
-		<div class="karma-element-setting-panel-content"></div>
+		<div class="karma-element-setting-panel-content">
+			<# karmaBuilder.view.prototype.initialize() #>
+				<# print(karmaBuilder.view.prototype.formBuilder( data.shortcodeId ));  #>
+		</div>
 	</div>
 		<div class="karma-shortcode-setting-panel-extra">
 			<ul>
