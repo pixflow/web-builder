@@ -103,7 +103,6 @@
 		handler.style.height = "100%";
 		handler.style.width = "5px";
 		handler.style.cursor = "col-resize";
-		handler.style.background = "#00f";
 		handler.setAttribute('class','resize-handler');
 
 		el.appendChild(handler);
