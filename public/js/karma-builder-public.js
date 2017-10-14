@@ -30,7 +30,7 @@
 var karmaBuilder = karmaBuilder || {};
 
 
-(function ( $ , karmaBuilder ) {
+(function ( $, karmaBuilder ) {
 	'use strict';
 
 	karmaBuilder.view = Backbone.View.extend({
@@ -55,7 +55,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return XHR - jquery ajax object
+		 * @returns {XHR} - jquery ajax object
 		 */
 		prepareAjax : function () {
 
@@ -64,7 +64,7 @@ var karmaBuilder = karmaBuilder || {};
 				url		: ajaxurl,
 				action	: 'save_content',
 				data	: {
-					models	: JSON.stringify( karmaBuilder.karmaModel ),
+					models	: JSON.stringify( karmaBuilder.karmaModels ),
 					id		: $( 'meta[name="post-id"]' ).attr( 'content' )
 				}
 			});
@@ -76,7 +76,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return Boolean - Return true or false from AJAX request
+		 * @returns {Boolean} - Return true or false from AJAX request
 		 */
 		saveContent : function () {
 
@@ -95,7 +95,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * Drag Element from Shortcodes collection
 		 *
 		 * @since 1.0.0
-		 * @return true
+		 * @returns true
 		 */
 		dragElement : function(){
 
@@ -104,11 +104,11 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Drop Element function
 		 *
-		 * @param	object 	droppedElement	Element to drop in placeHolder.
-		 * @param	object 	placeHolder	Placeholder to drop shortcode.
+		 * @param	{object} 	droppedElement	Element to drop in placeHolder.
+		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
 		 *
 		 * @since 1.0.0
-		 * @return true
+		 * @returns {true}
 		 */
 		dropElement : function( droppedElement, placeHolder ){
 
@@ -118,9 +118,9 @@ var karmaBuilder = karmaBuilder || {};
 				"shortcode_id"		: shortcodeId,
 				"shortcode_name" 	: shortcodeName,
 			});
-			var newElement = new karmaBuilder.shortcodes( {
-				//@TODO : template : wp.template(shortcodeName)
-				template	:	_.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' ),
+			var newElement 		= new karmaBuilder.shortcodes( {
+				//template : wp.template(shortcodeName),
+				template	: wp.template(shortcodeName),
 				model		:	newModel,
 			});
 
@@ -230,19 +230,19 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * Define shortcodes events
+		 * Define elements events
 		 */
 		events : {
-			"click .delete-elements" : "deleteShortcode",
+			"click .delete-element" : "deleteShortcode",
 		},
 
 		/**
 		 * Create new elements model to karma models
 		 *
-		 * @param	object 	placeHolder	Placeholder to drop shortcode.
+		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
 		 *
 		 * @since 1.0.0
-		 * @return object	New elements model
+		 * @returns {object}	New elements model
 		 */
 		create : function( placeHolder ){
 
@@ -252,14 +252,30 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		update : function (element) {
+
+			var children;
+			if( $(element).children().length){
+
+				children = $(element).children().clone(true);
+
+			}
+			this.el.innerHTML = this.template( this.model );
+			var elementId = $(element).attr('data-element-id');
+			$(this.el).find('*[data-element-id="'+elementId+'"]').append(children);
+			$('body').trigger( 'finish_update_html', [ this.model ] );
+			return true;
+
+		},
+
 
 		/**
 		 * Render new elements in defined placeHolder
 		 *
-		 * @param	object 	placeHolder	Placeholder to drop shortcode.
+		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
 		 *
 		 * @since 1.0.0
-		 * @return true
+		 * @returns true
 		 */
 		render : function ( placeHolder ) {
 
@@ -276,18 +292,18 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Delete elements model and html
 		 *
-		 * @param	object	model	The shortcode model
+		 * @param	{object}	model	The shortcode model
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return Object - Model of shortcodes
+		 * @returns {Object} - Model of shortcodes
 		 */
-		deleteShortcode : function( model ) {
+		deleteShortcode : function() {
 
-			var elementId = model.attributes['shortcode_id'];
+			var elementId = this.model.attributes['shortcode_id'];
 			var $selectedElement = $( '.karma-builder-element [data-element-id=' + elementId + ']' );
 
-			$selectedElement.find( '.karma-builder-element' ) .each( function () {
+			$selectedElement.find( '.karma-builder-element' ).each( function () {
 
 				var childId = $( this ).attr( 'data-element-id' ) ;
 				karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( childId ) } ) );
@@ -295,7 +311,8 @@ var karmaBuilder = karmaBuilder || {};
 			});
 
 			$selectedElement.remove();
-			karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( elementId ) } ) );
+			karmaBuilder.karmaModels.remove( this.model );
+
 			return karmaBuilder.karmaModels;
 
 		},
@@ -303,28 +320,25 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Update shortcode model and html
 		 *
-		 * @param	integer id of element
+		 * @param	{integer} id of element
 		 *
-		 * @param	Object newAttributes list of new attribute
+		 * @param	{Object}	newAttributes list of new attribute
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return Object - Model of elements
+		 * @returns {Object} - Model of elements
 		 */
-		updateShortcode : function( id, newAttributes ){
+		updateShortcode : function( newAttributes ){
 
-			var model = karmaBuilder.karmaModels.where({"shortcode_id" : id})[0];
+			var model = this.model;
 			var shortcodeAtrributes = model.attributes.shortcode_attributes;
-
 			for( var attr in newAttributes ){
 
-				shortcodeAtrributes[attr] = newAttributes[attr]
+				shortcodeAtrributes[attr] = newAttributes[attr];
 
 			}
-
-			model.set({'shortcode_attributes' : shortcodeAtrributes})
-			this.model = model;
-			this.render( document.querySelectorAll( '*[data-element-id="'+id+'"]' )[0] );
+			model.set({'shortcode_attributes' : shortcodeAtrributes});
+			this.update( document.querySelector( '*[data-element-id="'+model.attributes.shortcode_id+'"]' ) );
 			return karmaBuilder.karmaModels;
 
 		}

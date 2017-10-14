@@ -24,140 +24,103 @@ QUnit.test('addShortcodeModel', function ( assert ) {
  */
 QUnit.test( "karmaDeleteModel" , function ( assert ) {
 
-	var row = document.createElement( 'div' );
-	row.setAttribute( 'data-element-id' , '1' );
-	row.setAttribute( 'class' , 'karma-vc-row karma-builder-element' );
-	document.body.appendChild( row );
-
-	var column = document.createElement( 'div' );
-	column.setAttribute( 'data-element-id' , '2' );
-	column.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
-	row.appendChild( column );
-
-	var column2 = document.createElement( 'div' );
-	column2.setAttribute( 'data-element-id' , '3' );
-	column2.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
-	row.appendChild( column2 );
-
-	var shortcode = document.createElement( 'div' );
-	shortcode.setAttribute( 'data-element-id' , '4' );
-	shortcode.setAttribute( 'class' , 'shortcode karma-builder-element' );
-	column.appendChild( shortcode );
 
 	var karmaDeleteResult = {
-		0 : {
-			"shortcode_id"          : 1,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
+		0: {
+			"shortcode_id": 1,
+			"shortcode_name": "shortcode_test",
+			"parent_id": 0,
+			"order": 1,
+			"shortcode_attributes": {
+				"color": "red",
+				"font": "arial",
+				"bg": "#000fff",
+				"style": 'font-family: "tahoma";',
+				"radius": '18',
+				"title": 'this is a " title " ',
+				"sub_title": "this is a subtitle's test"
 			},
-			"shortcode_content" : ""
+			"shortcode_content": ""
 		},
 
-		1 : {
-			"shortcode_id"          : 3,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
+		1: {
+			"shortcode_id": 3,
+			"shortcode_name": "shortcode_test",
+			"parent_id": 0,
+			"order": 1,
+			"shortcode_attributes": {
+				"color": "red",
+				"font": "arial",
+				"bg": "#000fff",
+				"style": 'font-family: "tahoma";',
+				"radius": '18',
+				"title": 'this is a " title " ',
+				"sub_title": "this is a subtitle's test"
 			},
-			"shortcode_content" : ""
+			"shortcode_content": ""
 		}
 	};
 
-	var shortcode1 = new karmaBuilder.model({
-		"shortcode_id"          : 1,
-		"shortcode_name"        : "shortcode_test",
-		"parent_id"             : 0,
-		"order"                 : 1,
-		"shortcode_attributes" : {
-			"color"        	: "red",
-			"font"        	: "arial",
-			"bg"        	: "#000fff",
-			"style"        	: 'font-family: "tahoma";',
-			"radius"    	: '18',
-			"title"        	: 'this is a " title " ',
-			"sub_title"    	: "this is a subtitle's test"
-		},
-		"shortcode_content" : ""
-	}),
-		shortcode2 = new karmaBuilder.model({
-		 "shortcode_id"          : 2,
-		 "shortcode_name"        : "shortcode_test",
-		 "parent_id"             : 0,
-		 "order"                 : 1,
-		 "shortcode_attributes" : {
-			 "color"        	: "red",
-			 "font"        	: "arial",
-			 "bg"        	: "#000fff",
-			 "style"        	: 'font-family: "tahoma";',
-			 "radius"    	: '18',
-			 "title"        	: 'this is a " title " ',
-			 "sub_title"    	: "this is a subtitle's test"
-		 },
-		 "shortcode_content" : ""
-	 }),
-		shortcode3 = new karmaBuilder.model({
-			"shortcode_id"          : 3,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
-			},
-			"shortcode_content" : ""
-		}),
-		shortcode4 = new karmaBuilder.model({
-			"shortcode_id"          : 4,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
-			},
-			"shortcode_content" : ""
-		});
-	karmaBuilder.karmaModels.add( shortcode1 );
-	karmaBuilder.karmaModels.add( shortcode2 );
-	karmaBuilder.karmaModels.add( shortcode3 );
-	karmaBuilder.karmaModels.add( shortcode4 );
+	for ( var i = 1; i < 5 ; i++ ){
 
-	var result = shortcode_instance.deleteShortcode( shortcode2 );
+		var shortcode = new karmaBuilder.model({
+				"shortcode_id": i,
+				"shortcode_name": "shortcode_test",
+				"parent_id": 0,
+				"order": 1,
+				"shortcode_attributes": {
+					"color": "red",
+					"font": "arial",
+					"bg": "#000fff",
+					"style": 'font-family: "tahoma";',
+					"radius": '18',
+					"title": 'this is a " title " ',
+					"sub_title": "this is a subtitle's test"
+				},
+				"shortcode_content": ""
+			});
+		karmaBuilder.karmaModels.add(shortcode);
+
+		var newShortcode = new karmaBuilder.shortcodes({
+			template: _.template( '<div class="row karma-builder-element delete-element" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
+			model : shortcode,
+		});
+
+		var placeHolder;
+		switch (i) {
+
+			case 1:
+				placeHolder = document.getElementById('qunit');
+				break;
+			case 2:
+				placeHolder = document.querySelector('*[data-element-id="1"]');
+				break;
+			case 3:
+				placeHolder = document.querySelector('*[data-element-id="1"]');
+				break;
+			case 4:
+				placeHolder = document.querySelector('*[data-element-id="2"]');
+				break;
+
+		}
+		newShortcode.create(placeHolder);
+
+	}
+
+	document.querySelector('div[data-element-id="2"]').click();
+	var result = karmaBuilder.karmaModels;
 	var testResult = {};
 	for(  var i in result.models ) {
-		testResult[i] = result.models[i].attributes;
-	}
-	assert.deepEqual( testResult , karmaDeleteResult );
-	assert.equal( document.querySelectorAll( '.karma-vc-row' ).length , 1 );
-	assert.equal( document.querySelectorAll( '.shortcode' ).length , 0 );
 
+		testResult[i] = result.models[i].attributes;
+
+	}
+
+	assert.deepEqual( testResult , karmaDeleteResult );
+	assert.equal( $('div[data-element-id="1"]').length , 1 );
+	assert.equal( $('div[data-element-id="4"]').length , 0 );
+	document.querySelector('div[data-element-id="1"]').remove();
+	karmaBuilder.karmaModels.reset();
 });
 
 /***
@@ -181,100 +144,68 @@ QUnit.test("assert.async() saveContent", function ( assert ) {
 
 QUnit.test ( "karmaUpdateModel", function ( assert ) {
 
-	var row = document.createElement( 'div' );
-	row.setAttribute( 'data-element-id' , '11' );
-	row.setAttribute( 'class' , 'karma-vc-row karma-builder-element' );
-	document.body.appendChild( row );
+	var shortcodes = {};
+	for ( var i = 1; i < 5 ; i++ ){
 
-	var column = document.createElement( 'div' );
-	column.setAttribute( 'data-element-id' , '12' );
-	column.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
-	row.appendChild( column );
-
-	var column2 = document.createElement( 'div' );
-	column2.setAttribute( 'data-element-id' , '13' );
-	column2.setAttribute( 'class' , 'karma-vc-column karma-builder-element' );
-	row.appendChild( column2 );
-
-	var shortcode = document.createElement( 'div' );
-	shortcode.setAttribute( 'data-element-id' , '14' );
-	shortcode.setAttribute( 'class' , 'shortcode karma-builder-element' );
-	column.appendChild( shortcode );
-
-	var shortcode1 = new karmaBuilder.model({
-			"shortcode_id"          : 11,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
+		shortcodes[i+'_model'] = new karmaBuilder.model({
+			"shortcode_id": i+10,
+			"shortcode_name": "shortcode_test",
+			"parent_id": 0,
+			"order": 1,
+			"shortcode_attributes": {
+				"color": "red",
+				"font": "arial",
+				"bg": "#000fff",
+				"style": 'font-family: "tahoma";',
+				"radius": '18',
+				"title": 'this is a " title " ',
+				"sub_title": "this is a subtitle's test"
 			},
-			"shortcode_content" : ""
-		}),
-		shortcode2 = new karmaBuilder.model({
-			"shortcode_id"          : 12,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
-			},
-			"shortcode_content" : ""
-		}),
-		shortcode3 = new karmaBuilder.model({
-			"shortcode_id"          : 13,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
-			},
-			"shortcode_content" : ""
-		}),
-		shortcode4 = new karmaBuilder.model({
-			"shortcode_id"          : 14,
-			"shortcode_name"        : "shortcode_test",
-			"parent_id"             : 0,
-			"order"                 : 1,
-			"shortcode_attributes" : {
-				"color"        	: "red",
-				"font"        	: "arial",
-				"bg"        	: "#000fff",
-				"style"        	: 'font-family: "tahoma";',
-				"radius"    	: '18',
-				"title"        	: 'this is a " title " ',
-				"sub_title"    	: "this is a subtitle's test"
-			},
-			"shortcode_content" : ""
+			"shortcode_content": ""
 		});
-	karmaBuilder.karmaModels.add( shortcode1 );
-	karmaBuilder.karmaModels.add( shortcode2 );
-	karmaBuilder.karmaModels.add( shortcode3 );
-	karmaBuilder.karmaModels.add( shortcode4 );
+		karmaBuilder.karmaModels.add(shortcodes[i+'_model'] );
 
-	shortcode_instance.updateShortcode( 12 , {
+		shortcodes['sh'+i] = new karmaBuilder.shortcodes({
+			template: _.template( '<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
+			model : shortcodes[i+'_model'] ,
+		});
+
+		var placeHolder;
+		switch (i) {
+
+			case 1:
+				placeHolder = document.getElementById('qunit');
+				break;
+			case 2:
+				placeHolder = document.querySelector('*[data-element-id="11"]');
+				break;
+			case 3:
+				placeHolder = document.querySelector('*[data-element-id="11"]');
+				break;
+			case 4:
+				placeHolder = document.querySelector('*[data-element-id="12"]');
+				break;
+
+		}
+
+		shortcodes['sh'+i].create(placeHolder);
+
+	}
+	$('*[data-element-id="14"]').hover(function (e) {
+		e.preventDefault();
+		alert(2);
+	},function (e) {
+		alert(3);
+	})
+
+	shortcodes.sh2.updateShortcode( {
 		"font"			: "tahoma",
 		"bg"			: "green",
 		"style"        	: 'font-family: "sans-serif";',
 	} );
+
+
+
 	assert.deepEqual( karmaBuilder.karmaModels.where( { 'shortcode_id' : 12 } )[0].attributes, {
 		"shortcode_id"          : 12,
 		"shortcode_name"        : "shortcode_test",
@@ -291,5 +222,7 @@ QUnit.test ( "karmaUpdateModel", function ( assert ) {
 		},
 		"shortcode_content" : ""
 	} );
+	 // document.querySelector('div[data-element-id="11"]').remove();
+	 // karmaBuilder.karmaModels.reset();
 
 });
