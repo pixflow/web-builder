@@ -223,7 +223,7 @@ iframe {
           left: 33px;
           letter-spacing: 0.8px;
           opacity: 0;
-          padding: 2px;
+          padding: 2px 13px 0 0;
           white-space: nowrap; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
           padding-top: 0;

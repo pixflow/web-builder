@@ -188,6 +188,8 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 
+
+
 		/**
 		 * Delete elements model and html
 		 *
@@ -254,8 +256,16 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
 
+	document.addEventListener(  'DOMContentLoaded',function () {
+		var temp =    wp.template('karma-element-setting-panel');
+		var $html = document.createElement('div');
+		$html.innerHTML =  temp( { headerTitle : "Section Setting" } );
+		document.getElementById('page').appendChild( $html );
+	});
 
 })(jQuery,karmaBuilder);
+
+
 
 
 
