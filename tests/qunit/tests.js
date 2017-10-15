@@ -1,4 +1,5 @@
 var karmaView = new karmaBuilder.view();
+
 /** Create object from builder */
 var shortcode_instance = new karmaBuilder.shortcodes({
 
@@ -6,17 +7,38 @@ var shortcode_instance = new karmaBuilder.shortcodes({
 
 });
 
-
 /**
  * Test addShortcodeModel
  */
 QUnit.test('addShortcodeModel', function ( assert ) {
 
-	var div = document.createElement( 'div' );
-	div.setAttribute( 'data-name', 'karma-row' );
-	karmaView.dropElement( div , document.getElementById( 'qunit' ) );
-	assert.deepEqual( document.querySelectorAll( '.row' ).length, 1 );
+	var shortcode = new karmaBuilder.model({
+		"shortcode_id": 1,
+		"shortcode_name": "shortcode_test",
+		"parent_id": 0,
+		"order": 1,
+		"shortcode_attributes": {
+			"color": "red",
+			"font": "arial",
+			"bg": "#000fff",
+			"style": 'font-family: "tahoma";',
+			"radius": '18',
+			"title": 'this is a " title " ',
+			"sub_title": "this is a subtitle's test"
+		},
+		"shortcode_content": ""
+	});
+	karmaBuilder.karmaModels.add(shortcode);
+	var newShortcode = new karmaBuilder.shortcodes({
 
+		template: _.template( '<div class="row karma-builder-element delete-element" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
+		model : shortcode,
+
+	});
+	console.log(document.getElementById( 'karma-tests' ))
+	newShortcode.create( document.getElementById( 'karma-tests' ) );
+	assert.deepEqual( document.querySelectorAll( '.row' ).length, 1 );
+	$('*[data-element-id=1]').remove();
 });
 
 /**
@@ -24,7 +46,7 @@ QUnit.test('addShortcodeModel', function ( assert ) {
  */
 QUnit.test( "karmaDeleteModel" , function ( assert ) {
 
-
+	karmaBuilder.karmaModels.reset();
 	var karmaDeleteResult = {
 		0: {
 			"shortcode_id": 1,
@@ -80,17 +102,17 @@ QUnit.test( "karmaDeleteModel" , function ( assert ) {
 				"shortcode_content": ""
 			});
 		karmaBuilder.karmaModels.add(shortcode);
-
 		var newShortcode = new karmaBuilder.shortcodes({
+
 			template: _.template( '<div class="row karma-builder-element delete-element" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
 			model : shortcode,
-		});
 
+		});
 		var placeHolder;
 		switch (i) {
 
 			case 1:
-				placeHolder = document.getElementById('qunit');
+				placeHolder = document.getElementById('karma-tests');
 				break;
 			case 2:
 				placeHolder = document.querySelector('*[data-element-id="1"]');
@@ -106,7 +128,6 @@ QUnit.test( "karmaDeleteModel" , function ( assert ) {
 		newShortcode.create(placeHolder);
 
 	}
-
 	document.querySelector('div[data-element-id="2"]').click();
 	var result = karmaBuilder.karmaModels;
 	var testResult = {};
@@ -115,7 +136,6 @@ QUnit.test( "karmaDeleteModel" , function ( assert ) {
 		testResult[i] = result.models[i].attributes;
 
 	}
-
 	assert.deepEqual( testResult , karmaDeleteResult );
 	assert.equal( $('div[data-element-id="1"]').length , 1 );
 	assert.equal( $('div[data-element-id="4"]').length , 0 );
@@ -131,8 +151,10 @@ QUnit.test("assert.async() saveContent", function ( assert ) {
 
 	var done = assert.async();
 	karmaView.prepareAjax().done( function ( response ) {
+
 		response = JSON.parse(response);
 		assert.equal(response.result, "true");
+
 	});
 	done();
 
@@ -164,17 +186,17 @@ QUnit.test ( "karmaUpdateModel", function ( assert ) {
 			"shortcode_content": ""
 		});
 		karmaBuilder.karmaModels.add(shortcodes[i+'_model'] );
-
 		shortcodes['sh'+i] = new karmaBuilder.shortcodes({
+
 			template: _.template( '<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
 			model : shortcodes[i+'_model'] ,
-		});
 
+		});
 		var placeHolder;
 		switch (i) {
 
 			case 1:
-				placeHolder = document.getElementById('qunit');
+				placeHolder = document.getElementById('karma-tests');
 				break;
 			case 2:
 				placeHolder = document.querySelector('*[data-element-id="11"]');
@@ -192,19 +214,22 @@ QUnit.test ( "karmaUpdateModel", function ( assert ) {
 
 	}
 	$('*[data-element-id="14"]').hover(function (e) {
+
 		e.preventDefault();
 		alert(2);
-	},function (e) {
-		alert(3);
-	})
 
+	},function (e) {
+
+		alert(3);
+
+	});
 	shortcodes.sh2.updateShortcode( {
+
 		"font"			: "tahoma",
 		"bg"			: "green",
 		"style"        	: 'font-family: "sans-serif";',
+
 	} );
-
-
 
 	assert.deepEqual( karmaBuilder.karmaModels.where( { 'shortcode_id' : 12 } )[0].attributes, {
 		"shortcode_id"          : 12,
@@ -222,7 +247,7 @@ QUnit.test ( "karmaUpdateModel", function ( assert ) {
 		},
 		"shortcode_content" : ""
 	} );
-	 // document.querySelector('div[data-element-id="11"]').remove();
-	 // karmaBuilder.karmaModels.reset();
+	   document.querySelector('div[data-element-id="11"]').remove();
+	   karmaBuilder.karmaModels.reset();
 
 });

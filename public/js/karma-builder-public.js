@@ -128,7 +128,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
 		getElementMap: function ( shortcodeName ) {
 
 			if( this.shortcodeParams ) {
@@ -354,12 +353,12 @@ var karmaBuilder = karmaBuilder || {};
 	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
 
 
-	window.onload = function () {
+	/*window.onload = function () {
 		var temp =    wp.template('karma-element-setting-panel');
 		var $html = document.createElement('div');
 		$html.innerHTML =  temp( { headerTitle : "Section Setting" , shortcodeId : 1});
 		document.getElementById('page').appendChild( $html );
-	}
+	}*/
 
 
 
