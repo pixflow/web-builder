@@ -54,6 +54,7 @@ class Karma_Controller {
 		$karma_view = Karma_Factory_Pattern::$builder_views;
 		foreach ( $available_controller as $controller ){
 			$karma_view->load_controller_js_templates( $controller );
+			$karma_view->load_controller_script( $controller );
 		}
 
 	}

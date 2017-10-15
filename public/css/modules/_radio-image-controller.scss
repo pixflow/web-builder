@@ -1,0 +1,19 @@
+.karma-radio-image-controller{
+  margin-right: 20px;
+	.radio-image-controller-template{
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+	  flex-wrap: wrap;
+	  width: 100%;
+
+	  div{
+		padding-left: 20px;
+	  }
+	  input.hidden-input{
+		display: none;
+	  }
+
+	}
+}

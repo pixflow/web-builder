@@ -151,54 +151,33 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		formBuilder : function ( shortcodeId ) {
-			console.log(shortcodeId);
+		openSettingPanel: function(shortcodeId){
 
+			var template = wp.template('karma-element-setting-panel');
+			var $html = document.createElement('div');
+			var content = this.formBuilder( shortcodeId );
+			$html.innerHTML =  template( { headerTitle : "Section Setting" , content : content});
+			document.getElementById('page').appendChild( $html );
+
+			$('body').trigger('karma_finish_form_builder');
+
+		},
+
+		formBuilder : function ( shortcodeId ) {
 
 			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
 				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
 				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off">',
 				groupHtml = '';
-			console.log(ShortcodeParams.params);
+
 			for( var counter in ShortcodeParams.params ){
-				switch ( ShortcodeParams.params[ counter ].type ){
-					case 'text' :
-						groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', {
-							labelHeading : ShortcodeParams.params[counter].label,
-							name: ShortcodeParams.params[counter].name
-						} );
-						break;
-
-					case 'title' :
-						groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', {
-							title: ShortcodeParams.params[counter].label,
-							name: ShortcodeParams.params[counter].name
-						} );
-						break;
-
-					case 'radio-image' :
-						groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', {
-							field : ShortcodeParams.params[counter].field,
-							column : ShortcodeParams.params[counter].columns
-						} );
-						break;
-
-					default:
-						break;
-
-				}
-
-
+				groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', ShortcodeParams.params[counter] );
 			}
-
 
 			karmaformhtml += '<div id="elementRow" >' +  groupHtml + "</div>" ;
 			var popup = document.createElement('div');
 			popup.innerHTML = karmaformhtml;
 			return popup.innerHTML;
-
-
-
 
 		}
 
@@ -223,7 +202,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * Set defaults in create
 		 */
 		initialize : function( options ) {
-
+			console.log(this.collection)
 			this.template = options.template;
 
 		},
@@ -279,10 +258,11 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.el.innerHTML = this.template( this.model );
 			placeHolder.appendChild( this.el );
-			$('body').trigger( 'finish_render_html', [ this.model ] );
+			$('body').trigger( 'karma_finish_render_html', [ this.model ] );
 			return true;
 
 		},
+
 
 		/**
 		 * Delete elements model and html
@@ -404,8 +384,11 @@ var karmaBuilder = karmaBuilder || {};
 	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
 	
 
+	window.builder = new karmaBuilder.view();
+
 	window.onload = function () {
 
+		builder.openSettingPanel(1);
 	}
 
 

@@ -5,10 +5,12 @@
 }
 @font-face {
   font-family: HelveticaNeue;
-  src: url(../font/HelveticaNeue.ttf);
+  //src: url(../font/HelveticaNeue.ttf);
+  src: url(../font/HelveticaNeue.woff);
 }
 @font-face {
   font-family: HelveticaNeue_BlackCond;
+  src: url(../font/Helvetica_Neue_Black.woff);
   src: url(../font/HelveticaNeue_BlackCond.ttf);
 }
 
@@ -24,6 +26,7 @@
 
 @font-face {
   font-family: HelveticaNeue_Thin;
+  src: url(../font/HelveticaNeueThin.woff);
   src: url(../font/HelveticaNeue_Thin.ttf);
 }
 

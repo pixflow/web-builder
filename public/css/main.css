@@ -1343,9 +1343,10 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   src: url(../font/Helvetica_Neu_Bold.ttf); }
 @font-face {
   font-family: HelveticaNeue;
-  src: url(../font/HelveticaNeue.ttf); }
+  src: url(../font/HelveticaNeue.woff); }
 @font-face {
   font-family: HelveticaNeue_BlackCond;
+  src: url(../font/Helvetica_Neue_Black.woff);
   src: url(../font/HelveticaNeue_BlackCond.ttf); }
 @font-face {
   font-family: HelveticaNeue_Light;
@@ -1355,6 +1356,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   src: url(../font/HelveticaNeue_Medium.ttf); }
 @font-face {
   font-family: HelveticaNeue_Thin;
+  src: url(../font/HelveticaNeueThin.woff);
   src: url(../font/HelveticaNeue_Thin.ttf); }
 @font-face {
   font-family: HelveticaNeueBd;
@@ -1532,6 +1534,20 @@ iframe {
     font-size: 15px;
     line-height: 17px;
     font-weight: normal; }
+
+.karma-radio-image-controller {
+  margin-right: 20px; }
+  .karma-radio-image-controller .radio-image-controller-template {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%; }
+    .karma-radio-image-controller .radio-image-controller-template div {
+      padding-left: 20px; }
+    .karma-radio-image-controller .radio-image-controller-template input.hidden-input {
+      display: none; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

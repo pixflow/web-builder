@@ -46,22 +46,45 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "extra_class",
 					"type"		=> Karma_Controller::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					'value'		=> ''
+					'value'		=> 'coulmn'
 				),
 				array(
 					"name"		=> "radio-image",
 					"type"		=> Karma_Controller::RADIO_IMAGE,
 					"label"		=> esc_attr__( "images", 'karma' ),
-					"columns"    => 1,
+					"columns"    => 2,
 					'value'		=> 0,
 					"field"		=> array(
+
 						array(
-							'image' => '1.jpg',
-							'title' => "Full width"
+							'image' 	=> 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'title' 	=> "Container width",
+							'value' 	=> "1"
 						),
 						array(
-							'image' => '2.jpg',
-							'title' => "Container width"
+							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'title' => "Container width",
+							'value' 	=> "2"
+						),
+						array(
+							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'title' => "Container width",
+							'value' 	=> "3"
+						),
+						array(
+							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'title' => "Container width",
+							'value' 	=> "4"
+						),
+						array(
+							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'title' => "Container width",
+							'value' 	=> "5"
+						),
+						array(
+							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'title' => "Container width",
+							'value' 	=> "6"
 						)
 					)
 				),
@@ -69,7 +92,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "title",
 					"type"		=> Karma_Controller::TITLE,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					'value'		=> ''
+					'value'		=> 'Class Name'
 				)
 			)
 		);

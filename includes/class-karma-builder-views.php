@@ -109,9 +109,20 @@ class Karma_Views {
 
 		?>
 		<script type="text/html" id="tmpl-karma-<?php echo $controller; ?>-controller" >
-			<?php include plugin_dir_path( dirname( __FILE__ ) ) . "public/templates/controller/{$controller}-controller-template.php"; ?>
+			<?php include plugin_dir_path( dirname( __FILE__ ) ) . "public/templates/controller/{$controller}/template.php"; ?>
 		</script>
 		<?php
+
+	}
+
+	/*
+	 * enqueue controller script file
+	 *
+	 * @return void
+	 */
+	public function load_controller_script( $controller ){
+
+		wp_enqueue_script( $controller, plugin_dir_url( __FILE__ ) . "../public/templates/controller/{$controller}/script.js" );
 
 	}
 
