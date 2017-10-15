@@ -5,7 +5,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 	public function render( $atts, $content ) {
 
-		return "<div class='karma_row'> $content </div>";
+		return "<div class='karma_row'> " . do_shortcode($content) . " </div>";
 
 	}
 

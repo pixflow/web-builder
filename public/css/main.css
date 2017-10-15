@@ -28,7 +28,7 @@ html {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px; } }
-.container-fluid {
+.karma-container-fluid {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -36,7 +36,7 @@ html {
   padding-left: 15px;
   width: 100%; }
 
-.row {
+.karma-row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;

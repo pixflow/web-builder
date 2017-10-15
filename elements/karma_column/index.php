@@ -6,13 +6,29 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static function render( $atts, $content ) {
 
-		return "<div class='karma_column'> $content </div>";
+		$atts = shortcode_atts(
+			array(
+				'sm_size'          => '12',
+				'md_size'       => '12' ,
+				'lg_size'=>'12',
+				'xl_size'  => '12',
+			)
+			, $atts
+		);
+
+		return "<div class='"
+			       ."karma_column "
+			       ."karma-col-sm-" . $atts['sm_size']
+			       ." karma-col-md-" . $atts['md_size']
+			       ." karma-col-lg-" . $atts['lg_size']
+			       ." karma-col-xl-" . $atts['xl_size']
+			       ."'> " . do_shortcode($content) . "</div>";
 
 	}
 
 	public static function js_render() {
 
-		return "<div class='karma_column'> {{ attributes.shortcode_content }} </div>";
+		return "<div class='karma_column karma-col-sm-{{ attributes.sm_size }} karma-col-md-{{ attributes.md_size }} karma-col-lg-{{ attributes.lg_size }} karma-col-xl-{{ attributes.xl_size }}'> {{ attributes.shortcode_content }} </div>";
 
 	}
 

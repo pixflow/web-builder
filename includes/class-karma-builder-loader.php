@@ -106,8 +106,8 @@ class Karma_Builder_Loader {
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
 			add_action( 'wp_head', array( $this, 'load_builder_js_templates' ) );
-			$this->init_elements();
 		}
+		$this->init_elements();
 
 	}
 
