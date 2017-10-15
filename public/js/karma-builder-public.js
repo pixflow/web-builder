@@ -267,7 +267,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
 		/**
 		 * Render new elements in defined placeHolder
 		 *
@@ -284,9 +283,6 @@ var karmaBuilder = karmaBuilder || {};
 			return true;
 
 		},
-
-
-
 
 		/**
 		 * Delete elements model and html
@@ -340,9 +336,64 @@ var karmaBuilder = karmaBuilder || {};
 			this.update( document.querySelector( '*[data-element-id="'+model.attributes.shortcode_id+'"]' ) );
 			return karmaBuilder.karmaModels;
 
-		}
+		},
+
+        /**
+         * find children of model
+         *
+         * @since 1.0.0
+         *
+         * @return array - children models id
+         */
+        findChildren : function( ) {
+        	return karmaBuilder.karmaModels.where( { 'parent_id' : this.model.attributes['shortcode_id'] } )
+        },
 
 	});
+
+    karmaBuilder.sectionElement = karmaBuilder.shortcodes.extend({
+
+        /**
+         * return current layout grid
+         *
+         * @since 1.0.0
+         *
+         * @returns {array} - current layout of section
+         */
+        currentGrid : function( ) {
+
+            var childrenModels = this.findChildren();
+            var currentGrid = [];
+            for (var i = 0, len = childrenModels.length; i < len; i++) {
+                currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.width ) )
+            }
+			return currentGrid;
+
+        },
+
+
+        /**
+         * Calculate new layout grid after append nw column
+         *
+         * @since 1.0.0
+         *
+         * @returns {array} - new layout of section after add new column
+         */
+        calculateNewGrid : function( ) {
+        	var newGrid = this.currentGrid();
+        	newGrid.reverse();
+            for (var i = 0, len = newGrid.length; i < len; i++) {
+                if(newGrid[i] > 1) {
+                    newGrid[i] = parseInt(newGrid[i] - 1);
+                    break;
+                }
+            }
+            newGrid.reverse();
+            newGrid.push(1);
+            return newGrid;
+        }
+
+    });
 
 	var KarmaShortcodesCollection = Backbone.Collection.extend({
 

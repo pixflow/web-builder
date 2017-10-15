@@ -251,3 +251,134 @@ QUnit.test ( "karmaUpdateModel", function ( assert ) {
 	   karmaBuilder.karmaModels.reset();
 
 });
+
+/**
+ * It is find children of Element Test
+ */
+QUnit.test( "karmaFindChildren" , function ( assert ) {
+    karmaBuilder.karmaModels.reset();
+	var shortcodes = {};
+    for ( var i = 1; i < 5 ; i++ ){
+		if(i == 2 || i == 3 || i == 4) {
+			var parentId = 1;
+		}else{
+			var parentId = 0;
+		}
+        shortcodes['model_'+i] = new karmaBuilder.model({
+            "shortcode_id": i,
+            "shortcode_name": "shortcode_test",
+            "parent_id": parentId,
+            "order": 1,
+            "shortcode_attributes": {
+                "color": "red",
+                "font": "arial",
+                "bg": "#000fff",
+                "style": 'font-family: "tahoma";',
+                "radius": '18',
+                "title": 'this is a " title " ',
+                "sub_title": "this is a subtitle's test"
+            },
+            "shortcode_content": ""
+        });
+        karmaBuilder.karmaModels.add(shortcodes['model_'+i] );
+
+        shortcodes['sh'+i] = new karmaBuilder.sectionElement({
+            model : shortcodes['model_'+i]
+        });
+    }
+    var expectedResult = [
+        shortcodes['model_2'],
+        shortcodes['model_3'],
+        shortcodes['model_4']
+    ];
+
+    var testResult = shortcodes.sh1.findChildren();
+    assert.deepEqual( testResult , expectedResult );
+
+});
+
+/**
+ * test get current grid layout
+ */
+QUnit.test( "karmaCurrentGrid" , function ( assert ) {
+    karmaBuilder.karmaModels.reset();
+	var shortcodes = [];
+	for ( var i = 1; i < 5 ; i++ ){
+        if(i == 2 || i == 3 || i == 4) {
+            var parentId = 1;
+            var width = 4;
+        }else{
+            var parentId = 0;
+        	var width = 0;
+        }
+        shortcodes['model_'+i] = new karmaBuilder.model({
+            "shortcode_id": i,
+            "shortcode_name": "shortcode_test",
+            "parent_id": parentId,
+            "order": 1,
+            "shortcode_attributes": {
+                "color": "red",
+                "font": "arial",
+                "bg": "#000fff",
+                "width": width,
+                "style": 'font-family: "tahoma";',
+                "radius": '18',
+                "title": 'this is a " title " ',
+                "sub_title": "this is a subtitle's test"
+            },
+            "shortcode_content": ""
+        });
+        karmaBuilder.karmaModels.add(shortcodes['model_'+i] );
+
+        shortcodes['sh'+i] = new karmaBuilder.sectionElement({
+            model : shortcodes['model_'+i]
+        });
+    }
+    var testResult = shortcodes.sh1.currentGrid();
+	var expectedResult = [4,4,4];
+    assert.deepEqual( testResult , expectedResult );
+
+});
+
+/**
+ * test calculate new grid before append new column
+ */
+QUnit.test( "karmaCalculateNewGrid" , function ( assert ) {
+    karmaBuilder.karmaModels.reset();
+    var shortcodes = [];
+    for ( var i = 1; i < 5 ; i++ ){
+        if(i == 2 || i == 3 || i == 4) {
+            var parentId = 1;
+            var width = 4;
+        }else{
+            var parentId = 0;
+            var width = 0;
+        }
+        shortcodes['model_'+i] = new karmaBuilder.model({
+            "shortcode_id": i,
+            "shortcode_name": "shortcode_test",
+            "parent_id": parentId,
+            "order": 1,
+            "shortcode_attributes": {
+                "color": "red",
+                "font": "arial",
+                "bg": "#000fff",
+                "width": width,
+                "style": 'font-family: "tahoma";',
+                "radius": '18',
+                "title": 'this is a " title " ',
+                "sub_title": "this is a subtitle's test"
+            },
+            "shortcode_content": ""
+        });
+        karmaBuilder.karmaModels.add(shortcodes['model_'+i] );
+
+        shortcodes['sh'+i] = new karmaBuilder.sectionElement({
+            model : shortcodes['model_'+i]
+        });
+    }
+    var testResult = shortcodes.sh1.calculateNewGrid();
+    var expectedResult = [4,4,3,1];
+    assert.deepEqual( testResult , expectedResult );
+
+});
