@@ -139,7 +139,7 @@
 			nextElement = findNextSibling( el );
 
 		el.classList.add('resize-dragging');
-		document.body.classList.add('noselect');
+		document.body.classList.add('grid-resizer-noselect');
 
 		el.dataset.originalWidth = el.offsetWidth - 1;
 		el.dataset.originalX = el.offsetLeft;
@@ -221,7 +221,7 @@
 			nextElement = findNextSibling( el );
 
 		el.classList.remove('resize-dragging');
-		document.body.classList.remove('noselect');
+		document.body.classList.remove('grid-resizer-noselect');
 
 		document.documentElement.removeEventListener('mousemove', doDrag, false);
 		document.documentElement.removeEventListener('mouseup', stopDrag, false);
