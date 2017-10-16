@@ -59,32 +59,32 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"field"		=> array(
 
 						array(
-							'image' 	=> 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
 							'title' 	=> "Container width",
 							'value' 	=> "1"
 						),
 						array(
-							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
 							'title' => "Container width",
 							'value' 	=> "2"
 						),
 						array(
-							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
 							'title' => "Container width",
 							'value' 	=> "3"
 						),
 						array(
-							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
 							'title' => "Container width",
 							'value' 	=> "4"
 						),
 						array(
-							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
 							'title' => "Container width",
 							'value' 	=> "5"
 						),
 						array(
-							'image' => 'wp-content/plugins/web-builder/public/media/build1-example.png',
+							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
 							'title' => "Container width",
 							'value' 	=> "6"
 						)
