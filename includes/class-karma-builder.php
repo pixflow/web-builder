@@ -29,6 +29,16 @@
  */
 class Karma_Builder {
 
+
+	/**
+	 * A static variable that contains an instance of Karma_Builder
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      Karma_Builder    $instance    The reference to *Singleton* instance of this class.
+	 */
+	private static $instance;
+
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
@@ -67,6 +77,42 @@ class Karma_Builder {
 	protected $version;
 
 	/**
+	 * Returns the *Singleton* instance of this class.
+	 *
+	 * @access   public
+	 * @return   Karma_Builder - The *Singleton* instance.
+	 * @since    1.0.0
+	 */
+	public static function get_instance( $factory = null ) {
+
+		if ( null === Karma_Builder::$instance ) {
+			Karma_Builder::$instance = new Karma_Builder( $factory );
+		}
+
+		return Karma_Builder::$instance;
+
+	}
+
+	/**
+	 * Private clone method to prevent cloning of the instance of the
+	 * *Singleton* instance.
+	 *
+	 * @access   private
+	 * @return   void
+	 * @since    1.0.0
+	 */
+	private function __clone(){}
+
+	/**
+	 * Private unserialize method to prevent unserializing of the *Singleton* instance.
+	 *
+	 * @access   private
+	 * @return   void
+	 * @since    1.0.0
+	 */
+	private function __wakeup(){}
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -75,7 +121,7 @@ class Karma_Builder {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct( $factory ) {
+	private function __construct( $factory ) {
 
 		$this->plugin_name = 'karma-builder';
 		$this->version = '1.0.0';

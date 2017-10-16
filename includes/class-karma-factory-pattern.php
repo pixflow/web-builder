@@ -150,7 +150,8 @@ class Karma_Factory_Pattern {
 	 */
 	public function __construct(){
 
-		new Karma_Builder( $this );
+		self::$builder = Karma_Builder::get_instance( $this );
+
 	}
 
 

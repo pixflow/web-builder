@@ -79,11 +79,13 @@ class Karma_Builder_Core{
 	 * @since    1.0.0
 	 */
 	public static function get_instance() {
+
 		if ( null === Karma_Builder_Core::$instance ) {
 			Karma_Builder_Core::$instance = new Karma_Builder_Core();
 		}
 
 		return Karma_Builder_Core::$instance;
+
 	}
 
 	/**
