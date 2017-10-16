@@ -1495,33 +1495,7 @@ iframe {
           white-space: nowrap; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
 
-          padding-top: 0;
-          padding-right: 8px;
-          padding-bottom: 0;
-          }
-          #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra svg {
-            width: 12px;
-            height: 12px; }
-            #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra svg * {
-              stroke: #394959; }
-  #karma-element-setting-panel-container button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s; }
-  #karma-element-setting-panel-container button.accordion.active, #karma-element-setting-panel-container button.accordion:hover {
-    background-color: #ccc; }
-  #karma-element-setting-panel-container div.panel {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
-  }
+          padding-right: 8px; }
 
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
