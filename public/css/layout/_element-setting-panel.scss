@@ -35,7 +35,20 @@ iframe{
 		cursor: pointer;
 		position: absolute;
 
-		.revert-svg,
+		.revert-svg{
+		  @extend .flex;
+		  @include box(24.49px, 24.49px);
+		  @include element_direction(9.51px, 7px);
+		  background-color: rgba(255, 255, 255, 0.18);
+		  border-radius: 19px;
+		  margin-right: 5px;
+		  svg {
+			* {
+			  stroke: $extra-icon-color !important;
+			}
+		  }
+		}
+		
 		.close-svg {
 		  @extend .flex;
 		  @include box(24.49px, 24.49px);
@@ -44,9 +57,8 @@ iframe{
 		  border-radius: 19px;
 		  margin-right: 5px;
 		  svg {
-			@include box(12px, 12px);
 			* {
-			  stroke: $white-color;
+			  fill: $extra-icon-color;
 			}
 		  }
 		}
@@ -71,7 +83,7 @@ iframe{
 		.svg-extra {
 		  svg {
 			* {
-			  stroke: $white-color;
+			  stroke: $extra-icon-color;
 			}
 		  }
 		}
@@ -79,7 +91,7 @@ iframe{
 		  .svg-extra {
 			svg {
 			  * {
-				stroke: $white-color;
+				stroke: $extra-icon-color;
 			  }
 			}
 		  }
@@ -96,8 +108,8 @@ iframe{
 		background-color: $white-color;
 		box-shadow: 0 -2px 5px 2px rgba(57,73,89,0.11);
 		display: inline-flex;
-		height: 33px;
-		max-width: 33px;
+		height: 35px;
+		max-width: 35px;
 		margin-bottom: 6px;
 		padding: 6px;
 		position: relative;
@@ -108,7 +120,7 @@ iframe{
 		  .svg-extra {
 			svg{
 			  *{
-				stroke: #394959;
+
 			  }
 			}
 		  }
@@ -133,13 +145,7 @@ iframe{
 
 		.svg-extra {
 		  @extend .flex;
-		  @include padding(0,8px,0,5px);
-		  svg {
-			@include box(12px, 12px);
-			* {
-			  stroke: #394959;
-			}
-		  }
+		  padding-right: 8px;
 		}
 	  }
 	}

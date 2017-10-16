@@ -1268,8 +1268,7 @@ html {
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg,
-#karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
+.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
   justify-content: center;
   display: flex;
   text-align: center;
@@ -1427,7 +1426,18 @@ iframe {
         left: auto;
         cursor: pointer;
         position: absolute; }
-        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg,
+        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg {
+          width: 24.49px;
+          height: 24.49px;
+          top: 9.51px;
+          right: 7px;
+          bottom: auto;
+          left: auto;
+          background-color: rgba(255, 255, 255, 0.18);
+          border-radius: 19px;
+          margin-right: 5px; }
+          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg * {
+            stroke: #fff !important; }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg {
           width: 24.49px;
           height: 24.49px;
@@ -1438,13 +1448,8 @@ iframe {
           background-color: rgba(255, 255, 255, 0.18);
           border-radius: 19px;
           margin-right: 5px; }
-          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg,
-          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg {
-            width: 12px;
-            height: 12px; }
-            #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg *,
-            #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
-              stroke: #fff; }
+          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
+            fill: #fff; }
   #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
     display: flex; }
     #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
@@ -1467,16 +1472,14 @@ iframe {
         background-color: #fff;
         box-shadow: 0 -2px 5px 2px rgba(57, 73, 89, 0.11);
         display: inline-flex;
-        height: 33px;
-        max-width: 33px;
+        height: 35px;
+        max-width: 35px;
         margin-bottom: 6px;
         padding: 6px;
         position: relative;
         transition: max-width .3s, background .3s; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover {
           max-width: 150px; }
-          #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover .svg-extra svg * {
-            stroke: #394959; }
           #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover span {
             color: #394959;
             left: 33px;
@@ -1491,10 +1494,11 @@ iframe {
           padding: 2px 13px 0 0;
           white-space: nowrap; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
+
           padding-top: 0;
           padding-right: 8px;
           padding-bottom: 0;
-          padding-left: 5px; }
+          }
           #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra svg {
             width: 12px;
             height: 12px; }
@@ -1516,7 +1520,9 @@ iframe {
   #karma-element-setting-panel-container div.panel {
     padding: 0 18px;
     display: none;
-    background-color: white; }
+    background-color: white;
+  }
+
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
