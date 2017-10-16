@@ -31,11 +31,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Karma_Controller {
 
-	const TEXT = 'text';
+	const TITLE2 = 'title2';
 	const TITLE = 'title';
 	const IMAGE = 'image';
 	const RANGE = 'range';
-	const INPUT = 'input';
+	const TEXT = 'text';
 	const RADIO_IMAGE = 'radio-image';
 
 

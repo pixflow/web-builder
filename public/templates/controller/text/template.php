@@ -1,4 +1,4 @@
 
-<div class="karma-text-controller">
-	<div class="karma-text-field"> {{{data.value}}} </div>
+<div id="{{ data.id }}" class="karma-text-input-controller" >
+	<input id="input-{{ data.id }}"  type="text" placeholder="{{ data.value }}" name="{{ data.param_name }}" class="karma-text-input-field" />
 </div>

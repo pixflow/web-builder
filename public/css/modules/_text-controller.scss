@@ -1,12 +1,23 @@
+.karma-text-input-controller{
+  justify-content: center;
+  display: flex;
+  padding: 8px 0;
 
-.karma-text-controller{
-  div.karma-text-field{
+  input.karma-text-input-field{
 
-	color: rgba(57, 73, 89, 0.8);
-	font-family: HelveticaNeue_Medium;
-	font-size: 15px;
-	font-weight: normal;
-	line-height: 17px;
+    @include box(245px, 36px);
+    background: #fff;
+    border: 1px solid rgba(57,73,89,0.2);
+    border-radius: 20px;
+    color: rgba(57,73,89,0.6);
+    font-family: HelveticaNeue;
+    line-height: 14px;
 
   }
+
+  input::placeholder{
+
+    color: rgba(57,73,89,0.6);
+  }
+
 }

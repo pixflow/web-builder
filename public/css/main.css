@@ -1504,22 +1504,28 @@ iframe {
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
-.karma-text-input-controller input.karma-text-input-field {
-  width: 245px;
-  height: 36px;
-  background: #fff;
-  border: 1px solid rgba(57, 73, 89, 0.2);
-  border-radius: 20px;
-  color: rgba(57, 73, 89, 0.6);
-  font-family: HelveticaNeue;
-  line-height: 14px; }
-
 .karma-text-controller div.karma-text-field {
   color: rgba(57, 73, 89, 0.8);
   font-family: HelveticaNeue_Medium;
   font-size: 15px;
   font-weight: normal;
   line-height: 17px; }
+
+.karma-text-input-controller {
+  justify-content: center;
+  display: flex;
+  padding: 8px 0; }
+  .karma-text-input-controller input.karma-text-input-field {
+    width: 245px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid rgba(57, 73, 89, 0.2);
+    border-radius: 20px;
+    color: rgba(57, 73, 89, 0.6);
+    font-family: HelveticaNeue;
+    line-height: 14px; }
+  .karma-text-input-controller input::placeholder {
+    color: rgba(57, 73, 89, 0.6); }
 
 .karma-title-controller {
   align-items: center;
