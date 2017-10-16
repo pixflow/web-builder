@@ -115,47 +115,47 @@ class Karma_Builder {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-loader.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-i18n.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-karma-builder-admin.php';
+		require_once KARMA_BUILDER_DIR . 'admin/class-karma-builder-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-karma-builder-public.php';
+		require_once KARMA_BUILDER_DIR . 'public/class-karma-builder-public.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-core.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-core.php';
 
 		/**
 		 * The class responsible for define all elements controllers
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-controller.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-controller.php';
 
 
 		/**
 		 * The class responsible for define all elements controllers
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-shortcode-base.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-shortcode-base.php';
 
 
 		/**
 		 * The class responsible for Loading templates in frontend
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-views.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-views.php';
 
 
 	}
@@ -169,8 +169,9 @@ class Karma_Builder {
 	 */
 	private function constants() {
 
-		define( 'KARMA_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
-		define( 'KARMA_VERSION', $this->version );
+		define( 'KARMA_BUILDER_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
+		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );
+		define( 'KARMA_BUILDER_VERSION', $this->version );
 
 	}
 
