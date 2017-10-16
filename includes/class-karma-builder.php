@@ -80,6 +80,7 @@ class Karma_Builder {
 		$this->plugin_name = 'karma-builder';
 		$this->version = '1.0.0';
 
+		$this->constants();
 		$this->load_dependencies();
 		Karma_Factory_Pattern::$builder = $this;
 		$factory->set_builder_class_instance();
@@ -156,6 +157,20 @@ class Karma_Builder {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-views.php';
 
+
+	}
+
+	/**
+	 * Define the global constants for this plugin.
+	 *
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function constants() {
+
+		define( 'KARMA_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
+		define( 'KARMA_VERSION', $this->version );
 
 	}
 
