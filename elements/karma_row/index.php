@@ -25,6 +25,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"type"		=> Karma_Controller::IMAGE,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
+					"group"		=> 'advance',
 					"options"	=> array(
 						'full'		=> "full.png",
 						'container'	=> "container.png"
@@ -46,6 +47,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "extra_class",
 					"type"		=> Karma_Controller::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
+					"group"		=> 'advance',
 					'value'		=> 'coulmn'
 				),
 				array(
@@ -92,6 +94,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "title",
 					"type"		=> Karma_Controller::TITLE,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
+					"group"		=> 'advance',
 					'value'		=> 'Class Name'
 				)
 			)

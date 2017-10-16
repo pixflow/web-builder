@@ -34,20 +34,20 @@ var karmaBuilder = karmaBuilder || {};
 	'use strict';
 
 	karmaBuilder.view = Backbone.View.extend({
-
 		shortcodeParams : {},
+
+		/**
+		 * Define Karma-Builder events
+		 */
+		events : {
+			"click .accordion" : "settingPanelAccordion"
+		},
 
 		initialize : function () {
 
 			var pageModel = JSON.parse( builderModels );
 			karmaBuilder.karmaModels.add( pageModel );
 
-		},
-
-		/**
-		 * Define Karma-Builder events
-		 */
-		events : {
 		},
 
 		/**
@@ -98,6 +98,27 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns true
 		 */
 		dragElement : function(){
+
+		},
+
+		settingPanelAccordion : function() {
+			console.log("hi");
+			//
+			// var acc = document.getElementsByClassName("accordion");
+			// var i;
+			//
+			// for (i = 0; i < acc.length; i++) {
+			// 	acc[i].onclick = function() {
+			// 		this.classList.toggle("active");
+			// 		var panel = this.find('.panel');
+			// 		console.log(panel);
+			// 		if (panel.style.maxHeight){
+			// 			panel.style.maxHeight = null;
+			// 		} else {
+			// 			panel.style.maxHeight = panel.scrollHeight + "px";
+			// 		}
+			// 	}
+			// }
 
 		},
 
@@ -160,23 +181,34 @@ var karmaBuilder = karmaBuilder || {};
 			document.getElementById('page').appendChild( $html );
 
 			$('body').trigger('karma_finish_form_builder');
-
 		},
+
 
 		formBuilder : function ( shortcodeId ) {
 
 			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
 				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
 				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off">',
-				groupHtml = '';
+				groupHtml = '',
+				groupHtml_group = '';
 
 			for( var counter in ShortcodeParams.params ){
-				groupHtml += this.getWpTemplate( 'karma-' + ShortcodeParams.params[ counter ].type + '-controller', ShortcodeParams.params[counter] );
+				if(!ShortcodeParams.params[counter].group) {
+					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
+				}else{
+					 groupHtml_group += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
+					var $accordion = document.createElement('button');
+					$accordion.classList.add('accordion');
+					var $innerHTML_group = '<div class="panel" >'+ groupHtml_group +'</div>';
+					$accordion.innerHTML=$innerHTML_group;
+
+				}
 			}
 
-			karmaformhtml += '<div id="elementRow" >' +  groupHtml + "</div>" ;
+			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
 			var popup = document.createElement('div');
 			popup.innerHTML = karmaformhtml;
+			popup.appendChild($accordion);
 			return popup.innerHTML;
 
 		}
@@ -202,7 +234,6 @@ var karmaBuilder = karmaBuilder || {};
 		 * Set defaults in create
 		 */
 		initialize : function( options ) {
-			console.log(this.collection)
 			this.template = options.template;
 
 		},
@@ -212,6 +243,8 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 			"click .delete-element" : "deleteShortcode",
+			"click .accordion" : "settingPanelAccordion"
+
 		},
 
 		/**
@@ -291,6 +324,11 @@ var karmaBuilder = karmaBuilder || {};
 			return karmaBuilder.karmaModels;
 
 		},
+
+
+
+
+
 
 		/**
 		 * Update shortcode model and html
@@ -384,11 +422,12 @@ var karmaBuilder = karmaBuilder || {};
 	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
 	
 
-	window.builder = new karmaBuilder.view();
 
 	window.onload = function () {
+		window.builder = new karmaBuilder.view({el: $('body')});
 
 		builder.openSettingPanel(1);
+		builder.delegateEvents();
 	}
 
 
