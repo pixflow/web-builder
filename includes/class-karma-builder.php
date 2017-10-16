@@ -249,7 +249,7 @@ class Karma_Builder {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-karma-builder-core.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-core.php';
 		$this->core = Karma_Builder_Core::get_instance();
 
 	}

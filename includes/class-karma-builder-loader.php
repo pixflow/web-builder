@@ -137,7 +137,7 @@ class Karma_Builder_Loader {
 
 		self::$element_filename = apply_filters( 'karma_elements', self::$element_filename );
 		foreach ( self::$element_filename as $element ){
-			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'elements/karma_' . $element . '/index.php';
+			require_once KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/index.php';
 			$class_name  = 'Karma_' . ucfirst( $element ) ;
 			$class_name::get_instance() ;
 		}
