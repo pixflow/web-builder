@@ -1579,7 +1579,8 @@ iframe {
       width: 10px;
       border-left: 2px solid #394959;
       border-bottom: 2px solid #394959;
-      transform: rotate(-45deg); }
+      transform: rotate(-45deg);
+      transition-duration: .3s; }
   .karma-setting-panel-group-container div.karma-group-panel {
     background-color: #eee;
     border-radius: 0 0 7px 7px;
@@ -1588,7 +1589,8 @@ iframe {
     padding: 8px 0;
     overflow: hidden; }
   .karma-setting-panel-group-container .karma-group-button-shape-rotate {
-    transform: rotate(-225deg) !important; }
+    transform: rotate(-225deg) !important;
+    transition-duration: .3s; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */
