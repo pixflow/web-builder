@@ -1513,8 +1513,8 @@ iframe {
 
 .karma-text-input-controller {
   display: flex;
-  justify-content: center;
-  padding: 11.5px 21px 15px 21px; }
+  padding: 11.5px 21px 15px 21px;
+  justify-content: center; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
