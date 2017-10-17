@@ -47,7 +47,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "extra_class",
 					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					"group"		=> 'advance',
+					"group"		=> 'advance1',
 					'value'		=> 'coulmn'
 				),
 				array(

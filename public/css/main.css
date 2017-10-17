@@ -1402,7 +1402,7 @@ iframe {
   /*** Style of setting panel extra ***/ }
   #karma-element-setting-panel-container .karma-element-setting-panel {
     width: 285px;
-    min-height: 407.55px;
+    min-height: 220px;
     border-radius: 7px;
     background-color: #fff;
     box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
@@ -1495,8 +1495,7 @@ iframe {
           padding: 2px 13px 0 0;
           white-space: nowrap; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
-          padding-right: 8px;}
-
+          padding-right: 8px; }
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
@@ -1552,13 +1551,11 @@ iframe {
     .karma-radio-image-controller .radio-image-controller-template input.hidden-input {
       display: none; }
 
-.setting-panel-group-container {
+.karma-setting-panel-group-container {
   display: flex;
   flex-direction: column;
-  top: calc( 100% - 58px);
-  position: absolute;
   width: 100%; }
-  .setting-panel-group-container button.setting-panel-group-button {
+  .karma-setting-panel-group-container button.karma-setting-panel-group-button {
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -1575,20 +1572,23 @@ iframe {
     align-items: center;
     font-family: HelveticaNeue;
     font-size: 15px; }
-    .setting-panel-group-container button.setting-panel-group-button p {
+    .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
       margin: 0; }
-    .setting-panel-group-container button.setting-panel-group-button .group-button-shape {
+    .karma-setting-panel-group-container button.karma-setting-panel-group-button .karma-group-button-shape {
       height: 10px;
       width: 10px;
       border-left: 2px solid #394959;
       border-bottom: 2px solid #394959;
       transform: rotate(-45deg); }
-  .setting-panel-group-container div.panel {
-    padding: 8px 0;
+  .karma-setting-panel-group-container div.karma-group-panel {
     background-color: #eee;
-    overflow: hidden;
+    border-radius: 0 0 7px 7px;
     display: none;
-    border-radius: 0 0 7px 7px; }
+    margin-top: -3px;
+    padding: 8px 0;
+    overflow: hidden; }
+  .karma-setting-panel-group-container .karma-group-button-shape-rotate {
+    transform: rotate(-225deg) !important; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

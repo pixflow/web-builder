@@ -183,13 +183,15 @@ var karmaBuilder = karmaBuilder || {};
 							title: ShortcodeParams.params[counter].group
 						};
 					}
-					var html = this.getWpTemplate('karma-setting-panel-groups-extend', ShortcodeParams.params[counter]);
+					var html = this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 					groupHtml_group[ ShortcodeParams.params[counter].group ]['items'].push( html );
 				}
 			}
 			for( var counter in groupHtml_group ) {
 				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
 			}
+
+
 
 			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
 			var popup = document.createElement('div');

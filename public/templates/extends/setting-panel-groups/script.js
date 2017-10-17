@@ -1,6 +1,14 @@
 jQuery('body').off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_form_builder.groups', function() {
 	var $ = jQuery;
-	$( '.setting-panel-group-button' ).click( function () {
-		$( ".panel" ).slideToggle();
+	$( '.karma-setting-panel-group-button' ).click( function () {
+		$(this).next(".karma-group-panel" ).slideToggle();
+		if($(".karma-group-panel" ).css('display') == 'block'){
+			alert("hi");
+			$('.karma-group-button-shape').addClass('karma-group-button-shape-rotate');
+		}
+		else{
+			alert('df');
+
+		}
 	} )
 } );

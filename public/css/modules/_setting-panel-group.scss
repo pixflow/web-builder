@@ -2,14 +2,13 @@
 
 
 
-.setting-panel-group-container{
+.karma-setting-panel-group-container{
   display: flex;
   flex-direction: column;
-  top: calc( 100% - 58px);
-  position: absolute;
+
   width: 100%;
 
-  button.setting-panel-group-button {
+  button.karma-setting-panel-group-button {
 	background-color: #eee;
 	color: #444;
 	cursor: pointer;
@@ -30,7 +29,7 @@
 	  margin: 0;
 	}
 
-	.group-button-shape{
+	.karma-group-button-shape{
 	  height: 10px;
 	  width: 10px;
 	  border-left: 2px solid #394959;
@@ -38,12 +37,17 @@
 	  transform: rotate(-45deg);
 	}
   }
-  div.panel {
-	padding: 8px 0;
+  div.karma-group-panel {
+
 	background-color: #eee;
-	overflow: hidden;
-	display: none;
 	border-radius: 0 0 7px 7px;
+	display: none;
+	margin-top: -3px;
+	padding: 8px 0;
+	overflow: hidden;
+  }
+  .karma-group-button-shape-rotate{
+	transform: rotate(-225deg) !important;
   }
 
 
