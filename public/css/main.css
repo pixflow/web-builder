@@ -1402,11 +1402,12 @@ iframe {
   /*** Style of setting panel extra ***/ }
   #karma-element-setting-panel-container .karma-element-setting-panel {
     width: 285px;
-    height: 407.55px;
+    min-height: 407.55px;
     border-radius: 7px;
     background-color: #fff;
     box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
-    margin: 17px; }
+    margin: 17px;
+    position: relative; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header {
       width: 285px;
       height: 46px;
@@ -1494,8 +1495,7 @@ iframe {
           padding: 2px 13px 0 0;
           white-space: nowrap; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
-
-          padding-right: 8px; }
+          padding-right: 8px;}
 
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
@@ -1551,6 +1551,44 @@ iframe {
       padding-left: 20px; }
     .karma-radio-image-controller .radio-image-controller-template input.hidden-input {
       display: none; }
+
+.setting-panel-group-container {
+  display: flex;
+  flex-direction: column;
+  top: calc( 100% - 58px);
+  position: absolute;
+  width: 100%; }
+  .setting-panel-group-container button.setting-panel-group-button {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    font-family: HelveticaNeue;
+    font-size: 15px; }
+    .setting-panel-group-container button.setting-panel-group-button p {
+      margin: 0; }
+    .setting-panel-group-container button.setting-panel-group-button .group-button-shape {
+      height: 10px;
+      width: 10px;
+      border-left: 2px solid #394959;
+      border-bottom: 2px solid #394959;
+      transform: rotate(-45deg); }
+  .setting-panel-group-container div.panel {
+    padding: 8px 0;
+    background-color: #eee;
+    overflow: hidden;
+    display: none;
+    border-radius: 0 0 7px 7px; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

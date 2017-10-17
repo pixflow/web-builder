@@ -263,7 +263,7 @@ class Tests_Core extends WP_UnitTestCase {
 			"params"	=> array(
 				array(
 					"name"		=> "structure",
-					"type"		=> Karma_Controller::IMAGE,
+					"type"		=> Karma_Builder_Setting_Panel::IMAGE,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"options"	=> array(
@@ -273,7 +273,7 @@ class Tests_Core extends WP_UnitTestCase {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Controller::RANGE,
+					"type"		=> Karma_Builder_Setting_Panel::RANGE,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -285,7 +285,7 @@ class Tests_Core extends WP_UnitTestCase {
 				),
 				array(
 					"name"		=> "extra_class",
-					"type"		=> Karma_Controller::TEXT,
+					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)
@@ -297,7 +297,7 @@ class Tests_Core extends WP_UnitTestCase {
 			"params" => array(
 				array(
 					"name"		=> "width",
-					"type"		=> Karma_Controller::TEXT,
+					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"options"	=> array(
@@ -307,7 +307,7 @@ class Tests_Core extends WP_UnitTestCase {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Controller::RANGE,
+					"type"		=> Karma_Builder_Setting_Panel::RANGE,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -320,7 +320,7 @@ class Tests_Core extends WP_UnitTestCase {
 
 			,array(
 					"name"		=> "extra_class",
-					"type"		=> Karma_Controller::TEXT,
+					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)
@@ -341,7 +341,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"params"	=> array(
 					array(
 						"name"		=> "structure",
-						"type"		=> Karma_Controller::IMAGE,
+						"type"		=> Karma_Builder_Setting_Panel::IMAGE,
 						"label"		=> esc_attr__( "Structure", 'karma' ),
 						"value"		=> 'full',
 						"options"	=> array(
@@ -351,7 +351,7 @@ class Tests_Core extends WP_UnitTestCase {
 					),
 					array(
 						"name"		=> "space",
-						"type"		=> Karma_Controller::RANGE,
+						"type"		=> Karma_Builder_Setting_Panel::RANGE,
 						"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 						'value'		=> 0,
 						"options"	=> array(
@@ -363,7 +363,7 @@ class Tests_Core extends WP_UnitTestCase {
 					),
 					array(
 						"name"		=> "extra_class",
-						"type"		=> Karma_Controller::TEXT,
+						"type"		=> Karma_Builder_Setting_Panel::TEXT,
 						"label"		=> esc_attr__( "Class Name", 'karma' ),
 						'value'		=> ''
 					)
@@ -374,7 +374,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"params" => array(
 					array(
 						"name"		=> "width",
-						"type"		=> Karma_Controller::TEXT,
+						"type"		=> Karma_Builder_Setting_Panel::TEXT,
 						"label"		=> esc_attr__( "Structure", 'karma' ),
 						"value"		=> 'full',
 						"options"	=> array(
@@ -384,7 +384,7 @@ class Tests_Core extends WP_UnitTestCase {
 					),
 					array(
 						"name"		=> "space",
-						"type"		=> Karma_Controller::RANGE,
+						"type"		=> Karma_Builder_Setting_Panel::RANGE,
 						"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 						'value'		=> 0,
 						"options"	=> array(
@@ -397,7 +397,7 @@ class Tests_Core extends WP_UnitTestCase {
 
 				,array(
 						"name"		=> "extra_class",
-						"type"		=> Karma_Controller::TEXT,
+						"type"		=> Karma_Builder_Setting_Panel::TEXT,
 						"label"		=> esc_attr__( "Class Name", 'karma' ),
 						'value'		=> ''
 					)

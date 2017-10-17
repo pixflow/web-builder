@@ -39,7 +39,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 			"params" => array(
 				array(
 					"name"		=> "width",
-					"type"		=> Karma_Controller::TEXT,
+					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"options"	=> array(
@@ -49,7 +49,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Controller::RANGE,
+					"type"		=> Karma_Builder_Setting_Panel::RANGE,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -62,7 +62,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 			,array(
 					"name"		=> "extra_class",
-					"type"		=> Karma_Controller::TEXT,
+					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					'value'		=> ''
 				)

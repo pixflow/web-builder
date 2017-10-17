@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 
-class Karma_Controller {
+class Karma_Builder_Setting_Panel {
 
 	const TITLE2 = 'title2';
 	const TITLE = 'title';
@@ -38,7 +38,9 @@ class Karma_Controller {
 	const TEXT = 'text';
 	const RADIO_IMAGE = 'radio-image';
 
-
+	private $extends = array(
+		'groups'	=>	'setting-panel-groups'
+	);
 
 	/**
 	 * Load and register the controllers in builder
@@ -55,6 +57,24 @@ class Karma_Controller {
 		foreach ( $available_controller as $controller ){
 			$karma_view->load_controller_js_templates( $controller );
 			$karma_view->load_controller_script( $controller );
+		}
+
+	}
+
+	/**
+	 * Load and register extends in builder
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 */
+	public function register_extends(){
+
+		$extends = $this->extends;
+		$available_extends = apply_filters( 'karma_builder_extends', $extends );
+		$karma_view = Karma_Factory_Pattern::$builder_views;
+		foreach ( $available_extends as $extend ){
+			$karma_view->load_extend_js_templates( $extend );
+			$karma_view->load_extend_script( $extend );
 		}
 
 	}

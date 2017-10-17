@@ -22,7 +22,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 			"params"	=> array(
 				array(
 					"name"		=> "structure",
-					"type"		=> Karma_Controller::IMAGE,
+					"type"		=> Karma_Builder_Setting_Panel::IMAGE,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
 					"group"		=> 'advance',
@@ -33,7 +33,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Controller::RANGE,
+					"type"		=> Karma_Builder_Setting_Panel::RANGE,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
@@ -45,14 +45,14 @@ class Karma_Row extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "extra_class",
-					"type"		=> Karma_Controller::TEXT,
+					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					"group"		=> 'advance',
 					'value'		=> 'coulmn'
 				),
 				array(
 					"name"		=> "radio-image",
-					"type"		=> Karma_Controller::RADIO_IMAGE,
+					"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 					"label"		=> esc_attr__( "images", 'karma' ),
 					"columns"    => 2,
 					'value'		=> 0,
@@ -92,7 +92,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "title",
-					"type"		=> Karma_Controller::TITLE,
+					"type"		=> Karma_Builder_Setting_Panel::TITLE,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
 					"group"		=> 'advance',
 					'value'		=> 'Class Name'

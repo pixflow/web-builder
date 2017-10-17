@@ -123,6 +123,8 @@ class Karma_Builder_Loader {
 		$controller = Karma_Factory_Pattern::$builder_controller;
 		$karma_views->load_elements_setting_panel();
 		$controller->register_controllers();
+		$controller->register_extends();
+
 
 	}
 

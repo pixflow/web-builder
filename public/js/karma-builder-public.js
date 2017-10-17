@@ -40,7 +40,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * Define Karma-Builder events
 		 */
 		events : {
-			"click .accordion" : "settingPanelAccordion"
+
 		},
 
 		initialize : function () {
@@ -101,26 +101,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		settingPanelAccordion : function() {
-			console.log("hi");
-			//
-			// var acc = document.getElementsByClassName("accordion");
-			// var i;
-			//
-			// for (i = 0; i < acc.length; i++) {
-			// 	acc[i].onclick = function() {
-			// 		this.classList.toggle("active");
-			// 		var panel = this.find('.panel');
-			// 		console.log(panel);
-			// 		if (panel.style.maxHeight){
-			// 			panel.style.maxHeight = null;
-			// 		} else {
-			// 			panel.style.maxHeight = panel.scrollHeight + "px";
-			// 		}
-			// 	}
-			// }
-
-		},
 
 		/**
 		 * Drop Element function
@@ -188,27 +168,32 @@ var karmaBuilder = karmaBuilder || {};
 
 			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
 				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
-				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off">',
+				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off" onsubmit="return false">',
 				groupHtml = '',
-				groupHtml_group = '';
+				groupHtml_group = [],
+				setting_panel_group = '';
 
 			for( var counter in ShortcodeParams.params ){
-				if(!ShortcodeParams.params[counter].group) {
+				if( ! ShortcodeParams.params[counter].group ) {
 					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 				}else{
-					 groupHtml_group += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
-					var $accordion = document.createElement('button');
-					$accordion.classList.add('accordion');
-					var $innerHTML_group = '<div class="panel" >'+ groupHtml_group +'</div>';
-					$accordion.innerHTML=$innerHTML_group;
-
+					if( undefined === groupHtml_group[ ShortcodeParams.params[counter].group ] ){
+						groupHtml_group[ ShortcodeParams.params[counter].group ] = {
+							items : [],
+							title: ShortcodeParams.params[counter].group
+						};
+					}
+					var html = this.getWpTemplate('karma-setting-panel-groups-extend', ShortcodeParams.params[counter]);
+					groupHtml_group[ ShortcodeParams.params[counter].group ]['items'].push( html );
 				}
+			}
+			for( var counter in groupHtml_group ) {
+				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
 			}
 
 			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
 			var popup = document.createElement('div');
-			popup.innerHTML = karmaformhtml;
-			popup.appendChild($accordion);
+			popup.innerHTML = karmaformhtml + setting_panel_group;
 			return popup.innerHTML;
 
 		}

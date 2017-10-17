@@ -126,6 +126,32 @@ class Karma_Views {
 
 	}
 
+	/*
+	 * Print extend js template
+	 *
+	 * @return void
+	 */
+	public function load_extend_js_templates( $extend ){
+
+		?>
+		<script type="text/html" id="tmpl-karma-<?php echo $extend; ?>-extend" >
+			<?php include KARMA_BUILDER_DIR . "public/templates/extends/{$extend}/template.php"; ?>
+		</script>
+		<?php
+
+	}
+
+	/*
+	 * enqueue controller script file
+	 *
+	 * @return void
+	 */
+	public function load_extend_script( $extend ){
+
+		wp_enqueue_script( $extend, KARMA_BUILDER_URL . "public/templates/extends/{$extend}/script.js" );
+
+	}
+
 
 
 }

@@ -189,7 +189,7 @@ class Karma_Builder {
 		/**
 		 * The class responsible for define all elements controllers
 		 */
-		require_once KARMA_BUILDER_DIR . 'includes/class-karma-controller.php';
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-setting-panel.php';
 
 
 		/**

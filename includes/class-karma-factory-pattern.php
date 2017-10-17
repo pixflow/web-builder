@@ -218,7 +218,7 @@ class Karma_Factory_Pattern {
 	 */
 	protected function load_builder_controller(){
 
-		self::$builder_controller = new Karma_Controller();
+		self::$builder_controller = new Karma_Builder_Setting_Panel();
 
 	}
 
