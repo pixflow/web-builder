@@ -1500,17 +1500,21 @@ iframe {
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
-.karma-text-controller div.karma-text-field {
-  color: rgba(57, 73, 89, 0.8);
-  font-family: HelveticaNeue_Medium;
-  font-size: 15px;
-  font-weight: normal;
-  line-height: 17px; }
+.karma-title2-controller {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  padding-left: 20px;
+  width: 100%; }
+  .karma-title2-controller div.karma-title2-field {
+    color: #394959;
+    font-family: HelveticaNeue;
+    font-size: 15px; }
 
 .karma-text-input-controller {
-  justify-content: center;
   display: flex;
-  padding: 8px 0; }
+  justify-content: center;
+  padding: 11.5px 21px 15px 21px; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
@@ -1519,7 +1523,8 @@ iframe {
     border-radius: 20px;
     color: rgba(57, 73, 89, 0.6);
     font-family: HelveticaNeue;
-    line-height: 14px; }
+    font-size: 12px;
+    padding: 11px 14px 11px 14px; }
   .karma-text-input-controller input::placeholder {
     color: rgba(57, 73, 89, 0.6); }
 
@@ -1532,10 +1537,8 @@ iframe {
   width: 100%; }
   .karma-title-controller div.karma-title-field {
     color: #419CF8;
-    font-family: HelveticaNeue_Medium;
-    font-size: 15px;
-    line-height: 17px;
-    font-weight: normal; }
+    font-family: HelveticaNeue;
+    font-size: 15px; }
 
 .karma-radio-image-controller {
   margin-right: 20px; }

@@ -25,7 +25,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"type"		=> Karma_Builder_Setting_Panel::IMAGE,
 					"label"		=> esc_attr__( "Structure", 'karma' ),
 					"value"		=> 'full',
-					"group"		=> 'advance',
+
 					"options"	=> array(
 						'full'		=> "full.png",
 						'container'	=> "container.png"
@@ -47,8 +47,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "extra_class",
 					"type"		=> Karma_Builder_Setting_Panel::TEXT,
 					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					"group"		=> 'advance1',
-					'value'		=> 'coulmn'
+					'value'		=> 'Put your text'
 				),
 				array(
 					"name"		=> "radio-image",
@@ -93,9 +92,16 @@ class Karma_Row extends Karma_Shortcode_Base {
 				array(
 					"name"		=> "title",
 					"type"		=> Karma_Builder_Setting_Panel::TITLE,
-					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					"group"		=> 'advance',
-					'value'		=> 'Class Name'
+					"label"		=> esc_attr__( "Spacing", 'karma' ),
+
+					'value'		=> 'Spacing'
+				)	,
+		array(
+					"name"		=> "title2",
+					"type"		=> Karma_Builder_Setting_Panel::TITLE2,
+					"label"		=> esc_attr__( "Grid option", 'karma' ),
+
+					'value'		=> 'Grid option'
 				)
 			)
 		);
