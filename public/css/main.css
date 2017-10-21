@@ -1578,10 +1578,12 @@ iframe {
     .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
       margin: 0; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button .karma-group-button-shape {
-      height: 10px;
-      width: 10px;
+      height: 9px;
+      width: 9px;
       border-left: 2px solid #394959;
       border-bottom: 2px solid #394959;
+      position: relative;
+      top: -3px;
       transform: rotate(-45deg);
       transition-duration: .3s; }
   .karma-setting-panel-group-container div.karma-group-panel {
@@ -1594,6 +1596,11 @@ iframe {
   .karma-setting-panel-group-container .karma-group-button-shape-rotate {
     transform: rotate(-225deg) !important;
     transition-duration: .3s; }
+  .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
+    color: #394959;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

@@ -55,6 +55,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"label"		=> esc_attr__( "images", 'karma' ),
 					"columns"    => 2,
 					'value'		=> 0,
+					"group"		=> "advance",
 					"field"		=> array(
 
 						array(
