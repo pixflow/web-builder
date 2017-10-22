@@ -6,6 +6,7 @@ var shortcode_instance = new karmaBuilder.shortcodes({
 	template: _.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' )
 
 });
+var wp = _;
 
 /**
  * Test addShortcodeModel

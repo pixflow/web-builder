@@ -59,32 +59,32 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"field"		=> array(
 
 						array(
-							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
-							'title' 	=> "Container width",
-							'value' 	=> "1"
+							'image' 			=> karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
+							'title' 			=> "Container width",
+							'value' 			=> "1",
 						),
 						array(
-							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
 							'title' => "Container width",
 							'value' 	=> "2"
 						),
 						array(
-							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
 							'title' => "Container width",
 							'value' 	=> "3"
 						),
 						array(
-							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
 							'title' => "Container width",
 							'value' 	=> "4"
 						),
 						array(
-							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
 							'title' => "Container width",
 							'value' 	=> "5"
 						),
 						array(
-							'image' => KARMA_BUILDER_URL . 'public/media/build1-example.png',
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
 							'title' => "Container width",
 							'value' 	=> "6"
 						)

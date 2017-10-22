@@ -203,6 +203,11 @@ class Karma_Builder {
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-views.php';
 
+		/**
+		 * Helper Functions for Karma Builder
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-helper.php';
+
 
 	}
 

@@ -2,7 +2,6 @@
   margin-right: 20px;
 	.radio-image-controller-template{
 	  display: flex;
-	  justify-content: center;
 	  align-items: center;
 	  text-align: center;
 	  flex-wrap: wrap;
@@ -14,6 +13,5 @@
 	  input.hidden-input{
 		display: none;
 	  }
-
 	}
 }

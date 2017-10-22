@@ -230,7 +230,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 			"click .delete-element" : "deleteShortcode",
-			"click .accordion" : "settingPanelAccordion"
+		//	"click .accordion" : "settingPanelAccordion"
 
 		},
 

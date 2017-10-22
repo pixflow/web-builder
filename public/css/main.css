@@ -1544,7 +1544,6 @@ iframe {
   margin-right: 20px; }
   .karma-radio-image-controller .radio-image-controller-template {
     display: flex;
-    justify-content: center;
     align-items: center;
     text-align: center;
     flex-wrap: wrap;
