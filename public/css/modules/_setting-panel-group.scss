@@ -8,16 +8,16 @@
 
   button.karma-setting-panel-group-button {
 	align-items: center;
-	background-color: #eee;
+	background-color: #f7f8f9;
 	border: none;
-	color: #444;
+	color: #394959;
 	cursor: pointer;
 	display: flex;
 	font-family: HelveticaNeue;
 	font-size: 15px;
 	justify-content: space-between;
 	outline: none;
-	padding: 18px 20px 18px 20px;
+	padding: 15px 20px 15px 20px;
 	text-align: left;
 	transition: 0.4s;
 	width: 100%;
@@ -38,7 +38,7 @@
   }
 
   div.karma-group-panel {
-	background-color: #eee;
+	background-color: #f7f8f9;
 	border-radius: 0 0 7px 7px;
 	display: none;
 	overflow: hidden;

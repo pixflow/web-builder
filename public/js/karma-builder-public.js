@@ -243,6 +243,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+
 		/**
 		 * Create random string
 		 *
@@ -366,7 +367,6 @@ var karmaBuilder = karmaBuilder || {};
 			return karmaBuilder.karmaModels;
 
 		},
-
 		/**
 		 * Update shortcode model and html
 		 *
@@ -468,7 +468,6 @@ var karmaBuilder = karmaBuilder || {};
 		builder.openSettingPanel(1);
 		builder.delegateEvents();
 	}
-
 
 })(jQuery,karmaBuilder);
 
