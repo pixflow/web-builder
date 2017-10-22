@@ -120,9 +120,10 @@ var karmaBuilder = karmaBuilder || {};
 				"shortcode_name" 	: shortcodeName,
 			});
 			var newElement 		= new karmaBuilder.shortcodes( {
-				//template : wp.template(shortcodeName),
+
 				template	: wp.template(shortcodeName),
 				model		:	newModel,
+
 			});
 
 			newElement.create( placeHolder );
@@ -163,7 +164,6 @@ var karmaBuilder = karmaBuilder || {};
 			$('body').trigger('karma_finish_form_builder');
 		},
 
-
 		formBuilder : function ( shortcodeId ) {
 
 			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
@@ -174,24 +174,32 @@ var karmaBuilder = karmaBuilder || {};
 				setting_panel_group = '';
 
 			for( var counter in ShortcodeParams.params ){
+
 				if( ! ShortcodeParams.params[counter].group ) {
 					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 				}else{
+
 					if( undefined === groupHtml_group[ ShortcodeParams.params[counter].group ] ){
+
 						groupHtml_group[ ShortcodeParams.params[counter].group ] = {
+
 							items : [],
 							title: ShortcodeParams.params[counter].group
+
 						};
+
 					}
 					var html = this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 					groupHtml_group[ ShortcodeParams.params[counter].group ]['items'].push( html );
+
 				}
+
 			}
 			for( var counter in groupHtml_group ) {
+
 				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
+
 			}
-
-
 
 			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
 			var popup = document.createElement('div');
@@ -221,6 +229,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * Set defaults in create
 		 */
 		initialize : function( options ) {
+
 			this.template = options.template;
 
 		},
@@ -283,7 +292,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
 		/**
 		 * Delete elements model and html
 		 *
@@ -311,11 +319,6 @@ var karmaBuilder = karmaBuilder || {};
 			return karmaBuilder.karmaModels;
 
 		},
-
-
-
-
-
 
 		/**
 		 * Update shortcode model and html
@@ -351,7 +354,9 @@ var karmaBuilder = karmaBuilder || {};
          * @return array - children models id
          */
         findChildren : function( ) {
+
         	return karmaBuilder.karmaModels.where( { 'parent_id' : this.model.attributes['shortcode_id'] } )
+
         },
 
 	});

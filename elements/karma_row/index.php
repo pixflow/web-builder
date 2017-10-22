@@ -5,13 +5,28 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 	public function render( $atts, $content ) {
 
-		return "<div class='karma_row'> " . do_shortcode($content) . " </div>";
+		$atts = shortcode_atts(
+			array(
+				'structure'		=> 'container',
+				'space'       	=> '200' ,
+				'element_key'	=> '',
+				'extra_class'	=> '',
+			)
+			, $atts
+		);
+		$container_class = ($atts['structure'] == 'container')?"container":"karma-container-fluid";
+
+		return "<div class='karma_row karma_row_".$atts['element_key'].' '.$atts['extra_class']."'>"
+				."<div class='".$container_class." '>"
+					. do_shortcode($content)
+				."</div>"
+			. " </div>";
 
 	}
 
 	public function js_render() {
 
-		return "<div class='karma_row'> {{ attributes.shortcode_content }} </div>";
+		return "<div class='karma_row {{data.structure}}' style='padding-top: {{data.space}}px; padding-bottom: {{data.space}}px;'> {{ data.shortcode_content }} </div>";
 
 	}
 
