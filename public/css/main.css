@@ -1671,7 +1671,8 @@ iframe {
     padding: 15px 20px 15px 20px;
     text-align: left;
     transition: 0.4s;
-    width: 100%; }
+    width: 100%;
+    border-top: 1px solid rgba(57, 73, 89, 0.2); }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
       margin: 0; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button .karma-group-button-shape {
