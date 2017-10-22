@@ -1735,6 +1735,7 @@ iframe {
     display: inline-flex;
     margin-left: 13px; }
     .karma-range-slider-container .karma-range-slider-number #karma-range-slider-input {
+      background: none;
       border: 1px solid #bbb;
       border-right: 0;
       border-radius: 40px 0 0 40px;
