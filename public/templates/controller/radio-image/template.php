@@ -6,7 +6,7 @@
 			<div class="radio-image-controller-img" data-value="{{ data.field[i].value }}">
 				{{{data.field[i].image}}}
 			</div>
-			<# if( data.field[i].title == "" ) { #>
+			<# if( data.field[i].title != "" ) { #>
 			<span>{{{data.field[i].title}}}</span>
 			<# } #>
 		<# } #>
