@@ -49,7 +49,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 				),
 				array(
 					"name"		=> "space",
-					"type"		=> Karma_Builder_Setting_Panel::RANGE,
+					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
 					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(

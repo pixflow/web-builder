@@ -37,6 +37,7 @@ class Karma_Builder_Setting_Panel {
 	const RANGE = 'range';
 	const TEXT = 'text';
 	const RADIO_IMAGE = 'radio-image';
+	const RANGE_SLIDER = 'range-slider';
 
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'

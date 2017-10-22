@@ -96,7 +96,8 @@ class Karma_Builder_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/karma-builder-public.js', array( 'jquery', 'backbone', 'wp-util' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name . '-range-slider' ,  plugin_dir_url( __FILE__ ). 'js/rangeslider.min.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name,  plugin_dir_url( __FILE__ ). 'js/karma-builder-public.js', array( 'jquery', 'backbone', 'wp-util' ), $this->version, false );
 
 	}
 
