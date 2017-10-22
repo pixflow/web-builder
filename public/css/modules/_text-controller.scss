@@ -1,7 +1,7 @@
 .karma-text-input-controller{
   display: flex;
-  padding: 15px 20px 15px 20px;
   justify-content: center;
+  padding: 15px 20px 15px 20px;
 
   input.karma-text-input-field{
     @include box(245px, 36px);
