@@ -82,10 +82,11 @@ class Karma_Row extends Karma_Shortcode_Base {
 					)
 				),
 				array(
-					"name"		=> "extra_class",
-					"type"		=> Karma_Builder_Setting_Panel::TEXT,
-					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					'value'		=> 'Put your text',
+					"name"			=> "extra_class",
+					"type"			=> Karma_Builder_Setting_Panel::TEXT,
+					"label"			=> __( "Class Name", 'karma' ),
+					'placeholder'	=> __( 'Enter extra class', 'karma' ),
+					"group"			=> "advance"
 				),
 				array(
 					"name"		=> "radio-image",
