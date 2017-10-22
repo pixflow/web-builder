@@ -19,9 +19,12 @@
 
 		var defaultOptions = {
 			selector	: ".grid-resizable",
-			min			: 0,
-			max			: 5000,
+			minHeight	: 0,
+			maxHeight	: 5000,
+            minWidth	: 0,
+            maxWidth	: 5000,
 			snapToGrid	: false,
+			direction	: 'x',
 			gridPrefix	: 'col-md'
 		};
 
@@ -52,10 +55,16 @@
 		for ( var i = 0; i < els.length; i++ ) {
 
 			var el = els[ i ];
-			if( isLastElement( el ) ){
-				continue;
+
+			if ( options.snapToGrid ) {
+
+				if( isLastElement( el ) ){
+                    continue;
+                }
+
+                checkPaddingsToPreventLineBreaks( el );
 			}
-			checkPaddingsToPreventLineBreaks( el );
+
 			createHandlers( el );
 
 		}
@@ -141,11 +150,21 @@
 		el.classList.add('resize-dragging');
 		document.body.classList.add('grid-resizer-noselect');
 
-		el.dataset.originalWidth = el.offsetWidth - 1;
-		el.dataset.originalX = el.offsetLeft;
+		if( options.direction == 'x' || options.direction == 'both' ) {
+			el.dataset.originalWidth = el.offsetWidth - 1;
+            el.dataset.originalX = el.offsetLeft;
 
-		nextElement.dataset.originalWidth = nextElement.offsetWidth;
-		nextElement.dataset.originalX = nextElement.offsetLeft;
+            if( options.snapToGrid ){
+                nextElement.dataset.originalWidth = nextElement.offsetWidth;
+                nextElement.dataset.originalX = nextElement.offsetLeft;
+			}
+
+		}
+
+		if( ( options.direction == 'y' || options.direction == 'both' ) && !options.snapToGrid ) {
+            el.dataset.originalHeight = el.offsetHeight - 1;
+            el.dataset.originalY = el.offsetTop;
+        }
 
 		document.documentElement.addEventListener('mousemove', doDrag, false);
 		document.documentElement.addEventListener('mouseup', stopDrag, false);
@@ -163,28 +182,51 @@
 	function doDrag( e ) {
 
 		var el = document.querySelector( '.resize-dragging' );
-		var newWidth = e.pageX - el.dataset.originalX;
-		if ( newWidth >= options.min
-			&& newWidth <= options.max
-			&& e.pageX < document.documentElement.offsetWidth - options.min ) {
 
-			var nextElement = findNextSibling( el );
-			var nextElementNewWidth = parseInt( nextElement.dataset.originalWidth ) + parseInt( el.dataset.originalWidth ) - newWidth ;
-			if( nextElementNewWidth >= options.min
-				&& nextElementNewWidth <= options.max ) {
+		if( options.direction == 'x' || options.direction == 'both' ) {
+            var newWidth = e.pageX - el.dataset.originalX;
+            if ( newWidth >= options.minWidth
+                && newWidth <= options.maxWidth
+                && e.pageX < document.documentElement.offsetWidth - options.minWidth ) {
 
-				nextElementWidth = nextElementNewWidth;
-				nextElement.style.width = nextElementWidth + 'px';
-				nextElement.style.maxWidth = nextElementWidth + 'px';
-				nextElement.style.flexBasis = nextElementWidth + 'px';
+                if( options.snapToGrid ){
+                    var nextElement = findNextSibling( el );
+                    var nextElementNewWidth = parseInt( nextElement.dataset.originalWidth ) + parseInt( el.dataset.originalWidth ) - newWidth ;
+                    if( nextElementNewWidth >= options.minWidth
+                        && nextElementNewWidth <= options.maxWidth ) {
 
-				el.style.width = newWidth + 'px';
-				el.style.maxWidth = newWidth + 'px';
-				el.style.flexBasis = newWidth + 'px';
+                        nextElementWidth = nextElementNewWidth;
+                        nextElement.style.width = nextElementWidth + 'px';
+                        nextElement.style.maxWidth = nextElementWidth + 'px';
+                        nextElement.style.flexBasis = nextElementWidth + 'px';
 
-			}
+                        el.style.width = newWidth + 'px';
+                        el.style.maxWidth = newWidth + 'px';
+                        el.style.flexBasis = newWidth + 'px';
 
-		}
+                    }
+
+                } else {
+                    el.style.width = newWidth + 'px';
+                    el.style.maxWidth = newWidth + 'px';
+                    el.style.flexBasis = newWidth + 'px';
+				}
+
+
+            }
+        }
+
+        if( (options.direction == 'y' || options.direction == 'both') && !options.snapToGrid ) {
+			var newHeight = e.pageY - el.dataset.originalY;
+            if ( newHeight >= options.minHeight
+                && newHeight <= options.maxHeight
+                && e.pageY < document.documentElement.offsetHeight - options.minHeight ) {
+
+                    el.style.height = newHeight + 'px';
+
+            }
+        }
+
 
 		return true;
 
@@ -230,10 +272,21 @@
 			updateGrid(el);
 		}
 
-		el.removeAttribute('data-original-width');
-		el.removeAttribute('data-original-x');
-		nextElement.removeAttribute('data-original-width');
-		nextElement.removeAttribute('data-original-x');
+        if( options.direction == 'x' || options.direction == 'both' ) {
+            el.removeAttribute('data-original-width');
+            el.removeAttribute('data-original-x');
+            if( options.snapToGrid ) {
+                nextElement.removeAttribute('data-original-width');
+                nextElement.removeAttribute('data-original-x');
+			}
+
+        }
+
+        if( ( options.direction == 'y' || options.direction == 'both' ) && !options.snapToGrid ) {
+            el.removeAttribute('data-original-height');
+            el.removeAttribute('data-original-y');
+        }
+
 
 		return true;
 
