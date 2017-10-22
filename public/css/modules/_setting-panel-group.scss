@@ -1,14 +1,13 @@
 .karma-setting-panel-group-container{
   display: flex;
   flex-direction: column;
-
   width: 100%;
 
   button.karma-setting-panel-group-button {
 	background-color: #eee;
 	color: #444;
 	cursor: pointer;
-	padding: 18px;
+	padding: 18px 20px 18px 20px;
 	width: 100%;
 	border: none;
 	text-align: left;
@@ -16,7 +15,6 @@
 	font-size: 15px;
 	transition: 0.4s;
 	display: flex;
-	text-align: center;
 	justify-content: space-between;
 	align-items: center;
 	font-family: HelveticaNeue;

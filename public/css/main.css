@@ -1501,10 +1501,7 @@ iframe {
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
-  align-items: center;
-  display: flex;
-  height: 40px;
-  padding-left: 20px;
+  padding: 17px 17px 17px 20px;
   width: 100%; }
   .karma-title2-controller div.karma-title2-field {
     color: #394959;
@@ -1513,7 +1510,7 @@ iframe {
 
 .karma-text-input-controller {
   display: flex;
-  padding: 11.5px 21px 15px 21px;
+  padding: 15px 20px 15px 20px;
   justify-content: center; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
@@ -1529,11 +1526,8 @@ iframe {
     color: rgba(57, 73, 89, 0.6); }
 
 .karma-title-controller {
-  align-items: center;
   background-color: rgba(65, 156, 248, 0.12);
-  display: flex;
-  height: 46.84px;
-  padding-left: 20px;
+  padding: 15px 15px 15px 20px;
   width: 100%; }
   .karma-title-controller div.karma-title-field {
     color: #419CF8;
@@ -1561,7 +1555,7 @@ iframe {
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
+    padding: 18px 20px 18px 20px;
     width: 100%;
     border: none;
     text-align: left;
@@ -1569,7 +1563,6 @@ iframe {
     font-size: 15px;
     transition: 0.4s;
     display: flex;
-    text-align: center;
     justify-content: space-between;
     align-items: center;
     font-family: HelveticaNeue;
