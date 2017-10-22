@@ -370,6 +370,8 @@ var karmaBuilder = karmaBuilder || {};
 
 		events : {
 			"click .close-svg" : "removeSettingPanel",
+			"click #karma-element-setting-panel-container" : "draggableSettingPanel"
+
 
 		},
 
@@ -432,6 +434,16 @@ var karmaBuilder = karmaBuilder || {};
 
 			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
 			settingPanel.parentNode.removeChild( settingPanel );
+
+		},
+		draggableSettingPanel :  function() {
+
+			$( "#karma-element-setting-panel-container" ).draggable({
+				containment: "body" ,
+				scroll: false,
+				scrollSpeed: 100 ,
+				cancel: ".karma-shortcode-setting-panel-extra"
+			});
 
 		}
 
@@ -498,6 +510,8 @@ var karmaBuilder = karmaBuilder || {};
 
 		builder.openSettingPanel(1);
 		builder.delegateEvents();
+
+
 	}
 
 })(jQuery,karmaBuilder);

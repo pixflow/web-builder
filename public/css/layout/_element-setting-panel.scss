@@ -7,8 +7,10 @@ iframe{
 #karma-element-setting-panel-container {
   display: flex;
   position: absolute;
+  margin-right: 110px;
 
   .karma-element-setting-panel {
+	cursor: all-scroll;
 	width: 285px;
 	min-height: 220px;
 	border-radius: 7px;
