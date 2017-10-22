@@ -244,6 +244,47 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
+		 * Create random string
+		 *
+		 * @param	integer	length	The length of random string that need to be produce
+		 *
+		 * @since 1.0.0
+		 * @returns String	Random string
+		 */
+		createRandomString : function ( length ) {
+
+			var characters = '0123456789abcdefghijklmnopqrstuvwxyz' ,
+				charactersLength = characters.length ,
+				randomString = '';
+
+			for ( var i = 0; i < length; i++ ) {
+				randomString += characters[ Math.floor( ( Math.random() * ( charactersLength - 1 ) ) + 1 ) ];
+			}
+
+			return randomString;
+
+		},
+
+		/**
+		 * Create uniqe id for each element of drop
+		 *
+		 *
+		 * @since 1.0.0
+		 * @returns String	Random string
+		 */
+		createNewElementKey : function () {
+
+			var randomString = this.createRandomString( 6 ) ;
+
+			if( karmaBuilder.karmaModels.where( { 'element_key' : randomString } ).length ){
+				return this.createNewElementKey();
+			}
+
+			return randomString;
+
+		},
+
+		/**
 		 * Create new elements model to karma models
 		 *
 		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
@@ -252,6 +293,12 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns {object}	New elements model
 		 */
 		create : function( placeHolder ){
+
+			var randomString = this.createNewElementKey();
+
+			this.model.set( {
+				element_key : randomString
+			}, { silent : true } );
 
 			karmaBuilder.karmaModels.add( this.model );
 			this.render( placeHolder );
