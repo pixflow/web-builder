@@ -34,7 +34,7 @@ var karmaBuilder = karmaBuilder || {};
 	'use strict';
 
 	karmaBuilder.view = Backbone.View.extend({
-		shortcodeParams : {},
+
 
 		/**
 		 * Define Karma-Builder events
@@ -130,83 +130,9 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		getElementMap: function ( shortcodeName ) {
 
-			if( this.shortcodeParams ) {
-				this.shortcodeParams = JSON.parse( builderMaps );
-			}
 
-			return this.shortcodeParams[ shortcodeName ];
 
-		},
-
-		getWpTemplate: function ( templateName, templateParams ) {
-
-			if( null === templateParams ){
-				templateParams = {} ;
-			}
-
-			var tempObject = wp.template( templateName ),
-				tempHtml = tempObject( templateParams );
-
-			return tempHtml;
-
-		},
-
-		openSettingPanel: function(shortcodeId){
-
-			var template = wp.template('karma-element-setting-panel');
-			var $html = document.createElement('div');
-			var content = this.formBuilder( shortcodeId );
-			$html.innerHTML =  template( { headerTitle : "Section Setting" , content : content});
-			document.getElementById('page').appendChild( $html );
-
-			$('body').trigger('karma_finish_form_builder');
-		},
-
-		formBuilder : function ( shortcodeId ) {
-
-			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
-				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
-				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off" onsubmit="return false">',
-				groupHtml = '',
-				groupHtml_group = [],
-				setting_panel_group = '';
-
-			for( var counter in ShortcodeParams.params ){
-
-				if( ! ShortcodeParams.params[counter].group ) {
-					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
-				}else{
-
-					if( undefined === groupHtml_group[ ShortcodeParams.params[counter].group ] ){
-
-						groupHtml_group[ ShortcodeParams.params[counter].group ] = {
-
-							items : [],
-							title: ShortcodeParams.params[counter].group
-
-						};
-
-					}
-					var html = this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
-					groupHtml_group[ ShortcodeParams.params[counter].group ]['items'].push( html );
-
-				}
-
-			}
-			for( var counter in groupHtml_group ) {
-
-				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
-
-			}
-
-			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
-			var popup = document.createElement('div');
-			popup.innerHTML = karmaformhtml + setting_panel_group;
-			return popup.innerHTML;
-
-		}
 
 	});
 
@@ -224,6 +150,10 @@ var karmaBuilder = karmaBuilder || {};
 	});
 
 	karmaBuilder.shortcodes = Backbone.View.extend({
+
+
+		shortcodeParams : {},
+
 
 		/**
 		 * Set defaults in create
@@ -263,6 +193,29 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 			return randomString;
+
+		},
+
+		getElementMap: function ( shortcodeName ) {
+
+			if( this.shortcodeParams ) {
+				this.shortcodeParams = JSON.parse( builderMaps );
+			}
+
+			return this.shortcodeParams[ shortcodeName ];
+
+		},
+
+		getWpTemplate : function ( templateName, templateParams ) {
+
+			if( null === templateParams ){
+				templateParams = {} ;
+			}
+
+			var tempObject = wp.template( templateName ),
+				tempHtml = tempObject( templateParams );
+
+			return tempHtml;
 
 		},
 
@@ -400,11 +353,88 @@ var karmaBuilder = karmaBuilder || {};
          *
          * @return array - children models id
          */
-        findChildren : function( ) {
+        findChildren : function() {
 
         	return karmaBuilder.karmaModels.where( { 'parent_id' : this.model.attributes['shortcode_id'] } )
 
         },
+
+	});
+
+	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
+
+		initialize: function() {
+			karmaBuilder.elementSettingPanel.__super__.initialize.apply( this, arguments );
+			// Continue doing specific stuff for this child-class.
+		},
+
+		events : {
+			"click .close-svg" : "removeSettingPanel",
+
+		},
+
+		openSettingPanel: function( shortcodeId ){
+
+			var template = wp.template('karma-element-setting-panel');
+			var $html = document.createElement('div');
+			var content = this.formBuilder( shortcodeId );
+			$html.innerHTML =  template( { headerTitle : "Section Setting" , content : content});
+			document.getElementById('page').appendChild( $html );
+
+			$('body').trigger('karma_finish_form_builder');
+		},
+
+		formBuilder : function( shortcodeId ) {
+
+			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
+				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
+				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off" onsubmit="return false">',
+				groupHtml = '',
+				groupHtml_group = [],
+				setting_panel_group = '';
+
+			for( var counter in ShortcodeParams.params ){
+
+				if( ! ShortcodeParams.params[counter].group ) {
+					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
+				}else{
+
+					if( undefined === groupHtml_group[ ShortcodeParams.params[counter].group ] ){
+
+						groupHtml_group[ ShortcodeParams.params[counter].group ] = {
+
+							items : [],
+							title: ShortcodeParams.params[counter].group
+
+						};
+
+					}
+					var html = this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
+					groupHtml_group[ ShortcodeParams.params[counter].group ]['items'].push( html );
+
+				}
+
+			}
+			for( var counter in groupHtml_group ) {
+
+				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
+
+			}
+
+			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
+			var popup = document.createElement('div');
+			popup.innerHTML = karmaformhtml + setting_panel_group;
+			return popup.innerHTML;
+
+		},
+
+		removeSettingPanel : function() {
+
+			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
+			settingPanel.parentNode.removeChild( settingPanel );
+
+		}
+
 
 	});
 
@@ -463,7 +493,8 @@ var karmaBuilder = karmaBuilder || {};
 
 
 	window.onload = function () {
-		window.builder = new karmaBuilder.view({el: $('body')});
+		new karmaBuilder.view({el:$('body')});
+		window.builder = new karmaBuilder.elementSettingPanel({el:$('body')});
 
 		builder.openSettingPanel(1);
 		builder.delegateEvents();
