@@ -1,16 +1,25 @@
 .karma-range-slider-container{
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 15px 7px 15px 14px;
   text-align: center;
+
+  .karma-range-slider-content{
+	align-items: center;
+	display: flex;
+	padding-left: 5px;
+	width: 100%;
+
+  }
 
   .rangeslider--horizontal{
 	background: #cbe5fd;
 	border-radius: 50px;
 	box-shadow: none;
 	height: 4px;
-	width: 63%;
+	width: 68%;
 
 	.rangeslider__handle {
 	  background-image: none;
@@ -77,4 +86,15 @@
 	margin: 0;
 	-webkit-appearance: none;
   }
+}
+.karma-all-controller-title{
+  color: rgba(57,73,89,0.8);
+  font-family: HelveticaNeue;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17px;
+  width: 100%;
+  text-align: left;
+  padding-bottom: 13px;
+  padding-left: 7px;
 }
