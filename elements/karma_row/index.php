@@ -48,11 +48,11 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<div class='karma_row {{data.extra_class}}' style='padding-top: {{data.space}}px; padding-bottom: {{data.space}}px;'>"
-			+"<div class='{{data.structure}}'"
-			+ "{{ data.shortcode_content }}"
-			+ "</div>";
-			+ "</div>";
+		return "<div class='karma_row {{data.extra_class}}'>"
+			."<div class='{{data.structure}}'>"
+			 . '<# print( createChildren( data.shortcodeContent ) ) #>'
+			. "</div>"
+			. "</div>";
 
 	}
 

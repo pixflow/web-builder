@@ -510,7 +510,7 @@ var karmaBuilder = karmaBuilder || {};
 		window.builder = new karmaBuilder.elementSettingPanel({el:$('body')});
 		builder.openSettingPanel(1);
 		builder.delegateEvents();
-		
+
 	}
 
 })(jQuery,karmaBuilder);
