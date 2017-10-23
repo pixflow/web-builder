@@ -1377,7 +1377,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   text-align: center;
   align-items: center; }
 
-.HelveticaNeue-font, .karma-title-controller div.karma-title-field {
+.HelveticaNeue-font, .karma-title2-controller div.karma-title2-field, .karma-title-controller div.karma-title-field {
   font-family: HelveticaNeue; }
 
 /**
@@ -1654,15 +1654,15 @@ iframe {
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
-  padding-top: 17px;
-  padding-right: 17px;
-  padding-bottom: 17px;
+  padding-top: 15px;
+  padding-right: 20px;
+  padding-bottom: 18px;
   padding-left: 20px;
   width: 100%;
+  height: 100%;
   position: relative; }
   .karma-title2-controller div.karma-title2-field {
     color: #394959;
-    font-family: HelveticaNeue;
     font-size: 15px; }
 
 .karma-text-input-controller {
