@@ -1,56 +1,11 @@
 //font import
-@font-face {
-  font-family: HelveticaNeu_Bold;
-  src: url(../font/Helvetica_Neu_Bold.ttf);
-}
-@font-face {
-  font-family: HelveticaNeue;
-  src: url(../font/HelveticaNeue.woff);
-}
-@font-face {
-  font-family: HelveticaNeue_BlackCond;
-  src: url(../font/Helvetica_Neue_Black.woff);
-  src: url(../font/HelveticaNeue_BlackCond.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeue_Light;
-  src: url(../font/HelveticaNeue_Light.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeue_Medium;
-  src: url(../font/HelveticaNeue_Medium.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeue_Thin;
-  src: url(../font/HelveticaNeueThin.woff);
-  src: url(../font/HelveticaNeue_Thin.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeueBd;
-  src: url(../font/HelveticaNeueBd.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeueHv;
-  src: url(../font/HelveticaNeueHv.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeueIt;
-  src: url(../font/HelveticaNeueIt.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeueLt;
-  src: url(../font/HelveticaNeueLt.ttf);
-}
-
-@font-face {
-  font-family: HelveticaNeueMed;
-  src: url(../font/HelveticaNeueMed.ttf);
-}
-
+@include font-face( HelveticaNeu_Bold, '../font/Helvetica_Neu_Bold.ttf' );
+@include font-face( HelveticaNeue, '../font/HelveticaNeue.woff' );
+@include font-face( HelveticaNeue_BlackCond, '../font/Helvetica_Neue_Black.woff' );
+@include font-face( HelveticaNeue_Light, '../font/HelveticaNeue_Light.ttf' );
+@include font-face( HelveticaNeue_Medium, '../font/HelveticaNeue_Medium.ttf' );
+@include font-face( HelveticaNeue_Thin, '../font/HelveticaNeueThin.woff' );
+@include font-face( HelveticaNeueBd, '../font/HelveticaNeueBd.ttf' );
+@include font-face( HelveticaNeueHv, '../font/HelveticaNeueHv.ttf' );
+@include font-face( HelveticaNeueIt, '../font/HelveticaNeueLt.ttf' );
+@include font-face( HelveticaNeueMed, '../font/HelveticaNeueMed.ttf' );

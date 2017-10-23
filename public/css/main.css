@@ -1442,39 +1442,54 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  */
 @font-face {
   font-family: HelveticaNeu_Bold;
-  src: url(../font/Helvetica_Neu_Bold.ttf); }
+  src: url("../font/Helvetica_Neu_Bold.ttf");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeue;
-  src: url(../font/HelveticaNeue.woff); }
+  src: url("../font/HelveticaNeue.woff");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeue_BlackCond;
-  src: url(../font/Helvetica_Neue_Black.woff);
-  src: url(../font/HelveticaNeue_BlackCond.ttf); }
+  src: url("../font/Helvetica_Neue_Black.woff");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeue_Light;
-  src: url(../font/HelveticaNeue_Light.ttf); }
+  src: url("../font/HelveticaNeue_Light.ttf");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeue_Medium;
-  src: url(../font/HelveticaNeue_Medium.ttf); }
+  src: url("../font/HelveticaNeue_Medium.ttf");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeue_Thin;
-  src: url(../font/HelveticaNeueThin.woff);
-  src: url(../font/HelveticaNeue_Thin.ttf); }
+  src: url("../font/HelveticaNeueThin.woff");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeueBd;
-  src: url(../font/HelveticaNeueBd.ttf); }
+  src: url("../font/HelveticaNeueBd.ttf");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeueHv;
-  src: url(../font/HelveticaNeueHv.ttf); }
+  src: url("../font/HelveticaNeueHv.ttf");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeueIt;
-  src: url(../font/HelveticaNeueIt.ttf); }
-@font-face {
-  font-family: HelveticaNeueLt;
-  src: url(../font/HelveticaNeueLt.ttf); }
+  src: url("../font/HelveticaNeueLt.ttf");
+  font-weight: normal;
+  font-style: normal; }
 @font-face {
   font-family: HelveticaNeueMed;
-  src: url(../font/HelveticaNeueMed.ttf); }
+  src: url("../font/HelveticaNeueMed.ttf");
+  font-weight: normal;
+  font-style: normal; }
 /* _-_-_- base/RESET -_-_-_ */
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -1484,6 +1499,18 @@ footer, header, hgroup, menu, nav, section {
 /* _-_-_- base/BASE -_-_-_ */
 body {
   font-family: "HelveticaNeue"; }
+  body .karma-full-seprator {
+    color: rgba(57, 73, 89, 0.2);
+    width: 100%;
+    height: 1px; }
+  body .karma-container-seprator {
+    margin-top: 0;
+    margin-right: 22px;
+    margin-bottom: 0;
+    margin-left: 22px;
+    width: inherit;
+    height: 1px;
+    color: rgba(57, 73, 89, 0.2); }
 
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
 /* _-_-_- layout/FOOTER -_-_-_ */
@@ -1561,7 +1588,8 @@ iframe {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      padding-top: 17px; }
+      padding-top: 17px;
+      overflow: hidden; }
   #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
     display: flex; }
     #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {

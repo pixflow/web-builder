@@ -1,4 +1,16 @@
 /* _-_-_- base/BASE -_-_-_ */
 body{
   font-family: "HelveticaNeue";
+  .karma-full-seprator{
+    color: $setting-panel-seprator-color;
+    @include box(100%, 1px);
+  }
+
+  .karma-container-seprator{
+  @include margin(0, 22px, 0, 22px);
+  @include box(inherit, 1px);
+    color: $setting-panel-seprator-color;
+  }
+
 }
+
