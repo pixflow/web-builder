@@ -1853,6 +1853,9 @@ iframe {
   padding-bottom: 13px;
   padding-left: 7px; }
 
+.karma_row.karma_active_row {
+  border: 1px solid blue; }
+
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */
 

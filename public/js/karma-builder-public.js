@@ -55,10 +55,11 @@ var karmaBuilder = karmaBuilder || {};
 				var elementName =  element.attributes.shortcode_name.replace("karma_", "");
 				var elementView = new karmaBuilder[elementName]( {
 					model 	: element ,
-					el 		: $('.' + element.attributes.shortcode_name ) } );
-			} );
+					el 		: $('.' + element.attributes.shortcode_name + '_' + element.attributes.shortcode_attributes.element_key ) } );
+			} )
 
 		},
+
 
 		/**
 		 * Create and send ajax
@@ -356,6 +357,7 @@ var karmaBuilder = karmaBuilder || {};
 
         },
 
+
 	});
 
 	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
@@ -399,6 +401,7 @@ var karmaBuilder = karmaBuilder || {};
 			document.getElementById('page').appendChild( $html );
 			this.bindDragEvents();
 			$('body').trigger('karma_finish_form_builder');
+
 		},
 
 		formBuilder : function( shortcodeId ) {
@@ -458,8 +461,22 @@ var karmaBuilder = karmaBuilder || {};
 
 
 		initialize: function(){
+			karmaBuilder.row.__super__.initialize.apply( this, arguments );
+		},
+
+		events : {
+
+			'click' : 'showBorder'
+
+		} ,
+
+		showBorder : function () {
+
+			$( '.karma_active_row' ).removeClass( 'karma_active_row' );
+			this.$el.addClass( 'karma_active_row' );
 
 		},
+
         /**
          * return current layout grid
          *
@@ -506,7 +523,7 @@ var karmaBuilder = karmaBuilder || {};
 
 
 		initialize: function(){
-
+			karmaBuilder.column.__super__.initialize.apply( this, arguments );
 		},
 		
 	});
