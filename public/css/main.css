@@ -1601,8 +1601,11 @@ iframe {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      padding-top: 17px;
+      padding-top: 3px;
       overflow: hidden; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px; }
   #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
     display: flex; }
     #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
@@ -1695,12 +1698,16 @@ iframe {
     font-size: 15px; }
 
 .karma-radio-image-controller {
-  margin: 0 10px; }
+  margin: 0 10px;
+  padding-bottom: 15px; }
   .karma-radio-image-controller .radio-image-controller-label {
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 10px;
     font-size: 15px;
     line-height: 17px;
-    margin-bottom: 25px;
-    padding: 0 10px;
+    margin-bottom: 21px;
     opacity: .8; }
   .karma-radio-image-controller .radio-image-controller-template {
     align-items: center;
@@ -1743,11 +1750,13 @@ iframe {
     font-size: 15px;
     justify-content: space-between;
     outline: none;
-    padding: 15px 20px 15px 20px;
+    padding: 12px 20px 12px 20px;
     text-align: left;
     transition: 0.4s;
     width: 100%;
     border-top: 1px solid rgba(57, 73, 89, 0.2); }
+    .karma-setting-panel-group-container button.karma-setting-panel-group-button.karma-group-border-radius {
+      border-radius: 0 !important; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
       margin: 0; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button .karma-group-button-shape {
@@ -1779,7 +1788,8 @@ iframe {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px 7px 15px 14px;
+  padding: 15px 7px 24px 14px;
+  position: relative;
   text-align: center; }
   .karma-range-slider-container .karma-range-slider-content {
     align-items: center;
@@ -1820,7 +1830,7 @@ iframe {
       height: 32px;
       padding: 0;
       text-align: right;
-      width: 30px; }
+      width: 34px; }
       .karma-range-slider-container .karma-range-slider-number #karma-range-slider-input:focus {
         border-color: #bbb;
         outline: none; }
@@ -1850,7 +1860,7 @@ iframe {
   line-height: 17px;
   width: 100%;
   text-align: left;
-  padding-bottom: 13px;
+  padding-bottom: 17px;
   padding-left: 7px; }
 
 .karma_row.karma_active_row {

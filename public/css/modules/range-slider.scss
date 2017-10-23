@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px 7px 15px 14px;
+  padding: 15px 7px 24px 14px;
+  position: relative;
   text-align: center;
 
   .karma-range-slider-content{
@@ -62,7 +63,7 @@
 	  height: 32px;
 	  padding: 0;
 	  text-align: right;
-	  width: 30px;
+	  width: 34px;
 
 	}
 
@@ -98,6 +99,6 @@
   line-height: 17px;
   width: 100%;
   text-align: left;
-  padding-bottom: 13px;
+  padding-bottom: 17px;
   padding-left: 7px;
 }

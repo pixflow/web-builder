@@ -4,6 +4,7 @@ jQuery('body').off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_form_
 		$(this).next(".karma-group-panel" ).slideToggle();
 
 			$(this).find('.karma-group-button-shape').toggleClass('karma-group-button-shape-rotate');
+			$(this).toggleClass('karma-group-border-radius');
 
 	} )
 } );

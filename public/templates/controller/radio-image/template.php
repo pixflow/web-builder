@@ -1,4 +1,3 @@
-
 <div class="karma-radio-image-controller">
 	<div class="radio-image-controller-label">{{{data.label}}}</div>
 	<div class="radio-image-controller-template">

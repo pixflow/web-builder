@@ -72,8 +72,16 @@ iframe{
 	}
 
 	.karma-element-setting-panel-content{
-	  padding-top: 17px;
+	  padding-top: 3px;
 	  overflow: hidden;
+
+	  #karma-Builder-form{
+		div:last-child .karma-setting-panel-group-button {
+		  border-bottom-left-radius: 7px;
+		  border-bottom-right-radius: 7px;
+		}
+
+	  }
 	}
 
   }

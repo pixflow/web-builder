@@ -1,11 +1,12 @@
 .karma-radio-image-controller{
   margin:0 10px;
+  padding-bottom: 15px;
 
 	.radio-image-controller-label{
+	  @include padding(15px, 10px, 0, 10px);
 	  font-size: 15px;
 	  line-height: 17px;
-	  margin-bottom: 25px;
-	  padding: 0 10px;
+	  margin-bottom: 21px;
 	  opacity:.8;
 	}
 
