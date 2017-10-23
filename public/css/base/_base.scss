@@ -2,14 +2,18 @@
 body{
   font-family: "HelveticaNeue";
   .karma-full-seprator{
-    color: $setting-panel-seprator-color;
     @include box(100%, 1px);
+    @include element_direction($bottom:0 , $left:0);
+    color: $setting-panel-seprator-color;
+    position: absolute;
   }
 
   .karma-container-seprator{
-  @include margin(0, 22px, 0, 22px);
-  @include box(inherit, 1px);
+    @include margin(0, 20px , 0, 0);
+    @include box( calc(100% - 40px) , 1px);
+    @include element_direction($bottom:0 , $left:20);
     color: $setting-panel-seprator-color;
+    position: absolute;
   }
 
 }

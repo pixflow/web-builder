@@ -1,12 +1,13 @@
 
 .karma-title-controller{
+  @include padding(12px, 15px, 10px, 20px);
+  @include box(100%);
   background-color: rgba(65, 156, 248, 0.12);
-  padding: 15px 15px 15px 20px;
-  width: 100%;
 
   div.karma-title-field{
+	@extend .HelveticaNeue-font;
 	color: #419CF8;
-	font-family: HelveticaNeue;
 	font-size: 15px;
+
   }
 }

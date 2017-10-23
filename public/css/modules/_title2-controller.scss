@@ -1,6 +1,7 @@
 .karma-title2-controller{
-  padding: 17px 17px 17px 20px;
+  @include padding(17px, 17px, 17px, 20px);
   width: 100%;
+  position: relative;
 
   div.karma-title2-field{
 	color: #394959;
