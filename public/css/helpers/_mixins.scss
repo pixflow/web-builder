@@ -172,3 +172,16 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/**
+ * flexbox
+ * @group helpers
+ * @output with display flex and  center element
+ */
+@mixin flexbox( $text-align:inherit, $align-item:inherit, $justify-content:inherit ) {
+  display: flex;
+  text-align: $text-align;
+  align-items: $align-item;
+  justify-content: $justify-content;
+}

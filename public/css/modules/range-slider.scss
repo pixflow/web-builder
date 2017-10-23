@@ -1,35 +1,31 @@
 .karma-range-slider-container{
-  align-items: center;
-  display: flex;
+  @include flexbox( $text-align:center, $align-item:center, $justify-content:center );
+  @include padding( 15px, 7px, 24px, 14px );
   flex-direction: column;
-  justify-content: center;
-  padding: 15px 7px 24px 14px;
   position: relative;
-  text-align: center;
+
 
   .karma-range-slider-content{
-	align-items: center;
-	display: flex;
+	@include flexbox( $align-item:center );
+	@include box(100%);
 	padding-left: 5px;
-	width: 100%;
 
   }
 
   .rangeslider--horizontal{
+	@include box( 68% , 5px );
 	background: #cbe5fd;
 	border-radius: 50px;
 	box-shadow: none;
-	height: 5px;
-	width: 68%;
+
 
 	.rangeslider__handle {
+	  @include box( 14px , 14px );
 	  background-image: none;
 	  background-color: #419CF8;
 	  border: 1px solid #419CF8;
-	  height: 14px;
 	  top: -5px;
 	  touch-action: pan-y;
-	  width: 14px;
 	  -ms-touch-action: pan-y;
 
 	  &:after{
@@ -53,21 +49,20 @@
 		border-color: #bbb;
 		outline: none;
 	  }
+	  @include flexbox( $text-align:right );
+	  @include box(34px , 32px);
 	  background: none;
 	  border: 1px solid #bbb;
 	  border-right: 0;
 	  border-radius: 40px 0 0 40px;
 	  color: #000;
-	  display: flex;
 	  font-size: 12px;
-	  height: 32px;
 	  padding: 0;
-	  text-align: right;
-	  width: 34px;
-
 	}
 
 	.karma-unit{
+	  @include box( auto , 32px );
+	  @include padding( 0, 7px,2px, 0 );
 	  align-items: center;
 	  border: 1px solid #bbb;
 	  border-radius: 0 67px 68px 0;
@@ -75,9 +70,7 @@
 	  display: flex;
 	  font-size: 14px;
 	  font-weight: 400;
-	  height: 32px;
 	  margin-bottom: 0;
-	  padding: 0 7px 2px 0;
 	}
   }
 
@@ -92,6 +85,7 @@
   }
 }
 .karma-all-controller-title{
+  @include padding( inherit, inherit, 17px, 7px );
   color: rgba(57,73,89,0.8);
   font-family: HelveticaNeue;
   font-weight: 500;
@@ -99,6 +93,4 @@
   line-height: 17px;
   width: 100%;
   text-align: left;
-  padding-bottom: 17px;
-  padding-left: 7px;
 }

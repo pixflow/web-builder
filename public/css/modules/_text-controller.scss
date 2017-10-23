@@ -1,17 +1,17 @@
 .karma-text-input-controller{
-  display: flex;
-  justify-content: center;
-  padding: 15px 20px 15px 20px;
+  @include flexbox( $justify-content:center);
+  @include padding(15px, 20px, 15px, 20px);
+
 
   input.karma-text-input-field{
     @include box(245px, 36px);
+    @include padding(11px, 14px, 11px, 14px);
     background: #fff;
     border: 1px solid rgba(57,73,89,0.2);
     border-radius: 20px;
     color: #394959;
     font-family: HelveticaNeue;
     font-size: 12px;
-    padding: 11px 14px 11px 14px;
   }
 
   input::placeholder{

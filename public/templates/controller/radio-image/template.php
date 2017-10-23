@@ -15,4 +15,12 @@
 		<# } #>
 		<input	type="text" name="{{{ data.name }}}" class="hidden-input" value="">
 	</div>
+	<# if( data.seprator != "" ) { #>
+		<# if( data.seprator == "full" ){ #>
+			<hr class="karma-full-seprator">
+		<#}else{ #>
+				<hr class="karma-container-seprator">
+		<# } #>
+	<# } #>
+
 </div>

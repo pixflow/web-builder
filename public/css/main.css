@@ -1443,6 +1443,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output with display block and margin center element
  */
+/**
+ * flexbox
+ * @group helpers
+ * @output with display flex and  center element
+ */
 @font-face {
   font-family: HelveticaNeu_Bold;
   src: url("../font/Helvetica_Neu_Bold.ttf");
@@ -1670,18 +1675,26 @@ iframe {
 
 .karma-text-input-controller {
   display: flex;
+  text-align: inherit;
+  align-items: inherit;
   justify-content: center;
-  padding: 15px 20px 15px 20px; }
+  padding-top: 15px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-left: 20px; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
+    padding-top: 11px;
+    padding-right: 14px;
+    padding-bottom: 11px;
+    padding-left: 14px;
     background: #fff;
     border: 1px solid rgba(57, 73, 89, 0.2);
     border-radius: 20px;
     color: #394959;
     font-family: HelveticaNeue;
-    font-size: 12px;
-    padding: 11px 14px 11px 14px; }
+    font-size: 12px; }
   .karma-text-input-controller input::placeholder {
     color: rgba(57, 73, 89, 0.6); }
 
@@ -1698,8 +1711,12 @@ iframe {
     font-size: 15px; }
 
 .karma-radio-image-controller {
-  margin: 0 10px;
-  padding-bottom: 15px; }
+  margin-top: 0;
+  margin-right: 10px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  padding-bottom: 15px;
+  position: relative; }
   .karma-radio-image-controller .radio-image-controller-label {
     padding-top: 15px;
     padding-right: 10px;
@@ -1710,14 +1727,18 @@ iframe {
     margin-bottom: 21px;
     opacity: .8; }
   .karma-radio-image-controller .radio-image-controller-template {
-    align-items: center;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     text-align: center;
-    width: 100%; }
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img {
-      padding: 5px 10px;
+      padding-top: 5px;
+      padding-right: 10px;
+      padding-bottom: 5px;
+      padding-left: 10px;
       text-align: center; }
       .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
         opacity: .5; }
@@ -1735,25 +1756,30 @@ iframe {
       margin-top: 7px; }
 
 .karma-setting-panel-group-container {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  width: 100%; }
+  flex-direction: column; }
   .karma-setting-panel-group-container div:first-child {
     padding-top: 6px; }
   .karma-setting-panel-group-container button.karma-setting-panel-group-button {
+    display: flex;
+    text-align: center;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding-top: 12px;
+    padding-right: 20px;
+    padding-bottom: 12px;
+    padding-left: 20px;
     background-color: #f7f8f9;
     border: none;
     color: #394959;
     cursor: pointer;
-    display: flex;
     font-size: 15px;
-    justify-content: space-between;
     outline: none;
-    padding: 12px 20px 12px 20px;
-    text-align: left;
     transition: 0.4s;
-    width: 100%;
     border-top: 1px solid rgba(57, 73, 89, 0.2); }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button.karma-group-border-radius {
       border-radius: 0 !important; }
@@ -1784,32 +1810,38 @@ iframe {
     text-transform: capitalize; }
 
 .karma-range-slider-container {
-  align-items: center;
   display: flex;
-  flex-direction: column;
+  text-align: center;
+  align-items: center;
   justify-content: center;
-  padding: 15px 7px 24px 14px;
-  position: relative;
-  text-align: center; }
+  padding-top: 15px;
+  padding-right: 7px;
+  padding-bottom: 24px;
+  padding-left: 14px;
+  flex-direction: column;
+  position: relative; }
   .karma-range-slider-container .karma-range-slider-content {
-    align-items: center;
     display: flex;
-    padding-left: 5px;
-    width: 100%; }
+    text-align: inherit;
+    align-items: center;
+    justify-content: inherit;
+    width: 100%;
+    height: 100%;
+    padding-left: 5px; }
   .karma-range-slider-container .rangeslider--horizontal {
+    width: 68%;
+    height: 5px;
     background: #cbe5fd;
     border-radius: 50px;
-    box-shadow: none;
-    height: 5px;
-    width: 68%; }
+    box-shadow: none; }
     .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle {
+      width: 14px;
+      height: 14px;
       background-image: none;
       background-color: #419CF8;
       border: 1px solid #419CF8;
-      height: 14px;
       top: -5px;
       touch-action: pan-y;
-      width: 14px;
       -ms-touch-action: pan-y; }
       .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
         background-image: none; }
@@ -1820,21 +1852,29 @@ iframe {
     display: inline-flex;
     margin-left: 13px; }
     .karma-range-slider-container .karma-range-slider-number #karma-range-slider-input {
+      display: flex;
+      text-align: right;
+      align-items: inherit;
+      justify-content: inherit;
+      width: 34px;
+      height: 32px;
       background: none;
       border: 1px solid #bbb;
       border-right: 0;
       border-radius: 40px 0 0 40px;
       color: #000;
-      display: flex;
       font-size: 12px;
-      height: 32px;
-      padding: 0;
-      text-align: right;
-      width: 34px; }
+      padding: 0; }
       .karma-range-slider-container .karma-range-slider-number #karma-range-slider-input:focus {
         border-color: #bbb;
         outline: none; }
     .karma-range-slider-container .karma-range-slider-number .karma-unit {
+      width: auto;
+      height: 32px;
+      padding-top: 0;
+      padding-right: 7px;
+      padding-bottom: 2px;
+      padding-left: 0;
       align-items: center;
       border: 1px solid #bbb;
       border-radius: 0 67px 68px 0;
@@ -1842,9 +1882,7 @@ iframe {
       display: flex;
       font-size: 14px;
       font-weight: 400;
-      height: 32px;
-      margin-bottom: 0;
-      padding: 0 7px 2px 0; }
+      margin-bottom: 0; }
   .karma-range-slider-container input::-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none; }
@@ -1853,15 +1891,17 @@ iframe {
     -webkit-appearance: none; }
 
 .karma-all-controller-title {
+  padding-top: inherit;
+  padding-right: inherit;
+  padding-bottom: 17px;
+  padding-left: 7px;
   color: rgba(57, 73, 89, 0.8);
   font-family: HelveticaNeue;
   font-weight: 500;
   font-size: 15px;
   line-height: 17px;
   width: 100%;
-  text-align: left;
-  padding-bottom: 17px;
-  padding-left: 7px; }
+  text-align: left; }
 
 .karma_row.karma_active_row {
   border: 1px solid blue; }
