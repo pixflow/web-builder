@@ -93,11 +93,10 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
 					"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
 					'value'		=> 0,
-					"group"			=> "advance1",
 					"options"	=> array(
 						'value'	=>200,
 						'min'	=> 0,
-						'max'	=> 200,
+						'max'	=> 800,
 						'step'	=> 1,
 						'unit'	=> 'px'
 					)
@@ -106,8 +105,8 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"			=> "extra_class",
 					"type"			=> Karma_Builder_Setting_Panel::TEXT,
 					"label"			=> __( "Class Name", 'karma' ),
-					'placeholder'	=> __( 'Enter extra class', 'karma' ),
-					"group"			=> "advance"
+					'placeholder'	=> __( 'Class name', 'karma' ),
+					"group"			=> "Advance option"
 				),
 
 			)
