@@ -1,17 +1,51 @@
 .karma-radio-image-controller{
-  margin-right: 20px;
+  margin:0 10px;
+
+	.radio-image-controller-label{
+	  font-size: 15px;
+	  line-height: 17px;
+	  margin-bottom: 25px;
+	  padding: 0 10px;
+	  opacity:.8;
+	}
+
 	.radio-image-controller-template{
-	  display: flex;
 	  align-items: center;
-	  text-align: center;
+	  display: flex;
 	  flex-wrap: wrap;
+	  justify-content: space-around;
+	  text-align: center;
 	  width: 100%;
 
-	  div{
-		padding-left: 20px;
+	  .radio-image-controller-img{
+		padding:5px 10px;
+		text-align: center;
+
+		svg{
+		  opacity: .5;
+
+		  &:hover{
+			opacity: .8;
+		  }
+		}
 	  }
+	  .radio-image-selected-item{
+		svg{
+		  opacity: 1;
+		}
+	  }
+
 	  input.hidden-input{
 		display: none;
+	  }
+
+	  .radio-image-controller-title{
+		display: block;
+		font-size: 12px;
+		line-height: 14px;
+		text-align: center;
+		margin-top: 7px;
+
 	  }
 	}
 }

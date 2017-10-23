@@ -505,13 +505,12 @@ var karmaBuilder = karmaBuilder || {};
 
 
 	window.onload = function () {
+
 		new karmaBuilder.view({el:$('body')});
 		window.builder = new karmaBuilder.elementSettingPanel({el:$('body')});
-
 		builder.openSettingPanel(1);
 		builder.delegateEvents();
-
-
+		
 	}
 
 })(jQuery,karmaBuilder);

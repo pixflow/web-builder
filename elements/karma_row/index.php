@@ -48,7 +48,11 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<div class='karma_row {{data.structure}}' style='padding-top: {{data.space}}px; padding-bottom: {{data.space}}px;'> {{ data.shortcode_content }} </div>";
+		return "<div class='karma_row {{data.extra_class}}' style='padding-top: {{data.space}}px; padding-bottom: {{data.space}}px;'>"
+			+"<div class='{{data.structure}}'"
+			+ "{{ data.shortcode_content }}"
+			+ "</div>";
+			+ "</div>";
 
 	}
 
@@ -60,13 +64,22 @@ class Karma_Row extends Karma_Shortcode_Base {
 			"params"	=> array(
 				array(
 					"name"		=> "structure",
-					"type"		=> Karma_Builder_Setting_Panel::IMAGE,
-					"label"		=> esc_attr__( "Structure", 'karma' ),
-					"value"		=> 'full',
+					"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
+					"label"		=> esc_attr__( "Grid options", 'karma' ),
+					'value'		=> 2,
+					"field"		=> array(
 
-					"options"	=> array(
-						'full'		=> "full.png",
-						'container'	=> "container.png"
+						array(
+							'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_container.svg'),
+							'title' => "Full screen",
+							'value' => "1",
+						),
+						array(
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_full.svg'),
+							'title' => "Container",
+							'value' => "2"
+						),
+
 					)
 				),
 				array(
@@ -89,58 +102,15 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"group"			=> "advance"
 				),
 				array(
-					"name"		=> "radio-image",
-					"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
-					"label"		=> esc_attr__( "images", 'karma' ),
-					"columns"    => 2,
-					'value'		=> 0,
-
-					"field"		=> array(
-
-						array(
-							'image' 			=> karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
-							'title' 			=> "Container width",
-							'value' 			=> "1",
-						),
-						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
-							'title' => "Container width",
-							'value' 	=> "2"
-						),
-						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
-							'title' => "Container width",
-							'value' 	=> "3"
-						),
-						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
-							'title' => "Container width",
-							'value' 	=> "4"
-						),
-						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
-							'title' => "Container width",
-							'value' 	=> "5"
-						),
-						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/2col.svg'),
-							'title' => "Container width",
-							'value' 	=> "6"
-						)
-					)
-				),
-				array(
 					"name"		=> "title",
 					"type"		=> Karma_Builder_Setting_Panel::TITLE,
 					"label"		=> esc_attr__( "Spacing", 'karma' ),
-
 					'value'		=> 'Spacing'
-				)	,
-		array(
+				),
+				array(
 					"name"		=> "title2",
 					"type"		=> Karma_Builder_Setting_Panel::TITLE2,
 					"label"		=> esc_attr__( "Grid option", 'karma' ),
-
 					'value'		=> 'Grid option'
 				)
 			)
@@ -180,7 +150,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 	 */
 	public function render_css(){
 
-		$styles = "padding-top:{$this->_element_attributes['padding']}px;padding-bottom:{$this->_element_attributes['padding']}px;";
+		$styles = "padding-top:{$this->_element_attributes['space']}px;padding-bottom:{$this->_element_attributes['space']}px;";
 		return $styles;
 
 	}

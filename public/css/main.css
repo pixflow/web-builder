@@ -1482,6 +1482,9 @@ footer, header, hgroup, menu, nav, section {
   display: block; }
 
 /* _-_-_- base/BASE -_-_-_ */
+body {
+  font-family: "HelveticaNeue"; }
+
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
 /* _-_-_- layout/FOOTER -_-_-_ */
 /* _-_-_- layout/FORMS -_-_-_ */
@@ -1556,6 +1559,8 @@ iframe {
           margin-right: 5px; }
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
             fill: #fff; }
+    #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
+      padding-top: 17px; }
   #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
     display: flex; }
     #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
@@ -1641,17 +1646,37 @@ iframe {
     font-size: 15px; }
 
 .karma-radio-image-controller {
-  margin-right: 20px; }
+  margin: 0 10px; }
+  .karma-radio-image-controller .radio-image-controller-label {
+    font-size: 15px;
+    line-height: 17px;
+    margin-bottom: 25px;
+    padding: 0 10px;
+    opacity: .8; }
   .karma-radio-image-controller .radio-image-controller-template {
-    display: flex;
     align-items: center;
-    text-align: center;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
     width: 100%; }
-    .karma-radio-image-controller .radio-image-controller-template div {
-      padding-left: 20px; }
+    .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img {
+      padding: 5px 10px;
+      text-align: center; }
+      .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
+        opacity: .5; }
+        .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {
+          opacity: .8; }
+    .karma-radio-image-controller .radio-image-controller-template .radio-image-selected-item svg {
+      opacity: 1; }
     .karma-radio-image-controller .radio-image-controller-template input.hidden-input {
       display: none; }
+    .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title {
+      display: block;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      margin-top: 7px; }
 
 .karma-setting-panel-group-container {
   display: flex;
@@ -1666,7 +1691,6 @@ iframe {
     color: #394959;
     cursor: pointer;
     display: flex;
-    font-family: HelveticaNeue;
     font-size: 15px;
     justify-content: space-between;
     outline: none;

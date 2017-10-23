@@ -1,4 +1,4 @@
-jQuery('body').off('karma_finish_form_builder.radio-image').on('karma_finish_form_builder.radio-image',function() {
+jQuery('body').off('karma_finish_form_builder.range').on('karma_finish_form_builder.range',function() {
 
 	var $ = jQuery;
 	var $karmaRangeSlider = $('#karma-range-slider-range');
