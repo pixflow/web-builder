@@ -363,15 +363,33 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
 
-		initialize: function() {
+		initialize: function( options ) {
+
+			this.options = options;
 			karmaBuilder.elementSettingPanel.__super__.initialize.apply( this, arguments );
-			// Continue doing specific stuff for this child-class.
+			this.render();
+
+		},
+
+		render : function () {
+
+			this.openSettingPanel( this.options.shortcodeId );
+			this.bindDragEvents();
+
 		},
 
 		events : {
 			"click .close-svg" : "removeSettingPanel",
-			"click #karma-element-setting-panel-container" : "draggableSettingPanel"
+		},
 
+		bindDragEvents: function () {
+
+			$('#karma-element-setting-panel-container').draggable({
+				containment: "body" ,
+				scroll: true,
+				scrollSpeed: 100 ,
+				cancel: ".karma-shortcode-setting-panel-extra , input"
+			});
 
 		},
 
@@ -382,7 +400,7 @@ var karmaBuilder = karmaBuilder || {};
 			var content = this.formBuilder( shortcodeId );
 			$html.innerHTML =  template( { headerTitle : "Section Setting" , content : content});
 			document.getElementById('page').appendChild( $html );
-
+			this.bindDragEvents();
 			$('body').trigger('karma_finish_form_builder');
 		},
 
@@ -436,17 +454,6 @@ var karmaBuilder = karmaBuilder || {};
 			settingPanel.parentNode.removeChild( settingPanel );
 
 		},
-		draggableSettingPanel :  function() {
-
-			$( "#karma-element-setting-panel-container" ).draggable({
-				containment: "body" ,
-				scroll: false,
-				scrollSpeed: 100 ,
-				cancel: ".karma-shortcode-setting-panel-extra"
-			});
-
-		}
-
 
 	});
 
@@ -507,8 +514,7 @@ var karmaBuilder = karmaBuilder || {};
 	window.onload = function () {
 
 		new karmaBuilder.view({el:$('body')});
-		window.builder = new karmaBuilder.elementSettingPanel({el:$('body')});
-		builder.openSettingPanel(1);
+		window.builder = new karmaBuilder.elementSettingPanel( { el: $('body') , shortcodeId : 1 } );
 		builder.delegateEvents();
 
 	}
