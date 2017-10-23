@@ -11,7 +11,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 *
 	 * @var array
 	 */
-	private $_element_attributes;
+	private $element_attributes;
 
 	/**
 	 * Generic ID.
@@ -107,8 +107,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 */
 	public function get_element_attributes( $attributes ) {
 
-		$this->_element_attributes = $attributes['attributes'];
-		self::$element_id =  $this->_element_attributes['element_key'] ;
+		$this->element_attributes = $attributes['attributes'];
+		self::$element_id =  $this->element_attributes['element_key'] ;
 		return $this;
 
 	}

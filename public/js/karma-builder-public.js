@@ -45,8 +45,18 @@ var karmaBuilder = karmaBuilder || {};
 
 		initialize : function () {
 
-			var pageModel = JSON.parse( builderModels );
-			karmaBuilder.karmaModels.add( pageModel );
+			this.render();
+
+		},
+
+		render: function () {
+
+			this.collection.each( function ( element ) {
+				var elementName =  element.attributes.shortcode_name.replace("karma_", "");
+				var elementView = new karmaBuilder[elementName]( {
+					model 	: element ,
+					el 		: $('.' + element.attributes.shortcode_name ) } );
+			} );
 
 		},
 
@@ -136,19 +146,6 @@ var karmaBuilder = karmaBuilder || {};
 
 	});
 
-	karmaBuilder.model = Backbone.Model.extend({
-
-
-		defaults:{
-			"shortcode_id"			: 0,
-			"shortcode_name"		: '',
-			"parent_id" 			: 0,
-			"order" 				: 1,
-			"shortcode_attributes" 	: {},
-			"shortcode_content" 	: "",
-		}
-	});
-
 	karmaBuilder.shortcodes = Backbone.View.extend({
 
 
@@ -220,7 +217,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * Create uniqe id for each element of drop
+		 * Create unique id for each element of drop
 		 *
 		 *
 		 * @since 1.0.0
@@ -457,8 +454,12 @@ var karmaBuilder = karmaBuilder || {};
 
 	});
 
-    karmaBuilder.sectionElement = karmaBuilder.shortcodes.extend({
+    karmaBuilder.row = karmaBuilder.shortcodes.extend({
 
+
+		initialize: function(){
+
+		},
         /**
          * return current layout grid
          *
@@ -501,27 +502,42 @@ var karmaBuilder = karmaBuilder || {};
 
     });
 
+	karmaBuilder.column = karmaBuilder.shortcodes.extend({
+
+
+		initialize: function(){
+
+		},
+		
+	});
+
+	karmaBuilder.model = Backbone.Model.extend({
+
+		defaults : {
+			"shortcode_name" 		: "karma_row" ,
+			"shortcode_attributes"	: {
+				"element_key"	:"ef7gt2",
+				"padding"		:"200",
+			},
+			"shortcode_content" 	: "",
+			"shortcode_id" 			: 1,
+			"order" 				: 1,
+			"parent_id" 			: 0
+		}
+
+	});
+
+	// A list of element
 	var KarmaShortcodesCollection = Backbone.Collection.extend({
 
 		model : karmaBuilder.model
 
 	});
 
-	karmaBuilder.karmaModels = new KarmaShortcodesCollection();
-	
+	$(document).ready( function () {
+		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
+		var KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
+	});
 
-
-	window.onload = function () {
-
-		new karmaBuilder.view({el:$('body')});
-		window.builder = new karmaBuilder.elementSettingPanel( { el: $('body') , shortcodeId : 1 } );
-		builder.delegateEvents();
-
-	}
 
 })(jQuery,karmaBuilder);
-
-
-
-
-
