@@ -316,6 +316,31 @@ var karmaBuilder = karmaBuilder || {};
 			return karmaBuilder.karmaModels;
 
 		},
+
+		/**
+		 * Update attribute(s) of element
+		 *
+		 * @param	{Object}	newAttributes list of new attribute
+		 *
+		 * @param	{boolean}	update model in silent mode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setAttributes: function ( newAttributes, silent ) {
+
+			var model = this.model,
+				shortcodeAtrributes = model.attributes.shortcode_attributes;
+			for ( var attr in newAttributes ) {
+
+				shortcodeAtrributes[ attr ] = newAttributes[ attr ];
+
+			}
+			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent: silent } );
+
+		},
+
 		/**
 		 * Update shortcode model and html
 		 *
@@ -327,17 +352,10 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {Object} - Model of elements
 		 */
-		updateShortcode : function( newAttributes ){
+		updateShortcode: function ( newAttributes ) {
 
-			var model = this.model;
-			var shortcodeAtrributes = model.attributes.shortcode_attributes;
-			for( var attr in newAttributes ){
-
-				shortcodeAtrributes[attr] = newAttributes[attr];
-
-			}
-			model.set({'shortcode_attributes' : shortcodeAtrributes});
-			this.update( document.querySelector( '*[data-element-id="'+model.attributes.shortcode_id+'"]' ) );
+			this.setAttributes( newAttributes, false );
+			this.update( document.querySelector( '*[data-element-id="' + model.attributes.shortcode_id + '"]' ) );
 			return karmaBuilder.karmaModels;
 
 		},
@@ -463,6 +481,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		initialize: function(){
 			karmaBuilder.row.__super__.initialize.apply( this, arguments );
+			this.liveSpacing();
 		},
 
 		events : {
@@ -528,6 +547,37 @@ var karmaBuilder = karmaBuilder || {};
             newGrid.reverse();
             newGrid.push(1);
             return newGrid;
+        },
+
+        /**
+         * Add live spacing ability to section elements
+         *
+         * @since 1.0.0
+         *
+         * @returns {void}
+         */
+        liveSpacing: function () {
+
+	        this.el.insertAdjacentHTML( 'beforebegin', '<div class="section-spacing section-top-spacing"></div>' );
+	        this.el.insertAdjacentHTML( 'afterend', '<div class="section-spacing section-bottom-spacing"></div>' );
+
+	        var that = this,
+		        options = {
+			        selector: ".section-spacing",
+			        minHeight: 0,
+			        maxHeight: 700,
+			        direction: 'y',
+			        onDrag: function ( el, value ) {
+				        var siblingSpacer = Array.prototype.filter.call( el.parentNode.children, function ( child ) {
+					        return ( child !== el && child.classList.contains( 'section-spacing' ) );
+				        } );
+				        siblingSpacer[ 0 ].style.height = value.height;
+			        },
+			        onStop: function ( value ) {
+				        that.setAttributes( { space: parseInt( value.height ) }, true );
+			        }
+		        };
+	        gridResizer( options );
         }
 
     });

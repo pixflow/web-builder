@@ -409,3 +409,62 @@ QUnit.test( "karmaCalculateNewGrid" , function ( assert ) {
     assert.deepEqual( testResult , expectedResult );
 
 });
+
+/**
+ * Test update element attributes
+ */
+
+QUnit.test ( "setAttribute", function ( assert ) {
+
+	var elements = {};
+	elements['model'] = new karmaBuilder.model({
+		"shortcode_id": 10,
+		"shortcode_name": "shortcode_test",
+		"parent_id": 0,
+		"order": 1,
+		"shortcode_attributes": {
+			"color": "red",
+			"font": "arial",
+			"bg": "#000fff",
+			"style": 'font-family: "tahoma";',
+			"radius": '18',
+			"title": 'this is a " title " ',
+			"sub_title": "this is a subtitle's test"
+		},
+		"shortcode_content": ""
+	});
+	karmaBuilder.karmaModels.add(elements['model'] );
+	elements['el'] = new karmaBuilder.shortcodes({
+
+		template: _.template( '<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
+		model : elements['model'] ,
+
+	});
+
+	elements.el.setAttributes( {
+
+		"font"			: "tahoma",
+		"bg"			: "green",
+		"style"        	: 'font-family: "sans-serif";',
+
+	} );
+
+	assert.deepEqual( karmaBuilder.karmaModels.where( { 'shortcode_id' : 10 } )[0].attributes, {
+		"shortcode_id"          : 12,
+		"shortcode_name"        : "shortcode_test",
+		"parent_id"             : 0,
+		"order"                 : 1,
+		"shortcode_attributes" : {
+			"color"        	: "red",
+			"font"        	: "tahoma",
+			"bg"        	: "green",
+			"style"        	: 'font-family: "sans-serif";',
+			"radius"    	: '18',
+			"title"        	: 'this is a " title " ',
+			"sub_title"    	: "this is a subtitle's test"
+		},
+		"shortcode_content" : ""
+	} );
+	karmaBuilder.karmaModels.reset();
+
+});
