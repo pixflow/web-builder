@@ -1,4 +1,4 @@
-<div id="karma-element-setting-panel-container">
+<div id="karma-element-setting-panel-container" data-element-selector="{{{data.selector}}}">
 	<div class="karma-element-setting-panel">
 		<div class="karma-element-setting-panel-header">
 			<div class="karma-element-setting-panel-header-title">{{{ data.headerTitle }}}</div>
@@ -68,7 +68,7 @@
 					<span>Add to library</span>
 				</li>
 
-				<li>
+				<li class="delete-karma-element">
 					<div class="svg-extra">
 						<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							<title>Trash</title>
@@ -91,7 +91,7 @@
 					<span>Delete</span>
 				</li>
 
-				<li>
+				<li class="clone-karma-element">
 					<div class="svg-extra">
 						<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							<title>Duplicate</title>
@@ -110,7 +110,7 @@
 					<span>Duplicate</span>
 				</li>
 
-				<li>
+				<li class="info-karma-element">
 					<div class="svg-extra">
 						<svg width="25px" height="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 							<title>Help</title>

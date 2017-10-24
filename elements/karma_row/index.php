@@ -68,18 +68,18 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"name"		=> "structure",
 					"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 					"label"		=> esc_attr__( "Grid options", 'karma' ),
-					'value'		=> 2,
+					'value'		=> "full",
 					"field"		=> array(
 
 						array(
 							'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_container.svg'),
 							'title' => "Full screen",
-							'value' => "1",
+							'value' => "full",
 						),
 						array(
 							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_full.svg'),
 							'title' => "Container",
-							'value' => "2"
+							'value' => "container"
 						),
 
 					)

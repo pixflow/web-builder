@@ -35,14 +35,21 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.view = Backbone.View.extend({
 
-
 		/**
-		 * Define Karma-Builder events
+		 * Defines events of Karma Builder
+		 *
+		 * @since 1.0.0
 		 */
 		events : {
 
 		},
 
+		/**
+		 * In creating this view calls render
+		 *
+		 * @since 1.0.0
+		 *
+		 */
 		initialize : function () {
 
 			this.render();
@@ -61,7 +68,6 @@ var karmaBuilder = karmaBuilder || {};
 			} );
 
 		},
-
 
 		/**
 		 * Create and send ajax
@@ -89,7 +95,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns {Boolean} - Return true or false from AJAX request
+		 * @returns void
 		 */
 		saveContent : function () {
 
@@ -108,12 +114,11 @@ var karmaBuilder = karmaBuilder || {};
 		 * Drag Element from Shortcodes collection
 		 *
 		 * @since 1.0.0
-		 * @returns true
+		 *
 		 */
 		dragElement : function(){
 
 		},
-
 
 		/**
 		 * Drop Element function
@@ -122,41 +127,37 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
 		 *
 		 * @since 1.0.0
-		 * @returns {true}
+		 * @returns void
 		 */
 		dropElement : function( droppedElement, placeHolder ){
 
-			var shortcodeName 	= droppedElement.getAttribute('data-name');
-			var shortcodeId		= karmaBuilder.karmaModels.length + 1;
-			var newModel 		=  new karmaBuilder.model({
+			var shortcodeName 	= droppedElement.getAttribute('data-name'),
+				shortcodeId		= karmaBuilder.karmaModels.length + 1,
+				newModel 		= new karmaBuilder.model({
 				"shortcode_id"		: shortcodeId,
 				"shortcode_name" 	: shortcodeName,
-			});
-			var newElement 		= new karmaBuilder.shortcodes( {
-
+			}),
+			 	newElement 		= new karmaBuilder.shortcodes( {
 				template	: wp.template(shortcodeName),
 				model		:	newModel,
-
 			});
 
 			newElement.create( placeHolder );
 
 		},
 
-
-
-
-
 	});
 
 	karmaBuilder.shortcodes = Backbone.View.extend({
 
-
 		shortcodeParams : {},
-
 
 		/**
 		 * Set defaults in create
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
 		 */
 		initialize : function( options ) {
 
@@ -166,13 +167,14 @@ var karmaBuilder = karmaBuilder || {};
 
 		/**
 		 * Define elements events
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
 		 */
 		events : {
-			"click .delete-element" : "deleteShortcode",
-		//	"click .accordion" : "settingPanelAccordion"
-
+			"click .karma-element-setting" : "openSettingPanel",
 		},
-
 
 		/**
 		 * Create random string
@@ -222,8 +224,8 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Create unique id for each element of drop
 		 *
-		 *
 		 * @since 1.0.0
+		 *
 		 * @returns String	Random string
 		 */
 		createNewElementKey : function () {
@@ -244,6 +246,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
 		 *
 		 * @since 1.0.0
+		 *
 		 * @returns {object}	New elements model
 		 */
 		create : function( placeHolder ){
@@ -256,16 +259,26 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		/**
+		 * Set defaults in create
+		 *
+		 *  @param	{object} 	element	Javascript Element.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns boolean
+		 */
 		update : function (element) {
 
-			var children;
+			var children,
+				elementId = $(element).attr('data-element-id');
+
 			if( $(element).children().length){
 
 				children = $(element).children().clone(true);
 
 			}
 			this.el.innerHTML = this.template( this.model );
-			var elementId = $(element).attr('data-element-id');
 			$(this.el).find('*[data-element-id="'+elementId+'"]').append(children);
 			$('body').trigger( 'finish_update_html', [ this.model ] );
 			return true;
@@ -275,10 +288,11 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Render new elements in defined placeHolder
 		 *
-		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
+		 * @param	{object} 	placeHolder	Placeholder to drop Element.
 		 *
 		 * @since 1.0.0
-		 * @returns true
+		 *
+		 * @returns boolean
 		 */
 		render : function ( placeHolder ) {
 
@@ -292,16 +306,16 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Delete elements model and html
 		 *
-		 * @param	{object}	model	The shortcode model
+		 * @param	integer	elementId	The Element id
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns {Object} - Model of shortcodes
+		 * @returns {Object} - Model of Elements
 		 */
-		deleteShortcode : function() {
+		deleteShortcode : function(elementId) {
 
-			var elementId = this.model.attributes['shortcode_id'];
-			var $selectedElement = $( '.karma-builder-element [data-element-id=' + elementId + ']' );
+			var model = karmaBuilder.karmaModels.where( { "shortcode_id" : elementId } ),
+				$selectedElement = $( '.karma-builder-element[data-element-id=' + elementId + ']' );
 
 			$selectedElement.find( '.karma-builder-element' ).each( function () {
 
@@ -309,9 +323,8 @@ var karmaBuilder = karmaBuilder || {};
 				karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( childId ) } ) );
 
 			});
-
 			$selectedElement.remove();
-			karmaBuilder.karmaModels.remove( this.model );
+			karmaBuilder.karmaModels.remove( model );
 
 			return karmaBuilder.karmaModels;
 
@@ -344,8 +357,6 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Update shortcode model and html
 		 *
-		 * @param	{integer} id of element
-		 *
 		 * @param	{Object}	newAttributes list of new attribute
 		 *
 		 * @since 1.0.0
@@ -365,7 +376,7 @@ var karmaBuilder = karmaBuilder || {};
          *
          * @since 1.0.0
          *
-         * @return array - children models id
+         * @returns array - children models id
          */
         findChildren : function() {
 
@@ -373,6 +384,19 @@ var karmaBuilder = karmaBuilder || {};
 
         },
 
+		/**
+		 * Open setting panel of each Element
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		openSettingPanel : function () {
+
+			window.builder = new karmaBuilder.elementSettingPanel( { el: jQuery('body') , shortcodeId: this.model.get('shortcode_id') } );
+			builder.delegateEvents();
+
+		}
 
 	});
 
@@ -394,7 +418,8 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		events : {
-			"click .close-svg" : "removeSettingPanel",
+			"click .close-svg" 				: "removeSettingPanel",
+			"click .delete-karma-element"	: "removeElement",
 		},
 
 		bindDragEvents: function () {
@@ -408,12 +433,40 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		/**
+		 * On click removes element
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		removeElement: function () {
+
+			if ( !confirm("are you sure?") ) return;
+
+			this.deleteShortcode(this.options.shortcodeId);
+			this.removeSettingPanel();
+		},
+
+		/**
+		 * On click removes element
+		 *
+		 * @param	integer		shortcodeId	Id of element
+		 *
+		 * @since	1.0.0
+		 *
+		 * @returns	void
+		 */
 		openSettingPanel: function( shortcodeId ){
 
-			var template = wp.template('karma-element-setting-panel');
-			var $html = document.createElement('div');
-			var content = this.formBuilder( shortcodeId );
-			$html.innerHTML =  template( { headerTitle : "Section Setting" , content : content});
+			var template = wp.template('karma-element-setting-panel'),
+			 	$html = document.createElement('div'),
+				content = this.formBuilder( shortcodeId ),
+			 	elementAttributes = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes,
+				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
+			 	elementSelector = '.'+ elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
+
+			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
 			this.bindDragEvents();
 			$('body').trigger('karma_finish_form_builder');
@@ -424,15 +477,18 @@ var karmaBuilder = karmaBuilder || {};
 
 			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
 				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
-				karmaformhtml = '<form id="karma-Builder-form" autocomplete="off" onsubmit="return false">',
+				karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',
 				groupHtml = '',
 				groupHtml_group = [],
 				setting_panel_group = '';
 
+			ShortcodeParams = this.updateElementParams(shortcodeModel,ShortcodeParams);
 			for( var counter in ShortcodeParams.params ){
 
 				if( ! ShortcodeParams.params[counter].group ) {
+
 					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
+
 				}else{
 
 					if( undefined === groupHtml_group[ ShortcodeParams.params[counter].group ] ){
@@ -470,6 +526,26 @@ var karmaBuilder = karmaBuilder || {};
 			settingPanel.parentNode.removeChild( settingPanel );
 
 		},
+
+		/**
+		 * update each param value with its model
+		 *
+		 * @param	{object} 	model			model of clicked element.
+		 * @param	{object} 	elementParam	default controllers value in define.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {object}	updated param value
+		 */
+		updateElementParams: function (model, elementParam) {
+
+			for (var index in elementParam.params){
+				 var paramName = elementParam.params[index].name;
+				 elementParam.params[index].value = model.shortcode_attributes[paramName];
+			}
+			return elementParam;
+
+		}
 
 	});
 
@@ -517,7 +593,7 @@ var karmaBuilder = karmaBuilder || {};
          *
          * @since 1.0.0
          *
-         * @returns {array} - current layout of section
+         * @returns Array - current layout of section
          */
         currentGrid : function( ) {
 
@@ -530,13 +606,12 @@ var karmaBuilder = karmaBuilder || {};
 
         },
 
-
         /**
          * Calculate new layout grid after append nw column
          *
          * @since 1.0.0
          *
-         * @returns {array} - new layout of section after add new column
+         * @returns Array - new layout of section after add new column
          */
         calculateNewGrid : function( ) {
         	var newGrid = this.currentGrid();
@@ -664,15 +739,11 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.column = karmaBuilder.shortcodes.extend({
 
-
 		initialize: function(){
 			karmaBuilder.column.__super__.initialize.apply( this, arguments );
 		},
 
 		createGizmo: function () {
-
-
-
 		},
 
 	});

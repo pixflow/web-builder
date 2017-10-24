@@ -12,6 +12,9 @@ jQuery('body').off('karma_finish_form_builder.range').on('karma_finish_form_buil
 	});
 
 	$karmaRangeInput.on('input', function () {
-		$karmaRangeSlider.val(this.value).change();
+
+		var changedValue = ( "" == this.value ) ? this.defaultValue : this.value;
+		$karmaRangeSlider.val(changedValue).change();
+
 	});
 } );
