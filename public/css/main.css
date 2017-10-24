@@ -1719,7 +1719,9 @@ iframe {
     font-family: HelveticaNeue;
     font-size: 12px; }
   .karma-text-input-controller input::placeholder {
-    color: rgba(57, 73, 89, 0.6); }
+    color: rgba(57, 73, 89, 0.6);
+    font-family: HelveticaNeue;
+    font-size: 12px; }
 
 .karma-title-controller {
   padding-top: 12px;
