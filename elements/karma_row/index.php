@@ -119,6 +119,44 @@ class Karma_Row extends Karma_Shortcode_Base {
 		return parent::$elements_map;
 	}
 
+	/**
+	 * Set the gizmo controller
+	 *
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return	array	Gizmo controller of all elements
+	 */
+	public function gimzo_controllers(){
+
+		$controllers = array(
+			array(
+				"type" => "inner-gizmo" ,
+				"className" => "row-gizmo-group" ,
+				"params" => array(
+					array(
+						'icon' => 'setting.svg' ,
+						'action' => 'open' ,
+						'className' => 'row-setting-background' ,
+					) ,
+					array(
+						'icon' => 's.svg' ,
+						'action' => 'open' ,
+						'className' => 'row-setting-layout' ,
+					) ,
+					array(
+						'icon' => 'setting.svg' ,
+						'action' => 'open' ,
+						'className' => 'row-setting-setting' ,
+					),
+				)
+			)
+		);
+
+		parent::$elements_gizmo['karma_row'] = $controllers;
+		return parent::$elements_gizmo;
+
+	}
 
 	/**
 	 * Set the attributes of current elements and also

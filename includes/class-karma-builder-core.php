@@ -529,7 +529,7 @@ class Karma_Builder_Core{
 	 * @return boolean
 	 * @since 1.0.0
 	 */
-	public function generate_static_js_css($id){
+	public function generate_static_js_css( $id ){
 		return true;
 	}
 
@@ -540,9 +540,25 @@ class Karma_Builder_Core{
 	 * @since 1.0.0
 	 */
 	public function element_map() {
+
 		$elements_map = array();
 		$elements_map = apply_filters( 'karma_elements_map', $elements_map );
 		return $elements_map;
+
+	}
+
+	/**
+	 * Gizmo element
+	 *
+	 * @return array - array of elements gizmo
+	 * @since 1.0.0
+	 */
+	public function element_gimzo() {
+
+		$elements_gizmo = array();
+		$elements_gizmo = apply_filters( 'karma/elements/gizmo', $elements_gizmo );
+		return $elements_gizmo;
+
 	}
 
 }

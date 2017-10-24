@@ -209,6 +209,19 @@ class Karma_Builder_Loader {
 	}
 
 	/**
+	 * localize elements gizmo for builder
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	private function send_elements_gizmo(){
+
+		$elements_gizmo = json_encode( $this->core->element_gimzo() );
+		wp_localize_script( $this->plugin_name, 'builderGizmo', $elements_gizmo );
+
+	}
+
+	/**
 	 * Send localize value in front end
 	 *
 	 * @since     1.0.0
@@ -216,6 +229,7 @@ class Karma_Builder_Loader {
 	public function send_localize_value(){
 
 		$this->send_elements_map();
+		$this->send_elements_gizmo();
 	    $this->generate_page_model();
 
     }

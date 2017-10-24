@@ -106,6 +106,47 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	}
 
+
+	/**
+	 * Set the gizmo controller
+	 *
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return	array	Gizmo controller of all elements
+	 */
+	public function gimzo_controllers(){
+
+		$controllers = array(
+			array(
+				"type" => "inner-gizmo" ,
+				"position" => "top right" ,
+				"class" => "" ,
+				"params" => array(
+					array(
+						'icon' => 'setting.svg' ,
+						'action' => 'open' ,
+						'class' => '' ,
+					) ,
+					array(
+						'icon' => 'setting.svg' ,
+						'action' => 'open' ,
+						'class' => '' ,
+					) ,
+					array(
+						'icon' => 'setting.svg' ,
+						'action' => 'open' ,
+						'class' => '' ,
+					),
+				)
+			)
+		);
+
+		parent::$elements_gizmo['karma_column'] = $controllers;
+		return parent::$elements_gizmo;
+
+	}
+
 	/**
 	 * Set the attributes of current elements and also
 	 * set the uniqe id

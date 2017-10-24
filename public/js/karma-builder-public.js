@@ -35,6 +35,12 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.view = Backbone.View.extend({
 
+		/*
+		 * Map of all elements gizmo params
+		 *
+		 */
+		gizmoParams: {},
+
 		/**
 		 * Defines events of Karma Builder
 		 *
@@ -52,20 +58,23 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		initialize : function () {
 
+			this.gizmoParams = JSON.parse( builderGizmo );
 			this.render();
 
 		},
 
 		render: function () {
 
-			this.collection.each( function ( element ) {
-				var elementName =  element.attributes.shortcode_name.replace("karma_", "");
-				var elementView = new karmaBuilder[ elementName ]( {
-					model 	: element ,
-					el 		: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' )
-				} );
+			var that = this;
+			this.collection.each(function ( element ) {
+				var elementName = element.attributes.shortcode_name.replace( "karma_", "" );
+				var elementView = new karmaBuilder[ elementName ]({
+					model: element,
+					el 		: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' ),
+					gimzoParams: that.gizmoParams[ element.attributes.shortcode_name ],
+				});
 				elementView.createGizmo();
-			} );
+			});
 
 		},
 
@@ -150,7 +159,31 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.shortcodes = Backbone.View.extend({
 
-		shortcodeParams : {},
+		shortcodeParams: {},
+
+		/*
+		 * Underscore's default ERB-style templates are incompatible with PHP
+		 * when asp_tags is enabled, so Karma uses Mustache-inspired templating syntax.
+		 *
+		 * Make the underscore template like wp.template function
+		 *
+		 */
+		templateSettings : {
+			evaluate	:  /<#([\s\S]+?)#>/g,
+			interpolate	: /\{\{\{([\s\S]+?)\}\}\}/g,
+			escape		: /\{\{([^\}]+?)\}\}(?!\})/g,
+			variable	: 'data'
+		},
+
+		/*
+		 * Underscore template for inner gizmo type
+		 *
+		 */
+		innerGizmoTemplate : '<div class="{{ data.className }}">'
+		+ ' <# _.each( data.params, function( param ){'
+		+ ' print( "<div class=\'\" + param.className + \"\'></div>") }'
+		+ ' ) #>'
+		+ '</div>' ,
 
 		/**
 		 * Set defaults in create
@@ -198,25 +231,87 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		getElementMap: function ( shortcodeName ) {
+		/**
+		 * @summary	Create the Object of params for all element
+		 * Find the given element name param
+		 *
+		 * @param	{String}	elementName	The name of element
+		 *
+		 * @since 1.0.0
+		 * @returns {array}	The element params
+		 */
+		getElementMap: function ( elementName ) {
 
-			if( this.shortcodeParams ) {
+			if ( this.shortcodeParams ) {
 				this.shortcodeParams = JSON.parse( builderMaps );
 			}
-			return this.shortcodeParams[ shortcodeName ];
+
+			return this.shortcodeParams[ elementName ];
 
 		},
 
-		getWpTemplate : function ( templateName, templateParams ) {
+		/**
+		 * @summary Fetch a JavaScript template for an id
+		 *
+		 * @param  	{string} 	templateName	A string that corresponds to a DOM element with an id prefixed with "tmpl-".
+		 * @param 	{object}	templateParams	Data value for template
+		 *
+		 * @since 1.0.0
+		 * @returns {string}    The HTML output of template
+		 */
+		getWpTemplate: function ( templateName, templateParams ) {
 
-			if( null === templateParams ){
-				templateParams = {} ;
+			if ( null === templateParams ) {
+				templateParams = {};
 			}
 
 			var tempObject = wp.template( templateName ),
 				tempHtml = tempObject( templateParams );
 
 			return tempHtml;
+
+		},
+
+		/**
+		 * @summary Fetch a Underscore ( JS ) template for an specific name
+		 *
+		 * @param	{string}	templateName	A string that corresponds for template.
+		 * @param	{object}	params			Data value for template
+		 *
+		 * @since 1.0.0
+		 * @returns {string}    The HTML output of template
+		 */
+		getUnderscoreTemplate : function ( templateName, params ) {
+
+			var compiled,
+				that = this ;
+			compiled =  _.template( templateName, that.templateSettings );
+			return compiled( params );
+
+		},
+
+		/**
+		 * @summary Build gizmo controller of elements base on params given
+		 *
+		 * @param	{object}	params	Gizmo params
+		 *
+		 * @since 1.0.0
+		 * @returns {string}    The HTML output of template
+		 */
+		gizmoBuilder: function ( gizmoParams ) {
+
+			switch ( gizmoParams.type ) {
+				case 'inner-gizmo' :
+					return this.getUnderscoreTemplate( this.innerGizmoTemplate, gizmoParams );
+					break;
+				case 'top-gizmo' :
+					break;
+				case 'over-gizmo' :
+					break;
+				default:
+					return false;
+					break;
+			}
 
 		},
 
@@ -589,40 +684,48 @@ var karmaBuilder = karmaBuilder || {};
 
     karmaBuilder.row = karmaBuilder.shortcodes.extend({
 
-		gizmoTemplate : _.template('<div class="row-gizmo-button row-gizmo-background" ></div>'
-			+ '<div class="row-gizmo-button row-gizmo-layout" ></div>'
-			+ '<div class="row-gizmo-button row-gizmo-setting" ></div>'),
+		rowGimzoParams: {},
 
-		initialize: function(){
+		initialize: function (options) {
 
-			karmaBuilder.row.__super__.initialize.apply( this, arguments );
+			karmaBuilder.row.__super__.initialize.apply(this, arguments);
+			this.rowGimzoParams = options.gimzoParams[0];
 			this.liveSpacing();
 
 		},
 
+
 		events : {
 
-			'click' : 'showBorder',
+			'click .karma-section' : 'showBorder',
 			'mousedown .section-spacing' : 'showMouseToolTip',
 
 		} ,
 
+		/**
+		 * @summary Build gizmo controller
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
 		createGizmo: function () {
 
-			if( ! this.el ){
-				return ;
-			}
-			var gizmoContainer = document.createElement( 'div' );
-			gizmoContainer.setAttribute( 'class', 'row-gizmo-group' );
-			gizmoContainer.innerHTML = this.gizmoTemplate();
-			this.el.insertBefore( gizmoContainer, this.el.firstChild );
+			var parser = new DOMParser(),
+				source = parser.parseFromString( this.gizmoBuilder( this.rowGimzoParams ), "text/xml" );
+			this.el.appendChild( source.firstChild );
 
 		},
 
-		showBorder : function () {
+		/**
+		 * @summary Set the active row with specific class
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		showBorder: function () {
 
-			$( '.karma-active-row' ).removeClass( 'karma-active-row' );
-			this.$el.addClass( 'karma-active-row' );
+			$('.karma-active-section').removeClass('karma-active-section');
+			this.$el.addClass('karma-active-section');
 
 		},
 

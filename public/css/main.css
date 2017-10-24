@@ -1937,8 +1937,8 @@ iframe {
   width: 100%;
   text-align: left; }
 
-.karma_row.karma-active-row {
-  border: 1px solid blue; }
+.karma-active-section {
+  border: 1px solid blue !important; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

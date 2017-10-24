@@ -42,6 +42,15 @@ class Karma_Shortcode_Base {
 	 */
     public static $elements_map = array();
 
+	/**
+	 * It is an array that contains elements gizmo
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      array    $elements_gizmo    Elements gizmo.
+	 */
+	public static $elements_gizmo = array();
+
     /**
 	 * The instance of all elements class
 	 *
@@ -78,6 +87,7 @@ class Karma_Shortcode_Base {
 
 		add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
 		add_filter( 'karma_elements_map', array( $this, 'map' ) );
+		add_filter( 'karma/elements/gizmo', array( $this, 'gimzo_controllers' ) );
 		add_shortcode( static::$element_name , array( $this, 'render' ) );
 		add_action( 'karma_before_shortcode_apply_' . static::$element_name , array( $this , 'load_assets' ) );
 		if( method_exists( $this, 'wrapper_classes' ) ) {
