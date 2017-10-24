@@ -34,40 +34,6 @@ var shortcode_instance = new karmaBuilder.shortcodes({
 var wp = _;
 
 /**
- * Test addShortcodeModel
- */
-QUnit.test('addShortcodeModel', function ( assert ) {
-
-	var shortcode = new karmaBuilder.model({
-		"shortcode_id": 1,
-		"shortcode_name": "shortcode_test",
-		"parent_id": 0,
-		"order": 1,
-		"shortcode_attributes": {
-			"color": "red",
-			"font": "arial",
-			"bg": "#000fff",
-			"style": 'font-family: "tahoma";',
-			"radius": '18',
-			"title": 'this is a " title " ',
-			"sub_title": "this is a subtitle's test"
-		},
-		"shortcode_content": ""
-	});
-	karmaBuilder.karmaModels.add(shortcode);
-	var newShortcode = new karmaBuilder.shortcodes({
-
-		template: _.template( '<div class="row karma-builder-element delete-element" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>' ),
-		model : shortcode,
-
-	});
-	console.log(document.getElementById( 'karma-tests' ))
-	newShortcode.create( document.getElementById( 'karma-tests' ) );
-	assert.deepEqual( document.querySelectorAll( '.row' ).length, 1 );
-	$('*[data-element-id=1]').remove();
-});
-
-/**
  * It is Delete Elements Test
  */
 QUnit.test( "karmaDeleteModel" , function ( assert ) {

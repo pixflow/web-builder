@@ -72,6 +72,7 @@ var karmaBuilder = karmaBuilder || {};
 					model: element,
 					el 		: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' ),
 					gimzoParams: that.gizmoParams[ element.attributes.shortcode_name ],
+					template: wp.template( 'karma-element-' + element.attributes.shortcode_name )
 				});
 				elementView.createGizmo();
 			});
@@ -140,19 +141,6 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		dropElement : function( droppedElement, placeHolder ){
 
-			var shortcodeName 	= droppedElement.getAttribute('data-name'),
-				shortcodeId		= karmaBuilder.karmaModels.length + 1,
-				newModel 		= new karmaBuilder.model({
-				"shortcode_id"		: shortcodeId,
-				"shortcode_name" 	: shortcodeName,
-			}),
-			 	newElement 		= new karmaBuilder.shortcodes( {
-				template	: wp.template(shortcodeName),
-				model		:	newModel,
-			});
-
-			newElement.create( placeHolder );
-
 		},
 
 	});
@@ -195,6 +183,8 @@ var karmaBuilder = karmaBuilder || {};
 		initialize : function( options ) {
 
 			this.template = options.template;
+			_.bindAll(this, "render");
+			this.model.bind('change', this.render);
 
 		},
 
@@ -335,25 +325,6 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * Create new elements model to karma models
-		 *
-		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {object}	New elements model
-		 */
-		create : function( placeHolder ){
-
-			var randomString = this.createNewElementKey();
-			this.model.attributes.shortcode_attributes['element_key'] = randomString;
-			karmaBuilder.karmaModels.add( this.model );
-			this.render( placeHolder );
-			return karmaBuilder.karmaModels;
-
-		},
-
-		/**
 		 * Set defaults in create
 		 *
 		 *  @param	{object} 	element	Javascript Element.
@@ -388,10 +359,10 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns boolean
 		 */
-		render : function ( placeHolder ) {
+		render : function (  ) {
 
 			this.el.innerHTML = this.template( this.model );
-			placeHolder.appendChild( this.el );
+
 			$('body').trigger( 'karma_finish_render_html', [ this.model ] );
 			return true;
 
@@ -686,21 +657,20 @@ var karmaBuilder = karmaBuilder || {};
 
 		rowGimzoParams: {},
 
-		initialize: function (options) {
-
-			karmaBuilder.row.__super__.initialize.apply(this, arguments);
-			this.rowGimzoParams = options.gimzoParams[0];
-			this.liveSpacing();
-
-		},
-
-
 		events : {
 
 			'click .karma-section' : 'showBorder',
 			'mousedown .section-spacing' : 'showMouseToolTip',
 
 		} ,
+
+		initialize: function( options ){
+
+			karmaBuilder.row.__super__.initialize.apply(this, arguments);
+			this.rowGimzoParams = options.gimzoParams[0];
+			this.liveSpacing();
+
+		},
 
 		/**
 		 * @summary Build gizmo controller
@@ -834,7 +804,6 @@ var karmaBuilder = karmaBuilder || {};
 				document.body.appendChild( tooltip );
 			}
 		},
-
 
 
         /**

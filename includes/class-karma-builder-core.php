@@ -35,26 +35,26 @@ class Karma_Builder_Core{
 
 
 	/**
-	 * The shortcode attributes regex.
+	 * The element attributes regex.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $shortcode_attr_pattern	The regex pattern for get the shortcode attributes.
+	 * @var      string    $shortcode_attr_pattern	The regex pattern for get the element attributes.
 	 */
 	protected $shortcode_attr_pattern = '/([\w-]+)\s*=\s*\'((.|\')*?)(?<!\\\\)\'|([\w-]+)\s*=\s*"((.|\")*?)(?<!\\\\)"|([\w-]+)\s*=\s*([^\s\'"]+)(?:\s|$)/s';
 
 
 	/**
-	 * It is an array that contains shortcode models
+	 * It is an array that contains element models
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      array    $models    shortcode models.
+	 * @var      array    $models    element models.
 	 */
 	protected $models;
 
 	/**
-	 * It is an array that contains used shortcodes in the content of post
+	 * It is an array that contains used elements in the content of post
 	 *
 	 * @since    1.0.0
 	 * @access   protected
