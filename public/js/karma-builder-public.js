@@ -800,8 +800,8 @@ var karmaBuilder = karmaBuilder || {};
 			var x = e.clientX,
 				y = e.clientY;
 			tooltipDiv.style.top = (y + 20) + 'px';
-			tooltipDiv.style.left = (x + 20) + 'px';
-			tooltipDiv.innerText = document.querySelector('.target-moving').offsetHeight;
+			tooltipDiv.style.left = (x - 20) + 'px';
+			tooltipDiv.innerText = (document.querySelector('.target-moving').offsetHeight) + ' px';
 
 		},
 		/**

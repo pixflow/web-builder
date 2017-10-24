@@ -2,7 +2,7 @@
 .section-spacing{
   position: relative;
   width: 100%;
-  background: rgba(60, 162, 228, 0.49);
+  //background: rgba(60, 162, 228, 0.49);
   height: 5px;
 }
 
@@ -10,5 +10,23 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  cursor: row-resize;
+  cursor: n-resize;
 }
+.tooltip-div {
+  position: fixed;
+  display: none;
+  height: 16px;
+  width: 39px;
+  border-radius: 100px;
+  background-color: #76c1f3;
+  color: #FFFFFF;
+  font-family: HelveticaNeue;
+  font-size: 9px;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
