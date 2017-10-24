@@ -428,7 +428,8 @@ var karmaBuilder = karmaBuilder || {};
 				containment: "body" ,
 				scroll: true,
 				scrollSpeed: 100 ,
-				cancel: ".karma-shortcode-setting-panel-extra , input"
+				distance: 10,
+				cancel: ".karma-shortcode-setting-panel-extra, input"
 			});
 
 		},

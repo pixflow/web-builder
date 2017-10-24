@@ -11,7 +11,6 @@ iframe{
   margin-right: 110px;
 
   .karma-element-setting-panel {
-	cursor: all-scroll;
 	width: 285px;
 	min-height: 220px;
 	border-radius: 7px;
@@ -24,12 +23,12 @@ iframe{
 	  @include box(285px, 46px);
 	  background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
 	  border-radius: 7px 7px 0 0;
+	  cursor: all-scroll;
 	  position: relative;
 
 	  .karma-element-setting-panel-header-title {
 		color: $white-color;
 		font-size: 17px;
-		letter-spacing: 0.8px;
 		padding: 12.77px 0 0 20.43px;
 		text-align: left;
 		text-transform: capitalize;
@@ -47,7 +46,7 @@ iframe{
 		  @include element_direction(9.51px, 7px);
 		  background-color: rgba(255, 255, 255, 0.18);
 		  border-radius: 19px;
-		  margin-right: 5px;
+		  margin-right: 7px;
 		  svg {
 			* {
 			  stroke: $extra-icon-color !important;

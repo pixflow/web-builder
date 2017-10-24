@@ -256,7 +256,7 @@ footer, header, hgroup, menu, nav, section {
 /* _-_-_- base/BASE -_-_-_ */
 body {
   font-family: "HelveticaNeue"; }
-  body .karma-full-seprator {
+  body .karma-full-separator {
     width: 100%;
     height: 1px;
     margin-top: 0;
@@ -269,7 +269,7 @@ body {
     left: 0;
     color: rgba(57, 73, 89, 0.2);
     position: absolute; }
-  body .karma-container-seprator {
+  body .karma-container-separator {
     margin-top: 0;
     margin-right: 20px;
     margin-bottom: 0;
@@ -1564,7 +1564,6 @@ iframe {
   margin-right: 110px;
   /*** Style of setting panel extra ***/ }
   #karma-element-setting-panel-container .karma-element-setting-panel {
-    cursor: all-scroll;
     width: 285px;
     min-height: 220px;
     border-radius: 7px;
@@ -1577,11 +1576,11 @@ iframe {
       height: 46px;
       background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
       border-radius: 7px 7px 0 0;
+      cursor: all-scroll;
       position: relative; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title {
         color: #fff;
         font-size: 17px;
-        letter-spacing: 0.8px;
         padding: 12.77px 0 0 20.43px;
         text-align: left;
         text-transform: capitalize; }
@@ -1601,7 +1600,7 @@ iframe {
           left: auto;
           background-color: rgba(255, 255, 255, 0.18);
           border-radius: 19px;
-          margin-right: 5px; }
+          margin-right: 7px; }
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg * {
             stroke: #fff !important; }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg {
@@ -1772,8 +1771,9 @@ iframe {
       padding-right: 10px;
       padding-bottom: 5px;
       padding-left: 10px;
-      text-align: center;
-      cursor: pointer; }
+      cursor: pointer;
+      text-align: center; }
+
       .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
         opacity: .5; }
         .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {

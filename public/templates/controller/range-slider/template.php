@@ -10,11 +10,9 @@
 			<label class="karma-unit">{{{ data.options.unit}}}</label>
 		</div>
 	</div>
-
-	<# if( data.seprator != "" && data.seprator == "full" ) { #>
-		<hr class="karma-full-seprator">
-	<#}else if(data.seprator != "" && data.seprator == "container" ){ #>
-		<hr class="karma-container-seprator">
-
+	<# if( data.separator != "" && data.separator == "full" ) { #>
+		<hr class="karma-full-separator">
+	<#}else if(data.separator != "" && data.separator == "container" ){ #>
+		<hr class="karma-container-separator">
 	<# } #>
 </div>
