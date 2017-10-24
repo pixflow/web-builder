@@ -53,7 +53,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.collection.each( function ( element ) {
 				var elementName =  element.attributes.shortcode_name.replace("karma_", "");
-				var elementView = new karmaBuilder[elementName]( {
+				var elementView = new karmaBuilder[ elementName ]( {
 					model 	: element ,
 					el 		: $('.' + element.attributes.shortcode_name + '_' + element.attributes.shortcode_attributes.element_key )
 				} );
@@ -249,11 +249,7 @@ var karmaBuilder = karmaBuilder || {};
 		create : function( placeHolder ){
 
 			var randomString = this.createNewElementKey();
-
-			this.model.set( {
-				element_key : randomString
-			}, { silent : true } );
-
+			this.model.attributes.shortcode_attributes['element_key'] = randomString;
 			karmaBuilder.karmaModels.add( this.model );
 			this.render( placeHolder );
 			return karmaBuilder.karmaModels;
@@ -461,7 +457,9 @@ var karmaBuilder = karmaBuilder || {};
 
     karmaBuilder.row = karmaBuilder.shortcodes.extend({
 
-		gizmoTemplate : _.template(''),
+		gizmoTemplate : _.template('<div class="row-gizmo-button row-gizmo-background" ></div>'
+			+ '<div class="row-gizmo-button row-gizmo-layout" ></div>'
+			+ '<div class="row-gizmo-button row-gizmo-setting" ></div>'),
 
 		initialize: function(){
 			karmaBuilder.row.__super__.initialize.apply( this, arguments );
@@ -475,7 +473,10 @@ var karmaBuilder = karmaBuilder || {};
 
 		createGizmo: function () {
 
-			var gizmoContainer = document.createElement('div');
+			if( ! this.el ){
+				return ;
+			}
+			var gizmoContainer = document.createElement( 'div' );
 			gizmoContainer.setAttribute( 'class', 'row-gizmo-group' );
 			gizmoContainer.innerHTML = this.gizmoTemplate();
 			this.el.insertBefore( gizmoContainer, this.el.firstChild );
@@ -551,8 +552,8 @@ var karmaBuilder = karmaBuilder || {};
 		defaults : {
 			"shortcode_name" 		: "karma_row" ,
 			"shortcode_attributes"	: {
-				"element_key"	:"ef7gt2",
-				"padding"		:"200",
+				"element_key"	: "",
+				"padding"		: "200",
 			},
 			"shortcode_content" 	: "",
 			"shortcode_id" 			: 1,
@@ -570,8 +571,10 @@ var karmaBuilder = karmaBuilder || {};
 	});
 
 	$(document).ready( function () {
+
 		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
 		var KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
+		
 	});
 
 

@@ -1,4 +1,29 @@
-var karmaView = new karmaBuilder.view();
+
+karmaBuilder.model = Backbone.Model.extend({
+
+	defaults : {
+		"shortcode_name" 		: "karma_row" ,
+		"shortcode_attributes"	: {
+			"element_key"	: "",
+			"padding"		: "200",
+		},
+		"shortcode_content" 	: "",
+		"shortcode_id" 			: 1,
+		"order" 				: 1,
+		"parent_id" 			: 0
+	}
+
+});
+
+// A list of element
+var KarmaShortcodesCollection = Backbone.Collection.extend({
+
+	model : karmaBuilder.model
+
+});
+
+karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
+var karmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
 
 /** Create object from builder */
 var shortcode_instance = new karmaBuilder.shortcodes({
@@ -133,10 +158,11 @@ QUnit.test( "karmaDeleteModel" , function ( assert ) {
 	var result = karmaBuilder.karmaModels;
 	var testResult = {};
 	for(  var i in result.models ) {
-
 		testResult[i] = result.models[i].attributes;
-
+		delete testResult[i]['shortcode_attributes']['element_key'];
 	}
+
+
 	assert.deepEqual( testResult , karmaDeleteResult );
 	assert.equal( $('div[data-element-id="1"]').length , 1 );
 	assert.equal( $('div[data-element-id="4"]').length , 0 );
@@ -231,7 +257,7 @@ QUnit.test ( "karmaUpdateModel", function ( assert ) {
 		"style"        	: 'font-family: "sans-serif";',
 
 	} );
-
+	delete karmaBuilder.karmaModels.where( { 'shortcode_id' : 12 } )[0].attributes.shortcode_attributes.element_key;
 	assert.deepEqual( karmaBuilder.karmaModels.where( { 'shortcode_id' : 12 } )[0].attributes, {
 		"shortcode_id"          : 12,
 		"shortcode_name"        : "shortcode_test",
@@ -283,7 +309,7 @@ QUnit.test( "karmaFindChildren" , function ( assert ) {
         });
         karmaBuilder.karmaModels.add(shortcodes['model_'+i] );
 
-        shortcodes['sh'+i] = new karmaBuilder.sectionElement({
+        shortcodes['sh'+i] = new karmaBuilder.row({
             model : shortcodes['model_'+i]
         });
     }
@@ -331,7 +357,7 @@ QUnit.test( "karmaCurrentGrid" , function ( assert ) {
         });
         karmaBuilder.karmaModels.add(shortcodes['model_'+i] );
 
-        shortcodes['sh'+i] = new karmaBuilder.sectionElement({
+        shortcodes['sh'+i] = new karmaBuilder.row({
             model : shortcodes['model_'+i]
         });
     }
@@ -374,7 +400,7 @@ QUnit.test( "karmaCalculateNewGrid" , function ( assert ) {
         });
         karmaBuilder.karmaModels.add(shortcodes['model_'+i] );
 
-        shortcodes['sh'+i] = new karmaBuilder.sectionElement({
+        shortcodes['sh'+i] = new karmaBuilder.row({
             model : shortcodes['model_'+i]
         });
     }
