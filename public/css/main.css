@@ -1772,7 +1772,8 @@ iframe {
       padding-right: 10px;
       padding-bottom: 5px;
       padding-left: 10px;
-      text-align: center; }
+      text-align: center;
+      cursor: pointer; }
       .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
         opacity: .5; }
         .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {
