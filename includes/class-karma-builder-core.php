@@ -248,6 +248,7 @@ class Karma_Builder_Core{
 	 * @return mixed - model of shortcode or false if shortcode syntax is incorrect
 	 */
 	public function parse_shortcode( $shortcode_attributes ) {
+
 		if ( ! $this->validate_shortcode_syntax( $shortcode_attributes ) ){
 			return false;
 		}
@@ -255,9 +256,10 @@ class Karma_Builder_Core{
 		$pattern = $this->get_shortcode_regex('.*?');
 		preg_match_all( $pattern , $shortcode_attributes , $matches );
 		$shortcode_models["shortcode_name"] = $matches[2][0];
-		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[0][0] );
+		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[3][0] );
 		$shortcode_models['shortcode_content'] = $matches[5][0];
 		return $shortcode_models;
+
 	}
 
 	/**
@@ -318,6 +320,7 @@ class Karma_Builder_Core{
 
 		$atts = array();
 		preg_match_all( $this->shortcode_attr_pattern , $shortcode_attributes , $matches );
+
 		if( $matches ){
 			$shortcode_group_attribute = $this->merge_attributes_matches( $matches );
 			for( $count = 0 ; $count < count( $shortcode_group_attribute['attributes'] ); $count++ ){
