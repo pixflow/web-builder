@@ -55,7 +55,7 @@ var karmaBuilder = karmaBuilder || {};
 				var elementName =  element.attributes.shortcode_name.replace("karma_", "");
 				var elementView = new karmaBuilder[ elementName ]( {
 					model 	: element ,
-					el 		: $('.' + element.attributes.shortcode_name + '_' + element.attributes.shortcode_attributes.element_key )
+					el 		: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' )
 				} );
 				elementView.createGizmo();
 			} );
@@ -480,13 +480,16 @@ var karmaBuilder = karmaBuilder || {};
 			+ '<div class="row-gizmo-button row-gizmo-setting" ></div>'),
 
 		initialize: function(){
+
 			karmaBuilder.row.__super__.initialize.apply( this, arguments );
 			this.liveSpacing();
+
 		},
 
 		events : {
 
-			'click' : 'showBorder'
+			'click' : 'showBorder',
+			'mousedown .section-spacing' : 'showMouseToolTip',
 
 		} ,
 
@@ -549,6 +552,75 @@ var karmaBuilder = karmaBuilder || {};
             return newGrid;
         },
 
+		/**
+		 * show mouse tooltip in spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * add event to tooltip
+		 */
+
+		showMouseToolTip : function(e) {
+			var tooltipDiv = document.body.querySelector('.tooltip-div');
+			tooltipDiv.style.display = 'block';
+			e.target.classList.add('target-moving');
+			document.documentElement.addEventListener( 'mousemove', this.moveMouseToolTip, false );
+			document.documentElement.addEventListener( 'mouseup', this.removeMouseToolTip, false );
+		},
+
+		/**
+		 * move mouse tooltip in spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * give position to tooltip div
+		 */
+
+		moveMouseToolTip : function(e) {
+			var tooltipDiv = document.body.querySelector('.tooltip-div');
+			if( 'none' === tooltipDiv.style.display ){
+				return false;
+			}
+			var x = e.clientX,
+				y = e.clientY;
+			tooltipDiv.style.top = (y + 20) + 'px';
+			tooltipDiv.style.left = (x + 20) + 'px';
+			tooltipDiv.innerText = document.querySelector('.target-moving').offsetHeight;
+
+		},
+		/**
+		 * remove mouse tooltip in spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * remove all event from tooltip
+		 */
+
+
+		removeMouseToolTip : function(e) {
+			var tooltipDiv = document.body.querySelector('.tooltip-div');
+			tooltipDiv.style.display = 'none';
+			e.target.classList.remove('target-moving');
+			document.documentElement.removeEventListener('mousemove', this.moveMouseToolTip);
+			document.documentElement.removeEventListener('mouseup', this.removeMouseToolTip);
+		},
+		/**
+		 * create html fot tooltip
+		 *
+		 * @since 1.0.0
+		 *
+		 */
+
+		toolTipHtml: function () {
+			if( ! document.querySelectorAll('.tooltip-div').length ){
+				var tooltip = document.createElement( 'div' );
+				tooltip.setAttribute( 'class', 'tooltip-div' )
+				document.body.appendChild( tooltip );
+			}
+		},
+
+
+
         /**
          * Add live spacing ability to section elements
          *
@@ -558,8 +630,15 @@ var karmaBuilder = karmaBuilder || {};
          */
         liveSpacing: function () {
 
-	        this.el.insertAdjacentHTML( 'beforebegin', '<div class="section-spacing section-top-spacing"></div>' );
-	        this.el.insertAdjacentHTML( 'afterend', '<div class="section-spacing section-bottom-spacing"></div>' );
+	        this.toolTipHtml()
+        	var topSpacing = document.createElement('div');
+			topSpacing.setAttribute( 'class', 'section-spacing section-top-spacing' );
+
+			var bottomSpacing = document.createElement('div');
+			bottomSpacing.setAttribute( 'class', 'section-spacing section-bottom-spacing' );
+
+			this.el.appendChild(bottomSpacing);
+	        this.el.insertBefore( topSpacing, this.el.childNodes[0] );
 
 	        var that = this,
 		        options = {
@@ -578,6 +657,7 @@ var karmaBuilder = karmaBuilder || {};
 			        }
 		        };
 	        gridResizer( options );
+
         }
 
     });
@@ -624,7 +704,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
 		var KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
-		
+
 	});
 
 

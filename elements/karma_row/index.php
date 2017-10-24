@@ -41,7 +41,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 		?>
 		<div class='karma-section karma_row_<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
 			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
-				<?php do_shortcode( $content ); ?>
+				<?php echo do_shortcode( $content ); ?>
 			</div>
 		</div>
 		<?php
