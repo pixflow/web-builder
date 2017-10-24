@@ -160,7 +160,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_id"			=> 40,
 				"shortcode_name"		=> "shortcode_test4",
 				"shortcode_attributes"	=>	array(
-					"color"		=>	"red",
+					"color"		=>	"blue",
 					"font"		=>	"arial",
 					"bg"		=>	"#000fff",
 					"style"		=>	'font-family: "tahoma";',
@@ -176,7 +176,7 @@ class Tests_Core extends WP_UnitTestCase {
 		$expect =
 			'[shortcode_test bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "]'
 			.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
-			.'[shortcode_test4 bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
+			.'[shortcode_test4 bg="#000fff" color="blue" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
 		$this->assertEquals( $expect, $this->builder->generate_post_content( $models ) );
@@ -229,7 +229,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_id"			=> 40,
 				"shortcode_name"		=> "shortcode_test4",
 				"shortcode_attributes"	=>	array(
-					"color"		=>	"red",
+					"color"		=>	"blue",
 					"font"		=>	"arial",
 					"bg"		=>	"#000fff",
 					"style"		=>	'font-family: "tahoma";',
@@ -245,7 +245,7 @@ class Tests_Core extends WP_UnitTestCase {
 		$expect =
 			'[shortcode_test bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "]'
 			.'[shortcode_test2] Test Content \/ Goes here[/shortcode_test2]'
-			.'[shortcode_test4 bg="#000fff" color="red" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
+			.'[shortcode_test4 bg="#000fff" color="blue" font="arial" radius="18" style="font-family: \"tahoma\";" sub_title="this is a subtitle\'s test" title="this is a \" title \" "][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
 
