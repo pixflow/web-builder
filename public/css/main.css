@@ -120,7 +120,7 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
+.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
   justify-content: center;
   display: flex;
   text-align: center;
@@ -1603,7 +1603,7 @@ iframe {
           margin-right: 10px; }
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg * {
             stroke: #fff !important; }
-        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg {
+        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg {
           width: 24.49px;
           height: 24.49px;
           top: 9.51px;
@@ -1613,7 +1613,7 @@ iframe {
           background-color: rgba(255, 255, 255, 0.18);
           border-radius: 19px;
           margin-right: 5px; }
-          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg svg * {
+          #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
       padding-top: 3px;
