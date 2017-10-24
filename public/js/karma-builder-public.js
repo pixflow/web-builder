@@ -55,8 +55,10 @@ var karmaBuilder = karmaBuilder || {};
 				var elementName =  element.attributes.shortcode_name.replace("karma_", "");
 				var elementView = new karmaBuilder[elementName]( {
 					model 	: element ,
-					el 		: $('.' + element.attributes.shortcode_name + '_' + element.attributes.shortcode_attributes.element_key ) } );
-			} )
+					el 		: $('.' + element.attributes.shortcode_name + '_' + element.attributes.shortcode_attributes.element_key )
+				} );
+				elementView.createGizmo();
+			} );
 
 		},
 
@@ -459,6 +461,7 @@ var karmaBuilder = karmaBuilder || {};
 
     karmaBuilder.row = karmaBuilder.shortcodes.extend({
 
+		gizmoTemplate : _.template(''),
 
 		initialize: function(){
 			karmaBuilder.row.__super__.initialize.apply( this, arguments );
@@ -470,10 +473,19 @@ var karmaBuilder = karmaBuilder || {};
 
 		} ,
 
+		createGizmo: function () {
+
+			var gizmoContainer = document.createElement('div');
+			gizmoContainer.setAttribute( 'class', 'row-gizmo-group' );
+			gizmoContainer.innerHTML = this.gizmoTemplate();
+			this.el.insertBefore( gizmoContainer, this.el.firstChild );
+
+		},
+
 		showBorder : function () {
 
-			$( '.karma_active_row' ).removeClass( 'karma_active_row' );
-			this.$el.addClass( 'karma_active_row' );
+			$( '.karma-active-row' ).removeClass( 'karma-active-row' );
+			this.$el.addClass( 'karma-active-row' );
 
 		},
 
@@ -525,7 +537,13 @@ var karmaBuilder = karmaBuilder || {};
 		initialize: function(){
 			karmaBuilder.column.__super__.initialize.apply( this, arguments );
 		},
-		
+
+		createGizmo: function () {
+
+
+
+		},
+
 	});
 
 	karmaBuilder.model = Backbone.Model.extend({
