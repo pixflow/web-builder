@@ -65,7 +65,7 @@ class Tests_Core extends WP_UnitTestCase {
 		$shortcodes =
 			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]'
 			.'[shortcode_test2] Test Content Goes here[/shortcode_test2]'
-			.'[shortcode_test4 color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
+			.'[shortcode_test4 color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
 			.'[/shortcode_test]'
 			.'[shortcode_test3][/shortcode_test3]';
 
@@ -96,7 +96,7 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"shortcode_name"        => "shortcode_test4",
 				"shortcode_attributes"  =>  array(
-					"color"     =>  "red",
+					"color"     =>  "blue",
 					"font"      =>  "arial",
 					"bg"        =>  "#000fff",
 					"style"     =>  'font-family: "tahoma";',
@@ -114,7 +114,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"shortcode_attributes"  =>  array(),
 				'shortcode_content' 	=> '' ,
 				"shortcode_id" 			=> 4 ,
-				"order"				=> 2,
+				"order"				    => 2,
 				"parent_id"				=> 0,
 
 			),
