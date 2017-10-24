@@ -297,7 +297,7 @@ html {
 *::after {
   box-sizing: inherit; }
 
-.container {
+.karma-container {
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
@@ -305,16 +305,16 @@ html {
   width: 100%; }
 
 @media (min-width: 576px) {
-  .container {
+  .karma-container {
     max-width: 540px; } }
 @media (min-width: 768px) {
-  .container {
+  .karma-container {
     max-width: 720px; } }
 @media (min-width: 992px) {
-  .container {
+  .karma-container {
     max-width: 960px; } }
 @media (min-width: 1200px) {
-  .container {
+  .karma-container {
     max-width: 1140px; } }
 .karma-builder-element .karma-column[class*="col-"] {
   flex-basis: 100%;
@@ -336,14 +336,14 @@ html {
   margin-right: -15px;
   margin-left: -15px; }
 
-.no-gutters {
+.karma-no-gutters {
   margin-right: 0;
   margin-left: 0; }
 
-.no-gutters > .karma-col,
-.no-gutters > [class*="col-"],
-.no-gutters > .karma-builder-element > .karma-col,
-.no-gutters > .karma-builder-element > [class*="col-"] {
+.karma-no-gutters > .karma-col,
+.karma-no-gutters > [class*="col-"],
+.karma-no-gutters > .karma-builder-element > .karma-col,
+.karma-no-gutters > .karma-builder-element > [class*="col-"] {
   padding-right: 0;
   padding-left: 0; }
 

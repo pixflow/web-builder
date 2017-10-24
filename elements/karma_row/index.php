@@ -39,8 +39,8 @@ class Karma_Row extends Karma_Shortcode_Base {
 		$container_class = ($atts['structure'] == 'container')?"container":"karma-container-fluid";
 		ob_start();
 		?>
-		<div class='karma_section karma_row_<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
-			<div class='<?php echo esc_attr( $container_class ); ?> karma-row no-gutters'>
+		<div class='karma-section karma_row_<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
+			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 				<?php do_shortcode( $content ); ?>
 			</div>
 		</div>
@@ -51,8 +51,8 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<div class='karma-row {{data.extra_class}}'>"
-			. "<div class='{{data.structure}}'>"
+		return "<div class='karma-section {{data.extra_class}}'>"
+			. "<div class='{{data.structure}} karma-row karma-no-gutters'>"
 			. '<# print( createChildren( data.shortcodeContent ) ) #>'
 			. "</div>"
 			. "</div>";
@@ -96,7 +96,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
 					'value'		=> 0,
 					"options"	=> array(
-						'value'	=>200,
+						'value'	=> 200,
 						'min'	=> 0,
 						'max'	=> 800,
 						'step'	=> 1,
