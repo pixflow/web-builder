@@ -1,3 +1,291 @@
+.grid-resizer-noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+
+.rangeslider,
+.rangeslider__fill {
+  display: block;
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+.rangeslider {
+  background: #e6e6e6;
+  position: relative; }
+
+.rangeslider--horizontal {
+  height: 20px;
+  width: 100%; }
+
+.rangeslider--vertical {
+  width: 20px;
+  min-height: 150px;
+  max-height: 100%; }
+
+.rangeslider--disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4; }
+
+.rangeslider__fill {
+  background: #00ff00;
+  position: absolute; }
+
+.rangeslider--horizontal .rangeslider__fill {
+  top: 0;
+  height: 100%; }
+
+.rangeslider--vertical .rangeslider__fill {
+  bottom: 0;
+  width: 100%; }
+
+.rangeslider__handle {
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g");
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; }
+
+.rangeslider__handle:after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEzIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.13)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; }
+
+.rangeslider__handle:active, .rangeslider--active .rangeslider__handle {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.12)));
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12)); }
+
+.rangeslider--horizontal .rangeslider__handle {
+  top: -10px;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y; }
+
+.rangeslider--vertical .rangeslider__handle {
+  left: -10px;
+  touch-action: pan-x;
+  -ms-touch-action: pan-x; }
+
+input[type="range"]:focus + .rangeslider .rangeslider__handle {
+  -moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.9); }
+
+/*
+This file is used to contain all helper imports.
+Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
+*/
+.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  align-items: center; }
+
+.HelveticaNeue-font, .karma-title2-controller div.karma-title2-field, .karma-title-controller div.karma-title-field {
+  font-family: HelveticaNeue; }
+
+/**
+ * Media queries
+ * @group helpers
+ * @param {String} $size - kind of size such as: small
+ * @param {string} $type - Max or Min for width
+ * @param {Number} $pixels - when use custom use this pixels
+ * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
+ * @output media query for responsive
+ */
+/**
+ * Centering elements
+ * @group helpers
+ * @param {String} $position - kind of center alignment such as: vertical
+ * @output top left and transform of element
+ */
+/**
+ * External fonts
+ * @group helpers
+ * @param {String} $font-name - name of font
+ * @param {string} $file-name - url of font sorce
+ * @param {Number} $weight - weight of font
+ * @param {string}  $style - style of font
+ * @output read font and give it font-weight and font-style
+ */
+/**
+ * Adding dimensions
+ * @group helpers
+ * @param {Number} $width - width of box(element) 
+ * @param {Number}  $height - height of box
+ * @output give width and height 
+ */
+/**
+ * padding mixin
+ * @group helpers
+ * @param {Number} $top - set padding top
+ * @param {Number} $right - set padding right
+ * @param {Number} $bottom - set padding bottom
+ * @param {Number} $left - set padding left
+ * @output all side padding
+ */
+/**
+ * margin mixin
+ * @group helpers
+ * @param {Number} $top - set margin top
+ * @param {Number} $right - set margin right
+ * @param {Number} $bottom - set margin bottom
+ * @param {Number} $left - set margin left
+ * @output all side margin
+ */
+/**
+ * Element Direction mixin
+ * @group helpers
+ * @param {Number} $top - set Element Direction top
+ * @param {Number} $right - set Element Direction right
+ * @param {Number} $bottom - set Element Direction bottom
+ * @param {Number} $left - set Element Direction left
+ * @output all side margin
+ */
+/**
+ * Centering a block
+ * @group helpers
+ * @output with display block and margin center element
+ */
+/**
+ * flexbox
+ * @group helpers
+ * @output with display flex and  center element
+ */
+@font-face {
+  font-family: HelveticaNeu_Bold;
+  src: url("../font/Helvetica_Neu_Bold.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue;
+  src: url("../font/HelveticaNeue.woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue_BlackCond;
+  src: url("../font/Helvetica_Neue_Black.woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue_Light;
+  src: url("../font/HelveticaNeue_Light.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue_Medium;
+  src: url("../font/HelveticaNeue_Medium.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue_Thin;
+  src: url("../font/HelveticaNeueThin.woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeueBd;
+  src: url("../font/HelveticaNeueBd.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeueHv;
+  src: url("../font/HelveticaNeueHv.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeueIt;
+  src: url("../font/HelveticaNeueLt.ttf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeueMed;
+  src: url("../font/HelveticaNeueMed.ttf");
+  font-weight: normal;
+  font-style: normal; }
+/* _-_-_- base/RESET -_-_-_ */
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* _-_-_- base/BASE -_-_-_ */
+body {
+  font-family: "HelveticaNeue"; }
+  body .karma-full-seprator {
+    width: 100%;
+    height: 1px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    color: rgba(57, 73, 89, 0.2);
+    position: absolute; }
+  body .karma-container-seprator {
+    margin-top: 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+    margin-left: 0;
+    width: calc(100% - 40px);
+    height: 1px;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 20px;
+    color: rgba(57, 73, 89, 0.2);
+    position: absolute; }
+
+/* _-_-_- base/TYPOGRAPHY -_-_-_ */
+/* _-_-_- layout/FOOTER -_-_-_ */
+/* _-_-_- layout/FORMS -_-_-_ */
 @-ms-viewport {
   width: device-width; }
 html {
@@ -28,6 +316,11 @@ html {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px; } }
+.karma-builder-element .karma-column[class*="col-"] {
+  flex-basis: 100%;
+  max-width: 100%;
+  width: 100%; }
+
 .karma-container-fluid {
   margin-right: auto;
   margin-left: auto;
@@ -48,7 +341,9 @@ html {
   margin-left: 0; }
 
 .no-gutters > .karma-col,
-.no-gutters > [class*="col-"] {
+.no-gutters > [class*="col-"],
+.no-gutters > .karma-builder-element > .karma-col,
+.no-gutters > .karma-builder-element > [class*="col-"] {
   padding-right: 0;
   padding-left: 0; }
 
@@ -1249,295 +1544,6 @@ html {
   .align-self-xl-stretch {
     -ms-flex-item-align: stretch !important;
     align-self: stretch !important; } }
-.grid-resizer-noselect {
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently supported by Chrome and Opera */ }
-
-.rangeslider,
-.rangeslider__fill {
-  display: block;
-  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px; }
-
-.rangeslider {
-  background: #e6e6e6;
-  position: relative; }
-
-.rangeslider--horizontal {
-  height: 20px;
-  width: 100%; }
-
-.rangeslider--vertical {
-  width: 20px;
-  min-height: 150px;
-  max-height: 100%; }
-
-.rangeslider--disabled {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-  opacity: 0.4; }
-
-.rangeslider__fill {
-  background: #00ff00;
-  position: absolute; }
-
-.rangeslider--horizontal .rangeslider__fill {
-  top: 0;
-  height: 100%; }
-
-.rangeslider--vertical .rangeslider__fill {
-  bottom: 0;
-  width: 100%; }
-
-.rangeslider__handle {
-  background: white;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g");
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
-  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%; }
-
-.rangeslider__handle:after {
-  content: "";
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEzIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.13)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%; }
-
-.rangeslider__handle:active, .rangeslider--active .rangeslider__handle {
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4xMiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.12)));
-  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12));
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.12)); }
-
-.rangeslider--horizontal .rangeslider__handle {
-  top: -10px;
-  touch-action: pan-y;
-  -ms-touch-action: pan-y; }
-
-.rangeslider--vertical .rangeslider__handle {
-  left: -10px;
-  touch-action: pan-x;
-  -ms-touch-action: pan-x; }
-
-input[type="range"]:focus + .rangeslider .rangeslider__handle {
-  -moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
-  -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
-  box-shadow: 0 0 8px rgba(255, 0, 255, 0.9); }
-
-/*
-This file is used to contain all helper imports.
-Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
-*/
-.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  align-items: center; }
-
-.HelveticaNeue-font, .karma-title2-controller div.karma-title2-field, .karma-title-controller div.karma-title-field {
-  font-family: HelveticaNeue; }
-
-/**
- * Media queries
- * @group helpers
- * @param {String} $size - kind of size such as: small
- * @param {string} $type - Max or Min for width
- * @param {Number} $pixels - when use custom use this pixels
- * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
- * @output media query for responsive
- */
-/**
- * Centering elements
- * @group helpers
- * @param {String} $position - kind of center alignment such as: vertical
- * @output top left and transform of element
- */
-/**
- * External fonts
- * @group helpers
- * @param {String} $font-name - name of font
- * @param {string} $file-name - url of font sorce
- * @param {Number} $weight - weight of font
- * @param {string}  $style - style of font
- * @output read font and give it font-weight and font-style
- */
-/**
- * Adding dimensions
- * @group helpers
- * @param {Number} $width - width of box(element) 
- * @param {Number}  $height - height of box
- * @output give width and height 
- */
-/**
- * padding mixin
- * @group helpers
- * @param {Number} $top - set padding top
- * @param {Number} $right - set padding right
- * @param {Number} $bottom - set padding bottom
- * @param {Number} $left - set padding left
- * @output all side padding
- */
-/**
- * margin mixin
- * @group helpers
- * @param {Number} $top - set margin top
- * @param {Number} $right - set margin right
- * @param {Number} $bottom - set margin bottom
- * @param {Number} $left - set margin left
- * @output all side margin
- */
-/**
- * Element Direction mixin
- * @group helpers
- * @param {Number} $top - set Element Direction top
- * @param {Number} $right - set Element Direction right
- * @param {Number} $bottom - set Element Direction bottom
- * @param {Number} $left - set Element Direction left
- * @output all side margin
- */
-/**
- * Centering a block
- * @group helpers
- * @output with display block and margin center element
- */
-/**
- * flexbox
- * @group helpers
- * @output with display flex and  center element
- */
-@font-face {
-  font-family: HelveticaNeu_Bold;
-  src: url("../font/Helvetica_Neu_Bold.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue;
-  src: url("../font/HelveticaNeue.woff");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_BlackCond;
-  src: url("../font/Helvetica_Neue_Black.woff");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_Light;
-  src: url("../font/HelveticaNeue_Light.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_Medium;
-  src: url("../font/HelveticaNeue_Medium.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_Thin;
-  src: url("../font/HelveticaNeueThin.woff");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueBd;
-  src: url("../font/HelveticaNeueBd.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueHv;
-  src: url("../font/HelveticaNeueHv.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueIt;
-  src: url("../font/HelveticaNeueLt.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueMed;
-  src: url("../font/HelveticaNeueMed.ttf");
-  font-weight: normal;
-  font-style: normal; }
-/* _-_-_- base/RESET -_-_-_ */
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-/* _-_-_- base/BASE -_-_-_ */
-body {
-  font-family: "HelveticaNeue"; }
-  body .karma-full-seprator {
-    width: 100%;
-    height: 1px;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    top: auto;
-    right: auto;
-    bottom: 0;
-    left: 0;
-    color: rgba(57, 73, 89, 0.2);
-    position: absolute; }
-  body .karma-container-seprator {
-    margin-top: 0;
-    margin-right: 20px;
-    margin-bottom: 0;
-    margin-left: 0;
-    width: calc(100% - 40px);
-    height: 1px;
-    top: auto;
-    right: auto;
-    bottom: 0;
-    left: 20px;
-    color: rgba(57, 73, 89, 0.2);
-    position: absolute; }
-
-/* _-_-_- base/TYPOGRAPHY -_-_-_ */
-/* _-_-_- layout/FOOTER -_-_-_ */
-/* _-_-_- layout/FORMS -_-_-_ */
-/* _-_-_- layout/GRID -_-_-_ */
 /* _-_-_- layout/HEADER -_-_-_ */
 .karma-builder .karma-top-nav {
   height: 10vh;

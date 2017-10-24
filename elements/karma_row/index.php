@@ -38,8 +38,8 @@ class Karma_Row extends Karma_Shortcode_Base {
 		);
 		$container_class = ($atts['structure'] == 'container')?"container":"karma-container-fluid";
 
-		return "<div class='karma_row karma_row_".$atts['element_key'].' '.$atts['extra_class']."'>"
-				."<div class='".$container_class." '>"
+		return "<div class='karma-section karma_row_".$atts['element_key'].' '.$atts['extra_class']."'>"
+				."<div class='".$container_class." karma-row no-gutters'>"
 					. do_shortcode($content)
 				."</div>"
 			. " </div>";
@@ -48,7 +48,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<div class='karma_row {{data.extra_class}}'>"
+		return "<div class='karma-row {{data.extra_class}}'>"
 			."<div class='{{data.structure}}'>"
 			 . '<# print( createChildren( data.shortcodeContent ) ) #>'
 			. "</div>"

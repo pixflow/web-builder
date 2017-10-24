@@ -80,6 +80,9 @@ class Karma_Shortcode_Base {
 		add_filter( 'karma_elements_map', array( $this, 'map' ) );
 		add_shortcode( static::$element_name , array( $this, 'render' ) );
 		add_action( 'karma_before_shortcode_apply_' . static::$element_name , array( $this , 'load_assets' ) );
+		if( method_exists( $this, 'wrapper_classes' ) ) {
+			add_filter( 'karma_builder/elements/' . static::$element_name . '/classes', array( $this, 'wrapper_classes' ), 10, 2 );
+		}
 
 	}
 
