@@ -1785,10 +1785,11 @@ iframe {
   position: relative; }
 
 .row-top-spacing-dot-container {
+  cursor: n-resize;
   position: absolute;
   top: -9px;
   left: 48%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   height: 18px;
@@ -1814,10 +1815,11 @@ iframe {
     background-color: #FFFFFF; }
 
 .row-bottom-spacing-dot-container {
+  cursor: n-resize;
   position: absolute;
   bottom: -9px;
   left: 48%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   height: 18px;
@@ -1826,7 +1828,7 @@ iframe {
     display: block; }
   .row-bottom-spacing-dot-container .spacing-bottom-dot-hover {
     height: 18px;
-    display: flex;
+    display: none;
     width: 18px;
     border-radius: 100%;
     background-color: rgba(51, 143, 252, 0.3);
@@ -2091,6 +2093,10 @@ iframe {
 .karma-active-section {
   border: 1px solid #419CF8; }
   .karma-active-section .row-gizmo-group {
+    display: flex; }
+  .karma-active-section .row-top-spacing-dot-container {
+    display: flex; }
+  .karma-active-section .row-bottom-spacing-dot-container {
     display: flex; }
 
 .karma-builder-element[data-name="karma_row"]:not(.karma-active-section):hover {

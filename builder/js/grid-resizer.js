@@ -28,16 +28,16 @@
 				onDrag      : function () {}
 			};
 
-		for ( i in this.defaultOptions ) {
+		for ( var i in this.defaultOptions ) {
 			this.options[ i ] = option[ i ] || this.defaultOptions[ i ];
 		}
 
 		this.els = document.querySelectorAll( this.options.selector );
+		console.log(this.els);
 
 		if ( null == this.els ) {
 			return false;
 		}
-
 		this.init();
 
 		return this.els;

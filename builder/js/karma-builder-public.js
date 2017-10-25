@@ -683,8 +683,11 @@ var karmaBuilder = karmaBuilder || {};
 		rowGimzoParams: {},
 
 		events:{
-			'click' 						: 'showBorder',
-			'mousedown .section-spacing' 	: 'showMouseToolTip',
+
+			'click .karma-section' 							: 'showBorder',
+			'mousedown .section-spacing' 					: 'showMouseToolTip',
+			'mousedown .row-top-spacing-dot-container' 		: 'showMouseToolTip',
+			'mousedown .row-bottom-spacing-dot-container' 	: 'showMouseToolTip',
 		},
 
 		initialize: function( options ){
@@ -831,7 +834,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		spacingGizmo: function () {
 			var rowTopSpacingContainer = document.createElement('div');
-			rowTopSpacingContainer.setAttribute( 'class', 'row-top-spacing-dot-container' );
+			rowTopSpacingContainer.setAttribute( 'class', 'row-top-spacing-dot-container section-spacing' );
 
 			var rowTopSpacing = document.createElement( 'div' );
 			rowTopSpacing.setAttribute( 'class', 'spacing-top-dot-hover' );
@@ -841,7 +844,7 @@ var karmaBuilder = karmaBuilder || {};
 			rowTopSpacingContainer.appendChild( rowTopSpacing );
 
 			var rowBottomSpacingContainer = document.createElement('div');
-			rowBottomSpacingContainer.setAttribute( 'class', 'row-bottom-spacing-dot-container' );
+			rowBottomSpacingContainer.setAttribute( 'class', 'row-bottom-spacing-dot-container section-spacing' );
 
 			var rowBottomSpacing = document.createElement( 'div' );
 			rowBottomSpacing.setAttribute( 'class', 'spacing-bottom-dot-hover' );
