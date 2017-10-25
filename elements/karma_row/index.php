@@ -148,9 +148,10 @@ class Karma_Row extends Karma_Shortcode_Base {
 					) ,
 					array(
 						'type' =>'text',
-						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_container.svg') ,
 						'action' => 'open' ,
 						'className' => 'row-setting-setting' ,
+						'value'	=> 'background'
+
 					),
 				)
 			)

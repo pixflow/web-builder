@@ -1705,15 +1705,39 @@ iframe {
   justify-content: center; }
 
 .row-gizmo-group {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  display: block; }
-
-.karma-builder-element {
-  width: 200px;
-  height: 200px;
-  background-color: #00a0d2; }
+  width: auto;
+  height: 35px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  top: 17px;
+  right: 17px;
+  bottom: auto;
+  left: auto;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+  direction: rtl;
+  position: absolute; }
+  .row-gizmo-group div {
+    cursor: pointer; }
+  .row-gizmo-group .karma-builder-gizmo-icon {
+    padding-top: 0;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 10px;
+    width: auto;
+    height: 22px;
+    border-left: 1px solid rgba(151, 151, 151, 0.3); }
+  .row-gizmo-group .karma-builder-gizmo-text {
+    padding-top: 0;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-left: 15px;
+    color: #394959;
+    font-size: 13px;
+    font-family: HelveticaNeue; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {

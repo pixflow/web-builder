@@ -165,10 +165,13 @@ var karmaBuilder = karmaBuilder || {};
 
 		innerGizmoTemplate : '<div class="{{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }}"></div> '
+		+ ' <div class="karma-builder-gizmo-{{ param.type }}">'
 		+ ' <# if( "icon" === param.type ){ #>'
-		+ ' <div>{{ param.field }}</div>'
+			+ ' <div>{{{ param.icon }}}</div>'
+		+ '<# } else if( "text" === param.type ) {#>'
+			+ '<div>{{{ param.value }}}</div>'
 		+ '<# } #>'
+		+ '</div>'
 		+ '<# }) #>'
 		+ '</div>' ,
 

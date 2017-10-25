@@ -29,16 +29,33 @@
   justify-content: center;
 }
 
-.row-gizmo-group{
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  display: block;
-}
-.karma-builder-element{
-  width: 200px;
-  height: 200px;
-  background-color: #00a0d2;
+.row-gizmo-group {
+  @include box(auto, 35px);
+  @include flexbox(center, center, center);
+  @include element_direction($top: 17px, $right: 17px);
+  border-radius: 3px;
+  background-color: $white-color;
+  box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+  direction: rtl;
+  position: absolute;
+
+  div{
+    cursor: pointer;
+  }
+
+  .karma-builder-gizmo-icon{
+    @include padding(0, 10px, 0, 10px);
+    @include box(auto, 22px);
+    border-left: 1px solid rgba(151, 151, 151, 0.3);
+
+  }
+  .karma-builder-gizmo-text{
+    @include padding(0, 15px, 0, 15px);
+    color: #394959;
+    font-size: 13px;
+    font-family: HelveticaNeue;
+  }
+
 }
 
 
