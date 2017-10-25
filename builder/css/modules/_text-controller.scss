@@ -6,7 +6,7 @@
   input.karma-text-input-field{
     @include box(245px, 36px);
     @include padding(11px, 14px, 11px, 14px);
-    background: #fff;
+    background: transparent;
     border: 1px solid rgba(57,73,89,0.2);
     border-radius: 20px;
     color: #394959;

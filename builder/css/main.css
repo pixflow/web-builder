@@ -1628,9 +1628,11 @@ iframe {
     #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       list-style: none;
-      margin-bottom: 30px; }
+      margin-bottom: 30px;
+      position: relative;
+      top: 125px; }
       #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add {
         background-color: #8578FC; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add .svg-extra svg * {
@@ -1868,7 +1870,7 @@ iframe {
     padding-right: 14px;
     padding-bottom: 11px;
     padding-left: 14px;
-    background: #fff;
+    background: transparent;
     border: 1px solid rgba(57, 73, 89, 0.2);
     border-radius: 20px;
     color: #394959;

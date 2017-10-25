@@ -96,9 +96,11 @@ iframe{
 	ul {
 	  display: flex;
 	  flex-direction: column;
-	  justify-content: center;
+	  justify-content: flex-start;
 	  list-style: none;
 	  margin-bottom: 30px;
+	  position: relative;
+	  top: 125px;
 
 	  .svg-extra-add{
 		background-color: #8578FC;
