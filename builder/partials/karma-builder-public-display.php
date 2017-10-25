@@ -9,7 +9,7 @@
  * @since      1.0.0
  *
  * @package    Karma_Builder
- * @subpackage Karma_Builder/public/partials
+ * @subpackage Karma_Builder/builder/partials
  */
 ?>
 

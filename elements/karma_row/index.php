@@ -72,12 +72,12 @@ class Karma_Row extends Karma_Shortcode_Base {
 					"field"		=> array(
 
 						array(
-							'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_container.svg'),
+							'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg'),
 							'title' => "Full screen",
 							'value' => "full",
 						),
 						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_full.svg'),
+							'image' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg'),
 							'title' => "Container",
 							'value' => "container"
 						),
@@ -136,13 +136,13 @@ class Karma_Row extends Karma_Shortcode_Base {
 				"params" => array(
 					array(
 						'type' =>'icon',
-						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/setting-panel.svg'),
+						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg'),
 						'action' => 'open' ,
 						'className' => 'row-setting-background' ,
 					) ,
 					array(
 						'type' =>'icon',
-						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/layout.svg') ,
+						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/layout.svg') ,
 						'action' => 'open' ,
 						'className' => 'row-setting-layout' ,
 					) ,

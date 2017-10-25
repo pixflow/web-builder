@@ -178,7 +178,7 @@ class Karma_Builder {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once KARMA_BUILDER_DIR . 'public/class-karma-builder-public.php';
+		require_once KARMA_BUILDER_DIR . 'builder/class-karma-builder-init.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the

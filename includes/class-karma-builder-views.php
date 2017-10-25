@@ -57,7 +57,7 @@ class Karma_Views {
 	 */
 	public function load_navbar_template(){
 
-		include KARMA_BUILDER_DIR . 'public/templates/main-template.php';
+		include KARMA_BUILDER_DIR . 'builder/templates/main-template.php';
 
 	}
 
@@ -68,7 +68,7 @@ class Karma_Views {
 	 */
 	public function load_header_template(){
 
-		include KARMA_BUILDER_DIR . 'public/templates/header-template.php';
+		include KARMA_BUILDER_DIR . 'builder/templates/header-template.php';
 
 	}
 
@@ -79,7 +79,7 @@ class Karma_Views {
 	 */
 	public function load_footer_template(){
 
-		include KARMA_BUILDER_DIR . 'public/templates/footer-template.php';
+		include KARMA_BUILDER_DIR . 'builder/templates/footer-template.php';
 
 	}
 
@@ -93,7 +93,7 @@ class Karma_Views {
 
 		?>
 		<script type="text/html" id="tmpl-karma-element-setting-panel" >
-		<?php include KARMA_BUILDER_DIR . 'public/templates/element-setting-panel-template.php'; ?>
+		<?php include KARMA_BUILDER_DIR . 'builder/templates/element-setting-panel-template.php'; ?>
 		</script>
 		<?php
 
@@ -109,7 +109,7 @@ class Karma_Views {
 
 		?>
 		<script type="text/html" id="tmpl-karma-<?php echo $controller; ?>-controller" >
-			<?php include KARMA_BUILDER_DIR . "public/templates/controller/{$controller}/template.php"; ?>
+			<?php include KARMA_BUILDER_DIR . "builder/templates/controller/{$controller}/template.php"; ?>
 		</script>
 		<?php
 
@@ -122,7 +122,7 @@ class Karma_Views {
 	 */
 	public function load_controller_script( $controller ){
 
-		wp_enqueue_script( $controller, KARMA_BUILDER_URL . "public/templates/controller/{$controller}/script.js" );
+		wp_enqueue_script( $controller, KARMA_BUILDER_URL . "builder/templates/controller/{$controller}/script.js" );
 
 	}
 
@@ -135,7 +135,7 @@ class Karma_Views {
 
 		?>
 		<script type="text/html" id="tmpl-karma-<?php echo $extend; ?>-extend" >
-			<?php include KARMA_BUILDER_DIR . "public/templates/extends/{$extend}/template.php"; ?>
+			<?php include KARMA_BUILDER_DIR . "builder/templates/extends/{$extend}/template.php"; ?>
 		</script>
 		<?php
 
@@ -148,7 +148,7 @@ class Karma_Views {
 	 */
 	public function load_extend_script( $extend ){
 
-		wp_enqueue_script( $extend, KARMA_BUILDER_URL . "public/templates/extends/{$extend}/script.js" );
+		wp_enqueue_script( $extend, KARMA_BUILDER_URL . "builder/templates/extends/{$extend}/script.js" );
 
 	}
 

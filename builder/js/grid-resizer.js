@@ -128,7 +128,7 @@
 		}
 		return false;
 
-	}
+	};
 
 	/**
 	 * Start Dragging
