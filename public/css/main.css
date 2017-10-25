@@ -1704,10 +1704,16 @@ iframe {
   align-items: center;
   justify-content: center; }
 
-.iman {
+.row-gizmo-group {
   width: 100px;
   height: 100px;
-  background-color: red; }
+  background-color: red;
+  display: block; }
+
+.karma-builder-element {
+  width: 200px;
+  height: 200px;
+  background-color: #00a0d2; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {

@@ -29,10 +29,16 @@
   justify-content: center;
 }
 
-.iman{
+.row-gizmo-group{
   width: 100px;
   height: 100px;
   background-color: red;
+  display: block;
+}
+.karma-builder-element{
+  width: 200px;
+  height: 200px;
+  background-color: #00a0d2;
 }
 
 

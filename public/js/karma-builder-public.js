@@ -163,16 +163,13 @@ var karmaBuilder = karmaBuilder || {};
 			variable	: 'data'
 		},
 
-		/*
-		 * Underscore template for inner gizmo type
-		 *
-		 */
-		innerGizmoTemplate : '<div class= " {{ data.className }}">'
-		+ ' <# _.each( data.params, function( param ){'
-		+ ' print( "<div class=\'karma-builder-gizmo-\"  + param.type + \"\'></div>") '
-		+ ' if("icon" === param.type){'
-		+ ' print( " <div>type.icon</div>") } }'
-		+ ' ) #>'
+		innerGizmoTemplate : '<div class="{{ data.className }}">'
+		+ ' <# _.each( data.params, function( param ){ #>'
+		+ ' <div class="karma-builder-gizmo-{{ param.type }}"></div> '
+		+ ' <# if( "icon" === param.type ){ #>'
+		+ ' <div>{{ param.field }}</div>'
+		+ '<# } #>'
+		+ '<# }) #>'
 		+ '</div>' ,
 
 
@@ -187,8 +184,9 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.template = options.template;
 			_.bindAll(this, "render");
-			this.model.bind('change', this.render);
-
+			if( this.model ) {
+				this.model.bind('change', this.render);
+			}
 		},
 
 		/**
@@ -683,9 +681,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		createGizmo: function () {
 
-			var parser = new DOMParser(),
-				source = parser.parseFromString( this.gizmoBuilder( this.rowGimzoParams ), "text/xml" );
-			this.el.appendChild( source.firstChild );
+			this.$el.append( $( this.gizmoBuilder( this.rowGimzoParams ) ) );
 
 		},
 
