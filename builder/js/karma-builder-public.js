@@ -166,7 +166,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		innerGizmoTemplate : '<div class="{{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }}">'
+		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} ">'
 		+ ' <# if( "icon" === param.type ){ #>'
 		+ ' <div>{{{ param.icon }}}</div>'
 		+ '<# } else if( "text" === param.type ) {#>'
@@ -187,6 +187,7 @@ var karmaBuilder = karmaBuilder || {};
 			"click .row-gizmo-group" : "showSettingPanel",
 		},
 
+
 		/**
 		 * Set defaults in create
 		 *
@@ -204,7 +205,6 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 		},
-
 
 
 		/**
@@ -481,6 +481,7 @@ var karmaBuilder = karmaBuilder || {};
 		return view;
 
 	};
+
 
 	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
 
@@ -867,6 +868,7 @@ var karmaBuilder = karmaBuilder || {};
 		}
 
 	});
+
 
 	karmaBuilder.column = karmaBuilder.shortcodes.extend({
 

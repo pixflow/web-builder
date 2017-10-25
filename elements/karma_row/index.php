@@ -138,7 +138,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 						'type' =>'icon',
 						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg'),
 						'action' => 'open' ,
-						'className' => 'row-setting-background' ,
+						'className' => 'karma-element-setting' ,
 					) ,
 					array(
 						'type' =>'icon',
@@ -150,7 +150,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 						'type' =>'text',
 						'action' => 'open' ,
 						'className' => 'row-setting-setting' ,
-						'value'	=> 'background'
+						'value'	=> esc_attr( 'background', 'karma' )
 
 					),
 				)

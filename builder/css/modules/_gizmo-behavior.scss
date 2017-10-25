@@ -1,7 +1,16 @@
 .karma-active-section{
-    // It should be refine
-	border: 1px solid blue;
+
+	border: 1px solid #419CF8;
 	.row-gizmo-group {
 		display: flex;
 	}
+
+}
+
+.karma-builder-element[data-name="karma_row"] {
+
+	&:not(.karma-active-section):hover{
+		border: 1px solid #419CF8;
+	}
+
 }

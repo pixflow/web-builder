@@ -5,10 +5,12 @@ iframe{
 }
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
-  z-index: $level1;
-  display: flex;
-  position: absolute;
-  margin-right: 110px;
+	display: flex;
+  	margin-right: 110px;
+	position: fixed;
+	right: 170px;
+	top: 70px;
+	z-index: $level1;
 
   .karma-element-setting-panel {
 	width: 285px;
