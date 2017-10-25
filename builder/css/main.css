@@ -1779,6 +1779,66 @@ iframe {
       font-size: 13px;
       font-family: HelveticaNeue; }
 
+.karma-builder-element {
+  position: relative; }
+
+.row-top-spacing-dot-container {
+  position: absolute;
+  top: -9px;
+  left: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px; }
+  .row-top-spacing-dot-container:hover .spacing-top-dot-hover {
+    display: block; }
+  .row-top-spacing-dot-container .spacing-top-dot-hover {
+    height: 18px;
+    display: flex;
+    width: 18px;
+    border-radius: 100%;
+    background-color: rgba(51, 143, 252, 0.3);
+    justify-content: center;
+    align-items: center;
+    display: none; }
+  .row-top-spacing-dot-container .spacing-top-dot {
+    position: absolute;
+    box-sizing: border-box;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #419CF8;
+    border-radius: 100%;
+    background-color: #FFFFFF; }
+
+.row-bottom-spacing-dot-container {
+  position: absolute;
+  bottom: -9px;
+  left: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px; }
+  .row-bottom-spacing-dot-container:hover .spacing-bottom-dot-hover {
+    display: block; }
+  .row-bottom-spacing-dot-container .spacing-bottom-dot-hover {
+    height: 18px;
+    display: flex;
+    width: 18px;
+    border-radius: 100%;
+    background-color: rgba(51, 143, 252, 0.3);
+    justify-content: center;
+    align-items: center; }
+  .row-bottom-spacing-dot-container .spacing-bottom-dot {
+    position: absolute;
+    box-sizing: border-box;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #419CF8;
+    border-radius: 100%;
+    background-color: #FFFFFF; }
+
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
   padding-top: 15px;

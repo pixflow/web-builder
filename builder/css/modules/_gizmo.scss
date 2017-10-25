@@ -71,11 +71,12 @@
     div {
       cursor: pointer;
     }
-
+    
     .karma-builder-gizmo-icon {
       @include padding(0, 10px, 0, 10px);
       @include box(auto, 22px);
       border-left: 1px solid rgba(151, 151, 151, 0.3);
+
 
     }
     .karma-builder-gizmo-text {
@@ -86,3 +87,81 @@
     }
   }
 }
+.karma-builder-element{
+  position: relative;
+}
+.row-top-spacing-dot-container{
+  position: absolute;
+  top: -9px;
+  left: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+
+  &:hover .spacing-top-dot-hover{
+    display: block;
+  }
+
+  .spacing-top-dot-hover{
+    height: 18px;
+    display: flex;
+    width: 18px;
+    border-radius: 100%;
+    background-color: rgba(51, 143, 252, 0.3);
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+  }
+
+  .spacing-top-dot{
+    position: absolute;
+    box-sizing: border-box;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #419CF8;
+    border-radius: 100%;
+    background-color: #FFFFFF;
+
+  }
+}
+
+.row-bottom-spacing-dot-container{
+  position: absolute;
+  bottom: -9px;
+  left: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+
+  &:hover .spacing-bottom-dot-hover{
+    display: block;
+  }
+
+  .spacing-bottom-dot-hover{
+    height: 18px;
+    display: flex;
+    width: 18px;
+    border-radius: 100%;
+    background-color: rgba(51, 143, 252, 0.3);
+    justify-content: center;
+    align-items: center;
+
+  }
+  .spacing-bottom-dot{
+    position: absolute;
+    box-sizing: border-box;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #419CF8;
+    border-radius: 100%;
+    background-color: #FFFFFF;
+
+  }
+}
+
+
