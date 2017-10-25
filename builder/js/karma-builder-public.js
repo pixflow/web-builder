@@ -683,7 +683,7 @@ var karmaBuilder = karmaBuilder || {};
 		rowGimzoParams: {},
 
 		events:{
-			'click .karma-section' 			: 'showBorder',
+			'click' 						: 'showBorder',
 			'mousedown .section-spacing' 	: 'showMouseToolTip',
 		},
 
