@@ -6,8 +6,6 @@
  */
 (function () {
 
-	var options = {};
-
 	/**
 	 * initial function of gridResizer
 	 *
@@ -16,32 +14,33 @@
 	 */
 	function gridResizer( option ) {
 
-		var defaultOptions = {
-			selector    : ".grid-resizable",
-			minHeight   : 0,
-			maxHeight   : 5000,
-			minWidth    : 0,
-			maxWidth    : 5000,
-			snapToGrid  : false,
-			direction   : 'x',
-			gridPrefix  : 'col-md',
-			onStop      : function () {},
-			onDrag      : function () {}
-		};
+		this.options = {};
+		this.defaultOptions = {
+				selector    : ".grid-resizable",
+				minHeight   : 0,
+				maxHeight   : 5000,
+				minWidth    : 0,
+				maxWidth    : 5000,
+				snapToGrid  : false,
+				direction   : 'x',
+				gridPrefix  : 'col-md',
+				onStop      : function () {},
+				onDrag      : function () {}
+			};
 
-		for ( i in defaultOptions ) {
-			options[ i ] = option[ i ] || defaultOptions[ i ];
+		for ( i in this.defaultOptions ) {
+			this.options[ i ] = option[ i ] || this.defaultOptions[ i ];
 		}
 
-		var els = document.querySelectorAll( options.selector );
+		this.els = document.querySelectorAll( this.options.selector );
 
-		if ( null == els ) {
+		if ( null == this.els ) {
 			return false;
 		}
 
-		init( els );
+		this.init();
 
-		return els;
+		return this.els;
 
 	}
 
@@ -51,27 +50,27 @@
 	 * @param    {array}    els        DOM elements selected by selector
 	 * @returns    {array}    DOM elements which are resizable
 	 */
-	function init( els ) {
+	gridResizer.prototype.init = function() {
 
-		for ( var i = 0; i < els.length; i++ ) {
+		for ( var i = 0; i < this.els.length; i++ ) {
 
-			var el = els[ i ];
+			var el = this.els[ i ];
 
-			if ( options.snapToGrid ) {
+			if ( this.options.snapToGrid ) {
 
-				if ( isLastElement( el ) ) {
+				if ( this.isLastElement( el ) ) {
 					continue;
 				}
 
-				checkPaddingsToPreventLineBreaks( el );
+				this.checkPaddingsToPreventLineBreaks( el );
 			}
 
-			createHandlers( el );
+			this.createHandlers( el );
 
 		}
-		return els;
+		return this.els;
 
-	}
+	};
 
 	/**
 	 * Min width of columns shouldn't be lower that their padding
@@ -79,7 +78,7 @@
 	 * @param {object}    el    DOM element
 	 * @returns {boolean}
 	 */
-	function checkPaddingsToPreventLineBreaks( el ) {
+	gridResizer.prototype.checkPaddingsToPreventLineBreaks = function( el ) {
 
 		var oldWidth = el.style.width;
 		var oldMaxWidth = el.style.maxWidth;
@@ -87,8 +86,8 @@
 		el.style.width = '0px';
 		el.style.maxWidth = '0px';
 		el.style.flexBasis = '0px';
-		if ( el.offsetWidth > options.min ) {
-			options.min = el.offsetWidth;
+		if ( el.offsetWidth > this.options.min ) {
+			this.options.min = el.offsetWidth;
 		}
 		el.style.width = oldWidth;
 		el.style.maxWidth = oldMaxWidth;
@@ -96,7 +95,7 @@
 
 		return true;
 
-	}
+	};
 
 	/**
 	 * create a handler for a column
@@ -104,16 +103,16 @@
 	 * @param {object}    el    DOM element
 	 * @returns {boolean}
 	 */
-	function createHandlers( el ) {
+	gridResizer.prototype.createHandlers = function( el ) {
 
 		var handler = document.createElement( 'div' );
 		handler.setAttribute( 'class', 'resize-handler' );
 
 		el.appendChild( handler );
-		handler.addEventListener( 'mousedown', initDrag, false );
+		handler.addEventListener( 'mousedown', this.initDrag.bind( this ), false );
 
 		return true;
-	}
+	};
 
 	/**
 	 * returns true if a column is the last column in a row
@@ -121,9 +120,9 @@
 	 * @param {object}    el    DOM element
 	 * @returns {boolean}
 	 */
-	function isLastElement( el ) {
+	gridResizer.prototype.isLastElement = function( el ) {
 
-		nextElement = findNextSibling( el );
+		nextElement = this.findNextSibling( el );
 		if ( !nextElement ) {
 			return true;
 		}
@@ -137,14 +136,14 @@
 	 * @param {event}    e
 	 * @returns {boolean}
 	 */
-	function initDrag( e ) {
+	gridResizer.prototype.initDrag = function( e ) {
 
-		var el = this.parentNode;
+		var el = e.target.parentNode;
 
 		el.classList.add( 'resize-dragging' );
 		document.body.classList.add( 'grid-resizer-noselect' );
 
-		if ( options.direction == 'x' || options.direction == 'both' ) {
+		if ( this.options.direction == 'x' || this.options.direction == 'both' ) {
 			el.dataset.originalWidth = el.offsetWidth - 1;
 			el.dataset.originalX = el.getBoundingClientRect().left + window.scrollX;
 
@@ -156,19 +155,22 @@
 
 		}
 
-		if ( ( options.direction == 'y' || options.direction == 'both' ) && !options.snapToGrid ) {
-			el.style.minHeight = options.minHeight + 'px';
-			el.style.maxHeight = options.maxHeight + 'px';
+		if ( ( this.options.direction == 'y' || this.options.direction == 'both' ) && ! this.options.snapToGrid ) {
+			el.style.minHeight = this.options.minHeight + 'px';
+			el.style.maxHeight = this.options.maxHeight + 'px';
 			el.dataset.originalHeight = el.offsetHeight - 1;
 			el.dataset.originalY = e.pageY;
 		}
 
-		document.documentElement.addEventListener( 'mousemove', doDrag, false );
-		document.documentElement.addEventListener( 'mouseup', stopDrag, false );
+		this.doDragFunc = this.doDrag.bind( this );
+		this.stopDragFunc = this.stopDrag.bind( this );
+
+		document.documentElement.addEventListener( 'mousemove', this.doDragFunc, false );
+		document.documentElement.addEventListener( 'mouseup', this.stopDragFunc, false );
 
 		return true;
 
-	}
+	};
 
 	/**
 	 * Do drag while mouse is moving
@@ -176,23 +178,23 @@
 	 * @param {event}    e
 	 * @returns {boolean}
 	 */
-	function doDrag( e ) {
+	gridResizer.prototype.doDrag = function( e ) {
 
 
 		var el = document.querySelector( '.resize-dragging' ),
 			returnObject = {};
 
-		if ( options.direction == 'x' || options.direction == 'both' ) {
+		if ( this.options.direction == 'x' || this.options.direction == 'both' ) {
 			var newWidth = e.pageX - el.dataset.originalX;
-			if ( newWidth >= options.minWidth
-				&& newWidth <= options.maxWidth
-				&& e.pageX < document.documentElement.offsetWidth - options.minWidth ) {
+			if ( newWidth >= this.options.minWidth
+				&& newWidth <= this.options.maxWidth
+				&& e.pageX < document.documentElement.offsetWidth - this.options.minWidth ) {
 
-				if ( options.snapToGrid ) {
+				if ( this.options.snapToGrid ) {
 					var nextElement = findNextSibling( el );
 					var nextElementNewWidth = parseInt( nextElement.dataset.originalWidth ) + parseInt( el.dataset.originalWidth ) - newWidth;
-					if ( nextElementNewWidth >= options.minWidth
-						&& nextElementNewWidth <= options.maxWidth ) {
+					if ( nextElementNewWidth >= this.options.minWidth
+						&& nextElementNewWidth <= this.options.maxWidth ) {
 
 						nextElementWidth = nextElementNewWidth;
 						nextElement.style.width = nextElementWidth + 'px';
@@ -218,16 +220,16 @@
 			}
 		}
 
-		if ( (options.direction == 'y' || options.direction == 'both') && !options.snapToGrid ) {
+		if ( ( this.options.direction == 'y' || this.options.direction == 'both' ) && ! this.options.snapToGrid ) {
 			var newHeight = e.pageY - el.dataset.originalY;
-			el.style.height = el.dataset.originalHeight*1 + newHeight*1 + 'px';
+			el.style.height = el.dataset.originalHeight * 1 + newHeight * 1 + 'px';
 			returnObject.height = el.style.height;
 		}
 
-		options.onDrag( el, returnObject );
+		this.options.onDrag( el, returnObject );
 		return true;
 
-	}
+	};
 
 	/**
 	 * find next sibling column
@@ -235,7 +237,7 @@
 	 * @param {object}    el DOM element
 	 * @returns {object | null}
 	 */
-	function findNextSibling( el ) {
+	gridResizer.prototype.findNextSibling = function( el ) {
 
 		var nextElement = el;
 		while ( nextElement.nextSibling
@@ -246,7 +248,7 @@
 		}
 		return nextElement.nextSibling;
 
-	}
+	};
 
 	/**
 	 * Stop dragging after mouseup
@@ -254,7 +256,7 @@
 	 * @param {event}    e
 	 * @returns {boolean}
 	 */
-	function stopDrag( e ) {
+	gridResizer.prototype.stopDrag = function( e ) {
 
 		var el = document.querySelector( '.resize-dragging' ),
 			returnObject = {};
@@ -262,17 +264,17 @@
 		el.classList.remove( 'resize-dragging' );
 		document.body.classList.remove( 'grid-resizer-noselect' );
 
-		document.documentElement.removeEventListener( 'mousemove', doDrag, false );
-		document.documentElement.removeEventListener( 'mouseup', stopDrag, false );
+		document.documentElement.removeEventListener( 'mousemove', this.doDragFunc, false );
+		document.documentElement.removeEventListener( 'mouseup', this.stopDragFunc, false );
 
-		if ( true == options.snapToGrid ) {
-			returnObject.grid = updateGrid( el );
+		if ( true == this.options.snapToGrid ) {
+			returnObject.grid = this.updateGrid( el );
 		}
 
-		if ( options.direction == 'x' || options.direction == 'both' ) {
+		if ( this.options.direction == 'x' || this.options.direction == 'both' ) {
 			el.removeAttribute( 'data-original-width' );
 			el.removeAttribute( 'data-original-x' );
-			if ( options.snapToGrid ) {
+			if ( this.options.snapToGrid ) {
 				nextElement = findNextSibling( el );
 				nextElement.removeAttribute( 'data-original-width' );
 				nextElement.removeAttribute( 'data-original-x' );
@@ -281,16 +283,16 @@
 
 		}
 
-		if ( ( options.direction == 'y' || options.direction == 'both' ) && !options.snapToGrid ) {
+		if ( ( this.options.direction == 'y' || this.options.direction == 'both' ) && ! this.options.snapToGrid ) {
 			el.removeAttribute( 'data-original-height' );
 			el.removeAttribute( 'data-original-y' );
 			returnObject.height = el.style.height;
 		}
 
-		options.onStop( returnObject );
+		this.options.onStop( returnObject );
 		return true;
 
-	}
+	};
 
 	/**
 	 * if snapToGrid was true, it finds the closest column width and set that class to the element
@@ -298,9 +300,9 @@
 	 * @param {object}    el    DOM element
 	 * @returns {boolean}
 	 */
-	function updateGrid( el ) {
+	gridResizer.prototype.updateGrid = function( el ) {
 
-		var nextElement = findNextSibling( el ),
+		var nextElement = this.findNextSibling( el ),
 			elWidth = el.offsetWidth,
 			nextElementWidth = nextElement.offsetWidth,
 			oneColumnSize;
@@ -328,10 +330,10 @@
 			elColumnWidth--;
 		}
 
-		var regex = new RegExp( "(?:^|.)" + options.gridPrefix + "-([0-9]+)(?!\S)", "ig" );
+		var regex = new RegExp( "(?:^|.)" + this.options.gridPrefix + "-([0-9]+)(?!\S)", "ig" );
 
-		el.className = el.className.replace( regex, ' ' + options.gridPrefix + "-" + elColumnWidth + ' ' );
-		nextElement.className = nextElement.className.replace( regex, ' ' + options.gridPrefix + "-" + nextElementColumnWidth + ' ' );
+		el.className = el.className.replace( regex, ' ' + this.options.gridPrefix + "-" + elColumnWidth + ' ' );
+		nextElement.className = nextElement.className.replace( regex, ' ' + this.options.gridPrefix + "-" + nextElementColumnWidth + ' ' );
 
 		return {
 			currentColumnWidth  : elColumnWidth,
@@ -340,5 +342,7 @@
 
 	}
 
-	window.gridResizer = gridResizer;
+	window.gridResizer = function( option ){
+		return new gridResizer( option );
+	};
 })();
