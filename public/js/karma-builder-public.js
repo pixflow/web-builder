@@ -836,7 +836,7 @@ var karmaBuilder = karmaBuilder || {};
 
 	        var that = this,
 		        options = {
-			        selector: ".section-spacing",
+			        selector: '[data-element-key="'+ this.el.dataset.elementKey +'"] .section-spacing',
 			        minHeight: 0,
 			        maxHeight: 700,
 			        direction: 'y',
