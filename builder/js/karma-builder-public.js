@@ -492,7 +492,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns void
 		 */
 		events : {
 			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
@@ -522,7 +521,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		render : function () {
 
-			this.openSettingPanel( this.options.shortcodeId );
+			this.openSettingPanel( this.options.model );
 			this.bindDragEvents();
 
 		},
