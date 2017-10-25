@@ -10,7 +10,7 @@
 	 * initial function of gridResizer
 	 *
 	 * @param    {object}    option    initialize options
-	 * @returns    {array}    DOM elements which are resizable
+	 * @returns  {array | boolean}    DOM elements which are resizable or false if not exists
 	 */
 	function gridResizer( option ) {
 
@@ -48,7 +48,7 @@
 	 * find elements which should be resizable then add handler to them
 	 *
 	 * @param    {array}    els        DOM elements selected by selector
-	 * @returns    {array}    DOM elements which are resizable
+	 * @returns   {array}    DOM elements which are resizable
 	 */
 	gridResizer.prototype.init = function() {
 
@@ -117,8 +117,8 @@
 	/**
 	 * returns true if a column is the last column in a row
 	 *
-	 * @param {object}    el    DOM element
-	 * @returns {boolean}
+	 * @param 	{object}    el    DOM element
+	 * @returns	{boolean}
 	 */
 	gridResizer.prototype.isLastElement = function( el ) {
 
@@ -343,6 +343,9 @@
 	}
 
 	window.gridResizer = function( option ){
+
 		return new gridResizer( option );
+		
 	};
+
 })();
