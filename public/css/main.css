@@ -1704,6 +1704,11 @@ iframe {
   align-items: center;
   justify-content: center; }
 
+.iman {
+  width: 100px;
+  height: 100px;
+  background-color: red; }
+
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
   padding-top: 15px;

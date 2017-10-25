@@ -135,17 +135,20 @@ class Karma_Row extends Karma_Shortcode_Base {
 				"className" => "row-gizmo-group" ,
 				"params" => array(
 					array(
-						'icon' => 'setting.svg' ,
+						'type' =>'icon',
+						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/setting-panel.svg'),
 						'action' => 'open' ,
 						'className' => 'row-setting-background' ,
 					) ,
 					array(
-						'icon' => 's.svg' ,
+						'type' =>'icon',
+						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/layout.svg') ,
 						'action' => 'open' ,
 						'className' => 'row-setting-layout' ,
 					) ,
 					array(
-						'icon' => 'setting.svg' ,
+						'type' =>'text',
+						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'public/media/svg/section_container.svg') ,
 						'action' => 'open' ,
 						'className' => 'row-setting-setting' ,
 					),

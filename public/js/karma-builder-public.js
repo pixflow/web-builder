@@ -167,11 +167,14 @@ var karmaBuilder = karmaBuilder || {};
 		 * Underscore template for inner gizmo type
 		 *
 		 */
-		innerGizmoTemplate : '<div class="{{ data.className }}">'
+		innerGizmoTemplate : '<div class= " {{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){'
-		+ ' print( "<div class=\'\" + param.className + \"\'></div>") }'
+		+ ' print( "<div class=\'karma-builder-gizmo-\"  + param.type + \"\'></div>") '
+		+ ' if("icon" === param.type){'
+		+ ' print( " <div>type.icon</div>") } }'
 		+ ' ) #>'
 		+ '</div>' ,
+
 
 		/**
 		 * Set defaults in create
