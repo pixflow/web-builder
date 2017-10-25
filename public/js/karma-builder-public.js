@@ -470,6 +470,19 @@ var karmaBuilder = karmaBuilder || {};
 	});
 
 	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
+
+		/**
+		 * Define elements events
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		events : {
+			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
+			"click .delete-karma-element"				: "removeElement",
+		},
+
 		/**
 		 * Set defaults in create
 		 *
@@ -477,7 +490,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns void
 		 */
-
 		initialize: function( options ) {
 
 			this.options = options;
@@ -486,24 +498,21 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		/**
+		 * call setting panel
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
 		render : function () {
 
 			this.openSettingPanel( this.options.shortcodeId );
 			this.bindDragEvents();
 
 		},
-		/**
-		 * Define elements events
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
-		 */
 
-		events : {
-			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
-			"click .delete-karma-element"	: "removeElement",
-		},
+
 		/**
 		 * shoercode setting panel draggable event
 		 *
@@ -511,7 +520,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns void
 		 */
-
 		bindDragEvents: function () {
 
 			$('#karma-element-setting-panel-container').draggable({
@@ -573,7 +581,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns	{object} formbuilder html
 		 */
-
 		formBuilder : function( shortcodeId ) {
 
 			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
@@ -620,6 +627,7 @@ var karmaBuilder = karmaBuilder || {};
 			return popup.innerHTML;
 
 		},
+
 		/**
 		 * remove setting panel
 		 *
@@ -627,7 +635,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns void
 		 */
-
 		removeSettingPanel : function() {
 
 			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
