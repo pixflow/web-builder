@@ -1675,6 +1675,9 @@ iframe {
   height: 50px;
   background-color: #ccc; }
 
+.karma-builder-element[data-name="karma_row"] {
+  position: relative; }
+
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/GIZMO -_-_-_ */
@@ -1718,6 +1721,7 @@ iframe {
   border-radius: 3px;
   background-color: #fff;
   box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+  display: none;
   direction: rtl;
   position: absolute; }
   .row-gizmo-group div {
@@ -1738,6 +1742,40 @@ iframe {
     color: #394959;
     font-size: 13px;
     font-family: HelveticaNeue; }
+  .row-gizmo-group .row-gizmo-group {
+    width: auto;
+    height: 35px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    top: 17px;
+    right: 17px;
+    bottom: auto;
+    left: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+    direction: rtl;
+    position: absolute; }
+    .row-gizmo-group .row-gizmo-group div {
+      cursor: pointer; }
+    .row-gizmo-group .row-gizmo-group .karma-builder-gizmo-icon {
+      padding-top: 0;
+      padding-right: 10px;
+      padding-bottom: 0;
+      padding-left: 10px;
+      width: auto;
+      height: 22px;
+      border-left: 1px solid rgba(151, 151, 151, 0.3); }
+    .row-gizmo-group .row-gizmo-group .karma-builder-gizmo-text {
+      padding-top: 0;
+      padding-right: 15px;
+      padding-bottom: 0;
+      padding-left: 15px;
+      color: #394959;
+      font-size: 13px;
+      font-family: HelveticaNeue; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
@@ -1987,7 +2025,9 @@ iframe {
   text-align: left; }
 
 .karma-active-section {
-  border: 1px solid blue !important; }
+  border: 1px solid blue; }
+  .karma-active-section .row-gizmo-group {
+    display: flex; }
 
 /* _-_-_- pages/HOME -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

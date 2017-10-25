@@ -256,7 +256,7 @@ class Karma_Builder_Loader {
 		$classes = apply_filters( 'karma_builder/elements/' . $tag . '/classes', array(), $attr );
 		$classes = implode( ' ',$classes );
 
-		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" style='border:1px solid brown' data-name=\"{$tag}\" "
+		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" "
 			. "data-element-id={$uniqe_id} >"
 			. $output
 			. '</div>' ;

@@ -1,4 +1,7 @@
 .karma-active-section{
     // It should be refine
-	border: 1px solid blue !important;
+	border: 1px solid blue;
+	.row-gizmo-group {
+		display: flex;
+	}
 }
