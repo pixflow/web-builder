@@ -684,8 +684,8 @@ var karmaBuilder = karmaBuilder || {};
 		rowGimzoParams: {},
 
 		events:{
-			'click .karma-section' : 'showBorder',
-			'mousedown .section-spacing' : 'showMouseToolTip',
+			'click .karma-section' 			: 'showBorder',
+			'mousedown .section-spacing' 	: 'showMouseToolTip',
 		},
 
 		initialize: function( options ){
