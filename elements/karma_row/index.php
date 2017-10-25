@@ -62,7 +62,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 	public function map() {
 
 		$map = array(
-			"name"		=> "Row",
+			"name"		=> "Section",
 			"params"	=> array(
 				array(
 					"name"		=> "structure",
