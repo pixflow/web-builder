@@ -75,6 +75,7 @@ var karmaBuilder = karmaBuilder || {};
 					template: wp.template( 'karma-element-' + element.attributes.shortcode_name )
 				});
 				elementView.createGizmo();
+				elementView.delegateEvents();
 			});
 
 		},
@@ -167,14 +168,24 @@ var karmaBuilder = karmaBuilder || {};
 		+ ' <# _.each( data.params, function( param ){ #>'
 		+ ' <div class="karma-builder-gizmo-{{ param.type }}">'
 		+ ' <# if( "icon" === param.type ){ #>'
-			+ ' <div>{{{ param.icon }}}</div>'
+		+ ' <div>{{{ param.icon }}}</div>'
 		+ '<# } else if( "text" === param.type ) {#>'
-			+ '<div>{{{ param.value }}}</div>'
+		+ '<div>{{{ param.value }}}</div>'
 		+ '<# } #>'
 		+ '</div>'
 		+ '<# }) #>'
 		+ '</div>' ,
 
+		/**
+		 * Define elements events
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		events : {
+			"click .row-gizmo-group" : "showSettingPanel",
+		},
 
 		/**
 		 * Set defaults in create
@@ -186,22 +197,15 @@ var karmaBuilder = karmaBuilder || {};
 		initialize : function( options ) {
 
 			this.template = options.template;
-			_.bindAll(this, "render");
 			if( this.model ) {
+				_.bindAll(this, "render","destroy");
 				this.model.bind('change', this.render);
+				this.model.bind('destroy', this.destroy);
 			}
+
 		},
 
-		/**
-		 * Define elements events
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
-		 */
-		events : {
-			"click .karma-element-setting" : "openSettingPanel",
-		},
+
 
 		/**
 		 * Create random string
@@ -366,7 +370,6 @@ var karmaBuilder = karmaBuilder || {};
 		render : function (  ) {
 
 			this.el.innerHTML = this.template( this.model );
-
 			$('body').trigger( 'karma_finish_render_html', [ this.model ] );
 			return true;
 
@@ -375,27 +378,26 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Delete elements model and html
 		 *
-		 * @param	integer	elementId	The Element id
-		 *
 		 * @since 1.0.0
 		 *
-		 * @returns {Object} - Model of Elements
+		 * @returns void
 		 */
-		deleteShortcode : function(elementId) {
+		destroy : function() {
 
-			var model = karmaBuilder.karmaModels.where( { "shortcode_id" : elementId } ),
-				$selectedElement = $( '.karma-builder-element[data-element-id=' + elementId + ']' );
-
-			$selectedElement.find( '.karma-builder-element' ).each( function () {
+			this.$el.find( '.karma-builder-element' ).each( function () {
 
 				var childId = $( this ).attr( 'data-element-id' ) ;
 				karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( childId ) } ) );
 
 			});
-			$selectedElement.remove();
-			karmaBuilder.karmaModels.remove( model );
 
-			return karmaBuilder.karmaModels;
+			// COMPLETELY UNBIND THE VIEW
+			this.undelegateEvents();
+			this.$el.removeData().unbind();
+
+			// Remove view from DOM
+			this.remove();
+			Backbone.View.prototype.remove.call(this);
 
 		},
 
@@ -440,18 +442,18 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-        /**
-         * find children of model
-         *
-         * @since 1.0.0
-         *
-         * @returns array - children models id
-         */
-        findChildren : function() {
+		/**
+		 * find children of model
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns array - children models id
+		 */
+		findChildren : function() {
 
-        	return karmaBuilder.karmaModels.where( { 'parent_id' : this.model.attributes['shortcode_id'] } )
+			return karmaBuilder.karmaModels.where( { 'parent_id' : this.model.attributes['shortcode_id'] } )
 
-        },
+		},
 
 		/**
 		 * Open setting panel of each Element
@@ -460,16 +462,29 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns void
 		 */
-		openSettingPanel : function () {
+		showSettingPanel : function () {
 
-			window.builder = new karmaBuilder.elementSettingPanel( { el: jQuery('body') , shortcodeId: this.model.get('shortcode_id') } );
+			window.builder = new karmaBuilder.elementSettingPanel( { el: jQuery('body') , model: this.model} );
 			builder.delegateEvents();
 
 		}
 
 	});
 
+	karmaBuilder.shortcodes.extend = function( child ) {
+
+		var view = Backbone.View.extend.apply( this, arguments );
+		if( true === child.denyEvents ){
+			return view;
+		}
+		view.prototype.events = _.extend({}, this.prototype.events, child.events );
+		return view;
+
+	};
+
 	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
+
+		denyEvents: true ,
 
 		/**
 		 * Define elements events
@@ -493,7 +508,6 @@ var karmaBuilder = karmaBuilder || {};
 		initialize: function( options ) {
 
 			this.options = options;
-			karmaBuilder.elementSettingPanel.__super__.initialize.apply( this, arguments );
 			this.render();
 
 		},
@@ -511,7 +525,6 @@ var karmaBuilder = karmaBuilder || {};
 			this.bindDragEvents();
 
 		},
-
 
 		/**
 		 * shoercode setting panel draggable event
@@ -543,7 +556,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			if ( !confirm("are you sure?") ) return;
 
-			this.deleteShortcode(this.options.shortcodeId);
+			this.model.destroy();
 			this.removeSettingPanel();
 		},
 
@@ -556,14 +569,14 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns	void
 		 */
-		openSettingPanel: function( shortcodeId ){
+		openSettingPanel: function( model ){
 
 			var template = wp.template('karma-element-setting-panel'),
-			 	$html = document.createElement('div'),
-				content = this.formBuilder( shortcodeId ),
-			 	elementAttributes = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes,
+				$html = document.createElement('div'),
+				content = this.formBuilder( model ),
+				elementAttributes = model.attributes,
 				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
-			 	elementSelector = '.'+ elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
+				elementSelector = '.'+ elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
 
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
@@ -581,9 +594,10 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns	{object} formbuilder html
 		 */
-		formBuilder : function( shortcodeId ) {
 
-			var shortcodeModel = karmaBuilder.karmaModels.where( { 'shortcode_id' : shortcodeId } )[0].attributes ,
+		formBuilder : function( model ) {
+
+			var shortcodeModel = model.attributes ,
 				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
 				karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',
 				groupHtml = '',
@@ -655,8 +669,8 @@ var karmaBuilder = karmaBuilder || {};
 		updateElementParams: function (model, elementParam) {
 
 			for (var index in elementParam.params){
-				 var paramName = elementParam.params[index].name;
-				 elementParam.params[index].value = model.shortcode_attributes[paramName];
+				var paramName = elementParam.params[index].name;
+				elementParam.params[index].value = model.shortcode_attributes[paramName];
 			}
 			return elementParam;
 
@@ -664,20 +678,18 @@ var karmaBuilder = karmaBuilder || {};
 
 	});
 
-    karmaBuilder.row = karmaBuilder.shortcodes.extend({
+	karmaBuilder.row = karmaBuilder.shortcodes.extend({
 
 		rowGimzoParams: {},
 
-		events : {
-
+		events:{
 			'click .karma-section' : 'showBorder',
 			'mousedown .section-spacing' : 'showMouseToolTip',
-
-		} ,
+		},
 
 		initialize: function( options ){
 
-			karmaBuilder.row.__super__.initialize.apply(this, arguments);
+			karmaBuilder.row.__super__.initialize.apply( this, arguments );
 			this.rowGimzoParams = options.gimzoParams[0];
 			this.liveSpacing();
 
@@ -708,44 +720,44 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-        /**
-         * return current layout grid
-         *
-         * @since 1.0.0
-         *
-         * @returns Array - current layout of section
-         */
-        currentGrid : function( ) {
+		/**
+		 * return current layout grid
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns Array - current layout of section
+		 */
+		currentGrid : function( ) {
 
-            var childrenModels = this.findChildren();
-            var currentGrid = [];
-            for (var i = 0, len = childrenModels.length; i < len; i++) {
-                currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.width ) )
-            }
+			var childrenModels = this.findChildren();
+			var currentGrid = [];
+			for (var i = 0, len = childrenModels.length; i < len; i++) {
+				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.width ) )
+			}
 			return currentGrid;
 
-        },
+		},
 
-        /**
-         * Calculate new layout grid after append nw column
-         *
-         * @since 1.0.0
-         *
-         * @returns Array - new layout of section after add new column
-         */
-        calculateNewGrid : function( ) {
-        	var newGrid = this.currentGrid();
-        	newGrid.reverse();
-            for (var i = 0, len = newGrid.length; i < len; i++) {
-                if(newGrid[i] > 1) {
-                    newGrid[i] = parseInt(newGrid[i] - 1);
-                    break;
-                }
-            }
-            newGrid.reverse();
-            newGrid.push(1);
-            return newGrid;
-        },
+		/**
+		 * Calculate new layout grid after append nw column
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns Array - new layout of section after add new column
+		 */
+		calculateNewGrid : function( ) {
+			var newGrid = this.currentGrid();
+			newGrid.reverse();
+			for (var i = 0, len = newGrid.length; i < len; i++) {
+				if(newGrid[i] > 1) {
+					newGrid[i] = parseInt(newGrid[i] - 1);
+					break;
+				}
+			}
+			newGrid.reverse();
+			newGrid.push(1);
+			return newGrid;
+		},
 
 		/**
 		 * show mouse tooltip in spacing
@@ -815,46 +827,46 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 
-        /**
-         * Add live spacing ability to section elements
-         *
-         * @since 1.0.0
-         *
-         * @returns {void}
-         */
-        liveSpacing: function () {
+		/**
+		 * Add live spacing ability to section elements
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		liveSpacing: function () {
 
-	        this.toolTipHtml()
-        	var topSpacing = document.createElement('div');
+			this.toolTipHtml()
+			var topSpacing = document.createElement('div');
 			topSpacing.setAttribute( 'class', 'section-spacing section-top-spacing' );
 
 			var bottomSpacing = document.createElement('div');
 			bottomSpacing.setAttribute( 'class', 'section-spacing section-bottom-spacing' );
 
 			this.el.appendChild(bottomSpacing);
-	        this.el.insertBefore( topSpacing, this.el.childNodes[0] );
+			this.el.insertBefore( topSpacing, this.el.childNodes[0] );
 
-	        var that = this,
-		        options = {
-			        selector: '[data-element-key="'+ this.el.dataset.elementKey +'"] .section-spacing',
-			        minHeight: 0,
-			        maxHeight: 700,
-			        direction: 'y',
-			        onDrag: function ( el, value ) {
-				        var siblingSpacer = Array.prototype.filter.call( el.parentNode.children, function ( child ) {
-					        return ( child !== el && child.classList.contains( 'section-spacing' ) );
-				        } );
-				        siblingSpacer[ 0 ].style.height = value.height;
-			        },
-			        onStop: function ( value ) {
-				        that.setAttributes( { space: parseInt( value.height ) }, true );
-			        }
-		        };
-	        gridResizer( options );
+			var that = this,
+				options = {
+					selector: '[data-element-key="'+ this.el.dataset.elementKey +'"] .section-spacing',
+					minHeight: 0,
+					maxHeight: 700,
+					direction: 'y',
+					onDrag: function ( el, value ) {
+						var siblingSpacer = Array.prototype.filter.call( el.parentNode.children, function ( child ) {
+							return ( child !== el && child.classList.contains( 'section-spacing' ) );
+						} );
+						siblingSpacer[ 0 ].style.height = value.height;
+					},
+					onStop: function ( value ) {
+						that.setAttributes( { space: parseInt( value.height ) }, true );
+					}
+				};
+			gridResizer( options );
 
-        }
+		}
 
-    });
+	});
 
 	karmaBuilder.column = karmaBuilder.shortcodes.extend({
 
