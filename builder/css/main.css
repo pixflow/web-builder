@@ -259,18 +259,17 @@ body {
   body .karma-full-separator {
     width: 100%;
     height: 1px;
-    margin-top: 0;
+    margin-top: 15px;
     margin-right: 0;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     margin-left: 0;
     top: auto;
     right: auto;
     bottom: 0;
     left: 0;
-    color: rgba(57, 73, 89, 0.2);
-    position: absolute; }
+    color: rgba(57, 73, 89, 0.2); }
   body .karma-container-separator {
-    margin-top: 0;
+    margin-top: 15px;
     margin-right: 20px;
     margin-bottom: 0;
     margin-left: 0;
@@ -280,8 +279,7 @@ body {
     right: auto;
     bottom: 0;
     left: 20px;
-    color: rgba(57, 73, 89, 0.2);
-    position: absolute; }
+    color: rgba(57, 73, 89, 0.2); }
 
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
 /* _-_-_- layout/FOOTER -_-_-_ */
@@ -1632,7 +1630,8 @@ iframe {
       list-style: none;
       margin-bottom: 30px;
       position: relative;
-      top: 125px; }
+      top: 125px;
+      width: 135px; }
       #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add {
         background-color: #8578FC; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add .svg-extra svg * {
@@ -1671,6 +1670,12 @@ iframe {
           white-space: nowrap; }
         #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
           padding-right: 8px; }
+      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .delete-karma-element {
+        width: 88px; }
+      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .clone-karma-element {
+        width: 105px; }
+      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .info-karma-element {
+        width: 80px; }
 
 .tooltip-div {
   position: fixed;
@@ -1845,9 +1850,9 @@ iframe {
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
-  padding-top: 15px;
+  padding-top: 0;
   padding-right: 20px;
-  padding-bottom: 18px;
+  padding-bottom: 15px;
   padding-left: 20px;
   width: 100%;
   height: 100%;
@@ -1861,10 +1866,7 @@ iframe {
   text-align: inherit;
   align-items: inherit;
   justify-content: center;
-  padding-top: 15px;
-  padding-right: 20px;
-  padding-bottom: 15px;
-  padding-left: 20px; }
+  padding-bottom: 15px; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
@@ -1890,7 +1892,8 @@ iframe {
   padding-left: 20px;
   width: 100%;
   height: 100%;
-  background-color: rgba(65, 156, 248, 0.12); }
+  background-color: rgba(65, 156, 248, 0.12);
+  margin-bottom: 15px; }
   .karma-title-controller div.karma-title-field {
     color: #419CF8;
     font-size: 15px; }
@@ -1903,7 +1906,7 @@ iframe {
   padding-bottom: 15px;
   position: relative; }
   .karma-radio-image-controller .radio-image-controller-label {
-    padding-top: 15px;
+    padding-top: 0;
     padding-right: 10px;
     padding-bottom: 0;
     padding-left: 10px;
@@ -2001,9 +2004,9 @@ iframe {
   text-align: center;
   align-items: center;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 0;
   padding-right: 7px;
-  padding-bottom: 24px;
+  padding-bottom: 15px;
   padding-left: 14px;
   flex-direction: column;
   position: relative; }

@@ -70,20 +70,45 @@ class Karma_Column extends Karma_Shortcode_Base {
 			"name"   => "Column",
 			"params" => array(
 				array(
+					"name"		=> "title2",
+					"value"		=> "Extra class name",
+					"type"		=> Karma_Builder_Setting_Panel::TITLE2,
+					"label"		=> esc_attr__( "Extra class name", 'karma' ),
+
+				),
+
+				array(
 					"name"		=> "width",
 					"type"		=> Karma_Builder_Setting_Panel::TEXT,
-					"label"		=> esc_attr__( "Structure", 'karma' ),
-					"value"		=> 'full',
-					"options"	=> array(
-						'full'		=> "full.png",
-						'container'	=> "container.png"
-					)
+					"label"		=> esc_attr__( "Put Your URL", 'karma' ),
+					"value"		=> 'Put Your URL',
+				),
+				array(
+					"name"		=> "title",
+					"value"		=> "Spacing",
+					"type"		=> Karma_Builder_Setting_Panel::TITLE,
+					"label"		=> esc_attr__( "Spacing", 'karma' ),
+
 				),
 				array(
 					"name"		=> "space",
 					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-					"label"		=> esc_attr__( "Top & Bottom Spacing", 'karma' ),
-					'value'		=> 0,
+					"label"		=> esc_attr__( "Left padding", 'karma' ),
+					'value'		=> 100,
+					'separator'  =>"container",
+					"options"	=> array(
+						'min'	=> 0,
+						'max'	=> 600,
+						'step'	=> 1,
+						'unit'	=> 'px'
+					)
+				),
+
+				array(
+					"name"		=> "space",
+					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+					"label"		=> esc_attr__( "Right padding", 'karma' ),
+					'value'		=> 100,
 					"options"	=> array(
 						'min'	=> 0,
 						'max'	=> 600,
@@ -92,12 +117,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 					)
 				)
 
-			,array(
-					"name"		=> "extra_class",
-					"type"		=> Karma_Builder_Setting_Panel::TEXT,
-					"label"		=> esc_attr__( "Class Name", 'karma' ),
-					'value'		=> ''
-				)
 			)
 		);
 

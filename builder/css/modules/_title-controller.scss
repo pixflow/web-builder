@@ -3,6 +3,7 @@
   @include padding(12px, 15px, 10px, 20px);
   @include box(100%);
   background-color: rgba(65, 156, 248, 0.12);
+  margin-bottom: 15px;
 
   div.karma-title-field{
 	@extend .HelveticaNeue-font;

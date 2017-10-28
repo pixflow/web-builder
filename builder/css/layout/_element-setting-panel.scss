@@ -101,6 +101,7 @@ iframe{
 	  margin-bottom: 30px;
 	  position: relative;
 	  top: 125px;
+	  width: 135px;
 
 	  .svg-extra-add{
 		background-color: #8578FC;
@@ -174,11 +175,19 @@ iframe{
 		  padding-right: 8px;
 		}
 	  }
+
+	  .delete-karma-element{
+		width: 88px;
+	  }
+	  .clone-karma-element{
+		width: 105px;
+	  }
+	  .info-karma-element{
+		width: 80px;
+	  }
+
 	}
   }
-
-
-
 }
 
 .tooltip-div {
@@ -188,3 +197,4 @@ iframe{
   height: 50px;
   background-color: #ccc;
 }
+

@@ -596,7 +596,6 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 
 		formBuilder : function( model ) {
-
 			var shortcodeModel = model.attributes ,
 				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
 				karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',
@@ -608,7 +607,6 @@ var karmaBuilder = karmaBuilder || {};
 			for( var counter in ShortcodeParams.params ){
 
 				if( ! ShortcodeParams.params[counter].group ) {
-
 					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 
 				}else{
@@ -670,10 +668,11 @@ var karmaBuilder = karmaBuilder || {};
 
 			for (var index in elementParam.params){
 				var paramName = elementParam.params[index].name;
-				elementParam.params[index].value = model.shortcode_attributes[paramName];
+				if( undefined !== model.shortcode_attributes[paramName] ) {
+					elementParam.params[index].value = model.shortcode_attributes[paramName];
+				}
 			}
 			return elementParam;
-
 		}
 
 	});
