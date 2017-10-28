@@ -834,7 +834,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		spacingGizmo: function () {
 			var rowTopSpacingContainer = document.createElement('div');
-			rowTopSpacingContainer.setAttribute( 'class', 'row-top-spacing-dot-container section-spacing' );
+			rowTopSpacingContainer.setAttribute( 'class', 'row-top-spacing-dot-container' );
 
 			var rowTopSpacing = document.createElement( 'div' );
 			rowTopSpacing.setAttribute( 'class', 'spacing-top-dot-hover' );
@@ -844,7 +844,7 @@ var karmaBuilder = karmaBuilder || {};
 			rowTopSpacingContainer.appendChild( rowTopSpacing );
 
 			var rowBottomSpacingContainer = document.createElement('div');
-			rowBottomSpacingContainer.setAttribute( 'class', 'row-bottom-spacing-dot-container section-spacing' );
+			rowBottomSpacingContainer.setAttribute( 'class', 'row-bottom-spacing-dot-container' );
 
 			var rowBottomSpacing = document.createElement( 'div' );
 			rowBottomSpacing.setAttribute( 'class', 'spacing-bottom-dot-hover' );
@@ -855,6 +855,15 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.el.appendChild( rowTopSpacingContainer );
 			this.el.appendChild( rowBottomSpacingContainer );
+
+			var topSpacing = document.createElement( 'div' );
+			topSpacing.setAttribute( 'class', 'section-spacing section-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n' );
+
+			var bottomSpacing = document.createElement( 'div' );
+			bottomSpacing.setAttribute( 'class', 'section-spacing section-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-n' );
+
+			this.el.appendChild( bottomSpacing );
+			this.el.insertBefore( topSpacing, this.el.childNodes[ 0 ] );
 		},
 
 
@@ -865,39 +874,38 @@ var karmaBuilder = karmaBuilder || {};
          *
          * @returns {void}
          */
-        liveSpacing: function () {
+		liveSpacing: function () {
 			this.spacingGizmo()
-	        this.toolTipHtml()
-        	var topSpacing = document.createElement('div');
-			topSpacing.setAttribute( 'class', 'section-spacing section-top-spacing' );
-
-			var bottomSpacing = document.createElement('div');
-			bottomSpacing.setAttribute( 'class', 'section-spacing section-bottom-spacing' );
-
-			this.el.appendChild(bottomSpacing);
-			this.el.insertBefore( topSpacing, this.el.childNodes[0] );
+			this.toolTipHtml()
 
 			var that = this,
 				options = {
-					selector: '[data-element-key="'+ this.el.dataset.elementKey +'"] .section-spacing',
-					minHeight: 0,
-					maxHeight: 700,
-					direction: 'y',
-					onDrag: function ( el, value ) {
-						var siblingSpacer = Array.prototype.filter.call( el.parentNode.children, function ( child ) {
-							return ( child !== el && child.classList.contains( 'section-spacing' ) );
-						} );
-						siblingSpacer[ 0 ].style.height = value.height;
-					},
-					onStop: function ( value ) {
-						that.setAttributes( { space: parseInt( value.height ) }, true );
+					maxHeight   : 700,
+					minHeight   : 0,
+					handles     : {},
+					stop        : function ( event, ui ) {
+						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 					}
 				};
-			gridResizer( options );
 
+			$( function () {
+
+				// Apply JQuery Ui resizable on top spacing
+				options.handles.s = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing' );
+				options.handles.n = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing' );
+				options.alsoResize = '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing';
+				$( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing' ).resizable( options );
+
+				// Apply JQuery Ui resizable on bottom spacing
+				options.alsoResize = '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing';
+				options.handles.s = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' );
+				options.handles.n = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' );
+				$( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' ).resizable( options );
+
+			} );
 		}
 
-	});
+	} );
 
 
 	karmaBuilder.column = karmaBuilder.shortcodes.extend({
