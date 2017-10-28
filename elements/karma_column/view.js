@@ -1,11 +1,12 @@
+(function($, karmaBuilder) {
+	karmaBuilder.column = karmaBuilder.shortcodes.extend({
 
-karmaBuilder.column = karmaBuilder.shortcodes.extend({
+		initialize: function () {
+			karmaBuilder.column.__super__.initialize.apply(this, arguments);
+		},
 
-	initialize: function(){
-		karmaBuilder.column.__super__.initialize.apply( this, arguments );
-	},
+		createGizmo: function () {
+		},
 
-	createGizmo: function () {
-	},
-
-});
+	});
+})(jQuery,karmaBuilder);
