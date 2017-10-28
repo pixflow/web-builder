@@ -113,12 +113,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 					'placeholder'	=> __( 'Class name', 'karma' ),
 					"group"			=> "Advance option"
 				),
-				array(
-					"name"			=> "add_grid",
-					"type"			=> Karma_Builder_Setting_Panel::GRID,
-					"label"			=> __( "Class Name", 'karma' ),
-					'placeholder'	=> __( 'Class name', 'karma' ),
-				),
+
 
 			)
 		);

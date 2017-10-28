@@ -76,6 +76,12 @@ class Karma_Column extends Karma_Shortcode_Base {
 					"label"		=> esc_attr__( "Extra class name", 'karma' ),
 
 				),
+				array(
+					"name"			=> "add_grid",
+					"type"			=> Karma_Builder_Setting_Panel::GRID,
+					"label"			=> __( "Class Name", 'karma' ),
+					'placeholder'	=> __( 'Class name', 'karma' ),
+				),
 
 				array(
 					"name"		=> "width",
