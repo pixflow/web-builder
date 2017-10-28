@@ -156,7 +156,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						'type' =>'text',
 						'action' => 'open' ,
 						'className' => 'row-setting-setting' ,
-						'value'	=> esc_attr( 'background', 'karma' )
+						'value'	=> esc_attr( 'Background', 'karma' )
 
 					),
 				)

@@ -1,4 +1,4 @@
-
+var wp = _;
 karmaBuilder.model = Backbone.Model.extend({
 
 	defaults : {
@@ -31,7 +31,18 @@ var shortcode_instance = new karmaBuilder.shortcodes({
 	template: _.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' )
 
 });
-var wp = _;
+
+
+/**
+ * Test changeRowLayout() function .
+ */
+QUnit.test ( "changeRowLayout", function ( assert ) {
+
+	var curentGrid = [ 3,3,3 ],
+		newGrid = [ 5,5,2 ];
+
+
+});
 
 /**
  * It is Delete Elements Test
@@ -434,3 +445,5 @@ QUnit.test ( "setAttribute", function ( assert ) {
 	karmaBuilder.karmaModels.reset();
 
 });
+
+

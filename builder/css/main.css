@@ -1730,6 +1730,7 @@ iframe {
   border-radius: 3px;
   background-color: #fff;
   box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+  font-size: initial;
   display: none;
   direction: rtl;
   position: absolute; }
@@ -1737,9 +1738,9 @@ iframe {
     cursor: pointer; }
   .row-gizmo-group .karma-builder-gizmo-icon {
     padding-top: 0;
-    padding-right: 10px;
+    padding-right: 12px;
     padding-bottom: 0;
-    padding-left: 10px;
+    padding-left: 11px;
     width: auto;
     height: 22px;
     border-left: 1px solid rgba(151, 151, 151, 0.3); }
