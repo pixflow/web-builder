@@ -40,7 +40,7 @@ var karmaBuilder = karmaBuilder || {};
 			this.collection.each(function ( element ) {
 				var elementName = element.attributes.shortcode_name.replace( "karma_", "" );
 				var elementView = new karmaBuilder[ elementName ]({
-					model: element,
+					model	: element,
 					el 		: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' ),
 					gimzoParams: that.gizmoParams[ element.attributes.shortcode_name ],
 					template: wp.template( 'karma-element-' + element.attributes.shortcode_name )
@@ -546,7 +546,7 @@ var karmaBuilder = karmaBuilder || {};
 				$html = document.createElement('div'),
 				content = this.formBuilder( model ),
 				elementAttributes = model.attributes,
-				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
+				elementName = elementAttributes['shortcode_name'].replace('karma-',''),
 				elementSelector =  elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
 
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
@@ -651,7 +651,7 @@ var karmaBuilder = karmaBuilder || {};
 	karmaBuilder.model = Backbone.Model.extend({
 
 		defaults : {
-			"shortcode_name" 		: "karma_row" ,
+			"shortcode_name" 		: "karma-row" ,
 			"shortcode_attributes"	: {
 				"element_key"	: "",
 				"padding"		: "200",
