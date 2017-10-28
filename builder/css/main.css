@@ -2038,7 +2038,7 @@ iframe {
   .karma-range-slider-container .karma-range-slider-number {
     display: inline-flex;
     margin-left: 13px; }
-    .karma-range-slider-container .karma-range-slider-number #karma-range-slider-input {
+    .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input {
       display: flex;
       text-align: right;
       align-items: inherit;
@@ -2052,7 +2052,7 @@ iframe {
       color: #000;
       font-size: 12px;
       padding: 0; }
-      .karma-range-slider-container .karma-range-slider-number #karma-range-slider-input:focus {
+      .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
         border-color: #bbb;
         outline: none; }
     .karma-range-slider-container .karma-range-slider-number .karma-unit {
