@@ -575,8 +575,10 @@ var karmaBuilder = karmaBuilder || {};
 
 			ShortcodeParams = this.updateElementParams(shortcodeModel,ShortcodeParams);
 			for( var counter in ShortcodeParams.params ){
-
 				if( ! ShortcodeParams.params[counter].group ) {
+
+					console.log(ShortcodeParams.params[counter])
+
 					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 
 				}else{
@@ -646,7 +648,6 @@ var karmaBuilder = karmaBuilder || {};
 		}
 
 	});
-
 
 	karmaBuilder.model = Backbone.Model.extend({
 

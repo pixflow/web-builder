@@ -1,5 +1,4 @@
 karmaBuilder.section = karmaBuilder.shortcodes.extend({
-
 	rowGimzoParams: {},
 
 	events:{
@@ -18,6 +17,12 @@ karmaBuilder.section = karmaBuilder.shortcodes.extend({
 
 	},
 
+	showSettingPanel : function(){
+		console.log(this.model)
+		this.model.attributes.shortcode_attributes['add_grid'] = this.currentGrid();
+		karmaBuilder.row.__super__.showSettingPanel.apply( this, arguments );
+
+	},
 	/**
 	 * @summary Build gizmo controller
 	 *
@@ -53,9 +58,10 @@ karmaBuilder.section = karmaBuilder.shortcodes.extend({
 	currentGrid : function( ) {
 
 		var childrenModels = this.findChildren();
+
 		var currentGrid = [];
 		for (var i = 0, len = childrenModels.length; i < len; i++) {
-			currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.width ) )
+			currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.sm_size ) )
 		}
 		return currentGrid;
 
@@ -70,6 +76,7 @@ karmaBuilder.section = karmaBuilder.shortcodes.extend({
 	 */
 	calculateNewGrid : function( ) {
 		var newGrid = this.currentGrid();
+		console.log(newGrid);
 		newGrid.reverse();
 		for (var i = 0, len = newGrid.length; i < len; i++) {
 			if(newGrid[i] > 1) {
@@ -79,6 +86,7 @@ karmaBuilder.section = karmaBuilder.shortcodes.extend({
 		}
 		newGrid.reverse();
 		newGrid.push(1);
+		console.log(newGrid);
 		return newGrid;
 	},
 
@@ -195,6 +203,8 @@ karmaBuilder.section = karmaBuilder.shortcodes.extend({
 	 * @returns {void}
 	 */
 	liveSpacing: function () {
+		this.currentGrid()
+		this.calculateNewGrid()
 		this.spacingGizmo()
 		this.toolTipHtml()
 
