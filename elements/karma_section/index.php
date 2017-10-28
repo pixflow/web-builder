@@ -40,7 +40,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		ob_start();
 		?>
 		<div class='karma-section karma-section-<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
-			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
+			<div class='<?php echo esc_attr( $container_class ); ?> karma-no-gutters'>
 				<?php echo do_shortcode( $content ); ?>
 			</div>
 		</div>
@@ -51,11 +51,14 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<div class='karma-section {{data.extra_class}}'>"
-			. "<div class='{{data.structure}} karma-row karma-no-gutters'>"
+		return "<# var rowContainer = ('container' == data.changed.structure )?'karma-container':'karma-container-fluid'; #>"
+			."<div class=\"section-spacing section-top-spacing\"><div class=\"resize-handler\"></div></div>"
+			."<div class='karma-section karma-row-{{data.attributes.shortcode_attributes.element_key}} {{data.changed.extra_class}}'>"
+			. "<div class='{{rowContainer}} karma-no-gutters'>"
 			//. '<# print( createChildren( data.shortcodeContent ) ) #>'
 			. "</div>"
-			. "</div>";
+			. "</div>"
+			."<div class=\"row-top-spacing-dot-container section-spacing\"><div class=\"spacing-top-dot\"></div><div class=\"spacing-top-dot-hover\"></div><div class=\"resize-handler\"></div></div><div class=\"row-bottom-spacing-dot-container section-spacing\"><div class=\"spacing-bottom-dot\"></div><div class=\"spacing-bottom-dot-hover\"></div><div class=\"resize-handler\"></div></div><div class=\"section-spacing section-bottom-spacing\"><div class=\"resize-handler\"></div></div>";
 	}
 
 

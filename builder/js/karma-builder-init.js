@@ -155,7 +155,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns void
 		 */
 		events : {
-			"click .row-gizmo-group" : "showSettingPanel",
+			"click .karma-element-setting" : "showSettingPanel",
 		},
 
 
@@ -466,6 +466,7 @@ var karmaBuilder = karmaBuilder || {};
 		events : {
 			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
 			"click .delete-karma-element"				: "removeElement",
+			"input input,textarea"						: "updateModel",
 		},
 
 		/**
@@ -546,7 +547,7 @@ var karmaBuilder = karmaBuilder || {};
 				content = this.formBuilder( model ),
 				elementAttributes = model.attributes,
 				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
-				elementSelector = '.'+ elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
+				elementSelector =  elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
 
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
@@ -576,8 +577,6 @@ var karmaBuilder = karmaBuilder || {};
 			ShortcodeParams = this.updateElementParams(shortcodeModel,ShortcodeParams);
 			for( var counter in ShortcodeParams.params ){
 				if( ! ShortcodeParams.params[counter].group ) {
-
-					console.log(ShortcodeParams.params[counter])
 
 					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
 

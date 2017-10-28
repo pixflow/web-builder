@@ -167,7 +167,7 @@ class Karma_Shortcode_Base {
 			. '}';
 
 		?>
-		<style>
+		<style id="<?php echo  static::$element_name . '_' . static::$element_id ?>" >
 			<?php echo $style_string; ?>
 		</style>
 		<?php

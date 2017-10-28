@@ -8,8 +8,10 @@ jQuery('body').off('karma_finish_form_builder.radio-image').on('karma_finish_for
 	}
 
 	function changeValue(){
+		var input = this.parentNode.querySelector('input');
 
-		this.parentNode.querySelector('input').value = this.getAttribute('data-value') ;
+		input.value = this.getAttribute('data-value') ;
+		jQuery(input).trigger('input');
 		add_class(this);
 
 	}
