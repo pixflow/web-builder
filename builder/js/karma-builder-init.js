@@ -684,7 +684,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		events:{
 
-			'click .karma-section' 							: 'showBorder',
+			'click'				 							: 'showBorder',
 			'mousedown .section-spacing' 					: 'showMouseToolTip',
 			'mousedown .row-top-spacing-dot-container' 		: 'showMouseToolTip',
 			'mousedown .row-bottom-spacing-dot-container' 	: 'showMouseToolTip',

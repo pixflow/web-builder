@@ -33,7 +33,6 @@
 		}
 
 		this.els = document.querySelectorAll( this.options.selector );
-		console.log(this.els);
 
 		if ( null == this.els ) {
 			return false;
