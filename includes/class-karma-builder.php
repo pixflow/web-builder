@@ -59,24 +59,6 @@ class Karma_Builder {
 	public $core;
 
 	/**
-	 * The unique identifier of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
-	 */
-	protected $plugin_name;
-
-	/**
-	 * The current version of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
-	 */
-	protected $version;
-
-	/**
 	 * Returns the *Singleton* instance of this class.
 	 *
 	 * @access   public
@@ -122,9 +104,6 @@ class Karma_Builder {
 	 * @since    1.0.0
 	 */
 	private function __construct( $factory ) {
-
-		$this->plugin_name = 'karma-builder';
-		$this->version = '1.0.0';
 
 		$this->constants();
 		$this->load_dependencies();
@@ -220,9 +199,11 @@ class Karma_Builder {
 	 */
 	private function constants() {
 
+		define( 'KARMA_BUILDER_NAME', 'karma-builder' );
+		define( 'KARMA_BUILDER_VERSION', '1.0.0' );
+
 		define( 'KARMA_BUILDER_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
 		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );
-		define( 'KARMA_BUILDER_VERSION', $this->version );
 
 	}
 
@@ -312,7 +293,7 @@ class Karma_Builder {
 	 */
 	public function run() {
 
-		if ( self::is_in_builder() && $this->user_have_access_page() ){
+		if ( self::is_in_builder() && isset( $_GET['load_builder'] ) ){
 			$this->prevent_from_loading_wordpress();
 		}
 
@@ -361,7 +342,7 @@ class Karma_Builder {
 	 * @since     1.0.0
 	 * @return    boolean	true if user has access or not.
 	 */
-	private function user_have_access_page(){
+	public static function user_have_access_page(){
 
 		if ( current_user_can( 'edit_posts' ) && ! post_password_required() ){
 			return true;
@@ -378,9 +359,17 @@ class Karma_Builder {
 	 */
 	public static function is_in_builder(){
 
-		if( isset( $_GET['load_builder'] )
-			&& true === (boolean) $_GET['load_builder']
-			&& self::check_preview_mode()  ){
+		if( (
+				(
+					isset( $_GET['load_builder'] )
+					&& true === (boolean) $_GET['load_builder']
+			    ) || (
+					isset( $_GET['in_builder'] )
+					&& true === (boolean) $_GET['in_builder']
+			    )
+		    )
+			&& self::check_preview_mode()
+		    && self::user_have_access_page() ){
 			return true ;
 		}else{
 			return false;
@@ -413,7 +402,7 @@ class Karma_Builder {
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
-		return $this->plugin_name;
+		return KARMA_BUILDER_NAME;
 	}
 
 	/**
@@ -433,7 +422,7 @@ class Karma_Builder {
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
-		return $this->version;
+		return KARMA_BUILDER_VERSION;
 	}
 
 }

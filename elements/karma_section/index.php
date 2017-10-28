@@ -1,5 +1,5 @@
 <?php
-class Karma_Row extends Karma_Shortcode_Base {
+class Karma_Section extends Karma_Shortcode_Base {
 
 	/**
 	 * Generic element attributes .
@@ -23,7 +23,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 	 */
 	public static $element_id;
 
-	public static $element_name = 'karma_row';
+	public static $element_name = 'karma_section';
 
 	public function render( $atts, $content ) {
 
@@ -39,7 +39,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 		$container_class = ($atts['structure'] == 'container')?"karma-container":"karma-container-fluid";
 		ob_start();
 		?>
-		<div class='karma-section karma_row_<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
+		<div class='karma-section karma-section-<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
 			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 				<?php echo do_shortcode( $content ); ?>
 			</div>
@@ -115,7 +115,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 		);
 
 
-		parent::$elements_map['karma_row'] = $map;
+		parent::$elements_map['karma_section'] = $map;
 		return parent::$elements_map;
 	}
 
@@ -157,7 +157,7 @@ class Karma_Row extends Karma_Shortcode_Base {
 			)
 		);
 
-		parent::$elements_gizmo['karma_row'] = $controllers;
+		parent::$elements_gizmo['karma_section'] = $controllers;
 		return parent::$elements_gizmo;
 
 	}

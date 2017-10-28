@@ -50,7 +50,7 @@ class Karma_Builder_Loader {
 	 * @access   public
 	 */
 	public static $element_filename = array(
-		'row',
+		'section',
 		'column',
 	);
 
@@ -100,7 +100,8 @@ class Karma_Builder_Loader {
 	 */
 	public function load_builder(){
 
-		if( $this->is_in_iframe() ){
+		$builder = Karma_Factory_Pattern::$builder;
+		if( $builder::is_in_builder() ){
 			// Don't display the admin bar when in live editor mode
 			add_filter( 'show_admin_bar', '__return_false' );
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );

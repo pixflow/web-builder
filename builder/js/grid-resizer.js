@@ -10,7 +10,7 @@
 	 * initial function of gridResizer
 	 *
 	 * @param    {object}    option    initialize options
-	 * @returns  {array | boolean}    DOM elements which are resizable or false if not exists
+	 * @returns  {Array | boolean}    DOM elements which are resizable or false if not exists
 	 */
 	function gridResizer( option ) {
 
@@ -34,7 +34,7 @@
 
 		this.els = document.querySelectorAll( this.options.selector );
 
-		if ( null == this.els ) {
+		if ( null === this.els ) {
 			return false;
 		}
 		this.init();
@@ -46,8 +46,7 @@
 	/**
 	 * find elements which should be resizable then add handler to them
 	 *
-	 * @param    {array}    els        DOM elements selected by selector
-	 * @returns   {array}    DOM elements which are resizable
+	 * @returns   {Array}    DOM elements which are resizable
 	 */
 	gridResizer.prototype.init = function() {
 
@@ -252,10 +251,9 @@
 	/**
 	 * Stop dragging after mouseup
 	 *
-	 * @param {event}    e
 	 * @returns {boolean}
 	 */
-	gridResizer.prototype.stopDrag = function( e ) {
+	gridResizer.prototype.stopDrag = function() {
 
 		var el = document.querySelector( '.resize-dragging' ),
 			returnObject = {};
@@ -266,11 +264,11 @@
 		document.documentElement.removeEventListener( 'mousemove', this.doDragFunc, false );
 		document.documentElement.removeEventListener( 'mouseup', this.stopDragFunc, false );
 
-		if ( true == this.options.snapToGrid ) {
+		if ( true === this.options.snapToGrid ) {
 			returnObject.grid = this.updateGrid( el );
 		}
 
-		if ( this.options.direction == 'x' || this.options.direction == 'both' ) {
+		if ( this.options.direction === 'x' || this.options.direction === 'both' ) {
 			el.removeAttribute( 'data-original-width' );
 			el.removeAttribute( 'data-original-x' );
 			if ( this.options.snapToGrid ) {
@@ -282,7 +280,7 @@
 
 		}
 
-		if ( ( this.options.direction == 'y' || this.options.direction == 'both' ) && ! this.options.snapToGrid ) {
+		if ( ( this.options.direction === 'y' || this.options.direction === 'both' ) && ! this.options.snapToGrid ) {
 			el.removeAttribute( 'data-original-height' );
 			el.removeAttribute( 'data-original-y' );
 			returnObject.height = el.style.height;
@@ -339,7 +337,7 @@
 			nextColumnWidth     : nextElementColumnWidth
 		};
 
-	}
+	};
 
 	window.gridResizer = function( option ){
 

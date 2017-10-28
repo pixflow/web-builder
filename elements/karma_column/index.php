@@ -178,7 +178,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	public function get_element_attributes( $attributes ) {
 
 		$this->element_attributes = $attributes['attributes'];
-		self::$element_id =  $this->element_attributes['element_key'] ;
+		self::$element_id = $this->element_attributes['element_key'] ;
 		return $this;
 
 	}
