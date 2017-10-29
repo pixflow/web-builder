@@ -119,7 +119,7 @@
 				y = e.clientY;
 			tooltipDiv.style.top = (y + 20) + 'px';
 			tooltipDiv.style.left = (x - 20) + 'px';
-			tooltipDiv.innerText = (document.querySelector('.target-moving').offsetHeight) + ' px';
+			tooltipDiv.innerText = (document.querySelector('.section-spacing').offsetHeight) + ' px';
 
 		},
 
@@ -179,14 +179,16 @@
 			rowBottomSpacingContainer.appendChild( rowBottomSpacingDot );
 			rowBottomSpacingContainer.appendChild( rowBottomSpacing );
 
-			this.el.appendChild( rowTopSpacingContainer );
-			this.el.appendChild( rowBottomSpacingContainer );
+
+
 
 			var topSpacing = document.createElement( 'div' );
 			topSpacing.setAttribute( 'class', 'section-spacing section-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n' );
+			topSpacing.appendChild( rowTopSpacingContainer );
 
 			var bottomSpacing = document.createElement( 'div' );
 			bottomSpacing.setAttribute( 'class', 'section-spacing section-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-n' );
+			bottomSpacing.appendChild( rowBottomSpacingContainer );
 
 			this.el.appendChild( bottomSpacing );
 			this.el.insertBefore( topSpacing, this.el.childNodes[ 0 ] );

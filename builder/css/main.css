@@ -1802,6 +1802,8 @@ iframe {
   width: 18px; }
   .row-top-spacing-dot-container:hover .spacing-top-dot-hover {
     display: block; }
+  .row-top-spacing-dot-container:active .spacing-top-dot-hover {
+    display: block; }
   .row-top-spacing-dot-container .spacing-top-dot-hover {
     height: 18px;
     display: flex;
@@ -1831,6 +1833,8 @@ iframe {
   height: 18px;
   width: 18px; }
   .row-bottom-spacing-dot-container:hover .spacing-bottom-dot-hover {
+    display: block; }
+.row-bottom-spacing-dot-container:active .spacing-bottom-dot-hover {
     display: block; }
   .row-bottom-spacing-dot-container .spacing-bottom-dot-hover {
     height: 18px;
