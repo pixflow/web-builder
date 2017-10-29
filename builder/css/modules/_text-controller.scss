@@ -1,6 +1,6 @@
 .karma-text-input-controller{
   @include flexbox( $justify-content:center);
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 
 
   input.karma-text-input-field{
@@ -9,7 +9,7 @@
     background: transparent;
     border: 1px solid rgba(57,73,89,0.2);
     border-radius: 20px;
-    color: #394959;
+    color: rgba(57,73,89,0.6);
     font-family: HelveticaNeue;
     font-size: 12px;
   }

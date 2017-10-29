@@ -259,7 +259,7 @@ body {
   body .karma-full-separator {
     width: 100%;
     height: 1px;
-    margin-top: 15px;
+    margin-top: 25px;
     margin-right: 0;
     margin-bottom: 15px;
     margin-left: 0;
@@ -269,7 +269,7 @@ body {
     left: 0;
     color: rgba(57, 73, 89, 0.2); }
   body .karma-container-separator {
-    margin-top: 15px;
+    margin-top: 25px;
     margin-right: 20px;
     margin-bottom: 0;
     margin-left: 0;
@@ -1616,7 +1616,7 @@ iframe {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      padding-top: 3px;
+      padding-top: 16px;
       overflow: hidden; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
         border-bottom-left-radius: 7px;
@@ -1853,7 +1853,7 @@ iframe {
 .karma-title2-controller {
   padding-top: 0;
   padding-right: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   padding-left: 20px;
   width: 100%;
   height: 100%;
@@ -1867,7 +1867,7 @@ iframe {
   text-align: inherit;
   align-items: inherit;
   justify-content: center;
-  padding-bottom: 15px; }
+  padding-bottom: 25px; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
@@ -1878,7 +1878,7 @@ iframe {
     background: transparent;
     border: 1px solid rgba(57, 73, 89, 0.2);
     border-radius: 20px;
-    color: #394959;
+    color: rgba(57, 73, 89, 0.6);
     font-family: HelveticaNeue;
     font-size: 12px; }
   .karma-text-input-controller input::placeholder {
@@ -1894,7 +1894,7 @@ iframe {
   width: 100%;
   height: 100%;
   background-color: rgba(65, 156, 248, 0.12);
-  margin-bottom: 15px; }
+  margin-bottom: 25px; }
   .karma-title-controller div.karma-title-field {
     color: #419CF8;
     font-size: 15px; }
@@ -2006,9 +2006,9 @@ iframe {
   align-items: center;
   justify-content: center;
   padding-top: 0;
-  padding-right: 7px;
-  padding-bottom: 15px;
-  padding-left: 14px;
+  padding-right: 15px;
+  padding-bottom: 25px;
+  padding-left: 15px;
   flex-direction: column;
   position: relative; }
   .karma-range-slider-container .karma-range-slider-content {

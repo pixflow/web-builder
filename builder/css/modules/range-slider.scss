@@ -1,6 +1,6 @@
 .karma-range-slider-container{
   @include flexbox( $text-align:center, $align-item:center, $justify-content:center );
-  @include padding( 0, 7px, 15px, 14px );
+  @include padding( 0, 15px, 25px, 15px );
   flex-direction: column;
   position: relative;
 
