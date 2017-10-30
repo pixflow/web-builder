@@ -43,7 +43,7 @@ var karmaBuilder = karmaBuilder || {};
 					var elementView = new karmaBuilder[elementName]({
 						model 			: element,
 						el 				: $('[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]'),
-						gimzoParams 	: that.gizmoParams[element.attributes.shortcode_name],
+						gizmoParams 	: that.gizmoParams[element.attributes.shortcode_name],
 						template 		: wp.template('karma-element-' + element.attributes.shortcode_name)
 					});
 					elementView.createGizmo();
@@ -167,9 +167,19 @@ var karmaBuilder = karmaBuilder || {};
 		resizeGizmoTemplate : '<div class="{{data.class}}" data-snap="{{data.param.snapGrid}}" ></div>',
 
 		topGizmoTemplate : '<div class="{{data.class}}">'
-		+ '<span class="karma-icon">{{{data.params[0].icon}}}</span>'
-		+ '<span class="karma-top-gimo-title">{{data.params[0].text}}</span>'
-		+ '</div>',
+		+ ' <# _.each( data.params, function( param ){  #>'
+		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} ">'
+		+ ' <# if( "icon" === param.type ){ #>'
+		+ ' <div>{{{ param.icon }}}</div>'
+		+ '<# } else if( "text" === param.type ) {#>'
+		+ '<div>{{{ param.value }}}</div>'
+		+ '<# } else if( "icon-text" === param.type ) {#>'
+		+ '<span class="karama-gizmo-icon">{{{ param.icon }}}</span>'
+		+ '<span class="karma-gizmo-title">{{{ param.text }}} {{param.counter}}</span>'
+		+ '<# } #>'
+		+ '</div>'
+		+ '<# }) #>'
+		+ '</div>' ,
 
 		/**
 		 * Define elements events
@@ -198,7 +208,7 @@ var karmaBuilder = karmaBuilder || {};
 				this.model.bind('change', this.render);
 				this.model.bind('destroy', this.destroy);
 			}
-			this.gimzoParams = options.gimzoParams;
+			this.gizmoParams = options.gizmoParams;
 
 		},
 
@@ -324,9 +334,21 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		createGizmo: function () {
 
-			for( var i in this.gimzoParams) {
+			for( var i in this.gizmoParams ) {
 
-				this.$el.append($(this.gizmoBuilder(this.gimzoParams[i])));
+				for( var param in this.gizmoParams[ i ].params ){
+
+					if ( this.gizmoParams[ i ].params[param].hasOwnProperty( "showIndex" ) ){
+
+						this.gizmoParams[ i ].params[param][ "counter" ] = this.$el.parent().find( '> div[class *= "col-sm"]' ).index( this.$el )+1;
+
+					}else{
+
+						this.gizmoParams[ i ].params[param][ "counter" ] = "";
+
+					}
+				}
+				this.$el.append( $( this.gizmoBuilder( this.gizmoParams[ i ] ) ) );
 
 			}
 

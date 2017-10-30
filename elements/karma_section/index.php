@@ -29,7 +29,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<# var rowContainer = ('container' == data.changed.structure )?'karma-container':'karma-container-fluid'; #>"
+		return "<# var rowContainer = ( 'container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
 			."<div class=\"section-spacing section-top-spacing\"><div class=\"resize-handler\"></div></div>"
 			."<div class='karma-section karma-section-{{data.attributes.shortcode_attributes.element_key}} {{data.changed.extra_class}}'>"
 			. "<div class='{{rowContainer}} karma-no-gutters'>"
