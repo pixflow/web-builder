@@ -581,8 +581,8 @@ var karmaBuilder = karmaBuilder || {};
 				$html = document.createElement('div'),
 				content = this.formBuilder( model ),
 				elementAttributes = model.attributes,
-				elementName = elementAttributes['shortcode_name'].replace('karma-',''),
-				elementSelector =  elementAttributes['shortcode_name']+'_'+ elementAttributes.shortcode_attributes['element_key'];
+				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
+				elementSelector =  elementAttributes['shortcode_name'].replace('_','-') +'-'+ elementAttributes.shortcode_attributes['element_key'];
 
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
@@ -680,7 +680,20 @@ var karmaBuilder = karmaBuilder || {};
 				}
 			}
 			return elementParam;
-		}
+		},
+
+		/**
+		 * update model attribute from setting pane
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		updateModel: function (event) {
+
+			this.model.set(event.target.name,event.target.value);
+
+		},
 
 	});
 
