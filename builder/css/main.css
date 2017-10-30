@@ -1849,6 +1849,9 @@ iframe {
     border-radius: 100%;
     background-color: #FFFFFF; }
 
+.karma-container {
+  outline: 1px solid rgba(118, 129, 140, 0.35); }
+
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
   padding-top: 0;

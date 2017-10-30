@@ -147,16 +147,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 						'action' => 'open' ,
 						'class' => '' ,
 					) ,
-					array(
-						'icon' => 'setting.svg' ,
-						'action' => 'open' ,
-						'class' => '' ,
-					) ,
-					array(
-						'icon' => 'setting.svg' ,
-						'action' => 'open' ,
-						'class' => '' ,
-					),
 				)
 			)
 		);
