@@ -5,8 +5,5 @@
 			karmaBuilder.column.__super__.initialize.apply(this, arguments);
 		},
 
-		createGizmo: function () {
-		},
-
 	});
 })(jQuery,karmaBuilder);

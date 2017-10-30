@@ -147,6 +147,21 @@ var karmaBuilder = karmaBuilder || {};
 		+ '<# }) #>'
 		+ '</div>' ,
 
+		bothSpacingGizmoTemplate : '<div class="{{ data.className }}">' +
+			'<div class="section-spacing section-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n">'
+				+ '<div class="row-top-spacing-dot-container">'
+					+ '<div class="spacing-top-dot"></div>'
+					+ '<div class="spacing-top-dot-hover target-moving"></div>'
+				+ '</div>'
+			+ '</div>'
+			+ '<div class="section-spacing section-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-n">'
+				+ '<div class="row-bottom-spacing-dot-container">'
+					+ '<div class="spacing-bottom-dot"></div>'
+					+ '<div class="spacing-bottom-dot-hover"></div>'
+				+ '</div>'
+			+ '</div>'
+		+ '</div>' ,
+
 		/**
 		 * Define elements events
 		 *
@@ -174,6 +189,7 @@ var karmaBuilder = karmaBuilder || {};
 				this.model.bind('change', this.render);
 				this.model.bind('destroy', this.destroy);
 			}
+			this.gimzoParams = options.gimzoParams;
 
 		},
 
@@ -277,9 +293,26 @@ var karmaBuilder = karmaBuilder || {};
 					break;
 				case 'over-gizmo' :
 					break;
+				case 'both-spacing-gizmo' :
+					return this.getUnderscoreTemplate( this.bothSpacingGizmoTemplate, gizmoParams );
+					break;
 				default:
 					return false;
 					break;
+			}
+
+		},
+
+		/**
+		 * @summary Build gizmo controller
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		createGizmo: function () {
+
+			for( var i in this.gimzoParams) {
+				this.$el.append($(this.gizmoBuilder(this.gimzoParams[i])));
 			}
 
 		},
@@ -601,6 +634,7 @@ var karmaBuilder = karmaBuilder || {};
 			for( var counter in groupHtml_group ) {
 
 				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
+				console.log(setting_panel_group);
 
 			}
 

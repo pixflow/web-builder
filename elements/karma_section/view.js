@@ -1,6 +1,5 @@
 (function($, karmaBuilder){
 	karmaBuilder.section = karmaBuilder.shortcodes.extend({
-		rowGimzoParams: {},
 
 		events:{
 
@@ -13,7 +12,6 @@
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
-			this.rowGimzoParams = options.gimzoParams[0];
 			this.liveSpacing();
 
 		},
@@ -23,17 +21,7 @@
 			karmaBuilder.section.__super__.showSettingPanel.apply( this, arguments );
 
 		},
-		/**
-		 * @summary Build gizmo controller
-		 *
-		 * @since 1.0.0
-		 * @returns {void}
-		 */
-		createGizmo: function () {
 
-			this.$el.append( $( this.gizmoBuilder( this.rowGimzoParams ) ) );
-
-		},
 
 		/**
 		 * @summary Set the active row with specific class
@@ -153,49 +141,6 @@
 		},
 
 		/**
-		 * create html fot padding gizmo
-		 *
-		 * @since 1.0.0
-		 *
-		 */
-		spacingGizmo: function () {
-			var rowTopSpacingContainer = document.createElement('div');
-			rowTopSpacingContainer.setAttribute( 'class', 'row-top-spacing-dot-container' );
-
-			var rowTopSpacing = document.createElement( 'div' );
-			rowTopSpacing.setAttribute( 'class', 'spacing-top-dot-hover' );
-			var rowTopSpacingDot = document.createElement( 'div' );
-			rowTopSpacingDot.setAttribute( 'class', 'spacing-top-dot' );
-			rowTopSpacingContainer.appendChild( rowTopSpacingDot );
-			rowTopSpacingContainer.appendChild( rowTopSpacing );
-
-			var rowBottomSpacingContainer = document.createElement('div');
-			rowBottomSpacingContainer.setAttribute( 'class', 'row-bottom-spacing-dot-container' );
-
-			var rowBottomSpacing = document.createElement( 'div' );
-			rowBottomSpacing.setAttribute( 'class', 'spacing-bottom-dot-hover' );
-			var rowBottomSpacingDot = document.createElement( 'div' );
-			rowBottomSpacingDot.setAttribute( 'class', 'spacing-bottom-dot' );
-			rowBottomSpacingContainer.appendChild( rowBottomSpacingDot );
-			rowBottomSpacingContainer.appendChild( rowBottomSpacing );
-
-
-
-
-			var topSpacing = document.createElement( 'div' );
-			topSpacing.setAttribute( 'class', 'section-spacing section-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n' );
-			topSpacing.appendChild( rowTopSpacingContainer );
-
-			var bottomSpacing = document.createElement( 'div' );
-			bottomSpacing.setAttribute( 'class', 'section-spacing section-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-n' );
-			bottomSpacing.appendChild( rowBottomSpacingContainer );
-
-			this.el.appendChild( bottomSpacing );
-			this.el.insertBefore( topSpacing, this.el.childNodes[ 0 ] );
-		},
-
-
-		/**
 		 * Add live spacing ability to section elements
 		 *
 		 * @since 1.0.0
@@ -205,7 +150,6 @@
 		liveSpacing: function () {
 			this.currentGrid()
 			this.calculateNewGrid()
-			this.spacingGizmo()
 			this.toolTipHtml()
 
 			var that = this,

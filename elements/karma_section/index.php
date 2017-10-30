@@ -158,7 +158,11 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 					),
 				)
-			)
+			),
+			array(
+				"type" => "both-spacing-gizmo" ,
+				"className" => "section-both-spacing" ,
+			),
 		);
 
 		parent::$elements_gizmo['karma_section'] = $controllers;
