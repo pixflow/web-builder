@@ -1802,8 +1802,6 @@ iframe {
   width: 18px; }
   .row-top-spacing-dot-container:hover .spacing-top-dot-hover {
     display: block; }
-  .row-top-spacing-dot-container:active .spacing-top-dot-hover {
-    display: block; }
   .row-top-spacing-dot-container .spacing-top-dot-hover {
     height: 18px;
     display: flex;
@@ -1833,8 +1831,6 @@ iframe {
   height: 18px;
   width: 18px; }
   .row-bottom-spacing-dot-container:hover .spacing-bottom-dot-hover {
-    display: block; }
-.row-bottom-spacing-dot-container:active .spacing-bottom-dot-hover {
     display: block; }
   .row-bottom-spacing-dot-container .spacing-bottom-dot-hover {
     height: 18px;
@@ -1936,7 +1932,8 @@ iframe {
       text-align: center;
       cursor: pointer; }
       .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
-        opacity: .5; }
+        opacity: .5;
+        transition: opacity .2s; }
         .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {
           opacity: .8; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-selected-item svg {
@@ -2095,8 +2092,8 @@ iframe {
   font-weight: 500;
   font-size: 15px;
   line-height: 17px;
-  width: 100%;
-  text-align: left; }
+  text-align: left;
+  width: 100%; }
 
 .karma-active-section {
   border: 1px solid #419CF8; }
