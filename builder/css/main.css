@@ -1709,7 +1709,7 @@ iframe {
   width: 39px;
   border-radius: 100px;
   background-color: #76c1f3;
-  color: #FFFFFF;
+  color: #fff;
   font-family: HelveticaNeue;
   font-size: 9px;
   text-align: center;
@@ -1819,7 +1819,7 @@ iframe {
     width: 8px;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #FFFFFF; }
+    background-color: #fff; }
 
 .row-bottom-spacing-dot-container {
   cursor: n-resize;
@@ -1848,7 +1848,7 @@ iframe {
     width: 8px;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #FFFFFF; }
+    background-color: #fff; }
 
 .karma-active-section .karma-container {
   outline: 1px solid rgba(118, 129, 140, 0.35); }
@@ -1859,6 +1859,28 @@ iframe {
     right: 0;
     top: 0;
     width: 1px; }
+
+.karma-column-setting {
+  padding-top: 0;
+  padding-right: 4px;
+  padding-bottom: 0;
+  padding-left: 3px;
+  background-color: #76818C;
+  position: absolute;
+  left: 0;
+  line-height: 16px;
+  top: -17px; }
+  .karma-column-setting .karma-icon svg {
+    width: 10.31px;
+    height: 10.31px; }
+    .karma-column-setting .karma-icon svg * {
+      fill: #fff; }
+  .karma-column-setting .karma-top-gimo-title {
+    color: #fff;
+    font-size: 10px;
+    font-family: HelveticaNeue;
+    padding-left: 2.69px;
+    vertical-align: top; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {

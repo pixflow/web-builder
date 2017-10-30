@@ -19,7 +19,7 @@
   width: 39px;
   border-radius: 100px;
   background-color: #76c1f3;
-  color: #FFFFFF;
+  color: $white-color;
   font-family: HelveticaNeue;
   font-size: 9px;
   text-align: center;
@@ -123,7 +123,7 @@
     width: 8px;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #FFFFFF;
+    background-color: $white-color;
 
   }
 }
@@ -160,7 +160,7 @@
     width: 8px;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #FFFFFF;
+    background-color: $white-color;
 
   }
 }
@@ -178,6 +178,30 @@
       width: 1px;
     }
   }
+}
 
+.karma-column-setting{
+  @include padding(0, 4px, 0, 3px);
+  background-color: #76818C ;
+  position: absolute;
+  left: 0;
+  line-height: 16px;
+  top: -17px;
 
+  .karma-icon{
+    svg {
+      @include box(10.31px, 10.31px);
+      * {
+        fill: $extra-icon-color;
+      }
+    }
+  }
+
+  .karma-top-gimo-title{
+    color:$white-color;
+    font-size: 10px;
+    font-family: HelveticaNeue;
+    padding-left: 2.69px;
+    vertical-align: top;
+  }
 }
