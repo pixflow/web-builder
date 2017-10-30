@@ -64,8 +64,8 @@ class Karma_Shortcode_Base {
 	/**
 	 * Class builder admin instance
 	 *
-	 * @since    1.0.0
-	 * @access   public
+	 * @since	1.0.0
+	 * @access	public
 	 * @return	object	Instance of current element class
 	 */
 	public static function get_instance() {

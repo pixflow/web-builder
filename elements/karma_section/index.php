@@ -15,7 +15,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 	/**
 	 * Generic ID.
 	 *
-	 * Holds the uniqe ID.
+	 * Holds the unique ID.
 	 *
 	 * @access public
 	 *
@@ -65,57 +65,112 @@ class Karma_Section extends Karma_Shortcode_Base {
 	public function map() {
 
 		$map = array(
-			"name"		=> "Section",
-			"params"	=> array(
-				array(
-					"name"		=> "structure",
-					"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
-					"label"		=> esc_attr__( "Grid options", 'karma' ),
-					'value'		=> "full",
-					"field"		=> array(
+			'setting-panel' => array(
+				"name"		=> "Section",
+				"params"	=> array(
+					array(
+						"name"		=> "structure",
+						"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
+						"label"		=> esc_attr__( "Grid options", 'karma' ),
+						'value'		=> "full",
+						"field"		=> array(
 
-						array(
-							'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg'),
-							'title' => "Full screen",
-							'value' => "full",
-						),
-						array(
-							'image' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg'),
-							'title' => "Container",
-							'value' => "container"
-						),
+							array(
+								'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg'),
+								'title' => "Full screen",
+								'value' => "full",
+							),
+							array(
+								'image' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg'),
+								'title' => "Container",
+								'value' => "container"
+							),
 
-					)
-				),
-				array(
-					"name"		=> "title",
-					"type"		=> Karma_Builder_Setting_Panel::TITLE,
-					"label"		=> esc_attr__( "Spacing", 'karma' ),
-					'value'		=> 'Spacing'
-				),
-				array(
-					"name"		=> "space",
-					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-					"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
-					'value'		=> 0,
-					"options"	=> array(
-						'value'	=> 200,
-						'min'	=> 0,
-						'max'	=> 800,
-						'step'	=> 1,
-						'unit'	=> 'px'
-					)
-				),
-				array(
-					"name"			=> "extra_class",
-					"type"			=> Karma_Builder_Setting_Panel::TEXT,
-					"label"			=> __( "Class Name", 'karma' ),
-					'placeholder'	=> __( 'Class name', 'karma' ),
-					"group"			=> "Advance option"
-				),
+						)
+					),
+					array(
+						"name"		=> "title",
+						"type"		=> Karma_Builder_Setting_Panel::TITLE,
+						"label"		=> esc_attr__( "Spacing", 'karma' ),
+						'value'		=> 'Spacing'
+					),
+					array(
+						"name"		=> "space",
+						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+							'value'	=> 200,
+							'min'	=> 0,
+							'max'	=> 800,
+							'step'	=> 1,
+							'unit'	=> 'px'
+						)
+					),
+					array(
+						"name"			=> "extra_class",
+						"type"			=> Karma_Builder_Setting_Panel::TEXT,
+						"label"			=> __( "Class Name", 'karma' ),
+						'placeholder'	=> __( 'Class name', 'karma' ),
+						"group"			=> "Advance option"
+					),
 
 
-			)
+				)
+			),
+			'background-panel' => array(
+				"name"		=> "Section",
+				"params"	=> array(
+					array(
+						"name"		=> "structure",
+						"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
+						"label"		=> esc_attr__( "Grid options", 'karma' ),
+						'value'		=> "full",
+						"field"		=> array(
+
+							array(
+								'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg'),
+								'title' => "Full screen",
+								'value' => "full",
+							),
+							array(
+								'image' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg'),
+								'title' => "Container",
+								'value' => "container"
+							),
+
+						)
+					),
+					array(
+						"name"		=> "title",
+						"type"		=> Karma_Builder_Setting_Panel::TITLE,
+						"label"		=> esc_attr__( "Spacing", 'karma' ),
+						'value'		=> 'Spacing'
+					),
+					array(
+						"name"		=> "space",
+						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+							'value'	=> 200,
+							'min'	=> 0,
+							'max'	=> 800,
+							'step'	=> 1,
+							'unit'	=> 'px'
+						)
+					),
+					array(
+						"name"			=> "extra_class",
+						"type"			=> Karma_Builder_Setting_Panel::TEXT,
+						"label"			=> __( "Class Name", 'karma' ),
+						'placeholder'	=> __( 'Class name', 'karma' ),
+						"group"			=> "Advance option"
+					),
+
+
+				)
+			),
 		);
 
 
@@ -141,7 +196,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 					array(
 						'type' =>'icon',
 						'icon' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg'),
-						'action' => 'open' ,
+						'form' => 'setting-panel' ,
 						'className' => 'karma-element-setting' ,
 					) ,
 					array(
