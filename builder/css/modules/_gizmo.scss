@@ -190,9 +190,9 @@
 
   .karma-icon{
     svg {
-      @include box(10.31px, 10.31px);
+      @include box(10.31px, 11.31px);
       * {
-        fill: $extra-icon-color;
+        fill: $white-color;
       }
     }
   }
