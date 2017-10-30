@@ -138,26 +138,23 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		$controllers = array(
 			array(
-				"type" => "inner-gizmo" ,
-				"position" => "top right" ,
-				"class" => "" ,
+				"type" => "top-gizmo" ,
+				"class" => "karma-column-setting" ,
 				"params" => array(
 					array(
-						'icon' => 'setting.svg' ,
-						'action' => 'open' ,
-						'class' => '' ,
-					) ,
-					array(
-						'icon' => 'setting.svg' ,
-						'action' => 'open' ,
-						'class' => '' ,
-					) ,
-					array(
-						'icon' => 'setting.svg' ,
-						'action' => 'open' ,
-						'class' => '' ,
-					),
+						'type' 	=>'icon-text',
+						'icon' 	=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg'),
+						'text'	=> 'Column',
+					)
 				)
+			),
+			array(
+				"type"	=> "resize-gizmo",
+				"class"	=> "karma-column-resize",
+				"param"	=> array(
+					'snapGrid'	=> true
+				)
+
 			)
 		);
 

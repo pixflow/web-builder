@@ -1850,8 +1850,15 @@ iframe {
     border-radius: 100%;
     background-color: #FFFFFF; }
 
-.karma-container {
+.karma-active-section .karma-container {
   outline: 1px solid rgba(118, 129, 140, 0.35); }
+  .karma-active-section .karma-container .karma-column-resize {
+    background-color: rgba(118, 129, 140, 0.35);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {

@@ -164,6 +164,13 @@ var karmaBuilder = karmaBuilder || {};
 			+ '</div>'
 		+ '</div>' ,
 
+		resizeGizmoTemplate : '<div class="{{data.class}}" data-snap="{{data.param.snapGrid}}" ></div>',
+
+		topGizmoTemplate : '<div class="{{data.class}}">'
+		+ '<span class="karma-icon">{{{data.params[0].icon}}}</span>'
+		+ '<span class="karma-top-gimo-title">{{data.params[0].text}}</span>'
+		+ '</div>',
+
 		/**
 		 * Define elements events
 		 *
@@ -292,11 +299,15 @@ var karmaBuilder = karmaBuilder || {};
 					return this.getUnderscoreTemplate( this.innerGizmoTemplate, gizmoParams );
 					break;
 				case 'top-gizmo' :
+					return this.getUnderscoreTemplate( this.topGizmoTemplate, gizmoParams );
 					break;
 				case 'over-gizmo' :
 					break;
 				case 'both-spacing-gizmo' :
 					return this.getUnderscoreTemplate( this.bothSpacingGizmoTemplate, gizmoParams );
+					break;
+				case 'resize-gizmo':
+					return this.getUnderscoreTemplate( this.resizeGizmoTemplate, gizmoParams );
 					break;
 				default:
 					return false;
@@ -314,7 +325,9 @@ var karmaBuilder = karmaBuilder || {};
 		createGizmo: function () {
 
 			for( var i in this.gimzoParams) {
+
 				this.$el.append($(this.gizmoBuilder(this.gimzoParams[i])));
+
 			}
 
 		},
