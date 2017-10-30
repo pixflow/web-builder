@@ -1869,7 +1869,8 @@ iframe {
   position: absolute;
   left: 0;
   line-height: 16px;
-  top: -17px; }
+  top: -17px;
+  cursor: pointer; }
   .karma-column-setting .karma-icon svg {
     width: 10.31px;
     height: 11.31px; }
