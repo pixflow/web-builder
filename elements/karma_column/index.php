@@ -2,28 +2,6 @@
 
 class Karma_Column extends Karma_Shortcode_Base {
 
-	/**
-	 * Generic element attributes .
-	 *
-	 * Holds the element attributes .
-	 *
-	 * @access private
-	 *
-	 * @var array
-	 */
-	private $element_attributes;
-
-	/**
-	 * Generic ID.
-	 *
-	 * Holds the uniqe ID.
-	 *
-	 * @access public
-	 *
-	 * @var string
-	 */
-	public static $element_id;
-
 	public static $element_name = 'karma_column';
 
 	public function wrapper_classes( $classes, $atts ){
@@ -160,23 +138,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		parent::$elements_gizmo['karma_column'] = $controllers;
 		return parent::$elements_gizmo;
-
-	}
-
-	/**
-	 * Set the attributes of current elements and also
-	 * set the uniqe id
-	 *
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return	object	Instance of current class
-	 */
-	public function get_element_attributes( $attributes ) {
-
-		$this->element_attributes = $attributes['attributes'];
-		self::$element_id = $this->element_attributes['element_key'] ;
-		return $this;
 
 	}
 

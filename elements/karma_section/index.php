@@ -1,28 +1,6 @@
 <?php
 class Karma_Section extends Karma_Shortcode_Base {
 
-	/**
-	 * Generic element attributes .
-	 *
-	 * Holds the element attributes .
-	 *
-	 * @access private
-	 *
-	 * @var array
-	 */
-	private $element_attributes;
-
-	/**
-	 * Generic ID.
-	 *
-	 * Holds the unique ID.
-	 *
-	 * @access public
-	 *
-	 * @var string
-	 */
-	public static $element_id;
-
 	public static $element_name = 'karma_section';
 
 	public function render( $atts, $content ) {
@@ -226,24 +204,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 	}
 
 	/**
-	 * Set the attributes of current elements and also
-	 * set the uniqe id
-	 *
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return	object	Instance of current class
-	 */
-	public function get_element_attributes( $attributes ) {
-
-		$this->element_attributes = $attributes['attributes'];
-		self::$element_id =  $this->element_attributes['element_key'] ;
-		return $this;
-
-	}
-
-
-	/**
 	 * Load CSS
 	 *
 	 *
@@ -253,7 +213,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 */
 	public function render_css(){
 
-		$styles = "padding-top:{$this->element_attributes['space']}px;padding-bottom:{$this->element_attributes['space']}px;";
+		$styles = "padding-top:" . $this->element_attributes['space'] . "px;padding-bottom:" . $this->element_attributes['space'] . "px;";
 		return $styles;
 
 	}

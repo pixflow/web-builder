@@ -32,6 +32,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Karma_Shortcode_Base {
 
+    /**
+     * Generic element attributes .
+     *
+     * Holds the element attributes .
+     *
+     * @access protected
+     *
+     * @var array
+     */
+    protected $element_attributes;
+
+    /**
+     * Generic ID.
+     *
+     * Holds the uniqe ID.
+     *
+     * @access protected
+     *
+     * @var string
+     */
+    protected $element_id;
+
 
 	/**
 	 * It is an array that contains elements map
@@ -121,6 +143,23 @@ class Karma_Shortcode_Base {
 
 	}
 
+    /**
+     * Set the attributes of current elements and also
+     * set the unique id
+     *
+     *
+     * @since   1.0.0
+     * @access  public
+     * @return	object	Instance of current class
+     */
+    public function get_element_attributes( $attributes ) {
+
+        $this->element_attributes = $attributes['attributes'];
+        $this->element_id = $this->element_attributes['element_key'] ;
+        return $this;
+
+    }
+
 	/**
 	 * Set the element id and elements attributes
 	 *
@@ -132,7 +171,7 @@ class Karma_Shortcode_Base {
 	 */
 	public function load_assets( $shortcode_info ){
 
-		static::get_element_attributes( $shortcode_info )->render_assets();
+		$this->get_element_attributes( $shortcode_info )->render_assets();
 
 	}
 
@@ -162,12 +201,12 @@ class Karma_Shortcode_Base {
 	 */
 	protected function render_style(){
 
-		$style_string = '.' . str_replace("_","-",static::$element_name) . '-' . static::$element_id . '{'
+		$style_string = '.' . str_replace("_","-",static::$element_name) . '-' . $this->element_id . '{'
 			. static::render_css()
 			. '}';
 
 		?>
-		<style id="<?php echo str_replace("_","-",static::$element_name) . '-' . static::$element_id ?>" >
+		<style id="<?php echo str_replace("_","-",static::$element_name) . '-' . $this->element_id ?>" >
 			<?php echo $style_string; ?>
 		</style>
 		<?php
@@ -187,12 +226,14 @@ class Karma_Shortcode_Base {
 		$script_string = static::render_script();
 
 		?>
-		<script id="<?php echo static::$element_name . '_' . static::$element_id; ?> ">
+		<script id="<?php echo static::$element_name . '_' . $this->element_id; ?> ">
 			<?php echo $script_string; ?>
 		</script>
 		<?php
 
 	}
+
+
 
 
 }
