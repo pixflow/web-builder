@@ -38,15 +38,17 @@ var karmaBuilder = karmaBuilder || {};
 
 			var that = this;
 			this.collection.each(function ( element ) {
-				var elementName = element.attributes.shortcode_name.replace( "karma_", "" );
-				var elementView = new karmaBuilder[ elementName ]({
-					model	: element,
-					el 		: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' ),
-					gimzoParams: that.gizmoParams[ element.attributes.shortcode_name ],
-					template: wp.template( 'karma-element-' + element.attributes.shortcode_name )
-				});
-				elementView.createGizmo();
-				elementView.delegateEvents();
+				var elementName = element.attributes.shortcode_name.replace("karma_", "");
+				if ("undefined" !== typeof karmaBuilder[elementName]) {
+					var elementView = new karmaBuilder[elementName]({
+						model 			: element,
+						el 				: $('[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]'),
+						gimzoParams 	: that.gizmoParams[element.attributes.shortcode_name],
+						template 		: wp.template('karma-element-' + element.attributes.shortcode_name)
+					});
+					elementView.createGizmo();
+					elementView.delegateEvents();
+				}
 			});
 
 		},
