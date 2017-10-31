@@ -689,6 +689,26 @@ var karmaBuilder = karmaBuilder || {};
 			} );
 			builder.delegateEvents();
 
+		},
+
+		/**
+		 * Remove Class from javascript element
+		 *
+		 * @param	{object}    el   		element to remove Class
+		 * @param	string	    className   name of class to remove
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		removeClass: function ( el, className ) {
+
+			if ( this.el.classList ){
+				this.el.classList.remove( className );
+			} else{
+				this.el.className = this.el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+			}
+
 		}
 
 	});

@@ -335,6 +335,23 @@
 
 
 		/**
+		 * structure field changes. Change Container of Section instead of render
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		structure: function () {
+
+			var defaultClasses 	= 'karma-row karma-no-gutters ',
+				containerClass	= ( 'container' == this.model.attributes.shortcode_attributes.structure ) ? 'karma-container' : 'karma-container-fluid',
+				newStructure 	= defaultClasses + containerClass;
+
+			this.el.firstElementChild.firstElementChild.setAttribute( "class", newStructure );
+
+		},
+
+		/**
 		 * extra class field changes. Add class to the element instead of render
 		 *
 		 * @since 1.0.0
@@ -342,7 +359,12 @@
 		 * @returns {void}
 		 */
 		extraClass: function(){
-			this.el.classList.add( this.model.attributes.shortcode_attributes.extraClass )
+
+			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.attributes.shortcode_attributes.element_key,
+				defaultClasses =  elementClass + " karma-section  "  + this.model.attributes.shortcode_attributes.extraClass;
+
+			this.el.firstElementChild.setAttribute( 'class', defaultClasses );
+
 		}
 
 	} );
