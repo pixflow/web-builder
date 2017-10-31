@@ -1859,11 +1859,7 @@ iframe {
     right: 0;
     top: 0;
     width: 1px; }
-
-.karma-column-setting {
-  display: none; }
-
-.karma-active-column .karma-column-setting {
+.karma-active-section .karma-active-column .karma-column-setting {
   padding-top: 0;
   padding-right: 4px;
   padding-bottom: 0;
@@ -1875,17 +1871,20 @@ iframe {
   top: -17px;
   cursor: pointer;
   display: block; }
-  .karma-active-column .karma-column-setting .karama-gizmo-icon svg {
+  .karma-active-section .karma-active-column .karma-column-setting .karama-gizmo-icon svg {
     width: 10.31px;
     height: 11.31px; }
-    .karma-active-column .karma-column-setting .karama-gizmo-icon svg * {
+    .karma-active-section .karma-active-column .karma-column-setting .karama-gizmo-icon svg * {
       fill: #fff; }
-  .karma-active-column .karma-column-setting .karma-gizmo-title {
+  .karma-active-section .karma-active-column .karma-column-setting .karma-gizmo-title {
     color: #fff;
     font-size: 10px;
     font-family: HelveticaNeue;
     padding-left: 2.69px;
     vertical-align: top; }
+
+.karma-column-setting {
+  display: none; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
