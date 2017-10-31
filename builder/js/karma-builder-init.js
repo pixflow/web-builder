@@ -204,8 +204,8 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.template = options.template;
 			if( this.model ) {
-				_.bindAll(this, "render","destroy");
-				this.model.bind('change', this.render);
+				_.bindAll(this, "update","destroy");
+				this.model.bind('change', this.update);
 				this.model.bind('destroy', this.destroy);
 			}
 			this.gizmoParams = options.gizmoParams;
@@ -367,20 +367,15 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns boolean
 		 */
-		update : function (element) {
+		update : function ( model ) {
 
-			var children,
-				elementId = $(element).attr('data-element-id');
-
-			if( $(element).children().length){
-
-				children = $(element).children().clone(true);
-
+			for ( var i in model.changed.shortcode_attributes.changed ){
+				if( 'function' === typeof this[ i ] ){
+					this[ i ]();
+				} else {
+					this.render();
+				}
 			}
-			this.el.innerHTML = this.template( this.model );
-			$(this.el).find('*[data-element-id="'+elementId+'"]').append(children);
-			$('body').trigger( 'finish_update_html', [ this.model ] );
-			return true;
 
 		},
 
@@ -448,23 +443,6 @@ var karmaBuilder = karmaBuilder || {};
 
 			}
 			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent: silent } );
-
-		},
-
-		/**
-		 * Update shortcode model and html
-		 *
-		 * @param	{Object}	newAttributes list of new attribute
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {Object} - Model of elements
-		 */
-		updateShortcode: function ( newAttributes ) {
-
-			this.setAttributes( newAttributes, false );
-			this.update( document.querySelector( '*[data-element-id="' + model.attributes.shortcode_id + '"]' ) );
-			return karmaBuilder.karmaModels;
 
 		},
 
@@ -656,7 +634,6 @@ var karmaBuilder = karmaBuilder || {};
 			for( var counter in groupHtml_group ) {
 
 				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
-				console.log(setting_panel_group);
 
 			}
 
@@ -711,7 +688,11 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		updateModel: function (event) {
 
-			this.model.set(event.target.name,event.target.value);
+			var attributes = JSON.parse(JSON.stringify(this.model.attributes.shortcode_attributes));
+			attributes[ event.target.name ] = event.target.value;
+			attributes.changed = {};
+			attributes.changed[ event.target.name ] = event.target.value;
+			this.model.set( 'shortcode_attributes', attributes );
 
 		},
 

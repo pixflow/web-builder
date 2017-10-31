@@ -1,4 +1,4 @@
-(function($, karmaBuilder){
+( function( $, karmaBuilder ){
 	karmaBuilder.section = karmaBuilder.shortcodes.extend({
 
 		events:{
@@ -314,7 +314,7 @@
 		toolTipHtml: function () {
 			if( ! document.querySelectorAll('.tooltip-div').length ){
 				var tooltip = document.createElement( 'div' );
-				tooltip.setAttribute( 'class', 'tooltip-div' )
+				tooltip.setAttribute( 'class', 'tooltip-div' );
 				document.body.appendChild( tooltip );
 			}
 		},
@@ -327,9 +327,10 @@
 		 * @returns {void}
 		 */
 		liveSpacing: function () {
-			this.currentGrid()
-			this.calculateNewGrid()
-			this.toolTipHtml()
+
+			this.currentGrid();
+			this.calculateNewGrid();
+			this.toolTipHtml();
 
 			var that = this,
 				options = {
@@ -355,7 +356,18 @@
 				$( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' ).resizable( options );
 
 			} );
+		},
+
+		/**
+		 * extra class field changes. Add class to the element instead of render
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		extraClass: function(){
+			this.el.classList.add( this.model.attributes.shortcode_attributes.extraClass )
 		}
 
 	} );
-})(jQuery,karmaBuilder);
+})( jQuery, karmaBuilder );

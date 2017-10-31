@@ -10,14 +10,14 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'structure'		=> 'container',
 				'space'       	=> '200' ,
 				'element_key'	=> '',
-				'extra_class'	=> '',
+				'extraClass'	=> '',
 			)
 			, $atts
 		);
 		$container_class = ($atts['structure'] == 'container')?"karma-container":"karma-container-fluid";
 		ob_start();
 		?>
-		<div class='karma-section karma-section-<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extra_class'] ); ?>'>
+		<div class='karma-section karma-section-<?php echo esc_attr( $atts['element_key'] ); ?> <?php echo esc_attr( $atts['extraClass'] ); ?>'>
 			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 				<?php echo do_shortcode( $content ); ?>
 			</div>
@@ -29,21 +29,17 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<# var rowContainer = ( 'container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
-			."<div class=\"section-spacing section-top-spacing\"><div class=\"resize-handler\"></div></div>"
+		return "<# var rowContainer = ('container' == data.changed.structure )?'karma-container':'karma-container-fluid'; #>"
 			."<div class='karma-section karma-section-{{data.attributes.shortcode_attributes.element_key}} {{data.changed.extra_class}}'>"
-			. "<div class='{{rowContainer}} karma-no-gutters'>"
-			//. '<# print( createChildren( data.shortcodeContent ) ) #>'
+			. "<div class='{{rowContainer}} karma-row karma-no-gutters'>"
 			. "</div>"
-			. "</div>"
-			."<div class=\"row-top-spacing-dot-container section-spacing\"><div class=\"spacing-top-dot\"></div><div class=\"spacing-top-dot-hover\"></div><div class=\"resize-handler\"></div></div><div class=\"row-bottom-spacing-dot-container section-spacing\"><div class=\"spacing-bottom-dot\"></div><div class=\"spacing-bottom-dot-hover\"></div><div class=\"resize-handler\"></div></div><div class=\"section-spacing section-bottom-spacing\"><div class=\"resize-handler\"></div></div>";
+			. "</div>";
 	}
 
 
 	public function map() {
 
 		$map = array(
-			'setting-panel' => array(
 				"name"		=> "Section",
 				"params"	=> array(
 					array(
@@ -86,7 +82,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						)
 					),
 					array(
-						"name"			=> "extra_class",
+						"name"			=> "extraClass",
 						"type"			=> Karma_Builder_Setting_Panel::TEXT,
 						"label"			=> __( "Class Name", 'karma' ),
 						'placeholder'	=> __( 'Class name', 'karma' ),
@@ -95,65 +91,12 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 
 				)
-			),
-			'background-panel' => array(
-				"name"		=> "Section",
-				"params"	=> array(
-					array(
-						"name"		=> "structure",
-						"type"		=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
-						"label"		=> esc_attr__( "Grid options", 'karma' ),
-						'value'		=> "full",
-						"field"		=> array(
 
-							array(
-								'image'	=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg'),
-								'title' => "Full screen",
-								'value' => "full",
-							),
-							array(
-								'image' => karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg'),
-								'title' => "Container",
-								'value' => "container"
-							),
-
-						)
-					),
-					array(
-						"name"		=> "title",
-						"type"		=> Karma_Builder_Setting_Panel::TITLE,
-						"label"		=> esc_attr__( "Spacing", 'karma' ),
-						'value'		=> 'Spacing'
-					),
-					array(
-						"name"		=> "space",
-						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
-						'value'		=> 0,
-						"options"	=> array(
-							'value'	=> 200,
-							'min'	=> 0,
-							'max'	=> 800,
-							'step'	=> 1,
-							'unit'	=> 'px'
-						)
-					),
-					array(
-						"name"			=> "extra_class",
-						"type"			=> Karma_Builder_Setting_Panel::TEXT,
-						"label"			=> __( "Class Name", 'karma' ),
-						'placeholder'	=> __( 'Class name', 'karma' ),
-						"group"			=> "Advance option"
-					),
-
-
-				)
-			),
 		);
-
 
 		parent::$elements_map['karma_section'] = $map;
 		return parent::$elements_map;
+
 	}
 
 	/**
