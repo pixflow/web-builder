@@ -202,12 +202,12 @@ class Karma_Shortcode_Base {
 	protected function render_style(){
 
 
-		$style_string = '.' . str_replace( "_", "-", static::$element_name ) . '-' . static::$element_id . '{'
+		$style_string = '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
 			. static::render_css()
 			. '}';
 
 		?>
-		<style id="<?php echo str_replace( "_", "-", static::$element_name ) . '-' . static::$element_id ?>" >
+		<style id="<?php echo str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id ?>" >
 			<?php echo $style_string; ?>
 		</style>
 		<?php
