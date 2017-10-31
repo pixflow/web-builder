@@ -32,6 +32,10 @@
 		 */
 		showBorder: function () {
 
+			if( this.$el.hasClass('karma-active-section') ){
+				return;
+			}
+			$('.karma-active-section .karma-active-column').removeClass('karma-active-column');
 			$('.karma-active-section').removeClass('karma-active-section');
 			this.$el.addClass('karma-active-section');
 

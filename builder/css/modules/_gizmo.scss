@@ -169,6 +169,10 @@
   .karma-container{
     outline: 1px solid rgba(118,129,140,0.35);
 
+    > .karma-builder-element:last-child .karma-column-resize{
+        display: none;
+    }
+
     .karma-column-resize{
       background-color: rgba(118,129,140,0.35);
       height: 100%;

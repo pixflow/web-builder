@@ -21,6 +21,10 @@
 		 */
 		activeColumn: function () {
 
+			if( this.$el.hasClass('karma-active-column') ){
+				return;
+			}
+
 			$('.karma-active-column').removeClass('karma-active-column');
 			this.$el.addClass('karma-active-column');
 

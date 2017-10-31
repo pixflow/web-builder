@@ -336,14 +336,16 @@ html {
 
 .karma-no-gutters {
   margin-right: 0;
-  margin-left: 0; }
+  margin-left: 0;
+  padding: 0; }
 
 .karma-no-gutters > .karma-col,
-.karma-no-gutters > [class*="col-"],
+.karma-no-gutters > [class*="karma-col-"],
 .karma-no-gutters > .karma-builder-element > .karma-col,
-.karma-no-gutters > .karma-builder-element > [class*="col-"] {
+.karma-no-gutters > .karma-builder-element > [class*="karma-col-"] {
   padding-right: 0;
-  padding-left: 0; }
+  padding-left: 0;
+  min-height: 300px; }
 
 .karma-col-1, .karma-col-2, .karma-col-3, .karma-col-4, .karma-col-5, .karma-col-6, .karma-col-7, .karma-col-8, .karma-col-9, .karma-col-10, .karma-col-11, .karma-col-12, .karma-col,
 .karma-col-auto, .karma-col-sm-1, .karma-col-sm-2, .karma-col-sm-3, .karma-col-sm-4, .karma-col-sm-5, .karma-col-sm-6, .karma-col-sm-7, .karma-col-sm-8, .karma-col-sm-9, .karma-col-sm-10, .karma-col-sm-11, .karma-col-sm-12, .karma-col-sm,
@@ -1852,6 +1854,8 @@ iframe {
 
 .karma-active-section .karma-container {
   outline: 1px solid rgba(118, 129, 140, 0.35); }
+  .karma-active-section .karma-container > .karma-builder-element:last-child .karma-column-resize {
+    display: none; }
   .karma-active-section .karma-container .karma-column-resize {
     background-color: rgba(118, 129, 140, 0.35);
     height: 100%;

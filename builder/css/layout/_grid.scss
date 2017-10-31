@@ -71,14 +71,16 @@ html {
 .karma-no-gutters {
   margin-right: 0;
   margin-left: 0;
+	padding: 0;
 }
 
 .karma-no-gutters > .karma-col,
-.karma-no-gutters > [class*="col-"],
+.karma-no-gutters > [class*="karma-col-"],
 .karma-no-gutters > .karma-builder-element > .karma-col,
-.karma-no-gutters > .karma-builder-element > [class*="col-"]{
+.karma-no-gutters > .karma-builder-element > [class*="karma-col-"]{
   padding-right: 0;
   padding-left: 0;
+	min-height: 300px;
 }
 
 .karma-col-1, .karma-col-2, .karma-col-3, .karma-col-4, .karma-col-5, .karma-col-6, .karma-col-7, .karma-col-8, .karma-col-9, .karma-col-10, .karma-col-11, .karma-col-12, .karma-col,
