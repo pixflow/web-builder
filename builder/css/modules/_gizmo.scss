@@ -47,8 +47,12 @@
   .karma-builder-gizmo-icon {
     @include padding(0, 12px, 0, 11px);
     @include box(auto, 22px);
+    align-items: center;
     border-left: 1px solid rgba(151, 151, 151, 0.3);
-
+    display: flex;
+    div{
+      display: flex;
+    }
   }
   .karma-builder-gizmo-text {
     @include padding(0, 15px, 0, 15px);
@@ -167,14 +171,14 @@
 
 .karma-active-section {
   .karma-container{
-    outline: 1px solid rgba(118,129,140,0.35);
+    outline: 1px solid rgba(118, 129, 140, 0.18);
 
     > .karma-builder-element:last-child .karma-column-resize{
         display: none;
     }
 
     .karma-column-resize{
-      background-color: rgba(118,129,140,0.35);
+      background-color: rgba(118, 129, 140, 0.18);
       height: 100%;
       position: absolute;
       right: 0;

@@ -1562,8 +1562,8 @@ iframe {
   margin-right: 110px;
   max-width: 450px;
   position: fixed;
-  right: 170px;
-  top: 180px;
+  right: 358px;
+  top: 408px;
   z-index: 100;
   /*** Style of setting panel extra ***/ }
   #karma-element-setting-panel-container .karma-element-setting-panel {
@@ -1746,7 +1746,11 @@ iframe {
     padding-left: 11px;
     width: auto;
     height: 22px;
-    border-left: 1px solid rgba(151, 151, 151, 0.3); }
+    align-items: center;
+    border-left: 1px solid rgba(151, 151, 151, 0.3);
+    display: flex; }
+    .row-gizmo-group .karma-builder-gizmo-icon div {
+      display: flex; }
   .row-gizmo-group .karma-builder-gizmo-text {
     padding-top: 0;
     padding-right: 15px;
@@ -1853,11 +1857,11 @@ iframe {
     background-color: #fff; }
 
 .karma-active-section .karma-container {
-  outline: 1px solid rgba(118, 129, 140, 0.35); }
+  outline: 1px solid rgba(118, 129, 140, 0.18); }
   .karma-active-section .karma-container > .karma-builder-element:last-child .karma-column-resize {
     display: none; }
   .karma-active-section .karma-container .karma-column-resize {
-    background-color: rgba(118, 129, 140, 0.35);
+    background-color: rgba(118, 129, 140, 0.18);
     height: 100%;
     position: absolute;
     right: 0;
