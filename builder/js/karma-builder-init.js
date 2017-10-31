@@ -139,7 +139,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		innerGizmoTemplate : '<div class="{{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} ">'
+		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
 		+ ' <# if( "icon" === param.type ){ #>'
 		+ ' <div>{{{ param.icon }}}</div>'
 		+ '<# } else if( "text" === param.type ) {#>'
@@ -168,7 +168,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		topGizmoTemplate : '<div class="{{data.class}}">'
 		+ ' <# _.each( data.params, function( param ){  #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} ">'
+		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
 		+ ' <# if( "icon" === param.type ){ #>'
 		+ ' <div>{{{ param.icon }}}</div>'
 		+ '<# } else if( "text" === param.type ) {#>'
@@ -180,18 +180,6 @@ var karmaBuilder = karmaBuilder || {};
 		+ '</div>'
 		+ '<# }) #>'
 		+ '</div>' ,
-
-		/**
-		 * Define elements events
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
-		 */
-		events : {
-			"click .karma-element-setting" : "showSettingPanel",
-		},
-
 
 		/**
 		 * Set defaults in create
@@ -209,6 +197,30 @@ var karmaBuilder = karmaBuilder || {};
 				this.model.bind('destroy', this.destroy);
 			}
 			this.gizmoParams = options.gizmoParams;
+
+		},
+
+		/**
+		 * Set Gizmo Events
+		 *
+		 * @param {object}  gizmoParams     gizmo params of view
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns void
+		 */
+		gizmoEvents: function ( gizmoParams ) {
+			if ( 'undefined' == typeof gizmoParams ) {
+				return;
+			}
+
+			for ( var i in gizmoParams ) {
+				if ( 'undefined' != typeof gizmoParams[ i ].form ) {
+					var event = {};
+					event[ 'click .' + gizmoParams[ i ].className ] = 'showSettingPanel';
+					this.delegateEvents( _.extend( this.events, event ) );
+				}
+			}
 
 		},
 
@@ -240,17 +252,17 @@ var karmaBuilder = karmaBuilder || {};
 		 * Find the given element name param
 		 *
 		 * @param	{String}	elementName	The name of element
+		 * @param	{String}	form	which form
 		 *
 		 * @since 1.0.0
 		 * @returns {array}	The element params
 		 */
-		getElementMap: function ( elementName ) {
+		getElementMap: function ( elementName, form ) {
 
 			if ( this.shortcodeParams ) {
 				this.shortcodeParams = JSON.parse( builderMaps );
 			}
-
-			return this.shortcodeParams[ elementName ];
+			return this.shortcodeParams[ elementName ][form];
 
 		},
 
@@ -319,22 +331,20 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		createGizmo: function () {
 
-			for( var i in this.gizmoParams ) {
-
-				for( var param in this.gizmoParams[ i ].params ){
-
-					if ( this.gizmoParams[ i ].params[param].hasOwnProperty( "showIndex" ) ){
-
-						this.gizmoParams[ i ].params[param][ "counter" ] = this.$el.parent().find( '> div[class *= "col-sm"]' ).index( this.$el )+1;
-
-					}else{
-
-						this.gizmoParams[ i ].params[param][ "counter" ] = "";
-
+			for ( var i in this.gizmoParams ) {
+				for ( var param in this.gizmoParams[ i ].params ) {
+					if ( this.gizmoParams[ i ].params[ param ].hasOwnProperty( "showIndex" ) ) {
+						this.gizmoParams[ i ].params[ param ][ "counter" ] = this.$el.parent().find( '> div[class *= "col-sm"]' ).index( this.$el ) + 1;
+					} else {
+						this.gizmoParams[ i ].params[ param ][ "counter" ] = "";
 					}
 				}
-				this.$el.append( $( this.gizmoBuilder( this.gizmoParams[ i ] ) ) );
-
+				var $gizmo = this.gizmoBuilder( this.gizmoParams[ i ] );
+				this.$el.append( $gizmo );
+				if ( 'function' === typeof this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ] ) {
+					this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ]( $gizmo );
+				}
+				this.gizmoEvents( this.gizmoParams[ i ].params );
 			}
 
 		},
@@ -462,13 +472,19 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Open setting panel of each Element
 		 *
+		 * @param	{object}    e   event
+		 *
 		 * @since 1.0.0
 		 *
 		 * @returns void
 		 */
-		showSettingPanel : function () {
-
-			window.builder = new karmaBuilder.elementSettingPanel( { el: jQuery('body') , model: this.model} );
+		showSettingPanel : function ( e ) {
+			var form = $( e.currentTarget ).data( 'form' )
+			window.builder = new karmaBuilder.elementSettingPanel( {
+				el: jQuery( 'body' ),
+				model: this.model,
+				form: form
+			} );
 			builder.delegateEvents();
 
 		}
@@ -525,7 +541,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		render : function () {
 
-			this.openSettingPanel( this.options.model );
+			this.openSettingPanel( this.options.model, this.options.form );
 			this.bindDragEvents();
 
 		},
@@ -567,17 +583,18 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * On click removes element
 		 *
-		 * @param	integer		shortcodeId	Id of element
+		 * @param	object		model of element
+		 * @param	string		form of element
 		 *
 		 * @since	1.0.0
 		 *
 		 * @returns	void
 		 */
-		openSettingPanel: function( model ){
+		openSettingPanel: function( model, form ){
 
 			var template = wp.template('karma-element-setting-panel'),
 				$html = document.createElement('div'),
-				content = this.formBuilder( model ),
+				content = this.formBuilder( model, form ),
 				elementAttributes = model.attributes,
 				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
 				elementSelector =  elementAttributes['shortcode_name'].replace('_','-') +'-'+ elementAttributes.shortcode_attributes['element_key'];
@@ -592,16 +609,17 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * create formbuilder html
 		 *
-		 * @param	integer		shortcodeId	Id of element
+		 * @param	object		model of element
+		 * @param	string		form of element
 		 *
 		 * @since	1.0.0
 		 *
 		 * @returns	{object} formbuilder html
 		 */
 
-		formBuilder : function( model ) {
+		formBuilder : function( model, form ) {
 			var shortcodeModel = model.attributes ,
-				ShortcodeParams = this.getElementMap( 	shortcodeModel.shortcode_name ),
+				ShortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
 				karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',
 				groupHtml = '',
 				groupHtml_group = [],

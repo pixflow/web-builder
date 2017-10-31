@@ -4,12 +4,12 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static $element_name = 'karma_column';
 
-	public function wrapper_classes( $classes, $atts ){
+	public function wrapper_classes( $classes, $atts ) {
 
-		$classes[] = 'karma-col-sm-' . $atts['sm_size'];
-		$classes[] = 'karma-col-md-' . $atts['md_size'];
-		$classes[] = 'karma-col-lg-' . $atts['lg_size'];
-		$classes[] = 'karma-col-xl-' . $atts['xl_size'];
+		$classes[] = 'karma-col-sm-' . $atts[ 'sm_size' ];
+		$classes[] = 'karma-col-md-' . $atts[ 'md_size' ];
+		$classes[] = 'karma-col-lg-' . $atts[ 'lg_size' ];
+		$classes[] = 'karma-col-xl-' . $atts[ 'xl_size' ];
 		return $classes;
 
 	}
@@ -27,12 +27,12 @@ class Karma_Column extends Karma_Shortcode_Base {
 		);
 
 		return "<div class='"
-			       ."karma-column "
-			       ."karma-col-sm-" . $atts['sm_size']
-			       ." karma-col-md-" . $atts['md_size']
-			       ." karma-col-lg-" . $atts['lg_size']
-			       ." karma-col-xl-" . $atts['xl_size']
-			       ."'> " . do_shortcode($content) . "</div>";
+			. "karma-column "
+			. "karma-col-sm-" . $atts[ 'sm_size' ]
+			. " karma-col-md-" . $atts[ 'md_size' ]
+			. " karma-col-lg-" . $atts[ 'lg_size' ]
+			. " karma-col-xl-" . $atts[ 'xl_size' ]
+			. "'> " . do_shortcode( $content ) . "</div>";
 
 	}
 
@@ -45,60 +45,59 @@ class Karma_Column extends Karma_Shortcode_Base {
 	public function map() {
 
 		$map = array(
-			"name"   => "Column",
-			"params" => array(
-				array(
-					"name"		=> "title2",
-					"value"		=> "Extra class name",
-					"type"		=> Karma_Builder_Setting_Panel::TITLE2,
-					"label"		=> esc_attr__( "Extra class name", 'karma' ),
+			'setting-panel' => array(
+				"name"      => "Column",
+				"params"    => array(
+					array(
+						"name"  => "title2",
+						"value" => "Extra class name",
+						"type"  => Karma_Builder_Setting_Panel::TITLE2,
+						"label" => esc_attr__( "Extra class name", 'karma' ),
 
-				),
-
-				array(
-					"name"			=> "width",
-					"type"			=> Karma_Builder_Setting_Panel::TEXT,
-					"label"			=> esc_attr__( "Put Your URL", 'karma' ),
-					"placeholder"	=>'Put Your URL',
-				),
-				array(
-					"name"		=> "title",
-					"value"		=> "Spacing",
-					"type"		=> Karma_Builder_Setting_Panel::TITLE,
-					"label"		=> esc_attr__( "Spacing", 'karma' ),
-
-				),
-				array(
-					"name"		=> "space",
-					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-					"label"		=> esc_attr__( "Left padding", 'karma' ),
-					'value'		=> 100,
-					'separator'  =>"container",
-					"options"	=> array(
-						'min'	=> 0,
-						'max'	=> 600,
-						'step'	=> 1,
-						'unit'	=> 'px'
+					),
+					array(
+						"name"          => "width",
+						"type"          => Karma_Builder_Setting_Panel::TEXT,
+						"label"         => esc_attr__( "Put Your URL", 'karma' ),
+						"placeholder"   => 'Put Your URL',
+					),
+					array(
+						"name"  => "title",
+						"value" => "Spacing",
+						"type"  => Karma_Builder_Setting_Panel::TITLE,
+						"label" => esc_attr__( "Spacing", 'karma' ),
+					),
+					array(
+						"name"      => "space",
+						"type"      => Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"     => esc_attr__( "Left padding", 'karma' ),
+						'value'     => 100,
+						'separator' => "container",
+						"options"   => array(
+							'min'   => 0,
+							'max'   => 600,
+							'step'  => 1,
+							'unit'  => 'px'
+						)
+					),
+					array(
+						"name"      => "space",
+						"type"      => Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"     => esc_attr__( "Right padding", 'karma' ),
+						'value'     => 100,
+						"options"   => array(
+							'min'   => 0,
+							'max'   => 600,
+							'step'  => 1,
+							'unit'  => 'px'
+						)
 					)
-				),
 
-				array(
-					"name"		=> "space",
-					"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-					"label"		=> esc_attr__( "Right padding", 'karma' ),
-					'value'		=> 100,
-					"options"	=> array(
-						'min'	=> 0,
-						'max'	=> 600,
-						'step'	=> 1,
-						'unit'	=> 'px'
-					)
 				)
-
 			)
 		);
 
-		parent::$elements_map['karma_column'] = $map;
+		parent::$elements_map[ 'karma_column' ] = $map;
 		return parent::$elements_map;
 
 	}
@@ -110,34 +109,35 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return	array	Gizmo controller of all elements
+	 * @return    array    Gizmo controller of all elements
 	 */
-	public function gimzo_controllers(){
+	public function gimzo_controllers() {
 
 		$controllers = array(
 			array(
-				"type" => "topGizmo" ,
-				"class" => "karma-column-setting" ,
-				"params" => array(
+				"type"      => "topGizmo",
+				"class"     => "karma-column-setting",
+				"params"    => array(
 					array(
-						'type' 		=>'icon-text',
-						'icon' 		=> karma_load_svg(KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg'),
-						'text'		=> 'Column',
-						'showIndex'	=> 'true'
+						'type'      => 'icon-text',
+						'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+						'text'      => 'Column',
+						'showIndex' => 'true',
+						'form'      => 'setting-panel'
 					)
 				)
 			),
 			array(
-				"type"	=> "resizeGizmo",
-				"class"	=> "karma-column-resize",
-				"param"	=> array(
-					'snapGrid'	=> true
+				"type"  => "resizeGizmo",
+				"class" => "karma-column-resize",
+				"param" => array(
+					'snapGrid'  => true
 				)
 
 			)
 		);
 
-		parent::$elements_gizmo['karma_column'] = $controllers;
+		parent::$elements_gizmo[ 'karma_column' ] = $controllers;
 		return parent::$elements_gizmo;
 
 	}
@@ -148,9 +148,9 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return	void
+	 * @return    void
 	 */
-	public function render_css(){
+	public function render_css() {
 
 
 	}
@@ -161,9 +161,9 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return	void
+	 * @return    void
 	 */
-	public function render_script(){
+	public function render_script() {
 
 
 	}
