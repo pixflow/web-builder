@@ -168,7 +168,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 		$controllers = array(
 			array(
-				"type" => "inner-gizmo" ,
+				"type" => "innerGizmo" ,
 				"className" => "row-gizmo-group" ,
 				"params" => array(
 					array(
@@ -193,7 +193,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				)
 			),
 			array(
-				"type" => "both-spacing-gizmo" ,
+				"type" => "bothSpacingGizmo" ,
 				"className" => "section-both-spacing" ,
 			),
 		);

@@ -304,24 +304,9 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		gizmoBuilder: function ( gizmoParams ) {
 
-			switch ( gizmoParams.type ) {
-				case 'inner-gizmo' :
-					return this.getUnderscoreTemplate( this.innerGizmoTemplate, gizmoParams );
-					break;
-				case 'top-gizmo' :
-					return this.getUnderscoreTemplate( this.topGizmoTemplate, gizmoParams );
-					break;
-				case 'over-gizmo' :
-					break;
-				case 'both-spacing-gizmo' :
-					return this.getUnderscoreTemplate( this.bothSpacingGizmoTemplate, gizmoParams );
-					break;
-				case 'resize-gizmo':
-					return this.getUnderscoreTemplate( this.resizeGizmoTemplate, gizmoParams );
-					break;
-				default:
-					return false;
-					break;
+			var tempName = gizmoParams.type + 'Template';
+			if( "undefined" !== typeof this[ tempName ] ){
+				return this.getUnderscoreTemplate( this[ tempName ], gizmoParams );
 			}
 
 		},

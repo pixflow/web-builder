@@ -116,7 +116,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		$controllers = array(
 			array(
-				"type" => "top-gizmo" ,
+				"type" => "topGizmo" ,
 				"class" => "karma-column-setting" ,
 				"params" => array(
 					array(
@@ -128,7 +128,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 				)
 			),
 			array(
-				"type"	=> "resize-gizmo",
+				"type"	=> "resizeGizmo",
 				"class"	=> "karma-column-resize",
 				"param"	=> array(
 					'snapGrid'	=> true
