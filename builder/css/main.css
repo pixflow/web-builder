@@ -1748,9 +1748,13 @@ iframe {
     height: 22px;
     align-items: center;
     border-left: 1px solid rgba(151, 151, 151, 0.3);
-    display: flex; }
+    display: flex;
+    transition-duration: 0.1s; }
     .row-gizmo-group .karma-builder-gizmo-icon div {
       display: flex; }
+    .row-gizmo-group .karma-builder-gizmo-icon:hover svg * {
+      fill: #419CF8;
+      transition-duration: 0.1s; }
   .row-gizmo-group .karma-builder-gizmo-text {
     padding-top: 0;
     padding-right: 15px;
@@ -1758,7 +1762,11 @@ iframe {
     padding-left: 15px;
     color: #394959;
     font-size: 13px;
-    font-family: HelveticaNeue; }
+    font-family: HelveticaNeue;
+    transition: all 0.3s ease; }
+  .row-gizmo-group .karma-builder-gizmo-text:hover {
+    color: #419CF8;
+    transition: all 0.3s ease; }
   .row-gizmo-group .row-gizmo-group {
     width: auto;
     height: 35px;
