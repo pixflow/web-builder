@@ -102,10 +102,7 @@
   .karma-builder-gizmo-text:hover {
 	color: #419CF8;
 	transition: all 0.3s ease;
-	@include padding(0, 15px, 0, 15px);
-	color: #394959;
-	font-size: 13px;
-	font-family: HelveticaNeue;
+
   }
 
   .row-gizmo-group {
