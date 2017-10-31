@@ -1861,6 +1861,9 @@ iframe {
     width: 1px; }
 
 .karma-column-setting {
+  display: none; }
+
+.karma-active-column .karma-column-setting {
   padding-top: 0;
   padding-right: 4px;
   padding-bottom: 0;
@@ -1870,13 +1873,14 @@ iframe {
   left: 0;
   line-height: 16px;
   top: -17px;
-  cursor: pointer; }
-  .karma-column-setting .karma-icon svg {
+  cursor: pointer;
+  display: block; }
+  .karma-active-column .karma-column-setting .karama-gizmo-icon svg {
     width: 10.31px;
     height: 11.31px; }
-    .karma-column-setting .karma-icon svg * {
+    .karma-active-column .karma-column-setting .karama-gizmo-icon svg * {
       fill: #fff; }
-  .karma-column-setting .karma-top-gimo-title {
+  .karma-active-column .karma-column-setting .karma-gizmo-title {
     color: #fff;
     font-size: 10px;
     font-family: HelveticaNeue;
