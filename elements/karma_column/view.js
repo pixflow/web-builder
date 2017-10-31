@@ -19,7 +19,7 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		activeColumn: function () {
+		activeColumn: function (e) {
 
 			if( this.$el.hasClass('karma-active-column') ){
 				return;
