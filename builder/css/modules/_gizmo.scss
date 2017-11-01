@@ -64,6 +64,7 @@
   display: none;
   direction: rtl;
   position: absolute;
+  z-index: $level2;
 
   div {
 	cursor: pointer;
@@ -266,22 +267,6 @@
   display: none;
 }
 
-.karma-container {
-  outline: 1px solid rgba(118, 129, 140, 0.35);
-
-  .karma-column-resize {
-	background-color: rgba(118, 129, 140, 0.35);
-	height: 100%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 1px;
-  }
-}
-
-.karma-column-setting {
-  display: none;
-}
 
 .karma-active-column {
   .karma-column-setting {
@@ -311,8 +296,4 @@
 	  vertical-align: top;
 	}
   }
-}
-
-.karma-container {
-  outline: 1px solid rgba(118, 129, 140, 0.35);
 }

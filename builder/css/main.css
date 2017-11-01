@@ -1753,7 +1753,8 @@ iframe {
   font-size: initial;
   display: none;
   direction: rtl;
-  position: absolute; }
+  position: absolute;
+  z-index: 90; }
   .row-gizmo-group div {
     cursor: pointer; }
   .row-gizmo-group .karma-builder-gizmo-icon {
@@ -1919,19 +1920,6 @@ iframe {
 .karma-column-setting {
   display: none; }
 
-.karma-container {
-  outline: 1px solid rgba(118, 129, 140, 0.35); }
-  .karma-container .karma-column-resize {
-    background-color: rgba(118, 129, 140, 0.35);
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 1px; }
-
-.karma-column-setting {
-  display: none; }
-
 .karma-active-column .karma-column-setting {
   padding-top: 0;
   padding-right: 4px;
@@ -1955,9 +1943,6 @@ iframe {
     font-family: HelveticaNeue;
     padding-left: 2.69px;
     vertical-align: top; }
-
-.karma-container {
-  outline: 1px solid rgba(118, 129, 140, 0.35); }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 .karma-title2-controller {
