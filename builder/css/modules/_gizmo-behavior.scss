@@ -1,6 +1,6 @@
 .karma-active-section{
 
-	border: 1px solid #419CF8;
+  outline: 1px solid #419CF8;
 	.row-gizmo-group {
 		display: flex;
 	}
@@ -13,7 +13,7 @@
 .karma-builder-element[data-name="karma_section"] {
 
 	&:not(.karma-active-section):hover{
-		border: 1px solid #419CF8;
+	  outline: 1px solid #419CF8;
 	}
 
 }

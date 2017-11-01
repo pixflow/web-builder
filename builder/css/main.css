@@ -2167,14 +2167,14 @@ iframe {
   width: 100%; }
 
 .karma-active-section {
-  border: 1px solid #419CF8; }
+  outline: 1px solid #419CF8; }
   .karma-active-section .row-gizmo-group {
     display: flex; }
   .karma-active-section .karma-spacing-dot-container {
     display: flex; }
 
 .karma-builder-element[data-name="karma_section"]:not(.karma-active-section):hover {
-  border: 1px solid #419CF8; }
+  outline: 1px solid #419CF8; }
 
 .grid-controller-template {
   height: 168px;
