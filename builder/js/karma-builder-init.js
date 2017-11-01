@@ -178,7 +178,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-		leftSpacingGizmoTemplate :'<div class="{{ data.className }}">'
+		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }}">'
 		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" style="width:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
@@ -253,6 +253,7 @@ var karmaBuilder = karmaBuilder || {};
 				this.model.bind('destroy', this.destroy);
 			}
 			this.gizmoParams = options.gizmoParams;
+			this.toolTipHtml();
 
 		},
 
@@ -377,7 +378,7 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 		},
-
+		
 		/**
 		 * @summary Build gizmo controller
 		 *
@@ -403,6 +404,7 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 		},
+
 		/**
 		 * @summary Build gizmo resizeably for top and bottom
 		 *
@@ -410,7 +412,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-
 		bothSpacingGizmo : function ( $gizmo ) {
 
 			var that = this,
@@ -421,12 +422,12 @@ var karmaBuilder = karmaBuilder || {};
 					scroll : true ,
 					stop : function ( event, ui ) {
 
-						that.setAttributes({space: parseInt(ui.element.height())}, true);
+						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 
 					},
 					resize: function( event, ui ){
 
-						var currentSection = that.el.querySelector('.karma-section');
+						var currentSection = that.el.querySelector( 'div:first-child' );
 						currentSection.style.paddingTop = ui.size.height + 'px';
 						currentSection.style.paddingBottom = ui.size.height + 'px';
 
@@ -434,10 +435,10 @@ var karmaBuilder = karmaBuilder || {};
 				};
 
 			// Apply JQuery Ui resizable on bottom spacing
-			options.alsoResize = $gizmo.find('.karma-top-spacing');
-			options.handles.s = $gizmo.find('.ui-resizable-s').eq(0);
-			options.handles.n = $gizmo.find('.ui-resizable-s').eq(1);
-			$gizmo.find('.karma-bottom-spacing').resizable( options );
+			options.alsoResize = $gizmo.find( '.karma-top-spacing' );
+			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
+			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
+			$gizmo.find( '.karma-bottom-spacing' ).resizable( options );
 
 		},
 
@@ -457,14 +458,15 @@ var karmaBuilder = karmaBuilder || {};
 					minHeight   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
-						that.setAttributes({space: parseInt(ui.element.height())}, true);
+						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 					},
 					resize: function( event, ui ){
-						that.el.style.paddingTop = ui.size.height + 'px';
+						var currentSection = that.el.querySelector( 'div:first-child' );
+						currentSection.style.paddingTop = ui.size.height + 'px';
 					}
 				};
-			options.handles.s = $gizmo.find('.ui-resizable-s');
-			this.$el.find('.karma-top-spacing').resizable( options );
+			options.handles.s = $gizmo.find( '.ui-resizable-s' );
+			this.$el.find( '.karma-top-spacing' ).resizable( options );
 
 		},
 
@@ -485,13 +487,15 @@ var karmaBuilder = karmaBuilder || {};
 					stop : function ( event, ui ) {
 						that.setAttributes({space: parseInt(ui.element.width())}, true);
 					},
+
 					resize: function( event, ui ){
-						that.el.style.paddingLeft = ui.size.width + 'px';
+						var currentSection = that.el.querySelector('div:first-child');
+						currentSection.style.paddingLeft = ui.size.width + 'px';
 					}
 				};
-
-			options.handles.e = $gizmo.find('.ui-resizable-e');
-			this.$el.find('.karma-left-spacing').resizable( options );
+			that.$el.attr( 'data-direction','left' );
+			options.handles.e = $gizmo.find( '.ui-resizable-e' );
+			this.$el.find( '.karma-left-spacing' ).resizable( options );
 
 		},
 
@@ -510,16 +514,94 @@ var karmaBuilder = karmaBuilder || {};
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
-						that.setAttributes({space: parseInt(ui.element.width())}, true);
+						that.setAttributes( {space: parseInt(ui.element.width())}, true );
 					},
 					resize: function( event, ui ){
-						that.el.style.paddingRight= ui.size.width + 'px';
+						var currentSection = that.el.querySelector( 'div:first-child' );
+						currentSection.style.paddingRight = ui.size.width + 'px';
 					}
 				};
+			that.$el.attr( 'data-direction','right' );
+			options.handles.w = $gizmo.find(  '.ui-resizable-w');
+			this.$el.find( '.karma-right-spacing' ).resizable( options );
 
-			options.handles.w = $gizmo.find('.ui-resizable-w');
-			this.$el.find('.karma-right-spacing').resizable( options );
+		},
 
+		/**
+		 * show mouse tooltip in spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * add event to tooltip
+		 */
+		showMouseToolTip : function( e ) {
+
+			var tooltipDiv = document.body.querySelector( '.tooltip-div' );
+			tooltipDiv.style.display = 'block';
+			e.target.classList.add( 'target-moving' );
+			document.documentElement.addEventListener( 'mousemove', this.moveMouseToolTip, false );
+			document.documentElement.addEventListener( 'mouseup', this.removeMouseToolTip, false );
+
+		},
+
+		/**
+		 * move mouse tooltip in spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * give position to tooltip div
+		 */
+		moveMouseToolTip : function( e ) {
+
+			var tooltipDiv = document.body.querySelector( '.tooltip-div' );
+			if ( 'none' === tooltipDiv.style.display ) {
+				return false;
+			}
+			var x = e.clientX,
+				y = e.clientY;
+			tooltipDiv.style.top = ( y + 20 ) + 'px';
+			tooltipDiv.style.left = ( x - 20 ) + 'px';
+			var direction = $( '.karma-active-section' ).attr( 'data-direction' );
+			if( 'left' === direction || 'right' === direction ){
+
+				tooltipDiv.innerText = ( document.querySelector( '.karma-spacing' ).offsetWidth ) + ' px';
+			}else{
+				tooltipDiv.innerText = ( document.querySelector( '.karma-spacing' ).offsetHeight ) + ' px';
+			}
+
+
+		},
+
+		/**
+		 * remove mouse tooltip in spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * remove all event from tooltip
+		 */
+		removeMouseToolTip : function( e ) {
+
+			var tooltipDiv = document.body.querySelector( '.tooltip-div' );
+			tooltipDiv.style.display = 'none';
+			e.target.classList.remove( 'target-moving' );
+			document.documentElement.removeEventListener( 'mousemove', this.moveMouseToolTip );
+			document.documentElement.removeEventListener( 'mouseup', this.removeMouseToolTip );
+
+		},
+
+		/**
+		 * create html fot tooltip
+		 *
+		 * @since 1.0.0
+		 *
+		 */
+		toolTipHtml: function () {
+
+			if( ! document.querySelectorAll( '.tooltip-div' ).length ){
+				var tooltip = document.createElement( 'div' );
+				tooltip.setAttribute( 'class', 'tooltip-div' );
+				document.body.appendChild( tooltip );
+			}
 		},
 
 		/**
@@ -532,11 +614,9 @@ var karmaBuilder = karmaBuilder || {};
 		createNewElementKey : function () {
 
 			var randomString = this.createRandomString( 6 ) ;
-
 			if( karmaBuilder.karmaModels.where( { 'element_key' : randomString } ).length ){
 				return this.createNewElementKey();
 			}
-
 			return randomString;
 
 		},

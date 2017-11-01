@@ -168,7 +168,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				)
 			),
 			array(
-				"type"		=> "bothSpacingGizmo",
+				"type"		=> "rightSpacingGizmo",
 				"className"	=> "section-both-spacing",
 			),
 		);

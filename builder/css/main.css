@@ -1695,22 +1695,39 @@ iframe {
 /* _-_-_- modules/GIZMO -_-_-_ */
 .karma-spacing {
   position: relative;
-  width: 100%;
   height: 5px; }
   .karma-spacing.karma-top-spacing {
+    width: 100%;
+    cursor: n-resize;
     position: absolute;
     top: 0; }
   .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
     position: absolute;
-    left: -9px !important;
-    top: 50%;
-    width: initial !important; }
+    top: 0;
+    height: 100%;
+    left: 0 !important;
+    cursor: e-resize; }
     .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .karma-spacing-dot-container {
+      cursor: e-resize;
+      left: -9px !important;
+      top: 50%; }
+  .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0 !important;
+    left: initial !important;
+    cursor: e-resize; }
+    .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .karma-spacing-dot-container {
+      left: calc(100% - 9px ) !important;
+      top: 50%;
       cursor: e-resize; }
   .karma-spacing.karma-bottom-spacing {
+    width: 100%;
     position: absolute;
     top: initial !important;
-    bottom: 0px !important; }
+    bottom: 0px !important;
+    cursor: n-resize; }
     .karma-spacing.karma-bottom-spacing .karma-spacing-dot-container {
       top: initial !important;
       bottom: -9px !important; }
@@ -1887,6 +1904,17 @@ iframe {
   .karma-active-section .karma-container > .karma-builder-element:last-child .karma-column-resize {
     display: none; }
   .karma-active-section .karma-container .karma-column-resize {
+    background-color: rgba(118, 129, 140, 0.18);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px; }
+.karma-active-section .karma-container-fluid {
+  outline: 1px solid rgba(118, 129, 140, 0.18); }
+  .karma-active-section .karma-container-fluid > .karma-builder-element:last-child .karma-column-resize {
+    display: none; }
+  .karma-active-section .karma-container-fluid .karma-column-resize {
     background-color: rgba(118, 129, 140, 0.18);
     height: 100%;
     position: absolute;

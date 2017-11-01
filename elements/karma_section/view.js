@@ -12,7 +12,6 @@
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
-			this.toolTipHtml();
 			this.addAction();
 
 		},
@@ -270,69 +269,7 @@
 			return newGrid;
 		},
 
-		/**
-		 * show mouse tooltip in spacing
-		 *
-		 * @since 1.0.0
-		 *
-		 * add event to tooltip
-		 */
-		showMouseToolTip : function(e) {
-			var tooltipDiv = document.body.querySelector('.tooltip-div');
-			tooltipDiv.style.display = 'block';
-			e.target.classList.add('target-moving');
-			document.documentElement.addEventListener( 'mousemove', this.moveMouseToolTip, false );
-			document.documentElement.addEventListener( 'mouseup', this.removeMouseToolTip, false );
-		},
 
-		/**
-		 * move mouse tooltip in spacing
-		 *
-		 * @since 1.0.0
-		 *
-		 * give position to tooltip div
-		 */
-		moveMouseToolTip : function(e) {
-			var tooltipDiv = document.body.querySelector('.tooltip-div');
-			if( 'none' === tooltipDiv.style.display ){
-				return false;
-			}
-			var x = e.clientX,
-				y = e.clientY;
-			tooltipDiv.style.top = (y + 20) + 'px';
-			tooltipDiv.style.left = (x - 20) + 'px';
-			tooltipDiv.innerText = (document.querySelector('.karma-spacing').offsetHeight) + ' px';
-
-		},
-
-		/**
-		 * remove mouse tooltip in spacing
-		 *
-		 * @since 1.0.0
-		 *
-		 * remove all event from tooltip
-		 */
-		removeMouseToolTip : function(e) {
-			var tooltipDiv = document.body.querySelector('.tooltip-div');
-			tooltipDiv.style.display = 'none';
-			e.target.classList.remove('target-moving');
-			document.documentElement.removeEventListener('mousemove', this.moveMouseToolTip);
-			document.documentElement.removeEventListener('mouseup', this.removeMouseToolTip);
-		},
-
-		/**
-		 * create html fot tooltip
-		 *
-		 * @since 1.0.0
-		 *
-		 */
-		toolTipHtml: function () {
-			if( ! document.querySelectorAll('.tooltip-div').length ){
-				var tooltip = document.createElement( 'div' );
-				tooltip.setAttribute( 'class', 'tooltip-div' );
-				document.body.appendChild( tooltip );
-			}
-		},
 
 		/**
 		 * structure field changes. Change Container of Section instead of render

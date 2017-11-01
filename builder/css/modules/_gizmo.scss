@@ -1,27 +1,51 @@
 /* _-_-_- modules/GIZMO -_-_-_ */
 .karma-spacing {
   position: relative;
-  width: 100%;
   height: 5px;
 
   &.karma-top-spacing {
+	width: 100%;
+	cursor: n-resize;
 	position: absolute;
 	top: 0;
   }
   &.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
+
 	position: absolute;
-	left: -9px !important;
-	top: 50%;
-	width: initial !important;
+	top: 0;
+	height: 100%;
+	left: 0 !important;
+	cursor: e-resize;
+
+
 	.karma-spacing-dot-container {
+	  cursor: e-resize;
+	  left: -9px !important;
+	  top: 50%;
+	}
+  }
+
+  &.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	right: 0 !important;
+	left: initial !important;
+	cursor: e-resize;
+
+	.karma-spacing-dot-container {
+	  left: calc(100% - 9px ) !important;
+	  top: 50%;
 	  cursor: e-resize;
 	}
   }
 
   &.karma-bottom-spacing {
+	width: 100%;
 	position: absolute;
 	top: initial !important;
 	bottom: 0px !important;
+	cursor: n-resize;
 
 	.karma-spacing-dot-container {
 	  top: initial !important;
@@ -214,6 +238,22 @@
 .karma-active-section {
 
   .karma-container {
+	outline: 1px solid rgba(118, 129, 140, 0.18);
+
+	> .karma-builder-element:last-child .karma-column-resize {
+	  display: none;
+	}
+
+	.karma-column-resize {
+	  background-color: rgba(118, 129, 140, 0.18);
+	  height: 100%;
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  width: 1px;
+	}
+  }
+  .karma-container-fluid {
 	outline: 1px solid rgba(118, 129, 140, 0.18);
 
 	> .karma-builder-element:last-child .karma-column-resize {
