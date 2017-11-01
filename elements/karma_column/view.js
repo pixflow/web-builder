@@ -30,5 +30,20 @@
 
 		},
 
+		/**
+		 * @right spacing of column setting panel
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		rightSpace: function () {
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+				padding		= this.model.attributes.shortcode_attributes.space + 'px';
+
+			document.getElementById( elementId ).innerHTML = '.' + elementId + '{ padding-right: ' +  padding  + ';}';
+
+		}
+
 	});
 })(jQuery,karmaBuilder);

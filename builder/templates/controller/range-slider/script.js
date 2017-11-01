@@ -8,7 +8,7 @@ jQuery( 'body' ).off( 'karma_finish_form_builder.range' ).on('karma_finish_form_
 		$karmaRangeSlider = $( parent ).find( '.karma-range-slider-range' ),
 		$karmaRangeInput = $( parent ).find( '.karma-range-slider-input' ),
 		changingSlider,
-		doneChangingInterval = 500;
+		doneChangingInterval = 10;
 
 		$karmaRangeSlider.rangeslider({
 

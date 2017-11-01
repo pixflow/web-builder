@@ -38,7 +38,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static function js_render() {
 
-		return "<div class='karma-column karma-col-sm-{{ attributes.sm_size }} karma-col-md-{{ attributes.md_size }} karma-col-lg-{{ attributes.lg_size }} karma-col-xl-{{ attributes.xl_size }}'> {{ attributes.shortcode_content }} </div>";
+		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}'> {{ data.attributes.shortcode_attributes.shortcode_content }} </div>";
 
 	}
 
@@ -68,7 +68,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 						"label" => esc_attr__( "Spacing", 'karma' ),
 					),
 					array(
-						"name"      => "space",
+						"name"      => "leftSpace",
 						"type"      => Karma_Builder_Setting_Panel::RANGE_SLIDER,
 						"label"     => esc_attr__( "Left padding", 'karma' ),
 						'value'     => 100,
@@ -81,7 +81,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 						)
 					),
 					array(
-						"name"      => "space",
+						"name"      => "rightSpace",
 						"type"      => Karma_Builder_Setting_Panel::RANGE_SLIDER,
 						"label"     => esc_attr__( "Right padding", 'karma' ),
 						'value'     => 100,
@@ -101,7 +101,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 		return parent::$elements_map;
 
 	}
-
 
 	/**
 	 * Set the gizmo controller

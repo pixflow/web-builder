@@ -334,8 +334,6 @@
 			}
 		},
 
-
-
 		/**
 		 * structure field changes. Change Container of Section instead of render
 		 *
