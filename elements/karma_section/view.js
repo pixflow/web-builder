@@ -45,9 +45,11 @@
 		 * @returns {void}
 		 */
 		showBorder: function (e) {
+
 			if( this.$el.hasClass('karma-active-section') && $( e.target ).closest( '.karma-builder-element' ).hasClass('karma-active-column') ){
 				return;
 			}
+
 			$('.karma-active-section .karma-active-column').removeClass('karma-active-column');
 			$('.karma-active-section').removeClass('karma-active-section');
 			this.$el.addClass('karma-active-section');
@@ -348,6 +350,22 @@
 				newStructure 	= defaultClasses + containerClass;
 
 			this.el.firstElementChild.firstElementChild.setAttribute( "class", newStructure );
+
+		},
+
+		/**
+		 * space field changes. It updates the space of section
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		space: function () {
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+				padding		= this.model.attributes.shortcode_attributes.space + 'px';
+
+			document.getElementById( elementId ).innerHTML = '.' + elementId + '{ padding-top: ' +  padding  + '; padding-bottom: ' + padding + '}'
 
 		},
 

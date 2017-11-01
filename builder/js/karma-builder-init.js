@@ -280,7 +280,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
 		/**
 		 * Create random string
 		 *
@@ -336,7 +335,6 @@ var karmaBuilder = karmaBuilder || {};
 			if ( null === templateParams ) {
 				templateParams = {};
 			}
-
 			var tempObject = wp.template( templateName ),
 				tempHtml = tempObject( templateParams );
 
@@ -553,7 +551,6 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns boolean
 		 */
 		update : function ( model ) {
-
 			for ( var i in model.changed.shortcode_attributes.changed ){
 				if( 'function' === typeof this[ i ] ){
 					this[ i ]();
@@ -735,9 +732,10 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		events : {
-			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
 			"click .delete-karma-element"				: "removeElement",
-			"input input,textarea"						: "updateModel",
+			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
+			"input input:not(.no-trigger)"				: "updateModel",
+			"input textarea:not(.no-trigger)"			: "updateModel",
 		},
 
 		/**
