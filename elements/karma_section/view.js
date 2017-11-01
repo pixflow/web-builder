@@ -4,9 +4,9 @@
 		events:{
 
 			'click'				 							: 'showBorder',
-			'mousedown .section-spacing' 					: 'showMouseToolTip',
-			'mousedown .row-top-spacing-dot-container' 		: 'showMouseToolTip',
-			'mousedown .row-bottom-spacing-dot-container' 	: 'showMouseToolTip',
+			'mousedown .karma-spacing' 					: 'showMouseToolTip',
+			'mousedown .karma-top-spacing-dot-container' 		: 'showMouseToolTip',
+			'mousedown .karma-bottom-spacing-dot-container' 	: 'showMouseToolTip',
 		},
 
 		initialize: function( options ){

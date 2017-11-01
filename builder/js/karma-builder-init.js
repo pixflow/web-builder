@@ -149,6 +149,13 @@ var karmaBuilder = karmaBuilder || {};
 		+ '<# }) #>'
 		+ '</div>' ,
 
+		/**
+		 * @summary Build html for gizmo resizeably for top&& bottom
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }}">' +
 			'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" style="height:{{ data.space }}px">'
 				+ '<div class="karma-spacing-dot-container">'
@@ -164,6 +171,13 @@ var karmaBuilder = karmaBuilder || {};
 			+ '</div>'
 		+ '</div>' ,
 
+		/**
+		 * @summary Build html for gizmo resizeably for left
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		leftSpacingGizmoTemplate :'<div class="{{ data.className }}">'
 		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" style="width:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
@@ -173,6 +187,13 @@ var karmaBuilder = karmaBuilder || {};
 		+ '</div>'
 		+ '</div>' ,
 
+		/**
+		 * @summary Build html for gizmo resizeably for right
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }}">'
 		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" style="height:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
@@ -182,6 +203,13 @@ var karmaBuilder = karmaBuilder || {};
 		+ '</div>'
 		+ '</div>' ,
 
+		/**
+		 * @summary Build html for gizmo resizeably for top
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		topSpacingGizmoTemplate :'<div class="{{ data.className }}">'
 		+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n" style="height:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
@@ -377,6 +405,13 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 		},
+		/**
+		 * @summary Build gizmo resizeably for top and bottom
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 
 		bothSpacingGizmo : function ( $gizmo ) {
 
@@ -408,6 +443,14 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		/**
+		 * @summary Build gizmo resizeably for top
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+
 		topSpacingGizmo : function ( $gizmo ) {
 
 			var that = this,
@@ -427,9 +470,14 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
+		/**
+		 * @summary Build gizmo resizeably for left
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		leftSpacingGizmo : function ( $gizmo ) {
-
 
 			var that = this,
 				options = {
@@ -449,6 +497,13 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		/**
+		 * @summary Build gizmo resizeably for right
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		rightSpacingGizmo : function ( $gizmo ) {
 
 			var that = this,
