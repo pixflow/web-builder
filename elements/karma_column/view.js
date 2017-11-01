@@ -43,6 +43,21 @@
 
 			document.getElementById( elementId ).innerHTML = '.' + elementId + '{ padding-right: ' +  padding  + ';}';
 
+		},
+
+		/**
+		 * extra class field changes. Add class to the column
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		extraClass: function(){
+
+			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.attributes.shortcode_attributes.element_key,
+				defaultClasses =  elementClass + " karma-column  "  + this.model.attributes.shortcode_attributes.extraClass;
+			this.el.firstElementChild.setAttribute( 'class', defaultClasses );
+
 		}
 
 	});

@@ -56,7 +56,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 					),
 					array(
-						"name"          => "width",
+						"name"          => "extraClass",
 						"type"          => Karma_Builder_Setting_Panel::TEXT,
 						"label"         => esc_attr__( "Put Your URL", 'karma' ),
 						"placeholder"   => 'Put Your URL',
@@ -66,6 +66,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 						"value" => "Spacing",
 						"type"  => Karma_Builder_Setting_Panel::TITLE,
 						"label" => esc_attr__( "Spacing", 'karma' ),
+
 					),
 					array(
 						"name"      => "leftSpace",

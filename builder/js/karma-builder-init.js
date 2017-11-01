@@ -894,6 +894,10 @@ var karmaBuilder = karmaBuilder || {};
 			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
 			settingPanel.parentNode.removeChild( settingPanel );
 
+			// COMPLETELY UNBIND THE VIEW
+			this.undelegateEvents();
+			this.$el.removeData().unbind();
+
 		},
 
 		/**
