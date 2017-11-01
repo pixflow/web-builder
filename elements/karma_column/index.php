@@ -123,7 +123,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 						'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
 						'text'      => 'Column',
 						'showIndex' => 'true',
-						'form'      => 'setting-panel'
+						'form'      => 'setting-panel',
+						'className'	=> 'column-setting',
 					)
 				)
 			),
