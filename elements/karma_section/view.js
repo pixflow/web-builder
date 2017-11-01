@@ -12,7 +12,8 @@
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
-			this.liveSpacing();
+			this.toolTipHtml();
+			this.addAction();
 
 		},
 
@@ -21,6 +22,19 @@
 			this.model.attributes.shortcode_attributes['add_grid'] = this.currentGrid();
 			karmaBuilder.section.__super__.showSettingPanel.apply( this, arguments );
 
+		},
+
+		addAction : function () {
+
+			var that = this;
+			$('body').off('before/buildGizmo').on('before/buildGizmo', function (e, tempName, gizmoParam) {
+
+				if ('bothSpacingGizmoTemplate' === tempName) {
+					var space = that.getAttributes(['space']);
+					gizmoParam['space'] = space.space;
+				}
+				return gizmoParam;
+			});
 		},
 
 
@@ -285,7 +299,7 @@
 				y = e.clientY;
 			tooltipDiv.style.top = (y + 20) + 'px';
 			tooltipDiv.style.left = (x - 20) + 'px';
-			tooltipDiv.innerText = (document.querySelector('.section-spacing').offsetHeight) + ' px';
+			tooltipDiv.innerText = (document.querySelector('.karma-spacing').offsetHeight) + ' px';
 
 		},
 
@@ -318,44 +332,7 @@
 			}
 		},
 
-		/**
-		 * Add live spacing ability to section elements
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		liveSpacing: function () {
 
-			this.currentGrid();
-			this.calculateNewGrid();
-			this.toolTipHtml();
-
-			var that = this,
-				options = {
-					maxHeight   : 700,
-					minHeight   : 0,
-					handles     : {},
-					stop        : function ( event, ui ) {
-						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
-					}
-				};
-			$( function () {
-
-				// Apply JQuery Ui resizable on top spacing
-				options.handles.s = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing' );
-				options.handles.n = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing' );
-				options.alsoResize = '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing';
-				$( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing' ).resizable( options );
-
-				// Apply JQuery Ui resizable on bottom spacing
-				options.alsoResize = '[data-element-key="' + that.el.dataset.elementKey + '"] .section-top-spacing';
-				options.handles.s = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' );
-				options.handles.n = document.querySelector( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' );
-				$( '[data-element-key="' + that.el.dataset.elementKey + '"] .section-bottom-spacing' ).resizable( options );
-
-			} );
-		},
 
 		/**
 		 * extra class field changes. Add class to the element instead of render

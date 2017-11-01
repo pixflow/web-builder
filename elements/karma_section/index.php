@@ -30,11 +30,12 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<# var rowContainer = ('container' == data.changed.structure )?'karma-container':'karma-container-fluid'; #>"
-			. "<div class='karma-section karma-section-{{data.attributes.shortcode_attributes.element_key}} {{data.changed.extra_class}}'>"
-			. "<div class='{{rowContainer}} karma-row karma-no-gutters'>"
+		return "<# var rowContainer = ('container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
+			. "<div class='karma-section karma-section-{{ data.attributes.shortcode_attributes.element_key }} {{ data.changed.extra_class }}'>"
+			. "<div class='{{ rowContainer }} karma-row karma-no-gutters'>"
 			. "</div>"
 			. "</div>";
+
 	}
 
 

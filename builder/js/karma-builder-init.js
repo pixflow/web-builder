@@ -150,19 +150,47 @@ var karmaBuilder = karmaBuilder || {};
 		+ '</div>' ,
 
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }}">' +
-			'<div class="section-spacing section-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n">'
-				+ '<div class="row-top-spacing-dot-container">'
-					+ '<div class="spacing-top-dot"></div>'
-					+ '<div class="spacing-top-dot-hover target-moving"></div>'
+			'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" style="height:{{ data.space }}px">'
+				+ '<div class="karma-spacing-dot-container">'
+					+ '<div class="spacing-dot"></div>'
+					+ '<div class="spacing-dot-hover target-moving"></div>'
 				+ '</div>'
 			+ '</div>'
-			+ '<div class="section-spacing section-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-n">'
-				+ '<div class="row-bottom-spacing-dot-container">'
-					+ '<div class="spacing-bottom-dot"></div>'
-					+ '<div class="spacing-bottom-dot-hover"></div>'
+			+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" style="height:{{ data.space }}px">'
+				+ '<div class="karma-spacing-dot-container">'
+					+ '<div class="spacing-dot"></div>'
+					+ '<div class="spacing-dot-hover"></div>'
 				+ '</div>'
 			+ '</div>'
 		+ '</div>' ,
+
+		leftSpacingGizmoTemplate :'<div class="{{ data.className }}">'
+		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" style="width:{{ data.spaceing }}px">'
+		+ '<div class="karma-spacing-dot-container">'
+		+ '<div class="spacing-dot"></div>'
+		+ '<div class="spacing-dot-hover target-moving"></div>'
+		+ '</div>'
+		+ '</div>'
+		+ '</div>' ,
+
+		rightSpacingGizmoTemplate :'<div class="{{ data.className }}">'
+		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" style="height:{{ data.spaceing }}px">'
+		+ '<div class="karma-spacing-dot-container">'
+		+ '<div class="spacing-dot"></div>'
+		+ '<div class="spacing-dot-hover target-moving"></div>'
+		+ '</div>'
+		+ '</div>'
+		+ '</div>' ,
+
+		topSpacingGizmoTemplate :'<div class="{{ data.className }}">'
+		+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n" style="height:{{ data.spaceing }}px">'
+		+ '<div class="karma-spacing-dot-container">'
+		+ '<div class="spacing-dot"></div>'
+		+ '<div class="spacing-dot-hover target-moving"></div>'
+		+ '</div>'
+		+ '</div>'
+		+ '</div>' ,
+
 
 		resizeGizmoTemplate : '<div class="{{data.class}}" data-snap="{{data.param.snapGrid}}" ></div>',
 
@@ -318,7 +346,8 @@ var karmaBuilder = karmaBuilder || {};
 
 			var tempName = gizmoParams.type + 'Template';
 			if( "undefined" !== typeof this[ tempName ] ){
-				return this.getUnderscoreTemplate( this[ tempName ], gizmoParams );
+				var gizmoParams  = $('body').triggerHandler( 'before/buildGizmo', [ tempName, gizmoParams ] );
+				return $( this.getUnderscoreTemplate( this[ tempName ], gizmoParams ) );
 			}
 
 		},
@@ -346,6 +375,97 @@ var karmaBuilder = karmaBuilder || {};
 				}
 				this.gizmoEvents( this.gizmoParams[ i ].params );
 			}
+
+		},
+
+		bothSpacingGizmo : function ( $gizmo ) {
+
+			var that = this,
+				options = {
+					maxHeight   : 700,
+					minHeight   : 0,
+					handles : {},
+					scroll : true ,
+					stop : function ( event, ui ) {
+
+						that.setAttributes({space: parseInt(ui.element.height())}, true);
+
+					},
+					resize: function( event, ui ){
+
+						var currentSection = that.el.querySelector('.karma-section');
+						currentSection.style.paddingTop = ui.size.height + 'px';
+						currentSection.style.paddingBottom = ui.size.height + 'px';
+
+					}
+				};
+
+			// Apply JQuery Ui resizable on bottom spacing
+			options.alsoResize = $gizmo.find('.karma-top-spacing');
+			options.handles.s = $gizmo.find('.ui-resizable-s').eq(0);
+			options.handles.n = $gizmo.find('.ui-resizable-s').eq(1);
+			$gizmo.find('.karma-bottom-spacing').resizable( options );
+
+		},
+
+		topSpacingGizmo : function ( $gizmo ) {
+
+			var that = this,
+				options = {
+					maxHeight   : 700,
+					minHeight   : 0,
+					handles : {},
+					stop : function ( event, ui ) {
+						that.setAttributes({space: parseInt(ui.element.height())}, true);
+					},
+					resize: function( event, ui ){
+						that.el.style.paddingTop = ui.size.height + 'px';
+					}
+				};
+			options.handles.s = $gizmo.find('.ui-resizable-s');
+			this.$el.find('.karma-top-spacing').resizable( options );
+
+		},
+
+
+		leftSpacingGizmo : function ( $gizmo ) {
+
+
+			var that = this,
+				options = {
+					maxWidth   : 700,
+					minWidth   : 0,
+					handles : {},
+					stop : function ( event, ui ) {
+						that.setAttributes({space: parseInt(ui.element.width())}, true);
+					},
+					resize: function( event, ui ){
+						that.el.style.paddingLeft = ui.size.width + 'px';
+					}
+				};
+
+			options.handles.e = $gizmo.find('.ui-resizable-e');
+			this.$el.find('.karma-left-spacing').resizable( options );
+
+		},
+
+		rightSpacingGizmo : function ( $gizmo ) {
+
+			var that = this,
+				options = {
+					maxWidth   : 700,
+					minWidth   : 0,
+					handles : {},
+					stop : function ( event, ui ) {
+						that.setAttributes({space: parseInt(ui.element.width())}, true);
+					},
+					resize: function( event, ui ){
+						that.el.style.paddingRight= ui.size.width + 'px';
+					}
+				};
+
+			options.handles.w = $gizmo.find('.ui-resizable-w');
+			this.$el.find('.karma-right-spacing').resizable( options );
 
 		},
 
@@ -453,6 +573,33 @@ var karmaBuilder = karmaBuilder || {};
 
 			}
 			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent: silent } );
+
+		},
+
+		/**
+		 * GET Specific attribute(s) of element
+		 * @example // returns { space : 200, slow : false }
+		 * getAttributes ( Space, Slow )
+		 *
+		 * @param	{array}	attributesNames List of name attribute
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {object}	 The value of given attribute
+		 */
+		getAttributes : function ( attributesNames ) {
+
+			var model = this.model,
+				shortcodeAtrributes = model.attributes.shortcode_attributes ,
+				attributeValue = {} ;
+
+			for ( var attr in attributesNames ) {
+				if( shortcodeAtrributes[ attributesNames[ attr ] ] ){
+					attributeValue[ attributesNames[ attr ] ] = shortcodeAtrributes[ attributesNames[ attr ] ];
+				}
+			}
+
+			return attributeValue;
 
 		},
 

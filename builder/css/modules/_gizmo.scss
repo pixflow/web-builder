@@ -1,11 +1,36 @@
 /* _-_-_- modules/GIZMO -_-_-_ */
-.section-spacing {
+.karma-spacing {
   position: relative;
   width: 100%;
   height: 5px;
+
+  &.karma-top-spacing {
+	position: absolute;
+	top: 0;
+  }
+  &.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
+	position: absolute;
+	left: -9px !important;
+	top: 50%;
+	width: initial !important;
+	.karma-spacing-dot-container {
+	  cursor: e-resize;
+	}
+  }
+
+  &.karma-bottom-spacing {
+	position: absolute;
+	top: initial !important;
+	bottom: 0px !important;
+
+	.karma-spacing-dot-container {
+	  top: initial !important;
+	  bottom: -9px !important;
+	}
+  }
 }
 
-.section-spacing .resize-handler {
+.karma-spacing .resize-handler {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -110,7 +135,7 @@
 .karma-builder-element{
   position: relative;
 }
-.row-top-spacing-dot-container{
+.karma-spacing-dot-container{
   cursor: n-resize;
 
   position: absolute;
@@ -122,11 +147,11 @@
   height: 18px;
   width: 18px;
 
-  &:hover .spacing-top-dot-hover{
+  &:hover .spacing-dot-hover{
     display: block;
   }
 
-  .spacing-top-dot-hover{
+  .spacing-dot-hover{
     height: 18px;
     display: flex;
     width: 18px;
@@ -137,7 +162,7 @@
     display: none;
   }
 
-  .spacing-top-dot{
+  .spacing-dot{
     position: absolute;
     box-sizing: border-box;
     height: 8px;
