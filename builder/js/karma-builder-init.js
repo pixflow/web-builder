@@ -822,7 +822,7 @@ var karmaBuilder = karmaBuilder || {};
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
 			this.bindDragEvents();
-			$('body').trigger('karma_finish_form_builder');
+			$( document ).trigger('karma_finish_form_builder');
 
 		},
 
@@ -836,7 +836,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns	{object} formbuilder html
 		 */
-
 		formBuilder : function( model, form ) {
 			var shortcodeModel = model.attributes ,
 				ShortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),

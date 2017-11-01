@@ -1,4 +1,4 @@
-jQuery( 'body' ).off( 'karma_finish_form_builder.range' ).on('karma_finish_form_builder.range',function() {
+jQuery( document ).off( 'karma_finish_form_builder.range' ).on('karma_finish_form_builder.range',function() {
 
 
 	var rangeSlider = document.querySelectorAll( '.karma-range-slider-content' );
