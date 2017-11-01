@@ -1904,7 +1904,8 @@ iframe {
   line-height: 16px;
   top: -17px;
   cursor: pointer;
-  display: block; }
+  display: block;
+  z-index: 80; }
   .karma-active-section .karma-active-column .karma-column-setting .karama-gizmo-icon svg {
     width: 10.31px;
     height: 11.31px; }
