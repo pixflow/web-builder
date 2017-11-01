@@ -4,15 +4,15 @@
 		events:{
 
 			'click'				 							: 'showBorder',
-			// 'mousedown .karma-spacing' 					: 'showMouseToolTip',
-			// 'mousedown .karma-top-spacing-dot-container' 		: 'showMouseToolTip',
-			// 'mousedown .karma-bottom-spacing-dot-container' 	: 'showMouseToolTip',
+			'mousedown .section-spacing' 					: 'showMouseToolTip',
+			'mousedown .row-top-spacing-dot-container' 		: 'showMouseToolTip',
+			'mousedown .row-bottom-spacing-dot-container' 	: 'showMouseToolTip',
 		},
 
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
-			this.addAction();
+			this.liveSpacing();
 
 		},
 
@@ -22,20 +22,6 @@
 			karmaBuilder.section.__super__.showSettingPanel.apply( this, arguments );
 
 		},
-
-		addAction : function () {
-
-			var that = this;
-			$('body').off( 'before/buildGizmo' ).on( 'before/buildGizmo', function ( e , tempName, gizmoParam ) {
-
-				if ( 'bothSpacingGizmoTemplate' === tempName ) {
-					var space = that.getAttributes( ['space'] );
-					gizmoParam['space'] = space.space;
-				}
-				return gizmoParam;
-			});
-
-		} ,
 
 
 		/**
@@ -276,7 +262,6 @@
 		 * add event to tooltip
 		 */
 		showMouseToolTip : function(e) {
-
 			var tooltipDiv = document.body.querySelector('.tooltip-div');
 			tooltipDiv.style.display = 'block';
 			e.target.classList.add('target-moving');
@@ -300,7 +285,7 @@
 				y = e.clientY;
 			tooltipDiv.style.top = (y + 20) + 'px';
 			tooltipDiv.style.left = (x - 20) + 'px';
-			tooltipDiv.innerText = (document.querySelector('.karma-spacing').offsetHeight) + ' px';
+			tooltipDiv.innerText = (document.querySelector('.section-spacing').offsetHeight) + ' px';
 
 		},
 
@@ -332,7 +317,6 @@
 				document.body.appendChild( tooltip );
 			}
 		},
-
 
 		/**
 		 * Add live spacing ability to section elements
@@ -383,7 +367,6 @@
 		extraClass: function(){
 			this.el.classList.add( this.model.attributes.shortcode_attributes.extraClass )
 		}
-
 
 	} );
 })( jQuery, karmaBuilder );
