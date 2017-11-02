@@ -270,6 +270,21 @@
 		},
 
 
+		/**
+		 * create html fot tooltip
+		 *
+		 * @since 1.0.0
+		 *
+		 */
+		toolTipHtml: function () {
+
+			if( ! document.querySelectorAll('.tooltip-div').length ){
+				var tooltip = document.createElement( 'div' );
+				tooltip.setAttribute( 'class', 'tooltip-div' );
+				document.body.appendChild( tooltip );
+			}
+
+		},
 
 		/**
 		 * structure field changes. Change Container of Section instead of render
@@ -297,10 +312,11 @@
 		 */
 		space: function () {
 
-			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.space + 'px';
+			 var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+			 	padding		= this.model.attributes.shortcode_attributes.space + 'px';
 
-			document.getElementById( elementId ).innerHTML = '.' + elementId + '{ padding-top: ' +  padding  + '; padding-bottom: ' + padding + '}'
+			 this.renderCss( '.' + elementId, 'padding-top', padding );
+			 this.renderCss( '.' + elementId, 'padding-bottom', padding );
 
 		},
 

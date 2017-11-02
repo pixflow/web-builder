@@ -449,7 +449,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-
 		topSpacingGizmo : function ( $gizmo ) {
 
 			var that = this,
@@ -758,7 +757,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns void
 		 */
 		showSettingPanel : function ( e ) {
-			var form = $( e.currentTarget ).data( 'form' )
+			var form = $( e.currentTarget ).data( 'form' );
 			window.builder = new karmaBuilder.elementSettingPanel( {
 				el: jQuery( 'body' ),
 				model: this.model,
@@ -785,6 +784,102 @@ var karmaBuilder = karmaBuilder || {};
 			} else{
 				this.el.className = this.el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 			}
+
+		},
+
+		/**
+		 * returns the element name with its key
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns { string }  Element name with its key
+		 */
+		elementSelector: function () {
+
+			return this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
+
+		},
+
+		/**
+		 * renders the css of model inside style tag
+		 *
+		 * @param	{ string } 	selector 	Css selector
+		 * @param	{ string }	attribute	CSS attribute
+		 * @param	{ string }	value		CSS value
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns { void }
+		 */
+		renderCss: function (selector,attribute,value) {
+
+			var newStyle = this.generateNewStyle(selector,attribute,value);
+			document.getElementById( this.elementSelector() ).innerHTML = newStyle;
+
+		},
+
+		/**
+		 * renders the css of model inside style tag
+		 *
+		 * @param	{ string } 	selector 	Css selector
+		 * @param	{ string }	attribute	CSS attribute
+		 * @param	{ string }	value		CSS value
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns { string } new style of element to insert inside style tag
+		 */
+		generateNewStyle: function ( selector, attribute, value ) {
+
+			var style 		= document.getElementById( this.elementSelector() ).innerHTML,
+				styleResult = style.replace( /\s/g, '' ).split(/[{}]+/),
+				newStyle 	= "";
+
+			for ( var i = 0; i < styleResult.length ; i++ ){
+
+				if ( i % 2 == 1 || "" == styleResult[ i ] )
+					continue;
+
+				if( selector == styleResult[ i ] ){
+
+					newStyle +=  styleResult[ i ] + '{';
+					newStyle += this.generateStyleString( styleResult[ i + 1 ], attribute, value )
+
+				}else {
+					newStyle += styleResult[ i ] + '{' + styleResult[ i + 1 ] + '}';
+				}
+			}
+
+			return newStyle;
+
+		},
+
+		/**
+		 * renders the css of model inside style tag
+		 *
+		 * @param	{ string } 	styleResult Old style of element
+		 * @param	{ string }	attribute	CSS attribute
+		 * @param	{ string }	value		CSS value
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns { string } new style of element to insert inside style tag
+		 */
+		generateStyleString: function ( styleResult, attribute, value  ) {
+			
+			var newStyle = "";
+
+
+			if ( styleResult.indexOf( attribute ) >= 0 ){
+
+				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;' )
+				newStyle += styleResult.replace( regex , attribute + ':' + value + ';');
+				newStyle += '}';
+
+			}else{
+				newStyle += styleResult + attribute + ':' + value + ';}';
+			}
+			return newStyle;
 
 		}
 
