@@ -4,11 +4,9 @@
 		events:{
 
 			'click'				 							: 'showBorder',
-			'mousedown .karma-spacing' 					: 'showMouseToolTip',
-			'mousedown .karma-top-spacing-dot-container' 		: 'showMouseToolTip',
-			'mousedown .karma-bottom-spacing-dot-container' 	: 'showMouseToolTip',
-		},
 
+		},
+		
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );

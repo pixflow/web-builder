@@ -2207,6 +2207,12 @@ iframe {
 .karma-builder-element[data-name="karma_section"]:not(.karma-active-section):hover {
   outline: 1px solid #419CF8; }
 
+.karma-builder-element[data-name="karma_column"] .karma-spacing-dot-container {
+  display: none; }
+
+.karma-builder-element[data-name="karma_column"].karma-active-column .karma-spacing-dot-container {
+  display: flex; }
+
 .grid-controller-template {
   height: 168px;
   width: 285px;

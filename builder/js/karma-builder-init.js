@@ -121,6 +121,12 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.shortcodes = Backbone.View.extend({
 
+		events:{
+
+			'mousedown > .karma-spacing-container .karma-spacing' 	: 'showMouseToolTip',
+
+		},
+
 		shortcodeParams: {},
 
 		/*
@@ -156,14 +162,14 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-		bothSpacingGizmoTemplate : '<div class="{{ data.className }}">' +
-			'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" style="height:{{ data.space }}px">'
+		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">' +
+			'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
 				+ '<div class="karma-spacing-dot-container">'
 					+ '<div class="spacing-dot"></div>'
 					+ '<div class="spacing-dot-hover target-moving"></div>'
 				+ '</div>'
 			+ '</div>'
-			+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" style="height:{{ data.space }}px">'
+			+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
 				+ '<div class="karma-spacing-dot-container">'
 					+ '<div class="spacing-dot"></div>'
 					+ '<div class="spacing-dot-hover"></div>'
@@ -178,8 +184,8 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }}">'
-		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" style="width:{{ data.spaceing }}px">'
+		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
+		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-dot-hover target-moving"></div>'
@@ -194,8 +200,8 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-		rightSpacingGizmoTemplate :'<div class="{{ data.className }}">'
-		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" style="height:{{ data.spaceing }}px">'
+		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
+		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="height:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-dot-hover target-moving"></div>'
@@ -210,8 +216,8 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @returns {void}
 		 */
-		topSpacingGizmoTemplate :'<div class="{{ data.className }}">'
-		+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n" style="height:{{ data.spaceing }}px">'
+		topSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
+		+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-dot-hover target-moving"></div>'
@@ -245,7 +251,6 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns void
 		 */
 		initialize : function( options ) {
-
 			this.template = options.template;
 			if( this.model ) {
 				_.bindAll(this, "update","destroy");
@@ -378,7 +383,7 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 		},
-		
+
 		/**
 		 * @summary Build gizmo controller
 		 *
@@ -535,10 +540,20 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		showMouseToolTip : function( e ) {
 
+			var that = this;
 			var tooltipDiv = document.body.querySelector( '.tooltip-div' );
 			tooltipDiv.style.display = 'block';
+			tooltipDiv.style.top = ( e.clientY + 20 ) + 'px';
+			tooltipDiv.style.left = ( e.clientX - 20 ) + 'px';
+			tooltipDiv.innerText = '';
+
 			e.target.classList.add( 'target-moving' );
-			document.documentElement.addEventListener( 'mousemove', this.moveMouseToolTip, false );
+			var direction = $(e.target).closest('.karma-spacing').attr('data-direction');
+			this.showMouseToolTipValue( tooltipDiv, direction );
+			
+			document.documentElement.addEventListener('mousemove', function(e){
+					that.moveMouseToolTip(e , that, direction);
+			} , false );
 			document.documentElement.addEventListener( 'mouseup', this.removeMouseToolTip, false );
 
 		},
@@ -550,9 +565,10 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * give position to tooltip div
 		 */
-		moveMouseToolTip : function( e ) {
+		moveMouseToolTip : function( e, that, direction ) {
 
 			var tooltipDiv = document.body.querySelector( '.tooltip-div' );
+
 			if ( 'none' === tooltipDiv.style.display ) {
 				return false;
 			}
@@ -560,14 +576,27 @@ var karmaBuilder = karmaBuilder || {};
 				y = e.clientY;
 			tooltipDiv.style.top = ( y + 20 ) + 'px';
 			tooltipDiv.style.left = ( x - 20 ) + 'px';
-			var direction = $( '.karma-active-section' ).attr( 'data-direction' );
-			if( 'left' === direction || 'right' === direction ){
+			that.showMouseToolTipValue( tooltipDiv, direction );
+		},
 
-				tooltipDiv.innerText = ( document.querySelector( '.karma-spacing' ).offsetWidth ) + ' px';
-			}else{
-				tooltipDiv.innerText = ( document.querySelector( '.karma-spacing' ).offsetHeight ) + ' px';
+		showMouseToolTipValue : function( tooltipDiv, direction ){
+
+			switch ( direction ){
+
+				case 'left':
+					// console.log(that.$el.find( '> .karma-spacing-container .karma-spacing.karma-left-spacing' ))
+					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing.karma-left-spacing' ).width() ) + ' px';
+					break;
+				case 'right':
+					// console.log(that.$el.find( '> .karma-spacing-container .karma-spacing.karma-right-spacing' ))
+					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing.karma-right-spacing' ).width() ) + ' px';
+					break;
+				case 'both':
+				case 'top':
+					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing' ).height() ) + ' px';
+					break;
+
 			}
-
 
 		},
 

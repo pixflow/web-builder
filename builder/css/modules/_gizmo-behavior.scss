@@ -17,3 +17,12 @@
 	}
 
 }
+.karma-builder-element[data-name="karma_column"] .karma-spacing-dot-container {
+  display: none;
+
+}
+
+.karma-builder-element[data-name="karma_column"].karma-active-column .karma-spacing-dot-container {
+  display: flex;
+
+}

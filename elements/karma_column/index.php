@@ -135,7 +135,15 @@ class Karma_Column extends Karma_Shortcode_Base {
 					'snapGrid'  => true
 				)
 
-			)
+			),
+			array(
+				"type"		=> "rightSpacingGizmo",
+				"className"	=> "section-right-spacing",
+			),
+			array(
+				"type"		=> "leftSpacingGizmo",
+				"className"	=> "section-left-spacing",
+			),
 		);
 
 		parent::$elements_gizmo[ 'karma_column' ] = $controllers;
