@@ -99,6 +99,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'name'		=> __( 'Column Layout', 'karma' ),
 				'params'	=> array(
 					array(
+						"name"	=> 'gridlayout' ,
 						"type"	=> Karma_Builder_Setting_Panel::GRID,
 					),
 					array(

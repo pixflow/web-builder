@@ -777,6 +777,48 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
+		 * return current layout grid
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns Array - current layout of section
+		 */
+		currentGrid : function( ) {
+
+			var childrenModels = this.findChildren();
+
+			var currentGrid = [];
+			for (var i = 0, len = childrenModels.length; i < len; i++) {
+				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.sm_size ) )
+			}
+			return currentGrid;
+
+		},
+
+		/**
+		 * Calculate new layout grid after append nw column
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns Array - new layout of section after add new column
+		 */
+		calculateNewGrid : function( ) {
+			var newGrid = this.currentGrid();
+			newGrid.reverse();
+			for (var i = 0, len = newGrid.length; i < len; i++) {
+				if(newGrid[i] > 1) {
+					newGrid[i] = parseInt(newGrid[i] - 1);
+					break;
+				}
+			}
+			newGrid.reverse();
+			newGrid.push(1);
+			return newGrid;
+		},
+
+
+
+		/**
 		 * Open setting panel of each Element
 		 *
 		 * @param	{object}    e   event
@@ -1026,48 +1068,76 @@ var karmaBuilder = karmaBuilder || {};
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
 			this.bindDragEvents();
-			$( document ).trigger('karma_finish_form_builder');
+
+			$( document ).trigger('karma_finish_form_builder', [ this ] );
 
 		},
 
 		/**
-		 * create formbuilder html
+		 * update each param value with its model
 		 *
-		 * @param	object		model of element
-		 * @param	string		form of element
+		 * @param	{object} 	model			model of clicked element.
+		 * @param	{object} 	elementParam	default controllers value in define.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {object}	updated param value
+		 */
+		updateElementParams: function ( model, elementParam ) {
+
+			for ( var index in elementParam.params ){
+				var paramName = elementParam.params[ index ].name;
+				if( 'gridlayout' === paramName ){
+					elementParam.params[ index ].value = this.currentGrid().length;
+				}
+				if( undefined !== model.shortcode_attributes[ paramName ] ) {
+
+					elementParam.params[ index ].value = model.shortcode_attributes[ paramName ];
+				}
+			}
+			return elementParam;
+
+		},
+
+
+		/**
+		 * create form builder html
+		 *
+		 * @param	{object}	model	of element
+		 * @param	{string}	form	of element
 		 *
 		 * @since	1.0.0
 		 *
-		 * @returns	{object} formbuilder html
+		 * @returns	{object} form builder html
 		 */
 		formBuilder : function( model, form ) {
 			var shortcodeModel = model.attributes ,
-				ShortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
+				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
 				karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',
 				groupHtml = '',
 				groupHtml_group = [],
 				setting_panel_group = '';
 
-			ShortcodeParams = this.updateElementParams(shortcodeModel,ShortcodeParams);
-			for( var counter in ShortcodeParams.params ){
-				if( ! ShortcodeParams.params[counter].group ) {
-
-					groupHtml += this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
+			shortcodeParams = this.updateElementParams( shortcodeModel, shortcodeParams );
+			for( var counter in shortcodeParams.params ){
+				if( ! shortcodeParams.params[counter].group ) {
+					groupHtml += this.getWpTemplate('karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter]);
 
 				}else{
 
-					if( undefined === groupHtml_group[ ShortcodeParams.params[counter].group ] ){
+					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group ] ){
 
-						groupHtml_group[ ShortcodeParams.params[counter].group ] = {
+						groupHtml_group[ shortcodeParams.params[counter].group ] = {
 
 							items : [],
-							title: ShortcodeParams.params[counter].group
+							title: shortcodeParams.params[counter].group
 
 						};
 
 					}
-					var html = this.getWpTemplate('karma-' + ShortcodeParams.params[counter].type + '-controller', ShortcodeParams.params[counter]);
-					groupHtml_group[ ShortcodeParams.params[counter].group ]['items'].push( html );
+
+					var html = this.getWpTemplate('karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter]);
+					groupHtml_group[ shortcodeParams.params[counter].group ]['items'].push( html );
 
 				}
 
@@ -1103,26 +1173,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		/**
-		 * update each param value with its model
-		 *
-		 * @param	{object} 	model			model of clicked element.
-		 * @param	{object} 	elementParam	default controllers value in define.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {object}	updated param value
-		 */
-		updateElementParams: function (model, elementParam) {
 
-			for (var index in elementParam.params){
-				var paramName = elementParam.params[index].name;
-				if( undefined !== model.shortcode_attributes[paramName] ) {
-					elementParam.params[index].value = model.shortcode_attributes[paramName];
-				}
-			}
-			return elementParam;
-		},
 
 		/**
 		 * update model attribute from setting pane
