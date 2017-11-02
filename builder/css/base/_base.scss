@@ -14,5 +14,8 @@ body{
     @include element_direction($bottom:0 , $left:20px);
     color: $setting-panel-separator-color;
   }
+  ul, ol {
+    margin: 0 0 1.75em 0;
+  }
 }
 

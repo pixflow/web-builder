@@ -280,6 +280,8 @@ body {
     bottom: 0;
     left: 20px;
     color: rgba(57, 73, 89, 0.2); }
+  body ul, body ol {
+    margin: 0 0 1.75em 0; }
 
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
 /* _-_-_- layout/FOOTER -_-_-_ */
