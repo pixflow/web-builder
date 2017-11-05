@@ -1,4 +1,3 @@
-
 /**
  * Media queries
  * @group helpers
@@ -10,36 +9,30 @@
  */
 
 @mixin screen($size, $type: max, $pixels: $breakpoint-small) {
-  @if $size == 'small' {
-    @media screen and ($type + -width: $breakpoint-small) {
-        @content;
-    }
-  }
-  @else if $size == 'med-small' {
-    @media screen and ($type + -width: $breakpoint-med-small) {
-        @content;
-    }
-  }
-  @else if $size == 'med' {
-    @media screen and ($type + -width: $breakpoint-med) {
-        @content;
-    }
-  }
- @else if $size == 'large' {
-    @media screen and ($type + -width: $breakpoint-med) {
-        @content;
-    }
-  }
-  @else if $size == 'custom' {
-    @media screen and ($type + -width: $pixels + px) {
-     @content;
-    }
-  }
-  @else {
-    @content;
-  }
+	@if $size == 'small' {
+		@media screen and ($type + -width: $breakpoint-small) {
+			@content;
+		}
+	} @else if $size == 'med-small' {
+		@media screen and ($type + -width: $breakpoint-med-small) {
+			@content;
+		}
+	} @else if $size == 'med' {
+		@media screen and ($type + -width: $breakpoint-med) {
+			@content;
+		}
+	} @else if $size == 'large' {
+		@media screen and ($type + -width: $breakpoint-med) {
+			@content;
+		}
+	} @else if $size == 'custom' {
+		@media screen and ($type + -width: $pixels + px) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
 }
-
 
 /**
  * Centering elements
@@ -48,33 +41,27 @@
  * @output top left and transform of element
  */
 
-
 @mixin center($position) {
-  position: absolute;
+	position: absolute;
 
-
- @if $position == 'vertical' {
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-  @else if $position == 'horizontal' {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translate(-50%);
-  }
-  @else if $position == 'both' {
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
+	@if $position == 'vertical' {
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	} @else if $position == 'horizontal' {
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translate(-50%);
+	} @else if $position == 'both' {
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
 }
-
-
 
 /**
  * External fonts
@@ -85,16 +72,15 @@
  * @param {string}  $style - style of font
  * @output read font and give it font-weight and font-style
  */
-@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) { 
-  @font-face {
-    font-family: $font-name;
-    src: url($file-name) ;
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $font-name;
+		src: url($file-name) ;
 
-    font-weight: $weight;
-    font-style: $style;
-  }
- }
-
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
 
 /**
  * Adding dimensions
@@ -105,8 +91,8 @@
  */
 
 @mixin box($width, $height:$width) {
-  width: $width;
-  height: $height;
+	width: $width;
+	height: $height;
 }
 
 /**
@@ -120,13 +106,11 @@
  */
 
 @mixin padding($top, $right, $bottom, $left) {
-  padding-top: $top;
-  padding-right: $right;
-  padding-bottom: $bottom;
-  padding-left: $left;
+	padding-top: $top;
+	padding-right: $right;
+	padding-bottom: $bottom;
+	padding-left: $left;
 }
-
-
 /**
  * margin mixin
  * @group helpers
@@ -138,10 +122,10 @@
  */
 
 @mixin margin($top, $right, $bottom, $left) {
-  margin-top: $top;
-  margin-right: $right;
-  margin-bottom: $bottom;
-  margin-left: $left;
+	margin-top: $top;
+	margin-right: $right;
+	margin-bottom: $bottom;
+	margin-left: $left;
 }
 
 /**
@@ -155,10 +139,10 @@
  */
 
 @mixin element_direction($top:auto, $right:auto, $bottom:auto, $left:auto) {
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
 }
 
 /**
@@ -166,13 +150,11 @@
  * @group helpers
  * @output with display block and margin center element
  */
-
 @mixin center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
-
 
 /**
  * flexbox
@@ -180,8 +162,8 @@
  * @output with display flex and  center element
  */
 @mixin flexbox( $text-align:inherit, $align-item:inherit, $justify-content:inherit ) {
-  display: flex;
-  text-align: $text-align;
-  align-items: $align-item;
-  justify-content: $justify-content;
+	display: flex;
+	text-align: $text-align;
+	align-items: $align-item;
+	justify-content: $justify-content;
 }

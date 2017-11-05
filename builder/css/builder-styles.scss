@@ -1,0 +1,10 @@
+// Each line imports all SCSS files of a group
+
+// 3rd party frameworks
+@import 'vendors/import-vendors';
+
+// Sass-related functions, mixins, variables, etc.
+@import 'main';
+
+// Smaller components
+@import 'builder_assets/import-builder-styles';

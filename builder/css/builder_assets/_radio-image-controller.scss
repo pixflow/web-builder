@@ -1,0 +1,53 @@
+.karma-radio-image-controller {
+	@include padding(0, 10px, 0, 10px);
+	padding-bottom: 15px;
+	position: relative;
+
+	.radio-image-controller-label {
+		@include padding(0, 10px, 0, 10px);
+		font-size: 15px;
+		line-height: 17px;
+		margin-bottom: 21px;
+		opacity: .8;
+	}
+
+	.radio-image-controller-template {
+		@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
+		@include box(100%);
+		flex-wrap: wrap;
+
+		.radio-image-controller-img {
+			@include padding(5px, 10px, 5px, 10px);
+			cursor: pointer;
+			text-align: center;
+			cursor: pointer;
+
+			svg {
+				opacity: .5;
+				transition: opacity .2s;
+
+				&:hover {
+					opacity: .8;
+				}
+			}
+		}
+		.radio-image-selected-item {
+			svg {
+				opacity: 1;
+			}
+		}
+
+		input.hidden-input {
+			display: none;
+		}
+
+		.radio-image-controller-title {
+			display: block;
+			font-size: 12px;
+			line-height: 14px;
+			text-align: center;
+			margin-top: 7px;
+
+		}
+	}
+}

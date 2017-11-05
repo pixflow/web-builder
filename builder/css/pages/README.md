@@ -10,10 +10,9 @@ A few notes about this folder:
 
 Description about files in this folder :
 
-*	`_base.scss`	:	Contains general styles for body & for example elements ,...
-*	`_grid.scss`	:	Contains grid of builder
-*	`_reset.scss`	:	Contains normalize file 
-*	`_typograohy.scss`	:	defines styles of headings and paragraph in generaL
+*	`_dashboard.scss`	:	Contains styles of Karma Builder dashboard 
+*	`_page-manager.scss`	:	Contains styles of Karma Builder pages manager
+*	`_typographyt.scss`	:	Contains styles of Karma Builder typography page
 
   
 

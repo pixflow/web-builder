@@ -1,6 +1,6 @@
 === Karma Builder SCSS Base Folder ===
 
-Files in this folder is shared between all environments
+Files in this folder are created by others 
 
 A few notes about this folder:
 
@@ -10,10 +10,8 @@ A few notes about this folder:
 
 Description about files in this folder :
 
-*	`_base.scss`	:	Contains general styles for body & for example elements ,...
-*	`_grid.scss`	:	Contains grid of builder
-*	`_reset.scss`	:	Contains normalize file 
-*	`_typograohy.scss`	:	defines styles of headings and paragraph in generaL
+*	`_rangeslider.scss`	:	Contains styles of range slider 
+*	`_grid-resizer.scss`	:	Contains styles of Karma Builder pages manager
 
   
 

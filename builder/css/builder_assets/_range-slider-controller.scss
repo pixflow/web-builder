@@ -1,0 +1,95 @@
+.karma-range-slider-container {
+	@include flexbox($text-align: center, $align-item: center, $justify-content: center);
+	@include padding(0, 15px, 25px, 15px);
+	flex-direction: column;
+	position: relative;
+
+	.karma-range-slider-content {
+		@include flexbox($align-item: center);
+		@include box(100%);
+		padding-left: 5px;
+
+	}
+
+	.rangeslider--horizontal {
+		@include box(68%, 5px);
+		background: #cbe5fd;
+		border-radius: 50px;
+		box-shadow: none;
+
+		.rangeslider__handle {
+			@include box(14px, 14px);
+			background-image: none;
+			background-color: #419CF8;
+			border: 1px solid #419CF8;
+			top: -5px;
+			touch-action: pan-y;
+			-ms-touch-action: pan-y;
+
+			&:after {
+				background-image: none;
+			}
+		}
+
+		.rangeslider__fill {
+			background: none;
+			box-shadow: none;
+
+		}
+	}
+	.karma-range-slider-number {
+		display: inline-flex;
+		margin-left: 13px;
+
+		.karma-range-slider-input {
+
+			&:focus {
+				border-color: #bbb;
+				outline: none;
+			}
+			@include flexbox($text-align: right);
+			@include box(34px, 32px);
+			background: none;
+			border: 1px solid #bbb;
+			border-right: 0;
+			border-radius: 40px 0 0 40px;
+			color: #000;
+			font-size: 12px;
+			padding: 0;
+		}
+
+		.karma-unit {
+			@include box(auto, 32px);
+			@include padding(0, 7px, 2px, 0);
+			align-items: center;
+			border: 1px solid #bbb;
+			border-radius: 0 67px 68px 0;
+			border-left: 0;
+			display: flex;
+			font-size: 14px;
+			font-weight: 400;
+			margin-bottom: 0;
+		}
+	}
+
+	input::-webkit-inner-spin-button {
+		margin: 0;
+		-webkit-appearance: none;
+	}
+
+	input::-webkit-outer-spin-button {
+		margin: 0;
+		-webkit-appearance: none;
+	}
+}
+
+.karma-all-controller-title {
+	@include padding(initial, initial, 17px, 7px);
+	color: rgba(57, 73, 89, 0.8);
+	font-family: HelveticaNeue;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 17px;
+	text-align: left;
+	width: 100%;
+}
