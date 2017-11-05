@@ -57,7 +57,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeably for left
+		 * @summary Build html for gizmo resizeable for left
 		 *
 		 * @since 1.0.0
 		 *
@@ -73,7 +73,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeably for right
+		 * @summary Build html for gizmo resizeable for right
 		 *
 		 * @since 1.0.0
 		 *
@@ -153,12 +153,12 @@
 		 */
 		gizmoEvents: function ( gizmoParams ) {
 
-			if ( 'undefined' == typeof gizmoParams ) {
+			if ( 'undefined' === typeof gizmoParams ) {
 				return;
 			}
 
 			for ( var i in gizmoParams ) {
-				if ( 'undefined' != typeof gizmoParams[ i ].form ) {
+				if ( 'undefined' !== typeof gizmoParams[ i ].form ) {
 					var event = {};
 					event[ 'click .' + gizmoParams[ i ].className ] = 'showSettingPanel';
 					this.delegateEvents( _.extend( this.events, event ) );
@@ -170,7 +170,7 @@
 		/**
 		 * Create random string
 		 *
-		 * @param	integer	length	The length of random string that need to be produce
+		 * @param	{number}	length	The length of random string that need to be produce
 		 *
 		 * @since 1.0.0
 		 * @returns String	Random string
@@ -197,7 +197,7 @@
 		 * @param	{String}	form	which form
 		 *
 		 * @since 1.0.0
-		 * @returns {array}	The element params
+		 * @returns {Array}	The element params
 		 */
 		getElementMap: function ( elementName, form ) {
 
@@ -370,7 +370,6 @@
 			return paddingLeftValue;
 
 		},
-
 
 		/**
 		 * @summary Build gizmo resizeably for left
