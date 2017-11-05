@@ -1,15 +1,15 @@
 .grid-controller-template {
-	padding: 3%;
-	width: 285px;
+	align-items: center;
 	background-color: rgba( 65, 156, 248, 0.12 );
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	padding: 3%;
+	width: 285px;
+
 	.karma-add-column-view {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@extend .center-both-flex;
 	}
+
 	.karma-add-column-view-border {
 		background-color: rgba( 255, 255, 255, 0.54 );
 		border: 1px solid #419CF8;
@@ -17,48 +17,50 @@
 		padding: 0px 3px;
 
 		.karma-add-column-view-length {
-			height: 38px;
-			border-radius: 3px;
 			background-color: rgba( 65, 156, 248, 0.3 );
-			min-width: 34px;
+			border-radius: 3px;
+			height: 38px;
 			margin: 11px 3px 10px 3px;
+			min-width: 34px;
 		}
 
 		.karma-add-column-view-add {
+
+			@extend .center-both-flex;
+			background-color: transparent;
+			border: 1px dotted #419CF8;
+			border-radius: 3px;
 			cursor: pointer;
 			height: 37.64px;
-			border: 1px dotted #419CF8;
-			background-color: transparent;
-			border-radius: 3px;
 			position: relative;
-			display: flex;
-			position: relative;
-			justify-content: center;
-			align-items: center;
+
 			&:before,
 			&:after {
+				@include box( '8.42px', '1.4px' );
+
 				content: '';
-				position: absolute;
-				height: 1.4px;
-				width: 8.42px;
 				background-color: #419CF8;
+				position: absolute;
 			}
 			&:after {
-				width: 1.4px;
-				height: 8.42px;
+
+				@include box( '1.4px', '8.42px' );
+
 			}
 		}
 	}
 
 	.karma-add-column-button button {
-		border-radius: 19px;
-		height: 36px;
-		margin: 20px;
+
 		background-color: rgba( 65, 156, 248, 0.18 );
-		font-size: 14px;
-		font-family: "HelveticaNeue";
-		line-height: 0;
+		border-radius: 19px;
 		color: #419CF8;
+		font-family: "HelveticaNeue";
+		font-size: 14px;
+		height: 36px;
+		line-height: 0;
+		margin: 20px;
+
 	}
 
 }

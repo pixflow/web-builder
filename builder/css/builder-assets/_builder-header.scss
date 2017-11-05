@@ -1,9 +1,9 @@
 /* _-_-_- layout/HEADER -_-_-_ */
 .karma-builder {
 	.karma-top-nav {
-		height: 10vh;
-		width: 100%;
+		@extend .center-both-flex;
+		@include box( '100%', '100vh');
+
 		background-color: rgba(0, 0, 0, 0.32);
-		@extend .flex;
 	}
 }

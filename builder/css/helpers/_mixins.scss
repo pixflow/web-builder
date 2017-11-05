@@ -89,10 +89,46 @@
  * @param {Number}  $height - height of box
  * @output give width and height 
  */
-
 @mixin box($width, $height:$width) {
 	width: $width;
 	height: $height;
+}
+
+@mixin flex-position ( $horizontal, $vertical ){
+
+	display: flex;
+	@if ( 'center' == $horizontal ){
+
+		justify-content: center;
+
+	}
+	@if( 'left' == $horizontal ){
+
+		justify-content: flex-start;
+
+	}
+	@if( 'right' == $horizontal ){
+
+		justify-content: flex-end;
+
+	}
+
+	@if ( 'center' == $vertical ){
+
+		align-items: center;
+
+	}
+	@if( 'left' == $vertical ){
+
+		align-items: flex-start;
+
+	}
+	@if( 'right' == $vertical ){
+
+		align-items: flex-end;
+		
+	}
+
 }
 
 /**

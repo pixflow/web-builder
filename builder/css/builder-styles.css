@@ -120,11 +120,18 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
-  justify-content: center;
+.center-both-flex, .karma-builder .karma-top-nav, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+  align-items: center;
   display: flex;
-  text-align: center;
-  align-items: center; }
+  justify-content: center; }
+
+.space-between {
+  display: flex;
+  justify-content: space-between; }
+
+.space-around {
+  display: flex;
+  justify-content: space-around; }
 
 .HelveticaNeue-font, .karma-title-controller div.karma-title-field, .karma-title2-controller div.karma-title2-field {
   font-family: HelveticaNeue; }
@@ -1549,8 +1556,8 @@ html {
 
 /* _-_-_- layout/HEADER -_-_-_ */
 .karma-builder .karma-top-nav {
-  height: 10vh;
-  width: 100%;
+  width: "100%";
+  height: "100vh";
   background-color: rgba(0, 0, 0, 0.32); }
 
 iframe {
@@ -1768,7 +1775,6 @@ iframe {
   background-color: #fff;
   box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
   font-size: initial;
-  display: none;
   direction: rtl;
   position: absolute;
   z-index: 90; }
@@ -1813,8 +1819,8 @@ iframe {
     right: 17px;
     bottom: auto;
     left: auto;
-    border-radius: 3px;
     background-color: #fff;
+    border-radius: 3px;
     box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
     direction: rtl;
     position: absolute; }
@@ -1841,15 +1847,15 @@ iframe {
   position: relative; }
 
 .karma-spacing-dot-container {
+  width: "18px";
+  height: "18px";
   cursor: n-resize;
   position: absolute;
   top: -9px;
   left: 48%;
   display: none;
   align-items: center;
-  justify-content: center;
-  height: 18px;
-  width: 18px; }
+  justify-content: center; }
   .karma-spacing-dot-container:hover .spacing-dot-hover {
     display: block; }
   .karma-spacing-dot-container .spacing-dot-hover {
@@ -2212,55 +2218,47 @@ iframe {
   display: flex; }
 
 .grid-controller-template {
-  padding: 3%;
-  width: 285px;
+  align-items: center;
   background-color: rgba(65, 156, 248, 0.12);
   display: flex;
   flex-direction: column;
-  align-items: center; }
-  .grid-controller-template .karma-add-column-view {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
+  padding: 3%;
+  width: 285px; }
   .grid-controller-template .karma-add-column-view-border {
     background-color: rgba(255, 255, 255, 0.54);
     border: 1px solid #419CF8;
     border-radius: 4px;
     padding: 0px 3px; }
     .grid-controller-template .karma-add-column-view-border .karma-add-column-view-length {
-      height: 38px;
-      border-radius: 3px;
       background-color: rgba(65, 156, 248, 0.3);
-      min-width: 34px;
-      margin: 11px 3px 10px 3px; }
+      border-radius: 3px;
+      height: 38px;
+      margin: 11px 3px 10px 3px;
+      min-width: 34px; }
     .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+      background-color: transparent;
+      border: 1px dotted #419CF8;
+      border-radius: 3px;
       cursor: pointer;
       height: 37.64px;
-      border: 1px dotted #419CF8;
-      background-color: transparent;
-      border-radius: 3px;
-      position: relative;
-      display: flex;
-      position: relative;
-      justify-content: center;
-      align-items: center; }
+      position: relative; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:before, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
+        width: "8.42px";
+        height: "1.4px";
         content: '';
-        position: absolute;
-        height: 1.4px;
-        width: 8.42px;
-        background-color: #419CF8; }
+        background-color: #419CF8;
+        position: absolute; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
-        width: 1.4px;
-        height: 8.42px; }
+        width: "1.4px";
+        height: "8.42px"; }
   .grid-controller-template .karma-add-column-button button {
-    border-radius: 19px;
-    height: 36px;
-    margin: 20px;
     background-color: rgba(65, 156, 248, 0.18);
-    font-size: 14px;
+    border-radius: 19px;
+    color: #419CF8;
     font-family: "HelveticaNeue";
+    font-size: 14px;
+    height: 36px;
     line-height: 0;
-    color: #419CF8; }
+    margin: 20px; }
 
 /*# sourceMappingURL=builder-styles.css.map */

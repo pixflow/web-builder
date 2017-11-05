@@ -2,11 +2,18 @@
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.flex {
-  justify-content: center;
+.center-both-flex {
+  align-items: center;
   display: flex;
-  text-align: center;
-  align-items: center; }
+  justify-content: center; }
+
+.space-between {
+  display: flex;
+  justify-content: space-between; }
+
+.space-around {
+  display: flex;
+  justify-content: space-around; }
 
 .HelveticaNeue-font {
   font-family: HelveticaNeue; }

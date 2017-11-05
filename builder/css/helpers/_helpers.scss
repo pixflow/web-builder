@@ -1,9 +1,22 @@
 //public classes
-.flex {
-	justify-content: center;
-	display: flex;
-	text-align: center;
+.center-both-flex{
 	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.space-between {
+
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.space-around {
+
+	display: flex;
+	justify-content: space-around;
+
 }
 
 .HelveticaNeue-font {

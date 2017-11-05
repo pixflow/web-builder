@@ -88,7 +88,6 @@
 	background-color: $white-color;
 	box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
 	font-size: initial;
-	display: none;
 	direction: rtl;
 	position: absolute;
 	z-index: $level2;
@@ -134,8 +133,8 @@
 		@include box(auto, 35px);
 		@include flexbox(center, center, center);
 		@include element_direction($top: 17px, $right: 17px);
-		border-radius: 3px;
 		background-color: $white-color;
+		border-radius: 3px;
 		box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
 		direction: rtl;
 		position: absolute;
@@ -164,29 +163,28 @@
 }
 
 .karma-spacing-dot-container {
-	cursor: n-resize;
 
+	@include box( '18px', '18px' );
+	cursor: n-resize;
 	position: absolute;
 	top: -9px;
 	left: 48%;
 	display: none;
 	align-items: center;
 	justify-content: center;
-	height: 18px;
-	width: 18px;
 
 	&:hover .spacing-dot-hover {
 		display: block;
 	}
 
 	.spacing-dot-hover {
+		align-items: center;
+		background-color: rgba(51, 143, 252, 0.3);
+		border-radius: 100%;
 		height: 18px;
 		display: flex;
 		width: 18px;
-		border-radius: 100%;
-		background-color: rgba(51, 143, 252, 0.3);
 		justify-content: center;
-		align-items: center;
 		display: none;
 	}
 
