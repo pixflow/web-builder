@@ -1859,13 +1859,13 @@ iframe {
   .karma-spacing-dot-container:hover .spacing-dot-hover {
     display: block; }
   .karma-spacing-dot-container .spacing-dot-hover {
+    align-items: center;
+    background-color: rgba(51, 143, 252, 0.3);
+    border-radius: 100%;
     height: 18px;
     display: flex;
     width: 18px;
-    border-radius: 100%;
-    background-color: rgba(51, 143, 252, 0.3);
     justify-content: center;
-    align-items: center;
     display: none; }
   .karma-spacing-dot-container .spacing-dot {
     position: absolute;
