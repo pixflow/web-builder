@@ -164,7 +164,7 @@
 
 .karma-spacing-dot-container {
 
-	@include box( '18px', '18px' );
+	@include box( 18px, 18px );
 	cursor: n-resize;
 	position: absolute;
 	top: -9px;
