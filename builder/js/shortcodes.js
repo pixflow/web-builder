@@ -302,8 +302,8 @@
 
 			var that = this,
 				options = {
-					maxHeight   : 700,
-					minHeight   : 0,
+					maxHeight : 700,
+					minHeight : 0,
 					handles : {},
 					scroll : true ,
 					stop : function ( event, ui ) {
