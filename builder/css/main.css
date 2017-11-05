@@ -1703,24 +1703,24 @@ iframe {
     cursor: n-resize;
     position: absolute;
     top: 0; }
-  .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
+  .karma-spacing.karma-left-spacing {
     position: absolute;
     top: 0;
     height: 100%;
     left: 0 !important;
     cursor: e-resize; }
-    .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .karma-spacing-dot-container {
+    .karma-spacing.karma-left-spacing .karma-spacing-dot-container {
       cursor: e-resize;
       left: -9px !important;
       top: 50%; }
-  .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
+  .karma-spacing.karma-right-spacing {
     position: absolute;
     top: 0;
     height: 100%;
     right: 0 !important;
     left: initial !important;
     cursor: e-resize; }
-    .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .karma-spacing-dot-container {
+    .karma-spacing.karma-right-spacing .karma-spacing-dot-container {
       left: calc(100% - 9px ) !important;
       top: 50%;
       cursor: e-resize; }
