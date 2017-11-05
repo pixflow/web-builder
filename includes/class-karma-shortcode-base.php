@@ -113,7 +113,7 @@ class Karma_Shortcode_Base {
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ){
 
-			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.js', array( KARMA_BUILDER_NAME ) );
+			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.js', array( KARMA_BUILDER_NAME . '-shortcodes' ) );
 
 			add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
 			add_filter( 'karma_elements_map', array( $this, 'map' ) );
