@@ -1,7 +1,7 @@
 var karmaBuilder = karmaBuilder || {};
 
 
-(function ( $, karmaBuilder ) {
+( function ( $, karmaBuilder ) {
 	'use strict';
 
 	karmaBuilder.view = Backbone.View.extend({
@@ -150,4 +150,4 @@ var karmaBuilder = karmaBuilder || {};
 	});
 
 
-})(jQuery,karmaBuilder);
+} )( jQuery, karmaBuilder );

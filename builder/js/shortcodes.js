@@ -1,4 +1,6 @@
-karmaBuilder.shortcodes = Backbone.View.extend({
+( function( $, karmaBuilder ){
+
+	karmaBuilder.shortcodes = Backbone.View.extend({
 
 	events:{
 
@@ -834,8 +836,7 @@ karmaBuilder.shortcodes = Backbone.View.extend({
 	}
 
 });
-
-karmaBuilder.shortcodes.extend = function( child ) {
+	karmaBuilder.shortcodes.extend = function( child ) {
 
 	var view = Backbone.View.extend.apply( this, arguments );
 	if( true === child.denyEvents ){
@@ -845,3 +846,5 @@ karmaBuilder.shortcodes.extend = function( child ) {
 	return view;
 
 };
+
+} )( jQuery, karmaBuilder );
