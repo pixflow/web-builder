@@ -1,9 +1,8 @@
 /* _-_-_- layout/HEADER -_-_-_ */
-.karma-builder {
-	.karma-top-nav {
-		@extend .center-both-flex;
-		@include box( '100%', '100vh');
 
-		background-color: rgba(0, 0, 0, 0.32);
+	.karma-builder-toolbar {
+		@extend .center-both-flex;
+		@include box( 46px, 100vh);
+	  	background-color: #419CF8;
+
 	}
-}
