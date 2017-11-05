@@ -66,8 +66,8 @@
 	 * @returns {void}
 	 */
 	leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
-	+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.spaceing }}px">'
-	+ '<div class="karma-spacing-dot-container">'
+	+'<div class="karma-spacing karma-left-spacing" data-direction="left" style="width:{{ data.spaceing }}px">'
+	+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-e ui-resizable-e">'
 	+ '<div class="spacing-dot"></div>'
 	+ '<div class="spacing-dot-hover target-moving"></div>'
 	+ '</div>'
@@ -82,8 +82,8 @@
 	 * @returns {void}
 	 */
 	rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
-	+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="height:{{ data.spaceing }}px">'
-	+ '<div class="karma-spacing-dot-container">'
+	+'<div class="karma-spacing karma-right-spacing" data-direction="right" style="width:{{ data.spaceing }}px">'
+	+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-w ui-resizable-w">'
 	+ '<div class="spacing-dot"></div>'
 	+ '<div class="spacing-dot-hover target-moving"></div>'
 	+ '</div>'
