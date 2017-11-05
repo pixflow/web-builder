@@ -11,7 +11,6 @@
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
 			this.addAction();
-
 		},
 
 		showSettingPanel : function(){
@@ -86,6 +85,46 @@
 			attributes['xl_size'] = value;
 			return attributes;
 
+		},
+
+		/**
+		 * return current layout grid
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns Array - current layout of section
+		 */
+		currentGrid : function( ) {
+
+			var childrenModels = this.findChildren();
+
+			var currentGrid = [];
+			for (var i = 0, len = childrenModels.length; i < len; i++) {
+				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.sm_size ) )
+			}
+			return currentGrid;
+
+		},
+
+		/**
+		 * Calculate new layout grid after append nw column
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns Array - new layout of section after add new column
+		 */
+		calculateNewGrid : function( ) {
+			var newGrid = this.currentGrid();
+			newGrid.reverse();
+			for (var i = 0, len = newGrid.length; i < len; i++) {
+				if(newGrid[i] > 1) {
+					newGrid[i] = parseInt(newGrid[i] - 1);
+					break;
+				}
+			}
+			newGrid.reverse();
+			newGrid.push(1);
+			return newGrid;
 		},
 
 		/**
@@ -194,7 +233,7 @@
 			}
 
 			if ( newLayout.length > currentGrid.length ) {
-				this.modifyColumns( counter, newLayout, columns[ counter ] );
+				this.createNewColumn( counter, newLayout, columns[ counter ] );
 			}
 
 			//this.model.trigger( 'change', this.model );
@@ -212,18 +251,25 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		//TODO rafactor
-		modifyColumns : function ( counter, newLayout, columnId ) {
+	
+		createNewColumn : function ( counter, newLayout, columnId ) {
 
 			counter = parseInt( counter ) + 1;
 			for( counter; counter < newLayout.length; counter++ ){
-				var model = karmaBuilder.karmaModels.findWhere( { 'shortcode_id' : columnId } ).clone() ;
-					newModel = karmaBuilder.karmaModels.add( model ) ;
+				var model = karmaBuilder.karmaModels.findWhere( { 'shortcode_id' : columnId } ).attributes ,
+					lastModel = karmaBuilder.karmaModels.last().attributes ,
+					newModel = {
+						'shortcode_id'          : lastModel.shortcode_id + 1 ,
+						'parent_id'             : model.parent_id ,
+						'order'                 : model.order + 1 ,
+						'shortcode_content'     : '' ,
+						'shortcode_name'        : model.shortcode_name ,
+						'shortcode_attributes'  : JSON.stringify( model.shortcode_attributes )
+					};
 
-				newModel.attributes.shortcode_attributes = this.updateWidthColumn( newModel.attributes.shortcode_attributes, newLayout[ counter ] );
-				newModel.attributes.shortcode_attributes['element_key'] = this.createNewElementKey();
-				newModel.attributes['shortcode_id'] = newModel.attributes['shortcode_id'] + 1;
-				newModel.attributes['order'] = newModel.attributes['order'] + 1;
+				newModel.shortcode_attributes = this.updateWidthColumn( JSON.parse ( newModel.shortcode_attributes ), newLayout[ counter ] );
+				newModel.shortcode_attributes.element_key = this.createNewElementKey();
+				karmaBuilder.karmaModels.add( newModel );
 
 			}
 

@@ -100,9 +100,9 @@ class Karma_Builder_Public {
 
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) {
-			wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/karma-builder-init.min.js', array('jquery', 'backbone', 'wp-util'), $this->version, false);
-			wp_enqueue_script($this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/shortcodes.min.js', array( $this->plugin_name ), $this->version, false);
-			wp_enqueue_script($this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/setting-panel.min.js', array( $this->plugin_name . 'shortcodes' ), $this->version, false);
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url(__FILE__) . 'js/karma-builder-init.min.js', array('jquery', 'backbone', 'wp-util'), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/setting-panel.min.js', array( $this->plugin_name ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/shortcodes.min.js', array( $this->plugin_name . '-setting-panel' ), $this->version, false );
 		}
 	}
 

@@ -1,37 +1,4 @@
 var wp = _;
-karmaBuilder.model = Backbone.Model.extend({
-
-	defaults : {
-		"shortcode_name" 		: "karma_row" ,
-		"shortcode_attributes"	: {
-			"element_key"	: "",
-			"padding"		: "200",
-		},
-		"shortcode_content" 	: "",
-		"shortcode_id" 			: 1,
-		"order" 				: 1,
-		"parent_id" 			: 0
-	}
-
-});
-
-// A list of element
-var KarmaShortcodesCollection = Backbone.Collection.extend({
-
-	model : karmaBuilder.model
-
-});
-
-karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
-var karmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
-
-/** Create object from builder */
-var shortcode_instance = new karmaBuilder.shortcodes({
-
-	template: _.template( '<div class="row delete-elements" ><%= attributes.shortcode_id %></div>' )
-
-});
-
 
 /**
  * Test changeRowLayout() function .

@@ -119,6 +119,7 @@ var karmaBuilder = karmaBuilder || {};
 
 	});
 
+
 	karmaBuilder.model = Backbone.Model.extend({
 
 		defaults : {

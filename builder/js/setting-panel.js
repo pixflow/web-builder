@@ -1,8 +1,7 @@
 ( function( $, karmaBuilder){
 
-	karmaBuilder.elementSettingPanel = karmaBuilder.shortcodes.extend({
+	karmaBuilder.elementSettingPanel = Backbone.View.extend({
 
-		denyEvents: true ,
 
 		/**
 		 * Define elements events
@@ -24,10 +23,9 @@
 		 *
 		 * @returns void
 		 */
-		initialize: function( options ) {
+		initialize: function() {
 
-			this.options = options;
-			this.render();
+			this.setElement( $('body') );
 
 		},
 
@@ -39,9 +37,6 @@
 		 * @returns void
 		 */
 		render : function () {
-
-			this.openSettingPanel( this.options.model, this.options.form );
-			this.bindDragEvents();
 
 		},
 
@@ -101,7 +96,6 @@
 			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
 			document.getElementById('page').appendChild( $html );
 			this.bindDragEvents();
-
 			$( document ).trigger('karma_finish_form_builder', [ this ] );
 
 		},
@@ -144,6 +138,7 @@
 		 * @returns	{object} form builder html
 		 */
 		formBuilder : function( model, form ) {
+
 			var shortcodeModel = model.attributes ,
 				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
 				karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',

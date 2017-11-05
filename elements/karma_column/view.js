@@ -12,6 +12,7 @@
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
 
 		},
+		
 
 		/**
 		 * @summary Set the active row with specific class
