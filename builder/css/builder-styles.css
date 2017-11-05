@@ -1874,7 +1874,72 @@ iframe {
     width: 8px;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #fff; }
+    background-color: #fff;
+    z-index: 100; }
+  .karma-spacing-dot-container .spacing-top-hover {
+    top: 3px;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 20px;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+    display: block; }
+    .karma-spacing-dot-container .spacing-top-hover .spacing-dot-hover {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      position: absolute; }
+  .karma-spacing-dot-container .spacing-bottom-hover {
+    top: -3px;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 20px;
+    height: 10px;
+    display: block;
+    position: relative;
+    overflow: hidden; }
+    .karma-spacing-dot-container .spacing-bottom-hover .spacing-dot-hover {
+      top: 0;
+      right: auto;
+      bottom: auto;
+      left: 0;
+      position: absolute; }
+  .karma-spacing-dot-container .spacing-left-hover {
+    top: 1px;
+    right: auto;
+    bottom: auto;
+    left: 4px;
+    width: 10px;
+    height: 20px;
+    display: block;
+    position: relative;
+    overflow: hidden; }
+    .karma-spacing-dot-container .spacing-left-hover .spacing-dot-hover {
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: auto;
+      position: absolute; }
+  .karma-spacing-dot-container .spacing-right-hover {
+    width: 10px;
+    height: 20px;
+    top: 1px;
+    right: auto;
+    bottom: auto;
+    left: -4px;
+    display: block;
+    position: relative;
+    overflow: hidden; }
+    .karma-spacing-dot-container .spacing-right-hover .spacing-dot-hover {
+      top: 0;
+      right: auto;
+      bottom: auto;
+      left: 0;
+      position: absolute; }
 
 .row-bottom-spacing-dot-container {
   cursor: n-resize;

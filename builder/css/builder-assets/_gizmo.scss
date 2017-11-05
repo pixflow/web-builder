@@ -196,8 +196,68 @@
 		border: 1px solid #419CF8;
 		border-radius: 100%;
 		background-color: $white-color;
+	    z-index:$level1;
 
 	}
+
+  .spacing-top-hover{
+	@include element_direction($top:3px, $left:0);
+	@include box(20px, 10px);
+	overflow: hidden;
+	position: relative;
+	display: block;
+
+	.spacing-dot-hover{
+	  @include element_direction($bottom:0, $left:0);
+	  position: absolute;
+	}
+  }
+
+  .spacing-bottom-hover{
+	@include element_direction($top:-3px, $left:0);
+	@include box(20px, 10px);
+	display: block;
+	position: relative;
+	overflow: hidden;
+
+
+
+	.spacing-dot-hover{
+	  @include element_direction($top:0, $left:0);
+	  position: absolute;
+	}
+  }
+
+  .spacing-left-hover{
+	@include element_direction($top:1px, $left:4px);
+	@include box(10px, 20px);
+	display: block;
+	position: relative;
+	overflow: hidden;
+
+
+
+	.spacing-dot-hover{
+	  @include element_direction($top:0, $right:0);
+	  position: absolute;
+	}
+  }
+
+  .spacing-right-hover{
+	@include box(10px, 20px);
+	@include element_direction($top:1px, $left:-4px);
+	display: block;
+	position: relative;
+	overflow: hidden;
+
+
+
+	.spacing-dot-hover{
+	  @include element_direction($top:0, $left:0);
+	  position: absolute;
+	}
+  }
+
 }
 
 .row-bottom-spacing-dot-container {

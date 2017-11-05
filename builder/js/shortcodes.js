@@ -45,13 +45,13 @@
 		'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s karma-top-spacing-height" data-direction="both" >'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-dot-hover target-moving"></div>'
+		+ '<div class="spacing-top-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
 		+ '</div>'
 		+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle  ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-dot-hover"></div>'
+		+ '<div class="spacing-bottom-hover"><div class="spacing-dot-hover"></div></div>'
 		+ '</div>'
 		+ '</div>'
 		+ '</div>' ,
@@ -67,7 +67,7 @@
 		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-dot-hover target-moving"></div>'
+		+ '<div class="spacing-left-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
 		+ '</div>'
 		+ '</div>' ,
@@ -83,7 +83,7 @@
 		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="width:{{ data.spaceing }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-dot-hover target-moving"></div>'
+		+ '<div class="spacing-right-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
 		+ '</div>'
 		+ '</div>' ,
