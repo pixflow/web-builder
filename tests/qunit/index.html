@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>QUnit Example</title>
-  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>QUnit Example</title>
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
 </head>
 <body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-  <div id="karma-tests" style="display: none;" >
-	  <div class="karma-builder-element " data-element-key="firtstrow_12312" data-name="karma_row" data-element-id="4">		<div class="karma-section karma_row_firtstrow_12312 ">
-		  <div class="karma-container karma-row karma-no-gutters">
-			  <div class="karma-builder-element karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4" data-element-key="12a12" data-name="karma_column" data-element-id="1">
-				  <div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
-					  test
-				  </div>
-			  </div>
-			  <div class="karma-builder-element karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4" data-element-key="1r312" data-name="karma_column" data-element-id="2">
-				  <div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
-					  test
-				  </div>
-			  </div>
-			  <div class="karma-builder-element karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4" data-element-key="ssssscolumn_12g12" data-name="karma_column" data-element-id="3">
-				  <div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
-					  test
-				  </div>
-			  </div>
-		  </div>
-	  	</div>
-	  </div>
-  </div>
-  <script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
-          type = "text/javascript"></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
-          type = "text/javascript"></script>
-  <script type="text/javascript" >
-	  var builderModels = '[{"shortcode_name":"karma_row","shortcode_attributes":{"element_key":"firtstrow_12312","space":"20"},"shortcode_id":1,"order":1,"parent_id":0},{"shortcode_name":"karma_column","shortcode_attributes":{"sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4","element_key":"12a12","width":"3"},"shortcode_content":"test","shortcode_id":2,"order":1,"parent_id":1},{"shortcode_name":"karma_column","shortcode_attributes":{"element_key":"1r312","sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4","width":"3"},"shortcode_content":"test","shortcode_id":3,"order":2,"parent_id":1},{"shortcode_name":"karma_column","shortcode_attributes":{"element_key":"ssssscolumn_12g12","sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4","width":"3"},"shortcode_content":"test","shortcode_id":4,"order":3,"parent_id":1}]';
-	  var builderGizmo 	= '{"karma_row":[{"type":"inner-gizmo","className":"row-gizmo-group","params":[{"type":"icon","icon":"","action":"open","className":"karma-element-setting"},{"type":"icon","icon":"","action":"open","className":"row-setting-layout"},{"type":"text","action":"open","className":"row-setting-setting","value":"background"}]}],"karma_column":[{"type":"inner-gizmo","position":"top right","class":"","params":[{"icon":"setting.svg","action":"open","class":""},{"icon":"setting.svg","action":"open","class":""},{"icon":"setting.svg","action":"open","class":""}]}]}';
-  </script>
-  <script src="../../builder/js/grid-resizer.js"></script>
-  <script src="../../builder/js/karma-builder-init.js"></script>
-  <script src="tests.js"></script>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<div id="karma-tests" style="display: none;">
+	<div class="karma-builder-element " data-element-key="firtstrow_12312" data-name="karma_row" data-element-id="4">
+		<div class="karma-section karma_row_firtstrow_12312 ">
+			<div class="karma-container karma-row karma-no-gutters">
+				<div class="karma-builder-element karma-column_12a12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+				     data-element-key="12a12" data-name="karma_column" data-element-id="1">
+					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+						test
+					</div>
+				</div>
+				<div class="karma-builder-element karma-column_1r312 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+				     data-element-key="1r312" data-name="karma_column" data-element-id="2">
+					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+						test
+					</div>
+				</div>
+				<div class="karma-builder-element karma-column_ssssscolumn_12g12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+				     data-element-key="ssssscolumn_12g12" data-name="karma_column" data-element-id="3">
+					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+						test
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var builderModels = '[{"shortcode_name":"karma_row","shortcode_attributes":{"element_key":"firtstrow_12312","space":"20"},"shortcode_id":1,"order":1,"parent_id":0},{"shortcode_name":"karma_column","shortcode_attributes":{"sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4","element_key":"12a12","width":"3"},"shortcode_content":"test","shortcode_id":2,"order":1,"parent_id":1},{"shortcode_name":"karma_column","shortcode_attributes":{"element_key":"1r312","sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4","width":"3"},"shortcode_content":"test","shortcode_id":3,"order":2,"parent_id":1},{"shortcode_name":"karma_column","shortcode_attributes":{"element_key":"ssssscolumn_12g12","sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4","width":"3"},"shortcode_content":"test","shortcode_id":4,"order":3,"parent_id":1}]';
+	var builderGizmo = '{"karma_row":[{"type":"inner-gizmo","className":"row-gizmo-group","params":[{"type":"icon","icon":"","action":"open","className":"karma-element-setting"},{"type":"icon","icon":"","action":"open","className":"row-setting-layout"},{"type":"text","action":"open","className":"row-setting-setting","value":"background"}]}],"karma_column":[{"type":"inner-gizmo","position":"top right","class":"","params":[{"icon":"setting.svg","action":"open","class":""},{"icon":"setting.svg","action":"open","class":""},{"icon":"setting.svg","action":"open","class":""}]}]}';
+</script>
+<script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
+<script src="../../../../../wp-includes/js/jquery/jquery.js"></script>
+<script src="../../../../../wp-includes/js/jquery/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="../../../../../wp-includes/js/underscore.min.js" type="text/javascript"></script>
+<script src="../../../../../wp-includes/js/backbone.min.js" type="text/javascript"></script>
+<script src="../../builder/js/grid-resizer.js"></script>
+<script src="../../builder/js/jquery-ui.min.js"></script>
+<script src="../../builder/js/karma-builder-init.js"></script>
+<script src="../../builder/js/setting-panel.js"></script>
+<script src="../../builder/js/shortcodes.js"></script>
+<script src="../../elements/karma_section/view.js"></script>
+<script src="../../elements/karma_column/view.js"></script>
+<script src="tests.js"></script>
 </body>
 </html>
