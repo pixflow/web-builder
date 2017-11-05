@@ -1694,6 +1694,8 @@ iframe {
 .karma-spacing {
   position: relative;
   height: 5px; }
+  .karma-spacing.karma-top-spacing-height {
+    height: 0; }
   .karma-spacing.karma-top-spacing {
     width: 100%;
     cursor: n-resize;

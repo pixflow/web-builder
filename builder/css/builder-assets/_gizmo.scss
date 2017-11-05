@@ -3,6 +3,10 @@
 	position: relative;
 	height: 5px;
 
+  	&.karma-top-spacing-height{
+	  height:0;
+	}
+
 	&.karma-top-spacing {
 		width: 100%;
 		cursor: n-resize;

@@ -366,7 +366,7 @@
 			var element = this.$el,
 				elementWidth = element.width(),
 				elementRightSpacing = element.find( '.karma-right-spacing' ).width(),
-				paddingLeftValue = elementWidth - elementRightSpacing;
+				paddingLeftValue = elementWidth - elementRightSpacing - 10;
 			return paddingLeftValue;
 
 		},
@@ -415,7 +415,8 @@
 			var element = this.$el,
 				elementWidth = element.width(),
 				elementLeftSpacing = element.find( '.karma-left-spacing' ).width(),
-				paddingRightValue = elementWidth - elementLeftSpacing;
+				// -10 is for the  item's size ( minimom ) on the page
+				paddingRightValue = elementWidth - elementLeftSpacing -10;
 			return paddingRightValue;
 
 		},
