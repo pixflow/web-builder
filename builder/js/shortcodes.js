@@ -42,13 +42,13 @@
 		 * @returns {void}
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">' +
-		'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
+		'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s karma-top-spacing-height" data-direction="both" >'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-dot-hover target-moving"></div>'
 		+ '</div>'
 		+ '</div>'
-		+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle ui-resizable-s ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
+		+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle  ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-dot-hover"></div>'
@@ -321,10 +321,9 @@
 				};
 
 			// Apply JQuery Ui resizable on bottom spacing
-			options.alsoResize = $gizmo.find( '.karma-top-spacing' );
 			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
 			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
-			$gizmo.find( '.karma-bottom-spacing' ).resizable( options );
+			this.$el.find( '.karma-bottom-spacing' ).resizable( options );
 
 		},
 
@@ -356,6 +355,24 @@
 		},
 
 		/**
+		 *@summery calculate maxWidth of left spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return {integer} return value of maxwidth padding left
+		 */
+		calculateMaxWidthLeftSpacing : function () {
+
+			var element = this.$el,
+				elementWidth = element.width(),
+				elementRightSpacing = element.find( '.karma-right-spacing' ).width(),
+				paddingLeftValue = elementWidth - elementRightSpacing;
+			return paddingLeftValue;
+
+		},
+
+
+		/**
 		 * @summary Build gizmo resizeably for left
 		 *
 		 * @since 1.0.0
@@ -364,9 +381,10 @@
 		 */
 		leftSpacingGizmo : function ( $gizmo ) {
 
-			var that = this,
+			var maxWidth = this.calculateMaxWidthLeftSpacing(),
+				that = this,
 				options = {
-					maxWidth   : 700,
+					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
@@ -374,6 +392,7 @@
 					},
 
 					resize: function( event, ui ){
+						ui.element.resizable( "option", "maxWidth", that.calculateMaxWidthLeftSpacing());
 						var currentSection = that.el.querySelector('div:first-child');
 						currentSection.style.paddingLeft = ui.size.width + 'px';
 					}
@@ -385,6 +404,23 @@
 		},
 
 		/**
+		 *@summery calculate maxWidth of right spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return {integer} return value of maxwidth padding right
+		 */
+		calculateMaxWidthRightSpacing : function () {
+
+			var element = this.$el,
+				elementWidth = element.width(),
+				elementLeftSpacing = element.find( '.karma-left-spacing' ).width(),
+				paddingRightValue = elementWidth - elementLeftSpacing;
+			return paddingRightValue;
+
+		},
+
+		/**
 		 * @summary Build gizmo resizeably for right
 		 *
 		 * @since 1.0.0
@@ -392,18 +428,21 @@
 		 * @returns {void}
 		 */
 		rightSpacingGizmo : function ( $gizmo ) {
-
-			var that = this,
+			var maxWidth = this.calculateMaxWidthRightSpacing(),
+				that = this,
 				options = {
-					maxWidth   : 700,
+					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
 						that.setAttributes( {space: parseInt(ui.element.width())}, true );
 					},
 					resize: function( event, ui ){
+
+						ui.element.resizable( "option", "maxWidth", that.calculateMaxWidthRightSpacing() );
 						var currentSection = that.el.querySelector( 'div:first-child' );
 						currentSection.style.paddingRight = ui.size.width + 'px';
+
 					}
 				};
 			that.$el.attr( 'data-direction','right' );
@@ -466,14 +505,14 @@
 			switch ( direction ){
 
 				case 'left':
-					// console.log(that.$el.find( '> .karma-spacing-container .karma-spacing.karma-left-spacing' ))
 					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing.karma-left-spacing' ).width() ) + ' px';
 					break;
 				case 'right':
-					// console.log(that.$el.find( '> .karma-spacing-container .karma-spacing.karma-right-spacing' ))
 					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing.karma-right-spacing' ).width() ) + ' px';
 					break;
 				case 'both':
+					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing.karma-bottom-spacing' ).height() ) + ' px';
+					break;
 				case 'top':
 					tooltipDiv.innerText = ( this.$el.find( '> .karma-spacing-container .karma-spacing' ).height() ) + ' px';
 					break;
