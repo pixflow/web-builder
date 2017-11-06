@@ -1602,12 +1602,14 @@ html {
         margin-right: 0;
         margin-bottom: inherit;
         margin-left: 39px;
-        color: #fff;
+        color: #fffc;
         cursor: pointer;
         font-size: 15px;
         line-height: 17px; }
         .karma-builder-toolbar .karma-builder-left ul li:hover {
           color: #ffffffb8; }
+        .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-icon {
+          padding-top: 4px; }
         .karma-builder-toolbar .karma-builder-left ul li .builder-page-name {
           padding-left: 4px; }
         .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-text {
@@ -1645,7 +1647,7 @@ html {
         margin-right: inherit;
         margin-bottom: 0;
         margin-left: 20px;
-        color: #fff;
+        color: #fffc;
         cursor: pointer;
         font-size: 15px;
         line-height: 17px;
