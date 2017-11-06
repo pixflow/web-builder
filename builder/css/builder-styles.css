@@ -133,7 +133,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, .karma-title-controller div.karma-title-field, .karma-title2-controller div.karma-title2-field {
+.HelveticaNeue-font, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-title-controller div.karma-title-field, .karma-title2-controller div.karma-title2-field {
   font-family: HelveticaNeue; }
 
 /**
@@ -1556,44 +1556,128 @@ html {
 
 /* _-_-_- layout/HEADER -_-_-_ */
 .karma-builder-toolbar {
-  width: 46px;
-  height: 100vh;
-  background-color: #419CF8;
+  width: 100%;
+  height: 46px;
   display: flex;
+  text-align: inherit;
+  align-items: inherit;
   justify-content: space-between;
-  position: fixed;
   top: 0;
   right: 0;
+  bottom: auto;
   left: 0;
+  background-color: #419CF8;
+  position: fixed;
   backface-visibility: hidden; }
   .karma-builder-toolbar .karma-builder-left {
+    width: auto;
+    height: 100%;
     display: flex;
-    align-items: stretch; }
+    text-align: inherit;
+    align-items: stretch;
+    justify-content: inherit;
+    padding-left: 21px; }
     .karma-builder-toolbar .karma-builder-left ul {
-      list-style: none;
+      width: auto;
+      height: 100%;
+      padding-top: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      margin-left: 0;
       display: flex;
-      margin: 0;
-      align-items: stretch; }
+      text-align: inherit;
+      align-items: stretch;
+      justify-content: inherit;
+      list-style: none; }
       .karma-builder-toolbar .karma-builder-left ul li {
-        margin-left: 35px;
-        margin-bottom: 0;
         display: flex;
-        align-items: stretch;
-        justify-content: center; }
+        text-align: inherit;
+        align-items: center;
+        justify-content: center;
+        margin-top: inherit;
+        margin-right: 0;
+        margin-bottom: inherit;
+        margin-left: 39px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 15px;
+        line-height: 17px; }
+        .karma-builder-toolbar .karma-builder-left ul li:hover {
+          color: #ffffffb8; }
+        .karma-builder-toolbar .karma-builder-left ul li .builder-page-name {
+          padding-left: 4px; }
+        .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-text {
+          padding-left: 6px; }
+        .karma-builder-toolbar .karma-builder-left ul li.builder-brand {
+          border-right: 1px solid rgba(255, 255, 255, 0.19);
+          margin-left: 0;
+          padding-right: 25.5px; }
   .karma-builder-toolbar .karma-builder-right {
     display: flex;
-    align-items: stretch; }
+    text-align: inherit;
+    align-items: stretch;
+    justify-content: inherit;
+    width: auto;
+    height: 100%;
+    padding-right: 10px; }
     .karma-builder-toolbar .karma-builder-right ul {
-      list-style: none;
       display: flex;
-      margin: 0;
-      align-items: stretch; }
+      text-align: inherit;
+      align-items: center;
+      justify-content: inherit;
+      width: auto;
+      height: 100%;
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+      list-style: none; }
       .karma-builder-toolbar .karma-builder-right ul li {
-        margin-left: 35px;
-        margin-bottom: 0;
         display: flex;
-        align-items: stretch;
-        justify-content: center; }
+        text-align: inherit;
+        align-items: center;
+        justify-content: center;
+        margin-top: inherit;
+        margin-right: inherit;
+        margin-bottom: 0;
+        margin-left: 20px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 15px;
+        line-height: 17px;
+        position: relative; }
+        .karma-builder-toolbar .karma-builder-right ul li.builder-publish {
+          width: 112px;
+          height: 32px;
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 3px;
+          box-shadow: 0 4px 7px 1px rgba(57, 73, 89, 0.15); }
+        .karma-builder-toolbar .karma-builder-right ul li .builder-notification-number {
+          display: flex;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          width: 17.05px;
+          height: 17.05px;
+          top: -3px;
+          right: -11px;
+          bottom: auto;
+          left: auto;
+          background-color: #FF5D5C;
+          border: 2px solid #419CF8;
+          border-radius: 100%;
+          box-sizing: border-box;
+          color: #FFFFFF;
+          font-family: "Helvetica Neue";
+          font-size: 8px;
+          font-weight: bold;
+          line-height: 10px;
+          padding-top: 2px;
+          position: absolute; }
 
 iframe {
   height: 200vh;

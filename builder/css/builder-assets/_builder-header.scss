@@ -2,54 +2,102 @@
 
 .karma-builder-toolbar {
 	@extend .center-both-flex;
-	@include box(46px, 100vh);
+	@include box( 100% , 46px );
+	@include flexbox( $justify-content:space-between );
+	@include element_direction($top:0, $right:0, $left:0);
 	background-color: #419CF8;
-	display: flex;
-	justify-content: space-between;
 	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	backface-visibility: hidden;
-	
+
 	.karma-builder-left {
-		display: flex;
-		align-items: stretch;
+		@include box(auto, 100%);
+		@include flexbox( $align-item:stretch );
+		padding-left: 21px;
 
 		ul {
+			@include box( auto, 100% );
+			@include padding( 0,0,0,0 );
+			@include margin( 0,0,0,0 );
+			@include flexbox( $align-item:stretch );
 			list-style: none;
-			display: flex;
-			margin: 0;
-			align-items: stretch;
 
 			li {
-				margin-left: 35px;
-				margin-bottom: 0;
-				display: flex;
-				align-items: stretch;
-				justify-content: center;
+				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
+				@include margin( inherit,0,inherit,39px );
+				@extend .HelveticaNeue-font;
+				color: $white-color;
+				cursor: pointer;
+				font-size: 15px;
+				line-height: 17px;
+				
+				&:hover{
+					color: #ffffffb8;
+				}
+
+				.builder-page-name{
+					padding-left: 4px;
+				}
+				.builder-upgrade-text{
+					padding-left: 6px;
+				}
+
+				&.builder-brand{
+					border-right: 1px solid rgba(255,255,255,0.19);
+					margin-left: 0;
+					padding-right: 25.5px;
+				}
 			}
 		}
 	}
-
+	
 	.karma-builder-right {
-		display: flex;
-		align-items: stretch;
+		@include flexbox( $align-item:stretch );
+		@include box(auto, 100%);
+		padding-right: 10px;
 
 		ul {
+			@include flexbox( $align-item:center );
+			@include box(auto, 100%);
+			@include margin( 0,0,0,0 );
 			list-style: none;
-			display: flex;
-			margin: 0;
-			align-items: stretch;
 
 			li {
-				margin-left: 35px;
-				margin-bottom: 0;
-				display: flex;
-				align-items: stretch;
-				justify-content: center;
+
+				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
+				@include margin( inherit,inherit,0,20px );
+				@extend .HelveticaNeue-font;
+				color: $white-color;
+				cursor: pointer;
+				font-size: 15px;
+				line-height: 17px;
+				position: relative;
+
+				&.builder-publish{
+					@include box( 112px, 32px );
+					background-color: rgba(255,255,255,0.2);
+					border-radius: 3px;
+					box-shadow: 0 4px 7px 1px rgba(57,73,89,0.15);
+				}
+
+				.builder-notification-number{
+					@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
+					@include box( 17.05px, 17.05px );
+					@include element_direction( $top:-3px, $right:-11px );
+					background-color: #FF5D5C;
+					border: 2px solid #419CF8;
+					border-radius: 100%;
+					box-sizing: border-box;
+					color: #FFFFFF;
+					font-family: "Helvetica Neue";
+					font-size: 8px;
+					font-weight: bold;
+					line-height: 10px;
+					padding-top: 2px;
+					position: absolute;
+				}
 			}
 		}
 	}
+
+	backface-visibility: hidden;
 
 }
