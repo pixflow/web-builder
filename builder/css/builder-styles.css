@@ -1734,149 +1734,66 @@ iframe {
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/GIZMO -_-_-_ */
 .karma-spacing {
-  position: relative;
-  height: 5px; }
+  height: 5px;
+  position: relative; }
   .karma-spacing.karma-top-spacing-height {
     height: 0; }
   .karma-spacing.karma-top-spacing {
-    width: 100%;
     cursor: n-resize;
     position: absolute;
-    top: 0; }
-  .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
-    position: absolute;
     top: 0;
+    width: 100%; }
+  .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
+    cursor: e-resize;
     height: 100%;
     left: 0 !important;
-    cursor: e-resize; }
+    position: absolute;
+    top: 0; }
     .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .karma-spacing-dot-container {
       cursor: e-resize;
       left: -9px !important;
       top: 50%; }
   .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
-    position: absolute;
-    top: 0;
+    cursor: e-resize;
     height: 100%;
-    right: 0 !important;
     left: initial !important;
-    cursor: e-resize; }
+    position: absolute;
+    right: 0 !important;
+    top: 0; }
     .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .karma-spacing-dot-container {
+      cursor: e-resize;
       left: calc(100% - 9px) !important;
-      top: 50%;
-      cursor: e-resize; }
+      top: 50%; }
   .karma-spacing.karma-bottom-spacing {
-    width: 100%;
+    bottom: 0px !important;
+    cursor: n-resize;
     position: absolute;
     top: initial !important;
-    bottom: 0px !important;
-    cursor: n-resize; }
+    width: 100%; }
     .karma-spacing.karma-bottom-spacing .karma-spacing-dot-container {
-      top: initial !important;
-      bottom: -9px !important; }
+      bottom: -9px !important;
+      top: initial !important; }
 
 .karma-spacing .resize-handler {
-  position: absolute;
-  width: 100%;
+  cursor: n-resize;
   height: 100%;
-  cursor: n-resize; }
+  position: absolute;
+  width: 100%; }
 
 .tooltip-div {
-  position: fixed;
-  display: none;
-  height: 16px;
-  width: 39px;
-  border-radius: 100px;
+  align-items: center;
   background-color: #76c1f3;
+  border-radius: 100px;
   color: #fff;
+  display: none;
+  display: flex;
   font-family: HelveticaNeue;
   font-size: 9px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-.row-gizmo-group {
-  width: auto;
-  height: 35px;
-  display: flex;
-  text-align: center;
-  align-items: center;
+  height: 16px;
   justify-content: center;
-  top: 17px;
-  right: 17px;
-  bottom: auto;
-  left: auto;
-  border-radius: 3px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
-  font-size: initial;
-  direction: rtl;
-  position: absolute;
-  z-index: 90; }
-  .row-gizmo-group div {
-    cursor: pointer; }
-  .row-gizmo-group .karma-builder-gizmo-icon {
-    padding-top: 0;
-    padding-right: 12px;
-    padding-bottom: 0;
-    padding-left: 11px;
-    width: auto;
-    height: 22px;
-    align-items: center;
-    border-left: 1px solid rgba(151, 151, 151, 0.3);
-    display: flex;
-    transition-duration: 0.1s; }
-    .row-gizmo-group .karma-builder-gizmo-icon div {
-      display: flex; }
-    .row-gizmo-group .karma-builder-gizmo-icon:hover svg * {
-      fill: #419CF8;
-      transition-duration: 0.1s; }
-  .row-gizmo-group .karma-builder-gizmo-text {
-    padding-top: 0;
-    padding-right: 15px;
-    padding-bottom: 0;
-    padding-left: 15px;
-    color: #394959;
-    font-size: 13px;
-    font-family: HelveticaNeue;
-    transition: all 0.3s ease; }
-  .row-gizmo-group .karma-builder-gizmo-text:hover {
-    color: #419CF8;
-    transition: all 0.3s ease; }
-  .row-gizmo-group .row-gizmo-group {
-    width: auto;
-    height: 35px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    top: 17px;
-    right: 17px;
-    bottom: auto;
-    left: auto;
-    background-color: #fff;
-    border-radius: 3px;
-    box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
-    direction: rtl;
-    position: absolute; }
-    .row-gizmo-group .row-gizmo-group div {
-      cursor: pointer; }
-    .row-gizmo-group .row-gizmo-group .karma-builder-gizmo-icon {
-      padding-top: 0;
-      padding-right: 10px;
-      padding-bottom: 0;
-      padding-left: 10px;
-      width: auto;
-      height: 22px;
-      border-left: 1px solid rgba(151, 151, 151, 0.3); }
-    .row-gizmo-group .row-gizmo-group .karma-builder-gizmo-text {
-      padding-top: 0;
-      padding-right: 15px;
-      padding-bottom: 0;
-      padding-left: 15px;
-      color: #394959;
-      font-size: 13px;
-      font-family: HelveticaNeue; }
+  position: fixed;
+  text-align: center;
+  width: 39px; }
 
 .karma-builder-element {
   position: relative; }
@@ -1884,32 +1801,32 @@ iframe {
 .karma-spacing-dot-container {
   width: 18px;
   height: 18px;
-  cursor: n-resize;
-  position: absolute;
-  top: -9px;
-  left: 48%;
-  display: none;
   align-items: center;
-  justify-content: center; }
+  cursor: n-resize;
+  display: none;
+  justify-content: center;
+  left: 48%;
+  position: absolute;
+  top: -9px; }
   .karma-spacing-dot-container:hover .spacing-dot-hover {
     display: block; }
   .karma-spacing-dot-container .spacing-dot-hover {
     align-items: center;
     background-color: rgba(51, 143, 252, 0.3);
     border-radius: 100%;
-    height: 18px;
     display: flex;
-    width: 18px;
+    display: none;
+    height: 18px;
     justify-content: center;
-    display: none; }
+    width: 18px; }
   .karma-spacing-dot-container .spacing-dot {
-    position: absolute;
-    box-sizing: border-box;
-    height: 8px;
-    width: 8px;
+    background-color: #fff;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #fff;
+    box-sizing: border-box;
+    height: 8px;
+    position: absolute;
+    width: 8px;
     z-index: 100; }
   .karma-spacing-dot-container .spacing-top-hover {
     top: 3px;
@@ -1918,9 +1835,9 @@ iframe {
     left: 0;
     width: 20px;
     height: 10px;
+    display: block;
     overflow: hidden;
-    position: relative;
-    display: block; }
+    position: relative; }
     .karma-spacing-dot-container .spacing-top-hover .spacing-dot-hover {
       top: auto;
       right: auto;
@@ -1935,8 +1852,8 @@ iframe {
     width: 20px;
     height: 10px;
     display: block;
-    position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative; }
     .karma-spacing-dot-container .spacing-bottom-hover .spacing-dot-hover {
       top: 0;
       right: auto;
@@ -1951,8 +1868,8 @@ iframe {
     width: 10px;
     height: 20px;
     display: block;
-    position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative; }
     .karma-spacing-dot-container .spacing-left-hover .spacing-dot-hover {
       top: 0;
       right: 0;
@@ -1967,8 +1884,8 @@ iframe {
     bottom: auto;
     left: -4px;
     display: block;
-    position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative; }
     .karma-spacing-dot-container .spacing-right-hover .spacing-dot-hover {
       top: 0;
       right: auto;
@@ -1977,33 +1894,36 @@ iframe {
       position: absolute; }
 
 .row-bottom-spacing-dot-container {
-  cursor: n-resize;
-  position: absolute;
-  bottom: -9px;
-  left: 48%;
-  display: none;
   align-items: center;
-  justify-content: center;
+  bottom: -9px;
+  cursor: n-resize;
+  display: none;
   height: 18px;
+  justify-content: center;
+  left: 48%;
+  position: absolute;
   width: 18px; }
   .row-bottom-spacing-dot-container:hover .spacing-bottom-dot-hover {
     display: block; }
   .row-bottom-spacing-dot-container .spacing-bottom-dot-hover {
-    height: 18px;
-    display: none;
-    width: 18px;
-    border-radius: 100%;
+    align-items: center;
     background-color: rgba(51, 143, 252, 0.3);
+    border-radius: 100%;
+    display: none;
+    height: 18px;
     justify-content: center;
-    align-items: center; }
+    width: 18px; }
   .row-bottom-spacing-dot-container .spacing-bottom-dot {
-    position: absolute;
-    box-sizing: border-box;
-    height: 8px;
-    width: 8px;
+    background-color: #fff;
     border: 1px solid #419CF8;
     border-radius: 100%;
-    background-color: #fff; }
+    box-sizing: border-box;
+    height: 8px;
+    position: absolute;
+    width: 8px; }
+
+.row-gizmo-group {
+  display: none; }
 
 .karma-active-section .karma-container {
   outline: 1px solid rgba(118, 129, 140, 0.18); }
@@ -2027,18 +1947,100 @@ iframe {
     right: 0;
     top: 0;
     width: 1px; }
+.karma-active-section .row-gizmo-group {
+  width: auto;
+  height: 35px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  top: 17px;
+  right: 17px;
+  bottom: auto;
+  left: auto;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+  direction: rtl;
+  font-size: initial;
+  position: absolute;
+  z-index: 90; }
+  .karma-active-section .row-gizmo-group div {
+    cursor: pointer; }
+  .karma-active-section .row-gizmo-group .karma-builder-gizmo-icon {
+    padding-top: 0;
+    padding-right: 12px;
+    padding-bottom: 0;
+    padding-left: 11px;
+    width: auto;
+    height: 22px;
+    align-items: center;
+    border-left: 1px solid rgba(151, 151, 151, 0.3);
+    display: flex;
+    transition-duration: 0.1s; }
+    .karma-active-section .row-gizmo-group .karma-builder-gizmo-icon div {
+      display: flex; }
+    .karma-active-section .row-gizmo-group .karma-builder-gizmo-icon:hover svg * {
+      transition-duration: 0.1s;
+      fill: #419CF8; }
+  .karma-active-section .row-gizmo-group .karma-builder-gizmo-text {
+    padding-top: 0;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-left: 15px;
+    color: #394959;
+    font-family: HelveticaNeue;
+    font-size: 13px;
+    transition: all 0.3s ease; }
+  .karma-active-section .row-gizmo-group .karma-builder-gizmo-text:hover {
+    color: #419CF8;
+    transition: all 0.3s ease; }
+  .karma-active-section .row-gizmo-group .row-gizmo-group {
+    width: auto;
+    height: 35px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    top: 17px;
+    right: 17px;
+    bottom: auto;
+    left: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+    direction: rtl;
+    position: absolute; }
+    .karma-active-section .row-gizmo-group .row-gizmo-group div {
+      cursor: pointer; }
+    .karma-active-section .row-gizmo-group .row-gizmo-group .karma-builder-gizmo-icon {
+      padding-top: 0;
+      padding-right: 10px;
+      padding-bottom: 0;
+      padding-left: 10px;
+      width: auto;
+      height: 22px;
+      border-left: 1px solid rgba(151, 151, 151, 0.3); }
+    .karma-active-section .row-gizmo-group .row-gizmo-group .karma-builder-gizmo-text {
+      padding-top: 0;
+      padding-right: 15px;
+      padding-bottom: 0;
+      padding-left: 15px;
+      color: #394959;
+      font-family: HelveticaNeue;
+      font-size: 13px; }
 .karma-active-section .karma-active-column .karma-column-setting {
   padding-top: 0;
   padding-right: 4px;
   padding-bottom: 0;
   padding-left: 3px;
   background-color: #76818C;
-  position: absolute;
-  left: 0;
-  line-height: 16px;
-  top: -17px;
   cursor: pointer;
   display: block;
+  left: 0;
+  line-height: 16px;
+  position: absolute;
+  top: -17px;
   z-index: 80; }
   .karma-active-section .karma-active-column .karma-column-setting .karama-gizmo-icon svg {
     width: 10.31px;
@@ -2047,8 +2049,8 @@ iframe {
       fill: #fff; }
   .karma-active-section .karma-active-column .karma-column-setting .karma-gizmo-title {
     color: #fff;
-    font-size: 10px;
     font-family: HelveticaNeue;
+    font-size: 10px;
     padding-left: 2.69px;
     vertical-align: top; }
 
@@ -2334,9 +2336,9 @@ iframe {
     .grid-controller-template .karma-add-column-view-border .karma-add-column-view-length {
       background-color: rgba(65, 156, 248, 0.3);
       border-radius: 3px;
+      flex-basis: 100%;
       height: 38px;
-      margin: 11px 3px 10px 3px;
-      flex-basis: 100%; }
+      margin: 11px 3px 10px 3px; }
     .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
       background-color: transparent;
       border: 1px dotted #419CF8;
@@ -2345,14 +2347,14 @@ iframe {
       height: 37.64px;
       position: relative; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:before, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
-        width: "8.42px";
-        height: "1.4px";
-        content: '';
+        width: 8.42px;
+        height: 1.4px;
         background-color: #419CF8;
+        content: '';
         position: absolute; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
-        width: "1.4px";
-        height: "8.42px"; }
+        width: 1.4px;
+        height: 8.42px; }
   .grid-controller-template .karma-add-column-button button {
     background-color: rgba(65, 156, 248, 0.18);
     border-radius: 19px;
