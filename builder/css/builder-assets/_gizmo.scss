@@ -225,38 +225,35 @@
 
 .karma-active-section {
 
-	.karma-container {
+	.karma-row {
 		outline: 1px solid rgba(118, 129, 140, 0.18);
 
-		> .karma-builder-element:last-child .karma-column-resize {
+		> .karma-builder-element:last-child .resize-handler {
 			display: none;
 		}
+		.resize-handler {
+			cursor: col-resize;
+			height: 100%;
+			position: absolute;
+			right: -5px;
+			top: 0;
+			width: 10px;
+			z-index: $level4;
+		}
 
-		.karma-column-resize {
+		.resize-handler:before {
 			background-color: rgba(118, 129, 140, 0.18);
+			content: " ";
+			cursor: col-resize;
 			height: 100%;
 			position: absolute;
 			right: 0;
 			top: 0;
 			width: 1px;
 		}
-	}
-	.karma-container-fluid {
-		outline: 1px solid rgba(118, 129, 140, 0.18);
 
-		> .karma-builder-element:last-child .karma-column-resize {
-			display: none;
-		}
-
-		.karma-column-resize {
-			background-color: rgba(118, 129, 140, 0.18);
-			height: 100%;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 1px;
-		}
 	}
+
 	.row-gizmo-group {
 		@include box(auto, 35px);
 		@include flexbox(center, center, center);

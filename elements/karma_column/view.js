@@ -10,6 +10,7 @@
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
+			this.liveChangeGrid()
 
 		},
 		
@@ -59,6 +60,45 @@
 				defaultClasses =  elementClass + " karma-column  "  + this.model.attributes.shortcode_attributes.extraClass;
 			this.el.firstElementChild.setAttribute( 'class', defaultClasses );
 
+		},
+
+		/**
+		 * apply live change grid on column
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		liveChangeGrid: function () {
+			var that = this,
+				attributes = [ 'element_key' ];
+			attributes = this.getAttributes( attributes );
+			var changeGridOptions = {
+				selector: '.karma-builder-element[data-element-key="' + attributes.element_key + '"]',
+				snapToGrid: true,
+				gridPrefix: 'karma-col-md',
+				onStop: function ( result ) {
+					var newGrid = result.grid;
+					that.newGrid( newGrid );
+				}
+			};
+			gridResizer( changeGridOptions );
+		},
+
+		/**
+		 * calculate new parent section grid and update grid
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param   {object}    newGrid  new Width of current column and next column
+		 *
+		 * @returns {void}
+		 */
+		newGrid: function ( newGrid ) {
+			var newLayout = this.$el.parent().backboneView().currentGrid();
+			newLayout[ newGrid.currentColumnIndex ] = newGrid.currentColumnWidth;
+			newLayout[ newGrid.nextColumnIndex ] = newGrid.nextColumnWidth;
+			this.$el.parent().backboneView().changeRowLayout( newLayout );
 		}
 
 	});

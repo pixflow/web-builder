@@ -1925,23 +1925,22 @@ iframe {
 .row-gizmo-group {
   display: none; }
 
-.karma-active-section .karma-container {
+.karma-active-section .karma-row {
   outline: 1px solid rgba(118, 129, 140, 0.18); }
-  .karma-active-section .karma-container > .karma-builder-element:last-child .karma-column-resize {
+  .karma-active-section .karma-row > .karma-builder-element:last-child .resize-handler {
     display: none; }
-  .karma-active-section .karma-container .karma-column-resize {
-    background-color: rgba(118, 129, 140, 0.18);
+  .karma-active-section .karma-row .resize-handler {
+    cursor: col-resize;
     height: 100%;
     position: absolute;
-    right: 0;
+    right: -5px;
     top: 0;
-    width: 1px; }
-.karma-active-section .karma-container-fluid {
-  outline: 1px solid rgba(118, 129, 140, 0.18); }
-  .karma-active-section .karma-container-fluid > .karma-builder-element:last-child .karma-column-resize {
-    display: none; }
-  .karma-active-section .karma-container-fluid .karma-column-resize {
+    width: 10px;
+    z-index: 70; }
+  .karma-active-section .karma-row .resize-handler:before {
     background-color: rgba(118, 129, 140, 0.18);
+    content: " ";
+    cursor: col-resize;
     height: 100%;
     position: absolute;
     right: 0;

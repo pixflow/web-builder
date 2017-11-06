@@ -661,7 +661,7 @@
 		 * @example // returns { space : 200, slow : false }
 		 * getAttributes ( Space, Slow )
 		 *
-		 * @param	{array}	attributesNames List of name attribute
+		 * @param	[array]	attributesNames List of name attribute
 		 *
 		 * @since 1.0.0
 		 *

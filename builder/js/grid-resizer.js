@@ -51,8 +51,8 @@
 	gridResizer.prototype.init = function() {
 
 		for ( var i = 0; i < this.els.length; i++ ) {
-
 			var el = this.els[ i ];
+			el.classList.add( 'resizable-grid' );
 
 			if ( this.options.snapToGrid ) {
 
@@ -145,8 +145,8 @@
 			el.dataset.originalWidth = el.offsetWidth - 1;
 			el.dataset.originalX = el.getBoundingClientRect().left + window.scrollX;
 
-			if ( options.snapToGrid ) {
-				nextElement = findNextSibling( el );
+			if ( this.options.snapToGrid ) {
+				nextElement = this.findNextSibling( el );
 				nextElement.dataset.originalWidth = nextElement.offsetWidth;
 				nextElement.dataset.originalX = nextElement.getBoundingClientRect().left + window.scrollX;
 			}
@@ -189,7 +189,7 @@
 				&& e.pageX < document.documentElement.offsetWidth - this.options.minWidth ) {
 
 				if ( this.options.snapToGrid ) {
-					var nextElement = findNextSibling( el );
+					var nextElement = this.findNextSibling( el );
 					var nextElementNewWidth = parseInt( nextElement.dataset.originalWidth ) + parseInt( el.dataset.originalWidth ) - newWidth;
 					if ( nextElementNewWidth >= this.options.minWidth
 						&& nextElementNewWidth <= this.options.maxWidth ) {
@@ -237,15 +237,21 @@
 	 */
 	gridResizer.prototype.findNextSibling = function( el ) {
 
-		var nextElement = el;
-		while ( nextElement.nextSibling
-		&& ( !nextElement.nextSibling.classList
-		|| !nextElement.nextSibling.classList.contains( options.selector ) ) ) {
-			nextElement = nextElement.nextSibling;
-			break;
+		var nextElement = el,
+			found = false;
+		while ( !found ) {
+			if ( nextElement.nextSibling ) {
+				// no more sibling
+				break;
+			}
+			if ( nextElement.nextSibling.classList && nextElement.nextSibling.classList.contains( 'resizable-grid' ) ) {
+				nextElement = nextElement.nextSibling;
+				found = true;
+			} else {
+				nextElement = nextElement.nextSibling
+			}
 		}
 		return nextElement.nextSibling;
-
 	};
 
 	/**
@@ -272,7 +278,7 @@
 			el.removeAttribute( 'data-original-width' );
 			el.removeAttribute( 'data-original-x' );
 			if ( this.options.snapToGrid ) {
-				nextElement = findNextSibling( el );
+				nextElement = this.findNextSibling( el );
 				nextElement.removeAttribute( 'data-original-width' );
 				nextElement.removeAttribute( 'data-original-x' );
 			}
@@ -295,7 +301,7 @@
 	 * if snapToGrid was true, it finds the closest column width and set that class to the element
 	 *
 	 * @param {object}    el    DOM element
-	 * @returns {boolean}
+	 * @returns {object}
 	 */
 	gridResizer.prototype.updateGrid = function( el ) {
 
@@ -327,14 +333,21 @@
 			elColumnWidth--;
 		}
 
-		var regex = new RegExp( "(?:^|.)" + this.options.gridPrefix + "-([0-9]+)(?!\S)", "ig" );
-
-		el.className = el.className.replace( regex, ' ' + this.options.gridPrefix + "-" + elColumnWidth + ' ' );
-		nextElement.className = nextElement.className.replace( regex, ' ' + this.options.gridPrefix + "-" + nextElementColumnWidth + ' ' );
-
+		var i = 0,
+			prevElement = el;
+		while ( prevElement.previousSibling != null ) {
+			if ( prevElement.previousSibling.classList && prevElement.previousSibling.classList.contains( 'resizable-grid' ) ) {
+				i++;
+			}
+			prevElement = prevElement.previousSibling
+		}
+		var currentColumnIndex = i,
+			nextColumnIndex = i + 1;
 		return {
 			currentColumnWidth  : elColumnWidth,
-			nextColumnWidth     : nextElementColumnWidth
+			currentColumnIndex  : currentColumnIndex,
+			nextColumnWidth     : nextElementColumnWidth,
+			nextColumnIndex     : nextColumnIndex
 		};
 
 	};

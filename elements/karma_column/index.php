@@ -129,14 +129,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 				)
 			),
 			array(
-				"type"  => "resizeGizmo",
-				"class" => "karma-column-resize",
-				"param" => array(
-					'snapGrid'  => true
-				)
-
-			),
-			array(
 				"type"		=> "rightSpacingGizmo",
 				"className"	=> "section-right-spacing",
 			),
