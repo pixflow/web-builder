@@ -27,7 +27,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		initialize : function () {
-
+			
 			this.gizmoParams = JSON.parse( builderGizmo );
 			this.render();
 
@@ -41,7 +41,7 @@ var karmaBuilder = karmaBuilder || {};
 				if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
 					var elementView = new karmaBuilder[ elementName ]({
 						model 			: element,
-						el 				: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' ),
+						el 				: $( '[data-element-key="' + element.attributes.element_key + '"]' ),
 						gizmoParams 	: that.gizmoParams[ element.attributes.shortcode_name ],
 						template 		: wp.template( 'karma-element-' + element.attributes.shortcode_name )
 					});
