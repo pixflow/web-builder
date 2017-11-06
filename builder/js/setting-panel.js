@@ -4,48 +4,44 @@
 
 
 		/**
-		 * Define elements events
+		 * Define elements event
 		 *
-		 * @since 1.0.0
-		 *
+		 * @since   1.0.0
 		 */
 		events : {
 			"click .delete-karma-element"				: "removeElement",
 			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
 			"input input:not(.no-trigger)"				: "updateModel",
-			"input textarea:not(.no-trigger)"			: "updateModel",
+			"input textarea:not(.no-trigger)"			: "updateModel"
 		},
 
 		/**
-		 * Set defaults in create
+		 * Set defaults on initialize
 		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
+		 * @since   1.0.0
+		 * @returns {void}
 		 */
 		initialize: function() {
 
-			this.setElement( $('body') );
+			this.setElement( $( 'body' ) );
 
 		},
 
 		/**
 		 * call setting panel
 		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
+		 * @since   1.0.0
+		 * @returns {void}
 		 */
 		render : function () {
 
 		},
 
 		/**
-		 * shoercode setting panel draggable event
+		 * shortcode setting panel draggable event
 		 *
 		 * @since 1.0.0
-		 *
-		 * @returns void
+		 * @returns {void}
 		 */
 		bindDragEvents: function () {
 
@@ -72,29 +68,29 @@
 
 			this.model.destroy();
 			this.removeSettingPanel();
+
 		},
 
 		/**
 		 * On click removes element
 		 *
-		 * @param	object		model of element
-		 * @param	string		form of element
+		 * @param	{object}	model of element
+		 * @param	{string}	form of element
 		 *
 		 * @since	1.0.0
-		 *
-		 * @returns	void
+		 * @returns	{void}
 		 */
 		openSettingPanel: function( model, form ){
 
-			var template = wp.template('karma-element-setting-panel'),
-				$html = document.createElement('div'),
+			var template = wp.template( 'karma-element-setting-panel' ),
+				html = document.createElement( 'div' ),
 				content = this.formBuilder( model, form ),
 				elementAttributes = model.attributes,
-				elementName = elementAttributes['shortcode_name'].replace('karma_',''),
-				elementSelector =  elementAttributes['shortcode_name'].replace('_','-') +'-'+ elementAttributes.shortcode_attributes['element_key'];
+				elementName = elementAttributes[ 'shortcode_name' ].replace( 'karma_', '' ),
+				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.shortcode_attributes[ 'element_key' ];
 
-			$html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
-			document.getElementById('page').appendChild( $html );
+			html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
+			document.getElementById('page').appendChild( html );
 			this.bindDragEvents();
 			$( document ).trigger('karma_finish_form_builder', [ this ] );
 

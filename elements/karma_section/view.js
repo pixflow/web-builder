@@ -56,13 +56,13 @@
 		 * @summary Get the if of all row columns
 		 *
 		 * @since 1.0.0
-		 * @returns {array}	Contain the ids
+		 * @returns {Array}	Contain the ids
 		 */
 		getColumnsId : function () {
 
 			var columns = [] ;
 			_.each( this.findChildren(), function ( column ) {
-				columns.push( column.attributes.shortcode_id );
+				columns.push( column.attributes.element_key );
 			} );
 			return columns;
 
@@ -140,7 +140,7 @@
 		 */
 		updateColumnModel : function ( columnId, parentId, newWidth ) {
 
-			var model = karmaBuilder.karmaModels.findWhere( { 'parent_id' : parentId , 'shortcode_id' : columnId } ),
+			var model = karmaBuilder.karmaModels.findWhere( { 'parent_key' : parentId , 'element_key' : columnId } ),
 				attributes;
 			attributes = model.attributes.shortcode_attributes ;
 			attributes = this.updateWidthColumn( attributes, newWidth );
@@ -161,11 +161,11 @@
 		 */
 		deleteColumnModel : function ( columnId, lastColumnId ) {
 
-			var models = karmaBuilder.karmaModels.where( { 'parent_id' : columnId } );
+			var models = karmaBuilder.karmaModels.where( { 'parent_key' : columnId } );
 			_.each( models, function ( model ) {
-				model.set( { 'parent_id' : lastColumnId } , { silent : true } );
+				model.set( { 'parent_key' : lastColumnId } , { silent : true } );
 			});
-			var columnModel = karmaBuilder.karmaModels.findWhere( { 'shortcode_id' : columnId } );
+			var columnModel = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnId } );
 			karmaBuilder.karmaModels.remove( columnModel );
 
 		},
@@ -218,14 +218,14 @@
 			}
 
 			var currentGrid = this.currentGrid(),
-				parentId = this.model.attributes.shortcode_id,
+				parentKey = this.model.attributes.element_key,
 				lastColumn ,
-				columns = this.getColumnsId();
+				columns = this.getColumnsKey();
 
 
 			for ( var counter in currentGrid ){
 				if ( newLayout[ counter ] ){
-					this.updateColumnModel( columns[ counter ], parentId, newLayout[ counter ] );
+					this.updateColumnModel( columns[ counter ], parentKey, newLayout[ counter ] );
 					lastColumn = counter ;
 				} else {
 					this.deleteColumnModel( columns[ counter ], columns[ lastColumn ] );
@@ -256,11 +256,10 @@
 
 			counter = parseInt( counter ) + 1;
 			for( counter; counter < newLayout.length; counter++ ){
-				var model = karmaBuilder.karmaModels.findWhere( { 'shortcode_id' : columnId } ).attributes ,
-					lastModel = karmaBuilder.karmaModels.last().attributes ,
+				var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnId } ).attributes,
 					newModel = {
-						'shortcode_id'          : lastModel.shortcode_id + 1 ,
-						'parent_id'             : model.parent_id ,
+						'element_key'           : this.createNewElementKey(),
+						'parent_key'             : model.parent_key ,
 						'order'                 : model.order + 1 ,
 						'shortcode_content'     : '' ,
 						'shortcode_name'        : model.shortcode_name ,
@@ -268,7 +267,6 @@
 					};
 
 				newModel.shortcode_attributes = this.updateWidthColumn( JSON.parse ( newModel.shortcode_attributes ), newLayout[ counter ] );
-				newModel.shortcode_attributes.element_key = this.createNewElementKey();
 				karmaBuilder.karmaModels.add( newModel );
 
 			}

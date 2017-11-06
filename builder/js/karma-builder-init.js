@@ -36,39 +36,38 @@ var karmaBuilder = karmaBuilder || {};
 		render: function () {
 
 			var that = this;
-			this.collection.each(function ( element ) {
+			this.collection.each( function ( element ) {
 				var elementName = element.attributes.shortcode_name.replace("karma_", "");
-				if ("undefined" !== typeof karmaBuilder[elementName]) {
-					var elementView = new karmaBuilder[elementName]({
+				if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
+					var elementView = new karmaBuilder[ elementName ]({
 						model 			: element,
-						el 				: $('[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]'),
-						gizmoParams 	: that.gizmoParams[element.attributes.shortcode_name],
-						template 		: wp.template('karma-element-' + element.attributes.shortcode_name)
+						el 				: $( '[data-element-key="' + element.attributes.shortcode_attributes.element_key + '"]' ),
+						gizmoParams 	: that.gizmoParams[ element.attributes.shortcode_name ],
+						template 		: wp.template( 'karma-element-' + element.attributes.shortcode_name )
 					});
 					elementView.createGizmo();
 					elementView.delegateEvents();
 				}
-			});
+			} );
 
 		},
 
 		/**
 		 * Create and send ajax
 		 *
-		 * @since 1.0.0
+		 * @param	{object} 	action	Action using in the wordpress backend to know the request.
+		 * @param	{object} 	data	The data which will be send to the backend.
 		 *
-		 * @returns {XHR} - jquery ajax object
+		 * @since   1.0.0
+		 * @returns {object} - jquery ajax object
 		 */
-		prepareAjax : function () {
+		prepareAjax : function ( action, data ) {
 
 			return $.ajax({
 				type	: 'post',
 				url		: ajaxurl,
-				action	: 'save_content',
-				data	: {
-					models	: JSON.stringify( karmaBuilder.karmaModels ),
-					id		: $( 'meta[name="post-id"]' ).attr( 'content' )
-				}
+				action	: action,
+				data	: data
 			});
 
 		},
@@ -76,19 +75,21 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * Save element model and html
 		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
+		 * @since   1.0.0
+		 * @returns {boolean}   true if contents were saved successfully
 		 */
 		saveContent : function () {
 
-			this.prepareAjax().done( function ( response ) {
+			var data = {
+				models	: JSON.stringify( karmaBuilder.karmaModels ),
+				id		: $( 'meta[name="post-id"]' ).attr( 'content' )
+			};
+
+			this.prepareAjax( 'save_content', data ).done( function ( response ) {
+
 				var result = JSON.parse( response );
-				if ( true === result.result ) {
-					return true;
-				} else {
-					return false;
-				}
+				return result.result;
+
 			});
 
 		},
@@ -97,7 +98,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * Drag Element from Shortcodes collection
 		 *
 		 * @since 1.0.0
-		 *
+		 * @returns {void}
 		 */
 		dragElement : function(){
 
@@ -114,7 +115,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		dropElement : function( droppedElement, placeHolder ){
 
-		},
+		}
 
 	});
 
@@ -122,15 +123,12 @@ var karmaBuilder = karmaBuilder || {};
 	karmaBuilder.model = Backbone.Model.extend({
 
 		defaults : {
-			"shortcode_name" 		: "karma-row" ,
-			"shortcode_attributes"	: {
-				"element_key"	: "",
-				"padding"		: "200",
-			},
+			"shortcode_name" 		: "karma_section" ,
+			"shortcode_attributes"	: {},
 			"shortcode_content" 	: "",
-			"shortcode_id" 			: 1,
+			"element_key" 			: 'defaultKey',
 			"order" 				: 1,
-			"parent_id" 			: 0
+			"parent_key" 			: 'defaultParentKey'
 		}
 
 	});
@@ -145,7 +143,7 @@ var karmaBuilder = karmaBuilder || {};
 	$(document).ready( function () {
 
 		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
-		var KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
+		window.KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
 
 	});
 

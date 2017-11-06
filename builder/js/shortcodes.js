@@ -617,8 +617,8 @@
 
 			this.$el.find( '.karma-builder-element' ).each( function () {
 
-				var childId = $( this ).attr( 'data-element-id' ) ;
-				karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "shortcode_id" : parseInt( childId ) } ) );
+				var childKey = $( this ).attr( 'data-element-key' ) ;
+				karmaBuilder.karmaModels.remove( karmaBuilder.karmaModels.where( { "element_key" : childKey } ) );
 
 			});
 
@@ -692,7 +692,7 @@
 		 */
 		findChildren : function() {
 
-			return karmaBuilder.karmaModels.where( { 'parent_id' : this.model.attributes['shortcode_id'] } )
+			return karmaBuilder.karmaModels.where( { 'parent_key' : this.model.attributes['element_key'] } );
 
 		},
 
