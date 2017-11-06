@@ -4,7 +4,6 @@
 		@extend .center-both-flex;
 		@include box( 46px, 100vh);
 	  	background-color: #419CF8;
-	    display: flex;
 	    justify-content: space-between;
 	    position: fixed;
 	    top: 0;

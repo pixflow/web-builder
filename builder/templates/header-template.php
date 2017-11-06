@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="<?php echo  KARMA_BUILDER_URL . 'builder/css/builder-styles.css' ?>" type="text/css">
 	<title><?php echo __( 'KARMA BUILDER', 'karma' ) . ' | ' . get_the_title(); ?> </title>
 </head>
 <body class="karma-builder">
