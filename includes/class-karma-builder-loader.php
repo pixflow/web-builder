@@ -253,18 +253,13 @@ class Karma_Builder_Loader {
 			'output'			=> $output,
 		);
 		do_action( 'karma_before_shortcode_apply_' . $tag, $shortcode_info );
-		static $uniqe_id = 1 ;
 		$classes = apply_filters( 'karma_builder/elements/' . $tag . '/classes', array(), $attr );
 		$classes = implode( ' ',$classes );
-
-		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" "
-			. "data-element-id={$uniqe_id} >"
+		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" >"
 			. $output
 			. '</div>' ;
-
 		$shortcode_info['output'] = $karma_builder_output;
 		do_action( 'karma_after_shortcode_apply_' . $tag, $shortcode_info );
-		$uniqe_id ++ ;
 		return $karma_builder_output;
 
 	}

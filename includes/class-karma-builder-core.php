@@ -163,19 +163,18 @@ class Karma_Builder_Core{
 	}
 
 	/**
-	 * Convert the list of shortcodes to their models
+	 * Convert the list of Element to their models
 	 *
 	 *
-	 * @param string	$content	Shortcode string
-	 * @param integer	$parent_id	Contain the id of parent shortcode for any child ( default = 0 )
+	 * @param string	$content	Element string
+	 * @param integer	$parent_key	Contain the id of parent Element for any child ( default = 0 )
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array - model of shortcodes
+	 * @return array - model of Element
 	 */
-    public function parse_shortcodes( $content, $parent_id = 0 ){
+    public function parse_shortcodes( $content, $parent_key = 0 ){
 
-		static $id = 0;
 		static $child_order =  1 ;
 		static $parent_order = 1 ;
 		preg_match_all( $this->get_shortcode_regex('.*?'), $content, $shortcodes );
@@ -183,21 +182,20 @@ class Karma_Builder_Core{
 		$models = array();
 		foreach ( $shortcodes[0] as $shortcode ){
 			$is_parent = false;
-			$id++;
 			$model = $this->parse_shortcode( $shortcode );
-			$model['shortcode_id'] = $id;
+			$id = $model['element_key'];
 			if( ! $this->is_parent_shortcode(  $shortcodes[5][$index] ) ){
 				$model['shortcode_content'] = $shortcodes[5][$index];
 			}else{
-				unset($model['shortcode_content']);
+				unset( $model['shortcode_content'] );
 				$is_parent = true;
 			}
-			$shortcode_order = $this->order_shortcode( $model, array( 'child_order' => $child_order , 'parent_order' => $parent_order ), $parent_id );
+			$shortcode_order = $this->order_shortcode( $model, array( 'child_order' => $child_order , 'parent_order' => $parent_order ), $parent_key );
 			list( $model, $child_order, $parent_order ) = $shortcode_order;
-			$model['parent_id'] = $parent_id;
+			$model['parent_key'] = $parent_key;
 			$models[] = $model;
 			if( $is_parent ){
-				$models = array_merge($models, $this->parse_shortcodes( $shortcodes[5][$index], $id ));
+				$models = array_merge( $models, $this->parse_shortcodes( $shortcodes[5][$index], $id ) );
 				$child_order = 1 ;
 			}
 			$index++;
@@ -236,28 +234,30 @@ class Karma_Builder_Core{
 	}
 
 	/**
-	 * Convert shortcode attributes to array model
+	 * Convert element attributes to array model
 	 *
-	 * If there are no shortcode tags defined, then the function will be returned
+	 * If there are no element tags defined, then the function will be returned
 	 * false without any filtering.
 	 *
-	 * @param string	$shortcode_attributes	Shortcode string
+	 * @param string	$element_attributes	Element string
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return mixed - model of shortcode or false if shortcode syntax is incorrect
+	 * @return mixed - model of element or false if element syntax is incorrect
 	 */
-	public function parse_shortcode( $shortcode_attributes ) {
+	public function parse_shortcode( $element_attributes ) {
 
-		if ( ! $this->validate_shortcode_syntax( $shortcode_attributes ) ){
+		if ( ! $this->validate_shortcode_syntax( $element_attributes ) ){
 			return false;
 		}
 		$shortcode_models = array();
 		$pattern = $this->get_shortcode_regex('.*?');
-		preg_match_all( $pattern , $shortcode_attributes , $matches );
+		preg_match_all( $pattern , $element_attributes , $matches );
 		$shortcode_models["shortcode_name"] = $matches[2][0];
 		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[3][0] );
 		$shortcode_models['shortcode_content'] = $matches[5][0];
+		$shortcode_models['element_key'] = $shortcode_models["shortcode_attributes"]['element_key'];
+		unset( $shortcode_models["shortcode_attributes"]['element_key'] );
 		return $shortcode_models;
 
 	}
@@ -332,24 +332,24 @@ class Karma_Builder_Core{
 	}
 
 	/**
-	 * Check the shortcode format
+	 * Check the element format
 	 *
 	 *
-	 * @param string	$shortcode_attributes	Shortcode string
+	 * @param string	$element_attributes	element string
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return boolean - false if shortcode format is incorrect and true if is correct
+	 * @return boolean - false if element format is incorrect and true if is correct
 	 */
-	private function validate_shortcode_syntax( $shortcode_attributes  ){
+	private function validate_shortcode_syntax( $element_attributes ){
 
-		if ( false === strpos( $shortcode_attributes  , '[' )
-			|| false === strpos( $shortcode_attributes  , ']' ) ) {
+		if ( false === strpos( $element_attributes  , '[' )
+			|| false === strpos( $element_attributes  , ']' ) ) {
 			return false;
 		}
 
-		if ( empty( $shortcode_attributes )
-			|| is_array( $shortcode_attributes ) ){
+		if ( empty( $element_attributes )
+			|| is_array( $element_attributes ) ){
 			return false;
 		}
 
@@ -360,9 +360,9 @@ class Karma_Builder_Core{
 	/**
 	 * Prepare content from models
 	 *
-	 * @param array $models - shortcode models
+	 * @param array $models - element models
 	 *
-	 * @return string - content of the page by shortcode tags
+	 * @return string - content of the page by element tags
 	 * @since 1.0.0
 	 */
 	public function generate_post_content( $models ) {
@@ -383,10 +383,10 @@ class Karma_Builder_Core{
 	/**
 	 * Build multidimensional array of parent and children
 	 *
-	 * @param 	array	$models - shortcode models
+	 * @param 	array	$models - element models
 	 * @param	integer $parent_id - parent model id
 	 *
-	 * @return array - array of shortcode models tree
+	 * @return array - array of element models tree
 	 * @since 1.0.0
 	 */
 	protected function build_models_tree( array &$models, $parent_id = 0 ) {
@@ -413,7 +413,7 @@ class Karma_Builder_Core{
 	/**
 	 * Sort Models by order
 	 *
-	 * @param array $models - shortcode models
+	 * @param array $models - element models
 	 *
 	 * @return void
 	 * @since 1.0.0
@@ -428,16 +428,16 @@ class Karma_Builder_Core{
 
 		}
 
-		ksort($models);
+		ksort( $models );
 
 	}
 
 	/**
-	 * convert shortcode models with WordPress shortcode pattern
+	 * convert element models with WordPress element pattern
 	 *
-	 * @param array $models - Shortcode models
+	 * @param array $models - element models
 	 *
-	 * @return string - shortcode string pattern of model
+	 * @return string - element string pattern of model
 	 * @since 1.0.0
 	 */
 	protected function convert_model_to_shortcode_pattern( $models ){
@@ -476,28 +476,30 @@ class Karma_Builder_Core{
 
 	/**
 	 * Save content of page/post to the database
+	 * Use the code below for error handling on line 496
+	 * $errors = $post_id->get_error_messages();
 	 *
-	 * @param array		$models - shortcode models
+	 * @param array		$models - element models
 	 * @param integer	$id - post/page ID
 	 *
 	 * @return boolean
 	 * @since 1.0.0
 	 */
 	public function save_post_content( $models, $id ) {
-		$post_content = $this->generate_post_content($models);
-		$post_content = str_replace('\\','\\\\',$post_content);
+
+		$post_content = $this->generate_post_content( $models );
+		$post_content = str_replace( '\\', '\\\\', $post_content );
 		$current_item = array(
 			'ID'           => $id,
 			'post_content' => $post_content,
 		);
 		$post_id = wp_update_post( $current_item, true );
-		if (is_wp_error($post_id)) {
-			// Remove comments from below line for error handling
-			//$errors = $post_id->get_error_messages();
+		if ( is_wp_error( $post_id ) ) {
 			return false;
 		}else{
 			return true;
 		}
+
 	}
 
 	/**
@@ -524,7 +526,6 @@ class Karma_Builder_Core{
 	 * Generate static JS and CSS for each page based on their shortcodes after publish
 	 *
 	 * @param $id - Page ID
-	 * @param $models - Shortcode models
 	 *
 	 * @return boolean
 	 * @since 1.0.0
@@ -536,8 +537,8 @@ class Karma_Builder_Core{
 	/**
 	 * Map element
 	 *
-	 * @return array - array of elements map
 	 * @since 1.0.0
+	 * @return array - array of elements map
 	 */
 	public function element_map() {
 
@@ -550,8 +551,8 @@ class Karma_Builder_Core{
 	/**
 	 * Gizmo element
 	 *
-	 * @return array - array of elements gizmo
 	 * @since 1.0.0
+	 * @return array - array of elements gizmo
 	 */
 	public function element_gimzo() {
 
