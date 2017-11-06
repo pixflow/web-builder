@@ -144,7 +144,12 @@ footer, header, hgroup, menu, nav, section {
 
 /* _-_-_- base/BASE -_-_-_ */
 body {
+  margin: 0;
   font-family: "HelveticaNeue"; }
+  body iframe {
+    height: calc( 100vh - 49px );
+    width: 100%;
+    border: none; }
   body .karma-full-separator {
     width: 100%;
     height: 1px;

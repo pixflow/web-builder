@@ -1,5 +1,11 @@
 /* _-_-_- base/BASE -_-_-_ */
 body {
+	margin: 0;
+	iframe {
+		height: calc( 100vh - 49px );
+		width: 100%;
+		border:none;
+	}
 	font-family: "HelveticaNeue";
 	.karma-full-separator {
 		@include box(100%, 1px);

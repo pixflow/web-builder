@@ -4,9 +4,7 @@
 	@extend .center-both-flex;
 	@include box( 100% , 46px );
 	@include flexbox( $justify-content:space-between );
-	@include element_direction($top:0, $right:0, $left:0);
 	background-color: #419CF8;
-	position: fixed;
 
 	.karma-builder-left {
 		@include box(auto, 100%);
