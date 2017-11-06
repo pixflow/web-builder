@@ -397,7 +397,7 @@ class Karma_Builder_Core{
 
 			if ( $model['parent_key'] == $parent_key && ( ! isset( $model['status'] )
 					|| 'processed' != $model['status'] ) ) {
-				$children = $this->build_models_tree( $models, $model['element_key'] );
+				$children = $this->build_models_tree( $model, $model['element_key'] );
 				if ( $children ) {
 					$model['children'] = $children;
 				}
