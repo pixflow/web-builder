@@ -1,78 +1,317 @@
-var wp = _ ,
-	$ = jQuery;
+var wp = _ ;
 
+function RCreateModels() {
 
-/**
- * Test changeRowLayout() function .
- */
-QUnit.test("changeRowLayout", function (assert) {
+	_.each( JSON.parse( builderModels ), function ( model ) {
+		karmaBuilder.karmaModels.add( model );
+	});
 
-	assert.ok(1, 1);
-	return;
-	var curentGrid = [3, 3, 3],
-		newGrid = [5, 5, 2],
-		karmaModelsResult = {
-			0: {
-				"shortcode_id": 1,
-				"shortcode_name": "shortcode_test",
-				"parent_id": 0,
-				"order": 1,
-				"shortcode_attributes": {
-					'space': 20
-				},
-				"shortcode_content": ""
-			},
+}
 
-			1: {
-				"shortcode_id": 2,
-				"shortcode_name": "shortcode_test",
-				"parent_id": 1,
-				"order": 1,
-				"shortcode_attributes": {
-					lg_size: 8,
-					md_size: 8,
-					sm_size: 8,
-					width: "3",
-					xl_size: 8,
-				},
-				"shortcode_content": ""
-			},
+( function ( $, karmaBuilder ) {
 
-			2: {
-				"shortcode_id": 3,
-				"shortcode_name": "shortcode_test",
-				"parent_id": 1,
-				"order": 2,
-				"shortcode_attributes": {
-					lg_size: 8,
-					md_size: 8,
-					sm_size: 8,
-					width: "3",
-					xl_size: 8,
-				},
-				"shortcode_content": ""
-			},
+QUnit.test( "changeRowLayout() when the current grid layout is equal the new grid", function ( assert ) {
 
-			3: {
-				"shortcode_id": 4,
-				"shortcode_name": "shortcode_test",
-				"parent_id": 1,
-				"order": 3,
-				"shortcode_attributes": {
-					lg_size: 8,
-					md_size: 8,
-					sm_size: 8,
-					width: "3",
-					xl_size: 8,
-				},
-				"shortcode_content": ""
-			},
-		}
+	karmaBuilder.karmaModels.reset();
+	RCreateModels();
+	var	newGrid = [ 5, 5, 2 ] ,
+		karmaTestResult = [] ,
+		sectionView = new karmaBuilder.section({
+			el    : $('[data-element-key="firtstrow_12312"]') ,
+			model : karmaBuilder.karmaModels.models[0]
+		}) ,
+		karmaResult = [
+			{
+				'shortcode_name'        : 'karma_section' ,
+				'order'                 : 1 ,
+				'parent_id'             :  0 ,
+				'shortcode_content'     : '' ,
+				'shortcode_attributes'  : {
+					'element_key' : "firtstrow_12312" ,
+					'space'       : "20"
+				} ,
+				'shortcode_id'  : 1
+			} ,
+			{
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 1 ,
+				'parent_id'             : 1 ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					element_key : "12a12" ,
+					lg_size     : 5 ,
+					md_size     : 5,
+					sm_size     : 5,
+					xl_size     : 5,
+				} ,
+				'shortcode_id'  : 2
+			} ,
+			{
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 2 ,
+				'parent_id'             : 1 ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					element_key : "1r312" ,
+					lg_size     : 5 ,
+					md_size     : 5,
+					sm_size     : 5,
+					xl_size     : 5,
+				} ,
+				'shortcode_id'  : 3
+			} ,
+			{
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 3 ,
+				'parent_id'             : 1 ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					element_key : "ssssscolumn_12g12" ,
+					lg_size     : 2 ,
+					md_size     : 2,
+					sm_size     : 2,
+					xl_size     : 2,
+				} ,
+				'shortcode_id'  : 4
+			}
+		];
+	sectionView.changeRowLayout( newGrid );
 
-	assert.deepEqual(karmaBuilder.section.prototype.changeRowLayout([newGrid]), karmaModelsResult);
+	_.each( karmaBuilder.karmaModels.models, function( model ) {
+			karmaTestResult.push( model.attributes );
+	});
 
+	assert.deepEqual( karmaTestResult, karmaResult );
 
 });
+
+QUnit.test( "changeRowLayout() when the current grid layout is bigger the new grid", function ( assert ) {
+
+	karmaBuilder.karmaModels.reset();
+	RCreateModels();
+	var	newGrid = [ 8, 4 ] ,
+		karmaTestResult = [] ,
+		sectionView = new karmaBuilder.section({
+			el    : $('[data-element-key="firtstrow_12312"]') ,
+			model : karmaBuilder.karmaModels.models[0]
+		}) ,
+		karmaResult = [
+			{
+				'shortcode_name'        : 'karma_section' ,
+				'order'                 : 1 ,
+				'parent_id'             :  0 ,
+				'shortcode_content'     : '' ,
+				'shortcode_attributes'  : {
+					'element_key' : "firtstrow_12312" ,
+					'space'       : "20"
+				} ,
+				'shortcode_id'  : 1
+			} ,
+			{
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 1 ,
+				'parent_id'             : 1 ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					element_key : "12a12" ,
+					lg_size     : 8 ,
+					md_size     : 8,
+					sm_size     : 8,
+					xl_size     : 8,
+				} ,
+				'shortcode_id'  : 2
+			} ,
+			{
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 2 ,
+				'parent_id'             : 1 ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					element_key : "1r312" ,
+					lg_size     : 4 ,
+					md_size     : 4,
+					sm_size     : 4,
+					xl_size     : 4,
+				} ,
+				'shortcode_id'  : 3
+			}
+		];
+
+	sectionView.changeRowLayout( newGrid );
+
+	_.each( karmaBuilder.karmaModels.models, function( model ) {
+		karmaTestResult.push( model.attributes );
+	});
+
+	assert.deepEqual( karmaTestResult, karmaResult );
+
+});
+
+QUnit.test( "changeRowLayout() when the current grid layout is smaller the new grid", function ( assert ) {
+
+		karmaBuilder.karmaModels.reset();
+		RCreateModels();
+		var	newGrid = [ 8, 2, 1, 1 ] ,
+			karmaTestResult = [] ,
+			sectionView = new karmaBuilder.section({
+				el    : $('[data-element-key="firtstrow_12312"]') ,
+				model : karmaBuilder.karmaModels.models[0]
+			}) ,
+			karmaResult = [
+				{
+					'shortcode_name'        : 'karma_section' ,
+					'order'                 : 1 ,
+					'parent_id'             :  0 ,
+					'shortcode_content'     : '' ,
+					'shortcode_attributes'  : {
+						'element_key' : "firtstrow_12312" ,
+						'space'       : "20"
+					} ,
+					'shortcode_id'  : 1
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 1 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : 'test' ,
+					'shortcode_attributes'  : {
+						element_key : "12a12" ,
+						lg_size     : 8 ,
+						md_size     : 8,
+						sm_size     : 8,
+						xl_size     : 8,
+					} ,
+					'shortcode_id'  : 2
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 2 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : 'test' ,
+					'shortcode_attributes'  : {
+						element_key : "1r312" ,
+						lg_size     : 2 ,
+						md_size     : 2,
+						sm_size     : 2,
+						xl_size     : 2,
+					} ,
+					'shortcode_id'  : 3
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 3 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : 'test' ,
+					'shortcode_attributes'  : {
+						element_key : "ssssscolumn_12g12" ,
+						lg_size     : 1 ,
+						md_size     : 1,
+						sm_size     : 1,
+						xl_size     : 1,
+					} ,
+					'shortcode_id'  : 4
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 4 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : '' ,
+					'shortcode_attributes'  : {
+						lg_size     : 1 ,
+						md_size     : 1,
+						sm_size     : 1,
+						xl_size     : 1,
+					} ,
+					'shortcode_id'  : 5
+				}
+			];
+
+		sectionView.changeRowLayout( newGrid );
+
+		_.each( karmaBuilder.karmaModels.models, function( model ) {
+			karmaTestResult.push( model.attributes );
+		});
+		delete 	karmaTestResult[ karmaTestResult.length - 1 ].shortcode_attributes.element_key ;
+		assert.deepEqual( karmaTestResult, karmaResult );
+
+	});
+
+QUnit.test( "changeRowLayout() grid sum should be 12", function ( assert ) {
+
+		karmaBuilder.karmaModels.reset();
+		RCreateModels();
+		var	newGrid = [ 8, 2, 1, 1, 1 ] ,
+			karmaTestResult = [] ,
+			sectionView = new karmaBuilder.section({
+				el    : $('[data-element-key="firtstrow_12312"]') ,
+				model : karmaBuilder.karmaModels.models[0]
+			}) ,
+			karmaResult = [
+				{
+					'shortcode_name'        : 'karma_section' ,
+					'order'                 : 1 ,
+					'parent_id'             :  0 ,
+					'shortcode_content'     : '' ,
+					'shortcode_attributes'  : {
+						'element_key' : "firtstrow_12312" ,
+						'space'       : "20"
+					} ,
+					'shortcode_id'  : 1
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 1 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : 'test' ,
+					'shortcode_attributes'  : {
+						element_key : "12a12" ,
+						lg_size     : '4' ,
+						md_size     : '4',
+						sm_size     : '4',
+						xl_size     : '4',
+					} ,
+					'shortcode_id'  : 2
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 2 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : 'test' ,
+					'shortcode_attributes'  : {
+						element_key : "1r312" ,
+						lg_size     : '4' ,
+						md_size     : '4',
+						sm_size     : '4',
+						xl_size     : '4',
+					} ,
+					'shortcode_id'  : 3
+				} ,
+				{
+					'shortcode_name'        : 'karma_column' ,
+					'order'                 : 3 ,
+					'parent_id'             : 1 ,
+					'shortcode_content'     : 'test' ,
+					'shortcode_attributes'  : {
+						element_key : "ssssscolumn_12g12" ,
+						lg_size     : '4',
+						md_size     : '4',
+						sm_size     : '4',
+						xl_size     : '4',
+					} ,
+					'shortcode_id'  : 4
+				}
+			];
+
+		sectionView.changeRowLayout( newGrid );
+
+		_.each( karmaBuilder.karmaModels.models, function( model ) {
+			karmaTestResult.push( model.attributes );
+		});
+
+		assert.deepEqual( karmaTestResult, karmaResult );
+
+	});
+
 
 /**
  * It is Delete Elements Test
@@ -454,3 +693,5 @@ QUnit.test("setAttribute", function (assert) {
 	karmaBuilder.karmaModels.reset();
 
 });
+
+} )( jQuery, karmaBuilder );
