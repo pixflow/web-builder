@@ -1,54 +1,55 @@
 /* _-_-_- layout/HEADER -_-_-_ */
 
-	.karma-builder-toolbar {
-		@extend .center-both-flex;
-		@include box( 46px, 100vh);
-	  	background-color: #419CF8;
-	    justify-content: space-between;
-	    position: fixed;
-	    top: 0;
-	    right: 0;
-	    left: 0;
-	    backface-visibility: hidden;
-
-	  .karma-builder-left{
+.karma-builder-toolbar {
+	@extend .center-both-flex;
+	@include box(46px, 100vh);
+	background-color: #419CF8;
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	backface-visibility: hidden;
+	
+	.karma-builder-left {
 		display: flex;
 		align-items: stretch;
 
-		ul{
-		  list-style: none;
-		  display: flex;
-		  margin: 0;
-		  align-items: stretch;
-
-		  li{
-			margin-left: 35px;
-			margin-bottom: 0;
+		ul {
+			list-style: none;
 			display: flex;
+			margin: 0;
 			align-items: stretch;
-			justify-content: center;
-		  }
+
+			li {
+				margin-left: 35px;
+				margin-bottom: 0;
+				display: flex;
+				align-items: stretch;
+				justify-content: center;
+			}
 		}
-	  }
-
-	  .karma-builder-right{
-		display: flex;
-		align-items: stretch;
-
-		ul{
-		  list-style: none;
-		  display: flex;
-		  margin: 0;
-		  align-items: stretch;
-
-		  li{
-			margin-left: 35px;
-			margin-bottom: 0;
-			display: flex;
-			align-items: stretch;
-			justify-content: center;
-		  }
-		}
-	  }
-
 	}
+
+	.karma-builder-right {
+		display: flex;
+		align-items: stretch;
+
+		ul {
+			list-style: none;
+			display: flex;
+			margin: 0;
+			align-items: stretch;
+
+			li {
+				margin-left: 35px;
+				margin-bottom: 0;
+				display: flex;
+				align-items: stretch;
+				justify-content: center;
+			}
+		}
+	}
+
+}

@@ -21,7 +21,7 @@
 				<li class="builder-sites-setting">Setting</li>
 				<li class="builder-upgrade">
 					<div class="builder-upgrade-icon"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/upgrade.svg' ) ?></div>
-					<div class="builder-upgrade-text">Upqrade</div>
+					<div class="builder-upgrade-text">Upgrade</div>
 				</li>
 			</ul>
 		</div>
