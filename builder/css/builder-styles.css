@@ -2446,4 +2446,30 @@ html {
     line-height: 0;
     margin: 20px; }
 
+.karma-check-box-controller {
+  padding: 0 20px 25px 20px; }
+  .karma-check-box-controller .check-box-controller-template {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center; }
+    .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
+      color: rgba(57, 73, 89, 0.8);
+      font-family: HelveticaNeue;
+      font-size: 15px;
+      line-height: 17px; }
+    .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle {
+      height: 24px;
+      width: 24px;
+      border: 1px solid rgba(57, 73, 89, 0.2);
+      border-radius: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle .check-box-circle-fill {
+        height: 10px;
+        width: 10px;
+        border-radius: 19px;
+        background-color: #419CF8; }
+
 /*# sourceMappingURL=builder-styles.css.map */

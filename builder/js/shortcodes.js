@@ -628,6 +628,7 @@
 
 			// Remove view from DOM
 			this.remove();
+			//karmaBuilder.karmaModels.remove( this.model );
 			Backbone.View.prototype.remove.call(this);
 
 		},

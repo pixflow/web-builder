@@ -55,6 +55,14 @@ class Karma_Column extends Karma_Shortcode_Base {
 						"label" => esc_attr__( "Extra class name", 'karma' ),
 
 					),
+						array(
+								"name"  => "check-box",
+								"value" => "Extra class name",
+								"type"  => Karma_Builder_Setting_Panel::CHECK_BOX,
+								"label" => esc_attr__( "Extra class name", 'karma' ),
+
+						),
+
 					array(
 						"name"          => "extraClass",
 						"type"          => Karma_Builder_Setting_Panel::TEXT,
