@@ -212,15 +212,15 @@ class Karma_Builder_Core{
 	 *
 	 * @param array 	$model 		Contain the model of current shortcode
 	 * @param array		$order 		current index of child and parent
-	 * @param integer 	$parent_id	current index of parent id
+	 * @param integer 	$parent_key	current index of parent id
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return array - new model of shortcode given with order attribute
 	 */
-	private function order_shortcode( $model, $order, $parent_id ){
+	private function order_shortcode( $model, $order, $parent_key ){
 
-		if( 0 != $parent_id ){
+		if( 0 != $parent_key ){
 			$model['order'] = $order['child_order'] ;
 			$order['child_order']++;
 		}else{
@@ -384,20 +384,20 @@ class Karma_Builder_Core{
 	 * Build multidimensional array of parent and children
 	 *
 	 * @param 	array	$models - element models
-	 * @param	integer $parent_id - parent model id
+	 * @param	integer $parent_key - parent model id
 	 *
 	 * @return array - array of element models tree
 	 * @since 1.0.0
 	 */
-	protected function build_models_tree( array &$models, $parent_id = 0 ) {
+	protected function build_models_tree( array &$models, $parent_key = 0 ) {
 
 		$tree = array();
 
 		foreach ( $models as $model ) {
 
-			if ( $model['parent_id'] == $parent_id && ( ! isset( $model['status'] )
+			if ( $model['parent_key'] == $parent_key && ( ! isset( $model['status'] )
 					|| 'processed' != $model['status'] ) ) {
-				$children = $this->build_models_tree( $models, $model['shortcode_id'] );
+				$children = $this->build_models_tree( $models, $model['element_key'] );
 				if ( $children ) {
 					$model['children'] = $children;
 				}
