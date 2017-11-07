@@ -374,7 +374,7 @@
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
-						that.setAttributes( {space: parseInt(ui.element.width())}, true );
+						that.setAttributes( { space: parseInt( ui.element.width())}, true );
 					},
 					resize: function( event, ui ){
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
@@ -458,10 +458,10 @@
 			tooltipDiv.innerText = '';
 
 			e.target.classList.add( 'target-moving' );
-			var direction = $(e.target).closest('.karma-spacing').attr('data-direction');
+			var direction = $( e.target ).closest( '.karma-spacing' ).attr( 'data-direction' );
 			this.showMouseToolTipValue( tooltipDiv, direction );
 
-			document.documentElement.addEventListener('mousemove', function(e){
+			document.documentElement.addEventListener( 'mousemove', function(e){
 				that.moveMouseToolTip(e , that, direction);
 			} , false );
 			document.documentElement.addEventListener( 'mouseup', this.removeMouseToolTip, false );
