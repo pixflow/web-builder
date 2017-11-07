@@ -2025,7 +2025,7 @@ html {
     cursor: col-resize;
     height: 100%;
     position: absolute;
-    right: 0;
+    right: 4px;
     top: 0;
     width: 1px; }
 .karma-active-section .row-gizmo-group {

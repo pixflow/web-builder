@@ -71,10 +71,9 @@
 		 */
 		liveChangeGrid: function () {
 			var that = this,
-				attributes = [ 'element_key' ];
-			attributes = this.getAttributes( attributes );
+				key = this.model.get( 'element_key' );
 			var changeGridOptions = {
-				selector: '.karma-builder-element[data-element-key="' + attributes.element_key + '"]',
+				selector: '.karma-builder-element[data-element-key="' + key + '"]',
 				snapToGrid: true,
 				gridPrefix: 'karma-col-md',
 				onStop: function ( result ) {
