@@ -252,6 +252,7 @@
 		 * @param	{object}	gizmoParams	Gizmo params
 		 *
 		 * @since 1.0.0
+		 *
 		 * @returns {string}    The HTML output of template
 		 */
 		gizmoBuilder: function ( gizmoParams ) {
@@ -268,6 +269,7 @@
 		 * @summary Build gizmo controller
 		 *
 		 * @since 1.0.0
+		 *
 		 * @returns {void}
 		 */
 		createGizmo: function () {
@@ -443,6 +445,8 @@
 		 * @summary show spacing tooltip on mouse down
 		 *
 		 * @since   1.0.0
+		 *
+		 *  @returns {void}
 		 */
 		showMouseToolTip : function( e ) {
 
@@ -468,6 +472,8 @@
 		 * @summary move spacing tooltip on mouse move
 		 *
 		 * @since   1.0.0
+		 *
+		 *  @returns {void}
 		 */
 		moveMouseToolTip : function( e, that, direction ) {
 
@@ -521,7 +527,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * remove all event from tooltip
+		 * @returns {void}
 		 */
 		removeMouseToolTip : function( e ) {
 
@@ -538,6 +544,7 @@
 		 *
 		 * @since 1.0.0
 		 *
+		 * @returns {void}
 		 */
 		toolTipHtml: function () {
 
