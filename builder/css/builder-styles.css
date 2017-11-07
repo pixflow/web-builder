@@ -1607,7 +1607,7 @@ html {
         font-size: 15px;
         line-height: 17px; }
         .karma-builder-toolbar .karma-builder-left ul li:hover {
-          color: #ffffffb8; }
+          color: rgba(255, 255, 255, 0.6); }
         .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-icon {
           padding-top: 4px; }
         .karma-builder-toolbar .karma-builder-left ul li .builder-page-name {
