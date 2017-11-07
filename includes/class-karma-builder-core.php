@@ -384,19 +384,19 @@ class Karma_Builder_Core{
 	 * Build multidimensional array of parent and children
 	 *
 	 * @param 	array	$models - element models
-	 * @param	integer $parent_key - parent model id
+	 * @param	string $parent_key - parent model key
 	 *
 	 * @return array - array of element models tree
 	 * @since 1.0.0
 	 */
-	protected function build_models_tree( array &$models, $parent_key = 0 ) {
+	protected function build_models_tree( array &$models, $parent_key = '' ) {
 
 		$tree = array();
 
 		foreach ( $models as $model ) {
 
-			if ( $model['parent_key'] == $parent_key && ( ! isset( $model['status'] )
-					|| 'processed' != $model['status'] ) ) {
+			if ( $model['parent_key'] === $parent_key && ( ! isset( $model['status'] )
+					|| 'processed' !== $model['status'] ) ) {
 				$children = $this->build_models_tree( $model, $model['element_key'] );
 				if ( $children ) {
 					$model['children'] = $children;
