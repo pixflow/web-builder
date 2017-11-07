@@ -454,7 +454,7 @@ QUnit.test("karmaUpdateModel", function ( assert ) {
 	for ( var i = 1; i < 5; i++ ) {
 
 		shortcodes[i + '_model'] = new karmaBuilder.model({
-			"shortcode_id": i + 10,
+			"element_key": i + 10,
 			"shortcode_name": "shortcode_test",
 			"parent_key": 0,
 			"order": 1,
@@ -472,7 +472,7 @@ QUnit.test("karmaUpdateModel", function ( assert ) {
 		karmaBuilder.karmaModels.add(shortcodes[i + '_model']);
 		shortcodes['sh' + i] = new karmaBuilder.shortcodes({
 
-			template: _.template('<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>'),
+			template: _.template('<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.element_key %>" ><%= attributes.element_key %></div>'),
 			model: shortcodes[i + '_model'],
 
 		});
@@ -489,11 +489,11 @@ QUnit.test("karmaUpdateModel", function ( assert ) {
 
 	});
 
-	delete karmaBuilder.karmaModels.where({'shortcode_id': 12})[0].attributes.shortcode_attributes.element_key;
-	assert.deepEqual(karmaBuilder.karmaModels.where({'shortcode_id': 12})[0].attributes, {
-		"shortcode_id": 12,
+	delete karmaBuilder.karmaModels.where({'element_key': 12})[0].attributes.shortcode_attributes.element_key;
+	assert.deepEqual(karmaBuilder.karmaModels.where({'element_key': 12})[0].attributes, {
+		"element_key": 12,
 		"shortcode_name": "shortcode_test",
-		"parent_id": 0,
+		"parent_key": 0,
 		"order": 1,
 		"shortcode_attributes": {
 			"color": "red",
@@ -525,9 +525,9 @@ QUnit.test("karmaFindChildren", function (assert) {
 			var parentId = 0;
 		}
 		shortcodes['model_' + i] = new karmaBuilder.model({
-			"shortcode_id": i,
+			"element_key": i,
 			"shortcode_name": "shortcode_test",
-			"parent_id": parentId,
+			"parent_key": parentId,
 			"order": 1,
 			"shortcode_attributes": {
 				"color": "red",
@@ -566,22 +566,26 @@ QUnit.test("karmaCurrentGrid", function ( assert ) {
 	var shortcodes = [];
 	for (var i = 1; i < 5; i++) {
 		if (i == 2 || i == 3 || i == 4) {
-			var parentId = 1;
+			var parentKey = 1;
 			var width = 4;
 		} else {
-			var parentId = 0;
+			var parentKey = 0;
 			var width = 0;
 		}
-		shortcodes['model_' + i] = new karmaBuilder.model({
 
+		shortcodes['model_' + i] = new karmaBuilder.model({
+			"element_key": i,
 			"shortcode_name": "shortcode_test",
-			"parent_key": parentId,
+			"parent_key": parentKey,
 			"order": 1,
 			"shortcode_attributes": {
 				"color": "red",
 				"font": "arial",
 				"bg": "#000fff",
-				"width": width,
+				"sm_size": width,
+				"md_size": width,
+				"lg_size": width,
+				"xl_size": width,
 				"style": 'font-family: "tahoma";',
 				"radius": '18',
 				"title": 'this is a " title " ',
@@ -589,6 +593,7 @@ QUnit.test("karmaCurrentGrid", function ( assert ) {
 			},
 			"shortcode_content": ""
 		});
+
 		karmaBuilder.karmaModels.add(shortcodes['model_' + i]);
 
 		shortcodes['sh' + i] = new karmaBuilder.section({
@@ -610,22 +615,25 @@ QUnit.test("karmaCalculateNewGrid", function (assert) {
 	var shortcodes = [];
 	for (var i = 1; i < 5; i++) {
 		if (i == 2 || i == 3 || i == 4) {
-			var parentId = 1;
+			var parentKey = 1;
 			var width = 4;
 		} else {
-			var parentId = 0;
+			var parentKey = '';
 			var width = 0;
 		}
 		shortcodes['model_' + i] = new karmaBuilder.model({
-
+			"element_key": i,
 			"shortcode_name": "shortcode_test",
-			"parent_key": parentId,
+			"parent_key": parentKey,
 			"order": 1,
 			"shortcode_attributes": {
 				"color": "red",
 				"font": "arial",
 				"bg": "#000fff",
-				"width": width,
+				"sm_size": width,
+				"md_size": width,
+				"lg_size": width,
+				"xl_size": width,
 				"style": 'font-family: "tahoma";',
 				"radius": '18',
 				"title": 'this is a " title " ',
@@ -653,7 +661,7 @@ QUnit.test("setAttribute", function (assert) {
 
 	var elements = {};
 	elements['model'] = new karmaBuilder.model({
-
+		"element_key": 10,
 		"shortcode_name": "shortcode_test",
 		"parent_key": 0,
 		"order": 1,
@@ -671,7 +679,7 @@ QUnit.test("setAttribute", function (assert) {
 	karmaBuilder.karmaModels.add(elements['model']);
 	elements['el'] = new karmaBuilder.shortcodes({
 
-		template: _.template('<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.shortcode_id %>" ><%= attributes.shortcode_id %></div>'),
+		template: _.template('<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.element_key %>" ><%= attributes.element_key %></div>'),
 		model: elements['model'],
 
 	});
@@ -684,8 +692,8 @@ QUnit.test("setAttribute", function (assert) {
 
 	});
 
-	assert.deepEqual(karmaBuilder.karmaModels.where({'shortcode_id': 10})[0].attributes, {
-
+	assert.deepEqual(karmaBuilder.karmaModels.where({'element_key': 10})[0].attributes, {
+		"element_key": 10,
 		"shortcode_name": "shortcode_test",
 		"parent_key": 0,
 		"order": 1,

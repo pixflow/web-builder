@@ -95,7 +95,7 @@
 		 * @returns Array - current layout of section
 		 */
 		currentGrid : function( ) {
-
+			//@TODO responsiveTool
 			var childrenModels = this.findChildren();
 
 			var currentGrid = [];

@@ -353,68 +353,52 @@
 
 		},
 
+
 		/**
-		 *@summery calculate maxWidth of left spacing
+		 *@summery create options for right and left spacing gizmo
+		 *
+	 	 *@param	{string} padingDirection type of padding (paddingleft or paddingRight)
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return {number} return value of maxwidth padding left
-		 */
-		calculateMaxWidthLeftSpacing : function () {
-
-			var element = this.$el,
-				elementWidth = element.width(),
-				elementRightSpacing = element.find( '.karma-right-spacing' ).width();
-			return elementWidth - elementRightSpacing - 10;
-
-		},
-
-		/**
-		 * @summary Build gizmo resizeable for left
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		leftSpacingGizmo : function ( $gizmo ) {
-
-			var maxWidth = this.calculateMaxWidthLeftSpacing(),
+		 *@return {object} return options for right and left spacing gizmo
+		*/
+		createRightLeftSpacingGizmo : function ( spacingSelector, paddingDirection) {
+			var calculating = this.calculateMaxWidthSpacing( spacingSelector ),
+				maxWidth = calculating,
 				that = this,
 				options = {
 					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
-						that.setAttributes({space: parseInt(ui.element.width())}, true);
+						that.setAttributes( {space: parseInt(ui.element.width())}, true );
 					},
-
 					resize: function( event, ui ){
-						ui.element.resizable( "option", "maxWidth", that.calculateMaxWidthLeftSpacing());
-						var currentSection = that.el.querySelector('div:first-child');
-						currentSection.style.paddingLeft = ui.size.width + 'px';
+						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
+						ui.element.resizable( "option", "maxWidth", calculating );
+						var currentSection = that.el.querySelector( 'div:first-child' );
+						currentSection.style[ paddingDirection ] = ui.size.width + 'px';
 					}
 				};
-			that.$el.attr( 'data-direction','left' );
-			options.handles.e = $gizmo.find( '.ui-resizable-e' );
-			this.$el.find( '.karma-left-spacing' ).resizable( options );
+			return options;
+
 
 		},
 
 		/**
-		 *@summery calculate maxWidth of right spacing
+		 * @summary Build gizmo resizeably for left
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return {integer} return value of maxwidth padding right
+		 * @returns {void}
 		 */
-		calculateMaxWidthRightSpacing : function () {
-
-			var element = this.$el,
-				elementWidth = element.width(),
-				elementLeftSpacing = element.find( '.karma-left-spacing' ).width(),
-				// -10 is for the  item's size ( minimum ) on the page
-				paddingRightValue = elementWidth - elementLeftSpacing -10;
-			return paddingRightValue;
+		leftSpacingGizmo : function ( $gizmo ) {
+			var that = this;
+			var options = this.createRightLeftSpacingGizmo( '.karma-right-spacing' , 'paddingLeft');
+			that.$el.attr( 'data-direction','left' );
+			options.handles.e = $gizmo.find( '.ui-resizable-e' );
+			this.$el.find( '.karma-left-spacing' ).resizable( options );
 
 		},
 
@@ -425,30 +409,35 @@
 		 *
 		 * @returns {void}
 		 */
-		rightSpacingGizmo : function ( $gizmo ) {
 
-			var maxWidth = this.calculateMaxWidthRightSpacing(),
-				that = this,
-				options = {
-					maxWidth   : maxWidth,
-					minWidth   : 0,
-					handles : {},
-					stop : function ( event, ui ) {
-						that.setAttributes( {space: parseInt(ui.element.width())}, true );
-					},
-					resize: function( event, ui ){
-
-						ui.element.resizable( "option", "maxWidth", that.calculateMaxWidthRightSpacing() );
-						var currentSection = that.el.querySelector( 'div:first-child' );
-						currentSection.style.paddingRight = ui.size.width + 'px';
-
-					}
-				};
-			that.$el.attr( 'data-direction','right' );
+		rightSpacingGizmo : function ( $gizmo  ) {
+			var that = this;
+			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'paddingRight');
+			console.log(options.maxWidth)
+			that.$el.attr( 'data-direction', 'right');
 			options.handles.w = $gizmo.find(  '.ui-resizable-w');
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
+		},
+
+
+		/**
+		 *@summery calculate maxWidth of left and  right spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return {integer} return value of maxwidth padding right
+		 */
+		calculateMaxWidthSpacing : function ( spacingGizmo ) {
+
+			var $element = this.$el,
+				elementWidth = $element.width(),
+				elementSpacing = $element.find( spacingGizmo ).width(),
+				// -10 is for the  item's size ( minimom ) on the page
+				paddingValue = elementWidth - elementSpacing -10;
+			return paddingValue;
 
 		},
+
 
 		/**
 		 * @summary show spacing tooltip on mouse down
@@ -495,6 +484,17 @@
 
 		},
 
+		/**
+		 * check direction of spacing and set tooltip inner text
+		 *
+		 * @param	{object} 	tooltip element
+		 *
+		 * @param	{string} 	direction of spacing
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
 		showMouseToolTipValue : function( tooltipDiv, direction ){
 
 			switch ( direction ){
