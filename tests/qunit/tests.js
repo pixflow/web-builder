@@ -1,12 +1,31 @@
 var wp = _ ;
 var orginalHtml = document.getElementById('karma-tests').innerHTML ;
+
+//insert default html to karma test
+function addHtml() {
+
+	document.getElementById('karma-tests').innerHTML = orginalHtml;
+
+}
+
+//new karma builder models
 function RCreateModels() {
 
 	_.each( JSON.parse( builderModels ), function ( model ) {
 		karmaBuilder.karmaModels.add( model );
 	});
+	addHtml();
 
-	document.getElementById('karma-tests').innerHTML = orginalHtml;
+}
+
+// return existing models in collection
+function getModelsAttributes( models ) {
+
+	var karmaTestResult = [];
+	_.each( models, function( model ) {
+		karmaTestResult.push( model.attributes );
+	});
+	return karmaTestResult;
 
 }
 
@@ -17,7 +36,7 @@ QUnit.test( "changeRowLayout() when the current grid layout is equal the new gri
 	karmaBuilder.karmaModels.reset();
 	RCreateModels();
 	var	newGrid = [ 5, 5, 2 ] ,
-		karmaTestResult = [] ,
+		karmaTestResult  ,
 		sectionView = new karmaBuilder.section({
 			el    : $('[data-element-key="firtstrow_12312"]') ,
 			model : karmaBuilder.karmaModels.models[0]
@@ -88,7 +107,7 @@ QUnit.test( "changeRowLayout() when the current grid layout is bigger the new gr
 	karmaBuilder.karmaModels.reset();
 	RCreateModels();
 	var	newGrid = [ 8, 4 ] ,
-		karmaTestResult = [] ,
+		karmaTestResult,
 		sectionView = new karmaBuilder.section({
 			el    : $('[data-element-key="firtstrow_12312"]') ,
 			model : karmaBuilder.karmaModels.models[0]
@@ -134,9 +153,7 @@ QUnit.test( "changeRowLayout() when the current grid layout is bigger the new gr
 
 	sectionView.changeRowLayout( newGrid );
 
-	_.each( karmaBuilder.karmaModels.models, function( model ) {
-		karmaTestResult.push( model.attributes );
-	});
+	karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
 
 	assert.deepEqual( karmaTestResult, karmaResult );
 
@@ -147,7 +164,7 @@ QUnit.test( "changeRowLayout() when the current grid layout is smaller the new g
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
 		var	newGrid = [ 8, 2, 1, 1 ] ,
-			karmaTestResult = [] ,
+			karmaTestResult,
 			sectionView = new karmaBuilder.section({
 				el    : $('[data-element-key="firtstrow_12312"]') ,
 				model : karmaBuilder.karmaModels.models[0]
@@ -218,9 +235,7 @@ QUnit.test( "changeRowLayout() when the current grid layout is smaller the new g
 
 		sectionView.changeRowLayout( newGrid );
 
-		_.each( karmaBuilder.karmaModels.models, function( model ) {
-			karmaTestResult.push( model.attributes );
-		});
+	karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
 		delete 	karmaTestResult[ karmaTestResult.length - 1 ].shortcode_attributes.element_key ;
 		assert.deepEqual( karmaTestResult, karmaResult );
 
@@ -231,7 +246,7 @@ QUnit.test( "changeRowLayout() grid sum should be 12", function ( assert ) {
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
 		var	newGrid = [ 8, 2, 1, 1, 1 ] ,
-			karmaTestResult = [] ,
+			karmaTestResult ,
 			sectionView = new karmaBuilder.section({
 				el    : $('[data-element-key="firtstrow_12312"]') ,
 				model : karmaBuilder.karmaModels.models[0]
@@ -289,11 +304,48 @@ QUnit.test( "changeRowLayout() grid sum should be 12", function ( assert ) {
 			];
 
 		sectionView.changeRowLayout( newGrid );
+		karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
 
-		_.each( karmaBuilder.karmaModels.models, function( model ) {
-			karmaTestResult.push( model.attributes );
-		});
+		assert.deepEqual( karmaTestResult, karmaResult );
 
+	});
+
+/**
+* It is Delete Elements Test
+*/
+QUnit.test("destroy() Check if model and its child has removed", function (assert) {
+
+	karmaBuilder.karmaModels.reset();
+	RCreateModels();
+	var karmaTestResult,
+		karmaResult = [],
+		sectionView = new karmaBuilder.section({
+			el    : $('[data-element-key="firtstrow_12312"]') ,
+			model : karmaBuilder.karmaModels.models[0]
+		}) ;
+
+	sectionView.model.destroy();
+	karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
+	assert.deepEqual( karmaTestResult, karmaResult );
+
+});
+
+/**
+ * It is Delete Elements Test
+ */
+QUnit.test("destroy() Check if element and its child has removed", function (assert) {
+
+		karmaBuilder.karmaModels.reset();
+		RCreateModels();
+		var karmaTestResult,
+			karmaResult = 0,
+			sectionView = new karmaBuilder.section({
+				el    : $('[data-element-key="firtstrow_12312"]') ,
+				model : karmaBuilder.karmaModels.models[0]
+			}) ;
+
+		sectionView.model.destroy();
+		karmaTestResult = document.querySelectorAll('.karma-builder-element').length;
 		assert.deepEqual( karmaTestResult, karmaResult );
 
 	});
@@ -301,81 +353,79 @@ QUnit.test( "changeRowLayout() grid sum should be 12", function ( assert ) {
 /**
  * It is Delete Elements Test
  */
-QUnit.test("destroy() Check the models", function (assert) {
+QUnit.test("destroy() Check if a child removed its parent still exist", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
 	RCreateModels();
- 	var karmaTestResult = [],
-		karmaDeleteResult = [
-		{
-			'shortcode_name'        : 'karma_section' ,
-			'order'                 : 1 ,
-			'parent_key'             :  0 ,
-			'shortcode_content'     : '' ,
-			'shortcode_attributes'  : {
-				'space'       : "20"
+	var karmaTestResult,
+		karmaResult = [
+			{
+				'element_key'			 : "firtstrow_12312" ,
+				'shortcode_name'        : 'karma_section' ,
+				'order'                 : 1 ,
+				'parent_key'             :  0 ,
+				'shortcode_content'     : '' ,
+				'shortcode_attributes'  : {
+					'space'       : "20"
+				} ,
 			} ,
-			'element_key'  : 'firtstrow_12312'
-		} ,
-		{
-			'shortcode_name'        : 'karma_column' ,
-			'order'                 : 1 ,
-			'parent_key'             : 'firtstrow_12312' ,
-			'shortcode_content'     : 'test' ,
-			'shortcode_attributes'  : {
-				lg_size     : '4' ,
-				md_size     : '4',
-				sm_size     : '4',
-				xl_size     : '4',
+			{
+				'element_key'			 : "12a12" ,
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 2 ,
+				'parent_key'             : "firtstrow_12312" ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					lg_size     : "4" ,
+					md_size     : "4" ,
+					sm_size     : "4" ,
+					xl_size     : "4" ,
+				} ,
 			} ,
-			'element_key'  : '1r312'
-		} ,
-		{
-			'shortcode_name'        : 'karma_column' ,
-			'order'                 : 2 ,
-			'parent_key'             : 'firtstrow_12312' ,
-			'shortcode_content'     : 'test' ,
-			'shortcode_attributes'  : {
-				lg_size     : '4' ,
-				md_size     : '4',
-				sm_size     : '4',
-				xl_size     : '4',
+			{
+				'element_key'			 : "ssssscolumn_12g12" ,
+				'shortcode_name'        : 'karma_column' ,
+				'order'                 : 4 ,
+				'parent_key'             : "firtstrow_12312" ,
+				'shortcode_content'     : 'test' ,
+				'shortcode_attributes'  : {
+					lg_size     : "4" ,
+					md_size     : "4" ,
+					sm_size     : "4" ,
+					xl_size     : "4" ,
+				} ,
 			} ,
-			'element_key'  : 'ssssscolumn_12g12'
-		}
-	] ,
-		columnView = new karmaBuilder.column({
-			el    : $('[data-element-key="12a12"]') ,
-			model : karmaBuilder.karmaModels.models[1]
-		});
+		],
+		sectionView = new karmaBuilder.section({
+			el    : $('[data-element-key="1r312"]') ,
+			model : karmaBuilder.karmaModels.models[2]
+		}) ;
 
-	columnView.destroy();
-
-	_.each( karmaBuilder.karmaModels.models, function( model ) {
-		karmaTestResult.push( model.attributes );
-	});
-
-	assert.deepEqual( karmaTestResult, karmaDeleteResult );
-	/*assert.equal($('div[data-element-id="1"]').length, 1);
-	assert.equal($('div[data-element-id="4"]').length, 0);*/
+	sectionView.model.destroy();
+	karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
+	assert.deepEqual( karmaTestResult, karmaResult );
 
 });
 
-
 /**
-* It is Delete Elements Test
-*/
-QUnit.test("destroy() Check the parents node exist", function (assert) {
+ * It is Delete Elements Test
+ */
+QUnit.test("destroy() Check if a child removed its parent still exist", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
 	RCreateModels();
-	var columnInsatnce = $('[data-element-key="1r312"]').backboneView();
-	columnInsatnce.destroy();
+	var karmaTestResult,
+		karmaResult = 3,
+		sectionView = new karmaBuilder.section({
+			el    : $('[data-element-key="1r312"]') ,
+			model : karmaBuilder.karmaModels.models[2]
+		}) ;
 
-	assert.equal( $('div[data-element-key="firtstrow_12312"]').length, 1);
-		 /*assert.equal($('div[data-element-id="4"]').length, 0);*/
+	sectionView.model.destroy();
+	karmaTestResult = document.querySelectorAll('.karma-builder-element').length;
+	assert.deepEqual( karmaTestResult, karmaResult );
 
-	});
+});
 
 /***
  * It is Save Elements Test
