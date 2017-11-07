@@ -222,10 +222,9 @@
 			if ( null === templateParams ) {
 				templateParams = {};
 			}
-			var tempObject = wp.template( templateName ),
-				tempHtml = tempObject( templateParams );
+			var tempObject = wp.template( templateName );
 
-			return tempHtml;
+			return tempObject( templateParams );
 
 		},
 
@@ -250,7 +249,7 @@
 		/**
 		 * @summary Build gizmo controller of elements base on params given
 		 *
-		 * @param	{object}	params	Gizmo params
+		 * @param	{object}	gizmoParams	Gizmo params
 		 *
 		 * @since 1.0.0
 		 * @returns {string}    The HTML output of template
@@ -359,20 +358,19 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return {integer} return value of maxwidth padding left
+		 * @return {number} return value of maxwidth padding left
 		 */
 		calculateMaxWidthLeftSpacing : function () {
 
 			var element = this.$el,
 				elementWidth = element.width(),
-				elementRightSpacing = element.find( '.karma-right-spacing' ).width(),
-				paddingLeftValue = elementWidth - elementRightSpacing - 10;
-			return paddingLeftValue;
+				elementRightSpacing = element.find( '.karma-right-spacing' ).width();
+			return elementWidth - elementRightSpacing - 10;
 
 		},
 
 		/**
-		 * @summary Build gizmo resizeably for left
+		 * @summary Build gizmo resizeable for left
 		 *
 		 * @since 1.0.0
 		 *
@@ -414,20 +412,21 @@
 			var element = this.$el,
 				elementWidth = element.width(),
 				elementLeftSpacing = element.find( '.karma-left-spacing' ).width(),
-				// -10 is for the  item's size ( minimom ) on the page
+				// -10 is for the  item's size ( minimum ) on the page
 				paddingRightValue = elementWidth - elementLeftSpacing -10;
 			return paddingRightValue;
 
 		},
 
 		/**
-		 * @summary Build gizmo resizeably for right
+		 * @summary Build gizmo resizeable for right
 		 *
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
 		 */
 		rightSpacingGizmo : function ( $gizmo ) {
+
 			var maxWidth = this.calculateMaxWidthRightSpacing(),
 				that = this,
 				options = {
@@ -452,11 +451,9 @@
 		},
 
 		/**
-		 * show mouse tooltip in spacing
+		 * @summary show spacing tooltip on mouse down
 		 *
-		 * @since 1.0.0
-		 *
-		 * add event to tooltip
+		 * @since   1.0.0
 		 */
 		showMouseToolTip : function( e ) {
 
@@ -479,11 +476,9 @@
 		},
 
 		/**
-		 * move mouse tooltip in spacing
+		 * @summary move spacing tooltip on mouse move
 		 *
-		 * @since 1.0.0
-		 *
-		 * give position to tooltip div
+		 * @since   1.0.0
 		 */
 		moveMouseToolTip : function( e, that, direction ) {
 
@@ -558,11 +553,11 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns String	Random string
+		 * @returns {String}	Random string
 		 */
 		createNewElementKey : function () {
 
-			var randomString = this.createRandomString( 6 ) ;
+			var randomString = 'kb' + this.createRandomString( 6 ) ;
 			if( karmaBuilder.karmaModels.where( { 'element_key' : randomString } ).length ){
 				return this.createNewElementKey();
 			}
@@ -571,15 +566,16 @@
 		},
 
 		/**
-		 * Set defaults in create
+		 * @summary call element method related to the changed attribute
 		 *
-		 *  @param	{object} 	element	Javascript Element.
+		 * @param	{object} 	model	updated element model.
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns boolean
+		 * @returns {boolean}
 		 */
 		update : function ( model ) {
+
 			for ( var i in model.changed.shortcode_attributes.changed ){
 				if( 'function' === typeof this[ i ] ){
 					this[ i ]();
@@ -591,12 +587,10 @@
 		},
 
 		/**
-		 * Render new elements in defined placeHolder
-		 *
+		 * @summary Render elements
 		 *
 		 * @since 1.0.0
-		 *
-		 * @returns boolean
+		 * @returns {boolean}
 		 */
 		render : function () {
 
@@ -607,11 +601,10 @@
 		},
 
 		/**
-		 * Delete elements model and html
+		 * @summary Delete elements model and html
 		 *
 		 * @since 1.0.0
-		 *
-		 * @returns void
+		 * @returns {void}
 		 */
 		destroy : function() {
 
@@ -634,11 +627,11 @@
 		},
 
 		/**
-		 * Update attribute(s) of element
+		 * @summary Update attribute(s) of element
 		 *
 		 * @param	{Object}	newAttributes list of new attribute
 		 *
-		 * @param	{boolean}	update model in silent mode
+		 * @param	{boolean}	silent model in silent mode
 		 *
 		 * @since 1.0.0
 		 *
@@ -658,11 +651,11 @@
 		},
 
 		/**
-		 * GET Specific attribute(s) of element
-		 * @example // returns { space : 200, slow : false }
-		 * getAttributes ( Space, Slow )
+		 * @summary GET Specific attribute(s) of element
+		 * @example getAttributes ( ['space', 'slow'] ) // returns { space : 200, slow : false }
 		 *
-		 * @param	[array]	attributesNames List of name attribute
+		 *
+		 * @param	{Array}	attributesNames List of name attribute
 		 *
 		 * @since 1.0.0
 		 *
@@ -696,7 +689,6 @@
 			return karmaBuilder.karmaModels.where( { 'parent_key' : this.model.attributes['element_key'] } );
 
 		},
-
 
 		/**
 		 * Open setting panel of each Element
