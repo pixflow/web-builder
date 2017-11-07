@@ -94,13 +94,13 @@ class Karma_Builder_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( $this->plugin_name . '-jquery-ui' ,  plugin_dir_url( __FILE__ ). 'js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name . '-range-slider' ,  plugin_dir_url( __FILE__ ). 'js/rangeslider.min.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name . '-grid-resizer' ,  plugin_dir_url( __FILE__ ). 'js/grid-resizer.min.js', array( ), $this->version, false );
 
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url(__FILE__) . 'js/karma-builder-init.min.js', array('jquery', 'backbone', 'wp-util'), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-jquery-ui' ,  plugin_dir_url( __FILE__ ). 'js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-range-slider' ,  plugin_dir_url( __FILE__ ). 'js/rangeslider.min.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-grid-resizer' ,  plugin_dir_url( __FILE__ ). 'js/grid-resizer.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/setting-panel.min.js', array( $this->plugin_name ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/shortcodes.min.js', array( $this->plugin_name . '-setting-panel' ), $this->version, false );
 		}
