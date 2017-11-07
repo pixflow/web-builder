@@ -61,6 +61,12 @@ class Karma_Column extends Karma_Shortcode_Base {
 						"label"         => esc_attr__( "Put Your URL", 'karma' ),
 						"placeholder"   => 'Put Your URL',
 					),
+						array(
+								"name"          => "extraClass",
+								"type"          => Karma_Builder_Setting_Panel::IMAGE_POSITION,
+								"label"         => esc_attr__( "Put Your URL", 'karma' ),
+								"placeholder"   => 'Put Your URL',
+						),
 					array(
 						"name"  => "title",
 						"value" => "Spacing",

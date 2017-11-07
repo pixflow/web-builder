@@ -40,6 +40,7 @@ class Karma_Builder_Setting_Panel {
 	const RANGE_SLIDER = 'range-slider';
 	const GRID = 'grid';
 	const CHECK_BOX = 'check-box';
+	const IMAGE_POSITION = 'image-position';
 
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'
