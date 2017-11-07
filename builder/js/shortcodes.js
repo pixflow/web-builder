@@ -710,11 +710,11 @@
 		 * Remove Class from javascript element
 		 *
 		 * @param	{object}    el   		element to remove Class
-		 * @param	string	    className   name of class to remove
+		 * @param	{string}    className   name of class to remove
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns void
+		 * @returns {void}
 		 */
 		removeClass: function ( el, className ) {
 
@@ -750,10 +750,9 @@
 		 *
 		 * @returns { void }
 		 */
-		renderCss: function (selector,attribute,value) {
+		renderCss: function ( selector, attribute, value) {
 
-			var newStyle = this.generateNewStyle(selector,attribute,value);
-			document.getElementById( this.elementSelector() ).innerHTML = newStyle;
+			document.getElementById( this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
 
 		},
 
@@ -811,7 +810,7 @@
 
 			if ( styleResult.indexOf( attribute ) >= 0 ){
 
-				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;' )
+				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;' );
 				newStyle += styleResult.replace( regex , attribute + ':' + value + ';');
 				newStyle += '}';
 
