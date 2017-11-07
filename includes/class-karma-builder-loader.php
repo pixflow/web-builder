@@ -188,7 +188,6 @@ class Karma_Builder_Loader {
 	private function generate_page_model(){
 
 		$page_id = get_the_ID();
-
 		$post_object = get_post ( $page_id );
 		$content = $post_object->post_content;
 		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
@@ -236,11 +235,11 @@ class Karma_Builder_Loader {
     }
 
 	/**
-	 * Convert shortcodes in page as Karma shortcode format
+	 * Convert element in page as Karma element format
 	 *
-	 * @param	string	$output	Html source of each shortocde
-	 * @param	string	$tag	The name of shortcode
-	 * @param 	string	$attr	The attribute of shortcode
+	 * @param	string	$output	Html source of each element
+	 * @param	string	$tag	The name of element
+	 * @param 	string	$attr	The attribute of element
 	 *
 	 * @since     1.0.0
 	 * @return    string	the correct html source for builder

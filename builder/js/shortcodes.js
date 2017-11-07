@@ -139,6 +139,7 @@
 			}
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
+			this.addActionTrigger();
 
 		},
 
@@ -585,6 +586,7 @@
 			for ( var i in model.changed.shortcode_attributes.changed ){
 				if( 'function' === typeof this[ i ] ){
 					this[ i ]();
+
 				} else {
 					this.render();
 				}
@@ -646,12 +648,14 @@
 		setAttributes: function ( newAttributes, silent ) {
 
 			var model = this.model,
-				shortcodeAtrributes = model.attributes.shortcode_attributes;
+				shortcodeAtrributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
+
+			shortcodeAtrributes.changed = {};
 			for ( var attr in newAttributes ) {
-
 				shortcodeAtrributes[ attr ] = newAttributes[ attr ];
-
+				shortcodeAtrributes.changed[ attr ] = newAttributes[ attr ];
 			}
+
 			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent: silent } );
 
 		},
@@ -799,7 +803,7 @@
 		},
 
 		/**
-		 * renders the css of model inside style tag
+		 * @summary renders the css of model inside style tag
 		 *
 		 * @param	{ string } 	styleResult Old style of element
 		 * @param	{ string }	attribute	CSS attribute
@@ -825,6 +829,74 @@
 			}
 			return newStyle;
 
+		} ,
+
+		/**
+		 * @summary Create new element
+		 *
+		 * @param	{string}    elementName The element name wants to create
+		 * @param	{model}     model       The model of new element
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		createNewElement : function ( elementName, model ) {
+
+			if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
+				$( '[data-element-key="' + model.attributes.parent_key + '"]' ).find('.karma-row').append( this.createBuilderModel( model ) );
+				var elementView = new karmaBuilder[ elementName ]({
+					model 			: model,
+					gizmoParams 	: KarmaView.getGizmoParam( model.attributes.shortcode_name ),
+					el              : $( '[data-element-key="' + model.attributes.element_key + '"]' ) ,
+					template 		: wp.template( 'karma-element-' + model.attributes.shortcode_name )
+				});
+				elementView.render();
+			}
+
+		} ,
+
+		/**
+		 * @summary Create builder model html
+		 * If model param did not set, it automatically set by current model( this.model )
+		 *
+		 * @param	{object}    model   model of specific element
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {string} Builder html
+		 */
+		createBuilderModel : function( model ){
+
+			model = model ? model : this.model ;
+			var classes = $( document ).triggerHandler( 'before/elements/create/' + model.attributes.shortcode_name, [ model.attributes.shortcode_attributes ] ),
+				karmaBuilderOutput = '<div class="karma-builder-element '
+				+ classes
+				+ '" data-element-key="' + model.attributes.element_key +  '" data-name="' + model.attributes.shortcode_name + '" > '
+				+ '</div>' ;
+
+			return karmaBuilderOutput;
+
+		},
+
+		/**
+		 * @summary Set filter before create builder html
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		addActionTrigger : function () {
+
+			$( document ).off( 'before/elements/create/karma_column' ).on( 'before/elements/create/karma_column', function ( e, atts ) {
+
+				var classes = 'karma-col-sm-' + atts[ 'sm_size' ]
+				+ ' karma-col-md-' + atts[ 'md_size' ]
+				+ ' karma-col-lg-' + atts[ 'lg_size' ]
+				+ ' karma-col-xl-' + atts[ 'xl_size' ];
+				return classes;
+
+			});
+			
 		}
 
 	});

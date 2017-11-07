@@ -27,9 +27,25 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		initialize : function () {
-			
-			this.gizmoParams = JSON.parse( builderGizmo );
+
 			this.render();
+
+		},
+
+		/**
+		 * @summary return gizmo params option
+		 *
+		 * @param {string}  name    The name of element
+		 *
+		 * @since 1.0.0
+		 * @return {object} contains the gizmo options list
+		 */
+		getGizmoParam : function ( name ) {
+
+			if( 0 === Object.keys( this.gizmoParams ).length ){
+				this.gizmoParams = JSON.parse( builderGizmo );
+			}
+			return this.gizmoParams[ name ];
 
 		},
 
@@ -42,7 +58,7 @@ var karmaBuilder = karmaBuilder || {};
 					var elementView = new karmaBuilder[ elementName ]({
 						model 			: element,
 						el 				: $( '[data-element-key="' + element.attributes.element_key + '"]' ),
-						gizmoParams 	: that.gizmoParams[ element.attributes.shortcode_name ],
+						gizmoParams 	: that.getGizmoParam( element.attributes.shortcode_name ),
 						template 		: wp.template( 'karma-element-' + element.attributes.shortcode_name )
 					});
 					elementView.createGizmo();

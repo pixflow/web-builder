@@ -240,10 +240,12 @@
 		var nextElement = el,
 			found = false;
 		while ( !found ) {
-			if ( nextElement.nextSibling ) {
+
+			if ( null === nextElement.nextSibling ) {
 				// no more sibling
 				break;
 			}
+
 			if ( nextElement.nextSibling.classList && nextElement.nextSibling.classList.contains( 'resizable-grid' ) ) {
 				nextElement = nextElement.nextSibling;
 				found = true;

@@ -1,9 +1,10 @@
 ( function( $, karmaBuilder ){
+
 	karmaBuilder.section = karmaBuilder.shortcodes.extend({
 
 		events:{
 
-			'click'				 							: 'showBorder',
+			'click'	: 'showBorder',
 
 		},
 		
@@ -11,6 +12,7 @@
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
 			this.addAction();
+
 		},
 
 		showSettingPanel : function(){
@@ -20,6 +22,12 @@
 
 		},
 
+		/**
+		 * @summary Set the listener on build gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
 		addAction : function () {
 
 			var that = this;
@@ -31,8 +39,8 @@
 				}
 				return gizmoParam;
 			});
-		},
 
+		},
 
 		/**
 		 * @summary Set the active row with specific class
@@ -58,32 +66,13 @@
 		 * @since 1.0.0
 		 * @returns {Array}	Contain the ids
 		 */
-		getColumnsId : function () {
+		getColumnsKey : function () {
 
 			var columns = [] ;
 			_.each( this.findChildren(), function ( column ) {
 				columns.push( column.attributes.element_key );
 			} );
 			return columns;
-
-		},
-
-		/**
-		 * @summary Update the size of columns
-		 *
-		 * @param {array}	attributes	The old attributes of column
-		 * @param {number}	value		New value
-		 *
-		 * @since 1.0.0
-		 * @returns {array}	New attributes
-		 */
-		updateWidthColumn : function ( attributes, value ) {
-
-			attributes['lg_size'] = value;
-			attributes['md_size'] = value;
-			attributes['sm_size'] = value;
-			attributes['xl_size'] = value;
-			return attributes;
 
 		},
 
@@ -100,6 +89,7 @@
 
 			var currentGrid = [];
 			for (var i = 0, len = childrenModels.length; i < len; i++) {
+				//@TODO change sm_size to whatever may apply on responsive tool :)
 				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.sm_size ) )
 			}
 			return currentGrid;
@@ -114,6 +104,7 @@
 		 * @returns Array - new layout of section after add new column
 		 */
 		calculateNewGrid : function( ) {
+
 			var newGrid = this.currentGrid();
 			newGrid.reverse();
 			for (var i = 0, len = newGrid.length; i < len; i++) {
@@ -125,54 +116,28 @@
 			newGrid.reverse();
 			newGrid.push(1);
 			return newGrid;
-		},
-
-		/**
-		 * @summary Update the column model by id given.
-		 * Function just update size of column
-		 *
-		 * @params {number}	columnId		The column id
-		 * @params {number}	parentId		The row id
-		 * @params {number}	newWidth		The new width of column
-		 *
-		 * @since 1.0.0
-		 * @returns {void}
-		 */
-		updateColumnModel : function ( columnId, parentId, newWidth ) {
-
-			var model = karmaBuilder.karmaModels.findWhere( { 'parent_key' : parentId , 'element_key' : columnId } ),
-				attributes;
-			attributes = model.attributes.shortcode_attributes ;
-			attributes = this.updateWidthColumn( attributes, newWidth );
-			model.set( { 'shortcode_attributes' : attributes } , { silent : true } );
 
 		},
 
 		/**
 		 * @summary Delete The column id
-		 * Function before delete the model move all content into the
-		 * last column in row
 		 *
-		 * @params {number}	columnId			The column id
-		 * @params {number}	lastColumnId		The last column in row id
+		 * @params {number}	columnKey			The column id
+		 * @params {number}	lastColumnKey		The last column in row id
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		deleteColumnModel : function ( columnId, lastColumnId ) {
+		deleteColumnModel : function ( columnKey, lastColumnKey ) {
 
-			var models = karmaBuilder.karmaModels.where( { 'parent_key' : columnId } );
-			_.each( models, function ( model ) {
-				model.set( { 'parent_key' : lastColumnId } , { silent : true } );
-			});
-			var columnModel = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnId } );
-			karmaBuilder.karmaModels.remove( columnModel );
+			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ) ,
+				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
+			columnInstance.deleteColumn( lastColumnKey  );
 
 		},
 
 		/**
-		 * @summary Delete The column id
-		 * Function before delete the model
+		 * @summary Sum the numbers
 		 *
 		 * @params {number}	total	The total number
 		 * @params {number}	num		The new number
@@ -200,6 +165,25 @@
 				return true ;
 			}
 			return false;
+
+		},
+
+		/**
+		 * @summary Update the column model by id given.
+		 * Function just update size of column
+		 *
+		 * @params {number}	columnId		The column id
+		 * @params {number}	parentId		The row id
+		 * @params {number}	newWidth		The new width of column
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		updateColumnModel : function ( columnKey, parentId, newWidth ) {
+
+			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ) ,
+				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
+			columnInstance.updateWidthColumn( newWidth );
 
 		},
 
@@ -236,7 +220,6 @@
 				this.createNewColumn( counter, newLayout, columns[ counter ] );
 			}
 
-			//this.model.trigger( 'change', this.model );
 			return true;
 
 		},
@@ -246,28 +229,31 @@
 		 *
 		 * @params {number}	counter			Columns that should be created
 		 * @params {array}	newLayout		New layout
-		 * @params {number}	columnId		ID of last column updated
+		 * @params {number}	columnKey		ID of last column updated
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-	
-		createNewColumn : function ( counter, newLayout, columnId ) {
+		createNewColumn : function ( counter, newLayout, columnKey ) {
 
 			counter = parseInt( counter ) + 1;
 			for( counter; counter < newLayout.length; counter++ ){
-				var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnId } ).attributes,
+				var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes,
 					newModel = {
 						'element_key'           : this.createNewElementKey(),
-						'parent_key'             : model.parent_key ,
+						'parent_key'            : model.parent_key ,
 						'order'                 : model.order + 1 ,
 						'shortcode_content'     : '' ,
 						'shortcode_name'        : model.shortcode_name ,
-						'shortcode_attributes'  : JSON.stringify( model.shortcode_attributes )
+						'shortcode_attributes'  : JSON.parse( JSON.stringify( model.shortcode_attributes ) )
 					};
 
-				newModel.shortcode_attributes = this.updateWidthColumn( JSON.parse ( newModel.shortcode_attributes ), newLayout[ counter ] );
-				karmaBuilder.karmaModels.add( newModel );
+				newModel.shortcode_attributes.lg_size = newLayout[ counter ];
+				newModel.shortcode_attributes.sm_size = newLayout[ counter ];
+				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
+				newModel.shortcode_attributes.md_size = newLayout[ counter ];
+				var CID = karmaBuilder.karmaModels.add( newModel ).cid;
+				this.createNewElement( 'column', karmaBuilder.karmaModels.get({ 'cid' : CID }) );
 
 			}
 
