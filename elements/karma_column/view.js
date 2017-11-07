@@ -55,7 +55,6 @@
 		 * @returns {void}
 		 */
 		extraClass: function(){
-
 			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.attributes.shortcode_attributes.element_key,
 				defaultClasses =  elementClass + " karma-column  "  + this.model.attributes.shortcode_attributes.extraClass;
 			this.el.firstElementChild.setAttribute( 'class', defaultClasses );
@@ -98,7 +97,7 @@
 			newLayout[ newGrid.currentColumnIndex ] = newGrid.currentColumnWidth;
 			newLayout[ newGrid.nextColumnIndex ] = newGrid.nextColumnWidth;
 			this.$el.parent().backboneView().changeRowLayout( newLayout );
-		}
+		},
 
 	});
 })(jQuery,karmaBuilder);

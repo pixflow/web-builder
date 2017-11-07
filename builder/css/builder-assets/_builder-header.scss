@@ -22,7 +22,7 @@
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@include margin( inherit,0,inherit,39px );
 				@extend .HelveticaNeue-font;
-				color: #fffc;
+				color: rgba(255, 255, 255, 0.8);;
 				cursor: pointer;
 				font-size: 15px;
 				line-height: 17px;
@@ -66,7 +66,7 @@
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@include margin( inherit,inherit,0,20px );
 				@extend .HelveticaNeue-font;
-				color: #fffc;
+				color: rgba(255, 255, 255, 0.8);;
 				cursor: pointer;
 				font-size: 15px;
 				line-height: 17px;

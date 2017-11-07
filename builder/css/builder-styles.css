@@ -133,7 +133,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-title-controller div.karma-title-field, .karma-title2-controller div.karma-title2-field {
+.HelveticaNeue-font, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-title-controller div.karma-title-field, .karma-title2-controller div.karma-title2-field, .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
   font-family: HelveticaNeue; }
 
 /**
@@ -1602,7 +1602,7 @@ html {
         margin-right: 0;
         margin-bottom: inherit;
         margin-left: 39px;
-        color: #fffc;
+        color: rgba(255, 255, 255, 0.8);
         cursor: pointer;
         font-size: 15px;
         line-height: 17px; }
@@ -1647,7 +1647,7 @@ html {
         margin-right: inherit;
         margin-bottom: 0;
         margin-left: 20px;
-        color: #fffc;
+        color: rgba(255, 255, 255, 0.8);
         cursor: pointer;
         font-size: 15px;
         line-height: 17px;
@@ -2447,29 +2447,47 @@ html {
     margin: 20px; }
 
 .karma-check-box-controller {
-  padding: 0 20px 25px 20px; }
+  padding-top: 0;
+  padding-right: 20px;
+  padding-bottom: 25px;
+  padding-left: 20px; }
   .karma-check-box-controller .check-box-controller-template {
     display: flex;
+    text-align: inherit;
+    align-items: center;
     justify-content: space-between;
-    flex-direction: row;
-    align-items: center; }
+    flex-direction: row; }
     .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
       color: rgba(57, 73, 89, 0.8);
-      font-family: HelveticaNeue;
       font-size: 15px;
       line-height: 17px; }
-    .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle {
-      height: 24px;
-      width: 24px;
-      border: 1px solid rgba(57, 73, 89, 0.2);
-      border-radius: 19px;
-      display: flex;
-      align-items: center;
-      justify-content: center; }
-      .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle .check-box-circle-fill {
-        height: 10px;
-        width: 10px;
-        border-radius: 19px;
-        background-color: #419CF8; }
+    .karma-check-box-controller .check-box-controller-template .karma-check-box-container {
+      position: relative; }
+      .karma-check-box-controller .check-box-controller-template .karma-check-box-container input.check-box-input {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        z-index: 100; }
+      .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle {
+        display: flex;
+        text-align: inherit;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border: 1px solid rgba(57, 73, 89, 0.2);
+        border-radius: 19px; }
+        .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle .check-box-circle-fill {
+          width: 10px;
+          height: 10px;
+          background-color: #419CF8;
+          border-radius: 19px;
+          transform: scale(0.01, 0.01);
+          transition-duration: .3s; }
+
+input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
+  transform: scale(1, 1);
+  transition-duration: .3s; }
 
 /*# sourceMappingURL=builder-styles.css.map */

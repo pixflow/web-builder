@@ -6,8 +6,11 @@
 		<# } #>
 
 		<div class="karma-check-box-container">
+
 			<div class="check-box-circle">
-				<div class="check-box-circle-fill"></div>
+				<input	type="checkbox" id="karma-input-checkbox-controller" name="{{{ data.name }}}" class="check-box-input" value="{{ data.value }}">
+				<label class="check-box-circle-fill" for="karma-input-checkbox-controller"></label>
+
 			</div>
 		</div>
 

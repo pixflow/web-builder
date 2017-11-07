@@ -12,7 +12,8 @@
 			"click .delete-karma-element"				: "removeElement",
 			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
 			"input input:not(.no-trigger)"				: "updateModel",
-			"input textarea:not(.no-trigger)"			: "updateModel"
+			"input textarea:not(.no-trigger)"			: "updateModel" ,
+			"change input[type=checkbox]"				: "updateModel" ,
 		},
 
 		/**
