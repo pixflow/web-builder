@@ -415,7 +415,6 @@
 		rightSpacingGizmo : function ( $gizmo  ) {
 			var that = this;
 			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'paddingRight');
-			console.log(options.maxWidth)
 			that.$el.attr( 'data-direction', 'right');
 			options.handles.w = $gizmo.find(  '.ui-resizable-w');
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
