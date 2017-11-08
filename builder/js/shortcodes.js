@@ -832,23 +832,25 @@
 		/**
 		 * @summary Create new element
 		 *
-		 * @param	{string}    elementName The element name wants to create
-		 * @param	{model}     model       The model of new element
+		 * @param	{string}    elementName     The element name wants to create
+		 * @param	{model}     model           The model of new element
+		 * @param   {boolean}   shouldRender    Call render method or not
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		createNewElement : function ( elementName, model ) {
+		createNewElement : function ( elementName, model, shouldRender ) {
 
 			if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
+				shouldRender = shouldRender ? shouldRender : true;
 				$( '[data-element-key="' + model.attributes.parent_key + '"]' ).find('.karma-row').append( this.createBuilderModel( model ) );
 				var elementView = new karmaBuilder[ elementName ]({
 					model 			: model,
 					gizmoParams 	: KarmaView.getGizmoParam( model.attributes.shortcode_name ),
 					el              : $( '[data-element-key="' + model.attributes.element_key + '"]' ) ,
-					template 		: wp.template( 'karma-element-' + model.attributes.shortcode_name )
+					template 		: wp.template( 'karma-element-' + model.attributes.shortcode_name ) ,
+					renderStatus    : shouldRender
 				});
-				elementView.render();
 			}
 
 		} ,
