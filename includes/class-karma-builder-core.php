@@ -372,7 +372,6 @@ class Karma_Builder_Core{
 
 		// Sort models by order
 		$this->sort_models_by_order( $models );
-
 		// Generate Content
 		$content = $this->convert_model_to_shortcode_pattern( $models );
 
@@ -456,7 +455,7 @@ class Karma_Builder_Core{
 
 			$shortcode_attributes = trim( $shortcode_attributes );
 			$shortcode_attributes = ( $shortcode_attributes != '' ) ? ' ' . $shortcode_attributes : '';
-			$content .= '[' . $shortcode_name . $shortcode_attributes . ']';
+			$content .= '[' . $shortcode_name . $shortcode_attributes . ' element_key="' . $model['element_key'] . '" ]';
 
 			if( isset( $model['children'] ) && is_array( $model['children'] ) ){
 				$content .= $this->convert_model_to_shortcode_pattern( $model['children'] );
