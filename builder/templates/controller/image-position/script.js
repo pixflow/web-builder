@@ -3,8 +3,13 @@ jQuery( document ).off( 'karma_finish_form_builder.image-position' ).on( 'karma_
 	var imgPosition = document.querySelectorAll( '.karma-image-position-box' ),
 		imgPositioninput = document.querySelector( '.image-position-input' );
 	
-	if ( imgPositioninput.length != null ) {return};
-		 imgPositioninput.getAttribute( 'value' );
+
+	if ( null === imgPositioninput ){
+		return false;
+	}
+
+	imgPositioninput.getAttribute( 'value' );
+
 	var	 selected = document.querySelector( '.karma-image-position-box[data-value="' + inputAttr + '"]' );
 
 

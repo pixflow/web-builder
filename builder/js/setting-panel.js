@@ -185,16 +185,20 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns void
+		 * @returns {void}
 		 */
 		removeSettingPanel : function() {
 
 			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
-			settingPanel.parentNode.removeChild( settingPanel );
+			if( null != settingPanel ){
+				settingPanel.parentNode.removeChild( settingPanel );
 
-			// COMPLETELY UNBIND THE VIEW
-			this.undelegateEvents();
-			this.$el.removeData().unbind();
+				// COMPLETELY UNBIND THE ELEMENT SETTING PANEL VIEW
+				elementSettingPanel.undelegateEvents();
+				elementSettingPanel.$el.removeData().unbind();
+				delete elementSettingPanel;
+
+			}
 
 		},
 

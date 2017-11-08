@@ -703,9 +703,10 @@
 		showSettingPanel : function ( e ) {
 
 			var form = $( e.currentTarget ).data('form');
+			this.removeSettingPanel();
 			this.openSettingPanel( this.model, form );
-			window.builder = new karmaBuilder.elementSettingPanel( { model : this.model } );
-			builder.delegateEvents();
+			window.elementSettingPanel = new karmaBuilder.elementSettingPanel( { model : this.model } );
+			elementSettingPanel.delegateEvents();
 
 		},
 
