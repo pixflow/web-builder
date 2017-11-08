@@ -246,14 +246,14 @@
 				break;
 			}
 
-			if ( nextElement.nextSibling.classList && nextElement.nextSibling.classList.contains( 'resizable-grid' ) ) {
+			if ( nextElement.nextSibling.classList && nextElement.nextSibling.classList.contains( 'karma-builder-element' ) ) {
 				nextElement = nextElement.nextSibling;
 				found = true;
 			} else {
 				nextElement = nextElement.nextSibling
 			}
 		}
-		return nextElement.nextSibling;
+		return nextElement;
 	};
 
 	/**
