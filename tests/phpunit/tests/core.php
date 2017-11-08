@@ -259,9 +259,9 @@ class Tests_Core extends WP_UnitTestCase {
 
 
 		$this->builder->save_post_content( $models, $key );
-		$post = get_post($key);
+		$post_content = get_post_meta( $key, 'karma_post_content', true );
 
-		$this->assertEquals( $expect, $post->post_content );
+		$this->assertEquals( $expect, $post_content );
 	}
 
 	public function test_switch_post_status() {

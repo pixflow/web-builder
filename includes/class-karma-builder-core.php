@@ -486,15 +486,55 @@ class Karma_Builder_Core{
 	}
 
 	/**
+	 * @summary Save post content to database and change post status to draft
+	 *
+	 * @param   array		$models - element models
+	 * @param   integer     $post_id - post/page ID
+	 *
+	 * @return boolean
+	 * @since 1.0.0
+	 */
+	public function save_post( $models, $post_id ) {
+
+		if ( $this->switch_post_status( 'draft', $post_id ) ) {
+			$this->save_post_content( $models, $post_id );
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	/**
+	 * @summary save post content to database and change post status to publish
+	 *
+	 * @param   array		$models - element models
+	 * @param   integer     $post_id - post/page ID
+	 *
+	 * @return boolean
+	 * @since 1.0.0
+	 */
+	public function publish_post( $models, $post_id ) {
+
+		if ( $this->switch_post_status( 'publish', $post_id ) ) {
+			$this->save_post_content( $models, $post_id );
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
 	 * @summary switch post status between published & draft
 	 *
-	 * @param   string  $new_status - new staus of post (publish or draft)
+	 * @param   string  $new_status - new status of post (publish or draft)
 	 * @param   integer $post_id - post/page ID
 	 *
 	 * @return boolean
 	 * @since 1.0.0
 	 */
 	public function switch_post_status( $new_status, $post_id ) {
+
 		$current_status = get_post_status( $post_id );
 		if ( $current_status == $new_status ) {
 			return true;
@@ -509,6 +549,7 @@ class Karma_Builder_Core{
 		} else {
 			return true;
 		}
+
 	}
 
 	/**
@@ -519,23 +560,15 @@ class Karma_Builder_Core{
 	 * @param array		$models - element models
 	 * @param integer	$id - post/page ID
 	 *
-	 * @return boolean
+	 * @return void
 	 * @since 1.0.0
 	 */
 	public function save_post_content( $models, $id ) {
 
 		$post_content = $this->generate_post_content( $models );
 		$post_content = str_replace( '\\', '\\\\', $post_content );
-		$current_item = array(
-			'ID'           => $id,
-			'post_content' => $post_content,
-		);
-		$post_id = wp_update_post( $current_item, true );
-		if ( is_wp_error( $post_id ) ) {
-			return false;
-		}else{
-			return true;
-		}
+		update_post_meta( $id, 'karma_post_content', wp_slash( $post_content ) );
+		// @TODO: check updated or not
 
 	}
 
