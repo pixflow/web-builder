@@ -114,16 +114,6 @@ class Karma_Builder_Core{
 
 	}
 
-	/*
-	 * Print script for each shortcode on drop to define its map to the builder
-	 *
-	 * @param string $shortcode shortcode name
-	 * @return void
-	 */
-	public static function print_shortcode_map( $shortcode ) {
-
-	}
-
 	/**
 	 * Retrieve the shortcode regular expression for searching.
 	 *
@@ -454,8 +444,7 @@ class Karma_Builder_Core{
 			}
 
 			$shortcode_attributes = trim( $shortcode_attributes );
-			$shortcode_attributes = ( $shortcode_attributes != '' ) ? ' ' . $shortcode_attributes : '';
-			$content .= '[' . $shortcode_name . $shortcode_attributes . ' element_key="' . $model['element_key'] . '" ]';
+			$content .= '[' . $shortcode_name . ' element_key="' . $model['element_key']. '" ' . $shortcode_attributes .']';
 
 			if( isset( $model['children'] ) && is_array( $model['children'] ) ){
 				$content .= $this->convert_model_to_shortcode_pattern( $model['children'] );
@@ -498,26 +487,6 @@ class Karma_Builder_Core{
 		}else{
 			return true;
 		}
-
-	}
-
-	/**
-	 * replace shortcode models with WordPress shortcode pattern
-	 *
-	 * @param $id - Shortcode model ID
-	 *
-	 * @return void
-	 * @since 1.0.0
-	 */
-	public function get_shortcode_tag( $id ) {
-
-	}
-
-	public function get_post_models( $page_id=null ) {
-
-	}
-
-	public function detect_shortcode() {
 
 	}
 
