@@ -415,7 +415,6 @@ QUnit.test("destroy() Check if a child removed its parent still exist", function
 
 });
 
-var ajaxurl = 'test.txt';
 QUnit.test("assert.async() saveContent", function ( assert ) {
 
 	var done = assert.async();
