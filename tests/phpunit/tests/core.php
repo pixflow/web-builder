@@ -155,10 +155,10 @@ class Tests_Core extends WP_UnitTestCase {
 				"order"					=>	1
 			),
 			array(
-				"element_key"		=>	'w3tert',
-				"shortcode_name"	=>	"shortcode_test3",
-				"parent_key"		=>	'',
-				"order"				=>	"2"
+				"element_key"		    =>	'w3tert',
+				"shortcode_name"	    =>	"shortcode_test3",
+				"parent_key"		    =>	'',
+				"order"				    =>	"2"
 			),
 			array(
 				"element_key"			=> 'fghtui',
@@ -172,8 +172,8 @@ class Tests_Core extends WP_UnitTestCase {
 					"title"		=>	'this is a " title " ',
 					"sub_title"	=>	"this is a subtitle's test"
 				),
-				"parent_key"	=>	'w3test',
-				"order"		=>	"2"
+				"parent_key"	        =>	'w3test',
+				"order"		            =>	"2"
 			),
 		);
 
