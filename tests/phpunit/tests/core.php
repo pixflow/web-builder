@@ -70,7 +70,7 @@ class Tests_Core extends WP_UnitTestCase {
 			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
 			.'[shortcode_test2 element_key="w3erts" ] Test Content Goes here[/shortcode_test2]'
 			.'[shortcode_test4 element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
-			.'[/shortcode_test element_key="w3ebts" ]'
+			.'[/shortcode_test]'
 			.'[shortcode_test3 element_key="w4ebtz" ][/shortcode_test3]';
 
 		$expect = array(
@@ -87,7 +87,7 @@ class Tests_Core extends WP_UnitTestCase {
 				) ,
 				"element_key"   => 'w3test' ,
 				"order"			=> 1 ,
-				"parent_key"	=> 0
+				"parent_key"	=> ''
 			),
 			array(
 				"shortcode_name"        => "shortcode_test2",
@@ -254,7 +254,7 @@ class Tests_Core extends WP_UnitTestCase {
 			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
 			.'[shortcode_test2 element_key="w3erts" ] Test Content Goes here[/shortcode_test2]'
 			.'[shortcode_test4 element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
-			.'[/shortcode_test element_key="w3ebts" ]'
+			.'[/shortcode_test]'
 			.'[shortcode_test3 element_key="w4ebtz" ][/shortcode_test3]';
 
 
