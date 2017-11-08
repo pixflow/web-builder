@@ -364,7 +364,7 @@ function getModelsAttributes(models) {
 					'element_key'			 : "firtstrow_12312" ,
 					'shortcode_name'        : 'karma_section' ,
 					'order'                 : 1 ,
-					'parent_key'             :  0 ,
+					'parent_key'             :  '' ,
 					'shortcode_content'     : '' ,
 					'shortcode_attributes'  : {
 						'space'       : "20"
@@ -373,7 +373,7 @@ function getModelsAttributes(models) {
 				{
 					'element_key'			 : "12a12" ,
 					'shortcode_name'        : 'karma_column' ,
-					'order'                 : 2 ,
+					'order'                 : 1 ,
 					'parent_key'             : "firtstrow_12312" ,
 					'shortcode_content'     : 'test' ,
 					'shortcode_attributes'  : {
@@ -386,7 +386,7 @@ function getModelsAttributes(models) {
 				{
 					'element_key'			 : "ssssscolumn_12g12" ,
 					'shortcode_name'        : 'karma_column' ,
-					'order'                 : 4 ,
+					'order'                 : 3 ,
 					'parent_key'             : "firtstrow_12312" ,
 					'shortcode_content'     : 'test' ,
 					'shortcode_attributes'  : {
