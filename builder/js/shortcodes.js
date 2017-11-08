@@ -375,13 +375,15 @@
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
-						that.setAttributes( { space: parseInt( ui.element.width())}, true );
+						that.setAttributes( { leftSpace : parseInt( ui.element.width() ) }, true );
 					},
 					resize: function( event, ui ){
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
-						var currentSection = that.el.querySelector( 'div:first-child' );
-						currentSection.style[ paddingDirection ] = ui.size.width + 'px';
+						that.renderCss( '.karma-section div.karma-column.' + that.elementSelector(), paddingDirection, ui.size.width + 'px');
+						//var currentSection = that.el.querySelector( 'div:first-child' );
+						//currentSection.style[ paddingDirection ] = ui.size.width + 'px';
+
 					}
 				};
 			return options;
@@ -398,7 +400,7 @@
 		 */
 		leftSpacingGizmo : function ( $gizmo ) {
 			var that = this;
-			var options = this.createRightLeftSpacingGizmo( '.karma-right-spacing' , 'paddingLeft');
+			var options = this.createRightLeftSpacingGizmo( '.karma-right-spacing' , 'padding-left');
 			that.$el.attr( 'data-direction','left' );
 			options.handles.e = $gizmo.find( '.ui-resizable-e' );
 			this.$el.find( '.karma-left-spacing' ).resizable( options );
@@ -413,9 +415,10 @@
 		 * @returns {void}
 		 */
 
+
 		rightSpacingGizmo : function ( $gizmo  ) {
 			var that = this;
-			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'paddingRight');
+			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'padding-right');
 			that.$el.attr( 'data-direction', 'right');
 			options.handles.w = $gizmo.find(  '.ui-resizable-w');
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
@@ -762,7 +765,7 @@
 		 */
 		renderCss: function ( selector, attribute, value) {
 
-			document.getElementById( this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
+			document.querySelector( 'style#' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
 
 		},
 
@@ -780,15 +783,21 @@
 		generateNewStyle: function ( selector, attribute, value ) {
 
 			var style 		= document.getElementById( this.elementSelector() ).innerHTML,
-				styleResult = style.replace( /\s/g, '' ).split(/[{}]+/),
+				styleResult = style.split(/[{}]+/),
 				newStyle 	= "";
+
+
+			if ( style.indexOf( selector ) < 0 ){
+				newStyle = style + selector + '{' + attribute + ':' + value + '}';
+				return newStyle;
+			}
 
 			for ( var i = 0; i < styleResult.length ; i++ ){
 
 				if ( i % 2 == 1 || "" == styleResult[ i ] )
 					continue;
 
-				if( selector == styleResult[ i ] ){
+				if( selector == styleResult[ i ].replace(/^\s+|\s+$/g, '') ){
 
 					newStyle +=  styleResult[ i ] + '{';
 					newStyle += this.generateStyleString( styleResult[ i + 1 ], attribute, value )
@@ -820,7 +829,7 @@
 
 			if ( styleResult.indexOf( attribute ) >= 0 ){
 
-				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;' );
+				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;*' );
 				newStyle += styleResult.replace( regex , attribute + ':' + value + ';');
 				newStyle += '}';
 

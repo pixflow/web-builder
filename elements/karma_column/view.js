@@ -56,9 +56,24 @@
 		rightSpace: function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.space + 'px';
+				padding		= this.model.attributes.shortcode_attributes.rightSpace + 'px';
 
-			document.getElementById( elementId ).innerHTML = '.' + elementId + '{ padding-right: ' +  padding  + ';}';
+			this.renderCss( '.' + elementId, 'padding-right', padding );
+
+		},
+
+		/**
+		 * @right spacing of column setting panel
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		leftSpace: function () {
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+				padding		= this.model.attributes.shortcode_attributes.leftSpace + 'px';
+
+			this.renderCss( '.' + elementId, 'padding-left', padding );
 
 		},
 

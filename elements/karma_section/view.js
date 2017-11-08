@@ -260,9 +260,6 @@
 		},
 
 
-
-
-
 		/**
 		 * create html fot tooltip
 		 *

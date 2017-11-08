@@ -18,17 +18,19 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		$atts = shortcode_atts(
 			array(
-				'sm_size'   => '12',
-				'md_size'   => '12',
-				'lg_size'   => '12',
-				'xl_size'   => '12',
+				'sm_size'   	=> '12',
+				'md_size'   	=> '12',
+				'lg_size'   	=> '12',
+				'xl_size'   	=> '12',
+				'element_key'	=> '',
 			)
 			, $atts
 		);
 
 		return "<div class='"
-			. "karma-column "
-			. "karma-col-sm-" . $atts[ 'sm_size' ]
+			. "karma-column"
+			. " karma-column-" . $atts[ 'element_key' ]
+			. " karma-col-sm-" . $atts[ 'sm_size' ]
 			. " karma-col-md-" . $atts[ 'md_size' ]
 			. " karma-col-lg-" . $atts[ 'lg_size' ]
 			. " karma-col-xl-" . $atts[ 'xl_size' ]

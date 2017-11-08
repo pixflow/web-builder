@@ -310,9 +310,6 @@ QUnit.test( "changeRowLayout() grid sum should be 12", function ( assert ) {
 
 	});
 
-/**
-* It is Delete Elements Test
-*/
 QUnit.test("destroy() Check if model and its child has removed", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
@@ -330,9 +327,6 @@ QUnit.test("destroy() Check if model and its child has removed", function (asser
 
 });
 
-/**
- * It is Delete Elements Test
- */
 QUnit.test("destroy() Check if element and its child has removed", function (assert) {
 
 		karmaBuilder.karmaModels.reset();
@@ -350,9 +344,6 @@ QUnit.test("destroy() Check if element and its child has removed", function (ass
 
 	});
 
-/**
- * It is Delete Elements Test
- */
 QUnit.test("destroy() Check if a child removed its parent still exist", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
@@ -406,10 +397,7 @@ QUnit.test("destroy() Check if a child removed its parent still exist", function
 	assert.deepEqual( karmaTestResult, karmaResult );
 
 });
-
-/**
- * It is Delete Elements Test
- */
+	
 QUnit.test("destroy() Check if a child removed its parent still exist", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
@@ -427,9 +415,6 @@ QUnit.test("destroy() Check if a child removed its parent still exist", function
 
 });
 
-/***
- * It is Save Elements Test
- */
 var ajaxurl = 'test.txt';
 QUnit.test("assert.async() saveContent", function ( assert ) {
 
@@ -443,10 +428,6 @@ QUnit.test("assert.async() saveContent", function ( assert ) {
 	done();
 
 });
-
-/**
- * It is Update Elements Test
- */
 
 QUnit.test("karmaUpdateModel", function ( assert ) {
 
@@ -511,9 +492,6 @@ QUnit.test("karmaUpdateModel", function ( assert ) {
 
 });
 
-/**
- * It is find children of Element Test
- */
 QUnit.test("karmaFindChildren", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
@@ -557,9 +535,6 @@ QUnit.test("karmaFindChildren", function (assert) {
 
 });
 
-/**
- * test get current grid layout
- */
 QUnit.test("karmaCurrentGrid", function ( assert ) {
 
 	karmaBuilder.karmaModels.reset();
@@ -606,9 +581,6 @@ QUnit.test("karmaCurrentGrid", function ( assert ) {
 
 });
 
-/**
- * test calculate new grid before append new column
- */
 QUnit.test("karmaCalculateNewGrid", function (assert) {
 
 	karmaBuilder.karmaModels.reset();
@@ -652,10 +624,6 @@ QUnit.test("karmaCalculateNewGrid", function (assert) {
 	assert.deepEqual(testResult, expectedResult);
 
 });
-
-/**
- * Test update element attributes
- */
 
 QUnit.test("setAttribute", function (assert) {
 
