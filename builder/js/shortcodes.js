@@ -904,8 +904,31 @@
 				return classes;
 
 			});
+
+			this.addGimzoAction();
 			
-		}
+		} ,
+
+		/**
+		 * @summary Set the listener on build gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		addGimzoAction : function () {
+
+			var that = this;
+			$('body').off('before/buildGizmo').on('before/buildGizmo', function (e, tempName, gizmoParam) {
+
+				if ( 'bothSpacingGizmoTemplate' === tempName ) {
+					var space = that.getAttributes(['space']);
+					gizmoParam['space'] = space.space;
+				}
+				return gizmoParam;
+
+			});
+
+		},
 
 	});
 

@@ -11,7 +11,6 @@
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
-			this.addAction();
 
 		},
 
@@ -19,26 +18,6 @@
 
 			this.model.attributes.shortcode_attributes['add_grid'] = this.currentGrid();
 			karmaBuilder.section.__super__.showSettingPanel.apply( this, arguments );
-
-		},
-
-		/**
-		 * @summary Set the listener on build gizmo
-		 *
-		 * @since 1.0.0
-		 * @returns {void}
-		 */
-		addAction : function () {
-
-			var that = this;
-			$('body').off('before/buildGizmo').on('before/buildGizmo', function (e, tempName, gizmoParam) {
-
-				if ('bothSpacingGizmoTemplate' === tempName) {
-					var space = that.getAttributes(['space']);
-					gizmoParam['space'] = space.space;
-				}
-				return gizmoParam;
-			});
 
 		},
 
