@@ -207,7 +207,7 @@ class Karma_Shortcode_Base {
 			. '}';
 
 		?>
-		<style id="<?php echo str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id ?>" >
+		<style id="style-<?php echo str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id ?>" >
 			<?php echo static::render_css(); ?>
 		</style>
 		<?php
@@ -227,7 +227,7 @@ class Karma_Shortcode_Base {
 		$script_string = static::render_script();
 
 		?>
-		<script id="<?php echo static::$element_name . '_' . $this->element_id; ?> ">
+		<script id="script-<?php echo static::$element_name . '_' . $this->element_id; ?> ">
 			<?php echo $script_string; ?>
 		</script>
 		<?php

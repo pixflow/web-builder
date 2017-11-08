@@ -375,14 +375,20 @@
 					minWidth   : 0,
 					handles : {},
 					stop : function ( event, ui ) {
-						that.setAttributes( { leftSpace : parseInt( ui.element.width() ) }, true );
+
+						var value = ( parseInt( ui.element.width() ) < 0 ) ? 0 : parseInt( ui.element.width() );
+						if ( 'padding-left' == paddingDirection ){
+							that.setAttributes( { 'leftSpace' : value }, true );
+						}else {
+							that.setAttributes( { 'rightSpace' : value }, true );
+						}
 					},
 					resize: function( event, ui ){
+
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
-						that.renderCss( '.karma-section div.karma-column.' + that.elementSelector(), paddingDirection, ui.size.width + 'px');
-						//var currentSection = that.el.querySelector( 'div:first-child' );
-						//currentSection.style[ paddingDirection ] = ui.size.width + 'px';
+						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
+						that.renderCss( '.karma-section div.karma-column.' + that.elementSelector(), paddingDirection, value + 'px');
 
 					}
 				};
@@ -765,7 +771,7 @@
 		 */
 		renderCss: function ( selector, attribute, value) {
 
-			document.querySelector( 'style#' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
+			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
 
 		},
 
@@ -782,13 +788,13 @@
 		 */
 		generateNewStyle: function ( selector, attribute, value ) {
 
-			var style 		= document.getElementById( this.elementSelector() ).innerHTML,
+			var style 		= document.getElementById( 'style-'+this.elementSelector() ).innerHTML,
 				styleResult = style.split(/[{}]+/),
 				newStyle 	= "";
 
 
 			if ( style.indexOf( selector ) < 0 ){
-				newStyle = style + selector + '{' + attribute + ':' + value + '}';
+				newStyle = style + selector + '{' + attribute + ':' + value + ';}';
 				return newStyle;
 			}
 
@@ -826,10 +832,9 @@
 
 			var newStyle = "";
 
-
 			if ( styleResult.indexOf( attribute ) >= 0 ){
 
-				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;*' );
+				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;' );
 				newStyle += styleResult.replace( regex , attribute + ':' + value + ';');
 				newStyle += '}';
 
@@ -877,13 +882,23 @@
 		createBuilderModel : function( model ){
 
 			model = model ? model : this.model ;
-			var classes = $( document ).triggerHandler( 'before/elements/create/' + model.attributes.shortcode_name, [ model.attributes.shortcode_attributes ] ),
-				karmaBuilderOutput = '<div class="karma-builder-element '
-				+ classes
-				+ '" data-element-key="' + model.attributes.element_key +  '" data-name="' + model.attributes.shortcode_name + '" > '
-				+ '</div>' ;
+			var classes 			= $( document ).triggerHandler( 'before/elements/create/' + model.attributes.shortcode_name, [ model.attributes.shortcode_attributes ] ) ,
+				elementKey 			= model.attributes.element_key,
+				elementName			= model.attributes.shortcode_name,
+				karmaBuilderOutput,
+				tags;
 
-			return karmaBuilderOutput;
+			classes += ' ' + elementName.replace( "_", "-" ) + '-' + elementKey;
+
+			karmaBuilderOutput  = '<div class="karma-builder-element '
+				+ classes
+				+ '" data-element-key="' + elementKey +  '" data-name="' + elementName + '" > '
+				+ '</div>',
+				tags = '<style id="style-' + elementName.replace( "_", "-" ) + '-' + elementKey + '" ></style>'
+					+ '<script  id="script-' + elementName.replace( "_", "-" ) + '-' + elementKey + '" ></script>';
+
+
+			return tags + karmaBuilderOutput;
 
 		},
 
