@@ -80,10 +80,10 @@ class Karma_Builder_Admin {
 
 
 	/**
-	 * Save the content of page
+	 * Save the content of page and print the result
 	 *
 	 * @since     1.0.0
-	 * @return    Json	The result of save content
+	 * @return    void
 	 */
 	public function save_content(){
 
@@ -104,7 +104,7 @@ class Karma_Builder_Admin {
 	 * enqueue style for builder page
 	 *
 	 * @since     1.0.0
-	 * @return    karma builder style
+	 * @return    void
 	 */
 
 	public function load_builder_assets(){

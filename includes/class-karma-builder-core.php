@@ -411,13 +411,32 @@ class Karma_Builder_Core{
 
 		foreach ( $models as &$value ) {
 
-			if ( is_array( $value ) ){
-				$this->sort_models_by_order($value);
+			if ( isset( $value['children'] ) ){
+				$this->sort_models_by_order( $value['children'] );
 			}
 
 		}
 
-		ksort( $models );
+		usort( $models , array( $this, 'compare_orders' ));
+
+	}
+
+	/**
+	 * compare order of two arrays
+	 *
+	 * @param array $a - element model
+	 * @param array $b - element model
+	 *
+	 * @return integer
+	 * @since 1.0.0
+	 */
+	private function compare_orders( $a, $b ) {
+
+		if ($a['order'] == $b['order']) {
+			return 0;
+		}
+
+		return ($a['order'] < $b['order']) ? -1 : 1;
 
 	}
 
