@@ -458,7 +458,11 @@ class Karma_Builder_Core{
 
 			if( isset( $model['shortcode_attributes'] ) ) {
 				foreach( $model['shortcode_attributes'] as $attribute_name => $attribute_value ){
-					$shortcode_attributes .= $attribute_name . '="' . str_replace('"', '\"', $attribute_value ) . '" ';
+					$delimiter = '"';
+					if( is_integer($attribute_value) ){
+						$delimiter = '';
+					}
+					$shortcode_attributes .= $attribute_name . '=' . $delimiter .  str_replace('"', '\"', $attribute_value ) . $delimiter .' ';
 				}
 			}
 
