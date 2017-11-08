@@ -7,7 +7,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		/*
 		 * Map of all elements gizmo params
-		 *
 		 */
 		gizmoParams: {},
 
@@ -17,6 +16,8 @@ var karmaBuilder = karmaBuilder || {};
 		 * @since 1.0.0
 		 */
 		events : {
+
+			'karma_builder_published' : 'saveContent'
 
 		},
 
@@ -102,7 +103,7 @@ var karmaBuilder = karmaBuilder || {};
 			};
 
 			this.prepareAjax( 'save_content', data ).done( function ( response ) {
-
+				console.log(response);
 				var result = JSON.parse( response );
 				return result.result;
 
@@ -160,6 +161,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
 		window.KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
+
 
 	});
 
