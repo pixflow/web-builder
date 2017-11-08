@@ -4,6 +4,8 @@
 
 		events:{
 			'mousedown > .karma-spacing-container .karma-spacing' 	: 'showMouseToolTip',
+			'before/elements/create/karma_column'                   : 'createElementAction',
+			'before/buildGizmo'                                     : 'gimzoAction'
 		},
 
 		shortcodeParams: {},
@@ -123,7 +125,6 @@
 			}
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
-			this.addActionTrigger();
 
 		},
 
@@ -244,7 +245,7 @@
 
 			var tempName = gizmoParams.type + 'Template';
 			if( "undefined" !== typeof this[ tempName ] ){
-				var gizmoParams  = $('body').triggerHandler( 'before/buildGizmo', [ tempName, gizmoParams ] );
+				gizmoParams  = this.$el.triggerHandler( 'before/buildGizmo', [ tempName, gizmoParams ] );
 				return $( this.getUnderscoreTemplate( this[ tempName ], gizmoParams ) );
 			}
 
@@ -869,7 +870,7 @@
 		createBuilderModel : function( model ){
 
 			model = model ? model : this.model ;
-			var classes 			= $( document ).triggerHandler( 'before/elements/create/' + model.attributes.shortcode_name, [ model.attributes.shortcode_attributes ] ) ,
+			var classes 			= this.$el.triggerHandler( 'before/elements/create/' + model.attributes.shortcode_name, [ model.attributes.shortcode_attributes ] ) ,
 				elementKey 			= model.attributes.element_key,
 				elementName			= model.attributes.shortcode_name,
 				karmaBuilderOutput,
@@ -892,44 +893,38 @@
 		/**
 		 * @summary Set filter before create builder html
 		 *
+		 * @param {object}  atts    The attribute of element
+		 *
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
 		 */
-		addActionTrigger : function () {
+		createElementAction: function( e, atts ){
 
-			$( document ).off( 'before/elements/create/karma_column' ).on( 'before/elements/create/karma_column', function ( e, atts ) {
-
-				var classes = 'karma-col-sm-' + atts[ 'sm_size' ]
+			var classes = 'karma-col-sm-' + atts[ 'sm_size' ]
 				+ ' karma-col-md-' + atts[ 'md_size' ]
 				+ ' karma-col-lg-' + atts[ 'lg_size' ]
 				+ ' karma-col-xl-' + atts[ 'xl_size' ];
-				return classes;
+			return classes;
 
-			});
-
-			this.addGimzoAction();
-			
-		} ,
+		},
 
 		/**
 		 * @summary Set the listener on build gizmo
 		 *
+		 * @param   {string}    tempName      Name of gizmo
+		 * @param   {string}    gizmoParam    Gizmo options
+		 *
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		addGimzoAction : function () {
+		gimzoAction : function ( e, tempName, gizmoParam ) {
 
-			var that = this;
-			$('body').off('before/buildGizmo').on('before/buildGizmo', function (e, tempName, gizmoParam) {
-
-				if ( 'bothSpacingGizmoTemplate' === tempName ) {
-					var space = that.getAttributes(['space']);
-					gizmoParam['space'] = space.space;
-				}
-				return gizmoParam;
-
-			});
+			if ( 'bothSpacingGizmoTemplate' === tempName ) {
+				var space = this.getAttributes(['space']);
+				gizmoParam['space'] = space.space;
+			}
+			return gizmoParam;
 
 		},
 
