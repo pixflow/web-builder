@@ -167,13 +167,13 @@ class Karma_Builder_Core{
 	 *
 	 *
 	 * @param string	$content	Element string
-	 * @param integer	$parent_key	Contain the id of parent Element for any child ( default = 0 )
+	 * @param string	$parent_key	Contain the id of parent Element for any child ( default = 0 )
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return array - model of Element
 	 */
-    public function parse_shortcodes( $content, $parent_key = 0 ){
+    public function parse_shortcodes( $content, $parent_key = '' ){
 
 		static $child_order =  1 ;
 		static $parent_order = 1 ;
@@ -220,7 +220,7 @@ class Karma_Builder_Core{
 	 */
 	private function order_shortcode( $model, $order, $parent_key ){
 
-		if( 0 != $parent_key ){
+		if( '' != $parent_key ){
 			$model['order'] = $order['child_order'] ;
 			$order['child_order']++;
 		}else{
