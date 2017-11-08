@@ -1604,7 +1604,7 @@ html {
         margin-left: 39px;
         color: rgba(255, 255, 255, 0.8);
         cursor: pointer;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 17px; }
         .karma-builder-toolbar .karma-builder-left ul li:hover {
           color: rgba(255, 255, 255, 0.6); }
@@ -2494,7 +2494,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
 
 .karma-image-position-container {
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  padding-bottom: 25px; }
   .karma-image-position-container .karma-image-position-content {
     display: flex;
     justify-content: space-between;
@@ -2502,6 +2503,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     height: 100%;
     flex-wrap: wrap;
     padding: 0 98px; }
+    .karma-image-position-container .karma-image-position-content .hidden-input {
+      display: none; }
     .karma-image-position-container .karma-image-position-content .karma-image-position-box {
       height: 26px;
       width: 26px;

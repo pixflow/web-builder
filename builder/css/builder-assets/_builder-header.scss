@@ -24,13 +24,13 @@
 				@extend .HelveticaNeue-font;
 				color: rgba(255, 255, 255, 0.8);;
 				cursor: pointer;
-				font-size: 15px;
+				font-size: 14px;
 				line-height: 17px;
 				
 				&:hover{
 					color: rgba(255, 255, 255, 0.6);
 				}
-				
+
 				.builder-upgrade-icon{
 					padding-top: 4px;
 				}

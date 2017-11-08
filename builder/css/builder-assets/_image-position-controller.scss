@@ -1,6 +1,7 @@
 .karma-image-position-container{
 	align-items: center;
 	justify-content: center;
+	padding-bottom: 25px;
 
 	.karma-image-position-content{
 		display: flex;
@@ -9,6 +10,10 @@
 		height: 100%;
 		flex-wrap: wrap;
 		padding: 0 98px;
+
+		.hidden-input{
+			display: none;
+		}
 
 		.karma-image-position-box {
 			height: 26px;

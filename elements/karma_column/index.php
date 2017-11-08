@@ -63,9 +63,17 @@ class Karma_Column extends Karma_Shortcode_Base {
 						"label"         => esc_attr__( "Put Your URL", 'karma' ),
 						"placeholder"   => 'Put Your URL',
 					),
+					array(
+								"name"          => "extraClass",
+								"value" 		=> "center-center",
+								"type"          => Karma_Builder_Setting_Panel::IMAGE_POSITION,
+								"label"         => esc_attr__( "Put Your URL", 'karma' ),
+								"placeholder"   => 'Put Your URL',
+					),
 						array(
 								"name"          => "extraClass",
-								"type"          => Karma_Builder_Setting_Panel::IMAGE_POSITION,
+								"value" 		=> "true",
+								"type"          => Karma_Builder_Setting_Panel::CHECK_BOX,
 								"label"         => esc_attr__( "Put Your URL", 'karma' ),
 								"placeholder"   => 'Put Your URL',
 						),
