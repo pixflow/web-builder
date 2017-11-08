@@ -119,7 +119,7 @@ class Tests_Core extends WP_UnitTestCase {
 				'shortcode_content' 	=> '' ,
 				"element_key" 			=> 'w4ebtz' ,
 				"order"				    => 2,
-				"parent_key"			=> 0,
+				"parent_key"			=> '',
 
 			),
 		);
@@ -134,7 +134,7 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"element_key"			=> 'w3test',
 				"shortcode_name"		=> "shortcode_test",
-				"parent_key"			=> 0,
+				"parent_key"			=> '',
 				"order"                 => 1,
 				"shortcode_attributes"	=> array(
 					"color"		=> "red",
@@ -157,7 +157,7 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"element_key"		=>	'w3tert',
 				"shortcode_name"	=>	"shortcode_test3",
-				"parent_key"		=>	0,
+				"parent_key"		=>	'',
 				"order"				=>	"2"
 			),
 			array(
@@ -213,7 +213,7 @@ class Tests_Core extends WP_UnitTestCase {
 				) ,
 				"element_key"   => 'w3test' ,
 				"order"			=> 1 ,
-				"parent_key"	=> 0
+				"parent_key"	=> ''
 			),
 			array(
 				"shortcode_name"        => "shortcode_test2",
@@ -245,7 +245,7 @@ class Tests_Core extends WP_UnitTestCase {
 				'shortcode_content' 	=> '' ,
 				"element_key" 			=> 'w4ebtz' ,
 				"order"				    => 2,
-				"parent_key"			=> 0,
+				"parent_key"			=> '',
 
 			),
 		);
