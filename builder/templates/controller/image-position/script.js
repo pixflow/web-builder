@@ -3,7 +3,7 @@ jQuery( document ).off( 'karma_finish_form_builder.image-position' ).on( 'karma_
 	var imgPosition = document.querySelectorAll( '.karma-image-position-box' ),
 		imgPositioninput = document.querySelector( '.image-position-input' );
 	
-	if ( imgPositioninput.length < 0 ) return;
+	if ( imgPositioninput.length != null ) {return};
 		 imgPositioninput.getAttribute( 'value' );
 	var	 selected = document.querySelector( '.karma-image-position-box[data-value="' + inputAttr + '"]' );
 
@@ -26,7 +26,7 @@ jQuery( document ).off( 'karma_finish_form_builder.image-position' ).on( 'karma_
 	function add_class( that ) {
 
 		var imgPosition = document.querySelectorAll( '.karma-image-position-box' );
-		if ( imgPosition.length < 0 ) return;
+		if ( imgPosition.length < 0 ) {return};
 		imgPosition.forEach(function ( item ) {
 			item.classList.remove( 'karma-image-position-selected-item' );
 		});
