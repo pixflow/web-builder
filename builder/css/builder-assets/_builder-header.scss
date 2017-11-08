@@ -30,6 +30,7 @@
 				&:hover{
 					color: rgba(255, 255, 255, 0.6);
 				}
+				
 				.builder-upgrade-icon{
 					padding-top: 4px;
 				}
@@ -37,6 +38,7 @@
 				.builder-page-name{
 					padding-left: 4px;
 				}
+
 				.builder-upgrade-text{
 					padding-left: 6px;
 				}
@@ -49,7 +51,7 @@
 			}
 		}
 	}
-	
+
 	.karma-builder-right {
 		@include flexbox( $align-item:stretch );
 		@include box(auto, 100%);
@@ -66,11 +68,15 @@
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@include margin( inherit,inherit,0,20px );
 				@extend .HelveticaNeue-font;
-				color: rgba(255, 255, 255, 0.8);;
+				color: rgba(255, 255, 255, 0.8);
 				cursor: pointer;
 				font-size: 15px;
 				line-height: 17px;
 				position: relative;
+
+				&.builder-notification{
+					padding-top: 4px;
+				}
 
 				&.builder-publish{
 					@include box( 112px, 32px );
@@ -82,7 +88,7 @@
 				.builder-notification-number{
 					@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
 					@include box( 17.05px, 17.05px );
-					@include element_direction( $top:-3px, $right:-11px );
+					@include element_direction( $top:1px, $right:-11px );
 					background-color: #FF5D5C;
 					border: 2px solid #419CF8;
 					border-radius: 100%;

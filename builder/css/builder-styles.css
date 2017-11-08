@@ -1652,6 +1652,8 @@ html {
         font-size: 15px;
         line-height: 17px;
         position: relative; }
+        .karma-builder-toolbar .karma-builder-right ul li.builder-notification {
+          padding-top: 4px; }
         .karma-builder-toolbar .karma-builder-right ul li.builder-publish {
           width: 112px;
           height: 32px;
@@ -1665,7 +1667,7 @@ html {
           justify-content: center;
           width: 17.05px;
           height: 17.05px;
-          top: -3px;
+          top: 1px;
           right: -11px;
           bottom: auto;
           left: auto;

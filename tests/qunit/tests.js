@@ -15,7 +15,6 @@ function RCreateModels() {
 		karmaBuilder.karmaModels.add( model );
 	});
 	addHtml();
-
 }
 
 // return existing models in collection
@@ -668,6 +667,11 @@ QUnit.test("setAttribute", function (assert) {
 			"color": "red",
 			"font": "tahoma",
 			"bg": "green",
+			"changed": {
+				"bg": "green",
+				"font": "tahoma",
+				"style": "font-family: \"sans-serif\";"
+			},
 			"style": 'font-family: "sans-serif";',
 			"radius": '18',
 			"title": 'this is a " title " ',
