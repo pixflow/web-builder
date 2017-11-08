@@ -196,6 +196,23 @@ class Karma_Builder_Loader {
 	}
 
 	/**
+	 * Localize important params for builder
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @return  void
+	 */
+	private function localize_builder_param(){
+
+		$builder_value = array(
+				'ajaxUrl' => admin_url( 'admin-ajax.php' )
+		);
+
+		wp_localize_script( $this->plugin_name, 'builderParams', json_encode( $builder_value ) );
+
+	}
+
+	/**
 	 * localize elements maps for builder
 	 *
 	 * @since     1.0.0
@@ -231,6 +248,7 @@ class Karma_Builder_Loader {
 		$this->send_elements_map();
 		$this->send_elements_gizmo();
 	    $this->generate_page_model();
+	    $this->localize_builder_param();
 
     }
 

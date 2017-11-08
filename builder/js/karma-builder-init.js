@@ -5,10 +5,11 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.view = Backbone.View.extend({
 
-		/*
-		 * Map of all elements gizmo params
-		 */
+		/** Map of all elements gizmo params */
 		gizmoParams: {},
+
+		/** Map of all builder params */
+		builderParams: {},
 
 		/**
 		 * Defines events of Karma Builder
@@ -30,6 +31,24 @@ var karmaBuilder = karmaBuilder || {};
 		initialize : function () {
 
 			this.render();
+
+		},
+
+		/**
+		 * @summary return builder params value
+		 *
+		 * @param {string}  name    The name of param
+		 *
+		 * @since 1.0.0
+		 * @return {mixed} value of specific param
+		 */
+		getBuilderParam : function ( name ) {
+
+			if( 0 === Object.keys( this.builderParams ).length ){
+				this.builderParams = JSON.parse( builderParams );
+			}
+
+			return this.builderParams[ name ];
 
 		},
 
@@ -80,9 +99,10 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		prepareAjax : function ( action, data ) {
 
+			var that = this;
 			return $.ajax({
 				type	: 'post',
-				url		: ajaxurl,
+				url		: that.getBuilderParam('ajaxUrl'),
 				action	: action,
 				data	: data
 			});
@@ -99,11 +119,12 @@ var karmaBuilder = karmaBuilder || {};
 
 			var data = {
 				models	: JSON.stringify( karmaBuilder.karmaModels ),
-				id		: $( 'meta[name="post-id"]' ).attr( 'content' )
+				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
 			};
 
 			this.prepareAjax( 'save_content', data ).done( function ( response ) {
-				console.log(response);
+
+				return;
 				var result = JSON.parse( response );
 				return result.result;
 
@@ -199,6 +220,7 @@ var karmaBuilder = karmaBuilder || {};
 	};
 
 	var getClosestViewFromElement = function($el, viewType) {
+
 		var ret = null;
 
 		viewType = viewType || Backbone.View;
