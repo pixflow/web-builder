@@ -35,11 +35,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeably for top&& bottom
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
+		 *  Build html for gizmo resizeably for top&& bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">' +
 		'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s karma-top-spacing-height" data-direction="both" >'
@@ -57,11 +53,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeable for left
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
+		 *  Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
 		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.spaceing }}px">'
@@ -73,11 +65,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeable for right
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
+		 *  Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="width:{{ data.spaceing }}px">'
@@ -89,11 +77,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeably for top
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
+		 * Build html for gizmo resizeably for top
 		 */
 		topSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 		+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
@@ -315,9 +299,8 @@
 					},
 					resize: function( event, ui ){
 
-						var currentSection = that.el.querySelector( 'div:first-child' );
-						currentSection.style.paddingTop = ui.size.height + 'px';
-						currentSection.style.paddingBottom = ui.size.height + 'px';
+						that.renderCss( '.' + that.elementSelector(), 'padding-top', ui.size.height + 'px');
+						that.renderCss( '.' + that.elementSelector(), 'padding-bottom', ui.size.height + 'px');
 
 					}
 				};
@@ -382,6 +365,7 @@
 						}else {
 							that.setAttributes( { 'rightSpace' : value }, true );
 						}
+
 					},
 					resize: function( event, ui ){
 

@@ -1,6 +1,4 @@
-
-
-jQuery('body').off('karma_finish_form_builder.radio-image').on('karma_finish_form_builder.radio-image',function(){
+jQuery( document ).off('karma_finish_form_builder.radio-image').on('karma_finish_form_builder.radio-image',function(){
 
 	var radioImg = document.querySelectorAll('.radio-image-controller-img');
 
