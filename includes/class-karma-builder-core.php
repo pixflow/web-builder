@@ -463,6 +463,32 @@ class Karma_Builder_Core{
 	}
 
 	/**
+	 * @summary switch post status between published & draft
+	 *
+	 * @param   string  $new_status - new staus of post (publish or draft)
+	 * @param   integer $post_id - post/page ID
+	 *
+	 * @return boolean
+	 * @since 1.0.0
+	 */
+	public function switch_post_status( $new_status, $post_id ) {
+		$current_status = get_post_status( $post_id );
+		if ( $current_status == $new_status ) {
+			return true;
+		}
+		$post = array(
+			'ID'          => $post_id,
+			'post_status' => $new_status,
+		);
+		wp_update_post( $post );
+		if ( is_wp_error( $post_id ) ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
 	 * Save content of page/post to the database
 	 * Use the code below for error handling on line 496
 	 * $errors = $post_id->get_error_messages();

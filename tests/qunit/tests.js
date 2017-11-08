@@ -118,7 +118,6 @@ function getModelsAttributes(models) {
 
 	});
 
-
 	QUnit.test("changeRowLayout() when the current grid layout is bigger the new grid", function (assert) {
 
 		karmaBuilder.karmaModels.reset();
@@ -435,69 +434,6 @@ function getModelsAttributes(models) {
 
 		});
 		done();
-
-	});
-
-	QUnit.test("karmaUpdateModel", function ( assert ) {
-
-		var shortcodes = {};
-		for ( var i = 1; i < 5; i++ ) {
-
-			shortcodes[i + '_model'] = new karmaBuilder.model({
-				"element_key": i + 10,
-				"shortcode_name": "shortcode_test",
-				"parent_key": 0,
-				"order": 1,
-				"shortcode_attributes": {
-					"color": "red",
-					"font": "arial",
-					"bg": "#000fff",
-					"style": 'font-family: "tahoma";',
-					"radius": '18',
-					"title": 'this is a " title " ',
-					"sub_title": "this is a subtitle's test"
-				},
-				"shortcode_content": ""
-			});
-			karmaBuilder.karmaModels.add(shortcodes[i + '_model']);
-			shortcodes['sh' + i] = new karmaBuilder.shortcodes({
-
-				template: _.template('<div class="row karma-builder-element delete-element <%= attributes.shortcode_attributes.bg  %>" data-element-id="<%= attributes.element_key %>" ><%= attributes.element_key %></div>'),
-				model: shortcodes[i + '_model'],
-
-			});
-
-		}
-		$('*[data-element-id="14"]').hover(function (e) {
-
-			e.preventDefault();
-			alert(2);
-
-		}, function (e) {
-
-			alert(3);
-
-		});
-
-		delete karmaBuilder.karmaModels.where({'element_key': 12})[0].attributes.shortcode_attributes.element_key;
-		assert.deepEqual(karmaBuilder.karmaModels.where({'element_key': 12})[0].attributes, {
-			"element_key": 12,
-			"shortcode_name": "shortcode_test",
-			"parent_key": 0,
-			"order": 1,
-			"shortcode_attributes": {
-				"color": "red",
-				"font": "tahoma",
-				"bg": "green",
-				"style": 'font-family: "sans-serif";',
-				"radius": '18',
-				"title": 'this is a " title " ',
-				"sub_title": "this is a subtitle's test"
-			},
-			"shortcode_content": ""
-		});
-		document.querySelector('div[data-element-id="11"]').remove();
-		karmaBuilder.karmaModels.reset();
 
 	});
 

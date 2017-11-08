@@ -264,6 +264,23 @@ class Tests_Core extends WP_UnitTestCase {
 		$this->assertEquals( $expect, $post->post_content );
 	}
 
+	public function test_switch_post_status() {
+
+		// Create post object
+		$my_post = array(
+			'post_title'    => 'test_switch_post_status',
+			'post_content'  => '',
+			'post_status'   => 'publish',
+		);
+
+		// Insert the post into the database
+		$post_id = wp_insert_post( $my_post );
+		$this->builder->switch_post_status( 'draft', $post_id );
+		$expect = 'draft';
+		$new_status = get_post_status( $post_id );
+		$this->assertEquals( $expect, $new_status );
+	}
+
 	public function map_elements(){
 
 		$elements_map = array();
