@@ -119,7 +119,7 @@ var karmaBuilder = karmaBuilder || {};
 			var data = {
 				models	: JSON.stringify( karmaBuilder.karmaModels ),
 				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
-				action :	'save_content'
+				action  : 'save_content'
 			};
 
 			this.prepareAjax( 'save_content', data ).done( function ( response ) {
