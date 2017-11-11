@@ -1,4 +1,4 @@
-jQuery( document ).off('karma_finish_form_builder.add-column ').on('karma_finish_form_builder.add-column',function( e, viewObject ){
+jQuery( document ).off( 'karma_finish_form_builder.add-column' ).on( 'karma_finish_form_builder.add-column', function( e, viewObject ){
 
 	var $ = jQuery;
 	$('.karma-add-column-button, .karma-add-column-view-add').on( 'click', function () {
@@ -7,7 +7,7 @@ jQuery( document ).off('karma_finish_form_builder.add-column ').on('karma_finish
 			gridCount = parseInt( parentElement.attr('data-current-grid') );
 
 		if( 7 <= gridCount ){
-			parentElement.find('.karma-add-column-view-add').fadeOut();
+			parentElement.find('.karma-add-column-view-add').css({ display : 'none' });
 			return false;
 		}
 		var converTo = viewObject.calculateNewGrid();
@@ -15,5 +15,12 @@ jQuery( document ).off('karma_finish_form_builder.add-column ').on('karma_finish
 		parentElement.attr( 'data-current-grid', gridCount + 1 );
 
 	});
+
+});
+
+jQuery( document ).off( 'changeRowLayout/finished.changeViewColumn' ).on( 'changeRowLayout/finished.changeViewColumn', function(){
+
+	document.getElementsByClassName('karma-add-column-view-add')[0]
+		.insertAdjacentHTML( 'beforebegin', '<div class="karma-add-column-view-length" > </div>' );
 
 });

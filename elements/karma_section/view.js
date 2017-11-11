@@ -199,6 +199,7 @@
 				this.createNewColumn( counter, newLayout, columns[ counter ] );
 			}
 
+			$( document ).trigger( 'changeRowLayout/finished' );
 			return true;
 
 		},
