@@ -557,18 +557,24 @@ class Karma_Builder_Core{
 	 * Use the code below for error handling on line 496
 	 * $errors = $post_id->get_error_messages();
 	 *
+	 * NOTE: If the meta_value passed to update_post_meta() function is the same as the value that is already in the database,
+	 * this function returns false.
+	 *
 	 * @param array		$models - element models
 	 * @param integer	$id - post/page ID
 	 *
-	 * @return void
+	 * @return boolean returns true on success and false on failure.
 	 * @since 1.0.0
 	 */
 	public function save_post_content( $models, $id ) {
 
 		$post_content = $this->generate_post_content( $models );
 		$post_content = str_replace( '\\', '\\\\', $post_content );
-		update_post_meta( $id, 'karma_post_content', wp_slash( $post_content ) );
-		// @TODO: check updated or not
+		if ( update_post_meta( $id, 'karma_post_content', wp_slash( $post_content ) ) ){
+			return true;
+		}else{
+			return false;
+		}
 
 	}
 
