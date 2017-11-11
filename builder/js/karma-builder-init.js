@@ -103,7 +103,6 @@ var karmaBuilder = karmaBuilder || {};
 			return $.ajax({
 				type	: 'post',
 				url		: that.getBuilderParam('ajaxUrl'),
-				action	: action,
 				data	: data
 			});
 
@@ -120,11 +119,11 @@ var karmaBuilder = karmaBuilder || {};
 			var data = {
 				models	: JSON.stringify( karmaBuilder.karmaModels ),
 				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
+				action :	'save_content'
 			};
 
 			this.prepareAjax( 'save_content', data ).done( function ( response ) {
 
-				return;
 				var result = JSON.parse( response );
 				return result.result;
 
