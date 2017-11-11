@@ -90,8 +90,8 @@ class Karma_Builder_Admin {
 		$models = $_POST['models'];
 		$id = $_POST['id'];
 		$builder_core = Karma_Builder_Core::get_instance();
-		$models = json_decode( $models );
-		if ( $builder_core->save_post_content( $models, $id ) ){
+		$models = json_decode( stripslashes( $models ), true );
+		if ( $builder_core->publish_post( $models, $id ) ){
 			echo '{ "result" : "true", "msg" : "success" }';
 		}else{
 			echo '{ "result" : "false", "msg" : "error" }';
