@@ -46,6 +46,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 				"name"   => "Section",
 				"params" => array(
 					array(
+							'name' => 'unsplash' ,
+							'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
+					),
+					array(
 						"name"	=> "structure",
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 						"label"	=> esc_attr__( "Grid options", 'karma' ),

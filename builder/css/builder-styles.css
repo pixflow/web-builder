@@ -2545,4 +2545,40 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
 .karma-image-position-selected-item {
   background-color: #67B0F9 !important; }
 
+.karma-unsplash-controller {
+  padding-top: 0;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative; }
+  .karma-unsplash-controller .karma-unsplash-search {
+    height: 245px;
+    margin-bottom: 9px; }
+    .karma-unsplash-controller .karma-unsplash-search input {
+      background: transparent;
+      border: 1px solid #E7E7E7;
+      border-radius: 4px;
+      font-family: "Helvetica Neue";
+      font-size: 12px;
+      line-height: 14px;
+      padding: 13px;
+      text-align: center;
+      width: 243px; }
+      .karma-unsplash-controller .karma-unsplash-search input::placeholder {
+        color: #B3BAC1; }
+  .karma-unsplash-controller .karma-unspalsh-icon {
+    border-left: 2px solid rgba(57, 73, 89, 0.5);
+    border-bottom: 2px solid rgba(57, 73, 89, 0.5);
+    height: 9px;
+    position: relative;
+    top: -3px;
+    transform: rotate(-45deg);
+    transition-duration: .3s;
+    width: 9px; }
+
 /*# sourceMappingURL=builder-styles.css.map */
