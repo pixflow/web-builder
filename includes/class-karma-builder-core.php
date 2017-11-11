@@ -206,7 +206,7 @@ class Karma_Builder_Core{
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array - new model of shortcode given with order attribute
+	 * @return array - new model of element given with order attribute
 	 */
 	private function order_shortcode( $model, $order, $parent_key ){
 
@@ -265,7 +265,9 @@ class Karma_Builder_Core{
 	 * @return string - correct value
 	 */
 	private function remove_empty_value( $value ){
+
 		return $value !== "";
+
 	}
 
 
@@ -280,6 +282,7 @@ class Karma_Builder_Core{
 	 * @return array - that contains the attributes and values of shortcode
 	 */
 	private function merge_attributes_matches( $matches ){
+
 		$first_group_attributes = array_filter( $matches[1] ,array($this, 'remove_empty_value') );
 		$second_group_attributes = array_filter( $matches[4] ,array($this, 'remove_empty_value') );
 		$third_group_attributes = array_filter( $matches[7] ,array($this, 'remove_empty_value') );
@@ -293,6 +296,7 @@ class Karma_Builder_Core{
 			'values' => $all_group_value
 		);
 		return $result;
+
 	}
 
 	/**
@@ -310,7 +314,6 @@ class Karma_Builder_Core{
 
 		$atts = array();
 		preg_match_all( $this->shortcode_attr_pattern , $shortcode_attributes , $matches );
-
 		if( $matches ){
 			$shortcode_group_attribute = $this->merge_attributes_matches( $matches );
 			for( $count = 0 ; $count < count( $shortcode_group_attribute['attributes'] ); $count++ ){

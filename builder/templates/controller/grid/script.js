@@ -20,7 +20,9 @@ jQuery( document ).off( 'karma_finish_form_builder.add-column' ).on( 'karma_fini
 
 jQuery( document ).off( 'changeRowLayout/finished.changeViewColumn' ).on( 'changeRowLayout/finished.changeViewColumn', function(){
 
-	document.getElementsByClassName('karma-add-column-view-add')[0]
-		.insertAdjacentHTML( 'beforebegin', '<div class="karma-add-column-view-length" > </div>' );
+	var getElement = document.getElementsByClassName('karma-add-column-view-add');
+	if ( getElement.length ) {
+		getElement[0].insertAdjacentHTML( 'beforebegin', '<div class="karma-add-column-view-length" > </div>' );
+	}
 
 });

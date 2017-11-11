@@ -102,6 +102,8 @@ class Karma_Builder_Loader {
 
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ){
+			/** Read the content from post meta */
+			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			// Don't display the admin bar when in live editor mode
 			add_filter( 'show_admin_bar', '__return_false' );
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
@@ -109,6 +111,45 @@ class Karma_Builder_Loader {
 			add_action( 'wp_head', array( $this, 'load_builder_js_templates' ) );
 		}
 		$this->init_elements();
+
+	}
+
+	/**
+	 * Retrieve post meta field for a post or page.
+	 *
+	 * @param integer $page_id      Post or page id.
+	 * @param string   $meta_name   The meta key to retrieve. By default, its 'karma_post_content'.
+	 *
+	 * @since     1.0.0
+	 * @return    mixed Retrieve post meta field
+	 */
+	protected function get_post_meta( $page_id, $meta_name = 'karma_post_content' ){
+
+		$meta_info = get_post_meta( $page_id, $meta_name );
+		if( isset( $meta_info[0] ) ){
+			return $meta_info[0];
+		}else{
+			return false;
+		}
+
+	}
+
+	/**
+	 * Update post content from post meta
+	 *
+	 * @param string $content  Content of current page
+	 *
+	 * @since     1.0.0
+	 * @return    string The content
+	 */
+
+	public function change_the_content( $content ){
+
+		$meta_info = $this->get_post_meta( get_the_ID() );
+		if( false !== $meta_info ){
+			$content = $meta_info;
+		}
+		return $content;
 
 	}
 
@@ -180,16 +221,14 @@ class Karma_Builder_Loader {
 	}
 
 	/**
-	 * Generate shortcode page models and localize it for builder
+	 * Generate element page models and localize it for builder
 	 *
 	 * @since     1.0.0
 	 * @return    void
 	 */
 	private function generate_page_model(){
 
-		$page_id = get_the_ID();
-		$post_object = get_post ( $page_id );
-		$content = $post_object->post_content;
+		$content = $this->get_post_meta( get_the_ID() );
 		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
 		wp_localize_script( $this->plugin_name, 'builderModels', $page_model );
 
