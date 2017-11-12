@@ -43,12 +43,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 		$map = array(
 			'setting-panel'    => array(
-				"name"   => "Section",
+				"title"	=> esc_attr__( "Section Setting", 'karma' ),
 				"params" => array(
-				/*	array(
-							'name' => 'unsplash' ,
-							'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
-					),*/
 					array(
 						"name"	=> "structure",
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
@@ -100,7 +96,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				)
 			),
 			'layout-panel'		=> array(
-				'name'		=> __( 'Column Layout', 'karma' ),
+				'title'		=> __( 'Column Layout', 'karma' ),
 				'params'	=> array(
 					array(
 						"name"	=> 'gridlayout' ,

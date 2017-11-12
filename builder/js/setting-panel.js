@@ -85,12 +85,15 @@
 
 			var template = wp.template( 'karma-element-setting-panel' ),
 				html = document.createElement( 'div' ),
-				content = this.formBuilder( model, form ),
+				formHtml = this.formBuilder( model, form ),
 				elementAttributes = model.attributes,
-				elementName = elementAttributes[ 'shortcode_name' ].replace( 'karma_', '' ),
-				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.shortcode_attributes[ 'element_key' ];
+				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
 
-			html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
+			html.innerHTML = template( {
+				headerTitle: formHtml.title,
+				content: formHtml.content,
+				selector: elementSelector
+			} );
 			document.getElementById('page').appendChild( html );
 			this.bindDragEvents();
 			$( document ).trigger('karma_finish_form_builder', [ this ] );
@@ -132,7 +135,7 @@
 		 *
 		 * @since	1.0.0
 		 *
-		 * @returns	{object} form builder html
+		 * @returns	{object} form builder html and form title
 		 */
 		formBuilder : function( model, form ) {
 
@@ -176,7 +179,7 @@
 			karmaformhtml += '<div id="elementRow" >' +  groupHtml  + "</div>"  ;
 			var popup = document.createElement('div');
 			popup.innerHTML = karmaformhtml + setting_panel_group;
-			return popup.innerHTML;
+			return { content: popup.innerHTML, title: shortcodeParams.title };
 
 		},
 
