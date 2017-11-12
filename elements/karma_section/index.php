@@ -106,19 +106,42 @@ class Karma_Section extends Karma_Shortcode_Base {
 						"name"	=> "grid",
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 						"label"	=> esc_attr__( "Grid options", 'karma' ),
-						'value'	=> "full",
+						'value'	=> "",
 						"field"	=> array(
 
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
-								'title'	=> "Full screen",
-								'value'	=> "full",
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-1.svg' ),
+								'value'	=> "[12]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
-								'title'	=> "Container",
-								'value'	=> "container"
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-2.svg' ),
+								'value'	=> "[6,6]",
 							),
+							array(
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-3.svg' ),
+								'value'	=> "[4,4,4]",
+							),
+							array(
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-4.svg' ),
+								'value'	=> "[3,3,3,3]",
+							),
+							array(
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-5.svg' ),
+								'value'	=> "[8,4]",
+							),
+							array(
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-6.svg' ),
+								'value'	=> "[4,8]",
+							),
+							array(
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-7.svg' ),
+								'value'	=> "[3,6,3]",
+							),
+							array(
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-8.svg' ),
+								'value'	=> "[2,2,2,2,2,2]",
+							),
+
 
 						)
 					),
