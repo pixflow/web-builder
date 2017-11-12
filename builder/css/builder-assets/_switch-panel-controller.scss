@@ -1,0 +1,54 @@
+.karma-switch-panel-container{
+
+	background-color: #F7F8F9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border-top: 1px solid rgba(57, 73, 89, 0.2);
+
+	#new-b-panel{
+		position: absolute;
+		background: red;
+		top: 46px;
+		left: 360px;
+		width: 100%;
+	}
+
+	.karma-switch-panel-button{
+		height: 36px;
+		width: auto;
+		border: 1px solid rgba(57,73,89,0.2);
+		border-radius: 100px;
+		background-color: #FFFFFF;
+		margin:20px 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 0;
+
+		p{
+			color: #445362;
+			font-family: HelveticaNeue_Medium;
+			font-size: 14px;
+			line-height: 16px;
+			margin: 0;
+			padding:0 21px;
+			font-weight: initial;
+		}
+
+		.karma-switch-panel-shape{
+			border-left: 2px solid rgba(57,73,89,0.46);
+			border-bottom: 2px solid rgba(57,73,89,0.46);
+			height: 9px;
+			position: relative;
+			left: 19px;
+			transform: rotate(45deg);
+			transition-duration: .3s;
+			width: 9px;
+			margin-right: 4px;
+		}
+
+	}
+}
