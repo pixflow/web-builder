@@ -29,6 +29,7 @@
 	<div class="karma-builder-right">
 		<div class="karma-builder-controls">
 			<ul>
+				<li class="builder-save"><?php  _e('Save', 'karma') ?></li>
 				<li class="builder-publish"><?php  _e('Publish', 'karma') ?></li>
 				<li class="builder-notification">
 					<div class="builder-notification-icon"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/navigation.svg' ) ?></div>

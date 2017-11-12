@@ -92,6 +92,9 @@
 						transition-duration: .3s;
 					}
 				}
+				&.builder-save{
+					@extend .builder-publish;
+				}
 
 				.builder-notification-number{
 					@include flexbox( $text-align:center, $align-item:center, $justify-content:center );

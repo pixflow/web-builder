@@ -18,7 +18,8 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 
-			'karma_builder_published' : 'publish'
+			'karma_builder_published' 	: 'karma_publish',
+			'karma_builder_saved'		: 'karma_saved',
 
 		},
 
@@ -114,7 +115,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @since   1.0.0
 		 * @returns {boolean}   true if contents were saved successfully
 		 */
-		publish : function () {
+		karma_publish : function () {
 
 			var data = {
 				models	: JSON.stringify( karmaBuilder.karmaModels ),
@@ -123,6 +124,29 @@ var karmaBuilder = karmaBuilder || {};
 			};
 
 			this.prepareAjax( 'publish', data ).done( function ( response ) {
+
+				var result = JSON.parse( response );
+				return result.result;
+
+			});
+
+		},
+
+		/**
+		 * Save element model and html
+		 *
+		 * @since   1.0.0
+		 * @returns {boolean}   true if contents were saved successfully
+		 */
+		karma_saved : function () {
+
+			var data = {
+				models	: JSON.stringify( karmaBuilder.karmaModels ),
+				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
+				action  : 'save'
+			};
+
+			this.prepareAjax( 'save', data ).done( function ( response ) {
 
 				var result = JSON.parse( response );
 				return result.result;

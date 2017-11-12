@@ -101,6 +101,27 @@ class Karma_Builder_Admin {
 	}
 
 	/**
+	 * Save the content of page and print the result
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function save(){
+
+		$models = $_POST['models'];
+		$id = $_POST['id'];
+		$builder_core = Karma_Builder_Core::get_instance();
+		$models = json_decode( stripslashes( $models ), true );
+		if ( $builder_core->save_post( $models, $id ) ){
+			echo '{ "result" : "true", "msg" : "success" }';
+		}else{
+			echo '{ "result" : "false", "msg" : "error" }';
+		}
+
+		wp_die();
+	}
+
+	/**
 	 * enqueue style for builder page
 	 *
 	 * @since     1.0.0
