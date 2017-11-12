@@ -1829,6 +1829,16 @@ html {
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
 /* _-_-_- modules/GIZMO -_-_-_ */
+label {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0; }
+
 .karma-spacing {
   height: 5px;
   position: relative; }

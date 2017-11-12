@@ -15,12 +15,11 @@ jQuery( document ).off( 'karma_finish_form_builder.switch-panel-extra' ).on( 'ka
 
 		panel.innerHTML =  view.formBuilderContentHtml( button.getAttribute( 'data-form' ) );
 
-		var swithButtonAction = button.getAttribute( 'data-action' );
+		$('body').on( 'click', '.karma-switch-panel-button', function () {
 
-
-		$( 'body').on( 'click' , '.karma-switch-panel-button', function () {
-
-			$('.karma-switch-panel-button').attr( 'data-form' )
+			var swithButtonAction =  $(this).attr( 'data-action' );
+			console.log(swithButtonAction)
+			$('.karma-switch-panel-button').attr( 'data-form' );
 			if( 'open' === swithButtonAction ){
 
 				$( "#elementRow" ).removeClass( 'active-sec' ).animate( {left: "-=360"}, {duration: 200, easing: "swing"} );
