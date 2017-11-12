@@ -74,6 +74,7 @@
 				line-height: 17px;
 				position: relative;
 
+
 				&.builder-notification{
 					padding-top: 4px;
 				}
@@ -83,6 +84,13 @@
 					background-color: rgba(255,255,255,0.2);
 					border-radius: 3px;
 					box-shadow: 0 4px 7px 1px rgba(57,73,89,0.15);
+					transition-duration: .3s;
+
+					&:hover{
+						background-color: rgba(255,255,255,0.7);
+						color: #419cf8;
+						transition-duration: .3s;
+					}
 				}
 
 				.builder-notification-number{
@@ -100,6 +108,22 @@
 					line-height: 10px;
 					padding-top: 2px;
 					position: absolute;
+				}
+			}
+		}
+	}
+
+	.builder-upgrade{
+
+		&:hover{
+
+			.builder-upgrade-icon{
+
+				svg{
+					*{
+						fill: rgba(255, 255, 255, 0.6);
+					}
+
 				}
 			}
 		}

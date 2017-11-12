@@ -1659,7 +1659,12 @@ html {
           height: 32px;
           background-color: rgba(255, 255, 255, 0.2);
           border-radius: 3px;
-          box-shadow: 0 4px 7px 1px rgba(57, 73, 89, 0.15); }
+          box-shadow: 0 4px 7px 1px rgba(57, 73, 89, 0.15);
+          transition-duration: .3s; }
+          .karma-builder-toolbar .karma-builder-right ul li.builder-publish:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #419cf8;
+            transition-duration: .3s; }
         .karma-builder-toolbar .karma-builder-right ul li .builder-notification-number {
           display: flex;
           text-align: center;
@@ -1682,6 +1687,8 @@ html {
           line-height: 10px;
           padding-top: 2px;
           position: absolute; }
+  .karma-builder-toolbar .builder-upgrade:hover .builder-upgrade-icon svg * {
+    fill: rgba(255, 255, 255, 0.6); }
 
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
