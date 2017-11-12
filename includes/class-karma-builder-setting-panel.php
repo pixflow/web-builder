@@ -42,6 +42,7 @@ class Karma_Builder_Setting_Panel {
 	const CHECK_BOX = 'check-box';
 	const IMAGE_POSITION = 'image-position';
 	const UNSPLASH = 'unsplash';
+	const SWITCH_PANEL = 'switch-panel';
 
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'

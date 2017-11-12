@@ -10,11 +10,12 @@ jQuery( document ).off( 'karma_finish_form_builder.checkbox' ).on( 'karma_finish
 
 	inputCheckBox.click( function() {
 
-		if ( inputCheckBox.is( ':checked' ) )
-		{
+		if ( inputCheckBox.is( ':checked' ) ) {
+
 			inputCheckBox.val( 'true' );
-		}else
-		{
+
+		}else {
+
 			inputCheckBox.val( 'false' );
 		}
 	});

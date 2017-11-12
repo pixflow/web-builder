@@ -1,23 +1,27 @@
 .karma-image-position-container{
 	align-items: center;
 	justify-content: center;
+	position: relative;
 	padding-bottom: 25px;
 
+	.karma-all-controller-title{
+		padding-left: 18px;
+	}
 	.karma-image-position-content{
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
 		height: 100%;
 		flex-wrap: wrap;
-		padding: 0 98px;
+		padding: 0 105px;
 
 		.hidden-input{
 			display: none;
 		}
 
 		.karma-image-position-box {
-			height: 26px;
-			width: 26px;
+			height: 22px;
+			width: 22px;
 			border-radius: 2px;
 			background-color: rgba(103, 176, 249, 0.3);
 			cursor: pointer;
@@ -55,11 +59,11 @@
 			}
 
 			.karma-image-position-dot{
-				height: 6px;
-				width: 6px;
+				height: 5px;
+				width: 5px;
 				opacity: 0.76;
 				border-radius: 19px;
-				background-color: #FFFFFF;
+				background-color: rgba(255, 255, 255, 0.79);;
 			}
 		}
 

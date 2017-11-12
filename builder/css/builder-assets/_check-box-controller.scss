@@ -1,5 +1,5 @@
 .karma-check-box-controller{
-	@include padding(0, 20px, 25px, 20px);
+	@include padding(0, 24px, 25px, 20px);
 
 	.check-box-controller-template{
 		@include flexbox( $align-item:center, $justify-content:space-between );
@@ -8,7 +8,7 @@
 		.karma-check-box-title{
 			@extend .HelveticaNeue-font;
 			color: rgba(57,73,89,0.8);
-			font-size: 15px;
+			font-size: 14px;
 			line-height: 17px;
 		}
 		.karma-check-box-container{

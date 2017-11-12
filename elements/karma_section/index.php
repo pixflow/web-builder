@@ -85,11 +85,13 @@ class Karma_Section extends Karma_Shortcode_Base {
 						)
 					),
 					array(
-						"name"			=> "extraClass",
-						"type"			=> Karma_Builder_Setting_Panel::TEXT,
-						"label"			=> __( "Class Name", 'karma' ),
-						'placeholder'	=> __( 'Class name', 'karma' ),
-						"group"			=> "Advance option"
+						"name"			=> "title",
+						"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
+						"label"			=> esc_attr__( "switch", 'karma' ),
+						'text'			=> 'next',
+						"form"			=> "new-panel",
+						"action"		=> "open"
+
 					),
 
 
@@ -167,9 +169,48 @@ class Karma_Section extends Karma_Shortcode_Base {
 							"label"	=> __( "checking", 'karma' ),
 					),
 				)
-			)
+			),
+			'new-panel'			=>array(
+				'name'		=> __( 'new panel', 'karma' ),
+				'params'	=> array(
+						array(
+								"name"	=> "iman",
+								"type"	=> Karma_Builder_Setting_Panel::TEXT,
+								"label"	=> esc_attr__( "switch", 'karma' ),
+								'value'	=> 'switch'
+						),
+						array(
+								"name"	=> "title",
+								"type"	=> Karma_Builder_Setting_Panel::TITLE,
+								"label"	=> esc_attr__( "Spacing", 'karma' ),
+								'value'	=> 'Spacing'
+						),
+						array(
+								"name"		=> "space",
+								"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+								"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
+								'value'		=> 0,
+								"options"	=> array(
+										'value'	=> 200,
+										'min'   => 0,
+										'max'   => 800,
+										'step'  => 1,
+										'unit'  => 'px'
+								)
+						),
+						array(
+								"name"			=> "title",
+								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
+								"label"			=> esc_attr__( "switdsdsch", 'karma' ),
+								'text'			=> 'nextsdas',
+								"action"		=> "close"
 
+						),
+
+				)
+		)
 		);
+
 
 		parent::$elements_map[ 'karma_section' ] = $map;
 		return parent::$elements_map;

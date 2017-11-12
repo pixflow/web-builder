@@ -705,7 +705,7 @@
 
 			var form = $( e.currentTarget ).data('form');
 			this.removeSettingPanel();
-			this.openSettingPanel( this.model, form );
+			this.openSettingPanel( form );
 			window.elementSettingPanel = new karmaBuilder.elementSettingPanel( { model : this.model } );
 			elementSettingPanel.delegateEvents();
 

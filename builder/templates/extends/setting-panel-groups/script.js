@@ -1,4 +1,4 @@
-jQuery('body').off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_form_builder.groups', function() {
+jQuery(document).off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_form_builder.groups', function() {
 	var $ = jQuery;
 	$( '.karma-setting-panel-group-button' ).click( function () {
 		$(this).next(".karma-group-panel" ).slideToggle();
