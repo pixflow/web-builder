@@ -133,7 +133,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	if( null !== document.querySelector('.karma-unsplash-controller') ){
 		var photos = new karmaUnsplash();
-		photos.loadImages( a.pageSurf, 9, false );
+		photos.loadImages( photos.pageSurf, 9, false );
 	}
 
 });

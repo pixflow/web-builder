@@ -152,7 +152,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
 				'params'	=> array(
-
+					array(
+						'name' => 'unsplash' ,
+						'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
+					),
 					array(
 							"name"	=> "positin",
 							"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
@@ -170,13 +173,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 					),
 				)
 			),
-			'new-panel'			=>array(
+
+			'new-panel'		=>array(
 				'name'		=> __( 'new panel', 'karma' ),
 				'params'	=> array(
-						array(
-							'name' => 'unsplash' ,
-							'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
-						),
 						array(
 								"name"	=> "text",
 								"type"	=> Karma_Builder_Setting_Panel::TEXT,
