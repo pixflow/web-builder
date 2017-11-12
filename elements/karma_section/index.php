@@ -45,10 +45,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'setting-panel'    => array(
 				"name"   => "Section",
 				"params" => array(
-					array(
+				/*	array(
 							'name' => 'unsplash' ,
 							'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
-					),
+					),*/
 					array(
 						"name"	=> "structure",
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
