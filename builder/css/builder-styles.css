@@ -291,9 +291,12 @@ body {
     right: auto;
     bottom: 0;
     left: 20px;
-    color: rgba(57, 73, 89, 0.2); }
+    color: rgba(57, 73, 89, 0.2);
+    position: absolute; }
   body ul, body ol {
     margin: 0 0 1.75em 0; }
+  body .controller-seprator {
+    margin-bottom: 25px; }
 
 @-ms-viewport {
   width: device-width; }
@@ -2388,7 +2391,7 @@ html {
   padding-bottom: 4px;
   padding-left: 7px;
   color: rgba(57, 73, 89, 0.8);
-  font-family: HelveticaNeue;
+  font-family: HelveticaNeue_Medium;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -2594,47 +2597,50 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     width: 9px; }
 
 .karma-switch-panel-container {
-  background-color: #F7F8F9;
   display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7F8F9;
   border-top: 1px solid rgba(57, 73, 89, 0.2); }
   .karma-switch-panel-container #new-b-panel {
-    position: absolute;
-    background: red;
     top: 46px;
+    right: auto;
+    bottom: auto;
     left: 360px;
-    width: 100%; }
+    width: 100%;
+    height: inherit;
+    background: red;
+    position: absolute; }
   .karma-switch-panel-container .karma-switch-panel-button {
-    height: 36px;
-    width: auto;
-    border: 1px solid rgba(57, 73, 89, 0.2);
-    border-radius: 100px;
-    background-color: #FFFFFF;
-    margin: 20px 60px;
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    width: auto;
+    height: 36px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(57, 73, 89, 0.2);
+    border-radius: 100px;
+    margin: 20px 60px;
     padding: 0; }
     .karma-switch-panel-container .karma-switch-panel-button p {
       color: #445362;
       font-family: HelveticaNeue_Medium;
       font-size: 14px;
+      font-weight: initial;
       line-height: 16px;
       margin: 0;
-      padding: 0 21px;
-      font-weight: initial; }
+      padding: 0 21px; }
     .karma-switch-panel-container .karma-switch-panel-button .karma-switch-panel-shape {
-      border-left: 2px solid rgba(57, 73, 89, 0.46);
       border-bottom: 2px solid rgba(57, 73, 89, 0.46);
+      border-left: 2px solid rgba(57, 73, 89, 0.46);
       height: 9px;
-      position: relative;
       left: 19px;
+      margin-right: 4px;
+      position: relative;
       transform: rotate(45deg);
       transition-duration: .3s;
-      width: 9px;
-      margin-right: 4px; }
+      width: 9px; }
 
 /*# sourceMappingURL=builder-styles.css.map */

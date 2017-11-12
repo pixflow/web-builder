@@ -173,9 +173,12 @@ body {
     right: auto;
     bottom: 0;
     left: 20px;
-    color: rgba(57, 73, 89, 0.2); }
+    color: rgba(57, 73, 89, 0.2);
+    position: absolute; }
   body ul, body ol {
     margin: 0 0 1.75em 0; }
+  body .controller-seprator {
+    margin-bottom: 25px; }
 
 @-ms-viewport {
   width: device-width; }

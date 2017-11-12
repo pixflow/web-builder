@@ -19,9 +19,13 @@ body {
 		@include box(calc(100% - 40px), 1px);
 		@include element_direction($bottom: 0, $left: 20px);
 		color: $setting-panel-separator-color;
+		position: absolute;
 	}
 	ul, ol {
 		margin: 0 0 1.75em 0;
+	}
+	.controller-seprator{
+		margin-bottom: 25px;
 	}
 }
 
