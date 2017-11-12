@@ -128,7 +128,28 @@ class Karma_Section extends Karma_Shortcode_Base {
 					),
 				)
 			),
-			'background-panel'	=> array(),
+			'background-panel'	=> array(
+				'name'		=> __( 'image position', 'karma' ),
+				'params'	=> array(
+
+					array(
+							"name"	=> "positin",
+							"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
+							"label"	=> esc_attr__( "positin", 'karma' ),
+							'value'	=> 'center-center',
+							'separator' => "container",
+
+							
+					),
+
+					array(
+							"name"	=> "checking",
+							"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
+							"label"	=> __( "checking", 'karma' ),
+					),
+				)
+			)
+
 		);
 
 		parent::$elements_map[ 'karma_section' ] = $map;
@@ -165,8 +186,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 					),
 					array(
 						'type'		=> 'text',
-						'action'	=> 'open',
-						'className'	=> 'row-setting-setting',
+						'form'	=> 'background-panel',
+						'className'	=> 'row-background-setting',
 						'value'		=> esc_attr( 'Background', 'karma' )
 
 					),
