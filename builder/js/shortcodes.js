@@ -342,13 +342,13 @@
 
 
 		/**
-		 *@summery create options for right and left spacing gizmo
+		 * @summery create options for right and left spacing gizmo
 		 *
-	 	 *@param	{string} padingDirection type of padding (paddingleft or paddingRight)
+	 	 * @param	{string} padingDirection type of padding (paddingleft or paddingRight)
 		 *
 		 * @since 1.0.0
 		 *
-		 *@return {object} return options for right and left spacing gizmo
+		 * @return {object} return options for right and left spacing gizmo
 		*/
 		createRightLeftSpacingGizmo : function ( spacingSelector, paddingDirection) {
 			var calculating = this.calculateMaxWidthSpacing( spacingSelector ),

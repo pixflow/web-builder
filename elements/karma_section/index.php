@@ -174,7 +174,11 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'name'		=> __( 'new panel', 'karma' ),
 				'params'	=> array(
 						array(
-								"name"	=> "iman",
+							'name' => 'unsplash' ,
+							'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
+						),
+						array(
+								"name"	=> "text",
 								"type"	=> Karma_Builder_Setting_Panel::TEXT,
 								"label"	=> esc_attr__( "switch", 'karma' ),
 								'value'	=> 'switch'

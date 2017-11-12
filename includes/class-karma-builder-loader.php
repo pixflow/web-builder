@@ -115,26 +115,6 @@ class Karma_Builder_Loader {
 	}
 
 	/**
-	 * Retrieve post meta field for a post or page.
-	 *
-	 * @param integer $page_id      Post or page id.
-	 * @param string   $meta_name   The meta key to retrieve. By default, its 'karma_post_content'.
-	 *
-	 * @since     1.0.0
-	 * @return    mixed Retrieve post meta field
-	 */
-	protected function get_post_meta( $page_id, $meta_name = 'karma_post_content' ){
-
-		$meta_info = get_post_meta( $page_id, $meta_name );
-		if( isset( $meta_info[0] ) ){
-			return $meta_info[0];
-		}else{
-			return false;
-		}
-
-	}
-
-	/**
 	 * Update post content from post meta
 	 *
 	 * @param string $content  Content of current page
@@ -145,8 +125,8 @@ class Karma_Builder_Loader {
 
 	public function change_the_content( $content ){
 
-		$meta_info = $this->get_post_meta( get_the_ID() );
-		if( false !== $meta_info ){
+		$meta_info = get_post_meta( get_the_ID(), 'karma_post_content', true );
+		if( '' !== $meta_info ){
 			$content = $meta_info;
 		}
 		return $content;
@@ -228,7 +208,7 @@ class Karma_Builder_Loader {
 	 */
 	private function generate_page_model(){
 
-		$content = $this->get_post_meta( get_the_ID() );
+		$content = get_post_meta( get_the_ID(), 'karma_post_content', true );
 		$page_model = json_encode( $this->core->parse_shortcodes( $content ) );
 		wp_localize_script( $this->plugin_name, 'builderModels', $page_model );
 

@@ -5,7 +5,6 @@
   position: relative;
 
   .karma-unsplash-search{
-	height: 245px;
 	margin-bottom: 9px;
 
 	input{
@@ -27,12 +26,51 @@
   .karma-unspalsh-icon {
 	border-left: 2px solid rgba(57,73,89,0.5);
 	border-bottom: 2px solid rgba(57,73,89,0.5);
+	cursor: pointer;
 	height: 9px;
 	position: relative;
+	margin-top: 20px;
 	top: -3px;
 	transform: rotate(-45deg);
 	transition-duration: .3s;
 	width: 9px;
+  }
+
+
+  .karma-unsplash-images-result {
+	@include flexbox( center, center, center );
+	flex-wrap: wrap;
+	height: 215px;
+	overflow: auto;
+	position: relative;
+	width: 100%;
+	&::-webkit-scrollbar {
+	  display:none;
+	}
+	.karma-unsplash-images-list {
+	  background-color: #aed7fd;
+	  background-position: center center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  border-radius: 2px;
+	  cursor: pointer;
+	  margin: 3px;
+	  height: 66px;
+	  width: 77px;
+	  position: relative;
+	  &:after {
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		transition: .3s;
+		width: 100%;
+	  }
+	  &:hover:after{
+		background-color: rgba(0, 0, 0, 0.34);
+	  }
+	}
   }
 
 }

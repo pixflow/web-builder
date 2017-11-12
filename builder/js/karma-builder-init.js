@@ -117,8 +117,9 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		karma_publish : function () {
 
-			var data = {
-				models	: JSON.stringify( karmaBuilder.karmaModels ),
+			var that = this,
+				data = {
+				models	: that.prepareModels(),
 				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
 				action  : 'publish'
 			};
@@ -140,9 +141,10 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		karma_saved : function () {
 
-			var data = {
-				models	: JSON.stringify( karmaBuilder.karmaModels ),
-				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
+			var that = this,
+				data = {
+				models  : that.prepareModels(),
+				id      : $('meta[name="post-id"]').attr('content'),
 				action  : 'save'
 			};
 
@@ -152,6 +154,23 @@ var karmaBuilder = karmaBuilder || {};
 				return result.result;
 
 			});
+		},
+
+		/**
+		 * Remove changed value in element attributes
+		 *
+		 * @since 1.0.0
+		 * @returns {string}    Validated models
+		 */
+		prepareModels : function(){
+
+			var models = JSON.parse( JSON.stringify( karmaBuilder.karmaModels ) );
+			_.each( models, function ( model ) {
+				if( undefined != model.shortcode_attributes.changed  ){
+					delete model.shortcode_attributes.changed;
+				}
+			});
+			return JSON.stringify( models );
 
 		},
 
