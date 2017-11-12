@@ -237,7 +237,7 @@ class Karma_Builder {
 
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
-		add_action( 'wp_ajax_save_content', array( $plugin_admin, 'save_content' ) );
+		add_action( 'wp_ajax_publish', array( $plugin_admin, 'publish' ) );
 		add_action( 'karma_before_load_builder_window', array( $plugin_admin, 'load_builder_assets' ) );
 
 	}

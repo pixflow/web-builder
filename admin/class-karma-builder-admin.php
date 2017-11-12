@@ -85,7 +85,7 @@ class Karma_Builder_Admin {
 	 * @since     1.0.0
 	 * @return    void
 	 */
-	public function save_content(){
+	public function publish(){
 
 		$models = $_POST['models'];
 		$id = $_POST['id'];

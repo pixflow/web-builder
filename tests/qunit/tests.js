@@ -424,7 +424,7 @@ function getModelsAttributes(models) {
 
 	});
 
-	QUnit.test("assert.async() saveContent", function ( assert ) {
+	QUnit.test("assert.async() publish", function ( assert ) {
 
 		var done = assert.async();
 		karmaBuilder.view.prototype.prepareAjax().done( function ( response ) {

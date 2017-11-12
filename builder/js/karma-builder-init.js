@@ -18,7 +18,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 
-			'karma_builder_published' : 'saveContent'
+			'karma_builder_published' : 'publish'
 
 		},
 
@@ -114,15 +114,15 @@ var karmaBuilder = karmaBuilder || {};
 		 * @since   1.0.0
 		 * @returns {boolean}   true if contents were saved successfully
 		 */
-		saveContent : function () {
+		publish : function () {
 
 			var data = {
 				models	: JSON.stringify( karmaBuilder.karmaModels ),
 				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
-				action  : 'save_content'
+				action  : 'publish'
 			};
 
-			this.prepareAjax( 'save_content', data ).done( function ( response ) {
+			this.prepareAjax( 'publish', data ).done( function ( response ) {
 
 				var result = JSON.parse( response );
 				return result.result;
