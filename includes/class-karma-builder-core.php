@@ -460,7 +460,7 @@ class Karma_Builder_Core{
 			$shortcode_key = ' element_key="' . $model['element_key']. '"';
 			$shortcode_attributes = '';
 
-			if( isset( $model['shortcode_attributes'] ) ) {
+			if( isset( $model['shortcode_attributes'] ) && 0 !== count( $model['shortcode_attributes'] ) ) {
 				foreach( $model['shortcode_attributes'] as $attribute_name => $attribute_value ){
 					$delimiter = '"';
 					if( is_integer( $attribute_value ) ){
