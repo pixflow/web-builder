@@ -74,6 +74,9 @@
 			overflow: hidden;
 
 			#karma-Builder-form {
+
+				transition:all .2s;
+
 				div:last-child .karma-setting-panel-group-button {
 					border-bottom-left-radius: 7px;
 					border-bottom-right-radius: 7px;

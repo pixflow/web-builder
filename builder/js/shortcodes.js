@@ -344,13 +344,14 @@
 		/**
 		 * @summery create options for right and left spacing gizmo
 		 *
-	 	 * @param	{string} padingDirection type of padding (paddingleft or paddingRight)
+	 	 *@param	{string} paddingDirection type of padding (padddingleft or paddingRight)
 		 *
 		 * @since 1.0.0
 		 *
 		 * @return {object} return options for right and left spacing gizmo
 		*/
-		createRightLeftSpacingGizmo : function ( spacingSelector, paddingDirection) {
+
+		createRightLeftSpacingGizmo : function ( spacingSelector, paddingDirection ) {
 
 			var calculating = this.calculateMaxWidthSpacing( spacingSelector ),
 				maxWidth = calculating,
@@ -375,7 +376,6 @@
 						ui.element.resizable( "option", "maxWidth", calculating );
 						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
 						that.renderCss( '.karma-section div.karma-column.' + that.elementSelector(), paddingDirection, value + 'px');
-
 					}
 				};
 			return options;
@@ -408,12 +408,13 @@
 		 */
 
 
-		rightSpacingGizmo : function ( $gizmo  ) {
+
+		rightSpacingGizmo : function ( $gizmo ) {
 
 			var that = this;
-			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'padding-right');
-			that.$el.attr( 'data-direction', 'right');
-			options.handles.w = $gizmo.find(  '.ui-resizable-w');
+			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'padding-right' );
+			that.$el.attr( 'data-direction', 'right' );
+			options.handles.w = $gizmo.find(  '.ui-resizable-w' );
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
 
 		},

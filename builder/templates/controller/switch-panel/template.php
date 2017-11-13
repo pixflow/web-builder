@@ -3,5 +3,11 @@
 		<div class="karma-switch-panel-shape"></div>
 		<p>{{ data.text }}</p>
 	</button>
-	<div id="new-b-panel"></div>
+	<#
+			if ( true == data.formBuilder ){ #>
+	<div id="new-form-builder-panel" data-height="{{ data.height }}">
+
+		<# print( data.view.formBuilderContentHtml( data.form ) ); #>
+	</div>
+		<#	} #>
 </div>

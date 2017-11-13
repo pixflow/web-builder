@@ -1,15 +1,14 @@
 .karma-switch-panel-container{
 
-	@include  flexbox( $text-align: center, $align-item:center, $justify-content: center );
+	@include  flexbox( $justify-content: center );
 
 	background-color: #F7F8F9;
 	border-top: 1px solid rgba(57, 73, 89, 0.2);
 
 
-	#new-b-panel{
-		@include element_direction($top:46px, $left: 360px);
+	#new-form-builder-panel{
+		@include element_direction($top:0, $left: 360px);
 		@include  box(100%, inherit);
-		background: red;
 		position: absolute;
 
 	}

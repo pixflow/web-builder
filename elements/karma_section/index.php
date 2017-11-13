@@ -44,6 +44,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
+				"height" => "389",
 				"params" => array(
 					array(
 						"name"	=> "structure",
@@ -72,25 +73,27 @@ class Karma_Section extends Karma_Shortcode_Base {
 						'value'	=> 'Spacing'
 					),
 					array(
-						"name"		=> "space",
-						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
-						'value'		=> 0,
-						"options"	=> array(
-							'value'	=> 200,
-							'min'   => 0,
-							'max'   => 800,
-							'step'  => 1,
-							'unit'  => 'px'
-						)
-					),
+								"name"		=> "space",
+								"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+								"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
+								'value'		=> 0,
+								"options"	=> array(
+										'value'	=> 200,
+										'min'   => 0,
+										'max'   => 800,
+										'step'  => 1,
+										'unit'  => 'px'
+								)
+						),
+
 					array(
 						"name"			=> "title",
 						"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
 						"label"			=> esc_attr__( "switch", 'karma' ),
 						'text'			=> 'next',
 						"form"			=> "new-panel",
-						"action"		=> "open"
+						"action"		=> "open",
+						'height'		=> '398'
 
 					),
 
@@ -174,7 +177,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				)
 			),
 
-			'new-panel'		=>array(
+			'new-panel'		=> array(
 				'name'		=> __( 'new panel', 'karma' ),
 				'params'	=> array(
 						array(
@@ -206,7 +209,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"name"			=> "title",
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
 								"label"			=> esc_attr__( "switdsdsch", 'karma' ),
-								'text'			=> 'nextsdas',
+								'text'			=> 'back',
 								"action"		=> "close"
 
 						),

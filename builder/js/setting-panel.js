@@ -79,19 +79,21 @@
 		 *
 		 * @since	1.0.0
 		 *
-		 * @returns	{void}
+		 * @returns	{mixed}
 		 */
-		openSettingPanel: function( form ){
+		 openSettingPanel: function( form ){
 
-			var template = wp.template( 'karma-element-setting-panel' ),
-					html = document.createElement( 'div' ),
-					content = this.formBuilder( form ),
+			var html = document.createElement( 'div' ),
+					formHtml = this.formBuilder( form ),
 					elementAttributes = this.model.attributes,
-					elementName = elementAttributes[ 'shortcode_name' ].replace( 'karma_', '' ),
-					elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.shortcode_attributes[ 'element_key' ];
+					elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
+			html.innerHTML = this.getWpTemplate( 'karma-element-setting-panel' , {
+				headerTitle: formHtml.title,
+				content: formHtml.content,
+				selector: elementSelector
+			}  );
 
-			html.innerHTML =  template( { headerTitle :  elementName +" Setting" , content : content, selector: elementSelector });
-			document.getElementById('page').appendChild( html );
+			document.body.appendChild( html );
 			this.bindDragEvents();
 			$( document ).trigger('karma_finish_form_builder', [ this ] );
 
@@ -108,7 +110,7 @@
 		 * @returns {object}	updated param value
 		 */
 		updateElementParams: function ( model, elementParam ) {
-			console.log(elementParam )
+
 			for ( var index in elementParam.params ){
 				var paramName = elementParam.params[ index ].name;
 				if( 'gridlayout' === paramName ){
@@ -135,14 +137,16 @@
 		 */
 		formBuilder : function( form ) {
 
-
-			var karmaformhtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">',
-					formBuilderContents = this.formBuilderContentHtml(form);
+			var shortcodeModel = this.model.attributes ,
+				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
+				settingPanelHeight = shortcodeParams.height,
+				popup = document.createElement('div'),
+				karmaformhtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
+				formBuilderContents = this.formBuilderContentHtml( form );
 
 			karmaformhtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
-			var popup = document.createElement('div');
 			popup.innerHTML = karmaformhtml ;
-			return popup.innerHTML;
+			return { content: popup.innerHTML, title: shortcodeParams.title };
 
 		},
 
@@ -158,40 +162,52 @@
 		formBuilderContentHtml : function ( form ) {
 
 			var shortcodeModel = this.model.attributes ,
-					groupHtml_group = [],
-					groupHtml = '',
-					shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form );
+				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form );
+				shortcodeParams = this.updateElementParams( shortcodeModel, shortcodeParams );
+			return this.formBuilderContentAction( shortcodeParams );
 
-			shortcodeParams = this.updateElementParams( shortcodeModel, shortcodeParams );
+		},
 
+		/**
+		 *  form builder content action to create  html
+		 *
+		 * @param	{object}	get model attribute
+		 *
+		 * @since	1.0.0
+		 *
+		 * @returns	{object} form builder content html
+		 */
+		formBuilderContentAction : function ( shortcodeParams ) {
+
+			var groupHtml = '',
+			groupHtml_group = [];
 			for( var counter in shortcodeParams.params ){
-
-				if( ! shortcodeParams.params[counter].group ) {
-
+				if ( ! shortcodeParams.params[counter].group && "switch-panel" != shortcodeParams.params[counter].type ) {
 					groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
-
-				}else{
-
+				}else if( "switch-panel" === shortcodeParams.params[counter].type ) {
+					if( "undefined" !== typeof shortcodeParams.params[counter].form ){
+						shortcodeParams.params[counter]['view'] = this;
+						shortcodeParams.params[counter]['formBuilder'] = true;
+						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					}else{
+						shortcodeParams.params[counter]['formBuilder'] = false;
+						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					}
+				} else {
 					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group.text ] ){
-
 						groupHtml_group[ shortcodeParams.params[counter].group.text ] = {
-
 							items: [],
 							options: shortcodeParams.params[counter].group,
-
 						};
-
 					}
 					var html = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
 					groupHtml_group[ shortcodeParams.params[counter].group.text ]['items'].push( html );
-
 				}
-
 				var formBuilderGroupHtml = this.formBuilderGroupHtml(groupHtml_group);
-
 			}
+			var formBuilderContent = groupHtml + formBuilderGroupHtml;
+			return  formBuilderContent;
 
-			return groupHtml + formBuilderGroupHtml ;
 		},
 
 		/**

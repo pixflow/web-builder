@@ -2,15 +2,13 @@ jQuery( document ).off( 'karma_finish_form_builder.image-position' ).on( 'karma_
 
 	var imgPosition = document.querySelectorAll( '.karma-image-position-box' ),
 		imgPositioninput = document.querySelector( '.image-position-input' );
+
 	if ( null === imgPositioninput ){
 		return false;
-
 	}
-	console.log(imgPositioninput)
 	var  inputAttr = imgPositioninput.getAttribute( 'value' ),
 		 selected = document.querySelector( '.karma-image-position-box[data-value="' + inputAttr + '"]' );
-	console.log(selected , inputAttr)
-	
+
 	selected.classList.add( 'karma-image-position-selected-item' );
 
 	for( var i in imgPosition ){

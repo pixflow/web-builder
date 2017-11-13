@@ -1758,11 +1758,13 @@ html {
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
       padding-top: 16px;
       overflow: hidden; }
-      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
-        border-bottom-left-radius: 7px;
-        border-bottom-right-radius: 7px; }
-      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form #elementRow {
-        position: relative; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
+        transition: all .2s; }
+        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
+          border-bottom-left-radius: 7px;
+          border-bottom-right-radius: 7px; }
+        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form #elementRow {
+          position: relative; }
   #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
     display: flex; }
     #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
@@ -2689,19 +2691,18 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
 
 .karma-switch-panel-container {
   display: flex;
-  text-align: center;
-  align-items: center;
+  text-align: inherit;
+  align-items: inherit;
   justify-content: center;
   background-color: #F7F8F9;
   border-top: 1px solid rgba(57, 73, 89, 0.2); }
-  .karma-switch-panel-container #new-b-panel {
-    top: 46px;
+  .karma-switch-panel-container #new-form-builder-panel {
+    top: 0;
     right: auto;
     bottom: auto;
     left: 360px;
     width: 100%;
     height: inherit;
-    background: red;
     position: absolute; }
   .karma-switch-panel-container .karma-switch-panel-button {
     display: flex;
