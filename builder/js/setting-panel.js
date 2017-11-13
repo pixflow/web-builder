@@ -14,6 +14,7 @@
 			"input input:not(.no-trigger)"				: "updateModel",
 			"input textarea:not(.no-trigger)"			: "updateModel" ,
 			"change input[type=checkbox]"				: "updateModel" ,
+			"click .karma-setting-panel-group-button" 	: "scrollInSettingPanel",
 		},
 
 		/**
@@ -194,14 +195,14 @@
 						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
 					}
 				} else {
-					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group.text ] ){
-						groupHtml_group[ shortcodeParams.params[counter].group.text ] = {
+					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group] ){
+						groupHtml_group[ shortcodeParams.params[counter].group ] = {
 							items: [],
-							options: shortcodeParams.params[counter].group,
+							title: shortcodeParams.params[counter].group
 						};
 					}
 					var html = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
-					groupHtml_group[ shortcodeParams.params[counter].group.text ]['items'].push( html );
+					groupHtml_group[ shortcodeParams.params[counter].group ]['items'].push( html );
 				}
 				var formBuilderGroupHtml = this.formBuilderGroupHtml(groupHtml_group);
 			}
@@ -225,11 +226,23 @@
 
 			for( var counter in groupHtml_group ) {
 
-				setting_panel_group += this.getWpTemplate( 'karma-' + groupHtml_group[counter].options.type + '-extend', groupHtml_group[counter] );
+				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
+
 
 			}
 
 			return setting_panel_group;
+		},
+
+		scrollInSettingPanel : function () {
+
+			setTimeout( function () {
+				var	$ = jQuery,
+					objDiv = $('.karma-element-setting-panel-content'),
+					obj = objDiv.height();
+				objDiv.animate({ scrollTop: obj });
+			})
+
 		},
 
 		/**

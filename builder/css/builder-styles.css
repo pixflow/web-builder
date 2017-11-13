@@ -285,7 +285,7 @@ body {
     margin-right: 20px;
     margin-bottom: 0;
     margin-left: 0;
-    width: calc(100% - 40px);
+    width: calc( 100% - 40px );
     height: 1px;
     top: auto;
     right: auto;
@@ -1762,9 +1762,9 @@ html {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
       padding-top: 16px;
-      overflow: hidden; }
+      overflow-y: scroll; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
-        transition: all .2s; }
+        transition: all .3s ease-out; }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
           border-bottom-left-radius: 7px;
           border-bottom-right-radius: 7px; }
@@ -1832,6 +1832,11 @@ html {
   width: 50px;
   height: 50px;
   background-color: #ccc; }
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* make scrollbar transparent */ }
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
@@ -2705,7 +2710,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   align-items: inherit;
   justify-content: center;
   background-color: #F7F8F9;
-  border-top: 1px solid rgba(57, 73, 89, 0.2); }
+  border-top: 1px solid rgba(57, 73, 89, 0.2);
+  border-radius: 0 0 7px 7px; }
   .karma-switch-panel-container #new-form-builder-panel {
     top: 0;
     right: auto;

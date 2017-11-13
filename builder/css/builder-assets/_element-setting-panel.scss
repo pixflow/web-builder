@@ -71,12 +71,11 @@
 
 		.karma-element-setting-panel-content {
 			padding-top: 16px;
-			overflow: hidden;
+			overflow-y: scroll;
 
 			#karma-Builder-form {
 
-				transition:all .2s;
-
+				transition:all .3s ease-out;
 				div:last-child .karma-setting-panel-group-button {
 					border-bottom-left-radius: 7px;
 					border-bottom-right-radius: 7px;
@@ -199,4 +198,7 @@
 	height: 50px;
 	background-color: #ccc;
 }
-
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent; /* make scrollbar transparent */
+}

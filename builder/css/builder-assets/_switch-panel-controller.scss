@@ -1,27 +1,24 @@
 .karma-switch-panel-container{
 
 	@include  flexbox( $justify-content: center );
-
 	background-color: #F7F8F9;
-	border-top: 1px solid rgba(57, 73, 89, 0.2);
-
+	border-top: 1px solid rgba( 57, 73, 89, 0.2 );
+	border-radius: 0 0 7px 7px;
 
 	#new-form-builder-panel{
-		@include element_direction($top:0, $left: 360px);
-		@include  box(100%, inherit);
+		@include element_direction( $top:0, $left: 360px );
+		@include  box( 100%, inherit );
 		position: absolute;
-
 	}
 
 	.karma-switch-panel-button{
 		@include  flexbox( $text-align: center, $align-item:center, $justify-content: center );
-		@include  box(auto, 36px);
+		@include  box( auto, 36px );
 		background-color: #FFFFFF;
-		border: 1px solid rgba(57,73,89,0.2);
+		border: 1px solid rgba( 57,73,89,0.2 );
 		border-radius: 100px;
 		margin:20px 60px;
 		padding: 0;
-
 
 		p{
 			color: #445362;
@@ -34,16 +31,15 @@
 		}
 
 		.karma-switch-panel-shape{
-			border-bottom: 2px solid rgba(57,73,89,0.46);
-			border-left: 2px solid rgba(57,73,89,0.46);
+			border-bottom: 2px solid rgba( 57,73,89,0.46 );
+			border-left: 2px solid rgba( 57,73,89,0.46 );
 			height: 9px;
 			left: 19px;
 			margin-right: 4px;
 			position: relative;
-			transform: rotate(45deg);
+			transform: rotate( 45deg );
 			transition-duration: .3s;
 			width: 9px;
 		}
-
 	}
 }

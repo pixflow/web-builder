@@ -44,7 +44,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "389",
+				"height" => "356",
 				"params" => array(
 					array(
 						"name"	=> "structure",
@@ -73,31 +73,26 @@ class Karma_Section extends Karma_Shortcode_Base {
 						'value'	=> 'Spacing'
 					),
 					array(
-								"name"		=> "space",
-								"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-								"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
-								'value'		=> 0,
-								"options"	=> array(
-										'value'	=> 200,
-										'min'   => 0,
-										'max'   => 800,
-										'step'  => 1,
-										'unit'  => 'px'
-								)
+						"name"		=> "space",
+						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+								'value'	=> 200,
+								'min'   => 0,
+								'max'   => 800,
+								'step'  => 1,
+								'unit'  => 'px'
+							)
 						),
+						array(
+								"name"			=> "extraClass",
+								"type"			=> Karma_Builder_Setting_Panel::TEXT,
+								"label"			=> __( "Class Name", 'karma' ),
+								'placeholder'	=> __( 'Class name', 'karma' ),
+								"group"			=> "Advance option"
 
-					array(
-						"name"			=> "title",
-						"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-						"label"			=> esc_attr__( "switch", 'karma' ),
-						'text'			=> 'next',
-						"form"			=> "new-panel",
-						"action"		=> "open",
-						'height'		=> '398'
-
-					),
-
-
+						),
 				)
 			),
 			'layout-panel'		=> array(
@@ -154,6 +149,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			),
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
+				'height'	=> '570',
 				'params'	=> array(
 					array(
 						'name' => 'unsplash' ,
@@ -174,6 +170,17 @@ class Karma_Section extends Karma_Shortcode_Base {
 							"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
 							"label"	=> __( "checking", 'karma' ),
 					),
+						array(
+								"name"			=> "title",
+								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
+								"label"			=> esc_attr__( "switch", 'karma' ),
+								'text'			=> 'next',
+								"form"			=> "new-panel",
+								"action"		=> "open",
+								'height'		=> '286'
+
+						),
+
 				)
 			),
 
@@ -210,7 +217,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
 								"label"			=> esc_attr__( "switdsdsch", 'karma' ),
 								'text'			=> 'back',
-								"action"		=> "close"
+								"action"		=> "close",
+								"shape"			=>"yes"
 
 						),
 

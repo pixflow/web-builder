@@ -1,5 +1,5 @@
 jQuery( document ).off( 'karma_finish_form_builder.switch-panel-extra' ).on( 'karma_finish_form_builder.switch-panel-extra', function( e, view ) {
-	
+
 	var switchPanels = document.querySelectorAll( ".karma-switch-panel-container" ),
 			settingPanel = document.querySelector('#karma-Builder-form'),
 			settingPanelHeight = settingPanel.getAttribute('data-height') ,
@@ -19,11 +19,11 @@ jQuery( document ).off( 'karma_finish_form_builder.switch-panel-extra' ).on( 'ka
 
 			var action = this.getAttribute('data-action');
 			if( 'open' == action ){
-				$("#elementRow").removeClass('active-sec').animate( { left : "-=360" }, { duration : 150, easing : "swing" } );
+				$("#elementRow").removeClass('active-sec').animate( { left : "-=360" }, { duration : 300, easing : "swing" } );
 				settingPanel.setAttribute( 'style', 'height:' + panelHeight + 'px' );
 			}else{
 				settingPanel.setAttribute( 'style', 'height:' + settingPanelHeight + 'px' );
-				$( "#elementRow" ).removeClass( 'active-sec' ).animate( {left: "0"}, {duration: 150, easing: "swing"} );
+				$( "#elementRow" ).removeClass( 'active-sec' ).animate( {left: "0"}, {duration: 300, easing: "swing"} );
 			}
 
 		});

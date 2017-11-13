@@ -1,20 +1,20 @@
 .karma-text-input-controller {
-	@include flexbox($justify-content: center);
+	@include flexbox( $justify-content: center );
 	padding-bottom: 25px;
 
 	input.karma-text-input-field {
-		@include box(245px, 36px);
-		@include padding(11px, 14px, 11px, 14px);
+		@include box( 245px, 36px );
+		@include padding( 11px, 14px, 11px, 14px );
 		background: transparent;
-		border: 1px solid rgba(57, 73, 89, 0.2);
+		border: 1px solid rgba( 57, 73, 89, 0.2 );
 		border-radius: 20px;
-		color: rgba(57, 73, 89, 0.6);
+		color: rgba( 57, 73, 89, 0.6 );
 		font-family: HelveticaNeue;
 		font-size: 12px;
 	}
 
 	input::placeholder {
-		color: rgba(57, 73, 89, 0.6);
+		color: rgba( 57, 73, 89, 0.6 );
 		font-family: HelveticaNeue;
 		font-size: 12px;
 	}
