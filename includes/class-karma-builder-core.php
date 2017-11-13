@@ -427,19 +427,19 @@ class Karma_Builder_Core{
 	/**
 	 * compare order of two arrays
 	 *
-	 * @param array $a - element model
-	 * @param array $b - element model
+	 * @param array $first_model - element model
+	 * @param array $second_model - element model
 	 *
 	 * @return integer
 	 * @since 1.0.0
 	 */
-	private function compare_orders( $a, $b ) {
+	private function compare_orders( $first_model, $second_model ) {
 
-		if ($a['order'] == $b['order']) {
+		if ( $first_model['order'] == $second_model['order'] ) {
 			return 0;
 		}
 
-		return ($a['order'] < $b['order']) ? -1 : 1;
+		return ( $first_model['order'] < $second_model['order'] ) ? -1 : 1;
 
 	}
 
