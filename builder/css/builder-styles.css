@@ -1849,6 +1849,11 @@ label {
     position: absolute;
     top: 0;
     width: 100%; }
+    .karma-spacing.karma-top-spacing .spacing-dot:after {
+      top: 0;
+      right: auto;
+      bottom: auto;
+      left: -8px; }
   .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
     cursor: e-resize;
     height: 100%;
@@ -1857,8 +1862,13 @@ label {
     top: 0; }
     .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .karma-spacing-dot-container {
       cursor: e-resize;
-      left: -9px !important;
+      left: -12px !important;
       top: 50%; }
+    .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .spacing-dot:after {
+      top: -8px;
+      right: auto;
+      bottom: auto;
+      left: 0; }
   .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
     cursor: e-resize;
     height: 100%;
@@ -1868,8 +1878,13 @@ label {
     top: 0; }
     .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .karma-spacing-dot-container {
       cursor: e-resize;
-      left: calc(100% - 9px) !important;
+      left: calc(100% - 12px) !important;
       top: 50%; }
+    .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .spacing-dot:after {
+      top: -8px;
+      right: 0;
+      bottom: auto;
+      left: auto; }
   .karma-spacing.karma-bottom-spacing {
     bottom: 0px !important;
     cursor: n-resize;
@@ -1877,8 +1892,13 @@ label {
     top: initial !important;
     width: 100%; }
     .karma-spacing.karma-bottom-spacing .karma-spacing-dot-container {
-      bottom: -9px !important;
+      bottom: -11px !important;
       top: initial !important; }
+    .karma-spacing.karma-bottom-spacing .spacing-dot:after {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: -8px; }
 
 .karma-spacing .resize-handler {
   cursor: n-resize;
@@ -1905,99 +1925,110 @@ label {
   position: relative; }
 
 .karma-spacing-dot-container {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   align-items: center;
   cursor: n-resize;
   display: none;
   justify-content: center;
   left: 48%;
   position: absolute;
-  top: -9px; }
+  top: -11px; }
   .karma-spacing-dot-container:hover .spacing-dot-hover {
-    display: block; }
+    width: 22px;
+    height: 22px; }
   .karma-spacing-dot-container .spacing-dot-hover {
-    align-items: center;
+    width: 0;
+    height: 0;
     background-color: rgba(51, 143, 252, 0.3);
     border-radius: 100%;
-    display: flex;
-    display: none;
-    height: 18px;
-    justify-content: center;
-    width: 18px; }
+    transition: width 150ms cubic-bezier(0.23, 1, 0.32, 1), height 150ms cubic-bezier(0.23, 1, 0.32, 1); }
   .karma-spacing-dot-container .spacing-dot {
+    width: 8px;
+    height: 8px;
     background-color: #fff;
     border: 1px solid #419CF8;
     border-radius: 100%;
     box-sizing: border-box;
-    height: 8px;
     position: absolute;
-    width: 8px;
     z-index: 100; }
+    .karma-spacing-dot-container .spacing-dot:after {
+      width: 22px;
+      height: 22px;
+      content: "";
+      position: absolute; }
   .karma-spacing-dot-container .spacing-top-hover {
-    top: 3px;
+    top: 0;
     right: auto;
     bottom: auto;
     left: 0;
-    width: 20px;
-    height: 10px;
+    width: 24px;
+    height: 14px;
     display: block;
+    margin-top: 10px;
     overflow: hidden;
     position: relative; }
     .karma-spacing-dot-container .spacing-top-hover .spacing-dot-hover {
-      top: auto;
+      top: -9px;
       right: auto;
-      bottom: 0;
-      left: 0;
-      position: absolute; }
+      bottom: auto;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%); }
   .karma-spacing-dot-container .spacing-bottom-hover {
-    top: -3px;
+    top: 0;
     right: auto;
     bottom: auto;
     left: 0;
-    width: 20px;
-    height: 10px;
+    width: 24px;
+    height: 14px;
     display: block;
+    margin-bottom: 10px;
     overflow: hidden;
     position: relative; }
     .karma-spacing-dot-container .spacing-bottom-hover .spacing-dot-hover {
-      top: 0;
+      top: auto;
       right: auto;
-      bottom: auto;
-      left: 0;
-      position: absolute; }
+      bottom: -9px;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%); }
   .karma-spacing-dot-container .spacing-left-hover {
-    top: 1px;
+    top: 0;
     right: auto;
     bottom: auto;
-    left: 4px;
-    width: 10px;
-    height: 20px;
+    left: 0;
+    width: 14px;
+    height: 24px;
     display: block;
+    margin-left: 10px;
     overflow: hidden;
     position: relative; }
     .karma-spacing-dot-container .spacing-left-hover .spacing-dot-hover {
-      top: 0;
-      right: 0;
+      top: 50%;
+      right: auto;
       bottom: auto;
-      left: auto;
-      position: absolute; }
+      left: -10px;
+      position: absolute;
+      transform: translateY(-50%); }
   .karma-spacing-dot-container .spacing-right-hover {
-    width: 10px;
-    height: 20px;
-    top: 1px;
+    width: 14px;
+    height: 24px;
+    top: 0;
     right: auto;
     bottom: auto;
-    left: -4px;
+    left: 0;
     display: block;
+    margin-right: 10px;
     overflow: hidden;
     position: relative; }
     .karma-spacing-dot-container .spacing-right-hover .spacing-dot-hover {
-      top: 0;
-      right: auto;
+      top: 50%;
+      right: -10px;
       bottom: auto;
-      left: 0;
-      position: absolute; }
+      left: auto;
+      position: absolute;
+      transform: translateY(-50%); }
 
 .row-bottom-spacing-dot-container {
   align-items: center;
@@ -2035,23 +2066,32 @@ label {
   outline: 1px solid rgba(118, 129, 140, 0.18); }
   .karma-active-section .karma-row > .karma-builder-element:last-child .resize-handler {
     display: none; }
+  .karma-active-section .karma-row > .karma-builder-element:last-child .karma-right-spacing .karma-spacing-dot-container {
+    left: calc(100% - 10px) !important; }
   .karma-active-section .karma-row .resize-handler {
-    cursor: col-resize;
+    width: 12px;
     height: 100%;
+    cursor: col-resize;
     position: absolute;
     right: -5px;
     top: 0;
-    width: 10px;
     z-index: 70; }
   .karma-active-section .karma-row .resize-handler:before {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+    width: 1px;
+    height: 100%;
     background-color: rgba(118, 129, 140, 0.18);
     content: " ";
     cursor: col-resize;
-    height: 100%;
-    position: absolute;
-    right: 4px;
     top: 0;
-    width: 1px; }
+    transition: background-color .3s , width .2s; }
+  .karma-active-section .karma-row .resize-handler:hover:before {
+    background-color: rgba(51, 143, 252, 0.3);
+    width: 4px; }
 .karma-active-section .row-gizmo-group {
   width: auto;
   height: 35px;
@@ -2158,6 +2198,12 @@ label {
     font-size: 10px;
     padding-left: 2.69px;
     vertical-align: top; }
+.karma-active-section .karma-active-column .karma-right-spacing.ui-resizable-resizing {
+  background-color: rgba(51, 143, 252, 0.1);
+  border-left: 1px solid rgba(51, 143, 252, 0.3); }
+.karma-active-section .karma-active-column .karma-left-spacing.ui-resizable-resizing {
+  background-color: rgba(51, 143, 252, 0.1);
+  border-right: 1px solid rgba(51, 143, 252, 0.3); }
 
 .karma-column-setting {
   display: none; }
@@ -2416,7 +2462,7 @@ label {
     display: flex; }
 
 .karma-builder-element[data-name="karma_section"]:not(.karma-active-section):hover {
-  outline: 1px solid #419CF8; }
+  outline: 1px solid rgba(65, 156, 248, 0.51); }
 
 .karma-builder-element[data-name="karma_column"] .karma-spacing-dot-container {
   display: none; }

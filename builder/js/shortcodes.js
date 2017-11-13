@@ -289,10 +289,10 @@
 
 			var that = this,
 				options = {
-					maxHeight : 700,
-					minHeight : 0,
-					handles : {},
-					scroll : true ,
+					maxHeight 	: 700,
+					minHeight 	: 0,
+					handles 	: {},
+					scroll 		: true ,
 					stop : function ( event, ui ) {
 
 						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
@@ -351,6 +351,7 @@
 		 * @return {object} return options for right and left spacing gizmo
 		*/
 		createRightLeftSpacingGizmo : function ( spacingSelector, paddingDirection) {
+
 			var calculating = this.calculateMaxWidthSpacing( spacingSelector ),
 				maxWidth = calculating,
 				that = this,
@@ -379,7 +380,6 @@
 				};
 			return options;
 
-
 		},
 
 		/**
@@ -390,6 +390,7 @@
 		 * @returns {void}
 		 */
 		leftSpacingGizmo : function ( $gizmo ) {
+
 			var that = this;
 			var options = this.createRightLeftSpacingGizmo( '.karma-right-spacing' , 'padding-left');
 			that.$el.attr( 'data-direction','left' );
@@ -408,11 +409,13 @@
 
 
 		rightSpacingGizmo : function ( $gizmo  ) {
+
 			var that = this;
 			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'padding-right');
 			that.$el.attr( 'data-direction', 'right');
 			options.handles.w = $gizmo.find(  '.ui-resizable-w');
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
+
 		},
 
 
