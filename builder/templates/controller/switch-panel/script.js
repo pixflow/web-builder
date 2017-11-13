@@ -1,11 +1,15 @@
 jQuery( document ).off( 'karma_finish_form_builder.switch-panel-extra' ).on( 'karma_finish_form_builder.switch-panel-extra', function( e, view ) {
-
-
+	
 	var switchPanels = document.querySelectorAll( ".karma-switch-panel-container" ),
 			settingPanel = document.querySelector('#karma-Builder-form'),
 			settingPanelHeight = settingPanel.getAttribute('data-height') ,
-			panelHeight = document.querySelector('#new-form-builder-panel').getAttribute('data-height'),
+			newFormBuilderPanel = document.querySelector('#new-form-builder-panel'),
 			$ = jQuery;
+
+	if( null == newFormBuilderPanel ){
+		return;
+	}
+	var panelHeight = document.querySelector('#new-form-builder-panel').getAttribute('data-height');
 
 	for( var switchPanel in switchPanels ) {
 		if ('length' === switchPanel) {
