@@ -58,7 +58,7 @@
 		 *  Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.spaceing }}px">'
+		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.leftspace}}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-left-hover"><div class="spacing-dot-hover target-moving"></div></div>'
@@ -70,7 +70,7 @@
 		 *  Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="width:{{ data.spaceing }}px">'
+		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="width:{{ data.rightspace }}px">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-right-hover"><div class="spacing-dot-hover target-moving"></div></div>'
@@ -364,9 +364,9 @@
 
 						var value = ( parseInt( ui.element.width() ) < 0 ) ? 0 : parseInt( ui.element.width() );
 						if ( 'padding-left' == paddingDirection ){
-							that.setAttributes( { 'leftSpace' : value }, true );
+							that.setAttributes( { 'leftspace' : value }, true );
 						}else {
-							that.setAttributes( { 'rightSpace' : value }, true );
+							that.setAttributes( { 'rightspace' : value }, true );
 						}
 
 					},
@@ -375,7 +375,8 @@
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
 						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
-						that.renderCss( '.karma-section div.karma-column.' + that.elementSelector(), paddingDirection, value + 'px');
+						that.renderCss( '.karma-no-gutters > .karma-builder-element > .karma-column.' + that.elementSelector(), paddingDirection, value + 'px');
+
 					}
 				};
 			return options;
@@ -680,7 +681,6 @@
 					attributeValue[ attributesNames[ attr ] ] = shortcodeAtrributes[ attributesNames[ attr ] ];
 				}
 			}
-
 			return attributeValue;
 
 		},
@@ -925,8 +925,20 @@
 		gimzoAction : function ( e, tempName, gizmoParam ) {
 
 			if ( 'bothSpacingGizmoTemplate' === tempName ) {
+
 				var space = this.getAttributes(['space']);
 				gizmoParam['space'] = space.space;
+
+			} else if ( 'leftSpacingGizmoTemplate' === tempName ){
+
+				var space = this.getAttributes(['leftspace']);
+				gizmoParam['leftspace'] = space.leftspace;
+
+			}else if ( 'rightSpacingGizmoTemplate' === tempName ){
+
+				var space = this.getAttributes(['rightspace']);
+				gizmoParam['rightspace'] = space.rightspace;
+
 			}
 			return gizmoParam;
 

@@ -23,6 +23,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 				'lg_size'   	=> '12',
 				'xl_size'   	=> '12',
 				'element_key'	=> '',
+				'rightspace'    => '20',
+				'leftspace'     => '20'
 			)
 			, $atts
 		);
@@ -86,10 +88,10 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 					),
 					array(
-						"name"      => "leftSpace",
+						"name"      => "leftspace",
 						"type"      => Karma_Builder_Setting_Panel::RANGE_SLIDER,
 						"label"     => esc_attr__( "Left padding", 'karma' ),
-						'value'     => 100,
+						'value'     => 20,
 						'separator' => "container",
 						"options"   => array(
 							'min'   => 0,
@@ -99,10 +101,10 @@ class Karma_Column extends Karma_Shortcode_Base {
 						)
 					),
 					array(
-						"name"      => "rightSpace",
+						"name"      => "rightspace",
 						"type"      => Karma_Builder_Setting_Panel::RANGE_SLIDER,
 						"label"     => esc_attr__( "Right padding", 'karma' ),
-						'value'     => 100,
+						'value'     => 20,
 						"options"   => array(
 							'min'   => 0,
 							'max'   => 600,
@@ -169,7 +171,14 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 * @return    void
 	 */
 	public function render_css() {
+		
+		$leftSpace  = array_key_exists( 'leftspace', $this->element_attributes ) ? $this->element_attributes[ 'leftspace' ] : 20;
+		$rightSpace = array_key_exists( 'rightspace', $this->element_attributes ) ? $this->element_attributes[ 'rightspace' ] : 20 ;
 
+		$styles =  '.karma-no-gutters > .karma-builder-element > .karma-column.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
+		           ."padding-left:" . $leftSpace  . "px;padding-right:" . $rightSpace . "px;"
+		           ."}";
+		return $styles;
 
 	}
 

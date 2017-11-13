@@ -59,10 +59,10 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		rightSpace: function () {
+		rightspace: function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.rightSpace + 'px';
+				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px';
 
 			this.renderCss( '.' + elementId, 'padding-right', padding );
 
@@ -74,10 +74,10 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		leftSpace: function () {
+		leftspace: function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.leftSpace + 'px';
+				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px';
 
 			this.renderCss( '.' + elementId, 'padding-left', padding );
 

@@ -283,7 +283,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 		$styles =  '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
 		."padding-top:" . $this->element_attributes[ 'space' ] . "px;padding-bottom:" . $this->element_attributes[ 'space' ] . "px;"
-		."} .new-div{bg:red;}";
+		."}";
 		return $styles;
 
 	}
