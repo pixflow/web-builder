@@ -19,7 +19,7 @@ class Tests_Core extends WP_UnitTestCase {
 		$title = '"this is a \\" title \\" "';
 		$shortcode = "[test_shortcode element_key='w4trwe' color = 'red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test'] Test Content Goes here[/test_shortcode]";
 		$shortcode2 = "[test_shortcode element_key='w4trwv' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test']";
-		$shortcode3 = "[test_shortcode element_key='w4tfwe' ]";
+		$shortcode3 = "[test_shortcode element_key='w4tfwe']";
 		$shortcode4 = "[test_shortcode element_key='w46rwe' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test'";
 
 
@@ -68,10 +68,10 @@ class Tests_Core extends WP_UnitTestCase {
 
 		$shortcodes =
 			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
-			.'[shortcode_test2 element_key="w3erts" ] Test Content Goes here[/shortcode_test2]'
+			.'[shortcode_test2 element_key="w3erts"] Test Content Goes here[/shortcode_test2]'
 			.'[shortcode_test4 element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
 			.'[/shortcode_test]'
-			.'[shortcode_test3 element_key="w4ebtz" ][/shortcode_test3]';
+			.'[shortcode_test3 element_key="w4ebtz"][/shortcode_test3]';
 
 		$expect = array(
 			array(
@@ -179,10 +179,10 @@ class Tests_Core extends WP_UnitTestCase {
 
 		$expect =
 			'[shortcode_test element_key="w3test" color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]'
-			.'[shortcode_test2 element_key="w5kjst" ] Test Content Goes here[/shortcode_test2]'
+			.'[shortcode_test2 element_key="w5kjst"] Test Content Goes here[/shortcode_test2]'
 			.'[shortcode_test4 element_key="fghtui" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
 			.'[/shortcode_test]'
-			.'[shortcode_test3 element_key="w3tert" ][/shortcode_test3]';
+			.'[shortcode_test3 element_key="w3tert"][/shortcode_test3]';
 		$this->assertEquals( $expect, $this->builder->generate_post_content( $models ) );
 
 	}
@@ -251,11 +251,11 @@ class Tests_Core extends WP_UnitTestCase {
 		);
 
 		$expect =
-			'[shortcode_test element_key="w3test" color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" ]'
-			.'[shortcode_test4 element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius="18" title="this is a \" title \" " sub_title="this is a subtitle\'s test" ][/shortcode_test4]'
-			.'[shortcode_test2 element_key="w3erts" ] Test Content Goes here[/shortcode_test2]'
+			'[shortcode_test element_key="w3test" color="red" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"]'
+			.'[shortcode_test4 element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius="18" title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
+			.'[shortcode_test2 element_key="w3erts"] Test Content Goes here[/shortcode_test2]'
 			.'[/shortcode_test]'
-			.'[shortcode_test3 element_key="w4ebtz" ][/shortcode_test3]';
+			.'[shortcode_test3 element_key="w4ebtz"][/shortcode_test3]';
 
 
 		$this->builder->save_post_content( $models, $key );

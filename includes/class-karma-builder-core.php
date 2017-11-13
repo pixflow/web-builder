@@ -457,20 +457,21 @@ class Karma_Builder_Core{
 		foreach( $models as $model ) {
 
 			$shortcode_name = trim( $model['shortcode_name'] );
+			$shortcode_key = ' element_key="' . $model['element_key']. '"';
 			$shortcode_attributes = '';
 
 			if( isset( $model['shortcode_attributes'] ) ) {
 				foreach( $model['shortcode_attributes'] as $attribute_name => $attribute_value ){
 					$delimiter = '"';
-					if( is_integer($attribute_value) ){
+					if( is_integer( $attribute_value ) ){
 						$delimiter = '';
 					}
 					$shortcode_attributes .= $attribute_name . '=' . $delimiter .  str_replace('"', '\"', $attribute_value ) . $delimiter .' ';
 				}
+				$shortcode_attributes = ' ' . trim( $shortcode_attributes );
 			}
 
-			$shortcode_attributes = trim( $shortcode_attributes );
-			$content .= '[' . $shortcode_name . ' element_key="' . $model['element_key']. '" ' . $shortcode_attributes .']';
+			$content .= '[' . $shortcode_name . $shortcode_key . $shortcode_attributes .']';
 
 			if( isset( $model['children'] ) && is_array( $model['children'] ) ){
 				$content .= $this->convert_model_to_shortcode_pattern( $model['children'] );
