@@ -1,9 +1,16 @@
 jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karma_finish_form_builder.getUnsplashPhoto', function( e, viewObject ){
 
-
+	/**
+	 * @summary KarmaUnsplash manager
+	 * The resources that make up the Unsplash JSON API
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	var karmaUnsplash = function(){
 
 		this.APIURL = 'https://api.unsplash.com/';
+		/** Unsplash application id */
 		this.clientId = '100034b1de5815805647bef611d9ed7575b6c1812daa39730488d32be4461e12' ;
 		this.pageSurf = this.getPage();
 		this.firstLoad = true;
@@ -12,12 +19,28 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	}
 
+	/**
+	 * @summary Read the last page surf from history
+	 *
+	 * @since 1.0.0
+	 * @returns {number} Last page surfed
+	 */
 	karmaUnsplash.prototype.getPage = function(){
 
 		return ( null != localStorage.getItem( 'karmaUnsplashPage' ) ) ? parseInt( localStorage.getItem( 'karmaUnsplashPage' ) ) : 1 ;
 
 	}
 
+	/**
+	 * @summary Load images from Unsplash server or local storage
+	 *
+	 * @param {number}  page        Page number to retrieve
+	 * @param {number}  perPage     Number of items per page
+	 * @param {boolean} loadMore    Force retrieve new images
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.loadImages = function ( page, perPage, loadMore ) {
 
 		var params = {
@@ -35,6 +58,13 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	}
 
+	/**
+	 * @summary Check the data difference from last time that given images
+	 * This function prevent from send repetitious request
+	 *
+	 * @since   1.0.0
+	 * @returns {boolean}
+	 */
 	karmaUnsplash.prototype.cacheTimeExpire = function () {
 
 		var updateTime = localStorage.getItem( 'karmaUnsplashImagesTime' );
@@ -54,6 +84,14 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	}
 
+	/**
+	 * @summary Save JSON data from Unsplash to local storage
+	 *
+	 * @param {number}  value  New images retrieved
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.storage = function( value ){
 
 		if( null !== localStorage.getItem( 'karmaUnsplashImages' ) ){
@@ -69,6 +107,15 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	}
 
+	/**
+	 * @summary Create element for showing images
+	 *
+	 * @param {object}  images  Images retrieved
+	 * @param {object}  size    Type of image to load ( ex : small , large )
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.showImages = function ( images, size ) {
 
 
@@ -76,17 +123,28 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			el = document.querySelector('.karma-unsplash-images-result');
 		if( true === that.firstLoad ){
 			el.innerHTML = '' ;
-			that.firstLoad = false;
 		}
 		_.each( images, function( image ){
 			if( null != el ){
 				el.appendChild( that.createChild( image.urls[ size ] ) );
 			}
 		});
+		if( false === that.firstLoad ){
+			scrollToY( el.scrollTop + 200,  500, 'easeInOutQuint' );
+		}
+
+		that.firstLoad = false;
 		that.pageSurf ++ ;
 		
 	}
 
+	/**
+	 * @summary Set infinity scroll for Unsplash image result element
+	 *
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.detectScroll = function () {
 
 		var scrollableElement = document.querySelector('.karma-unsplash-images-result'),
@@ -102,15 +160,38 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	}
 
+	/**
+	 * @summary Create and set event on each Unsplash element
+	 *
+	 * @param {string}  imgURL  IMG URL
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.createChild = function ( imgURL ) {
 
 		var newChild = document.createElement('div') ;
 		newChild.setAttribute( 'class', 'karma-unsplash-images-list' );
 		newChild.setAttribute( 'style', 'background-image:url(' +  imgURL + ')' );
+		newChild.onclick = function () {
+			var selected = document.querySelector('.karma-unspalsh-selected');
+			if( null != selected ) {
+				selected.classList.remove('karma-unspalsh-selected');
+			}
+			this.classList.add('karma-unspalsh-selected');
+		}
 		return newChild;
 
 	}
 
+	/**
+	 * @summary Get a single page from the list of all photos
+	 *
+	 * @param {string}  URL Request url
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.sendHTTPRequest = function( URL ){
 
 		var XMLHttp = new XMLHttpRequest() ,
@@ -138,6 +219,16 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 	}
 
+
+	/**
+	 * @summary Create unsplash images request url
+	 *
+	 * @param {string}  type        Link relations
+	 * @param {object}  queryParmas Query Parameters
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
 	karmaUnsplash.prototype.createUnsplashURL = function ( type, queryParmas ) {
 
 		var unsplashRequestURL = this.APIURL + type + '/' + '?client_id=' + this.clientId;
@@ -149,12 +240,85 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	}
 
 	if( null !== document.querySelector('.karma-unsplash-controller') ){
+
+		/**
+		 * Perform an animation and requests that the browser call a specified function to
+		 * update an animation before the next repaint.
+		 */
+		window.requestAnimFrame = ( function(){
+			return  window.requestAnimationFrame   ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame    ||
+				function( callback ){
+					window.setTimeout( callback, 1000 / 60);
+				};
+		})();
+
+		/**
+		 * @summary Scrolls to a particular set of coordinates in the document
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		function scrollToY( scrollTargetY, speed, easing ) {
+
+			var element = document.querySelector('.karma-unsplash-images-result') ,
+				scrollY = element.scrollTop ,
+				scrollTargetY = scrollTargetY || 0,
+				speed = speed || 2000,
+				easing = easing || 'easeOutSine',
+				currentTime = 0;
+			var time = Math.max(.1, Math.min( Math.abs( scrollY - scrollTargetY ) / speed, .8 ) );
+			var easingEquations = {
+					easeOutSine: function ( pos ) {
+						return Math.sin( pos * ( Math.PI / 2 ) );
+					},
+					easeInOutSine: function (pos) {
+						return ( -0.5 * ( Math.cos( Math.PI * pos ) - 1 ) );
+					},
+					easeInOutQuint: function ( pos ) {
+						if ( ( pos /= 0.5 ) < 1 ) {
+							return 0.5 * Math.pow( pos, 5 );
+						}
+						return 0.5 * ( Math.pow( ( pos - 2 ), 5 ) + 2 );
+					}
+				};
+
+			function tick() {
+
+				currentTime += 1 / 60;
+				var p = currentTime / time;
+				var t = easingEquations[ easing ]( p );
+
+				if ( p < 1 ) {
+					requestAnimFrame( tick );
+					element.scrollTo( 0, scrollY + ( ( scrollTargetY - scrollY ) * t ) );
+				} else {
+					element.scrollTo( 0, scrollTargetY );
+				}
+			}
+			tick();
+
+		}
+
+
+		/** Initialize karmaUnsplash */
 		var photos = new karmaUnsplash();
 		photos.loadImages( photos.pageSurf, 9, false );
 
 		document.querySelector('.karma-unspalsh-icon').addEventListener( 'click', function(){
-			//TODO go scroll on click
+
+			var element = document.querySelector('.karma-unsplash-images-result');
+			if( element.scrollTop + element.clientHeight >= element.scrollHeight ){
+				if( false === photos.doingAjax ){
+					photos.loadImages( photos.pageSurf, 9, true );
+				}
+			}
+			scrollToY( element.scrollTop + 200,  500, 'easeInOutQuint' );
+
 		}, false );
+
+
 	}
 
 });

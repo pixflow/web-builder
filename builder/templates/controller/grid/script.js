@@ -6,7 +6,7 @@ jQuery( document ).off( 'karma_finish_form_builder.add-column' ).on( 'karma_fini
 		var parentElement = $(this).closest('.grid-controller-template') ,
 			gridCount = parseInt( parentElement.attr('data-current-grid') );
 
-		if( 7 <= gridCount ){
+		if( 6 <= gridCount ){
 			parentElement.find('.karma-add-column-view-add').css({ display : 'none' });
 			return false;
 		}
