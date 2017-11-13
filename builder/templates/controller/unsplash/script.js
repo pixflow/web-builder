@@ -4,9 +4,17 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	var karmaUnsplash = function(){
 
 		this.APIURL = 'https://api.unsplash.com/';
-		this.clientId = '4107f003fb3e18122cfc11f99a57b5738947b1cee0d75b12b4cba90c23d39d85' ;
-		this.pageSurf = 1;
+		this.clientId = '100034b1de5815805647bef611d9ed7575b6c1812daa39730488d32be4461e12' ;
+		this.pageSurf = this.getPage();
+		this.firstLoad = true;
+		this.doingAjax = false;
 		this.detectScroll();
+
+	}
+
+	karmaUnsplash.prototype.getPage = function(){
+
+		return ( null != localStorage.getItem( 'karmaUnsplashPage' ) ) ? parseInt( localStorage.getItem( 'karmaUnsplashPage' ) ) : 1 ;
 
 	}
 
@@ -15,9 +23,10 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		var params = {
 			'page'     : page,
 			'per_page' : perPage,
-			},
-			requestURL = this.createUnsplashURL( 'photos', params );
+			};
+
 		if( this.cacheTimeExpire() || true === loadMore ) {
+			var requestURL = this.createUnsplashURL( 'photos', params );
 			this.sendHTTPRequest( requestURL );
 		} else {
 			var images = localStorage.getItem( 'karmaUnsplashImages' );
@@ -33,10 +42,11 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			return true;
 		}
 		var	currentTime = new Date().getTime() ,
-			timeDiff = Math.abs( currentTime - updateTime ),
-			diffDays = Math.ceil( timeDiff / ( 1000 * 3600 * 24 ) );
+			timeDiff = Math.abs( currentTime - parseInt( updateTime ) ),
+			diffDays = Math.floor( timeDiff / ( 1000 * 3600 * 24 ) );
 		if ( diffDays >=1 ) {
 			localStorage.removeItem( 'karmaUnsplashImages' );
+			localStorage.removeItem( 'karmaUnsplashPage' );
 			return true;
 		} else {
 			return false;
@@ -55,15 +65,18 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			var storeData = value;
 		}
 		localStorage.setItem( 'karmaUnsplashImages', JSON.stringify( storeData ) );
+		localStorage.setItem( 'karmaUnsplashPage', this.pageSurf );
 
 	}
 
 	karmaUnsplash.prototype.showImages = function ( images, size ) {
 
+
 		var that = this ,
 			el = document.querySelector('.karma-unsplash-images-result');
-		if( 1 === that.pageSurf ){
+		if( true === that.firstLoad ){
 			el.innerHTML = '' ;
+			that.firstLoad = false;
 		}
 		_.each( images, function( image ){
 			if( null != el ){
@@ -81,7 +94,9 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		scrollableElement.addEventListener( 'mousewheel', function( e ){
 			if ( scrollableElement.scrollTop + scrollableElement.clientHeight >= scrollableElement.scrollHeight ) {
 				e.preventDefault();
-				that.loadImages( a.pageSurf, 9, true );
+				if( false === that.doingAjax ){
+					that.loadImages( that.pageSurf, 9, true );
+				}
 			}
 		});
 
@@ -100,12 +115,14 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 		var XMLHttp = new XMLHttpRequest() ,
 			that = this;
+		that.doingAjax = true ;
 		XMLHttp.onreadystatechange = function() {
 			if ( XMLHttp.readyState == XMLHttpRequest.DONE ) {
 				if ( XMLHttp.status == 200) {
 					var images = JSON.parse( XMLHttp.responseText  );
-					that.storage( images );
 					that.showImages( images, 'thumb' );
+					that.storage( images );
+					that.doingAjax = false;
 				}
 				else if ( XMLHttp.status == 400 ) {
 					throw 'HTTP Error 400. The request hostname is invalid.' ;
@@ -134,6 +151,10 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	if( null !== document.querySelector('.karma-unsplash-controller') ){
 		var photos = new karmaUnsplash();
 		photos.loadImages( photos.pageSurf, 9, false );
+
+		document.querySelector('.karma-unspalsh-icon').addEventListener( 'click', function(){
+			//TODO go scroll on click
+		}, false );
 	}
 
 });
