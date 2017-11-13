@@ -573,7 +573,7 @@ class Karma_Builder_Core{
 
 		$post_content = $this->generate_post_content( $models );
 		$post_content = str_replace( '\\', '\\\\', $post_content );
-		if ( update_post_meta( $id, 'karma_post_content', wp_slash( $post_content ) ) ){
+		if ( update_post_meta( $id, 'karma_post_content', $post_content ) ){
 			return true;
 		}else{
 			return false;
