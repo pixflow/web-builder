@@ -18,7 +18,9 @@
 					<div class="builder-page-label"><?php  _e('Pages:', 'karma') ?> </div>
 					<div class="builder-page-name">Home</div>
 				</li>
-				<li class="builder-sites-setting"><?php  _e('Setting', 'karma') ?></li>
+				<li class="builder-sites-setting">
+					<div class="builder-setting-label"><?php  _e('Setting', 'karma') ?></div>
+				</li>
 				<li class="builder-upgrade">
 					<div class="builder-upgrade-icon"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/upgrade.svg' ) ?></div>
 					<div class="builder-upgrade-text"><?php  _e('Upgrade', 'karma') ?></div>

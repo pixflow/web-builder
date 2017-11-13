@@ -1609,8 +1609,15 @@ html {
         cursor: pointer;
         font-size: 14px;
         line-height: 17px; }
-        .karma-builder-toolbar .karma-builder-left ul li:hover {
+        .karma-builder-toolbar .karma-builder-left ul li > div:not(.builder-upgrade-icon) {
+          transition: color .3s; }
+        .karma-builder-toolbar .karma-builder-left ul li:hover > div {
           color: rgba(255, 255, 255, 0.6); }
+        .karma-builder-toolbar .karma-builder-left ul li #karma-upgrade-menu {
+          fill: white;
+          transition: fill 0.3s; }
+        .karma-builder-toolbar .karma-builder-left ul li:hover #karma-upgrade-menu {
+          fill: rgba(255, 255, 255, 0.6); }
         .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-icon {
           padding-top: 4px; }
         .karma-builder-toolbar .karma-builder-left ul li .builder-page-name {
@@ -1690,8 +1697,6 @@ html {
           line-height: 10px;
           padding-top: 2px;
           position: absolute; }
-  .karma-builder-toolbar .builder-upgrade:hover .builder-upgrade-icon svg * {
-    fill: rgba(255, 255, 255, 0.6); }
 
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {

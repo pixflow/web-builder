@@ -26,9 +26,22 @@
 				cursor: pointer;
 				font-size: 14px;
 				line-height: 17px;
-				
-				&:hover{
-					color: rgba(255, 255, 255, 0.6);
+
+				> div:not( .builder-upgrade-icon ){
+					transition: color .3s;
+				}
+
+				&:hover > div {
+					color: rgba( 255, 255, 255, 0.6 );
+				}
+
+				#karma-upgrade-menu{
+					fill: rgba(255,255,255,1);
+					 transition: fill .3s ;
+				 }
+
+				&:hover  #karma-upgrade-menu{
+					fill: rgba( 255, 255, 255, .6 );
 				}
 
 				.builder-upgrade-icon{
@@ -116,21 +129,6 @@
 		}
 	}
 
-	.builder-upgrade{
-
-		&:hover{
-
-			.builder-upgrade-icon{
-
-				svg{
-					*{
-						fill: rgba(255, 255, 255, 0.6);
-					}
-
-				}
-			}
-		}
-	}
 
 	backface-visibility: hidden;
 
