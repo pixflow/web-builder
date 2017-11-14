@@ -302,7 +302,6 @@
 
 						that.renderCss( '.' + that.elementSelector(), 'padding-top', ui.size.height + 'px');
 						that.renderCss( '.' + that.elementSelector(), 'padding-bottom', ui.size.height + 'px');
-
 					}
 				};
 
@@ -743,7 +742,6 @@
 		 * @returns { string }  Element name with its key
 		 */
 		elementSelector: function () {
-
 			return this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
 		},
@@ -782,7 +780,6 @@
 				styleResult = style.split(/[{}]+/),
 				newStyle 	= "";
 
-
 			if ( style.indexOf( selector ) < 0 ){
 				newStyle = style + selector + '{' + attribute + ':' + value + ';}';
 				return newStyle;
@@ -792,9 +789,7 @@
 
 				if ( i % 2 == 1 || "" == styleResult[ i ] )
 					continue;
-
 				if( selector == styleResult[ i ].replace(/^\s+|\s+$/g, '') ){
-
 					newStyle +=  styleResult[ i ] + '{';
 					newStyle += this.generateStyleString( styleResult[ i + 1 ], attribute, value )
 
@@ -824,7 +819,7 @@
 
 			if ( styleResult.indexOf( attribute ) >= 0 ){
 
-				var regex = new RegExp( attribute + ':([0-9]*[a-z])*;' );
+				var regex = new RegExp( attribute + ':([-0-9]*[a-z])*;' );
 				newStyle += styleResult.replace( regex , attribute + ':' + value + ';');
 				newStyle += '}';
 
