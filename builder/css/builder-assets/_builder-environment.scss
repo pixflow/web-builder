@@ -28,7 +28,7 @@
 				line-height: 17px;
 
 				> div:not( .builder-upgrade-icon ){
-					transition: color .3s;
+					transition: color .15s;
 				}
 
 				&:hover > div {
@@ -37,7 +37,7 @@
 
 				#karma-upgrade-menu{
 					fill: rgba( 255,255,255,1 );
-					 transition: fill .3s ;
+					 transition: fill .15s ;
 				 }
 
 				&:hover  #karma-upgrade-menu{
@@ -98,6 +98,7 @@
 					border-radius: 3px;
 					box-shadow: 0 4px 7px 1px rgba( 57,73,89,0.15 );
 					transition-duration: .3s;
+					margin-left: 8px;
 
 					&:hover{
 						background-color: rgba( 255,255,255,0.7 );

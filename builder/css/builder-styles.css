@@ -1621,12 +1621,12 @@ html {
         font-size: 14px;
         line-height: 17px; }
         .karma-builder-toolbar .karma-builder-left ul li > div:not(.builder-upgrade-icon) {
-          transition: color .3s; }
+          transition: color .15s; }
         .karma-builder-toolbar .karma-builder-left ul li:hover > div {
           color: rgba(255, 255, 255, 0.6); }
         .karma-builder-toolbar .karma-builder-left ul li #karma-upgrade-menu {
           fill: white;
-          transition: fill 0.3s; }
+          transition: fill 0.15s; }
         .karma-builder-toolbar .karma-builder-left ul li:hover #karma-upgrade-menu {
           fill: rgba(255, 255, 255, 0.6); }
         .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-icon {
@@ -1681,7 +1681,8 @@ html {
           background-color: rgba(255, 255, 255, 0.2);
           border-radius: 3px;
           box-shadow: 0 4px 7px 1px rgba(57, 73, 89, 0.15);
-          transition-duration: .3s; }
+          transition-duration: .3s;
+          margin-left: 8px; }
           .karma-builder-toolbar .karma-builder-right ul li.builder-publish:hover, .karma-builder-toolbar .karma-builder-right ul li.builder-save:hover {
             background-color: rgba(255, 255, 255, 0.7);
             color: #419cf8;
