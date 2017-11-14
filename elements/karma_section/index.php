@@ -174,7 +174,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"name"			=> "title",
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
 								"label"			=> esc_attr__( "switch", 'karma' ),
-								'text'			=> 'next',
+								'text'			=> esc_attr__( 'next', 'karma' ),
 								"form"			=> "new-panel",
 								"action"		=> "open",
 								'height'		=> '286'
