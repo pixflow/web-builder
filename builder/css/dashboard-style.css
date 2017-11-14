@@ -142,6 +142,13 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block; }
 
+a:hover {
+  outline: none; }
+a:active {
+  outline: none; }
+a:focus {
+  outline: none; }
+
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;

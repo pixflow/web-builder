@@ -16,6 +16,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		this.firstLoad = true;
 		this.doingAjax = false;
 		this.detectScroll();
+		this.openMediaLibrary();
 
 	}
 
@@ -237,6 +238,55 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		});
 		return unsplashRequestURL;
 		
+	}
+
+	/**
+	 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
+	karmaUnsplash.prototype.openMediaLibrary = function () {
+
+		// Set all variables to be used in scope
+		console.log( this );
+		var frame,
+			addImgLink = document.querySelector( '.karma-unspalsh-media-library' ),
+			input = document.querySelector( '.karma-unsplash-image-input' );
+
+		// ADD IMAGE LINK
+		addImgLink.addEventListener( 'click', function () {
+
+			// If the media frame already exists, reopen it.
+			if ( frame ) {
+				frame.open();
+				return;
+			}
+
+			// Create a new media frame
+			frame = wp.media( {
+				title: 'Select or Upload Media Of Your Chosen Persuasion',
+				button: {
+					text: 'Use this media'
+				},
+				multiple: false
+			} );
+
+			// When an image is selected in the media frame...
+			frame.on( 'select', function () {
+
+				// Get media attachment details from the frame state
+				var attachment = frame.state().get( 'selection' ).first().toJSON();
+
+				// Send the attachment id to our hidden input
+				input.value = attachment.url;
+
+			} );
+
+			// Finally, open the modal on click
+			frame.open();
+		}, false );
+
 	}
 
 	if( null !== document.querySelector('.karma-unsplash-controller') ){

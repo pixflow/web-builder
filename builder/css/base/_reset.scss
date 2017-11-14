@@ -6,3 +6,15 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+a {
+	&:hover{
+		outline: none;
+	}
+	&:active{
+		outline: none;
+	}
+	&:focus{
+		outline: none;
+	}
+}
+
