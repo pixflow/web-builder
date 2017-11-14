@@ -9,9 +9,10 @@
  */
 function karma_load_svg( $url ){
 
-	$response = wp_remote_get( $url );
-	if( is_wp_error( $response ) ){
-		return $response[ 'body' ];
+	$request = wp_remote_get( $url );
+	if( $request[ 'response' ][ 'code' ] != 404 ){
+		return $request[ 'body' ] ;
 	}
 	return '';
+
 }
