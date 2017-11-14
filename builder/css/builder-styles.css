@@ -1766,9 +1766,9 @@ html {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
       padding-top: 16px;
-      overflow-y: scroll; }
+      overflow: hidden; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
-        transition: all .3s ease-out; }
+        transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
           border-bottom-left-radius: 7px;
           border-bottom-right-radius: 7px; }
@@ -1836,11 +1836,6 @@ html {
   width: 50px;
   height: 50px;
   background-color: #ccc; }
-
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-  /* make scrollbar transparent */ }
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */

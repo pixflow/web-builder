@@ -68,14 +68,14 @@
 			}
 
 		}
-
+		
 		.karma-element-setting-panel-content {
 			padding-top: 16px;
-			overflow-y: scroll;
+			overflow: hidden;
 
 			#karma-Builder-form {
 
-				transition:all .3s ease-out;
+				transition:all .3s cubic-bezier(0.2, 0.32, 0.07, 1.01);
 				div:last-child .karma-setting-panel-group-button {
 					border-bottom-left-radius: 7px;
 					border-bottom-right-radius: 7px;
@@ -197,8 +197,4 @@
 	width: 50px;
 	height: 50px;
 	background-color: #ccc;
-}
-::-webkit-scrollbar {
-	width: 0px;
-	background: transparent; /* make scrollbar transparent */
 }

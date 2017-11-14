@@ -14,7 +14,6 @@
 			"input input:not(.no-trigger)"				: "updateModel",
 			"input textarea:not(.no-trigger)"			: "updateModel" ,
 			"change input[type=checkbox]"				: "updateModel" ,
-			"click .karma-setting-panel-group-button" 	: "scrollInSettingPanel",
 		},
 
 		/**
@@ -232,17 +231,6 @@
 			}
 
 			return setting_panel_group;
-		},
-
-		scrollInSettingPanel : function () {
-
-			setTimeout( function () {
-				var	$ = jQuery,
-					objDiv = $('.karma-element-setting-panel-content'),
-					obj = objDiv.height();
-				objDiv.animate({ scrollTop: obj });
-			})
-
 		},
 
 		/**
