@@ -1,11 +1,11 @@
 .karma-active-section {
 
-	outline: 1px solid #419CF8;
+	box-shadow: 0 0 0 1px #419CF8;
 	.row-gizmo-group {
 		display: flex;
 	}
-	.karma-spacing-dot-container {
-		display: flex;
+	div.karma-spacing-dot-container {
+		display: inline-block;
 	}
 
 }
@@ -13,19 +13,8 @@
 .karma-builder-element[data-name="karma_section"] {
 
 	&:not(.karma-active-section):hover {
-		outline: 1px solid rgba(65, 156, 248, 0.51);
+		box-shadow: 0 0 0 1px rgba(65, 156, 248, 0.51);
 	}
 
 }
 
-.karma-builder-element[data-name="karma_column"] .karma-spacing-dot-container {
-
-	display: none;
-
-}
-
-.karma-builder-element[data-name="karma_column"].karma-active-column .karma-spacing-dot-container {
-	
-	display: flex;
-
-}
