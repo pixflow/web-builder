@@ -24,7 +24,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 				'xl_size'   	=> '12',
 				'element_key'	=> '',
 				'rightspace'    => '20',
-				'leftspace'     => '20'
+				'leftspace'     => '20',
+				'extraclass'	=> ''
 			)
 			, $atts
 		);
@@ -42,7 +43,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static function js_render() {
 
-		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}'> {{ data.attributes.shortcode_attributes.shortcode_content }} </div>";
+		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.changed.extra_class }}'> {{ data.attributes.shortcode_attributes.shortcode_content }} </div>";
 
 	}
 
@@ -53,30 +54,16 @@ class Karma_Column extends Karma_Shortcode_Base {
 				"name"      => "Column",
 				"params"    => array(
 					array(
-						"name"  => "ExtraClass",
+						"name"  => "extraclasslabel",
 						"type"  => Karma_Builder_Setting_Panel::TITLE,
 						"label" => esc_attr__( "Extra class name", 'karma' ),
 
 					),
 
 					array(
-						"name"          => "urlInput",
+						"name"          => "extraclass",
 						"type"          => Karma_Builder_Setting_Panel::TEXT,
 						"label"         => esc_attr__( "Put Your URL", 'karma' ),
-					),
-					array(
-						"name"          => "imagePosition",
-						"value" 		=> "center-center",
-						"type"          => Karma_Builder_Setting_Panel::IMAGE_POSITION,
-						"label"         => esc_attr__( "image Position", 'karma' ),
-
-					),
-					array(
-						"name"          => "checking",
-						"value" 		=> "true",
-						"type"          => Karma_Builder_Setting_Panel::CHECK_BOX,
-						"label"         => esc_attr__( "checking", 'karma' ),
-
 					),
 					array(
 						"name"  		=> "space",
