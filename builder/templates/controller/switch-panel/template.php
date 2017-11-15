@@ -3,7 +3,7 @@
 		<# if ( "yes" == data.shape ) { #>
 			<div class="karma-switch-panel-shape"></div>
 		<#	} #>
-		<p>{{ data.text }}</p>
+		<p>{{ data.label }}</p>
 	</button>
 	<#	if ( true == data.formBuilder ){ #>
 			<div id="new-form-builder-panel" data-height="{{ data.height }}">

@@ -69,8 +69,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 					array(
 						"name"	=> "title",
 						"type"	=> Karma_Builder_Setting_Panel::TITLE,
-						"label"	=> esc_attr__( "Spacing", 'karma' ),
-						'value'	=> 'Spacing'
+						"label"	=> esc_attr__( "Spacing", 'karma' )
 					),
 					array(
 						"name"		=> "space",
@@ -89,7 +88,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"name"			=> "extraClass",
 								"type"			=> Karma_Builder_Setting_Panel::TEXT,
 								"label"			=> __( "Class Name", 'karma' ),
-								'placeholder'	=> __( 'Class name', 'karma' ),
 								"group"			=> "Advance option"
 
 						),
@@ -171,10 +169,9 @@ class Karma_Section extends Karma_Shortcode_Base {
 							"label"	=> __( "checking", 'karma' ),
 					),
 						array(
-								"name"			=> "title",
+								"name"			=> "switch",
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-								"label"			=> esc_attr__( "switch", 'karma' ),
-								'text'			=> esc_attr__( 'next', 'karma' ),
+								"label"			=> esc_attr__( "next", 'karma' ),
 								"form"			=> "new-panel",
 								"action"		=> "open",
 								'height'		=> '286'
@@ -191,13 +188,13 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"name"	=> "text",
 								"type"	=> Karma_Builder_Setting_Panel::TEXT,
 								"label"	=> esc_attr__( "switch", 'karma' ),
-								'value'	=> 'switch'
+
 						),
 						array(
 								"name"	=> "title",
 								"type"	=> Karma_Builder_Setting_Panel::TITLE,
 								"label"	=> esc_attr__( "Spacing", 'karma' ),
-								'value'	=> 'Spacing'
+
 						),
 						array(
 								"name"		=> "space",
@@ -215,7 +212,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						array(
 								"name"			=> "title",
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-								"label"			=> esc_attr__( "switdsdsch", 'karma' ),
+								"label"			=> esc_attr__( "swit", 'karma' ),
 								'text'			=> 'back',
 								"action"		=> "close",
 								"shape"			=>"yes"
