@@ -183,15 +183,15 @@
 			groupHtml_group = [];
 			for( var counter in shortcodeParams.params ){
 				if ( ! shortcodeParams.params[counter].group && "switch-panel" != shortcodeParams.params[counter].type ) {
-					groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
 				}else if( "switch-panel" === shortcodeParams.params[counter].type ) {
 					if( "undefined" !== typeof shortcodeParams.params[counter].form ){
 						shortcodeParams.params[counter]['view'] = this;
 						shortcodeParams.params[counter]['formBuilder'] = true;
-						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
 					}else{
 						shortcodeParams.params[counter]['formBuilder'] = false;
-						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
 					}
 				} else {
 					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group] ){
@@ -256,15 +256,15 @@
 		},
 
 		/**
-		 * update model attribute from setting pane
+		 * update model attribute from setting panel
 		 *
 		 * @since 1.0.0
 		 *
 		 * @returns void
 		 */
-		updateModel: function (event) {
+		updateModel: function ( event ) {
 
-			var attributes = JSON.parse(JSON.stringify(this.model.attributes.shortcode_attributes));
+			var attributes = JSON.parse( JSON.stringify( this.model.attributes.shortcode_attributes ) );
 			attributes[ event.target.name ] = event.target.value;
 			attributes.changed = {};
 			attributes.changed[ event.target.name ] = event.target.value;

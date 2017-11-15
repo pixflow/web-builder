@@ -5,20 +5,141 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	 * The resources that make up the Unsplash JSON API
 	 *
 	 * @since 1.0.0
-	 * @returns {void}
 	 */
-	var karmaUnsplash = function(){
+	var karmaUnsplash;
+	karmaUnsplash = function () {
 
 		this.APIURL = 'https://api.unsplash.com/';
 		/** Unsplash application id */
-		this.clientId = '100034b1de5815805647bef611d9ed7575b6c1812daa39730488d32be4461e12' ;
+		this.clientId = '100034b1de5815805647bef611d9ed7575b6c1812daa39730488d32be4461e12';
 		this.pageSurf = this.getPage();
+		this.searchPageSurf = 1;
 		this.firstLoad = true;
 		this.doingAjax = false;
+		/** Setup before functions */
+		this.typingTimer;
+		/** timer identifier */
+		this.doneTypingInterval = 2000;
+		/** time in ms, 5 second for example */
 		this.detectScroll();
 		this.openMediaLibrary();
+		this.bindInputEvent();
 
-	}
+	};
+
+
+	/**
+	 * @summary Create unsplash images request url
+	 *
+	 * @param {string}  type        Link relations
+	 * @param {object}  queryParmas Query Parameters
+	 *
+	 * @since 1.0.0
+	 * @returns {string} API URL
+	 */
+	karmaUnsplash.prototype.createUnsplashURL = function ( type, queryParmas ) {
+
+		var unsplashRequestURL = this.APIURL + type + '/' + '?client_id=' + this.clientId;
+		_.each( queryParmas, function( value, key ){
+			unsplashRequestURL += '&' + key + '=' + value;
+		});
+		return unsplashRequestURL;
+
+	};
+
+	/**
+	 * @summary Bind key behavior on Unsplash input
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
+	karmaUnsplash.prototype.bindInputEvent = function(){
+		
+		var that = this ,
+			searchInput = document.getElementById('karma-unsplash-search');
+		/** Bind keyUp event */
+		searchInput.onkeyup = function () {
+
+			clearTimeout( that.typingTimer );
+			that.typingTimer = setTimeout( function () {
+				/** Send HTTP request when typing finished */
+				that.searchAjax( that );
+
+			}, that.doneTypingInterval );
+
+		};
+
+		/** Bind keyDown event */
+		searchInput.onkeydown = function () {
+
+			clearTimeout( that.typingTimer );
+			
+		}
+
+	};
+
+	/**
+	 * @summary Remove Html Unsplash results
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
+	karmaUnsplash.prototype.removeResults = function(){
+
+		document.querySelector('.karma-unsplash-images-result').innerHTML = '';
+
+	};
+
+	/**
+	 * @summary Remove search mode and load photos
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
+	karmaUnsplash.prototype.removeSearchMode = function(){
+
+		var that = this ,
+			inputElement = document.getElementById('karma-unsplash-search');
+		that.removeResults();
+		that.loadImages( that.pageSurf, 9, false );
+		that.searchPageSurf = 1 ;
+		inputElement.parentNode.parentNode.classList.remove('karma-unsplash-search-mode');
+
+	};
+
+	/**
+	 * @summary Search specific photos in Unsplash
+	 *
+	 * @param {object}  that    Karma Unsplash instance
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
+	karmaUnsplash.prototype.searchAjax = function ( that ) {
+
+		var inputElement = document.getElementById('karma-unsplash-search'),
+			value = inputElement.value;
+
+		if( '' === value.trim() ){
+			that.removeSearchMode();
+			return ;
+		}
+
+		if( 1 === that.searchPageSurf ){
+			that.removeResults();
+		}
+
+		var queryParams = {
+				query    : value ,
+				page     : that.searchPageSurf,
+				per_page : 9,
+			},
+			requestUrl = that.createUnsplashURL( 'search/photos', queryParams );
+
+		inputElement.parentNode.parentNode.classList.add('karma-unsplash-search-mode');
+		that.sendHTTPRequest( requestUrl );
+
+	};
 
 	/**
 	 * @summary Read the last page surf from history
@@ -30,7 +151,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 
 		return ( null != localStorage.getItem( 'karmaUnsplashPage' ) ) ? parseInt( localStorage.getItem( 'karmaUnsplashPage' ) ) : 1 ;
 
-	}
+	};
 
 	/**
 	 * @summary Load images from Unsplash server or local storage
@@ -57,7 +178,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			this.showImages( JSON.parse( images ), 'thumb' );
 		}
 
-	}
+	};
 
 	/**
 	 * @summary Check the data difference from last time that given images
@@ -75,7 +196,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		var	currentTime = new Date().getTime() ,
 			timeDiff = Math.abs( currentTime - parseInt( updateTime ) ),
 			diffDays = Math.floor( timeDiff / ( 1000 * 3600 * 24 ) );
-		if ( diffDays >=1 ) {
+		if ( diffDays >= 1 ) {
 			localStorage.removeItem( 'karmaUnsplashImages' );
 			localStorage.removeItem( 'karmaUnsplashPage' );
 			return true;
@@ -83,7 +204,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			return false;
 		}
 
-	}
+	};
 
 	/**
 	 * @summary Save JSON data from Unsplash to local storage
@@ -96,7 +217,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	karmaUnsplash.prototype.storage = function( value ){
 
 		if( null !== localStorage.getItem( 'karmaUnsplashImages' ) ){
-			var storeData = localStorage.getItem( 'karmaUnsplashImages' );
+			var storeData = localStorage.getItem('karmaUnsplashImages');
 			storeData = JSON.parse( storeData );
 			storeData = storeData.concat( value );
 		}else{
@@ -106,7 +227,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		localStorage.setItem( 'karmaUnsplashImages', JSON.stringify( storeData ) );
 		localStorage.setItem( 'karmaUnsplashPage', this.pageSurf );
 
-	}
+	};
 
 	/**
 	 * @summary Create element for showing images
@@ -123,11 +244,11 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		var that = this ,
 			el = document.querySelector('.karma-unsplash-images-result');
 		if( true === that.firstLoad ){
-			el.innerHTML = '' ;
+			that.removeResults();
 		}
 		_.each( images, function( image ){
 			if( null != el ){
-				el.appendChild( that.createChild( image.urls[ size ] ) );
+				el.appendChild( that.createChild( image, size ) );
 			}
 		});
 		if( false === that.firstLoad ){
@@ -137,11 +258,10 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		that.firstLoad = false;
 		that.pageSurf ++ ;
 		
-	}
+	};
 
 	/**
 	 * @summary Set infinity scroll for Unsplash image result element
-	 *
 	 *
 	 * @since 1.0.0
 	 * @returns {void}
@@ -154,36 +274,67 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			if ( scrollableElement.scrollTop + scrollableElement.clientHeight >= scrollableElement.scrollHeight ) {
 				e.preventDefault();
 				if( false === that.doingAjax ){
-					that.loadImages( that.pageSurf, 9, true );
+					if( scrollableElement.parentNode.classList.contains('karma-unsplash-search-mode') ){
+						that.searchAjax( that );
+					}else{
+						that.loadImages( that.pageSurf, 9, true );
+					}
 				}
 			}
 		});
 
-	}
+	};
 
 	/**
 	 * @summary Create and set event on each Unsplash element
 	 *
-	 * @param {string}  imgURL  IMG URL
+	 * @param {object}  img  IMG info
+	 * @param {string}  size    Type of image to load ( ex : small , large )
 	 *
 	 * @since 1.0.0
-	 * @returns {void}
+	 * @returns {Object}    HTML element
 	 */
-	karmaUnsplash.prototype.createChild = function ( imgURL ) {
+	karmaUnsplash.prototype.createChild = function ( img, size ) {
 
 		var newChild = document.createElement('div') ;
 		newChild.setAttribute( 'class', 'karma-unsplash-images-list' );
-		newChild.setAttribute( 'style', 'background-image:url(' +  imgURL + ')' );
+		newChild.setAttribute( 'style', 'background-image:url(' +  img.urls[ size ] + ')' );
 		newChild.onclick = function () {
 			var selected = document.querySelector('.karma-unspalsh-selected');
 			if( null != selected ) {
 				selected.classList.remove('karma-unspalsh-selected');
 			}
 			this.classList.add('karma-unspalsh-selected');
-		}
+			document.querySelector('.karma-unsplash-image-input').value = img.urls.full;
+		};
 		return newChild;
 
-	}
+	};
+
+	/**
+	 * @summary Process the response of XHR request
+	 *
+	 * @param {String}  response    response of XHR request
+	 *
+	 * @since 1.0.0
+	 * @returns {void}
+	 */
+	karmaUnsplash.prototype.processResult = function( response ){
+
+		var images = JSON.parse( response  ),
+			that = this;
+
+		if( 'object' == typeof images.results ){
+			images = images.results;
+			that.searchPageSurf ++ ;
+		}else{
+			that.storage( images );
+		}
+
+		that.showImages( images, 'thumb' );
+		that.doingAjax = false;
+
+	};
 
 	/**
 	 * @summary Get a single page from the list of all photos
@@ -201,10 +352,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		XMLHttp.onreadystatechange = function() {
 			if ( XMLHttp.readyState == XMLHttpRequest.DONE ) {
 				if ( XMLHttp.status == 200) {
-					var images = JSON.parse( XMLHttp.responseText  );
-					that.showImages( images, 'thumb' );
-					that.storage( images );
-					that.doingAjax = false;
+					that.processResult( XMLHttp.responseText );
 				}
 				else if ( XMLHttp.status == 400 ) {
 					throw 'HTTP Error 400. The request hostname is invalid.' ;
@@ -218,27 +366,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		XMLHttp.open( "GET", URL , true );
 		XMLHttp.send();
 
-	}
-
-
-	/**
-	 * @summary Create unsplash images request url
-	 *
-	 * @param {string}  type        Link relations
-	 * @param {object}  queryParmas Query Parameters
-	 *
-	 * @since 1.0.0
-	 * @returns {void}
-	 */
-	karmaUnsplash.prototype.createUnsplashURL = function ( type, queryParmas ) {
-
-		var unsplashRequestURL = this.APIURL + type + '/' + '?client_id=' + this.clientId;
-		_.each( queryParmas, function( value, key ){
-				unsplashRequestURL += '&' + key + '=' + value;
-		});
-		return unsplashRequestURL;
-		
-	}
+	};
 
 	/**
 	 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
@@ -249,7 +377,6 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	karmaUnsplash.prototype.openMediaLibrary = function () {
 
 		// Set all variables to be used in scope
-		console.log( this );
 		var frame,
 			addImgLink = document.querySelector( '.karma-unspalsh-media-library' ),
 			input = document.querySelector( '.karma-unsplash-image-input' );
@@ -287,7 +414,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			frame.open();
 		}, false );
 
-	}
+	};
 
 	if( null !== document.querySelector('.karma-unsplash-controller') ){
 
@@ -361,7 +488,11 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			var element = document.querySelector('.karma-unsplash-images-result');
 			if( element.scrollTop + element.clientHeight >= element.scrollHeight ){
 				if( false === photos.doingAjax ){
-					photos.loadImages( photos.pageSurf, 9, true );
+					if( element.parentNode.classList.contains('karma-unsplash-search-mode') ){
+						photos.searchAjax( photos );
+					}else{
+						photos.loadImages( photos.pageSurf, 9, true );
+					}
 				}
 			}
 			scrollToY( element.scrollTop + 200,  500, 'easeInOutQuint' );
