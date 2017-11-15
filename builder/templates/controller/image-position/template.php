@@ -1,5 +1,5 @@
 <# if( data.separator != "" ) { #>
-	<div class="karma-image-position-container controller-seprator">
+	<div class="karma-image-position-container controller-separator">
 <#}else{ #>
 	<div class='karma-image-position-container'>
 <# } #>

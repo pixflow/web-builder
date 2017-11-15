@@ -68,7 +68,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 					),
 					array(
 						"name"	=> "title",
-						"type"	=> Karma_Builder_Setting_Panel::TITLE,
+						"type"	=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,
 						"label"	=> esc_attr__( "Spacing", 'karma' )
 					),
 					array(
@@ -192,7 +192,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						),
 						array(
 								"name"	=> "title",
-								"type"	=> Karma_Builder_Setting_Panel::TITLE,
+								"type"	=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,
 								"label"	=> esc_attr__( "Spacing", 'karma' ),
 
 						),

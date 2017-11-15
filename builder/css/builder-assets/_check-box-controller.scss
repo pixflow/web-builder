@@ -1,5 +1,6 @@
 .karma-check-box-controller{
 	@include padding(0, 24px, 25px, 20px);
+	position: relative;
 
 	.check-box-controller-template{
 		@include flexbox( $align-item:center, $justify-content:space-between );

@@ -184,7 +184,7 @@ body {
     position: absolute; }
   body ul, body ol {
     margin: 0 0 1.75em 0; }
-  body .controller-seprator {
+  body .controller-separator {
     margin-bottom: 25px; }
 
 @-ms-viewport {

@@ -80,7 +80,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 					),
 					array(
 						"name"  		=> "space",
-						"type"  		=> Karma_Builder_Setting_Panel::TITLE,
+						"type"  		=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,
 						"label"			=> esc_attr__( "Spacing", 'karma' ),
 
 					),

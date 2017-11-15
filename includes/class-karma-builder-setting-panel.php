@@ -31,8 +31,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Karma_Builder_Setting_Panel {
 
-	const TITLE2 = 'title2';
 	const TITLE = 'title';
+	const TITLE_WITH_BACKGROUND = 'title-with-background';
 	const IMAGE = 'image';
 	const RANGE = 'range';
 	const TEXT = 'text';

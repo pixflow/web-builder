@@ -133,7 +133,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-title-controller div.karma-title-field, .karma-title2-controller div.karma-title2-field, .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
+.HelveticaNeue-font, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
   font-family: HelveticaNeue; }
 
 /**
@@ -302,7 +302,7 @@ body {
     position: absolute; }
   body ul, body ol {
     margin: 0 0 1.75em 0; }
-  body .controller-seprator {
+  body .controller-separator {
     margin-bottom: 25px; }
 
 @-ms-viewport {
@@ -2271,7 +2271,7 @@ label {
     font-family: HelveticaNeue;
     font-size: 12px; }
 
-.karma-title-controller {
+.karma-title-with-background-controller {
   padding-top: 12px;
   padding-right: 15px;
   padding-bottom: 10px;
@@ -2280,11 +2280,11 @@ label {
   height: 100%;
   background-color: rgba(65, 156, 248, 0.12);
   margin-bottom: 25px; }
-  .karma-title-controller div.karma-title-field {
+  .karma-title-with-background-controller div.karma-title-with-background-field {
     color: #419CF8;
     font-size: 15px; }
 
-.karma-title2-controller {
+.karma-title-controller {
   padding-top: 0;
   padding-right: 20px;
   padding-bottom: 25px;
@@ -2292,7 +2292,7 @@ label {
   width: 100%;
   height: 100%;
   position: relative; }
-  .karma-title2-controller div.karma-title2-field {
+  .karma-title-controller div.karma-title-field {
     color: #394959;
     font-size: 15px; }
 
@@ -2550,7 +2550,8 @@ label {
   padding-top: 0;
   padding-right: 24px;
   padding-bottom: 25px;
-  padding-left: 20px; }
+  padding-left: 20px;
+  position: relative; }
   .karma-check-box-controller .check-box-controller-template {
     display: flex;
     text-align: inherit;
