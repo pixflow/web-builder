@@ -11,14 +11,14 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'structure'		=> 'container',
 				'space'			=> '200',
 				'element_key'	=> '',
-				'extraClass'	=> '',
+				'extraclass'	=> '',
 			)
 			, $atts
 		);
 		$container_class = ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
 		ob_start();
 		?>
-		<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraClass' ] ); ?>'>
+		<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'>
 			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 				<?php echo do_shortcode( $content ); ?>
 			</div>
@@ -44,7 +44,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "407",
+				"height" => "357",
 				"params" => array(
 					array(
 						"name"	=> "structure",
@@ -85,7 +85,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 							)
 						),
 						array(
-								"name"			=> "extraClass",
+								"name"			=> "extraclass",
 								"type"			=> Karma_Builder_Setting_Panel::TEXT,
 								"label"			=> __( "Class Name", 'karma' ),
 								"group"			=> "Advance option"
@@ -147,7 +147,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			),
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
-				'height'	=> '650',
+				'height'	=> '628',
 				'params'	=> array(
 					array(
 						'name' => 'unsplash' ,
@@ -160,7 +160,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 							'value'	=> 'center-center',
 							'separator' => "container",
 
-							
+
 					),
 
 					array(
@@ -174,7 +174,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"label"			=> esc_attr__( "next", 'karma' ),
 								"form"			=> "new-panel",
 								"action"		=> "open",
-								'height'		=> '310'
+								'height'		=> '288'
 
 						),
 

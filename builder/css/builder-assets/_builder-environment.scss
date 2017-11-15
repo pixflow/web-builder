@@ -22,13 +22,13 @@
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@include margin( inherit,0,inherit,39px );
 				@extend .HelveticaNeue-font;
-				color: rgba( 255, 255, 255, 0.8 );
+				color: white;
 				cursor: pointer;
 				font-size: 14px;
 				line-height: 17px;
 
 				> div:not( .builder-upgrade-icon ){
-					transition: color .15s;
+					transition: color .1s;
 				}
 
 				&:hover > div {
@@ -37,7 +37,7 @@
 
 				#karma-upgrade-menu{
 					fill: rgba( 255,255,255,1 );
-					 transition: fill .15s ;
+					 transition: fill .1s ;
 				 }
 
 				&:hover  #karma-upgrade-menu{

@@ -1616,17 +1616,17 @@ html {
         margin-right: 0;
         margin-bottom: inherit;
         margin-left: 39px;
-        color: rgba(255, 255, 255, 0.8);
+        color: white;
         cursor: pointer;
         font-size: 14px;
         line-height: 17px; }
         .karma-builder-toolbar .karma-builder-left ul li > div:not(.builder-upgrade-icon) {
-          transition: color .15s; }
+          transition: color .1s; }
         .karma-builder-toolbar .karma-builder-left ul li:hover > div {
           color: rgba(255, 255, 255, 0.6); }
         .karma-builder-toolbar .karma-builder-left ul li #karma-upgrade-menu {
           fill: white;
-          transition: fill 0.15s; }
+          transition: fill 0.1s; }
         .karma-builder-toolbar .karma-builder-left ul li:hover #karma-upgrade-menu {
           fill: rgba(255, 255, 255, 0.6); }
         .karma-builder-toolbar .karma-builder-left ul li .builder-upgrade-icon {
@@ -2601,7 +2601,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     padding-left: 18px; }
   .karma-image-position-container .karma-image-position-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     height: 100%;
     flex-wrap: wrap;

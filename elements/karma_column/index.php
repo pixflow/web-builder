@@ -25,7 +25,10 @@ class Karma_Column extends Karma_Shortcode_Base {
 				'element_key'	=> '',
 				'rightspace'    => '20',
 				'leftspace'     => '20',
-				'extraclass'	=> ''
+				'extraclass'	=> '',
+				'rightspace'	=> '10',
+				'leftspace'		=> '10',
+
 			)
 			, $atts
 		);
@@ -43,7 +46,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static function js_render() {
 
-		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.changed.extra_class }}'> {{ data.attributes.shortcode_attributes.shortcode_content }} </div>";
+		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}'> {{ data.attributes.shortcode_attributes.shortcode_content }} </div>";
 
 	}
 

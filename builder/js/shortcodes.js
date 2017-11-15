@@ -742,6 +742,7 @@
 		 * @returns { string }  Element name with its key
 		 */
 		elementSelector: function () {
+
 			return this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
 		},
