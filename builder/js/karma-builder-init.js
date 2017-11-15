@@ -18,8 +18,8 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 
-			'karma_builder_published' 	: 'karma_publish',
-			'karma_builder_saved'		: 'karma_saved',
+			'karma_builder_published' 	: 'karmaPublish',
+			'karma_builder_saved'		: 'karmaSaved',
 
 		},
 
@@ -113,9 +113,9 @@ var karmaBuilder = karmaBuilder || {};
 		 * Save element model and html
 		 *
 		 * @since   1.0.0
-		 * @returns {boolean}   true if contents were saved successfully
+		 * @returns {void}
 		 */
-		karma_publish : function () {
+		karmaPublish : function () {
 
 			var that = this,
 				data = {
@@ -137,9 +137,9 @@ var karmaBuilder = karmaBuilder || {};
 		 * Save element model and html
 		 *
 		 * @since   1.0.0
-		 * @returns {boolean}   true if contents were saved successfully
+		 * @returns {void}
 		 */
-		karma_saved : function () {
+		karmaSaved : function () {
 
 			var that = this,
 				data = {

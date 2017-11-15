@@ -2,10 +2,11 @@
 
 /**
  * Returns content of file (use for svg tag )
- *  @param    string $url the url of svg file
- *  @since    1.0.0
- *  @access   public
- * @return    {string} html of svg file
+ *
+ * @param    String $url the url of svg file
+ *
+ * @since    1.0.0
+ * @return   String html of svg file
  */
 function karma_load_svg( $url ){
 
@@ -37,7 +38,7 @@ function karma_save_remote_images( $image_url, $type, $regenerate_thumbnails = f
 	if ( !$file_type )
 		return false;
 
-	// Check if image is ffrom unsplash refine file base name
+	// Check if image is from unsplash refine file base name
 	$pos = strpos( $image, 'images.unsplash.com' );
 	if ( $pos !== false ) {
 		$image = reset( ( explode( '?', $image ) ) ) . '.' . $type;

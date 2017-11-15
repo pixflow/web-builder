@@ -284,11 +284,9 @@
 
 			 var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 			 	padding		= this.model.attributes.shortcode_attributes.space + 'px';
-
-
 			this.$el.find( '.karma-bottom-spacing' ).css( 'height', padding )
-			 this.renderCss( '.' + elementId, 'padding-top', padding );
-			 this.renderCss( '.' + elementId, 'padding-bottom', padding );
+			this.renderCss( '.' + elementId, 'padding-top', padding );
+			this.renderCss( '.' + elementId, 'padding-bottom', padding );
 
 		},
 
