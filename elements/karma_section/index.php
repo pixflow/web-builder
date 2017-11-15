@@ -147,7 +147,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			),
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
-				'height'	=> '570',
+				'height'	=> '650',
 				'params'	=> array(
 					array(
 						'name' => 'unsplash' ,
@@ -174,7 +174,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"label"			=> esc_attr__( "next", 'karma' ),
 								"form"			=> "new-panel",
 								"action"		=> "open",
-								'height'		=> '286'
+								'height'		=> '310'
 
 						),
 
