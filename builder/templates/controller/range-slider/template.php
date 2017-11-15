@@ -1,4 +1,4 @@
-<# if( data.separator != "" ) { #>
+<# if( data.separator != "" && data.separator != undefined ) { #>
 	<div class="karma-range-slider-container controller-separator">
 <#}else{ #>
 	<div class='karma-range-slider-container'>

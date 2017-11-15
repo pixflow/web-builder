@@ -1,4 +1,4 @@
-<# if( data.separator != "" ) { #>
+<# if( data.separator != "" && data.separator != undefined ) { #>
 	<div class="karma-title-controller controller-separator">
 <#}else{ #>
 	<div class='karma-title-controller'>

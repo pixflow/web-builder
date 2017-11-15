@@ -1,4 +1,5 @@
-<# if( data.separator != "" ) { #>
+<# if( data.separator != "" && data.separator != undefined ) { #>
+	<# console.log(data.separator ) #>
 	<div class="karma-image-position-container controller-separator">
 <#}else{ #>
 	<div class='karma-image-position-container'>
