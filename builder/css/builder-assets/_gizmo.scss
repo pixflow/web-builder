@@ -14,7 +14,6 @@ label{
 	}
 
 	&.karma-top-spacing {
-		cursor: n-resize;
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -23,9 +22,8 @@ label{
 			@include element_direction( $top: 0, $left: -8px )
 		}
 	}
-	&.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
+	&.karma-left-spacing.ui-resizable.karma-left-spacing {
 
-		cursor: e-resize;
 		height: 100%;
 		left: 0 !important;
 		position: absolute;
@@ -42,8 +40,7 @@ label{
 		}
 	}
 
-	&.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
-		cursor: e-resize;
+	&.karma-right-spacing.ui-resizable.karma-right-spacing {
 		height: 100%;
 		left: initial !important;
 		position: absolute;
@@ -51,7 +48,7 @@ label{
 		top: 0;
 
 		.karma-spacing-dot-container {
-			cursor: e-resize;
+			cursor: w-resize;
 			left: calc(100% - 12px) !important;
 			top: 50%;
 		}
@@ -63,13 +60,13 @@ label{
 
 	&.karma-bottom-spacing {
 		bottom: 0px !important;
-		cursor: n-resize;
 		position: absolute;
 		top: initial !important;
 		width: 100%;
 
 		.karma-spacing-dot-container {
 			bottom: -11px !important;
+			cursor: s-resize;
 			top: initial !important;
 		}
 
@@ -80,7 +77,6 @@ label{
 }
 
 .karma-spacing .resize-handler {
-	cursor: n-resize;
 	height: 100%;
 	position: absolute;
 	width: 100%;

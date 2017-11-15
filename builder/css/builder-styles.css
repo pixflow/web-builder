@@ -1873,7 +1873,6 @@ label {
   .karma-spacing.karma-top-spacing-height {
     height: 0; }
   .karma-spacing.karma-top-spacing {
-    cursor: n-resize;
     position: absolute;
     top: 0;
     width: 100%; }
@@ -1882,45 +1881,43 @@ label {
       right: auto;
       bottom: auto;
       left: -8px; }
-  .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e {
-    cursor: e-resize;
+  .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing {
     height: 100%;
     left: 0 !important;
     position: absolute;
     top: 0; }
-    .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .karma-spacing-dot-container {
+    .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing .karma-spacing-dot-container {
       cursor: e-resize;
       left: -12px !important;
       top: 50%; }
-    .karma-spacing.karma-left-spacing.ui-resizable-handle.ui-resizable-e .spacing-dot:after {
+    .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing .spacing-dot:after {
       top: -8px;
       right: auto;
       bottom: auto;
       left: 0; }
-  .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w {
-    cursor: e-resize;
+  .karma-spacing.karma-right-spacing.ui-resizable.karma-right-spacing {
     height: 100%;
     left: initial !important;
     position: absolute;
     right: 0 !important;
     top: 0; }
-    .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .karma-spacing-dot-container {
-      cursor: e-resize;
+    .karma-spacing.karma-right-spacing.ui-resizable.karma-right-spacing .karma-spacing-dot-container {
+      cursor: w-resize;
       left: calc(100% - 12px) !important;
       top: 50%; }
-    .karma-spacing.karma-right-spacing.ui-resizable-handle.ui-resizable-w .spacing-dot:after {
+    .karma-spacing.karma-right-spacing.ui-resizable.karma-right-spacing .spacing-dot:after {
       top: -8px;
       right: 0;
       bottom: auto;
       left: auto; }
   .karma-spacing.karma-bottom-spacing {
     bottom: 0px !important;
-    cursor: n-resize;
     position: absolute;
     top: initial !important;
     width: 100%; }
     .karma-spacing.karma-bottom-spacing .karma-spacing-dot-container {
       bottom: -11px !important;
+      cursor: s-resize;
       top: initial !important; }
     .karma-spacing.karma-bottom-spacing .spacing-dot:after {
       top: auto;
@@ -1929,7 +1926,6 @@ label {
       left: -8px; }
 
 .karma-spacing .resize-handler {
-  cursor: n-resize;
   height: 100%;
   position: absolute;
   width: 100%; }

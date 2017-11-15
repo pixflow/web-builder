@@ -3,9 +3,9 @@
 	karmaBuilder.shortcodes = karmaBuilder.elementSettingPanel.extend({
 
 		events:{
-			'mousedown > .karma-spacing-container .karma-spacing' 	: 'showMouseToolTip',
-			'before/elements/create/karma_column'                   : 'createElementAction',
-			'before/buildGizmo'                                     : 'gimzoAction'
+			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
+			'before/elements/create/karma_column'                   				: 'createElementAction',
+			'before/buildGizmo'                                     				: 'gimzoAction'
 		},
 
 		shortcodeParams: {},
@@ -58,8 +58,8 @@
 		 *  Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-left-spacing ui-resizable-handle ui-resizable-e ui-resizable-e" data-direction="left" style="width:{{ data.leftspace}}px">'
-		+ '<div class="karma-spacing-dot-container">'
+		+'<div class="karma-spacing karma-left-spacing " data-direction="left" style="width:{{ data.leftspace}}px">'
+		+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-e">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-left-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
@@ -70,8 +70,8 @@
 		 *  Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-right-spacing ui-resizable-handle ui-resizable-w ui-resizable-w" data-direction="right" style="width:{{ data.rightspace }}px">'
-		+ '<div class="karma-spacing-dot-container">'
+		+'<div class="karma-spacing karma-right-spacing" data-direction="right" style="width:{{ data.rightspace }}px">'
+		+ '<div class="karma-spacing-dot-container  ui-resizable-handle ui-resizable-w ">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-right-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
@@ -413,7 +413,7 @@
 
 			var that = this;
 			var options = this.createRightLeftSpacingGizmo( '.karma-left-spacing' , 'padding-right' );
-			that.$el.attr( 'data-direction', 'right' );
+			that.$el.attr( 'data-direction', 'left' );
 			options.handles.w = $gizmo.find(  '.ui-resizable-w' );
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
 
