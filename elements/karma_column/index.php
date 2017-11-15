@@ -54,7 +54,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 				"params"    => array(
 					array(
 						"name"  => "ExtraClass",
-						"type"  => Karma_Builder_Setting_Panel::TITLE2,
+						"type"  => Karma_Builder_Setting_Panel::TITLE,
 						"label" => esc_attr__( "Extra class name", 'karma' ),
 
 					),
