@@ -2232,10 +2232,10 @@ label {
     font-size: 10px;
     padding-left: 2.69px;
     vertical-align: top; }
-.karma-active-section .karma-active-column .karma-right-spacing.ui-resizable-resizing {
+.karma-active-section .karma-right-spacing.ui-resizable-resizing {
   background-color: rgba(51, 143, 252, 0.1);
   border-left: 1px solid rgba(51, 143, 252, 0.3); }
-.karma-active-section .karma-active-column .karma-left-spacing.ui-resizable-resizing {
+.karma-active-section .karma-left-spacing.ui-resizable-resizing {
   background-color: rgba(51, 143, 252, 0.1);
   border-right: 1px solid rgba(51, 143, 252, 0.3); }
 .karma-active-section .karma-right-spacing .spacing-dot {
