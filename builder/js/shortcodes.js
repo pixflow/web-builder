@@ -40,14 +40,14 @@
 		 *  Build html for gizmo resizeably for top&& bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">' +
-		'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s karma-top-spacing-height" data-direction="both" >'
-		+ '<div class="karma-spacing-dot-container">'
+		'<div class="karma-spacing karma-top-spacing  " data-direction="both" >'
+		+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-s karma-top-spacing-height">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-top-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
 		+ '</div>'
-		+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle  ui-resizable-s" data-direction="both" style="height:{{ data.space }}px">'
-		+ '<div class="karma-spacing-dot-container">'
+		+ '<div class="karma-spacing karma-bottom-spacing " data-direction="both" style="height:{{ data.space }}px">'
+		+ '<div class="karma-spacing-dot-container ui-resizable-handle  ui-resizable-s">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-bottom-hover"><div class="spacing-dot-hover"></div></div>'
 		+ '</div>'
