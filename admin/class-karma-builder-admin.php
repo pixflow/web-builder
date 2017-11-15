@@ -80,7 +80,7 @@ class Karma_Builder_Admin {
 
 
 	/**
-	 * Save the content of page and print the result
+	 * Publish the content of page and print the result
 	 *
 	 * @since     1.0.0
 	 * @return    void

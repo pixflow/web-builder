@@ -573,6 +573,7 @@ class Karma_Builder_Core{
 	public function save_post_content( $models, $id ) {
 
 		$post_content = $this->generate_post_content( $models );
+		$post_content = karma_save_unsplash_images($post_content);
 		$post_content = str_replace( '\\', '\\\\', $post_content );
 		if ( update_post_meta( $id, 'karma_post_content', $post_content ) ){
 			return true;
@@ -621,5 +622,7 @@ class Karma_Builder_Core{
 		return $elements_gizmo;
 
 	}
+
+
 
 }
