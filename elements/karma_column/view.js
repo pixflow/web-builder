@@ -290,10 +290,24 @@
 		 */
 		rightspace: function () {
 
-			var elementId 	= this.model.get( 'element_key' ) ,
-				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px';
+			var padding	= this.model.attributes.shortcode_attributes.rightspace + 'px';
 			this.$el.find( '.karma-right-spacing' ).css( 'width', padding );
 			this.renderCss( '.karma-no-gutters > .karma-builder-element > .karma-column.' + this.elementSelector(), 'padding-right', padding );
+
+		},
+
+		/**
+		 * left space field changes. It updates the left space of column
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		leftspace: function () {
+
+			var padding	= this.model.attributes.shortcode_attributes.leftspace + 'px';
+			this.$el.find( '.karma-left-spacing' ).css( 'width', padding );
+			this.renderCss( '.karma-no-gutters > .karma-builder-element > .karma-column.' + this.elementSelector(), 'padding-left', padding );
 
 		},
 
