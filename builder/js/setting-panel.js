@@ -51,6 +51,9 @@
 				scroll: true,
 				scrollSpeed: 100 ,
 				distance: 10,
+				drag : function() {
+					$( this ).css({ width : '', height : '' });
+				},
 				cancel: ".karma-shortcode-setting-panel-extra, input"
 			});
 
