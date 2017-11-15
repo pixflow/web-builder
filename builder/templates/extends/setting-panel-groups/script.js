@@ -2,7 +2,6 @@ jQuery(document).off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_for
 
 	var $ = jQuery,
 		toggle = 0,
-			toggle = 0,
 		settingPanel = document.querySelector('#karma-Builder-form'),
 		settingPanelHeight = settingPanel.offsetHeight ,
 		groupPanel =document.querySelector('.karma-group-panel');
