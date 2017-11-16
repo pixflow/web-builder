@@ -1916,7 +1916,7 @@ label {
     top: initial !important;
     width: 100%; }
     .karma-spacing.karma-bottom-spacing .karma-spacing-dot-container {
-      bottom: -11px !important;
+      bottom: -12px !important;
       cursor: s-resize;
       top: initial !important; }
     .karma-spacing.karma-bottom-spacing .spacing-dot:after {
@@ -2010,7 +2010,7 @@ label {
     bottom: auto;
     left: 0;
     width: 22px;
-    height: 14px;
+    height: 11px;
     display: block;
     margin-bottom: 10px;
     overflow: hidden;
@@ -2097,7 +2097,7 @@ label {
   .karma-active-section .karma-row > .karma-builder-element:last-child .resize-handler {
     display: none; }
   .karma-active-section .karma-row > .karma-builder-element:last-child .karma-right-spacing .karma-spacing-dot-container {
-    left: calc(100% - 10px) !important; }
+    left: calc(100% - 9px) !important; }
   .karma-active-section .karma-row .resize-handler {
     width: 12px;
     height: 100%;

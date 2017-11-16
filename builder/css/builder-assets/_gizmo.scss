@@ -65,7 +65,7 @@ label{
 		width: 100%;
 
 		.karma-spacing-dot-container {
-			bottom: -11px !important;
+			bottom: -12px !important;
 			cursor: s-resize;
 			top: initial !important;
 		}
@@ -157,7 +157,7 @@ label{
 
   .spacing-bottom-hover{
 	@include element_direction($top:0, $left:0);
-	@include box(22px, 14px);
+	@include box(22px, 11px);
 	display: block;
 	margin-bottom: 10px;
 	overflow: hidden;
@@ -255,7 +255,7 @@ label{
 			}
 
 			.karma-right-spacing  .karma-spacing-dot-container{
-				left: calc(100% - 10px) !important;
+				left: calc(100% - 9px) !important;
 			}
 		}
 		.resize-handler {
