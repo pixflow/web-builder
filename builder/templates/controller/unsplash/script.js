@@ -20,7 +20,8 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 		this.typingTimer;
 		/** timer identifier */
 		this.doneTypingInterval = 2000;
-		/** time in ms, 5 second for example */
+		this.oldValue = '';
+		/** time in ms, 2 second for example */
 		this.detectScroll();
 		this.openMediaLibrary();
 		this.bindInputEvent();
@@ -125,10 +126,10 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			return ;
 		}
 
-		if( 1 === that.searchPageSurf ){
+		if( 1 === that.searchPageSurf || that.oldValue != value ){
 			that.removeResults();
 		}
-
+		that.oldValue = value;
 		var queryParams = {
 				query    : value ,
 				page     : that.searchPageSurf,
