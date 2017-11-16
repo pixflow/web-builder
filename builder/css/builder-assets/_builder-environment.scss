@@ -137,8 +137,5 @@
 
 /* _-_-_- layout/Media Library -_-_-_ */
 div.media-modal {
-	top: 200px;
-	left: 400px;
-	right: 400px;
-	bottom: 200px;
+	@include element_direction($top: 200px, $right: 400px, $bottom: 200px, $left: 400px);
 }

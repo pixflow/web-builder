@@ -19,7 +19,7 @@ function karma_load_svg( $url ){
 }
 
 /**
- * @summary Get remote image url and add it to media library
+ * Get remote image url and add it to media library
  * @param   string $image_url the url of image
  * @param   string $type file type for not direct images url like unsplash urls
  * @param   boolean $regenerate_thumbnails regenerate thumbnails
@@ -41,7 +41,7 @@ function karma_save_remote_images( $image_url, $type, $regenerate_thumbnails = f
 	// Check if image is from unsplash refine file base name
 	$pos = strpos( $image, 'images.unsplash.com' );
 	if ( $pos !== false ) {
-		$image = reset( ( explode( '?', $image ) ) ) . '.' . $type;
+		$image = reset( explode( '?', $image ) ) . '.' . $type;
 	}
 	$mirror = wp_upload_bits( basename( $image ), '', wp_remote_retrieve_body( $get ) );
 	$attachment = array(
@@ -64,7 +64,7 @@ function karma_save_remote_images( $image_url, $type, $regenerate_thumbnails = f
 }
 
 /**
- * @summary find unsplash images and return images as array
+ * Find unsplash images and return images as array
  *
  * @param   string $content - content
  *
@@ -94,7 +94,7 @@ function karma_find_unsplash_images( $content ) {
 }
 
 /**
- * @summary Check content for unsplash images and download them and store in WordPress Media library,
+ * Check content for unsplash images and download them and store in WordPress Media library,
  * then replace unsplash images URL with downloaded images
  *
  * @param   string $content - content

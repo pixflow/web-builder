@@ -490,7 +490,7 @@ class Karma_Builder_Core{
 	}
 
 	/**
-	 * @summary Save post content to database and change post status to draft
+	 * Save post content to database and change post status to draft
 	 *
 	 * @param   array		$models - element models
 	 * @param   integer     $post_id - post/page ID
@@ -510,7 +510,7 @@ class Karma_Builder_Core{
 	}
 
 	/**
-	 * @summary save post content to database and change post status to publish
+	 * Save post content to database and change post status to publish
 	 *
 	 * @param   array		$models - element models
 	 * @param   integer     $post_id - post/page ID
@@ -529,7 +529,7 @@ class Karma_Builder_Core{
 	}
 
 	/**
-	 * @summary switch post status between published & draft
+	 * Switch post status between published & draft
 	 *
 	 * @param   string  $new_status - new status of post (publish or draft)
 	 * @param   integer $post_id - post/page ID
@@ -573,7 +573,7 @@ class Karma_Builder_Core{
 	public function save_post_content( $models, $id ) {
 
 		$post_content = $this->generate_post_content( $models );
-		$post_content = karma_save_unsplash_images($post_content);
+		$post_content = karma_save_unsplash_images( $post_content );
 		$post_content = str_replace( '\\', '\\\\', $post_content );
 		if ( update_post_meta( $id, 'karma_post_content', $post_content ) ){
 			return true;

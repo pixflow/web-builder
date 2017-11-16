@@ -17,7 +17,7 @@
 	<div class="karma-unspalsh-icon" ></div>
 	<a class="karma-unspalsh-media-library" href="#">
 		<span class="karma-unsplash-media-library-svg"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/upload.svg' ); ?></span>
-		<span class="karma-unsplash-media-library-link"><?php _e('Or upload from media library','karma'); ?></span>
+		<span class="karma-unsplash-media-library-link"><?php _e( 'Or upload from media library', 'karma' ); ?></span>
 	</a>
 	<input	type="text" name="{{{ data.name }}}" class="hidden-input karma-unsplash-image-input" value="{{{data.value}}}">
 </div>

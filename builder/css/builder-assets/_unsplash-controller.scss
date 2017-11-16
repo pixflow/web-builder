@@ -82,9 +82,7 @@
   }
 
   .karma-unspalsh-media-library {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    @include flexbox($text-align: inherit, $align-item: center, $justify-content: center);
     margin-top: 21px;
 
     .karma-unsplash-media-library-svg {
