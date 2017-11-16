@@ -253,7 +253,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 			}
 		});
 		if( false === that.firstLoad ){
-			scrollToY( el.scrollTop + 200,  500, 'easeInOutQuint' );
+			scrollToY( el.scrollTop + 220,  500, 'easeInOutQuint' );
 		}
 
 		that.firstLoad = false;
@@ -496,7 +496,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 					}
 				}
 			}
-			scrollToY( element.scrollTop + 200,  500, 'easeInOutQuint' );
+			scrollToY( element.scrollTop + 220,  500, 'easeInOutQuint' );
 
 		}, false );
 

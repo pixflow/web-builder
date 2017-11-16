@@ -18,6 +18,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .HelveticaNeue-font {
   font-family: HelveticaNeue; }
 
+@keyframes scaleUP {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
 /**
  * Media queries
  * @group helpers
