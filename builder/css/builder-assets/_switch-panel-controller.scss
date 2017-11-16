@@ -2,8 +2,8 @@
 
 	@include  flexbox( $justify-content: center );
 	background-color: #F7F8F9;
-	border-top: 1px solid rgba( 57, 73, 89, 0.2 );
 	border-radius: 0 0 7px 7px;
+	border-top: 1px solid rgba( 57, 73, 89, 0.2 );
 
 	#new-form-builder-panel{
 		@include element_direction( $top:0, $left: 360px );
@@ -19,6 +19,7 @@
 		border-radius: 100px;
 		margin:20px 60px;
 		padding: 0;
+		text-transform: capitalize;
 
 		p{
 			color: #445362;

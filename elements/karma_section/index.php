@@ -147,34 +147,20 @@ class Karma_Section extends Karma_Shortcode_Base {
 			),
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
-				'height'	=> '628',
+				'height'	=> '432',
 				'params'	=> array(
 					array(
 						'name' => 'unsplash' ,
 						'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
 					),
-					array(
-							"name"	=> "positin",
-							"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
-							"label"	=> esc_attr__( "positin", 'karma' ),
-							'value'	=> 'center-center',
-							'separator' => "container",
 
-
-					),
-
-					array(
-							"name"	=> "checking",
-							"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
-							"label"	=> __( "checking", 'karma' ),
-					),
 						array(
 								"name"			=> "switch",
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-								"label"			=> esc_attr__( "next", 'karma' ),
+								"label"			=> esc_attr__( "Setting panel", 'karma' ),
 								"form"			=> "new-panel",
 								"action"		=> "open",
-								'height'		=> '288'
+								'height'		=> '271'
 
 						),
 
@@ -184,35 +170,26 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'new-panel'		=> array(
 				'name'		=> __( 'new panel', 'karma' ),
 				'params'	=> array(
+
 						array(
-								"name"	=> "text",
-								"type"	=> Karma_Builder_Setting_Panel::TEXT,
-								"label"	=> esc_attr__( "switch", 'karma' ),
+								"name"	=> "positin",
+								"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
+								"label"	=> esc_attr__( "positin", 'karma' ),
+								'value'	=> 'center-center',
+								'separator' => "container",
+
 
 						),
-						array(
-								"name"	=> "title",
-								"type"	=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,
-								"label"	=> esc_attr__( "Spacing", 'karma' ),
 
-						),
 						array(
-								"name"		=> "space",
-								"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-								"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
-								'value'		=> 0,
-								"options"	=> array(
-										'value'	=> 200,
-										'min'   => 0,
-										'max'   => 800,
-										'step'  => 1,
-										'unit'  => 'px'
-								)
+								"name"	=> "checking",
+								"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
+								"label"	=> __( "checking", 'karma' ),
 						),
 						array(
 								"name"			=> "title",
 								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-								"label"			=> esc_attr__( "swit", 'karma' ),
+								"label"			=> esc_attr__( "Back", 'karma' ),
 								'text'			=> 'back',
 								"action"		=> "close",
 								"shape"			=>"yes"
