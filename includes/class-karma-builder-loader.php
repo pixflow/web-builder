@@ -52,6 +52,7 @@ class Karma_Builder_Loader {
 	public static $element_filename = array(
 		'section',
 		'column',
+		'image',
 	);
 
 	/**
