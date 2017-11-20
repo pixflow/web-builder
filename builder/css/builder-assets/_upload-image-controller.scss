@@ -6,7 +6,7 @@
 	background-size: cover;
 	height: 115px;
 	position: relative;
-	
+
 	.karma-upload-image-button{
 		@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
 		background-color: rgba(255, 255, 255, 0.7);

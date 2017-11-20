@@ -152,12 +152,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'name'		=> __( 'image position', 'karma' ),
 				'height'	=> '432',
 				'params'	=> array(
-						array(
-								'name'			=> 'upload' ,
-								'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-								"label"			=> esc_attr__( "Change Image", 'karma' ),
-								"imageurl"		=> "",
-						),
 					array(
 						"name"	=> "checking",
 						"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
@@ -205,6 +199,12 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'name'		=> __( 'image position', 'karma' ),
 				'height'	=> '432',
 				'params'	=> array(
+						array(
+								'name'			=> 'upload' ,
+								'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
+								"label"			=> esc_attr__( "Change Image", 'karma' ),
+								"imageurl"		=> "",
+						),
 						array(
 						'name'      => 'unsplash' ,
 						'type'      => Karma_Builder_Setting_Panel::UNSPLASH ,

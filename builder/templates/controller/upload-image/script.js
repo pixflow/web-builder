@@ -1,5 +1,8 @@
 jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_finish_form_builder.uploadImages', function( e, viewObject ) {
 
+	if( null == document.querySelector('.karma-upload-image-container') ){
+		return ;
+	}
 	/**
 	 * @summary When an image is selected in the media frame and change background
 	 *
