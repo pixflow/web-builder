@@ -363,6 +363,46 @@
 
 		},
 
+		/**
+		 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		openMediaLibrares : function ( addImgLink, callBack, multiple  ) {
+
+			// Set all variables to be used in scope
+			var frame;
+
+			// ADD IMAGE LINK
+			addImgLink.addEventListener( 'click', function () {
+
+				// If the media frame already exists, reopen it.
+				if ( frame ) {
+					frame.open();
+					return;
+				}
+
+				// Create a new media frame
+				frame = wp.media( {
+					title: 'Select or Upload Media Of Your Chosen Persuasion',
+					button: {
+						text: 'Use this media'
+					},
+					multiple: ( multiple ) ? multiple : false
+				} );
+
+				// When an image is selected in the media frame...
+				frame.on( 'select',  callBack.bind( frame, frame ) );
+
+				// Finally, open the modal on click
+				frame.open();
+			}, false );
+
+		},
+
+
 	});
 
 } )( jQuery, karmaBuilder );

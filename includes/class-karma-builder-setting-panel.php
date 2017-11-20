@@ -43,6 +43,7 @@ class Karma_Builder_Setting_Panel {
 	const IMAGE_POSITION = 'image-position';
 	const UNSPLASH = 'unsplash';
 	const SWITCH_PANEL = 'switch-panel';
+	const UPLOAD_IMAGE = 'upload-image';
 
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'

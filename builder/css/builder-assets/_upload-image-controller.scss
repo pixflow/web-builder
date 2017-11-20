@@ -1,0 +1,37 @@
+.karma-upload-image-content{
+	@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
+	background-color: #ECF5FE;;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 115px;
+	position: relative;
+	
+	.karma-upload-image-button{
+		@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
+		background-color: rgba(255, 255, 255, 0.7);
+		border-radius: 100px;
+		color: #394959;
+		cursor: pointer;
+		font-family: HelveticaNeue;
+		font-size: 13px;
+		font-weight: 500;
+		height: 36px;
+		line-height: 16px;
+		text-transform: none;
+		width: 131px;
+	}
+	a{
+		z-index: 99;
+	}
+
+}
+
+.karma-upload-image-has-image:after{
+	background-color: rgba(0, 0, 0, 0.2);
+	content: "";
+	height: 115px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
