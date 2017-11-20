@@ -54,7 +54,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		$map = array(
 			'setting-panel' => array(
-				"name"      => "Column",
+				"title"	=> esc_attr__( "Column Setting", 'karma' ),
 				"params"    => array(
 					array(
 						"name"  => "extraclasslabel",

@@ -1,18 +1,19 @@
 .karma-range-slider-container {
 	@include flexbox($text-align: center, $align-item: center, $justify-content: center);
-	@include padding(0, 15px, 25px, 15px);
 	flex-direction: column;
+	padding: 0 20px;
 	position: relative;
 
 	.karma-range-slider-content {
+
 		@include flexbox($align-item: center);
 		@include box(100%);
-		padding-left: 5px;
+		padding: $top-space-orange-light 0 $top-space-orange;
 
 	}
 
 	.rangeslider--horizontal {
-		@include box(68%, 5px);
+		@include box(68%, 3px);
 		background: #cbe5fd;
 		border-radius: 50px;
 		box-shadow: none;
@@ -20,8 +21,9 @@
 		.rangeslider__handle {
 			@include box(14px, 14px);
 			background-image: none;
-			background-color: #419CF8;
-			border: 1px solid #419CF8;
+			background-color: $builder-accent-color;
+			border: 1px solid $builder-accent-color;
+			box-shadow: 0 2px 4px 0 rgba( $builder-accent-color, 0.45 );
 			top: -5px;
 			touch-action: pan-y;
 			-ms-touch-action: pan-y;
@@ -32,11 +34,12 @@
 		}
 
 		.rangeslider__fill {
-			background: none;
+			background: rgba( $builder-accent-color, .7 );
 			box-shadow: none;
 
 		}
 	}
+
 	.karma-range-slider-number {
 		display: inline-flex;
 		margin-left: 13px;
@@ -81,15 +84,16 @@
 		margin: 0;
 		-webkit-appearance: none;
 	}
+
+	input[type=number] {
+		-moz-appearance:textfield;
+	}
 }
 
-.karma-all-controller-title {
-	@include padding(initial, initial, 4px, 7px);
-	color: rgba(57, 73, 89, 0.8);
-	font-family: HelveticaNeue;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 17px;
+.karma-slider-controller-title {
+	@extend .karma-builder-title-3;
+	padding-top: $top-space-red;
+	color: $builder-gray-color;
 	text-align: left;
 	width: 100%;
 }

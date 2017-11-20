@@ -1,11 +1,28 @@
 //Variables
+/** Builder Colors **/
 $white-color: #fff;
-$black-color: #000;
+$builder-element-panel-background-color: #fff;
 $extra-icon-color: #fff;
+$black-color: #000;
 $extra-icon-secondary-color: #394959;
+$builder-accent-color: #419cf8;
+$builder-gray-color: #394959;
+$builder-upgrade-color: #f58f23;
+$builder-notice-color: #194be6;
+$setting-panel-separator-color: rgba($builder-gray-color, 0.2);
+
+
+/* Builder Major Levels */
 $level1: 100;
 $level2: 90;
 $level3: 80;
 $level4: 70;
-$setting-panel-separator-color: rgba(57, 73, 89, 0.2);
+
+/* spaces */
+$top-space-red: 22px;
+$top-space-blue: 20px;
+$top-space-orange: 18px;
+$top-space-orange-light: 11px;
+
+
 

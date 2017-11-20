@@ -1,15 +1,14 @@
 .karma-text-input-controller {
 	@include flexbox( $justify-content: center );
-	padding-bottom: 25px;
+	padding-bottom: $top-space-orange;
 
 	input.karma-text-input-field {
 		@include box( 245px, 36px );
-		@include padding( 11px, 14px, 11px, 14px );
+		padding: 11px 14px;
 		background: transparent;
-		border: 1px solid rgba( 57, 73, 89, 0.2 );
-		border-radius: 20px;
-		color: rgba( 57, 73, 89, 0.6 );
-		font-family: HelveticaNeue;
+		border: 1px solid rgba( $builder-gray-color, 0.2 );
+		border-radius: 4px;
+		color: rgba( $builder-gray-color, 0.6 );
 		font-size: 12px;
 	}
 

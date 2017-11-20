@@ -1,33 +1,32 @@
 .karma-radio-image-controller {
-	@include padding( 0, 10px, 0, 10px );
-	padding-bottom: 15px;
+	padding: 0 20px;
 	position: relative;
 
 	.radio-image-controller-label {
-		@include padding( 0, 10px, 0, 10px );
-		font-size: 15px;
-		line-height: 17px;
-		margin-bottom: 21px;
+		@extend .karma-builder-title-3;
+		color: $builder-gray-color;
 		opacity: .8;
+		padding: $top-space-red 0 $top-space-orange;
 	}
-
+	
 	.radio-image-controller-template {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
 		@include box( 100% );
 		flex-wrap: wrap;
-
+		
 		.radio-image-controller-img {
-			@include padding( 5px, 10px, 5px, 10px );
 			cursor: pointer;
+			padding: 0 5px $top-space-red;
 			text-align: center;
-			cursor: pointer;
 
 			svg {
-				opacity: .5;
-				transition: opacity .2s;
+				box-shadow: none;
+				display: block;
+				opacity: .8;
+				transition: outline.2s, opacity .2s;
 
 				&:hover {
-					opacity: .8;
+					outline: 1px solid $builder-accent-color;
 				}
 			}
 		}
@@ -38,11 +37,11 @@
 		}
 
 		.radio-image-controller-title {
+			@extend .karma-builder-title-4;
+			color: rgba( $builder-gray-color, .7);
 			display: block;
-			font-size: 12px;
-			line-height: 14px;
+			padding-top: $top-space-orange;
 			text-align: center;
-			margin-top: 7px;
 		}
 	}
 }

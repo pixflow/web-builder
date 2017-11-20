@@ -18,3 +18,9 @@ a {
 	}
 }
 
+button,
+input[ type = "text" ] {
+	@extend .HelveticaNeue-font;
+	font-weight: 400;
+}
+

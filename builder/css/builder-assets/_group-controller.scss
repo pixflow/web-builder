@@ -10,10 +10,10 @@
 	button.karma-setting-panel-group-button {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-between);
 		@include box(100%);
-		@include padding(12px, 20px, 12px, 20px);
+		padding: 20px;
 		background-color: #f7f8f9;
 		border: none;
-		color: #394959;
+		color: $builder-gray-color;
 		cursor: pointer;
 		font-size: 15px;
 		outline: none;
@@ -29,8 +29,8 @@
 		}
 
 		.karma-group-button-shape {
-			border-left: 2px solid #394959;
-			border-bottom: 2px solid #394959;
+			border-left: 2px solid $builder-gray-color;
+			border-bottom: 2px solid $builder-gray-color;
 			height: 9px;
 			position: relative;
 			top: -3px;
@@ -54,9 +54,8 @@
 	}
 
 	button.karma-setting-panel-group-button p {
-		color: #394959;
-		font-size: 15px;
-		font-weight: normal;
+		@extend .karma-builder-title-in-box;
+		color: $builder-gray-color;
 		text-transform: capitalize;
 	}
 }

@@ -15,14 +15,43 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font {
-  font-family: HelveticaNeue; }
+.HelveticaNeue-font, button,
+input[type="text"] {
+  font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
   0% {
     transform: scale(0); }
   100% {
     transform: scale(1); } }
+/* Classes to extend for fonts */
+.karma-builder-title-1 {
+  font-size: 20px;
+  margin-top: 28px;
+  line-height: 32px; }
+
+.karma-builder-title-2 {
+  font-size: 16px;
+  margin-top: 24px;
+  line-height: 28px; }
+
+.karma-builder-title-3 {
+  font-size: 14px;
+  line-height: 16px; }
+
+.karma-builder-title-4 {
+  font-size: 12px;
+  line-height: 14px; }
+
+.karma-builder-title-5 {
+  font-size: 10px;
+  margin-top: 18px;
+  line-height: 20px; }
+
+.karma-builder-title-in-box {
+  font-size: 14px;
+  line-height: 17px; }
+
 /**
  * Media queries
  * @group helpers
@@ -91,6 +120,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output with display flex and  center element
  */
+/** Builder Colors **/
+/* Builder Major Levels */
+/* spaces */
 @font-face {
   font-family: HelveticaNeu_Bold;
   src: url("../font/Helvetica_Neu_Bold.ttf");
@@ -154,6 +186,10 @@ a:active {
 a:focus {
   outline: none; }
 
+button,
+input[type="text"] {
+  font-weight: 400; }
+
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;
@@ -175,10 +211,6 @@ body {
     left: 0;
     color: rgba(57, 73, 89, 0.2); }
   body .karma-container-separator {
-    margin-top: 25px;
-    margin-right: 20px;
-    margin-bottom: 0;
-    margin-left: 0;
     width: calc( 100% - 40px );
     height: 1px;
     top: auto;
@@ -186,11 +218,10 @@ body {
     bottom: 0;
     left: 20px;
     color: rgba(57, 73, 89, 0.2);
+    margin: 0;
     position: absolute; }
   body ul, body ol {
     margin: 0 0 1.75em 0; }
-  body .controller-separator {
-    margin-bottom: 25px; }
 
 @-ms-viewport {
   width: device-width; }

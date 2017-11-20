@@ -4,7 +4,7 @@
 	@extend .center-both-flex;
 	@include box( 100% , 46px );
 	@include flexbox( $justify-content:space-between );
-	background-color: #419CF8;
+	background-color: $builder-accent-color;
 
 	.karma-builder-left {
 		@include box( auto, 100% );
@@ -102,7 +102,7 @@
 
 					&:hover{
 						background-color: rgba( 255,255,255,0.7 );
-						color: #419cf8;
+						color: $builder-accent-color;
 						transition-duration: .3s;
 					}
 				}
@@ -115,7 +115,7 @@
 					@include box( 17.05px, 17.05px );
 					@include element_direction( $top:1px, $right:-11px );
 					background-color: #FF5D5C;
-					border: 2px solid #419CF8;
+					border: 2px solid $builder-accent-color;
 					border-radius: 100%;
 					box-sizing: border-box;
 					color: #FFFFFF;

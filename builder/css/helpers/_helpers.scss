@@ -20,11 +20,41 @@
 }
 
 .HelveticaNeue-font {
-	font-family: HelveticaNeue;
+	font-family: "HelveticaNeue";
 }
-
 
 @keyframes scaleUP {
   0%{ transform : scale( 0 ) }
   100%{ transform : scale( 1 ) }
+}
+/* Classes to extend for fonts */
+.karma-builder-title-1 {
+	font-size: 20px;
+	margin-top: 28px;
+	line-height: 32px;
+}
+
+.karma-builder-title-2 {
+	font-size: 16px;
+	margin-top: 24px;
+	line-height: 28px;
+}
+
+.karma-builder-title-3 {
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.karma-builder-title-4 {
+	font-size: 12px;
+	line-height: 14px;
+}
+.karma-builder-title-5 {
+	font-size: 10px;
+	margin-top: 18px;
+	line-height: 20px;
+}
+.karma-builder-title-in-box{
+	font-size: 14px;
+	line-height: 17px;
 }

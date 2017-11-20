@@ -127,7 +127,7 @@ label{
 		@include box( 8px, 8px );
 		@include center('both');
 		background-color: $white-color;
-		border: 1px solid #419CF8;
+		border: 1px solid $builder-accent-color;
 		border-radius: 100%;
 		box-sizing: border-box;
 	    z-index:$level1;
@@ -230,7 +230,7 @@ label{
 	}
 	.spacing-bottom-dot {
 		background-color: $white-color;
-		border: 1px solid #419CF8;
+		border: 1px solid $builder-accent-color;
 		border-radius: 100%;
 		box-sizing: border-box;
 		height: 8px;
@@ -314,7 +314,7 @@ label{
 				svg {
 					* {
 						transition-duration: 0.1s;
-						fill: #419CF8;
+						fill: $builder-accent-color;
 					}
 				}
 			}
@@ -322,14 +322,14 @@ label{
 
 		.karma-builder-gizmo-text {
 			@include padding(0, 15px, 0, 15px);
-			color: #394959;
+			color: $builder-gray-color;
 			font-family: HelveticaNeue;
 			font-size: 13px;
 			transition: all 0.3s ease;
 		}
 
 		.karma-builder-gizmo-text:hover {
-			color: #419CF8;
+			color: $builder-accent-color;
 			transition: all 0.3s ease;
 		}
 
@@ -355,7 +355,7 @@ label{
 			}
 			.karma-builder-gizmo-text {
 				@include padding(0, 15px, 0, 15px);
-				color: #394959;
+				color: $builder-gray-color;
 				font-family: HelveticaNeue;
 				font-size: 13px;
 			}

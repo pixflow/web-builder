@@ -4,7 +4,7 @@
 	<div class='karma-range-slider-container'>
 <# } #>
 	<# if( data.label != "" ) { #>
-		<div class="karma-all-controller-title">{{{data.label}}}</div>
+		<div class="karma-slider-controller-title">{{{data.label}}}</div>
 	<# } #>
 
 		<div class="karma-range-slider-content">

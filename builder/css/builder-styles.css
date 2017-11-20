@@ -120,7 +120,7 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
   align-items: center;
   display: flex;
   justify-content: center; }
@@ -133,14 +133,43 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
-  font-family: HelveticaNeue; }
+.HelveticaNeue-font, button,
+input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
+  font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
   0% {
     transform: scale(0); }
   100% {
     transform: scale(1); } }
+/* Classes to extend for fonts */
+.karma-builder-title-1 {
+  font-size: 20px;
+  margin-top: 28px;
+  line-height: 32px; }
+
+.karma-builder-title-2 {
+  font-size: 16px;
+  margin-top: 24px;
+  line-height: 28px; }
+
+.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, .karma-slider-controller-title {
+  font-size: 14px;
+  line-height: 16px; }
+
+.karma-builder-title-4, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title {
+  font-size: 12px;
+  line-height: 14px; }
+
+.karma-builder-title-5 {
+  font-size: 10px;
+  margin-top: 18px;
+  line-height: 20px; }
+
+.karma-builder-title-in-box, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-title-controller div.karma-title-field, .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
+  font-size: 14px;
+  line-height: 17px; }
+
 /**
  * Media queries
  * @group helpers
@@ -209,6 +238,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output with display flex and  center element
  */
+/** Builder Colors **/
+/* Builder Major Levels */
+/* spaces */
 @font-face {
   font-family: HelveticaNeu_Bold;
   src: url("../font/Helvetica_Neu_Bold.ttf");
@@ -272,6 +304,10 @@ a:active {
 a:focus {
   outline: none; }
 
+button,
+input[type="text"] {
+  font-weight: 400; }
+
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;
@@ -293,10 +329,6 @@ body {
     left: 0;
     color: rgba(57, 73, 89, 0.2); }
   body .karma-container-separator {
-    margin-top: 25px;
-    margin-right: 20px;
-    margin-bottom: 0;
-    margin-left: 0;
     width: calc( 100% - 40px );
     height: 1px;
     top: auto;
@@ -304,11 +336,10 @@ body {
     bottom: 0;
     left: 20px;
     color: rgba(57, 73, 89, 0.2);
+    margin: 0;
     position: absolute; }
   body ul, body ol {
     margin: 0 0 1.75em 0; }
-  body .controller-separator {
-    margin-bottom: 25px; }
 
 @-ms-viewport {
   width: device-width; }
@@ -1586,7 +1617,7 @@ html {
   text-align: inherit;
   align-items: inherit;
   justify-content: space-between;
-  background-color: #419CF8;
+  background-color: #419cf8;
   backface-visibility: hidden; }
   .karma-builder-toolbar .karma-builder-left {
     width: auto;
@@ -1704,7 +1735,7 @@ html {
           bottom: auto;
           left: auto;
           background-color: #FF5D5C;
-          border: 2px solid #419CF8;
+          border: 2px solid #419cf8;
           border-radius: 100%;
           box-sizing: border-box;
           color: #FFFFFF;
@@ -1734,14 +1765,13 @@ div.media-modal {
   position: fixed;
   right: 358px;
   top: 408px;
-  z-index: 100;
-  /*** Style of setting panel extra ***/ }
+  z-index: 100; }
   #karma-element-setting-panel-container .karma-hide-controller {
     display: none; }
   #karma-element-setting-panel-container .karma-element-setting-panel {
     width: 285px;
     min-height: 220px;
-    border-radius: 7px;
+    border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
     margin: 17px;
@@ -1749,14 +1779,14 @@ div.media-modal {
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header {
       width: 285px;
       height: 46px;
-      background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
-      border-radius: 7px 7px 0 0;
+      background: linear-gradient(270deg, #8876FC 0%, #419cf8 100%);
+      border-radius: 4px 4px 0 0;
       cursor: all-scroll;
       position: relative; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title {
         color: #fff;
-        font-size: 17px;
-        padding: 12.77px 0 0 20.43px;
+        font-family: "HelveticaNeue_Medium";
+        padding: 16px 0 15px 20px;
         text-align: left;
         text-transform: capitalize; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg {
@@ -1791,72 +1821,16 @@ div.media-modal {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      padding-top: 16px;
       overflow: hidden; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
         transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
-          border-bottom-left-radius: 7px;
-          border-bottom-right-radius: 7px; }
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px; }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form input.hidden-input {
           display: none; }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form #elementRow {
           position: relative; }
-  #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra {
-    display: flex; }
-    #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      list-style: none;
-      margin-bottom: 30px;
-      position: relative;
-      top: 125px;
-      width: 135px; }
-      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add {
-        background-color: #8578FC; }
-        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add .svg-extra svg * {
-          stroke: #fff; }
-        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add:hover .svg-extra svg * {
-          stroke: #fff; }
-        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .svg-extra-add:hover span {
-          color: #fff;
-          transition-duration: 0.2s; }
-      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li {
-        border-radius: 19px;
-        background-color: #fff;
-        box-shadow: 0 3px 5px 2px rgba(57, 73, 89, 0.11);
-        cursor: pointer;
-        display: inline-flex;
-        height: 33px;
-        max-width: 33px;
-        margin-bottom: 6px;
-        padding: 5px;
-        position: relative;
-        transition: max-width .3s, background .3s; }
-        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover {
-          max-width: 150px; }
-          #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li:hover span {
-            color: #394959;
-            left: 33px;
-            opacity: 1;
-            transition-duration: 0.2s; }
-        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li span {
-          font-size: 12px;
-          font-family: HelveticaNeue;
-          left: 33px;
-          letter-spacing: 0.8px;
-          opacity: 0;
-          padding: 2px 13px 0 0;
-          white-space: nowrap; }
-        #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul li .svg-extra {
-          padding-right: 8px; }
-      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .delete-karma-element {
-        width: 88px; }
-      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .clone-karma-element {
-        width: 105px; }
-      #karma-element-setting-panel-container .karma-shortcode-setting-panel-extra ul .info-karma-element {
-        width: 80px; }
 
 .tooltip-div {
   position: fixed;
@@ -1987,7 +1961,7 @@ label {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color: #fff;
-    border: 1px solid #419CF8;
+    border: 1px solid #419cf8;
     border-radius: 100%;
     box-sizing: border-box;
     z-index: 100; }
@@ -2093,7 +2067,7 @@ label {
     width: 18px; }
   .row-bottom-spacing-dot-container .spacing-bottom-dot {
     background-color: #fff;
-    border: 1px solid #419CF8;
+    border: 1px solid #419cf8;
     border-radius: 100%;
     box-sizing: border-box;
     height: 8px;
@@ -2168,7 +2142,7 @@ label {
       display: flex; }
     .karma-active-section .row-gizmo-group .karma-builder-gizmo-icon:hover svg * {
       transition-duration: 0.1s;
-      fill: #419CF8; }
+      fill: #419cf8; }
   .karma-active-section .row-gizmo-group .karma-builder-gizmo-text {
     padding-top: 0;
     padding-right: 15px;
@@ -2179,7 +2153,7 @@ label {
     font-size: 13px;
     transition: all 0.3s ease; }
   .karma-active-section .row-gizmo-group .karma-builder-gizmo-text:hover {
-    color: #419CF8;
+    color: #419cf8;
     transition: all 0.3s ease; }
   .karma-active-section .row-gizmo-group .row-gizmo-group {
     width: auto;
@@ -2259,19 +2233,15 @@ label {
   text-align: inherit;
   align-items: inherit;
   justify-content: center;
-  padding-bottom: 25px; }
+  padding-bottom: 18px; }
   .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
-    padding-top: 11px;
-    padding-right: 14px;
-    padding-bottom: 11px;
-    padding-left: 14px;
+    padding: 11px 14px;
     background: transparent;
     border: 1px solid rgba(57, 73, 89, 0.2);
-    border-radius: 20px;
+    border-radius: 4px;
     color: rgba(57, 73, 89, 0.6);
-    font-family: HelveticaNeue;
     font-size: 12px; }
   .karma-text-input-controller input::placeholder {
     color: rgba(57, 73, 89, 0.6);
@@ -2279,46 +2249,29 @@ label {
     font-size: 12px; }
 
 .karma-title-with-background-controller {
-  padding-top: 12px;
-  padding-right: 15px;
-  padding-bottom: 10px;
-  padding-left: 20px;
   width: 100%;
   height: 100%;
-  background-color: rgba(65, 156, 248, 0.12);
-  margin-bottom: 25px; }
+  background-color: rgba(65, 156, 248, 0.1);
+  padding: 20px; }
   .karma-title-with-background-controller div.karma-title-with-background-field {
-    color: #419CF8;
-    font-size: 15px; }
+    color: #419cf8;
+    font-family: "HelveticaNeue_Medium"; }
 
 .karma-title-controller {
-  padding-top: 0;
-  padding-right: 20px;
-  padding-bottom: 25px;
-  padding-left: 20px;
   width: 100%;
   height: 100%;
+  padding: 22px 20px 18px;
   position: relative; }
   .karma-title-controller div.karma-title-field {
-    color: #394959;
-    font-size: 15px; }
+    color: #394959; }
 
 .karma-radio-image-controller {
-  padding-top: 0;
-  padding-right: 10px;
-  padding-bottom: 0;
-  padding-left: 10px;
-  padding-bottom: 15px;
+  padding: 0 20px;
   position: relative; }
   .karma-radio-image-controller .radio-image-controller-label {
-    padding-top: 0;
-    padding-right: 10px;
-    padding-bottom: 0;
-    padding-left: 10px;
-    font-size: 15px;
-    line-height: 17px;
-    margin-bottom: 21px;
-    opacity: .8; }
+    color: #394959;
+    opacity: .8;
+    padding: 22px 0 18px; }
   .karma-radio-image-controller .radio-image-controller-template {
     display: flex;
     text-align: center;
@@ -2328,26 +2281,23 @@ label {
     height: 100%;
     flex-wrap: wrap; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img {
-      padding-top: 5px;
-      padding-right: 10px;
-      padding-bottom: 5px;
-      padding-left: 10px;
       cursor: pointer;
-      text-align: center;
-      cursor: pointer; }
+      padding: 0 5px 22px;
+      text-align: center; }
       .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
-        opacity: .5;
-        transition: opacity .2s; }
+        box-shadow: none;
+        display: block;
+        opacity: .8;
+        transition: outline 0.2s, opacity 0.2s; }
         .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {
-          opacity: .8; }
+          outline: 1px solid #419cf8; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-selected-item svg {
       opacity: 1; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title {
+      color: rgba(57, 73, 89, 0.7);
       display: block;
-      font-size: 12px;
-      line-height: 14px;
-      text-align: center;
-      margin-top: 7px; }
+      padding-top: 18px;
+      text-align: center; }
 
 .karma-setting-panel-group-container {
   width: 100%;
@@ -2363,10 +2313,7 @@ label {
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    padding-top: 12px;
-    padding-right: 20px;
-    padding-bottom: 12px;
-    padding-left: 20px;
+    padding: 20px;
     background-color: #f7f8f9;
     border: none;
     color: #394959;
@@ -2399,8 +2346,6 @@ label {
     transition-duration: .3s; }
   .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
     color: #394959;
-    font-size: 15px;
-    font-weight: normal;
     text-transform: capitalize; }
 
 .karma-range-slider-container {
@@ -2408,11 +2353,8 @@ label {
   text-align: center;
   align-items: center;
   justify-content: center;
-  padding-top: 0;
-  padding-right: 15px;
-  padding-bottom: 25px;
-  padding-left: 15px;
   flex-direction: column;
+  padding: 0 20px;
   position: relative; }
   .karma-range-slider-container .karma-range-slider-content {
     display: flex;
@@ -2421,10 +2363,10 @@ label {
     justify-content: inherit;
     width: 100%;
     height: 100%;
-    padding-left: 5px; }
+    padding: 11px 0 18px; }
   .karma-range-slider-container .rangeslider--horizontal {
     width: 68%;
-    height: 5px;
+    height: 3px;
     background: #cbe5fd;
     border-radius: 50px;
     box-shadow: none; }
@@ -2432,15 +2374,16 @@ label {
       width: 14px;
       height: 14px;
       background-image: none;
-      background-color: #419CF8;
-      border: 1px solid #419CF8;
+      background-color: #419cf8;
+      border: 1px solid #419cf8;
+      box-shadow: 0 2px 4px 0 rgba(65, 156, 248, 0.45);
       top: -5px;
       touch-action: pan-y;
       -ms-touch-action: pan-y; }
       .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
         background-image: none; }
     .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill {
-      background: none;
+      background: rgba(65, 156, 248, 0.7);
       box-shadow: none; }
   .karma-range-slider-container .karma-range-slider-number {
     display: inline-flex;
@@ -2483,22 +2426,17 @@ label {
   .karma-range-slider-container input::-webkit-outer-spin-button {
     margin: 0;
     -webkit-appearance: none; }
+  .karma-range-slider-container input[type=number] {
+    -moz-appearance: textfield; }
 
-.karma-all-controller-title {
-  padding-top: initial;
-  padding-right: initial;
-  padding-bottom: 4px;
-  padding-left: 7px;
-  color: rgba(57, 73, 89, 0.8);
-  font-family: HelveticaNeue;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+.karma-slider-controller-title {
+  padding-top: 22px;
+  color: #394959;
   text-align: left;
   width: 100%; }
 
 .karma-active-section {
-  box-shadow: 0 0 0 1px #419CF8; }
+  box-shadow: 0 0 0 1px #419cf8; }
   .karma-active-section .row-gizmo-group {
     display: flex; }
   .karma-active-section div.karma-spacing-dot-container {
@@ -2509,14 +2447,14 @@ label {
 
 .grid-controller-template {
   align-items: center;
-  background-color: rgba(65, 156, 248, 0.12);
+  background-color: rgba(65, 156, 248, 0.1);
   display: flex;
-  flex-direction: column;
-  padding: 3%;
-  width: 285px; }
+  flex-direction: column; }
+  .grid-controller-template .karma-add-column-view {
+    padding-top: 22px; }
   .grid-controller-template .karma-add-column-view-border {
     background-color: rgba(255, 255, 255, 0.54);
-    border: 1px solid #419CF8;
+    border: 1px solid #419cf8;
     border-radius: 4px;
     flex-wrap: nowrap;
     padding: 0px 3px;
@@ -2529,7 +2467,7 @@ label {
       margin: 11px 2px 10px 2px; }
     .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
       background-color: transparent;
-      border: 1px dotted #419CF8;
+      border: 1px dotted #419cf8;
       border-radius: 3px;
       cursor: pointer;
       height: 37.64px;
@@ -2537,21 +2475,22 @@ label {
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:before, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
         width: 8.42px;
         height: 1.4px;
-        background-color: #419CF8;
+        background-color: #419cf8;
         content: '';
         position: absolute; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
         width: 1.4px;
         height: 8.42px; }
   .grid-controller-template .karma-add-column-button button {
+    width: 136px;
+    height: 36px;
     background-color: rgba(65, 156, 248, 0.18);
     border-radius: 19px;
-    color: #419CF8;
-    font-family: "HelveticaNeue";
+    color: #419cf8;
+    font-family: "HelveticaNeue_Medium";
     font-size: 14px;
-    height: 36px;
-    line-height: 0;
-    margin: 20px; }
+    margin: 18px;
+    padding: 0; }
 
 .karma-check-box-controller {
   padding-top: 0;
@@ -2590,7 +2529,7 @@ label {
         .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle .check-box-circle-fill {
           width: 10px;
           height: 10px;
-          background-color: #419CF8;
+          background-color: #419cf8;
           border-radius: 19px;
           transform: scale(0.01, 0.01);
           transition-duration: .3s; }
@@ -2749,7 +2688,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       margin-right: 6px;
       width: 26px; }
     .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-link {
-      color: #419CF8;
+      color: #419cf8;
       font-size: 15px;
       line-height: 17px; }
 
