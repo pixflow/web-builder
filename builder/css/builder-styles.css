@@ -1736,6 +1736,8 @@ div.media-modal {
   top: 408px;
   z-index: 100;
   /*** Style of setting panel extra ***/ }
+  #karma-element-setting-panel-container .karma-hide-controller {
+    display: none; }
   #karma-element-setting-panel-container .karma-element-setting-panel {
     width: 285px;
     min-height: 220px;

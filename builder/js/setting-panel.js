@@ -98,6 +98,7 @@
 
 			document.body.appendChild( html );
 			this.bindDragEvents();
+			this.applyDependency();
 			$( document ).trigger('karma_finish_form_builder', [ this ] );
 
 		},
@@ -171,6 +172,7 @@
 
 		},
 
+
 		/**
 		 *  form builder content action to create  html
 		 *
@@ -183,18 +185,22 @@
 		formBuilderContentAction : function ( shortcodeParams ) {
 
 			var groupHtml = '',
-			groupHtml_group = [];
+				controllerSource,
+				groupHtml_group = [];
 			for( var counter in shortcodeParams.params ){
 				if ( ! shortcodeParams.params[counter].group && "switch-panel" != shortcodeParams.params[counter].type ) {
-					groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+					controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+					groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] ) ;
 				}else if( "switch-panel" === shortcodeParams.params[counter].type ) {
 					if( "undefined" !== typeof shortcodeParams.params[counter].form ){
 						shortcodeParams.params[counter]['view'] = this;
 						shortcodeParams.params[counter]['formBuilder'] = true;
-						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					}else{
 						shortcodeParams.params[counter]['formBuilder'] = false;
-						groupHtml += this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					}
 				} else {
 					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group] ){
@@ -203,10 +209,11 @@
 							title: shortcodeParams.params[counter].group
 						};
 					}
-					var html = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					var html = this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					groupHtml_group[ shortcodeParams.params[counter].group ]['items'].push( html );
 				}
-				var formBuilderGroupHtml = this.formBuilderGroupHtml(groupHtml_group);
+				var formBuilderGroupHtml = this.formBuilderGroupHtml( groupHtml_group );
 			}
 			var formBuilderContent = groupHtml + formBuilderGroupHtml;
 			return  formBuilderContent;
@@ -222,22 +229,21 @@
 		 *
 		 * @returns	{object} form builder group html
 		 */
-		formBuilderGroupHtml : function (groupHtml_group) {
+		formBuilderGroupHtml : function ( htmlGroup ) {
 
-			var setting_panel_group= '';
+			var setting_panel_group = '' ,
+				controllerSource ;
 
-			for( var counter in groupHtml_group ) {
-
-				setting_panel_group += this.getWpTemplate( 'karma-setting-panel-groups-extend', groupHtml_group[counter] );
-
-
+			for( var counter in htmlGroup ) {
+				controllerSource = this.getWpTemplate( 'karma-setting-panel-groups-extend', htmlGroup[counter] );
+				setting_panel_group += this.setGeneralContainer( controllerSource, htmlGroup[ counter ] );
 			}
 
 			return setting_panel_group;
 		},
 
 		/**
-		 * remove setting panel
+		 * @summary remove setting panel
 		 *
 		 * @since 1.0.0
 		 *
@@ -259,7 +265,89 @@
 		},
 
 		/**
-		 * update model attribute from setting panel
+		 * @summary form builder content action to create  html
+		 *
+		 * @param	{String}    source             get model attribute
+		 * @param   {Object}    dependecyParams    Dependecy params
+		 *
+		 * @since	1.0.0
+		 *
+		 * @returns	{string} Return controller with general container
+		 */
+		setGeneralContainer : function ( source, dependencyParams ) {
+
+			var classes = 'karma-controller-' + dependencyParams.name,
+				newSource = '<div class="karma-controller ' + classes + '"';
+			if( "undefined" != typeof dependencyParams.dependency ){
+				newSource += 'data-dependency=\'' + JSON.stringify( dependencyParams.dependency ) + '\'';
+			}
+			newSource  += ' >' + source + '</div>';
+			return newSource ;
+
+		},
+
+		/**
+		 * @summary Apply dependencies to the element setting panel
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		applyDependency : function(){
+
+			var dependentElements = document.querySelectorAll('.karma-controller[data-dependency]') ,
+				that = this,
+				dependecyInfo ;
+
+			_.each( dependentElements, function( dependentElement ){
+				dependecyInfo = JSON.parse( dependentElement.getAttribute( 'data-dependency' ) ) ,
+					dependentElementOBJ = document.querySelector('input[name="' + dependecyInfo.controller + '"]');
+				that.applyDependencyOnLoad( dependentElement, dependecyInfo, dependentElementOBJ );
+				dependentElementOBJ.addEventListener( 'change', function(){
+					that.doDependency(  dependentElement, dependecyInfo, this.value );
+				});
+			});
+
+		},
+
+		/**
+		 * @summary Apply dependencies to the element setting panel when the html created
+		 *
+		 * @param {Object}  dependentElement    Dependent element
+		 * @param {Object}  dependencyInfo      Dependent element info
+		 * @param {Object}  dependentElementOBJ Java script DOM node
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		applyDependencyOnLoad : function ( dependentElement, dependencyInfo, dependentElementOBJ ) {
+
+			var dependentValue = dependentElementOBJ.value ;
+			this.doDependency( dependentElement, dependencyInfo, dependentValue );
+
+		},
+
+		/**
+		 * @summary Apply dependencies to the element setting panel when the html created
+		 *
+		 * @param {Object}  dependentElement    Dependent element
+		 * @param {Object}  dependencyInfo      Dependent element info
+		 * @param {String}  dependentValue      Value of input
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		doDependency : function ( dependentElement, dependencyInfo, dependentValue ) {
+
+			if ( dependencyInfo.value == dependentValue ) {
+				dependentElement.classList.remove('karma-hide-controller');
+			} else {
+				dependentElement.classList.add('karma-hide-controller');
+			}
+
+		},
+
+		/**
+		 * @summary update model attribute from setting panel
 		 *
 		 * @since 1.0.0
 		 *

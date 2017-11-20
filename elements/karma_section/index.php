@@ -93,6 +93,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						),
 				)
 			),
+
 			'layout-panel'		=> array(
 				'title'		=> __( 'Column Layout', 'karma' ),
 				'params'	=> array(
@@ -145,26 +146,72 @@ class Karma_Section extends Karma_Shortcode_Base {
 					),
 				)
 			),
-			'background-panel'	=> array(
+
+			//@TODO It should be delete after Dependecy story is done
+			/*'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
 				'height'	=> '432',
 				'params'	=> array(
 					array(
-						'name' => 'unsplash' ,
-						'type' => Karma_Builder_Setting_Panel::UNSPLASH ,
+						"name"	=> "checking",
+						"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
+						"label"	=> __( "checking", 'karma' ),
+						"value" => 'true'
+					),
+					array(
+						"name"			=> "extraclass",
+						"type"			=> Karma_Builder_Setting_Panel::TEXT,
+						"label"			=> __( "Class Name", 'karma' ),
+						"dependency"		=> array(
+								'controller'   => 'checking',
+								'value'        => 'true',
+						),
+					),
+					array(
+						"name"	=> "setbg",
+						"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
+						"label"	=> __( "Wanna use bg", 'karma' ),
+						"value" => 'false'
 					),
 
-						array(
-								"name"			=> "switch",
-								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-								"label"			=> esc_attr__( "Setting panel", 'karma' ),
-								"form"			=> "new-panel",
-								"action"		=> "open",
-								'height'		=> '271'
-
+					array(
+						"name"		=> "space",
+						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+							'value'	=> 200,
+							'min'   => 0,
+							'max'   => 800,
+							'step'  => 1,
+							'unit'  => 'px'
+						) ,
+						"dependency"		=> array(
+							'controller'   => 'setbg',
+							'value'        => 'true',
 						),
+					),
 
-				)
+				),
+			),*/
+
+			'background-panel'	=> array(
+				'name'		=> __( 'image position', 'karma' ),
+				'height'	=> '432',
+				'params'	=> array(
+						array(
+						'name'      => 'unsplash' ,
+						'type'      => Karma_Builder_Setting_Panel::UNSPLASH ,
+						),
+						array(
+							"name"		=> "switch",
+							"type"		=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
+							"label"		=> esc_attr__( "Setting panel", 'karma' ),
+							"form"		=> "new-panel",
+							"action"	=> "open",
+							'height'	=> '271'
+						),
+				),
 			),
 
 			'new-panel'		=> array(

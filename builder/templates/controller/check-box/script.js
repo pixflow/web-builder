@@ -1,22 +1,21 @@
 jQuery( document ).off( 'karma_finish_form_builder.checkbox' ).on( 'karma_finish_form_builder.checkbox',function() {
-	var $ = jQuery,
-		inputCheckBox = $( "#karma-input-checkbox-controller" ),
-	    inputAttr = inputCheckBox.attr( 'value' );
 
-	    if( inputAttr == 'true' ){
+	var $ = jQuery;
+	$( ".karma-check-box-container" ).find('input').each(function () {
 
-			inputCheckBox.prop( 'checked', true );
+		var inputAttr = $( this ).val();
+		if( inputAttr == 'true' ){
+			$( this ).prop( 'checked', true );
 		}
+		$( this ).click( function() {
 
-	inputCheckBox.click( function() {
+			if ( $( this ).is( ':checked' ) ) {
+				$( this ).val( 'true' );
+			}else {
+				$( this ).val( 'false' );
+			}
+		});
 
-		if ( inputCheckBox.is( ':checked' ) ) {
-
-			inputCheckBox.val( 'true' );
-
-		}else {
-
-			inputCheckBox.val( 'false' );
-		}
 	});
+
 });

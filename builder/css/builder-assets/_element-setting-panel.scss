@@ -8,6 +8,10 @@
 	top: 408px;
 	z-index: $level1;
 
+	.karma-hide-controller{
+	  display: none;
+	}
+
 	.karma-element-setting-panel {
 		width: 285px;
 		min-height: 220px;
