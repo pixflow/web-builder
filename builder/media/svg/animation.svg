@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="2" y="2" width="8.56401384" height="8.56401384" rx="2"></rect>
+        <rect id="path-2" x="6" y="2" width="8.56401384" height="8.56401384" rx="2"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="image-gizmo" transform="translate(-153.000000, -10.000000)">
+            <g id="Group-Copy" transform="translate(154.000000, 11.000000)">
+                <g id="Rectangle-Copy-16" transform="translate(6.282007, 6.282007) rotate(-45.000000) translate(-6.282007, -6.282007) ">
+                    <use fill="#848E98" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#FFFFFF" stroke-width="1.2" x="1.4" y="1.4" width="9.76401384" height="9.76401384" rx="2"></rect>
+                </g>
+                <g id="Rectangle-Copy-17" transform="translate(10.282007, 6.282007) rotate(-45.000000) translate(-10.282007, -6.282007) ">
+                    <use fill="#394959" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#FFFFFF" stroke-width="1.1" x="5.45" y="1.45" width="9.66401384" height="9.66401384" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

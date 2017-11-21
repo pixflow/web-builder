@@ -5,7 +5,8 @@
 		events:{
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/elements/create/karma_column'                   				: 'createElementAction',
-			'before/buildGizmo'                                     				: 'gimzoAction'
+			'before/buildGizmo'                                     				: 'gimzoAction' ,
+			'before/getTemplate'													: 'modifyParams'
 		},
 
 		shortcodeParams: {},
@@ -24,17 +25,27 @@
 			variable	: 'data'
 		},
 
-		innerGizmoTemplate : '<div class="{{ data.className }}">'
+		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
 		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ ' <# if( "icon" === param.type ){ #>'
-		+ ' <div>{{{ param.icon }}}</div>'
-		+ '<# } else if( "text" === param.type ) {#>'
-		+ '<div>{{{ param.value }}}</div>'
-		+ '<# } #>'
+		+	'<# print( data.viewOBJ.getUnderscoreTemplate( data.viewOBJ[ param.type + "Template" ] , param.params ) ) #>'
 		+ '</div>'
 		+ '<# }) #>'
 		+ '</div>' ,
+
+		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }}">'
+		+ ' <# _.each( data.params, function( param ){ #>'
+		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
+		+ '<# print( data.viewOBJ.getUnderscoreTemplate( data.viewOBJ[ param.type + "Template" ] , param.params ) ) #>'
+		+ '</div>'
+		+ '<# }) #>'
+		+ '</div>' ,
+
+
+
+		simpleTextTemplate : ' <div> {{ data.value }} </div> ',
+
+		simpleIconTemplate : ' <div> {{{ data.icon }}} </div> ',
 
 		/**
 		 *  Build html for gizmo resizeably for top&& bottom
@@ -224,11 +235,31 @@
 		 * @returns {string}    The HTML output of template
 		 */
 		getUnderscoreTemplate : function ( templateName, params ) {
-
 			var compiled,
 				that = this ;
 			compiled =  _.template( templateName, that.templateSettings );
+			params = this.$el.triggerHandler( 'before/getTemplate', [ params ] );
 			return compiled( params );
+
+		},
+
+		/**
+		 * @summary Add backbone view object to params of template
+		 *
+		 * @param	{object}	e		Event handler
+		 * @param	{object}	params	Data value for template
+		 *
+		 * @since 1.0.0
+		 * @returns {object}    The modify value for template
+		 */
+		modifyParams : function ( e, params ) {
+
+			if( "undefined" == typeof params ){
+				params = { viewOBJ : this };
+			} else {
+				params['viewOBJ'] = this;
+			}
+			return params;
 
 		},
 

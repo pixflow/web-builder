@@ -100,6 +100,97 @@ label{
 
 .karma-builder-element {
 	position: relative;
+
+	&.karma-active-element .karma-gizmo-template{
+		display: flex;
+	}
+	.karma-inner-gizmo-template{
+		@include element_direction($top: 17px, $right: 17px);
+	}
+
+	.karma-outer-gizmo-template{
+		@include element_direction($top: -44px, $right: 0);
+	}
+
+	.karma-gizmo-template {
+		@include box(auto, 35px);
+		@include flexbox(center, center, center);
+		background-color: $white-color;
+		border-radius: 3px;
+		box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+		direction: rtl;
+		font-size: initial;
+		position: absolute;
+		z-index: $level2;
+		display: none;
+
+		div {
+			cursor: pointer;
+			white-space: nowrap;
+		}
+
+		.karma-builder-gizmo-simpleIcon {
+			@include padding(0, 12px, 0, 11px);
+			@include box(auto, 22px);
+			align-items: center;
+			border-left: 1px solid rgba(151, 151, 151, 0.3);
+			display: flex;
+			transition-duration: 0.1s;
+			div {
+				display: flex;
+			}
+			&:hover {
+				svg {
+					* {
+						transition-duration: 0.1s;
+						fill: #419CF8;
+					}
+				}
+			}
+		}
+
+		.karma-builder-gizmo-simpleText {
+			@include padding(0, 15px, 0, 15px);
+			color: #394959;
+			font-family: HelveticaNeue;
+			font-size: 13px;
+			transition: all 0.3s ease;
+		}
+
+		.karma-builder-gizmo-simpleText:hover {
+			color: #419CF8;
+			transition: all 0.3s ease;
+		}
+
+		.row-gizmo-group {
+			@include box(auto, 35px);
+			@include flexbox(center, center, center);
+			@include element_direction($top: 17px, $right: 17px);
+			background-color: $white-color;
+			border-radius: 3px;
+			box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
+			direction: rtl;
+			position: absolute;
+
+			div {
+				cursor: pointer;
+			}
+
+			.karma-builder-gizmo-icon {
+				@include padding(0, 10px, 0, 10px);
+				@include box(auto, 22px);
+				border-left: 1px solid rgba(151, 151, 151, 0.3);
+
+			}
+			.karma-builder-gizmo-text {
+				@include padding(0, 15px, 0, 15px);
+				color: #394959;
+				font-family: HelveticaNeue;
+				font-size: 13px;
+			}
+		}
+
+
 }
 
 .karma-spacing-dot-container {
@@ -284,82 +375,6 @@ label{
 
 	}
 
-	.row-gizmo-group {
-		@include box(auto, 35px);
-		@include flexbox(center, center, center);
-		@include element_direction($top: 17px, $right: 17px);
-		background-color: $white-color;
-		border-radius: 3px;
-		box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
-		direction: rtl;
-		font-size: initial;
-		position: absolute;
-		z-index: $level2;
-
-		div {
-			cursor: pointer;
-		}
-
-		.karma-builder-gizmo-icon {
-			@include padding(0, 12px, 0, 11px);
-			@include box(auto, 22px);
-			align-items: center;
-			border-left: 1px solid rgba(151, 151, 151, 0.3);
-			display: flex;
-			transition-duration: 0.1s;
-			div {
-				display: flex;
-			}
-			&:hover {
-				svg {
-					* {
-						transition-duration: 0.1s;
-						fill: $builder-accent-color;
-					}
-				}
-			}
-		}
-
-		.karma-builder-gizmo-text {
-			@include padding(0, 15px, 0, 15px);
-			color: $builder-gray-color;
-			font-family: HelveticaNeue;
-			font-size: 13px;
-			transition: all 0.3s ease;
-		}
-
-		.karma-builder-gizmo-text:hover {
-			color: $builder-accent-color;
-			transition: all 0.3s ease;
-		}
-
-		.row-gizmo-group {
-			@include box(auto, 35px);
-			@include flexbox(center, center, center);
-			@include element_direction($top: 17px, $right: 17px);
-			background-color: $white-color;
-			border-radius: 3px;
-			box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
-			direction: rtl;
-			position: absolute;
-
-			div {
-				cursor: pointer;
-			}
-
-			.karma-builder-gizmo-icon {
-				@include padding(0, 10px, 0, 10px);
-				@include box(auto, 22px);
-				border-left: 1px solid rgba(151, 151, 151, 0.3);
-
-			}
-			.karma-builder-gizmo-text {
-				@include padding(0, 15px, 0, 15px);
-				color: $builder-gray-color;
-				font-family: HelveticaNeue;
-				font-size: 13px;
-			}
-		}
 	}
 
 	.karma-active-column {

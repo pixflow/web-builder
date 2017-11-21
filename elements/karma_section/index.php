@@ -181,7 +181,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"name"	=> "positin",
 								"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
 								"label"	=> esc_attr__( "positin", 'karma' ),
-								'value'	=> 'center-center',
+								'values'	=> 'center-center',
 								'separator' => "container",
 
 
@@ -228,22 +228,30 @@ class Karma_Section extends Karma_Shortcode_Base {
 				"className"	=> "row-gizmo-group",
 				"params"	=> array(
 					array(
-						'type'		=> 'icon',
-						'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+						'type'		=> 'simpleIcon',
 						'form'		=> 'setting-panel',
 						'className'	=> 'karma-element-setting',
+						'params'	=> array(
+								'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+
+						)
 					),
 					array(
-						'type'		=> 'icon',
-						'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' ),
+						'type'		=> 'simpleIcon',
 						'form'		=> 'layout-panel',
 						'className'	=> 'row-setting-layout',
+						'params'	=> array(
+							'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' ),
+						)
 					),
 					array(
-						'type'		=> 'text',
-						'form'	=> 'background-panel',
+						'type'		=> 'simpleText',
+						'form'		=> 'background-panel',
 						'className'	=> 'row-background-setting',
-						'value'		=> esc_attr( 'Background', 'karma' )
+						'params'	=> array(
+							'value'		=> esc_attr( 'Background', 'karma' ),
+						)
+
 
 					),
 				)

@@ -60,7 +60,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		?>
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?>' >
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
-				<a href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
+				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
 					<img src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['imgalt']; ?>" />
 				</a>
 			</div>
@@ -84,7 +84,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 		$js_template = '<div class="karma-image karma-image-{{ data.element_key }}" >'
 		               . '<div class="karma-image-container {{ data.extraclass }}">'
-		               . '<a href="{{{ data.link }}}" title="{{ data.linktitle }}" >'
+		               . '<a class="karma-image-link" href="{{{ data.link }}}" title="{{ data.linktitle }}" >'
 		               . '<img src="" title="{{ data.linktitle }}" alt="{{ data.imgalt }}" />'
 		               . '</a>'
 		               . '</div>'
@@ -145,7 +145,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel' => array(
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
-				"height" => "357",
+				"height" => "460",
 				"params" => array(
 					array(
 						"name" => "setimage" ,
@@ -173,11 +173,11 @@ class Karma_Image extends Karma_Shortcode_Base {
 						'separator' => "container",
 					),
 					array(
-						"name" => 'position' ,
-						"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
-						"label"	=> esc_attr__( "Position", 'karma' ),
-						'value'	=> 'center-center',
-						'separator' => "container",
+						"name"		=> 'position' ,
+						"type"		=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
+						"label"		=> esc_attr__( "Position", 'karma' ),
+						"values"		=> 'center-center',
+						"separator" => "container",
 
 					),
 					array(
@@ -206,7 +206,54 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function gimzo_controllers() {
 
-		$controllers = array();
+		$controllers = array(
+				array(
+						"type"		=> "outerGizmo",
+						"className"	=> "image-gizmo-group",
+						"params"	=> array(
+								array(
+										'type'		=> 'simpleIcon',
+										'form'		=> 'more-panel',
+										"params"	=> array(
+												'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
+												'className'	=> 'karma-image-more-setting',
+										)
+								),
+								array(
+										'type'		=> 'simpleIcon',
+										'form'		=> 'animation-panel',
+										"params"	=> array(
+												'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+												'className'	=> 'karma-image-animation-layout',
+										)
+								),
+								array(
+										'type'		=> 'simpleIcon',
+										'className'	=> 'karma-image-setting-layout',
+										'form'		=> 'setting-panel',
+										"params"	=> array(
+												'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' ),
+
+
+										)
+								),
+								array(
+										'type'		=> 'simpleText',
+										'form'		=> 'background-panel',
+										'className'	=> 'karma-image-background-setting',
+										'params'	=> array(
+												'value'		=> esc_attr( 'Change Image', 'karma' ),
+										)
+
+
+								),
+						)
+				),
+				array(
+						"type"		=> "bothSpacingGizmo",
+						"className"	=> "section-both-spacing",
+				),
+		);
 
 		parent::$elements_gizmo[ self::$element_name ] = $controllers;
 		return parent::$elements_gizmo;

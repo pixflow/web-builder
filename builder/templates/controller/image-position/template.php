@@ -34,7 +34,7 @@
 			<div class="karma-image-position-box karma-image-position-bottom-right-dot" data-value="bottom-right">
 				<div class="karma-image-position-dot"></div>
 			</div>
-			<input	type="text" name="{{{ data.name }}}" class="hidden-input image-position-input" value="{{{data.value}}}">
+			<input	type="text" name="{{{ data.name }}}" class="hidden-input image-position-input" value="{{{ data.values }}}">
 		</div>
 
 	<# if( data.separator != "" && data.separator == "full" ) { #>

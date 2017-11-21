@@ -87,9 +87,12 @@
 		 openSettingPanel: function( form ){
 
 			var html = document.createElement( 'div' ),
-					formHtml = this.formBuilder( form ),
-					elementAttributes = this.model.attributes,
-					elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
+				formHtml = this.formBuilder( form );
+			if( null == formHtml ){
+				return;
+			}
+			var elementAttributes = this.model.attributes,
+				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
 			html.innerHTML = this.getWpTemplate( 'karma-element-setting-panel' , {
 				headerTitle: formHtml.title,
 				content: formHtml.content,
@@ -142,9 +145,13 @@
 		formBuilder : function( form ) {
 
 			var shortcodeModel = this.model.attributes ,
-				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
-				settingPanelHeight = shortcodeParams.height,
-				popup = document.createElement('div'),
+				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form );
+
+			if( null == shortcodeParams ){
+				return;
+			}
+			var popup = document.createElement('div'),
+				settingPanelHeight = shortcodeParams.height;
 				karmaformhtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
 				formBuilderContents = this.formBuilderContentHtml( form );
 
