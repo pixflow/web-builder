@@ -1609,6 +1609,9 @@ html {
 .karma-builder-element[data-name="karma_section"] {
   position: relative; }
 
+.karma-image .karma-image-without-action {
+  cursor: none; }
+
 /* _-_-_- layout/HEADER -_-_-_ */
 .karma-builder-toolbar {
   width: 100%;

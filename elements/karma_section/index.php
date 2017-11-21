@@ -255,7 +255,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		);
 
 
-		parent::$elements_map[ 'karma_section' ] = $map;
+		parent::$elements_map[ self::$element_name ] = $map;
 		return parent::$elements_map;
 
 	}
@@ -302,7 +302,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			),
 		);
 
-		parent::$elements_gizmo[ 'karma_section' ] = $controllers;
+		parent::$elements_gizmo[ self::$element_name ] = $controllers;
 		return parent::$elements_gizmo;
 
 	}

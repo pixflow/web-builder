@@ -45,18 +45,23 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 		$attributes = shortcode_atts(
 			array(
-				'imgurl'		=> 'container',
-				'action'        => 'none'
+				'element_key'   => 'kb' ,
+				'imgurl'		=> '',
+				'action'        => 'none' ,
+				'linkurl'       => get_site_url(),
+				'linktitle'     => '' ,
+				'imgalt'        => '' ,
 			)
 			, $attributes
 		);
 
+		$image_extra = $this->get_image_url( $attributes );
 		ob_start();
 		?>
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?>' >
-			<div class="karma-image-container">
-				<a href="" title="" >
-					<img src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="" alt="" />
+			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
+				<a href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
+					<img src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['imgalt']; ?>" />
 				</a>
 			</div>
 		</div>
@@ -64,26 +69,6 @@ class Karma_Image extends Karma_Shortcode_Base {
 		return ob_get_clean();
 
 	}
-
-	/**
-	 * Retrieve image element link URL.
-	 *
-	 * @since 1.0.0
-	 * @access private
-	 *
-	 * @param array $attributes    Attribute of element
-	 *
-	 * @return void
-	 */
-	private function get_image_url( $attributes ){
-
-		switch ( $attributes['action'] ){
-			default:
-				break;
-		}
-
-	}
-
 
 	/**
 	 * Render image element template.
@@ -97,9 +82,53 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function js_render() {
 
-		return "";
+		$js_template = '<div class="karma-image karma-image-{{ data.element_key }}" >'
+		               . '<div class="karma-image-container {{ data.extraclass }}">'
+		               . '<a href="{{{ data.link }}}" title="{{ data.linktitle }}" >'
+		               . '<img src="" title="{{ data.linktitle }}" alt="{{ data.imgalt }}" />'
+		               . '</a>'
+		               . '</div>'
+		               . '</div>';
+
+		return $js_template;
 
 	}
+
+	/**
+	 * Retrieve image element link URL.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 *
+	 * @param array $attributes    Attribute of element
+	 *
+	 * @return array | false special class and URL of image
+	 */
+	private function get_image_url( $attributes ){
+
+		$result = array();
+		switch ( $attributes['action'] ){
+			case 'none' :
+				$result['class'] = 'karma-image-without-action' ;
+				$result['link']  = 'javascript:void(0);' ;
+				break;
+			case 'link' :
+				$result['class'] = 'karma-image-with-url' ;
+				$result['link']  = $attributes['linkurl'] ;
+				break;
+			case 'popup' :
+				$result['class'] = 'karma-image-popup-mode' ;
+				$result['link']  = 'javascript:void(0);' ;
+				break;
+			default:
+				return false;
+				break;
+		}
+		return $result;
+
+	}
+
+
 
 
 	/**
@@ -118,6 +147,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
 				"height" => "357",
 				"params" => array(
+					array(
+						"name" => "setimage" ,
+						"type" => Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
+						"label"	=> esc_attr__( "Set image", 'karma' ),
+						"imageurl"		=> "",
+					),
 					array(
 						"name"	=> "scale",
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
@@ -188,7 +223,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function render_css() {
 
-		$styles = '';
+		$styles =  '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
+		           ."}";
 		return $styles;
 
 	}
