@@ -25,6 +25,9 @@
 			variable	: 'data'
 		},
 
+		/**
+		 *  Build html for inner gizmo
+		 */
 		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
 		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
@@ -33,6 +36,9 @@
 		+ '<# }) #>'
 		+ '</div>' ,
 
+		/**
+		 *  Build html for outer gizmo
+		 */
 		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
 		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
@@ -42,9 +48,14 @@
 		+ '</div>' ,
 
 
-
+		/**
+		 *  Build html for text gizmo
+		 */
 		simpleTextTemplate : ' <div> {{ data.value }} </div> ',
 
+		/**
+		 *  Build html for icon gizmo
+		 */
 		simpleIconTemplate : ' <div> {{{ data.icon }}} </div> ',
 
 		/**
