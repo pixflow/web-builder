@@ -178,7 +178,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				'params'	=> array(
 
 						array(
-								"name"	=> "positin",
+								"name"	=> "position",
 								"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
 								"label"	=> esc_attr__( "positin", 'karma' ),
 								'values'	=> 'center-center',

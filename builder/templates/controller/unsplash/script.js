@@ -372,7 +372,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	/**
 	 * @summary When an image is selected in the media frame and change background
 	 *
-	 *  @param {string}  frame
+	 *  @param {object}  frame Wordpress media frame object
 	 *
 	 * @since 1.0.0
 	 * @returns {void}

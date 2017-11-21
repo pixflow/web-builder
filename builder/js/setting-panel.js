@@ -228,7 +228,7 @@
 		},
 
 		/**
-		 * create form builder html
+		 * @summary create form builder html
 		 *
 		 * @param	{object}	all controller in group
 		 *
@@ -238,15 +238,13 @@
 		 */
 		formBuilderGroupHtml : function ( htmlGroup ) {
 
-			var setting_panel_group = '' ,
+			var settingPanelGroup = '' ,
 				controllerSource ;
-
 			for( var counter in htmlGroup ) {
 				controllerSource = this.getWpTemplate( 'karma-setting-panel-groups-extend', htmlGroup[counter] );
-				setting_panel_group += this.setGeneralContainer( controllerSource, htmlGroup[ counter ] );
+				settingPanelGroup += this.setGeneralContainer( controllerSource, htmlGroup[ counter ] );
 			}
-
-			return setting_panel_group;
+			return settingPanelGroup;
 		},
 
 		/**
@@ -373,12 +371,16 @@
 		/**
 		 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
 		 *
+		 * @param {Object} 		 addImgLink    Selector dom object
+		 * @param {function}	 callBack      callback function
+		 * @param {String} 		 multiple      multiple in frame default false
+		 *
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
 		 */
 		openMediaLibrary : function ( addImgLink, callBack, multiple ) {
-
+			
 			// Set all variables to be used in scope
 			var frame;
 

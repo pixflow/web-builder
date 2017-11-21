@@ -123,7 +123,7 @@
 		},
 
 		/**
-		 * calculate new parent section grid and update grid
+		 * @summary calculate new parent section grid and update grid
 		 *
 		 * @since 1.0.0
 		 *

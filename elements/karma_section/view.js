@@ -56,7 +56,7 @@
 		},
 
 		/**
-		 * return current layout grid
+		 * @summary return current layout grid
 		 *
 		 * @since 1.0.0
 		 *
@@ -76,7 +76,7 @@
 		},
 
 		/**
-		 * Calculate new layout grid after append nw column
+		 * @summary Calculate new layout grid after append nw column
 		 *
 		 * @since 1.0.0
 		 *
@@ -169,7 +169,7 @@
 		/**
 		 * @summary Change the layout of row grid
 		 *
-		 * @params {array}	newLayout	The grid layout
+		 * @params {array}	newLayout The grid layout
 		 *
 		 * @since 1.0.0
 		 * @returns {boolean}	true if layout is successfully changed
@@ -241,7 +241,7 @@
 
 
 		/**
-		 * create html fot tooltip
+		 * @summary create html fot tooltip
 		 *
 		 * @since 1.0.0
 		 *
@@ -257,7 +257,7 @@
 		},
 
 		/**
-		 * structure field changes. Change Container of Section instead of render
+		 * @summary structure field changes. Change Container of Section instead of render
 		 *
 		 * @since 1.0.0
 		 *
@@ -274,7 +274,7 @@
 		},
 
 		/**
-		 * space field changes. It updates the space of section
+		 * @summary space field changes. It updates the space of section
 		 *
 		 * @since 1.0.0
 		 *
@@ -291,7 +291,7 @@
 		},
 
 		/**
-		 * extra class field changes. Add class to the element instead of render
+		 * @summary extra class field changes. Add class to the element instead of render
 		 *
 		 * @since 1.0.0
 		 *

@@ -5,18 +5,19 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 	}
 	/**
 	 * @summary When an image is selected in the media frame and change background
+	 * @param {object} give view of element
 	 *
 	 * @since 1.0.0
 	 * @returns {void}
 	 */
 	function callback( frame ) {
 
-		var input = document.querySelector( '.karma-upload-image-input' );
-		var content = document.querySelector( '.karma-upload-image-content' );
-		var attachment = frame.state().get( 'selection' ).first().toJSON();
+		var input = document.querySelector( '.karma-upload-image-input' ),
+			content = document.querySelector( '.karma-upload-image-content' ),
+			attachment = frame.state().get( 'selection' ).first().toJSON();
 		input.value = attachment.url;
-		content.style.backgroundImage = "url(" + input.value + ")";
-		content.classList.add("karma-upload-image-has-image");
+		content.style.backgroundImage = "url( " + input.value + " )";
+		content.classList.add( "karma-upload-image-has-image" );
 
 	};
 
