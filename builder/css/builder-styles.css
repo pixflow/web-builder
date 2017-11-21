@@ -134,7 +134,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   justify-content: space-around; }
 
 .HelveticaNeue-font, button,
-input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-check-box-controller .check-box-controller-template .karma-check-box-title {
+input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li {
   font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
@@ -2496,10 +2496,7 @@ label {
     padding: 0; }
 
 .karma-check-box-controller {
-  padding-top: 0;
-  padding-right: 24px;
-  padding-bottom: 25px;
-  padding-left: 20px;
+  padding: 11px 20px 0;
   position: relative; }
   .karma-check-box-controller .check-box-controller-template {
     display: flex;

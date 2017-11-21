@@ -147,54 +147,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 				)
 			),
 
-			//@TODO It should be delete after Dependecy story is done
-			/*'background-panel'	=> array(
-				'name'		=> __( 'image position', 'karma' ),
-				'height'	=> '432',
-				'params'	=> array(
-					array(
-						"name"	=> "checking",
-						"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
-						"label"	=> __( "checking", 'karma' ),
-						"value" => 'true'
-					),
-					array(
-						"name"			=> "extraclass",
-						"type"			=> Karma_Builder_Setting_Panel::TEXT,
-						"label"			=> __( "Class Name", 'karma' ),
-						"dependency"		=> array(
-								'controller'   => 'checking',
-								'value'        => 'true',
-						),
-					),
-					array(
-						"name"	=> "setbg",
-						"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
-						"label"	=> __( "Wanna use bg", 'karma' ),
-						"value" => 'false'
-					),
-
-					array(
-						"name"		=> "space",
-						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
-						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
-						'value'		=> 0,
-						"options"	=> array(
-							'value'	=> 200,
-							'min'   => 0,
-							'max'   => 800,
-							'step'  => 1,
-							'unit'  => 'px'
-						) ,
-						"dependency"		=> array(
-							'controller'   => 'setbg',
-							'value'        => 'true',
-						),
-					),
-
-				),
-			),*/
-
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
 				"title"	=> esc_attr__( "Background Setting", 'karma' ),
