@@ -380,7 +380,7 @@
 		 * @returns {void}
 		 */
 		openMediaLibrary : function ( addImgLink, callBack, multiple ) {
-			
+
 			// Set all variables to be used in scope
 			var frame;
 

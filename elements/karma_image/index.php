@@ -51,6 +51,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 				'linkurl'       => get_site_url(),
 				'linktitle'     => '' ,
 				'imgalt'        => '' ,
+				'scale'		=> 'full',
+
 			)
 			, $attributes
 		);
@@ -148,9 +150,9 @@ class Karma_Image extends Karma_Shortcode_Base {
 				"height" => "460",
 				"params" => array(
 					array(
-						"name" => "setimage" ,
-						"type" => Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"	=> esc_attr__( "Set image", 'karma' ),
+						"name" 			=> "imgurl" ,
+						"type" 			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
+						"label"			=> esc_attr__( "Set image", 'karma' ),
 						"imageurl"		=> "",
 					),
 					array(

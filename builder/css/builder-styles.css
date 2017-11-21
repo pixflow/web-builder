@@ -1609,6 +1609,9 @@ html {
 .karma-builder-element[data-name="karma_section"] {
   position: relative; }
 
+.karma-image .karma-image-container .karma-image-fill {
+  max-height: 100%;
+  max-width: 100%; }
 .karma-image .karma-image-without-action {
   cursor: none; }
 

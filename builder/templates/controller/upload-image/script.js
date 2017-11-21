@@ -18,6 +18,7 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 		input.value = attachment.url;
 		content.style.backgroundImage = "url( " + input.value + " )";
 		content.classList.add( "karma-upload-image-has-image" );
+		jQuery( input ).trigger( 'input' );
 
 	};
 
