@@ -398,7 +398,7 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	karmaUnsplash.prototype.openMediaLibrary = function () {
 
 		var addImgLink = document.querySelector( '.karma-unspalsh-media-library' );
-		viewObject.openMediaLibrares( addImgLink, this.callback );
+		viewObject.openMediaLibrary( addImgLink, this.callback );
 
 	};
 
