@@ -197,7 +197,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
-				'height'	=> '432',
+				"title"	=> esc_attr__( "Background Setting", 'karma' ),
+				'height'	=> '570',
 				'params'	=> array(
 						array(
 								'name'			=> 'upload' ,
@@ -212,7 +213,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						array(
 							"name"		=> "switch",
 							"type"		=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-							"label"		=> esc_attr__( "Setting panel", 'karma' ),
+							"label"		=> esc_attr__( "Background Setting", 'karma' ),
 							"form"		=> "new-panel",
 							"action"	=> "open",
 							'height'	=> '271'

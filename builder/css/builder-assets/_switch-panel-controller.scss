@@ -12,35 +12,28 @@
 	}
 
 	.karma-switch-panel-button{
-		@include  flexbox( $text-align: center, $align-item:center, $justify-content: center );
-		@include  box( auto, 36px );
+		@include  flexbox( $text-align: center, $align-item:center, $justify-content: space-around );
 		background-color: #FFFFFF;
 		border: 1px solid rgba( 57,73,89,0.2 );
 		border-radius: 100px;
-		margin:20px 60px;
-		padding: 0;
+		margin:$top-space-orange 0;
+		padding: 10px 21px;
 		text-transform: capitalize;
 
 		p{
 			color: #445362;
-			font-family: HelveticaNeue_Medium;
 			font-size: 14px;
-			font-weight: initial;
-			line-height: 16px;
+			line-height: 14px;
 			margin: 0;
-			padding:0 21px;
 		}
 
 		.karma-switch-panel-shape{
+			@include box( 9px, 9px );
 			border-bottom: 2px solid rgba( 57,73,89,0.46 );
 			border-left: 2px solid rgba( 57,73,89,0.46 );
-			height: 9px;
-			left: 19px;
 			margin-right: 4px;
-			position: relative;
 			transform: rotate( 45deg );
 			transition-duration: .3s;
-			width: 9px;
 		}
 	}
 }

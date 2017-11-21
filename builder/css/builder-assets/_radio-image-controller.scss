@@ -13,7 +13,7 @@
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
 		@include box( 100% );
 		flex-wrap: wrap;
-		
+
 		.radio-image-controller-img {
 			cursor: pointer;
 			padding: 0 5px $top-space-red;
@@ -23,7 +23,8 @@
 				box-shadow: none;
 				display: block;
 				opacity: .8;
-				transition: outline.2s, opacity .2s;
+				outline: 1px solid transparent;
+				transition: outline .2s, opacity .2s;
 
 				&:hover {
 					outline: 1px solid $builder-accent-color;

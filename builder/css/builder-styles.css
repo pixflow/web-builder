@@ -1760,7 +1760,6 @@ div.media-modal {
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
   display: flex;
-  margin-right: 110px;
   max-width: 450px;
   position: fixed;
   right: 358px;
@@ -2288,7 +2287,8 @@ label {
         box-shadow: none;
         display: block;
         opacity: .8;
-        transition: outline 0.2s, opacity 0.2s; }
+        outline: 1px solid transparent;
+        transition: outline .2s, opacity .2s; }
         .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {
           outline: 1px solid #419cf8; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-selected-item svg {
@@ -2595,54 +2595,53 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   background-color: #67B0F9 !important; }
 
 .karma-unsplash-controller {
-  padding-top: 0;
-  padding-right: 10px;
-  padding-bottom: 15px;
-  padding-left: 10px;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: relative; }
+  padding: 0 10px;
+  position: relative;
+  margin-top: 18px; }
   .karma-unsplash-controller .karma-unsplash-search {
-    margin-bottom: 9px; }
+    margin-bottom: 11px; }
     .karma-unsplash-controller .karma-unsplash-search input {
       background: transparent;
       border: 1px solid #E7E7E7;
       border-radius: 4px;
-      font-family: "Helvetica Neue";
       font-size: 12px;
       line-height: 14px;
-      padding: 13px;
+      padding: 10px;
       text-align: left;
       width: 243px; }
       .karma-unsplash-controller .karma-unsplash-search input::placeholder {
         color: #B3BAC1; }
   .karma-unsplash-controller .karma-unspalsh-icon {
+    width: 9px;
+    height: 9px;
     border-left: 2px solid rgba(57, 73, 89, 0.5);
     border-bottom: 2px solid rgba(57, 73, 89, 0.5);
     cursor: pointer;
-    height: 9px;
     position: relative;
-    margin-top: 20px;
     top: -3px;
     transform: rotate(-45deg);
-    transition-duration: .3s;
-    width: 9px; }
+    transition-duration: .3s; }
   .karma-unsplash-controller .karma-unsplash-images-result {
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
     height: 215px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
     overflow: auto;
-    position: relative;
-    width: 100%; }
+    position: relative; }
     .karma-unsplash-controller .karma-unsplash-images-result::-webkit-scrollbar {
       display: none; }
     .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list {
+      width: 77px;
+      height: 66px;
       background-color: #607d8b0f;
       background-position: center center;
       background-repeat: no-repeat;
@@ -2650,23 +2649,21 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       border-radius: 2px;
       cursor: pointer;
       margin: 3px;
-      height: 66px;
-      width: 77px;
       position: relative; }
       .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list:after {
-        content: '';
+        width: 100%;
         height: 100%;
+        content: '';
         left: 0;
         position: absolute;
         top: 0;
-        transition: .3s;
-        width: 100%; }
+        transition: .3s; }
       .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list:hover:after {
         background-color: rgba(0, 0, 0, 0.2);
         transform: scale(1); }
   .karma-unsplash-controller .karma-unspalsh-selected:before {
     content: '';
-    animation: scaleUP 0.3s;
+    animation: scaleUP .3s;
     background-image: url(../media/svg/tik.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -2682,11 +2679,12 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     text-align: inherit;
     align-items: center;
     justify-content: center;
-    margin-top: 21px; }
+    margin-top: 18px;
+    margin-bottom: 18px; }
     .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-svg {
+      width: 26px;
       height: 26px;
-      margin-right: 6px;
-      width: 26px; }
+      margin-right: 6px; }
     .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-link {
       color: #419cf8;
       font-size: 15px;
@@ -2712,33 +2710,26 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     display: flex;
     text-align: center;
     align-items: center;
-    justify-content: center;
-    width: auto;
-    height: 36px;
+    justify-content: space-around;
     background-color: #FFFFFF;
     border: 1px solid rgba(57, 73, 89, 0.2);
     border-radius: 100px;
-    margin: 20px 60px;
-    padding: 0;
+    margin: 18px 0;
+    padding: 10px 21px;
     text-transform: capitalize; }
     .karma-switch-panel-container .karma-switch-panel-button p {
       color: #445362;
-      font-family: HelveticaNeue_Medium;
       font-size: 14px;
-      font-weight: initial;
-      line-height: 16px;
-      margin: 0;
-      padding: 0 21px; }
+      line-height: 14px;
+      margin: 0; }
     .karma-switch-panel-container .karma-switch-panel-button .karma-switch-panel-shape {
+      width: 9px;
+      height: 9px;
       border-bottom: 2px solid rgba(57, 73, 89, 0.46);
       border-left: 2px solid rgba(57, 73, 89, 0.46);
-      height: 9px;
-      left: 19px;
       margin-right: 4px;
-      position: relative;
       transform: rotate(45deg);
-      transition-duration: .3s;
-      width: 9px; }
+      transition-duration: .3s; }
 
 .karma-upload-image-content {
   display: flex;

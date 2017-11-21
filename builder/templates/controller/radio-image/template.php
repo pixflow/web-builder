@@ -9,7 +9,7 @@
 				<# var itemClass = (data.value == data.field[i].value) ? "radio-image-controller-img radio-image-selected-item" : "radio-image-controller-img";  #>
 				<div class="{{itemClass}}" data-value="{{ data.field[i].value }}">
 					{{{data.field[i].image}}}
-					<# console.log(data.field[i].title ); if( "" != data.field[i].title  &&  "undefined" != typeof data.field[i].title ) { #>
+					<# if( "" != data.field[i].title  &&  "undefined" != typeof data.field[i].title ) { #>
 
 						<span class="radio-image-controller-title">{{{data.field[i].title}}}</span>
 
