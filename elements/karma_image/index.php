@@ -33,8 +33,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
-	 * @param $attributes    Attribute of element
-	 * @param $content      Content of element
+	 * @param array     $attributes   Attribute of element
+	 * @param string    $content      Content of element
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -71,7 +71,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 * @since 1.0.0
 	 * @access private
 	 *
-	 * @param $attributes    Attribute of element
+	 * @param array $attributes    Attribute of element
 	 *
 	 * @return void
 	 */
