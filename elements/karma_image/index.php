@@ -51,19 +51,20 @@ class Karma_Image extends Karma_Shortcode_Base {
 				'linkurl'       => get_site_url(),
 				'linktitle'     => '' ,
 				'imgalt'        => '' ,
-				'scale'		=> 'full',
+				'scale'			=> 'real',
 
 			)
 			, $attributes
 		);
 
 		$image_extra = $this->get_image_url( $attributes );
+		$scale_class = ( 'fill' == $attributes['scale'] ) ? 'karma-image-fill' : 'karma-image-real';
 		ob_start();
 		?>
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?>' >
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
 				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
-					<img src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['imgalt']; ?>" />
+					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['imgalt']; ?>" />
 				</a>
 			</div>
 		</div>
