@@ -35,8 +35,8 @@
 
 		scale: function () {
 
-			var imageScale = this.getAttributes( [ 'scale' ] );
-			var containerClass	= ( 'fill' == imageScale.scale ) ? 'karma-image-fill' : 'karma-image-real';
+			var imageScale = this.getAttributes( [ 'scale' ] ),
+				containerClass	= ( 'fill' == imageScale.scale ) ? 'karma-image-fill' : 'karma-image-real';
 			this.el.querySelector( 'img' ).setAttribute( "class", containerClass );
 
 		},

@@ -179,7 +179,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 						"name"		=> 'position' ,
 						"type"		=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
 						"label"		=> esc_attr__( "Position", 'karma' ),
-						"values"		=> 'center-center',
+						"values"	=> 'center-center',
 						"separator" => "container",
 
 					),
