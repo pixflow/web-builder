@@ -44,6 +44,7 @@ class Karma_Builder_Setting_Panel {
 	const UNSPLASH = 'unsplash';
 	const SWITCH_PANEL = 'switch-panel';
 	const UPLOAD_IMAGE = 'upload-image';
+	const DROPDOWN = 'dropdown';
 
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'

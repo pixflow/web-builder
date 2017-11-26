@@ -75,6 +75,42 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 					),
 					array(
+						"name"  	    => "imageaction",
+						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"  	    => esc_attr__( "Action on click", 'karma' ),
+						'value'   	    => "none",
+						'separator'	    => "container",
+						"options"  		=> array(
+							'none'   => array(
+								'title' => 'None'
+							),
+							'popup'  => array(
+								'title' => "Popup"
+							) ,
+							'link'  => array(
+								'title' => "Link"
+							),
+						)
+					),
+					array(
+						"name"  	    => "imageaction2",
+						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"  	    => esc_attr__( "Action on click", 'karma' ),
+						'value'   	    => "none",
+						'separator'	    => "container",
+						"options"  		=> array(
+							'none'   => array(
+								'title' => 'None'
+							),
+							'popup'  => array(
+								'title' => "Popup"
+							) ,
+							'link'  => array(
+								'title' => "Link"
+							),
+						)
+					),
+					array(
 						"name"  	    => "leftspace",
 						"type"   	    => Karma_Builder_Setting_Panel::RANGE_SLIDER,
 						"label"  	    => esc_attr__( "Left padding", 'karma' ),
@@ -103,7 +139,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 				)
 			)
 		);
-
 		parent::$elements_map[ self::$element_name ] = $map;
 		return parent::$elements_map;
 

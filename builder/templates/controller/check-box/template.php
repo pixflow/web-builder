@@ -21,7 +21,7 @@
 			<hr class="karma-container-separator">
 		<# } #>
 
-</div>
+	</div>
 
 
 

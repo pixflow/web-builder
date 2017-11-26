@@ -1,1 +1,88 @@
 /* _-_-_- modules/DROPDOWN -_-_-_ */
+.karma-dropdown-controller{
+
+	@extend .karma-builder-title-in-box;
+	padding: 0 20px;
+
+	.karma-dropdown-label{
+
+		color: rgba( 57 , 73 , 89 , 0.7 );
+		margin-top: $top-space-red;
+
+	}
+	.karma-dropdown-body{
+
+		@extend .space-between;
+		align-items: center;
+		cursor: pointer;
+		margin-top: $top-space-orange-light;
+		position: relative;
+
+		.karma-dropdown-icon{
+
+			@extend .center-both-flex;
+			@include box( 32px, 32px);
+			border: 1px solid rgba(57,73,89,0.2);
+			border-radius: 100px;
+
+		}
+
+		.karma-dropdown-options{
+
+			@include box( 100%, 0 );
+			background-color: #FFFFFF;
+			box-shadow: 0 2px 12px 0 rgba(57,73,89,0.18);
+			left: 0;
+			list-style: none;
+			overflow: hidden;
+			padding: 7px 7px 0;
+			position: absolute;
+			top: 36px;
+			z-index: -1;
+
+			&.karma-doropdown-opened{
+				height: auto;
+				z-index: $level4;;
+			}
+
+		}
+
+	}
+	.karma-dropdown-option{
+
+		border-radius: 4px;
+		cursor: pointer;
+		padding: 10px;
+		margin-bottom: 7px;
+		transition: background-color .2s;
+
+		&.karma-selected-dropdown-option{
+
+			background-color: rgba( $builder-accent-color , .7 );
+
+			.karma-dropdown-option-title{
+				color: $builder-element-panel-background-color;
+				font-weight: 500;
+			}
+
+		}
+
+		&:not(.karma-selected-dropdown-option):hover{
+
+			background-color: rgba( $builder-accent-color , .1 );
+
+			.karma-dropdown-option-title{
+				color: $builder-accent-color;
+				font-weight: 500;
+			}
+
+		}
+
+		.karma-dropdown-option-icon{
+			margin-right: 15px;
+
+		}
+
+	}
+}
+

@@ -120,12 +120,12 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-icon, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
   align-items: center;
   display: flex;
   justify-content: center; }
 
-.space-between {
+.space-between, .karma-dropdown-controller .karma-dropdown-body {
   display: flex;
   justify-content: space-between; }
 
@@ -166,9 +166,9 @@ input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-bui
   margin-top: 18px;
   line-height: 20px; }
 
-.karma-builder-title-in-box, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-title-controller div.karma-title-field, .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
+.karma-builder-title-in-box, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-title-controller div.karma-title-field, .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
   font-size: 14px;
-  line-height: 17px; }
+  line-height: 16px; }
 
 /**
  * Media queries
@@ -1884,6 +1884,55 @@ div.media-modal {
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
+.karma-dropdown-controller {
+  padding: 0 20px; }
+  .karma-dropdown-controller .karma-dropdown-label {
+    color: rgba(57, 73, 89, 0.7);
+    margin-top: 22px; }
+  .karma-dropdown-controller .karma-dropdown-body {
+    align-items: center;
+    cursor: pointer;
+    margin-top: 11px;
+    position: relative; }
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(57, 73, 89, 0.2);
+      border-radius: 100px; }
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options {
+      width: 100%;
+      height: 0;
+      background-color: #FFFFFF;
+      box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.18);
+      left: 0;
+      list-style: none;
+      overflow: hidden;
+      padding: 7px 7px 0;
+      position: absolute;
+      top: 36px;
+      z-index: -1; }
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
+        height: auto;
+        z-index: 70; }
+  .karma-dropdown-controller .karma-dropdown-option {
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 7px;
+    transition: background-color .2s; }
+    .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option {
+      background-color: rgba(65, 156, 248, 0.7); }
+      .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
+        color: #fff;
+        font-weight: 500; }
+    .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover {
+      background-color: rgba(65, 156, 248, 0.1); }
+      .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
+        color: #419cf8;
+        font-weight: 500; }
+    .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-icon {
+      margin-right: 15px; }
+
 /* _-_-_- modules/GIZMO -_-_-_ */
 label {
   margin-top: 0;
