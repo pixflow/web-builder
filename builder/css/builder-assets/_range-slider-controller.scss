@@ -47,13 +47,13 @@
 		.karma-range-slider-input {
 
 			&:focus {
-				border-color: #bbb;
+				border-color: rgba( $builder-gray-color , .1 );
 				outline: none;
 			}
 			@include flexbox($text-align: right);
 			@include box(34px, 32px);
 			background: none;
-			border: 1px solid #bbb;
+			border: 1px solid rgba( $builder-gray-color , .1 );
 			border-right: 0;
 			border-radius: 40px 0 0 40px;
 			color: #000;
@@ -65,7 +65,7 @@
 			@include box(auto, 32px);
 			@include padding(0, 7px, 2px, 0);
 			align-items: center;
-			border: 1px solid #bbb;
+			border: 1px solid rgba( $builder-gray-color , .1 );
 			border-radius: 0 67px 68px 0;
 			border-left: 0;
 			display: flex;

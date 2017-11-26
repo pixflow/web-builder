@@ -152,7 +152,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 				"title"	=> esc_attr__( "Background Setting", 'karma' ),
 				'height'	=> '570',
 				'params'	=> array(
-<<<<<<< HEAD
 						array(
 								'name'			=> 'upload' ,
 								'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
@@ -160,15 +159,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 								"value"		=> "",
 						),
 						array(
-=======
-					array(
-						'name'			=> 'upload' ,
-						'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"			=> esc_attr__( "Change Image", 'karma' ),
-						"imageurl"		=> "",
-					),
-					array(
->>>>>>> refine indents
 						'name'      => 'unsplash' ,
 						'type'      => Karma_Builder_Setting_Panel::UNSPLASH ,
 					),

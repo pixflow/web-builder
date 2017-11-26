@@ -2499,14 +2499,14 @@ img {
       width: 34px;
       height: 32px;
       background: none;
-      border: 1px solid #bbb;
+      border: 1px solid rgba(57, 73, 89, 0.1);
       border-right: 0;
       border-radius: 40px 0 0 40px;
       color: #000;
       font-size: 12px;
       padding: 0; }
       .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
-        border-color: #bbb;
+        border-color: rgba(57, 73, 89, 0.1);
         outline: none; }
     .karma-range-slider-container .karma-range-slider-number .karma-unit {
       width: auto;
@@ -2516,7 +2516,7 @@ img {
       padding-bottom: 2px;
       padding-left: 0;
       align-items: center;
-      border: 1px solid #bbb;
+      border: 1px solid rgba(57, 73, 89, 0.1);
       border-radius: 0 67px 68px 0;
       border-left: 0;
       display: flex;
