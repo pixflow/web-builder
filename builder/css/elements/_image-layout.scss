@@ -1,5 +1,33 @@
 .karma-image {
 
+	overflow: hidden;
+	//display: flex;
+
+	//&.karma-position-top-left{
+	//	justify-content: flex-start;
+	//	align-items: flex-start;
+	//}
+	//&.karma-position-top-center{
+	//	justify-content: center;
+	//	align-items: flex-start;
+	//}
+	//&.karma-position-top-right{
+	//	justify-content: flex-end;
+	//	align-items: flex-start;
+	//}
+	//&.karma-position-center-left{
+	//	justify-content: center;
+	//	align-items: flex-start;
+	//}
+	//&.karma-position-top-center{
+	//	justify-content: center;
+	//	align-items: flex-start;
+	//}
+	//&.karma-position-top-center{
+	//	justify-content: flex-end;
+	//	align-items: flex-start;
+	//}
+
 	.karma-image-container{
 
 		.karma-image-fill{

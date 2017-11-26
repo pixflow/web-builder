@@ -156,7 +156,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 								'name'			=> 'upload' ,
 								'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
 								"label"			=> esc_attr__( "Change Image", 'karma' ),
-								"imageurl"		=> "",
+								"value"		=> "",
 						),
 						array(
 						'name'      => 'unsplash' ,

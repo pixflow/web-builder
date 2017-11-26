@@ -4,6 +4,10 @@ label{
 	@include margin( 0, 0, 0, 0 );
 	@include padding( 0, 0, 0, 0 );
 }
+img{
+	max-width: none;
+	max-height: none;
+}
 
 .karma-spacing {
 	height: 5px;

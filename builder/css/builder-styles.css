@@ -1609,11 +1609,13 @@ html {
 .karma-builder-element[data-name="karma_section"] {
   position: relative; }
 
-.karma-image .karma-image-container .karma-image-fill {
-  max-height: 100%;
-  max-width: 100%; }
-.karma-image .karma-image-without-action {
-  cursor: none; }
+.karma-image {
+  overflow: hidden; }
+  .karma-image .karma-image-container .karma-image-fill {
+    max-height: 100%;
+    max-width: 100%; }
+  .karma-image .karma-image-without-action {
+    cursor: none; }
 
 /* _-_-_- layout/HEADER -_-_-_ */
 .karma-builder-toolbar {
@@ -1856,6 +1858,10 @@ label {
   padding-right: 0;
   padding-bottom: 0;
   padding-left: 0; }
+
+img {
+  max-width: none;
+  max-height: none; }
 
 .karma-spacing {
   height: 5px;

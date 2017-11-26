@@ -52,6 +52,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 				'linktitle'     => '' ,
 				'imgalt'        => '' ,
 				'scale'			=> 'real',
+				'position'		=> 'center-center',
 
 			)
 			, $attributes
@@ -61,7 +62,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$scale_class = ( 'fill' == $attributes['scale'] ) ? 'karma-image-fill' : 'karma-image-real';
 		ob_start();
 		?>
-		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?>' >
+		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?> karma-position-<?php echo $attributes[ 'position' ] ?>' >
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
 				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
 					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['imgalt']; ?>" />
@@ -151,10 +152,10 @@ class Karma_Image extends Karma_Shortcode_Base {
 				"height" => "460",
 				"params" => array(
 					array(
-						"name" 			=> "imgurl" ,
-						"type" 			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"			=> esc_attr__( "Set image", 'karma' ),
-						"imageurl"		=> "",
+						"name" 	=> "imgurl" ,
+						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
+						"label"	=> esc_attr__( "Set image", 'karma' ),
+						"value"	=> "",
 					),
 					array(
 						"name"	=> "scale",
