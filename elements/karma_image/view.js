@@ -48,6 +48,20 @@
 			this.el.firstElementChild.className = this.el.firstElementChild.className.replace( regex, " karma-position-" + imagePosition.position );
 
 
+		},
+
+		/**
+		 * @summary change image alt attribute on change alt field in advanced option
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		alt: function () {
+
+			var imageAlt = this.getAttributes( [ 'alt' ] );
+			this.el.querySelector( 'img' ).setAttribute( "alt", imageAlt );
+
 		}
 
 	});

@@ -1,3 +1,39 @@
+#karma-lightbox-opened {
+  background-color: rgba(51, 51, 51, 0.9);
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  overflow-y: scroll;
+  padding: 24px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%; }
+  #karma-lightbox-opened:before {
+    background-color: rgba(51, 51, 51, 0.9);
+    color: #fff;
+    content: "x";
+    padding: 6px 12px;
+    position: fixed;
+    text-transform: uppercase; }
+  #karma-lightbox-opened .karma-lightbox-loading {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    position: absolute;
+    width: 100%;
+    z-index: -1; }
+  #karma-lightbox-opened img {
+    box-shadow: 0 0 6px 3px #333;
+    max-height: 100%;
+    max-width: 100%; }
+
+.karma-image-lightbox-active {
+  overflow: hidden; }
+
 .grid-resizer-noselect {
   -webkit-touch-callout: none;
   /* iOS Safari */

@@ -1,0 +1,118 @@
+/**
+ * karmaImageLightbox is a lightbox plugin to load images in popup mode
+ *
+ * URL: http://pixflow.net
+ * License: MIT
+ */
+
+/**
+ * @summary karmaImageLightbox manager
+ * The resources that add lightbox to images
+ *
+ * @param {string}  selector image link selector
+ *
+ * @since 1.0.0
+ */
+var karmaImageLightbox = function ( selector ) {
+
+	this.selector = selector;
+	this.href = document.querySelector( selector ).getAttribute( 'href' );
+	this.init();
+
+};
+
+
+/**
+ * @summary init lightbox on images with selector class
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaImageLightbox.prototype.init = function () {
+
+	var that = this;
+	// Open Lightbox
+	document.querySelector( this.selector ).addEventListener( 'click', function ( e ) {
+		e.preventDefault();
+		that.openLightbox();
+	} );
+
+};
+
+/**
+ * @summary create and load lightbox
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaImageLightbox.prototype.openLightbox = function () {
+
+	if ( document.querySelectorAll( '#karma-lightbox-opened' ).length ) {
+		return;
+	}
+	var html = document.querySelector( 'html' );
+	if ( html.classList ) {
+		html.classList.add( 'karma-image-lightbox-active' );
+	} else {
+		html.className += ' karma-image-lightbox-active';
+	}
+	var image = this.href;
+
+	this.createLightboxHtml( image );
+
+};
+
+/**
+ * @summary close and delete lightbox HTML
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaImageLightbox.prototype.closeLightbox = function () {
+
+	var html = document.querySelector( 'html' );
+	var activeClass = 'karma-image-lightbox-active';
+	if ( html.classList ) {
+		html.classList.remove( activeClass );
+	} else {
+		html.className = html.className.replace( new RegExp( '(^|\\b)' + activeClass.split( ' ' ).join( '|' ) + '(\\b|$)', 'gi' ), ' ' );
+	}
+	document.getElementById( "karma-lightbox-opened" ).remove();
+
+};
+
+/**
+ * @summary create lightbox html and append to body
+ *
+ * @param {string}  url image URL
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
+
+	var that = this;
+	// Create lightbox container
+	var lightbox = document.createElement( 'div' );
+	lightbox.setAttribute( 'id', 'karma-lightbox-opened' );
+
+	// Create lightbox loading
+	var loading = document.createElement( 'span' );
+	loading.setAttribute( 'class', 'karma-lightbox-loading' );
+	loading.innerHTML = 'Loading ...';
+	lightbox.appendChild( loading );
+
+	// Create lightbox image
+	var image = document.createElement( 'img' );
+	image.setAttribute( 'src', url );
+	lightbox.appendChild( image );
+
+	// Add lightbox HTML to body
+	document.querySelector( 'body' ).appendChild( lightbox );
+	lightbox.addEventListener( 'click', function ( e ) {
+		e.preventDefault();
+		that.closeLightbox();
+	}, true );
+
+};
+

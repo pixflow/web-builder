@@ -50,7 +50,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 				'action'        => 'none' ,
 				'linkurl'       => get_site_url(),
 				'linktitle'     => '' ,
-				'imgalt'        => '' ,
+				'alt'        => '' ,
 				'scale'			=> 'fill',
 				'position'		=> 'center-center',
 
@@ -65,7 +65,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?> karma-position-<?php echo $attributes[ 'position' ] ?>' >
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
 				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
-					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['imgalt']; ?>" />
+					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['alt']; ?>" />
 				</a>
 			</div>
 		</div>
@@ -89,7 +89,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$js_template = '<div class="karma-image karma-image-{{ data.element_key }}" >'
 		               . '<div class="karma-image-container {{ data.extraclass }}">'
 		               . '<a class="karma-image-link" href="{{{ data.link }}}" title="{{ data.linktitle }}" >'
-		               . '<img src="" title="{{ data.linktitle }}" alt="{{ data.imgalt }}" />'
+		               . '<img src="" title="{{ data.linktitle }}" alt="{{ data.alt }}" />'
 		               . '</a>'
 		               . '</div>'
 		               . '</div>';
@@ -122,7 +122,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 				break;
 			case 'popup' :
 				$result['class'] = 'karma-image-popup-mode' ;
-				$result['link']  = 'javascript:void(0);' ;
+				$result['link']  = $attributes['imgurl'] ;
 				break;
 			default:
 				return false;
@@ -185,9 +185,9 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 					),
 					array(
-						"name"			=> "link-title",
+						"name"			=> "alt",
 						"type"			=> Karma_Builder_Setting_Panel::TEXT,
-						"label"			=> __( "Title", 'karma' ),
+						"label"			=> __( "Alt", 'karma' ),
 						"group"			=> "Advance option"
 					),
 				),
@@ -290,7 +290,18 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
+		//wp_enqueue_script( 'karma-lightbox' ,  KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js', array(), true );
+		if( 'popup' ==  $this->element_attributes['action'] ){
+			?>
+			<script type="text/javascript" src="<?php echo KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'; ?>"></script>
+			<script type="text/javascript">
+				document.addEventListener('DOMContentLoaded', function(){
+					new karmaImageLightbox('.karma-image-<?php echo esc_attr( $this->element_attributes[ 'element_key' ] ); ?> a.karma-image-link');
+				});
 
+			</script>
+			<?php
+		}
 	}
 
 }
