@@ -285,6 +285,7 @@
 				newSource = '<div class="karma-controller ' + classes + '"';
 			if( "undefined" != typeof dependencyParams.dependency ){
 				newSource += 'data-dependency=\'' + JSON.stringify( dependencyParams.dependency ) + '\'';
+				newSource += 'data-dependency-element=\'' + dependencyParams.dependency.controller + '\'';
 			}
 			newSource  += ' >' + source + '</div>';
 			return newSource ;
@@ -343,10 +344,54 @@
 		 */
 		doDependency : function ( dependentElement, dependencyInfo, dependentValue ) {
 
+			var isHide;
 			if ( dependencyInfo.value == dependentValue ) {
 				dependentElement.classList.remove('karma-hide-controller');
+				isHide = false;
 			} else {
 				dependentElement.classList.add('karma-hide-controller');
+				isHide = true;
+			}
+			this.findDependentElements( dependentElement, isHide );
+
+		},
+
+		/**
+		 * @summary Apply dependencies to the child dependent element
+		 *
+		 * @param   {Object}  dependentElement    Dependent element
+		 * @param   {boolean} isHide              Should show or hide dependent on parent depend element
+		 *
+		 * @since   1.0.0
+		 * @return  {void}
+		 */
+		findDependentElements : function ( dependentElement, isHide ) {
+
+			var controller = dependentElement.querySelector('input').getAttribute( 'name') ,
+				dependentElements = document.querySelectorAll('[data-dependency-element="' + controller + '"]') ,
+				that = this,
+				hide,
+				lastElement;
+
+			if( dependentElements.length ){
+
+				_.each( dependentElements, function ( element ) {
+					if( isHide ){
+						element.classList.add('karma-hide-controller');
+					}else{
+						element.classList.remove('karma-hide-controller');
+					}
+					if( dependentElement.classList.contains('karma-hide-controller') ){
+						element.classList.add('karma-hide-controller');
+					}else{
+						that.doDependency( element, JSON.parse( dependentElement.getAttribute( 'data-dependency' ) ), dependentElement.querySelector('input').value );
+					}
+					lastElement = element;
+				});
+
+				hide = ( lastElement.classList.contains('karma-hide-controller') ) ? true : false ;
+				that.findDependentElements( lastElement, hide );
+
 			}
 
 		},
