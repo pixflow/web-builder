@@ -2430,23 +2430,17 @@ img {
     .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
       margin: 0; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button .karma-group-button-shape {
-      border-left: 2px solid #394959;
-      border-bottom: 2px solid #394959;
-      height: 9px;
-      position: relative;
-      top: -3px;
-      transform: rotate(-45deg);
-      transition-duration: .3s;
-      width: 9px; }
+      transform: rotate(0);
+      transition-duration: .3s; }
+      .karma-setting-panel-group-container button.karma-setting-panel-group-button .karma-group-button-shape.karma-group-button-shape-rotate {
+        transform: rotate(-180deg);
+        transition-duration: .3s; }
   .karma-setting-panel-group-container div.karma-group-panel {
     background-color: #f7f8f9;
     border-radius: 0 0 7px 7px;
     display: none;
     overflow: hidden;
     padding-bottom: 10px; }
-  .karma-setting-panel-group-container .karma-group-button-shape-rotate {
-    transform: rotate(-225deg) !important;
-    transition-duration: .3s; }
   .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
     color: #394959;
     text-transform: capitalize; }
