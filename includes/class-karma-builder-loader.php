@@ -110,6 +110,10 @@ class Karma_Builder_Loader {
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
 			add_action( 'wp_head', array( $this, 'load_builder_js_templates' ) );
+
+			$builder_views = Karma_Factory_Pattern::$builder_views;
+			$builder_views->load_builder_templates();
+
 		}
 		$this->init_elements();
 
@@ -142,9 +146,7 @@ class Karma_Builder_Loader {
 	 */
 	public function load_builder_js_templates(){
 
-		$karma_views = Karma_Factory_Pattern::$builder_views;
 		$controller = Karma_Factory_Pattern::$builder_controller;
-		$karma_views->load_elements_setting_panel();
 		$controller->register_controllers();
 		$controller->register_extends();
 

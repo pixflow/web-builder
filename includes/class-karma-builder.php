@@ -316,7 +316,7 @@ class Karma_Builder {
 		add_filter( 'show_admin_bar', '__return_false' );
 		do_action( 'karma_before_load_builder_window' );
 		$builder_views = Karma_Factory_Pattern::$builder_views;
-		$builder_views->load_builder_templates();
+		$builder_views->load_builder_environment();
 		die();
 
 	}

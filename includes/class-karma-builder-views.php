@@ -26,76 +26,55 @@
 class Karma_Views {
 
 	/**
-	 * The list of template names
+	 * The list of environment template names
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private $templates = array(
+	private $environment_templates = array(
 		'header',
-		'navbar',
+		'main',
 		'footer',
 	);
 
+	/**
+	 * The list of builder template names
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private $builder_templates = array(
+		'element-panel',
+		'element-setting-panel',
+	);
+
 	/*
-	 * Print navbar html source to the builder
+	 * Print navbar html and create builder environment
+	 *
+	 * @return	void
+	 */
+	public function load_builder_environment(){
+
+		foreach ( $this->environment_templates as $temp ){
+			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
+		}
+
+	}
+
+	/*
+	 * Print Element Panel, Setting Panel and other buttons html
 	 *
 	 * @return	void
 	 */
 	public function load_builder_templates(){
 
-		foreach ( $this->templates as $temp ){
-			$func_name = 'load_' . $temp . '_template' ;
-			call_user_func( array( $this, $func_name ) );
+		foreach ( $this->builder_templates as $temp ){
+			?>
+			<script type="text/html" id="tmpl-karma-<?php echo $temp; ?>" >
+				<?php include KARMA_BUILDER_DIR . 'builder/templates/builder/' . $temp . '-template.php'; ?>
+			</script>
+			<?php
 		}
-	}
-
-	/*
-	 * Print navbar html source to the builder
-	 *
-	 * @return void
-	 */
-	public function load_navbar_template(){
-
-		include KARMA_BUILDER_DIR . 'builder/templates/main-template.php';
-
-	}
-
-	/*
-	 * Print header html source to the builder
-	 *
-	 * @return void
-	 */
-	public function load_header_template(){
-
-		include KARMA_BUILDER_DIR . 'builder/templates/header-template.php';
-
-	}
-
-	/*
-	 * Print footer html source to the builder
-	 *
-	 * @return void
-	 */
-	public function load_footer_template(){
-
-		include KARMA_BUILDER_DIR . 'builder/templates/footer-template.php';
-
-	}
-
-
-	/*
-	 * Print element setting panel source
-	 *
-	 * @return void
-	 */
-	public function load_elements_setting_panel(){
-
-		?>
-		<script type="text/html" id="tmpl-karma-element-setting-panel" >
-		<?php include KARMA_BUILDER_DIR . 'builder/templates/element-setting-panel-template.php'; ?>
-		</script>
-		<?php
 
 	}
 
