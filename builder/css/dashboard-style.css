@@ -120,6 +120,11 @@ input[type="text"] {
  * @group helpers
  * @output with display flex and  center element
  */
+/**
+ * check justify content and align item (use for image position)
+ * @group helpers
+ * @output justify content and align item
+ */
 /** Builder Colors **/
 /* Builder Major Levels */
 /* spaces */

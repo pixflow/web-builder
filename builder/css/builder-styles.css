@@ -238,6 +238,11 @@ input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-bui
  * @group helpers
  * @output with display flex and  center element
  */
+/**
+ * check justify content and align item (use for image position)
+ * @group helpers
+ * @output justify content and align item
+ */
 /** Builder Colors **/
 /* Builder Major Levels */
 /* spaces */
@@ -1610,7 +1615,38 @@ html {
   position: relative; }
 
 .karma-image {
+  display: flex;
+  text-align: inherit;
+  align-items: inherit;
+  justify-content: inherit;
   overflow: hidden; }
+  .karma-image.karma-position-top-left {
+    align-items: flex-start;
+    justify-content: flex-start; }
+  .karma-image.karma-position-top-center {
+    align-items: flex-start;
+    justify-content: center; }
+  .karma-image.karma-position-top-right {
+    align-items: flex-start;
+    justify-content: flex-end; }
+  .karma-image.karma-position-center-left {
+    align-items: center;
+    justify-content: flex-start; }
+  .karma-image.karma-position-center-center {
+    align-items: center;
+    justify-content: center; }
+  .karma-image.karma-position-center-right {
+    align-items: center;
+    justify-content: flex-end; }
+  .karma-image.karma-position-bottom-left {
+    align-items: flex-end;
+    justify-content: flex-start; }
+  .karma-image.karma-position-bottom-center {
+    align-items: flex-end;
+    justify-content: center; }
+  .karma-image.karma-position-bottom-right {
+    align-items: flex-end;
+    justify-content: flex-end; }
   .karma-image .karma-image-container .karma-image-fill {
     max-height: 100%;
     max-width: 100%; }

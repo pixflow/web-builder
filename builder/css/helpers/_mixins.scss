@@ -203,3 +203,13 @@
 	align-items: $align-item;
 	justify-content: $justify-content;
 }
+
+/**
+ * check justify content and align item (use for image position)
+ * @group helpers
+ * @output justify content and align item
+ */
+@mixin justify-align($align-item:inherit, $justify-content:inherit){
+	align-items: $align-item;
+	justify-content: $justify-content;
+}
