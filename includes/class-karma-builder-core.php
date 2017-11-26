@@ -165,8 +165,6 @@ class Karma_Builder_Core{
 	 */
     public function parse_shortcodes( $content, $parent_key = '' ){
 
-		static $child_order =  1 ;
-		static $parent_order = 1 ;
 		preg_match_all( $this->get_shortcode_regex('.*?'), $content, $shortcodes );
 		$index = 0;
 		$models = array();
@@ -180,13 +178,11 @@ class Karma_Builder_Core{
 				unset( $model['shortcode_content'] );
 				$is_parent = true;
 			}
-			$shortcode_order = $this->order_shortcode( $model, array( 'child_order' => $child_order , 'parent_order' => $parent_order ), $parent_key );
-			list( $model, $child_order, $parent_order ) = $shortcode_order;
 			$model['parent_key'] = $parent_key;
+			$model = $this->order_shortcode( $model );
 			$models[] = $model;
 			if( $is_parent ){
 				$models = array_merge( $models, $this->parse_shortcodes( $shortcodes[5][$index], $id ) );
-				$child_order = 1 ;
 			}
 			$index++;
 
@@ -200,26 +196,20 @@ class Karma_Builder_Core{
 	 * Order the shortcodes by parent and child
 	 *
 	 *
-	 * @param array 	$model 		Contain the model of current shortcode
-	 * @param array		$order 		current index of child and parent
-	 * @param integer 	$parent_key	current index of parent id
+	 * @param array 	$model 		Contain the model of current element
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return array - new model of element given with order attribute
 	 */
-	private function order_shortcode( $model, $order, $parent_key ){
+	private function order_shortcode( $model ){
 
-		if( '' != $parent_key ){
-			$model['order'] = $order['child_order'] ;
-			$order['child_order']++;
-		}else{
-			$model['order'] = $order['parent_order'] ;
-			$order['parent_order'] ++ ;
-		}
+		static $order;
+		$order[ $model['parent_key'] ] = isset( $order[ $model['parent_key'] ] ) ? $order[ $model['parent_key'] ] : 1;
+		$model['order'] = $order[ $model['parent_key'] ] ;
+		$order[ $model['parent_key'] ]++;
 
-		$result = array( $model, $order['child_order'], $order['parent_order']);
-		return $result;
+		return $model;
 
 	}
 
