@@ -7,8 +7,8 @@
 	.karma-range-slider-content {
 
 		@include flexbox($align-item: center);
-		@include box(100%);
 		padding: $top-space-orange-light 0 $top-space-orange;
+		width: 100%;
 
 	}
 

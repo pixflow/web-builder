@@ -193,6 +193,7 @@ a:focus {
 
 button,
 input[type="text"] {
+  border: none;
   font-weight: 400; }
 
 /* _-_-_- base/BASE -_-_-_ */

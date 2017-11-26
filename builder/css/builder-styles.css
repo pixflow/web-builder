@@ -311,6 +311,7 @@ a:focus {
 
 button,
 input[type="text"] {
+  border: none;
   font-weight: 400; }
 
 /* _-_-_- base/BASE -_-_-_ */
@@ -1804,7 +1805,7 @@ div.media-modal {
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
   display: flex;
-  max-width: 450px;
+  max-width: 330px;
   position: fixed;
   right: 358px;
   top: 408px;
@@ -2351,10 +2352,9 @@ img {
     font-size: 12px; }
 
 .karma-title-with-background-controller {
-  width: 100%;
-  height: 100%;
   background-color: rgba(65, 156, 248, 0.1);
-  padding: 20px; }
+  padding: 20px;
+  width: 100%; }
   .karma-title-with-background-controller div.karma-title-with-background-field {
     color: #419cf8;
     font-family: "HelveticaNeue_Medium"; }
@@ -2379,9 +2379,8 @@ img {
     text-align: center;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    width: 100%; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img {
       cursor: pointer;
       padding: 0 5px 22px;
@@ -2414,17 +2413,16 @@ img {
     text-align: center;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: 100%;
     padding: 20px;
     background-color: #f7f8f9;
     border: none;
+    border-top: 1px solid rgba(57, 73, 89, 0.2);
     color: #394959;
     cursor: pointer;
     font-size: 15px;
     outline: none;
     transition: 0.4s;
-    border-top: 1px solid rgba(57, 73, 89, 0.2); }
+    width: 100%; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button.karma-group-border-radius {
       border-radius: 0 !important; }
     .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
@@ -2458,9 +2456,8 @@ img {
     text-align: inherit;
     align-items: center;
     justify-content: inherit;
-    width: 100%;
-    height: 100%;
-    padding: 11px 0 18px; }
+    padding: 11px 0 18px;
+    width: 100%; }
   .karma-range-slider-container .rangeslider--horizontal {
     width: 68%;
     height: 3px;

@@ -11,8 +11,8 @@
 	
 	.radio-image-controller-template {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
-		@include box( 100% );
 		flex-wrap: wrap;
+		width: 100%;
 
 		.radio-image-controller-img {
 			cursor: pointer;

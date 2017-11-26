@@ -1,9 +1,9 @@
 
 .karma-title-with-background-controller {
 
-	@include box(100%);
 	background-color: rgba($builder-accent-color, 0.1);
 	padding: $top-space-blue;
+	width: 100%;
 
 	div.karma-title-with-background-field {
 

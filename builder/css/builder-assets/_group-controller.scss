@@ -9,16 +9,16 @@
 
 	button.karma-setting-panel-group-button {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-between);
-		@include box(100%);
 		padding: 20px;
 		background-color: #f7f8f9;
 		border: none;
+		border-top: 1px solid rgba(57, 73, 89, 0.2);
 		color: $builder-gray-color;
 		cursor: pointer;
 		font-size: 15px;
 		outline: none;
 		transition: 0.4s;
-		border-top: 1px solid rgba(57, 73, 89, 0.2);
+		width: 100%;
 
 		&.karma-group-border-radius {
 			border-radius: 0 !important;
