@@ -46,7 +46,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$attributes = shortcode_atts(
 			array(
 				'element_key'   => 'kb' ,
-				'imgurl'		=> karma_load_image( KARMA_BUILDER_URL . 'builder/media/profile.png' ),
+				'imgurl'		=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
 				'action'        => 'none' ,
 				'linkurl'       => get_site_url(),
 				'linktitle'     => '' ,

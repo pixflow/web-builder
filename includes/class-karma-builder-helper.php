@@ -18,23 +18,6 @@ function karma_load_svg( $url ){
 
 }
 
-/**
- * check url of image (use for image )
- *
- * @param    String $url the url of image
- *
- * @since    1.0.0
- * @return   check url
- */
-function karma_load_image( $url ){
-
-	$request = wp_remote_get( $url );
-	if( $request[ 'response' ][ 'code' ] != 404 ){
-		return $request[ 'body' ] ;
-	}
-	return '';
-
-}
 
 /**
  * Get remote image url and add it to media library
