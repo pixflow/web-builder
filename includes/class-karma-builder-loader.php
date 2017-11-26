@@ -116,6 +116,7 @@ class Karma_Builder_Loader {
 
 		}
 		$this->init_elements();
+		add_filter( 'do_shortcode_tag', array( $this, 'render_assets_in_frontend' ), 9, 3 );
 
 	}
 
@@ -291,7 +292,6 @@ class Karma_Builder_Loader {
 			'attributes'		=> $attr,
 			'output'			=> $output,
 		);
-		do_action( 'karma_before_shortcode_apply_' . $tag, $shortcode_info );
 		$classes = apply_filters( 'karma_builder/elements/' . $tag . '/classes', array(), $attr );
 		$classes = implode( ' ',$classes );
 		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" >"
@@ -300,6 +300,28 @@ class Karma_Builder_Loader {
 		$shortcode_info['output'] = $karma_builder_output;
 		do_action( 'karma_after_shortcode_apply_' . $tag, $shortcode_info );
 		return $karma_builder_output;
+
+	}
+
+	/**
+	 * Render assets
+	 *
+	 * @param	string	$output	Html source of each element
+	 * @param	string	$tag	The name of element
+	 * @param 	string	$attr	The attribute of element
+	 *
+	 * @since     1.0.0
+	 * @return    string	the correct html source for builder
+	 */
+	public function render_assets_in_frontend( $output, $tag, $attr ){
+
+		$shortcode_info = array(
+			'shortcode_name' 	=> $tag,
+			'attributes'		=> $attr,
+			'output'			=> $output,
+		);
+		do_action( 'karma_before_shortcode_apply_' . $tag, $shortcode_info );
+		return $output;
 
 	}
 
