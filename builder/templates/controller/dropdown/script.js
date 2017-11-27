@@ -24,7 +24,7 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 
 			$(that).find('.karma-selected-dropdown-option').removeClass( 'karma-selected-dropdown-option' );
 			$(this).addClass( 'karma-selected-dropdown-option' );
-			$(this).closest( ' .karma-dropdown-controller > input' ).val( $(this).attr( 'data-value' ) );
+			$(this).closest( ' .karma-dropdown-controller ' ).find( '> input' ).val( $(this).attr( 'data-value' ) );
 			$(this).closest( ' .karma-dropdown-body ' ).find( ' .karma-dropdown-selected-item' ).html( $(this).find( ' .karma-dropdown-option-title' ).text() );
 			karmaCloseDropdown();
 
