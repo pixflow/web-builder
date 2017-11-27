@@ -8,7 +8,9 @@
                 <# print( KarmaView.getWpTemplate( 'karma-category-filter' , data.leftParam ) ); #>
             </div>
 			<div class="karma-element-panel-add-element-view-content-border"></div>
-			<div class="karma-element-panel-add-element-view-filtering"></div>
+			<div class="karma-element-panel-add-element-view-filtering">
+				<# print( KarmaView.getWpTemplate( 'karma-element-panel-price-filter', { elementInfo : data.elementInfo } ) ); #>
+			</div>
 		</div>
 		<div class="karma-element-panel-add-element-view-right">
 			<# print( KarmaView.getWpTemplate( 'karma-element-panel-list', { elementInfo : data.elementInfo } ) ); #>

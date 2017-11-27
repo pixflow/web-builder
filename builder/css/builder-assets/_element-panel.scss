@@ -66,18 +66,77 @@
 		}
 
 		.karma-element-panel-add-element-view-right{
+			@include box(350px, 100%);
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
-			height:100%;
-			width:350px;
-
 		}
+		
 		.karma-element-panel-add-element-view-left{
-			height:100%;
-			width:174px;
+			@include box(174px, 100%);
 
 			.karma-element-panel-add-element-view-filtering{
-				height: 400px;
-				width: 100%;
+				@include box(100%, 400px);
+
+
+				.karma-element-panel-price-filter-container{
+
+					.karma-element-panel-price-filter{
+						@include  padding( 21px, 0, 0, 30px );
+
+						ul li{
+							display: block;
+							position: relative;
+						}
+
+						ul li input[type=radio]{
+							position: absolute;
+							visibility: hidden;
+						}
+
+						ul li label{
+							@include margin( 16px, auto, 16px, auto );
+							display: block;
+							position: relative;
+							cursor: pointer;
+							padding-left: 31px;
+							color: #7C8691;
+							font-size: 13px;
+							z-index: 10;
+						}
+
+						ul li .check{
+							@include box( 13px, 13px );
+							@include element_direction($top:4px);
+							display: block;
+							position: absolute;
+							border-radius: 100%;
+							transition: border .25s linear;
+							-webkit-transition: border .25s linear;
+							border: 1px solid rgba(57, 73, 89, 0.5);
+						}
+
+						ul li .check::before {
+							@include box( 5px, 5px );
+							@include element_direction($top:3px, $right:auto, $bottom:auto, $left:3px);
+							display: block;
+							position: absolute;
+							content: '';
+							border-radius: 100%;
+							transition: background 0.25s linear;
+							-webkit-transition: background 0.25s linear;
+						}
+
+						input[type=radio]:checked ~ .check {
+							border: 1px solid rgba(57,73,89,0.5);
+						}
+
+						input[type=radio]:checked ~ .check::before{
+							background: #419CF8;
+						}
+
+					}
+
+				}
+
 			}
 
 			.karma-element-panel-add-element-view-content-border{
@@ -129,7 +188,6 @@
 	}
 	
 }
-
 
 
 

@@ -49,6 +49,7 @@ class Karma_Views {
 		'element-panel-unsplash',
 		'element-panel-list',
 		'element-panel-top-header',
+		'element-panel-price-filter',
 		'element-setting-panel',
         'category-filter',
 	);

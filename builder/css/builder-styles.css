@@ -2972,15 +2972,68 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       transform: rotate(135deg);
       -webkit-transform: rotate(135deg); }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right {
-      border-left: 2px solid rgba(57, 73, 89, 0.08);
+      width: 350px;
       height: 100%;
-      width: 350px; }
+      border-left: 2px solid rgba(57, 73, 89, 0.08); }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
-      height: 100%;
-      width: 174px; }
+      width: 174px;
+      height: 100%; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering {
-        height: 400px;
-        width: 100%; }
+        width: 100%;
+        height: 400px; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter {
+          padding-top: 21px;
+          padding-right: 0;
+          padding-bottom: 0;
+          padding-left: 30px; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li {
+            display: block;
+            position: relative; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li input[type=radio] {
+            position: absolute;
+            visibility: hidden; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
+            margin-top: 16px;
+            margin-right: auto;
+            margin-bottom: 16px;
+            margin-left: auto;
+            display: block;
+            position: relative;
+            cursor: pointer;
+            padding-left: 31px;
+            color: #7C8691;
+            font-size: 13px;
+            z-index: 10; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
+            width: 13px;
+            height: 13px;
+            top: 4px;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            display: block;
+            position: absolute;
+            border-radius: 100%;
+            transition: border .25s linear;
+            -webkit-transition: border .25s linear;
+            border: 1px solid rgba(57, 73, 89, 0.5); }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check::before {
+            width: 5px;
+            height: 5px;
+            top: 3px;
+            right: auto;
+            bottom: auto;
+            left: 3px;
+            display: block;
+            position: absolute;
+            content: '';
+            border-radius: 100%;
+            transition: background 0.25s linear;
+            -webkit-transition: background 0.25s linear; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter input[type=radio]:checked ~ .check {
+            border: 1px solid rgba(57, 73, 89, 0.5); }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter input[type=radio]:checked ~ .check::before {
+            background: #419CF8; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-content-border {
         border-top: 2px solid rgba(57, 73, 89, 0.08);
         width: 106px;
