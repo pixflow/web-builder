@@ -62,6 +62,46 @@
 			var imageAlt = this.getAttributes( [ 'alt' ] );
 			this.el.querySelector( 'img' ).setAttribute( "alt", imageAlt.alt );
 
+		},
+
+		/**
+		 * @summary change image click action
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		action: function () {
+
+			var action = this.getAttributes( [ 'action' ] ),
+				elClass = '',
+				elLink = '';
+			switch (action.action) {
+				case 'none':
+					elClass = "karma-image-without-action";
+					elLink = "javascript:void(0);";
+					$( this.el.querySelector( '.karma-image-link' ) ).off( 'click.karma-lightbox' );
+					break;
+				case 'popup':
+					elClass = "karma-image-popup-mode";
+					var img = this.getAttributes( [ 'imgurl' ] );
+					elLink = img.imgurl;
+					new karmaImageLightbox('.karma-image-' + this.el.dataset.elementKey + ' a.karma-image-link');
+					break;
+				case 'link':
+					elClass = "karma-image-with-url";
+					var link = this.getAttributes( [ 'linkurl' ] );
+					elLink = link.linkurl;
+					$( this.el.querySelector( '.karma-image-link' ) ).off( 'click.karma-lightbox' );
+					break;
+				default:
+					return false;
+			}
+			// Change Class
+			this.el.querySelector( '.karma-image-container' ).setAttribute( "class", 'karma-image-container '+elClass );
+			// Change link
+			this.el.querySelector( '.karma-image-link' ).setAttribute( "href", elLink );
+
 		}
 
 	});

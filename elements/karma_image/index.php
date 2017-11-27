@@ -49,7 +49,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 				'imgurl'		=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
 				'action'        => 'none' ,
 				'linkurl'       => get_site_url(),
-				'linktitle'     => '' ,
+				'linktarget'     => '_blank' ,
 				'alt'        => '' ,
 				'scale'			=> 'fill',
 				'position'		=> 'center-center',
@@ -64,8 +64,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 		?>
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?> karma-position-<?php echo $attributes[ 'position' ] ?>' >
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
-				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" title="<?php echo $attributes['linktitle']; ?> " >
-					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" title="<?php echo $attributes['linktitle']; ?>" alt="<?php echo $attributes['alt']; ?>" />
+				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" target="<?php echo $attributes['linktarget']; ?> " >
+					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" alt="<?php echo $attributes['alt']; ?>" />
 				</a>
 			</div>
 		</div>
@@ -88,8 +88,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 		$js_template = '<div class="karma-image karma-image-{{ data.element_key }}" >'
 		               . '<div class="karma-image-container {{ data.extraclass }}">'
-		               . '<a class="karma-image-link" href="{{{ data.link }}}" title="{{ data.linktitle }}" >'
-		               . '<img src="" title="{{ data.linktitle }}" alt="{{ data.alt }}" />'
+		               . '<a class="karma-image-link" href="{{{ data.link }}}" target="{{ data.linktarget }}" >'
+		               . '<img src="" alt="{{ data.alt }}" />'
 		               . '</a>'
 		               . '</div>'
 		               . '</div>';
@@ -151,29 +151,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
 				"height" => "500",
 				"params" => array(
-					array(
-						"name"  	    => "imageaction",
-						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
-						"label"  	    => esc_attr__( "Action on click", 'karma' ),
-						'value'   	    => "none",
-						'separator'	    => "container",
-						"options"  		=> array(
-							'none'   => array(
-								'title' => esc_attr( 'None' , 'karma' ),
-								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' )
-							),
-							'popup'  => array(
-								'title' => "Popup",
-								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' )
 
-							) ,
-							'link'  => array(
-								'title' => "Link",
-								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' )
-
-							),
-						)
-					),
 					array(
 						"name" 	=> "imgurl" ,
 						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
@@ -207,6 +185,39 @@ class Karma_Image extends Karma_Shortcode_Base {
 						"separator" => "container",
 
 					),
+					array(
+						"name"  	    => "action",
+						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"  	    => esc_attr__( "Action on click", 'karma' ),
+						'value'   	    => "none",
+						'separator'	    => "container",
+						"options"  		=> array(
+							'none'   => array(
+								'title' => esc_attr( 'None' , 'karma' ),
+								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' )
+							),
+							'popup'  => array(
+								'title' => "Popup",
+								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' )
+
+							) ,
+							'link'  => array(
+								'title' => "Link",
+								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' )
+
+							),
+						)
+					),
+					array(
+						"name"			=> "linkurl",
+						"type"			=> Karma_Builder_Setting_Panel::TEXT,
+						"label"			=> __( "URL", 'karma' ),
+						"dependency"	=> array(
+								"controller"	=> "action",
+								"value"			=> "link"
+						)
+					),
+
 					array(
 						"name"			=> "alt",
 						"type"			=> Karma_Builder_Setting_Panel::TEXT,

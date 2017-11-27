@@ -33,11 +33,8 @@ karmaImageLightbox.prototype.init = function () {
 
 	var that = this;
 	// Open Lightbox
-	document.querySelector( this.selector ).addEventListener( 'click', function ( e ) {
-		e.preventDefault();
-		that.openLightbox();
-	} );
-
+	var handler = that.openLightbox.bind( that );
+	$( document.querySelector( this.selector ) ).on( 'click.karma-lightbox', handler );
 };
 
 /**
@@ -46,8 +43,9 @@ karmaImageLightbox.prototype.init = function () {
  * @since 1.0.0
  * @returns {void}
  */
-karmaImageLightbox.prototype.openLightbox = function () {
+karmaImageLightbox.prototype.openLightbox = function ( e ) {
 
+	e.preventDefault();
 	if ( document.querySelectorAll( '#karma-lightbox-opened' ).length ) {
 		return;
 	}
@@ -119,4 +117,3 @@ karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
 	}, true );
 
 };
-
