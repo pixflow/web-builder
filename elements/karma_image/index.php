@@ -149,7 +149,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel' => array(
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
-				"height" => "460",
+				"height" => "544",
 				"params" => array(
 					array(
 						"name" 	=> "imgurl" ,
@@ -193,17 +193,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 						"options"  		=> array(
 							'none'   => array(
 								'title' => esc_attr( 'None' , 'karma' ),
-								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' )
 							),
 							'popup'  => array(
-								'title' => "Popup",
-								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' )
-
+								'title' => esc_attr( "Popup", 'karma' ),
 							) ,
 							'link'  => array(
-								'title' => "Link",
-								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' )
-
+								'title' => esc_attr( "Link", 'karma' ),
 							),
 						)
 					),
@@ -214,6 +209,25 @@ class Karma_Image extends Karma_Shortcode_Base {
 						"dependency"	=> array(
 								"controller"	=> "action",
 								"value"			=> "link"
+						)
+					),
+					array(
+						"name"  	    => "linktarget",
+						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"  	    => esc_attr__( "Open image on", 'karma' ),
+						'value'   	    => "_blank",
+						'separator'	    => "container",
+						"options"  		=> array(
+							'_self'   => array(
+								'title' => esc_attr( 'This window' , 'karma' ),
+							),
+							'_blank'  => array(
+								'title' => esc_attr( "New window", 'karma' ),
+							) ,
+						),
+						"dependency"	=> array(
+							"controller"	=> "action",
+							"value"			=> "link"
 						)
 					),
 
@@ -319,10 +333,11 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
-		//wp_enqueue_script( 'karma-lightbox' ,  KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js', array(), true );
-		if( 'popup' ==  $this->element_attributes['action'] ){
+		//wp_enqueue_script( 'karma-lightbox' ,  KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js', array(), true ); ?>
+		<script type="text/javascript" src="<?php echo KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'; ?>"></script>
+
+		<?php if( 'popup' ==  $this->element_attributes['action'] ){
 			?>
-			<script type="text/javascript" src="<?php echo KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'; ?>"></script>
 			<script type="text/javascript">
 				document.addEventListener('DOMContentLoaded', function(){
 					new karmaImageLightbox('.karma-image-<?php echo esc_attr( $this->element_attributes[ 'element_key' ] ); ?> a.karma-image-link');

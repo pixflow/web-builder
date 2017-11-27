@@ -65,6 +65,33 @@
 		},
 
 		/**
+		 * @summary set image url attribute on change url field
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		linkurl: function () {
+
+			var imageLink = this.getAttributes( [ 'linkurl' ] );
+			this.el.querySelector( '.karma-image-link' ).setAttribute( "href", imageLink.linkurl );
+
+		},
+
+		/**
+		 * @summary set image target attribute on change target field
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		linktarget: function () {
+
+			var imageTarget = this.getAttributes( [ 'linktarget' ] );
+			this.el.querySelector( '.karma-image-link' ).setAttribute( "target", imageTarget.linktarget );
+
+		},
+		/**
 		 * @summary change image click action
 		 *
 		 * @since 1.0.0

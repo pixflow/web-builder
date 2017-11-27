@@ -6,6 +6,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+body {
+	background-color: transparent;
+}
+
 a {
 	&:hover{
 		outline: none;

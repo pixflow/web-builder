@@ -342,6 +342,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block; }
 
+body {
+  background-color: transparent; }
+
 a:hover {
   outline: none; }
 a:active {
@@ -1932,6 +1935,7 @@ div.media-modal {
     margin-top: 22px; }
   .karma-dropdown-controller .karma-dropdown-body {
     cursor: pointer;
+    margin-bottom: 18px;
     margin-top: 11px;
     position: relative; }
     .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
@@ -2680,10 +2684,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     padding-left: 18px; }
   .karma-image-position-container .karma-image-position-content {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
     flex-wrap: wrap;
-    padding: 0 105px; }
+    justify-content: space-around;
+    width: 73px;
+    margin: 0 auto; }
     .karma-image-position-container .karma-image-position-content .hidden-input {
       display: none; }
     .karma-image-position-container .karma-image-position-content .karma-image-position-box {
