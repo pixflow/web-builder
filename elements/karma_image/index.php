@@ -287,10 +287,6 @@ class Karma_Image extends Karma_Shortcode_Base {
 								),
 						)
 				),
-				array(
-						"type"		=> "bothSpacingGizmo",
-						"className"	=> "section-both-spacing",
-				),
 		);
 
 		parent::$elements_gizmo[ self::$element_name ] = $controllers;
