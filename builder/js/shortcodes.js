@@ -6,24 +6,11 @@
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/elements/create/karma_column'                   				: 'createElementAction',
 			'before/buildGizmo'                                     				: 'gimzoAction' ,
-			'before/getTemplate'													: 'modifyParams'
 		},
 
 		shortcodeParams: {},
 
-		/*
-		 * Underscore's default ERB-style templates are incompatible with PHP
-		 * when asp_tags is enabled, so Karma uses Mustache-inspired templating syntax.
-		 *
-		 * Make the underscore template like wp.template function
-		 *
-		 */
-		templateSettings : {
-			evaluate	:  /<#([\s\S]+?)#>/g,
-			interpolate	: /\{\{\{([\s\S]+?)\}\}\}/g,
-			escape		: /\{\{([^\}]+?)\}\}(?!\})/g,
-			variable	: 'data'
-		},
+
 
 		/**
 		 *  Build html for inner gizmo
@@ -31,7 +18,7 @@
 		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
 		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+	'<# print( data.viewOBJ.getUnderscoreTemplate( data.viewOBJ[ param.type + "Template" ] , param.params ) ) #>'
+		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
 		+ '</div>'
 		+ '<# }) #>'
 		+ '</div>' ,
@@ -42,7 +29,7 @@
 		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }}">'
 		+ ' <# _.each( data.params, function( param ){ #>'
 		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ '<# print( data.viewOBJ.getUnderscoreTemplate( data.viewOBJ[ param.type + "Template" ] , param.params ) ) #>'
+		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
 		+ '</div>'
 		+ '<# }) #>'
 		+ '</div>' ,
@@ -142,8 +129,8 @@
 			this.template = options.template;
 			if( this.model ) {
 				_.bindAll(this, "update","destroy");
-				this.model.bind('change', this.update);
-				this.model.bind('destroy', this.destroy);
+				this.model.bind( 'change', this.update );
+				this.model.bind( 'destroy', this.destroy );
 			}
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
@@ -217,64 +204,6 @@
 		},
 
 		/**
-		 * @summary Fetch a JavaScript template for an id
-		 *
-		 * @param  	{string} 	templateName	A string that corresponds to a DOM element with an id prefixed with "tmpl-".
-		 * @param 	{object}	templateParams	Data value for template
-		 *
-		 * @since 1.0.0
-		 * @returns {string}    The HTML output of template
-		 */
-		getWpTemplate: function ( templateName, templateParams ) {
-
-			if ( null === templateParams ) {
-				templateParams = {};
-			}
-			var tempObject = wp.template( templateName );
-
-			return tempObject( templateParams );
-
-		},
-
-		/**
-		 * @summary Fetch a Underscore ( JS ) template for an specific name
-		 *
-		 * @param	{string}	templateName	A string that corresponds for template.
-		 * @param	{object}	params			Data value for template
-		 *
-		 * @since 1.0.0
-		 * @returns {string}    The HTML output of template
-		 */
-		getUnderscoreTemplate : function ( templateName, params ) {
-			var compiled,
-				that = this ;
-			compiled =  _.template( templateName, that.templateSettings );
-			params = this.$el.triggerHandler( 'before/getTemplate', [ params ] );
-			return compiled( params );
-
-		},
-
-		/**
-		 * @summary Add backbone view object to params of template
-		 *
-		 * @param	{object}	e		Event handler
-		 * @param	{object}	params	Data value for template
-		 *
-		 * @since 1.0.0
-		 * @returns {object}    The modify value for template
-		 */
-		modifyParams : function ( e, params ) {
-
-			if( "undefined" == typeof params ){
-				params = { viewOBJ : this };
-			} else {
-				params['viewOBJ'] = this;
-			}
-			return params;
-
-		},
-
-		/**
 		 * @summary Build gizmo controller of elements base on params given
 		 *
 		 * @param	{object}	gizmoParams	Gizmo params
@@ -285,10 +214,11 @@
 		 */
 		gizmoBuilder: function ( gizmoParams ) {
 
-			var tempName = gizmoParams.type + 'Template';
+			var tempName = gizmoParams.type + 'Template' ,
+					that = this;
 			if( "undefined" !== typeof this[ tempName ] ){
-				gizmoParams  = this.$el.triggerHandler( 'before/buildGizmo', [ tempName, gizmoParams ] );
-				return $( this.getUnderscoreTemplate( this[ tempName ], gizmoParams ) );
+				gizmoParams  = that.$el.triggerHandler( 'before/buildGizmo', [ tempName, gizmoParams ] );
+				return $( KarmaView.getUnderscoreTemplate( that[ tempName ], gizmoParams, that ) );
 			}
 
 		},

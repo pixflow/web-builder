@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10.6252371,10.8253466 L7.17334803,10.8253466 C6.75890766,10.8253466 6.42293736,11.1613169 6.42293736,11.5757573 L6.42293736,11.5757573 L6.42293736,11.5757573 C6.42293736,11.9901977 6.75890766,12.326168 7.17334803,12.326168 L7.17334803,12.326168 L10.6252371,12.326168 L10.6252371,15.778057 C10.6252371,16.1924974 10.9612074,16.5284677 11.3756478,16.5284677 C11.7900882,16.5284677 12.1260585,16.1924974 12.1260585,15.778057 L12.1260585,15.778057 L12.1260585,12.326168 L15.5779475,12.326168 C15.9923879,12.326168 16.3283582,11.9901977 16.3283582,11.5757573 C16.3283582,11.1613169 15.9923879,10.8253466 15.5779475,10.8253466 L12.1260585,10.8253466 L12.1260585,7.37345754 C12.1260585,6.95901718 11.7900882,6.62304688 11.3756478,6.62304688 L11.3756478,6.62304688 L11.3756478,6.62304688 C10.9612074,6.62304688 10.6252371,6.95901718 10.6252371,7.37345754 L10.6252371,7.37345754 L10.6252371,10.8253466 Z" id="path-1"></path>
+        <filter x="-50.5%" y="-50.5%" width="241.3%" height="241.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="2" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.223529412   0 0 0 0 0.28627451   0 0 0 0 0.349019608  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-left-buttons" transform="translate(-13.000000, -14.000000)">
+            <g id="Group-Copy" transform="translate(13.000000, 14.000000)">
+                <circle id="Oval" fill="#24D07A" cx="11.1708984" cy="11.1708984" r="10.8291016"></circle>
+                <g id="Combined-Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

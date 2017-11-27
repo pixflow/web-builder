@@ -11,6 +11,20 @@ var karmaBuilder = karmaBuilder || {};
 		/** Map of all builder params */
 		builderParams: {},
 
+		/*
+		 * Underscore's default ERB-style templates are incompatible with PHP
+		 * when asp_tags is enabled, so Karma uses Mustache-inspired templating syntax.
+		 *
+		 * Make the underscore template like wp.template function
+		 *
+		 */
+		templateSettings : {
+			evaluate	:  /<#([\s\S]+?)#>/g,
+			interpolate	: /\{\{\{([\s\S]+?)\}\}\}/g,
+			escape		: /\{\{([^\}]+?)\}\}(?!\})/g,
+			variable	: 'data'
+		},
+
 		/**
 		 * Defines events of Karma Builder
 		 *
@@ -30,8 +44,6 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		initialize : function () {
-
-			this.render();
 
 		},
 
@@ -73,7 +85,8 @@ var karmaBuilder = karmaBuilder || {};
 		render: function () {
 
 			var that = this;
-			this.collection.each( function ( element ) {
+			that.settingPanelHtml();
+			that.collection.each( function ( element ) {
 				var elementName = element.attributes.shortcode_name.replace("karma_", "");
 				if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
 					var elementView = new karmaBuilder[ elementName ]({
@@ -106,6 +119,18 @@ var karmaBuilder = karmaBuilder || {};
 				url		: that.getBuilderParam('ajaxUrl'),
 				data	: data
 			});
+
+		},
+
+		/**
+		 * append template of setting panel to body
+		 *
+		 * @since   1.0.0
+		 * @returns void
+		 */
+		settingPanelHtml : function () {
+
+			new karmaBuilder.elementPanel();
 
 		},
 
@@ -195,7 +220,47 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		dropElement : function( droppedElement, placeHolder ){
 
-		}
+		},
+
+		/**
+		 * @summary Fetch a JavaScript template for an id
+		 *
+		 * @param  	{string} 	templateName	A string that corresponds to a DOM element with an id prefixed with "tmpl-".
+		 * @param 	{object}	templateParams	Data value for template
+		 *
+		 * @since 1.0.0
+		 * @returns {string}    The HTML output of template
+		 */
+		getWpTemplate: function ( templateName, templateParams ) {
+
+			if ( null === templateParams ) {
+				templateParams = {};
+			}
+			var tempObject = wp.template( templateName );
+
+			return tempObject( templateParams );
+
+
+		},
+
+		/**
+		 * @summary Fetch a Underscore ( JS ) template for an specific name
+		 *
+		 * @param	{string}	templateName	A string that corresponds for template.
+		 * @param	{object}	params			Data value for template
+		 *
+		 * @since 1.0.0
+		 * @returns {string}    The HTML output of template
+		 */
+		getUnderscoreTemplate : function ( templateName, params ) {
+
+			var compiled,
+					that = this ;
+			compiled =  _.template( templateName, that.templateSettings );
+			return compiled( params );
+
+		},
+
 
 	});
 
@@ -224,6 +289,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
 		window.KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
+		KarmaView.render();
 
 
 	});

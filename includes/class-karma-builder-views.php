@@ -44,7 +44,9 @@ class Karma_Views {
 	 * @access   private
 	 */
 	private $builder_templates = array(
-		'element-panel',
+		'element-panel-add-element',
+		'element-panel-templates',
+		'element-panel-unsplash',
 		'element-setting-panel',
 	);
 

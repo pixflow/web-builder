@@ -177,7 +177,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 					array(
 						"name" 	=> "imgurl" ,
 						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"	=> esc_attr__( "Set image", 'karma' ),
+						"label"	=> esc_attr__( "Change image", 'karma' ),
 						"value"	=> "",
 					),
 					array(
