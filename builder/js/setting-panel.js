@@ -376,14 +376,10 @@
 			if( dependentElements.length ){
 
 				_.each( dependentElements, function ( element ) {
-					if( isHide ){
+					if( isHide || dependentElement.classList.contains('karma-hide-controller') ){
 						element.classList.add('karma-hide-controller');
-					}else{
+					}else {
 						element.classList.remove('karma-hide-controller');
-					}
-					if( dependentElement.classList.contains('karma-hide-controller') ){
-						element.classList.add('karma-hide-controller');
-					}else{
 						that.doDependency( element, JSON.parse( dependentElement.getAttribute( 'data-dependency' ) ), dependentElement.querySelector('input').value );
 					}
 					lastElement = element;
