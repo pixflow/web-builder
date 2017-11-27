@@ -60,7 +60,7 @@
 		alt: function () {
 
 			var imageAlt = this.getAttributes( [ 'alt' ] );
-			this.el.querySelector( 'img' ).setAttribute( "alt", imageAlt );
+			this.el.querySelector( 'img' ).setAttribute( "alt", imageAlt.alt );
 
 		}
 

@@ -12,6 +12,7 @@
  * @param {string}  selector image link selector
  *
  * @since 1.0.0
+ * @returns {void}
  */
 var karmaImageLightbox = function ( selector ) {
 
@@ -111,6 +112,9 @@ karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
 	document.querySelector( 'body' ).appendChild( lightbox );
 	lightbox.addEventListener( 'click', function ( e ) {
 		e.preventDefault();
+		if ( 'IMG' === e.target.tagName ) {
+			return;
+		}
 		that.closeLightbox();
 	}, true );
 
