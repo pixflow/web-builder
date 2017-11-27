@@ -2957,4 +2957,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   .karma-element-panel-container .element-panel-show {
     display: flex; }
 
+.karma-panel-templates-container * {
+  font-size: 30px; }
+
 /*# sourceMappingURL=builder-styles.css.map */
