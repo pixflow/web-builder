@@ -2910,7 +2910,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   position: fixed;
   top: 36%;
   left: 1.3%; }
-  .karma-element-panel-container > div {
+  .karma-element-panel-container .element-panel-button {
     display: flex;
     text-align: center;
     align-items: center;

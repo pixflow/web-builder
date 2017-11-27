@@ -1,5 +1,5 @@
 <div>
-	<div class="element-panel-add-element-button">
+	<div class="element-panel-button element-panel-add-element-button">
 		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/element-panel-1.svg' ); ?>
 	</div>
 	<div class="karma-element-panel-add-element-view">
