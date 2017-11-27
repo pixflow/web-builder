@@ -1,0 +1,53 @@
+.karma-element-panel-container{
+	position: fixed;
+	top: 36%;
+	padding-left: 22px;
+
+	> div{
+		@include flexbox( center, center, center );
+		box-shadow: 0 7px 15px 3px rgba(57,73,89,0.2);
+		border-radius: 100px;
+		height: 48px;
+		width: 48px;
+		margin-bottom: 15px;
+		background-color: #FFFFFF;
+
+	}
+
+	.karma-element-panel-add-element-view{
+		height: 699px;
+		width: 524px;
+		border-radius: 5px;
+		background-color: #FFFFFF;
+		box-shadow: 0 2px 15px 7px rgba(57,73,89,0.07);
+		border-radius: 3px;
+		display: none;
+		position: fixed;
+		left: 6%;
+		top: 13%;
+
+		.karma-element-panel-add-element-view-right{
+			width:350px;
+			height:100%;
+			border-left: 2px solid rgba(57, 73, 89, 0.08);
+		}
+		.karma-element-panel-add-element-view-left{
+			width:174px;
+			height:100%;
+
+
+			.karma-element-panel-add-element-view-filtering{
+				height: 400px;
+				width: 100%;
+			}
+			.karma-element-panel-add-element-view-content{
+				height: 299px;
+				width: fit-content;
+				border-bottom: 2px solid rgba(57, 73, 89, 0.08);
+			}
+		}
+	}
+	.element-panel-show{
+		display: flex;
+	}
+}

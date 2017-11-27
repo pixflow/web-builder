@@ -93,7 +93,7 @@
 			}
 			var elementAttributes = this.model.attributes,
 				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
-			html.innerHTML = this.getWpTemplate( 'karma-element-setting-panel' , {
+			html.innerHTML = KarmaView.getWpTemplate( 'karma-element-setting-panel' , {
 				headerTitle: formHtml.title,
 				content: formHtml.content,
 				selector: elementSelector
@@ -196,17 +196,17 @@
 				groupHtml_group = [];
 			for( var counter in shortcodeParams.params ){
 				if ( ! shortcodeParams.params[counter].group && "switch-panel" != shortcodeParams.params[counter].type ) {
-					controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+					controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
 					groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] ) ;
 				}else if( "switch-panel" === shortcodeParams.params[counter].type ) {
 					if( "undefined" !== typeof shortcodeParams.params[counter].form ){
 						shortcodeParams.params[counter]['view'] = this;
 						shortcodeParams.params[counter]['formBuilder'] = true;
-						controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
 						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					}else{
 						shortcodeParams.params[counter]['formBuilder'] = false;
-						controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
 						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					}
 				} else {
@@ -216,7 +216,7 @@
 							title: shortcodeParams.params[counter].group
 						};
 					}
-					controllerSource = this.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
 					var html = this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					groupHtml_group[ shortcodeParams.params[counter].group ]['items'].push( html );
 				}
@@ -241,7 +241,7 @@
 			var settingPanelGroup = '' ,
 				controllerSource ;
 			for( var counter in htmlGroup ) {
-				controllerSource = this.getWpTemplate( 'karma-setting-panel-groups-extend', htmlGroup[counter] );
+				controllerSource = KarmaView.getWpTemplate( 'karma-setting-panel-groups-extend', htmlGroup[counter] );
 				settingPanelGroup += this.setGeneralContainer( controllerSource, htmlGroup[ counter ] );
 			}
 			return settingPanelGroup;

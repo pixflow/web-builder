@@ -149,12 +149,35 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel' => array(
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
-				"height" => "460",
+				"height" => "500",
 				"params" => array(
+					array(
+						"name"  	    => "imageaction",
+						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"  	    => esc_attr__( "Action on click", 'karma' ),
+						'value'   	    => "none",
+						'separator'	    => "container",
+						"options"  		=> array(
+							'none'   => array(
+								'title' => esc_attr( 'None' , 'karma' ),
+								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' )
+							),
+							'popup'  => array(
+								'title' => "Popup",
+								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' )
+
+							) ,
+							'link'  => array(
+								'title' => "Link",
+								'icon'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' )
+
+							),
+						)
+					),
 					array(
 						"name" 	=> "imgurl" ,
 						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"	=> esc_attr__( "Set image", 'karma' ),
+						"label"	=> esc_attr__( "Change image", 'karma' ),
 						"value"	=> "",
 					),
 					array(
