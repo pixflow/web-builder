@@ -238,6 +238,20 @@ class Karma_Builder_Loader {
 	}
 
 	/**
+	 * Localize each element info
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @return  void
+	 */
+	private function localize_element_info(){
+
+		$elements_info = json_encode( $this->core->element_info() );
+		wp_localize_script( $this->plugin_name, 'builderElementInfo', $elements_info );
+
+	}
+
+	/**
 	 * localize elements maps for builder
 	 *
 	 * @since     1.0.0
@@ -274,6 +288,7 @@ class Karma_Builder_Loader {
 		$this->send_elements_gizmo();
 	    $this->generate_page_model();
 	    $this->localize_builder_param();
+	    $this->localize_element_info();
 
     }
 

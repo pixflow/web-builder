@@ -56,6 +56,7 @@
 
 		},
 
+
 		/**
 		 * create add element panel with import template
 		 *
@@ -63,8 +64,10 @@
 		 * @returns {void}
 		 */
 		createAddElementPanel: function(){
-
-			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-add-element', {} ) + '</div>';
+			
+			var templateParams = {} ;
+			templateParams['elementInfo'] = KarmaView.getElementInfo();
+			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-add-element', templateParams ) + '</div>';
 			this.el.appendChild( $( template )[0] );
 			$( document ).trigger( 'karma_finish_element_panel_html', [ this ] );
 

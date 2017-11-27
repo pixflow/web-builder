@@ -149,13 +149,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel' => array(
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
-				"height" => "500",
+				"height" => "460",
 				"params" => array(
-
 					array(
 						"name" 	=> "imgurl" ,
 						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"	=> esc_attr__( "Change image", 'karma' ),
+						"label"	=> esc_attr__( "Set image", 'karma' ),
 						"value"	=> "",
 					),
 					array(
@@ -332,6 +331,31 @@ class Karma_Image extends Karma_Shortcode_Base {
 			</script>
 			<?php
 		}
+	}
+
+	/**
+	 * Get element info
+	 *
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return  array   The element info
+	 */
+	public function get_element_info(){
+
+		$element_info = array(
+			'elementName' => self::$element_name ,
+			'icon'         => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg' ),
+			'category'     => array(
+				'basic' ,
+				'media' ,
+			),
+			'showInList'   => true ,
+		);
+
+		parent::$elements_info[ self::$element_name ] = $element_info;
+		return parent::$elements_info;
+
 	}
 
 }

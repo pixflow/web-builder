@@ -297,5 +297,27 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	}
 
+	/**
+	 * Get element info
+	 *
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return  array   The element info
+	 */
+	public function get_element_info(){
 
+		$element_info = array(
+			'elementName' => self::$element_name ,
+			'icon'         => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
+			'category'     => array(
+					'basic'
+			),
+			'showInList'   => false ,
+		);
+
+		parent::$elements_info[ self::$element_name ] = $element_info;
+		return parent::$elements_info;
+
+	}
 }

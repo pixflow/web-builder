@@ -47,6 +47,8 @@ class Karma_Views {
 		'element-panel-add-element',
 		'element-panel-templates',
 		'element-panel-unsplash',
+		'element-panel-list',
+		'element-panel-top-header',
 		'element-setting-panel',
 	);
 

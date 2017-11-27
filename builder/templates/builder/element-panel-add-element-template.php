@@ -8,7 +8,7 @@
 			<div class="karma-element-panel-add-element-view-filtering"></div>
 		</div>
 		<div class="karma-element-panel-add-element-view-right">
-
+			<# print( KarmaView.getWpTemplate( 'karma-element-panel-list', { elementInfo : data.elementInfo } ) ); #>
 		</div>
 	</div>
 

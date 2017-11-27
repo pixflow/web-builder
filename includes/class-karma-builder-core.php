@@ -613,6 +613,20 @@ class Karma_Builder_Core{
 
 	}
 
+	/**
+	 * Element info
+	 *
+	 * @since 1.0.0
+	 * @return array - array of elements gizmo
+	 */
+	public function element_info() {
+
+		$elements_info = array();
+		$elements_info = apply_filters( 'karma/elements/element_info', $elements_info );
+		return $elements_info;
+
+	}
+
 
 
 }

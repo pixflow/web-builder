@@ -11,6 +11,9 @@ var karmaBuilder = karmaBuilder || {};
 		/** Map of all builder params */
 		builderParams: {},
 
+		/** All element info */
+		elementInfo: {},
+
 		/*
 		 * Underscore's default ERB-style templates are incompatible with PHP
 		 * when asp_tags is enabled, so Karma uses Mustache-inspired templating syntax.
@@ -62,6 +65,29 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 			return this.builderParams[ name ];
+
+		},
+
+		/**
+		 * @summary return builder elements info
+		 *
+		 * @param {string}  name    The name of element
+		 * If the param dose not pass to the function, the function returns all element info
+		 *
+		 * @since 1.0.0
+		 * @return {object} Element or elements info
+		 */
+		getElementInfo : function ( name ) {
+
+			if ( 0 === Object.keys( this.elementInfo ).length ) {
+				this.elementInfo = JSON.parse( builderElementInfo );
+			}
+
+			if ( name ) {
+				return this.elementInfo[ name ];
+			} else {
+				return this.elementInfo;
+			}
 
 		},
 

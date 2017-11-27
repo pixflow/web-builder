@@ -65,6 +65,15 @@ class Karma_Shortcode_Base {
     public static $elements_map = array();
 
 	/**
+	 * It s contains the some information like name and icon of all element
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      array    $elements_info    Elements info.
+	 */
+	public static $elements_info = array();
+
+	/**
 	 * It is an array that contains elements gizmo
 	 *
 	 * @since    1.0.0
@@ -113,11 +122,11 @@ class Karma_Shortcode_Base {
 		$builder = Karma_Factory_Pattern::$builder;
 		add_action( 'karma_before_shortcode_apply_' . static::$element_name , array( $this , 'load_assets' ) );
 		if( $builder::is_in_builder() ){
-
 			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.js', array( KARMA_BUILDER_NAME . '-shortcodes' ) );
 			add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
 			add_filter( 'karma_elements_map', array( $this, 'map' ) );
 			add_filter( 'karma/elements/gizmo', array( $this, 'gimzo_controllers' ) );
+			add_filter( 'karma/elements/element_info', array( $this, 'get_element_info' ) );
 			if( method_exists( $this, 'wrapper_classes' ) ) {
 				add_filter( 'karma_builder/elements/' . static::$element_name . '/classes', array( $this, 'wrapper_classes' ), 10, 2 );
 			}
