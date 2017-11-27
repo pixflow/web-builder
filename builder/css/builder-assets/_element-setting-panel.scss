@@ -75,6 +75,7 @@
 		
 		.karma-element-setting-panel-content {
 
+			overflow-x: hidden;
 			#karma-Builder-form {
 
 				transition:all .3s cubic-bezier(0.2, 0.32, 0.07, 1.01);
