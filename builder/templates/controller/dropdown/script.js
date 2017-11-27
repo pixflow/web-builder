@@ -11,9 +11,10 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 		 selectedItem = $(this).find( "li[ data-value *= " + $(this).find( '> input' ).val() + " ] .karma-dropdown-option-title" );
 		$(that).find( '.karma-dropdown-selected-item' ).html( selectedItem.text() );
 
-		$(that).find( '.karma-dropdown-selected-item , .karma-dropdown-icon' ).click(function () {
+		$(that).find( '.karma-dropdown-header' ).click(function () {
 
 			var optionsContainer =  $(this).siblings( 'ul' );
+			$( '.karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
 			optionsContainer.addClass( 'karma-doropdown-opened' );
 			optionsContainer.css( 'top' , optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 );
 
@@ -24,7 +25,7 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 			$(that).find('.karma-selected-dropdown-option').removeClass( 'karma-selected-dropdown-option' );
 			$(this).addClass( 'karma-selected-dropdown-option' );
 			$(this).closest( ' .karma-dropdown-controller > input' ).val( $(this).attr( 'data-value' ) );
-			$(this).closest( ' .karma-dropdown-body ' ).find( '> .karma-dropdown-selected-item' ).html( $(this).find( '> .karma-dropdown-option-title' ).text() );
+			$(this).closest( ' .karma-dropdown-body ' ).find( ' .karma-dropdown-selected-item' ).html( $(this).find( ' .karma-dropdown-option-title' ).text() );
 			karmaCloseDropdown();
 
 		});
@@ -33,7 +34,7 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 
 
 
-	$('body:not(.karma-dropdown-body)').click(function (e) {
+	$( 'body:not( .karma-dropdown-body )' ).click(function (e) {
 
 		if( $(e.target).hasClass( '.karma-dropdown-body' ) || $(e.target).closest( '.karma-dropdown-body' ).length ){
 			return;

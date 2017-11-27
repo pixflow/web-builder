@@ -156,12 +156,12 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
-.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-icon, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, .grid-controller-template .karma-add-column-view, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
   align-items: center;
   display: flex;
   justify-content: center; }
 
-.space-between, .karma-dropdown-controller .karma-dropdown-body {
+.space-between, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
   display: flex;
   justify-content: space-between; }
 
@@ -1900,17 +1900,15 @@ div.media-modal {
           margin-right: 5px; }
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             fill: #fff; }
-    #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      overflow: hidden; }
-      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
-        transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
-        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
-          border-bottom-left-radius: 4px;
-          border-bottom-right-radius: 4px; }
-        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form input.hidden-input {
-          display: none; }
-        #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form #elementRow {
-          position: relative; }
+    #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
+      transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form input.hidden-input {
+        display: none; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form #elementRow {
+        position: relative; }
 
 .tooltip-div {
   position: fixed;
@@ -1927,20 +1925,23 @@ div.media-modal {
     color: rgba(57, 73, 89, 0.7);
     margin-top: 22px; }
   .karma-dropdown-controller .karma-dropdown-body {
-    align-items: center;
     cursor: pointer;
     margin-top: 11px;
     position: relative; }
-    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-icon {
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(57, 73, 89, 0.2);
-      border-radius: 100px; }
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
+      align-items: center; }
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(57, 73, 89, 0.2);
+        border-radius: 100px; }
     .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options {
       width: 100%;
       height: 0;
-      background-color: #FFFFFF;
+      background-color: #fff;
       box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.18);
+      display: flex;
+      flex-direction: column;
       left: 0;
       list-style: none;
       overflow: hidden;
@@ -1950,10 +1951,12 @@ div.media-modal {
       z-index: -1; }
       .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
         height: auto;
-        z-index: 70; }
+        z-index: 100; }
   .karma-dropdown-controller .karma-dropdown-option {
+    align-items: center;
     border-radius: 4px;
     cursor: pointer;
+    display: flex;
     padding: 10px;
     margin-bottom: 7px;
     transition: background-color .2s; }

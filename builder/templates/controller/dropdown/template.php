@@ -5,8 +5,9 @@
 	<input class="hidden-input dropdown-input" name="{{ data.name }}" value="{{ data.value }}">
 
 	<div class="karma-dropdown-body">
-		<div class="karma-dropdown-selected-item">{{{ data.value }}}</div>
-		<div class="karma-dropdown-icon"><span class="karma-down-arrow">
+		<div class="karma-dropdown-header">
+			<div class="karma-dropdown-selected-item">{{{ data.value }}}</div>
+			<div class="karma-dropdown-icon"><span class="karma-down-arrow">
 			<svg width="12px" height="6px" viewBox="0 0 12 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<title>Path 2 Copy 9</title>
 				<desc>Created with Sketch.</desc>
@@ -20,12 +21,13 @@
 				</g>
 			</svg>
 		</span></div>
+		</div>
 		<ul class="karma-dropdown-options">
 			<# for( var i in data.options){ #>
 				<#  var itemClass = ( i == data.value ) ? "karma-dropdown-option  karma-selected-dropdown-option" : "karma-dropdown-option" ;#>
 				<li class="{{itemClass}}" data-value="{{ i }}" >
 					<# if( "" != data.options[ i ].icon  &&  "undefined" != typeof data.options[ i ].icon ){ #>
-						<span class="karma-dropdown-option-icon"><span>
+						<span class="karma-dropdown-option-icon">{{{ data.options[i].icon }}}</span>
 					<# } #>
 					<# if( "" != data.options[ i ].title  &&  "undefined" != typeof data.options[ i ].title ){ #>
 						<span class="karma-dropdown-option-title">{{{ data.options[i].title }}}</span>
