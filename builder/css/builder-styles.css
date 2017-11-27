@@ -2903,9 +2903,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   width: 100%; }
 
 .karma-element-panel-container {
-  padding-left: 22px;
   position: fixed;
-  top: 36%; }
+  top: 36%;
+  left: 1.3%; }
   .karma-element-panel-container > div {
     display: flex;
     text-align: center;
