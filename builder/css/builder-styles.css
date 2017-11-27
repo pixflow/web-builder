@@ -2301,13 +2301,13 @@ img {
       width: 8px; }
   .karma-builder-element .row-gizmo-group {
     display: none; }
-  .karma-builder-element .karma-active-section .karma-row {
+  .karma-builder-element.karma-active-section .karma-row {
     box-shadow: 0 0 0 1px rgba(118, 129, 140, 0.18); }
-    .karma-builder-element .karma-active-section .karma-row > .karma-builder-element:last-child .resize-handler {
+    .karma-builder-element.karma-active-section .karma-row > .karma-builder-element:last-child .resize-handler {
       display: none; }
-    .karma-builder-element .karma-active-section .karma-row > .karma-builder-element:last-child .karma-right-spacing .karma-spacing-dot-container {
+    .karma-builder-element.karma-active-section .karma-row > .karma-builder-element:last-child .karma-right-spacing .karma-spacing-dot-container {
       left: calc(100% - 9px) !important; }
-    .karma-builder-element .karma-active-section .karma-row .resize-handler {
+    .karma-builder-element.karma-active-section .karma-row .resize-handler {
       width: 12px;
       height: 100%;
       cursor: col-resize;
@@ -2315,7 +2315,7 @@ img {
       right: -5px;
       top: 0;
       z-index: 70; }
-    .karma-builder-element .karma-active-section .karma-row .resize-handler:before {
+    .karma-builder-element.karma-active-section .karma-row .resize-handler:before {
       position: absolute;
       left: 50%;
       -webkit-transform: translateX(-50%);
@@ -2328,10 +2328,10 @@ img {
       cursor: col-resize;
       top: 0;
       transition: background-color .3s , width .2s; }
-    .karma-builder-element .karma-active-section .karma-row .resize-handler:hover:before {
+    .karma-builder-element.karma-active-section .karma-row .resize-handler:hover:before {
       background-color: rgba(51, 143, 252, 0.3);
       width: 4px; }
-  .karma-builder-element .karma-active-column .karma-column-setting {
+  .karma-builder-element.karma-active-column .karma-column-setting {
     padding-top: 0;
     padding-right: 4px;
     padding-bottom: 0;
@@ -2344,12 +2344,12 @@ img {
     position: absolute;
     top: -17px;
     z-index: 80; }
-    .karma-builder-element .karma-active-column .karma-column-setting .karama-gizmo-icon svg {
+    .karma-builder-element.karma-active-column .karma-column-setting .karama-gizmo-icon svg {
       width: 10.31px;
       height: 11.31px; }
-      .karma-builder-element .karma-active-column .karma-column-setting .karama-gizmo-icon svg * {
+      .karma-builder-element.karma-active-column .karma-column-setting .karama-gizmo-icon svg * {
         fill: #fff; }
-    .karma-builder-element .karma-active-column .karma-column-setting .karma-gizmo-title {
+    .karma-builder-element.karma-active-column .karma-column-setting .karma-gizmo-title {
       color: #fff;
       font-family: HelveticaNeue;
       font-size: 10px;

@@ -197,7 +197,7 @@ img{
 
 }
 
-.karma-spacing-dot-container {
+	.karma-spacing-dot-container {
 
 	@include box( 22px, 23px );
 	cursor: n-resize;
@@ -298,7 +298,7 @@ img{
 
 }
 
-.row-bottom-spacing-dot-container {
+	.row-bottom-spacing-dot-container {
 	align-items: center;
 	bottom: -9px;
 	cursor: n-resize;
@@ -335,11 +335,11 @@ img{
 	}
 }
 
-.row-gizmo-group{
+	.row-gizmo-group{
 	display: none;
 }
 
-.karma-active-section {
+	&.karma-active-section {
 
 	.karma-row {
 		box-shadow: 0 0 0 1px rgba(118, 129, 140, 0.18);
@@ -381,7 +381,7 @@ img{
 
 	}
 
-	.karma-active-column {
+	&.karma-active-column {
 		.karma-column-setting {
 			@include padding(0, 4px, 0, 3px);
 			background-color: #76818C;
