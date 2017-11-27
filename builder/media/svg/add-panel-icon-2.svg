@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M14,12.4444444 L14,1.55555556 C14,0.7 13.3,0 12.4444444,0 L1.55555556,0 C0.7,0 0,0.7 0,1.55555556 L0,12.4444444 C0,13.3 0.7,14 1.55555556,14 L12.4444444,14 C13.3,14 14,13.3 14,12.4444444 Z M4.27777778,8.16666667 L6.22222222,10.5077778 L8.94444444,7 L12.4444444,11.6666667 L1.55555556,11.6666667 L4.27777778,8.16666667 Z" id="Shape" fill="#394959" fill-rule="nonzero"></path>
+    </g>
+</svg>

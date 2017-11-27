@@ -43,6 +43,7 @@
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
 			height:100%;
 			width:350px;
+
 		}
 		.karma-element-panel-add-element-view-left{
 			height:100%;
@@ -53,22 +54,60 @@
 				width: 100%;
 			}
 
-			.karma-element-panel-add-element-view-content{
-				border-bottom: 2px solid rgba(57, 73, 89, 0.08);
-				height: 299px;
-				width: fit-content;
+			.karma-element-panel-add-element-view-content-border{
+				border-top: 2px solid rgba(57, 73, 89, 0.08);
+				width: 106px;
+				margin-left: 30px;
+			}
+
+			.karma-builder-addcontent-title {
+				color: #445363;
+				font-size: 14px;
+			}
+
+			.karma-builder-addcontent{
+				@include padding(30px, 0, 0, 30px);
+
+			}
+
+			.karma-addcontent-name{
+				padding-left: 17px;
+				color:#7C8691;
+				font-size: 14px;
+			}
+
+			.karma-addcontent-icon {
+				svg {
+					* {
+						fill: #7C8691;
+					}
+				}
+			}
+
+			.karma-builder-addcontent ul{
+				display: flex;
+				flex-direction: column;
+				align-items: left;
+				list-style: none;
+			}
+
+			li.karma-addcontent{
+				@include flexbox( center, center, center );
+				padding-top: 20px;
 			}
 		}
 	}
 	.element-panel-show{
 		display: flex;
 	}
+	
 }
 
 
-.karma-panel-templates-container{
 
-	* {
-		font-size: 30px;
-	}
-}
+
+
+
+
+
+

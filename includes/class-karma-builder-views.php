@@ -50,6 +50,7 @@ class Karma_Views {
 		'element-panel-list',
 		'element-panel-top-header',
 		'element-setting-panel',
+        'category-filter',
 	);
 
 	/*
