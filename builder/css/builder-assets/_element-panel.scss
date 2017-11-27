@@ -1,49 +1,62 @@
 .karma-element-panel-container{
+	padding-left: 22px;
 	position: fixed;
 	top: 36%;
-	padding-left: 22px;
 
 	> div{
 		@include flexbox( center, center, center );
-		box-shadow: 0 7px 15px 3px rgba(57,73,89,0.2);
-		border-radius: 100px;
-		height: 48px;
-		width: 48px;
-		margin-bottom: 15px;
 		background-color: #FFFFFF;
-
+		border-radius: 100px;
+		box-shadow: 0 7px 15px 3px rgba(57,73,89,0.2);
+		height: 48px;
+		margin-bottom: 15px;
+		width: 48px;
 	}
 
 	.karma-element-panel-add-element-view{
-		height: 699px;
-		width: 524px;
-		border-radius: 5px;
 		background-color: #FFFFFF;
-		box-shadow: 0 2px 15px 7px rgba(57,73,89,0.07);
+		border-radius: 5px;
 		border-radius: 3px;
+		box-shadow: 0 2px 15px 7px rgba(57,73,89,0.07);
 		display: none;
+		height: 699px;
+		left: 5%;
 		position: fixed;
-		left: 6%;
 		top: 13%;
+		width: 524px;
+
+		&:after{
+			background-color: white;
+			border: 1px solid #ffffffeb;
+			border-width: 0 2px 2px 0;
+			content: "";
+			display: inline-block;
+			left: 4.8%;
+			padding: 4px;
+			position: fixed;
+			top: 38%;
+			transform: rotate(135deg);
+			-webkit-transform: rotate(135deg);
+		}
 
 		.karma-element-panel-add-element-view-right{
-			width:350px;
-			height:100%;
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
+			height:100%;
+			width:350px;
 		}
 		.karma-element-panel-add-element-view-left{
-			width:174px;
 			height:100%;
-
+			width:174px;
 
 			.karma-element-panel-add-element-view-filtering{
 				height: 400px;
 				width: 100%;
 			}
+
 			.karma-element-panel-add-element-view-content{
+				border-bottom: 2px solid rgba(57, 73, 89, 0.08);
 				height: 299px;
 				width: fit-content;
-				border-bottom: 2px solid rgba(57, 73, 89, 0.08);
 			}
 		}
 	}
