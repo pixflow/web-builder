@@ -3,7 +3,7 @@
 	<# _.each( data.elementInfo, function( element ){
 		if( false !== element.showInList ){
 		#>
-		<div class="karma-element-single-element" data-category="<# print( element.category.join(',')); #>" >
+		<div class="karma-element-single-element" data-category="<# print( element.category.join(',') ); #>" >
 			<div class="karma-element-single-element-icon">
 				<# print( element.icon ); #>
 			</div>
