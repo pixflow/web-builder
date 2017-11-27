@@ -3,9 +3,9 @@
 		padding-top: 6px;
 	}
 
-	@include box(100%);
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 
 	button.karma-setting-panel-group-button {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-between);

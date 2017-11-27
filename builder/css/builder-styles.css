@@ -2396,10 +2396,9 @@ img {
     font-family: "HelveticaNeue_Medium"; }
 
 .karma-title-controller {
-  width: 100%;
-  height: 100%;
   padding: 22px 20px 18px;
-  position: relative; }
+  position: relative;
+  width: 100%; }
   .karma-title-controller div.karma-title-field {
     color: #394959; }
 
@@ -2438,10 +2437,9 @@ img {
       text-align: center; }
 
 .karma-setting-panel-group-container {
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  width: 100%; }
   .karma-setting-panel-group-container div:first-child {
     padding-top: 6px; }
   .karma-setting-panel-group-container button.karma-setting-panel-group-button {
@@ -2638,11 +2636,10 @@ img {
     .karma-check-box-controller .check-box-controller-template .karma-check-box-container {
       position: relative; }
       .karma-check-box-controller .check-box-controller-template .karma-check-box-container input.check-box-input {
-        width: 100%;
-        height: 100%;
         cursor: pointer;
         opacity: 0;
         position: absolute;
+        width: 100%;
         z-index: 100; }
       .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle {
         display: flex;

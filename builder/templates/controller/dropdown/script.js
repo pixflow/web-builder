@@ -6,15 +6,16 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 
 	$( '.karma-dropdown-controller' ).each(function ( key ) {
 
-		var that = this;
-		var selectedItem = $(this).find( "li[data-value *= " + $(this).find( '> input' ).val() + "] .karma-dropdown-option-title");
+		var	$ = jQuery,
+			that = this,
+		 selectedItem = $(this).find( "li[ data-value *= " + $(this).find( '> input' ).val() + " ] .karma-dropdown-option-title" );
 		$(that).find( '.karma-dropdown-selected-item' ).html( selectedItem.text() );
 
 		$(that).find( '.karma-dropdown-selected-item , .karma-dropdown-icon' ).click(function () {
 
 			var optionsContainer =  $(this).siblings( 'ul' );
 			optionsContainer.addClass( 'karma-doropdown-opened' );
-			optionsContainer.css( 'top', optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 );
+			optionsContainer.css( 'top' , optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 );
 
 		})
 

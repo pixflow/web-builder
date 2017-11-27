@@ -15,9 +15,9 @@
 }
 
 .karma-title-controller {
-	@include box(100%);
 	padding: $top-space-red 20px $top-space-orange ;
 	position: relative;
+	width: 100%;
 
 	div.karma-title-field {
 		@extend .karma-builder-title-in-box;

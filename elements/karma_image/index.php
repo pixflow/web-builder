@@ -152,6 +152,24 @@ class Karma_Image extends Karma_Shortcode_Base {
 				"height" => "460",
 				"params" => array(
 					array(
+						"name"  	    => "imageaction",
+						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"  	    => esc_attr__( "Action on click", 'karma' ),
+						'value'   	    => "none",
+						'separator'	    => "container",
+						"options"  		=> array(
+							'none'   => array(
+								'title' => esc_attr( 'None' , 'karma' )
+							),
+							'popup'  => array(
+								'title' => "Popup"
+							) ,
+							'link'  => array(
+								'title' => "Link"
+							),
+						)
+					),
+					array(
 						"name" 	=> "imgurl" ,
 						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
 						"label"	=> esc_attr__( "Set image", 'karma' ),
