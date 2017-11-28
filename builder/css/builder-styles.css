@@ -1958,7 +1958,7 @@ div.media-modal {
       left: 0;
       list-style: none;
       overflow: hidden;
-      padding: 7px 7px 0;
+      padding: 7px;
       position: absolute;
       top: 36px;
       z-index: -1; }
@@ -1971,7 +1971,6 @@ div.media-modal {
     cursor: pointer;
     display: flex;
     padding: 10px;
-    margin-bottom: 7px;
     transition: background-color .2s; }
     .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option {
       background-color: rgba(65, 156, 248, 0.7); }
