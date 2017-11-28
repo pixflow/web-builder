@@ -1958,7 +1958,7 @@ div.media-modal {
       left: 0;
       list-style: none;
       overflow: hidden;
-      padding: 7px 7px 0;
+      padding: 7px;
       position: absolute;
       top: 36px;
       z-index: -1; }
@@ -1971,7 +1971,6 @@ div.media-modal {
     cursor: pointer;
     display: flex;
     padding: 10px;
-    margin-bottom: 7px;
     transition: background-color .2s; }
     .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option {
       background-color: rgba(65, 156, 248, 0.7); }
@@ -2922,27 +2921,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     align-items: center;
     justify-content: flex-start;
     padding: 40px; }
-    .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
-      display: flex;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      width: 89px;
-      height: 94px;
-      cursor: -webkit-grab;
-      cursor: grab;
-      flex-direction: column;
-      transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
-      .karma-element-panel-container .karma-element-panel-list .karma-element-single-element:hover {
-        border: 1px solid rgba(65, 156, 248, 0.7);
-        border-radius: 4px; }
-    .karma-element-panel-container .karma-element-panel-list .karma-element-single-element-name {
-      margin-top: 13px;
-      text-transform: capitalize; }
-      .karma-element-panel-container .karma-element-panel-list .karma-element-single-element-name span {
-        font-size: 12px;
-        color: #445363;
-        line-height: 14px; }
+    .karma-element-panel-container .karma-element-panel-list .karma-element-single-element:hover {
+      border: 1px solid #419cf8;
+      border-radius: 4px; }
   .karma-element-panel-container .element-panel-button {
     width: 48px;
     height: 48px;
@@ -3086,5 +3067,33 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           cursor: pointer; }
   .karma-element-panel-container .element-panel-show {
     display: flex; }
+
+/** Separate these stylesheet for jquery UI */
+.karma-element-single-element {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 89px;
+  height: 94px;
+  background-color: #fff;
+  cursor: -webkit-grab;
+  cursor: grab;
+  flex-direction: column;
+  transition: border 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+  .karma-element-single-element.karma-start-dragging {
+    visibility: hidden; }
+  .karma-element-single-element.karma-grab-element {
+    box-shadow: 0 4px 4px 0 rgba(68, 83, 99, 0.2); }
+    .karma-element-single-element.karma-grab-element:hover {
+      border: none !important; }
+
+.karma-element-single-element-name {
+  margin-top: 13px;
+  text-transform: capitalize; }
+  .karma-element-single-element-name span {
+    color: #445363;
+    font-size: 12px;
+    line-height: 14px; }
 
 /*# sourceMappingURL=builder-styles.css.map */

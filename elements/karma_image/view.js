@@ -17,7 +17,9 @@
 		preventFromOpen : function ( e ) {
 
 			e.preventDefault();
-			window.open( this.getAttributes( [ 'linkurl' ] ).linkurl , '_blank' );
+			e.stopPropagation();
+			this.showGizmo();
+			//window.open( this.getAttributes( [ 'linkurl' ] ).linkurl , '_blank' );
 
 		},
 
