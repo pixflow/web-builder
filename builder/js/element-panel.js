@@ -12,11 +12,13 @@
 		 */
 		events : {
 
-			"click .element-panel-add-element-button"		                           : "openAddElementView",
-			"click" 										                           : "stopClickInPanel",
-			"karma/after/finish_element_panel"                                         : "initDraggable" ,
-			'mousedown .karma-element-panel-list .karma-element-single-element'        : "addGrabHandler" ,
-			'mouseup .karma-element-panel-list .karma-element-single-element'          : "removeGrabHandler" ,
+			"click .element-panel-add-element-button"		                           	: "openAddElementView",
+			"click" 										                           	: "stopClickInPanel",
+			"karma/after/finish_element_panel"                                         	: "initDraggable" ,
+			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
+			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
+			"click li.karma-addcontent"													: "elementPanelTab",
+
 
 		},
 
@@ -63,6 +65,26 @@
 
 		},
 
+		/**
+		 * functionality for element panel tab
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		elementPanelTab: function (e) {
+
+			var target = $( e.target );
+			if ( target.hasClass( 'karma-addcontent' ) ) {
+				var orginalSelector = target;
+			} else {
+				var orginalSelector = target.closest( '.karma-addcontent' );
+			}
+			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
+			var tabData = orginalSelector.attr( 'data-tab' ),
+				tabContent = document.querySelector(  '.' + tabData  );
+			tabContent.classList.add( "karma-active-tab" );
+
+		},
 
 		/**
 		 * create add element panel with import template

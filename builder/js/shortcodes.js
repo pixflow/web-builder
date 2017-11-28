@@ -6,6 +6,7 @@
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/elements/create/karma_column'                   				: 'createElementAction',
 			'before/buildGizmo'                                     				: 'gimzoAction' ,
+			'click'																	: 'showElementGizmo',
 		},
 
 		shortcodeParams: {},
@@ -942,6 +943,19 @@
 
 			}
 			return gizmoParam;
+
+		},
+
+		/**
+		 * @summary Set the active shortcode gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		showElementGizmo: function () {
+
+			$( '.karma-builder-element' ).removeClass( 'karma-active-element' );
+			this.$el.addClass( 'karma-active-element' );
 
 		},
 

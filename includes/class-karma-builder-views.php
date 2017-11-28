@@ -46,12 +46,17 @@ class Karma_Views {
 	private $builder_templates = array(
 		'element-panel-add-element',
 		'element-panel-templates',
+		'element-panel-section',
 		'element-panel-unsplash',
 		'element-panel-list',
+		'element-panel-header',
+		'element-panel-footer',
+		'element-panel-shop',
+		'element-panel-image',
 		'element-panel-top-header',
 		'element-panel-price-filter',
 		'element-setting-panel',
-        'category-filter',
+		'category-filter',
 	);
 
 	/*

@@ -1,233 +1,290 @@
+
 .karma-element-panel-container {
+	left: 1.3%;
 	position: fixed;
 	top: 36%;
-	left: 1.3%;
 
 	.karma-element-panel-list {
 		@include flexbox(center, center, flex-start);
-		flex-wrap: wrap;
-		overflow: auto;
-		height: 657px;
-		padding: 30px;
+		padding: 40px;
 		.karma-element-single-element {
+			@include flexbox(center, center, center);
+			@include box(89px, 94px);
+			cursor: -webkit-grab;
+			cursor: grab;
+			flex-direction: column;
+			transition: .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 			&:hover {
-				border: 1px solid $builder-accent-color;
+				border: 1px solid rgba(65, 156, 248, 0.7);
 				border-radius: 4px;
 			}
 		}
-	}
-
-	.element-panel-button {
-		@include box(48px);
-		@include flexbox(center, center, center);
-		background-color: $white-color;
-		border-radius: 100px;
-		box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
-		margin-bottom: 15px;
-
-	}
-
-	.karma-element-panel-add-element-view {
-		@include box(524px, 699px);
-		@include element_direction($top: 13%, $left: 5%);
-		background-color: $white-color;
-		border-radius: 3px;
-		box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
-		display: none;
-		position: fixed;
-
-		&:after {
-			@include element_direction($top: 38%, $left: 4.8%);
-			background-color: $white-color;
-			border: 1px solid #ffffffeb;
-			border-width: 0 2px 2px 0;
-			content: "";
-			display: inline-block;
-			padding: 4px;
-			position: fixed;
-			transform: rotate(135deg);
-			-webkit-transform: rotate(135deg);
-		}
-
-		.karma-element-panel-add-element-view-right {
-			@include box(350px, 100%);
-			border-left: 2px solid rgba(57, 73, 89, 0.08);
-		}
-
-		.karma-element-panel-add-element-view-left {
-			@include box(174px, 100%);
-
-			.karma-element-panel-add-element-view-filtering {
-				@include box(100%, 400px);
-
-				.karma-element-panel-price-filter-container {
-
-					.karma-element-panel-price-filter {
-						@include padding(21px, 0, 0, 30px);
-
-						ul li {
-							display: block;
-							position: relative;
-						}
-
-						ul li input[type=radio] {
-							position: absolute;
-							visibility: hidden;
-						}
-
-						ul li label {
-							@include margin(16px, auto, 16px, auto);
-							display: block;
-							position: relative;
-							cursor: pointer;
-							padding-left: 31px;
-							color: #7C8691;
-							font-size: 13px;
-							z-index: 10;
-						}
-
-						ul li .check {
-							@include box(13px, 13px);
-							@include element_direction($top: 4px);
-							display: block;
-							position: absolute;
-							border-radius: 100%;
-							transition: border .25s linear;
-							-webkit-transition: border .25s linear;
-							border: 1px solid rgba(57, 73, 89, 0.5);
-						}
-
-						ul li .check::before {
-							@include box(5px, 5px);
-							@include element_direction($top: 3px, $right: auto, $bottom: auto, $left: 3px);
-							display: block;
-							position: absolute;
-							content: '';
-							border-radius: 100%;
-							transition: background 0.25s linear;
-							-webkit-transition: background 0.25s linear;
-						}
-
-						input[type=radio]:checked ~ .check {
-							border: 1px solid rgba($builder-accent-color, 0.5);
-						}
-
-						input[type=radio]:checked ~ .check::before {
-							background: $builder-accent-color;
-						}
-
-					}
-
-				}
-
-			}
-
-			.karma-element-panel-add-element-view-content-border {
-				border-top: 2px solid rgba(57, 73, 89, 0.08);
-				width: 106px;
-				margin-left: 30px;
-			}
-
-			.karma-builder-addcontent-title {
+		.karma-element-single-element-name {
+			margin-top: 13px;
+			text-transform: capitalize;
+			span {
 				color: $builder-simple-text-color;
-				font-size: 14px;
+				font-size: 12px;
+				line-height: 14px;
+			}
+		}
+	}
+
+		.element-panel-button {
+			@include box(48px);
+			@include flexbox(center, center, center);
+			background-color: $white-color;
+			border-radius: 100px;
+			box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
+			margin-bottom: 15px;
+
+		}
+
+		.karma-element-panel-add-element-view {
+			@include box(524px, 699px);
+			@include element_direction($top: 13%, $left: 5%);
+			background-color: $white-color;
+			border-radius: 3px;
+			box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
+			display: none;
+			position: fixed;
+
+			&:after {
+				@include element_direction($top: 38%, $left: 4.8%);
+				background-color: $white-color;
+				border: 1px solid #ffffffeb;
+				border-width: 0 2px 2px 0;
+				content: "";
+				display: inline-block;
+				padding: 4px;
+				position: fixed;
+				transform: rotate(135deg);
+				-webkit-transform: rotate(135deg);
 			}
 
-			.karma-builder-addcontent {
-				@include padding(30px, 0, 0, 30px);
+			.karma-element-panel-add-element-view-right {
+				@include box(350px, 100%);
+				border-left: 2px solid rgba(57, 73, 89, 0.08);
 
-			}
+				.element-panel-section-container {
 
-			li.karma-addcontent-disable .karma-addcontent-name {
-				color: rgba($builder-gray-color, 0.2);
-			}
+					@include flexbox(center, center, flex-start);
+					display: none;
+					padding: 40px;
 
-			.karma-addcontent-name {
-				padding-left: 17px;
-				color: #7C8691;
-				font-size: 14px;
-				transition-duration: .3s;
-			}
+					&.karma-active-tab {
+						display: flex;
+						flex-direction: column;
+					}
 
-			li.karma-addcontent-disable .karma-addcontent-icon {
-				svg {
-					* {
-						fill: #D0D6DA;
-						transition-duration: .3s;
+					.element-panel-part-img {
+						width: 100%;
+					}
+					.element-panel-part-title {
+						color: $builder-gray-color;
+						font-family: HelveticaNeue;
+						font-size: 24px;
+						line-height: 29px;
+						padding-top: 37px;
+						text-align: center;
+					}
+					.element-panel-part-description {
+						color: #828B95;
+						font-family: HelveticaNeue;
+						font-size: 14px;
+						line-height: 22px;
+						padding-top: 12px;
+						text-align: center;
+					}
+					.element-panel-part-button {
+						@include flexbox(center, center, center);
+						background-color: $builder-accent-color;
+						border-radius: 2px;
+						color: $white-color;
+						font-size: 14px;
+						font-weight: 500;
+						height: 40px;
+						line-height: 17px;
+						padding-top: 34px;
+						text-align: center;
+						width: 106px;
+
 					}
 				}
 			}
 
-			.karma-builder-addcontent ul {
-				display: flex;
-				flex-direction: column;
-				align-items: left;
-				list-style: none;
-			}
+			.karma-element-panel-add-element-view-left {
+				@include box(174px, 100%);
 
-			li.karma-addcontent {
-				@include flexbox(center, center, center);
-				padding-top: 20px;
-				&:not(.karma-addcontent-disable):hover {
-					.karma-addcontent-icon {
-						svg {
-							* {
-								fill: $builder-accent-color;
-								transition-duration: .3s;
+				.karma-element-panel-add-element-view-filtering {
+					@include box(100%, 400px);
+
+					.karma-element-panel-price-filter-container {
+
+						.karma-element-panel-price-filter {
+							@include padding(21px, 0, 0, 30px);
+
+							ul li {
+								display: block;
+								position: relative;
+							}
+
+							ul li input[type=radio] {
+								position: absolute;
+								visibility: hidden;
+							}
+
+							ul li label {
+								@include margin(16px, auto, 16px, auto);
+								color: #7C8691;
 								cursor: pointer;
+								display: block;
+								font-size: 13px;
+								padding-left: 31px;
+								position: relative;
+								z-index: 10;
+							}
+
+							ul li .check {
+								@include box(13px, 13px);
+								@include element_direction($top: 4px);
+								border: 1px solid rgba(57, 73, 89, 0.5);
+								border-radius: 100%;
+								display: block;
+								position: absolute;
+								transition: border .25s linear;
+								-webkit-transition: border .25s linear;
+							}
+
+							ul li .check::before {
+								@include box(5px, 5px);
+								@include element_direction($top: 3px, $right: auto, $bottom: auto, $left: 3px);
+								border-radius: 100%;
+								content: '';
+								display: block;
+								position: absolute;
+								transition: background 0.25s linear;
+								-webkit-transition: background 0.25s linear;
+							}
+
+							input[type=radio]:checked ~ .check::before {
+								background: $builder-accent-color;
+							}
+
+						}
+
+					}
+
+				}
+
+				.karma-element-panel-add-element-view-content-border {
+					border-top: 2px solid rgba(57, 73, 89, 0.08);
+					margin-left: 30px;
+					width: 106px;
+				}
+
+				.karma-builder-addcontent-title {
+					color: $builder-simple-text-color;
+					font-size: 14px;
+				}
+
+				.karma-builder-addcontent {
+					@include padding(30px, 0, 0, 30px);
+
+				}
+
+				li.karma-addcontent-disable .karma-addcontent-name {
+					color: rgba($builder-gray-color, 0.2);
+				}
+
+				.karma-addcontent-name {
+					color: #7C8691;
+					font-size: 14px;
+					padding-left: 17px;
+					transition-duration: .3s;
+				}
+
+				li.karma-addcontent-disable .karma-addcontent-icon {
+					svg {
+						* {
+							fill: #D0D6DA;
+							transition-duration: .3s;
+						}
+					}
+				}
+
+				.karma-builder-addcontent ul {
+					align-items: left;
+					display: flex;
+					flex-direction: column;
+					list-style: none;
+				}
+
+				li.karma-addcontent {
+					@include flexbox(center, center, center);
+					padding-top: 20px;
+					&:not(.karma-addcontent-disable):hover {
+						.karma-addcontent-icon {
+							svg {
+								* {
+									cursor: pointer;
+									transition-duration: .3s;
+									fill: $builder-accent-color;
+								}
 							}
 						}
+
+						.karma-addcontent-name {
+							color: $builder-accent-color;
+							cursor: pointer;
+							transition-duration: .3s;
+						}
 					}
 
-					.karma-addcontent-name {
-						color: $builder-accent-color;
-						transition-duration: .3s;
-						cursor: pointer;
-					}
 				}
+			}
+		}
 
+		.element-panel-show {
+			display: flex;
+		}
+
+		#ascrail2000 .nicescroll-cursors {
+			height: 142px !important;
+		}
+
+	}
+
+	/** Separate these stylesheet for jquery UI */
+	.karma-element-single-element {
+		@include flexbox(center, center, center);
+		@include box(89px, 94px);
+		background-color: $builder-element-panel-background-color;
+		cursor: -webkit-grab;
+		cursor: grab;
+		flex-direction: column;
+		transition: border .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+		&.karma-start-dragging {
+			visibility: hidden;
+		}
+		&.karma-grab-element {
+			box-shadow: 0 4px 4px 0 rgba(68, 83, 99, 0.2);
+			&:hover {
+				border: none !important;
 			}
 		}
 	}
+	.karma-element-single-element-name {
+		margin-top: 13px;
+		text-transform: capitalize;
+		span {
+			color: $builder-simple-text-color;
+			font-size: 12px;
+			line-height: 14px;
+		}
 
-	.element-panel-show {
-		display: flex;
 	}
 
-	#ascrail2000 .nicescroll-cursors {
-		height: 142px !important;
-	}
-
-}
-/** Separate these stylesheet for jquery UI */
-.karma-element-single-element{
-  @include flexbox( center, center, center );
-  @include box( 89px, 94px );
-  background-color: $builder-element-panel-background-color;
-  cursor: -webkit-grab;
-  cursor: grab;
-  flex-direction: column;
-  transition: border .3s  cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  &.karma-start-dragging{
-	visibility: hidden;
-  }
-  &.karma-grab-element{
-	box-shadow: 0 4px 4px 0 rgba( 68, 83, 99, 0.2 );
-	&:hover{
-	  border: none !important;
-	}
-  }
-}
-.karma-element-single-element-name{
-  margin-top: 13px;
-  text-transform: capitalize;
-  span{
-	color: $builder-simple-text-color;
-	font-size: 12px;
-	line-height: 14px;
-  }
-
-}
 
 
 

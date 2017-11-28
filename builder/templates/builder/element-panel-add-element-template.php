@@ -9,11 +9,23 @@
             </div>
 			<div class="karma-element-panel-add-element-view-content-border"></div>
 			<div class="karma-element-panel-add-element-view-filtering">
-				<# print( KarmaView.getWpTemplate( 'karma-element-panel-price-filter', { elementInfo : data.elementInfo } ) ); #>
+				<# print( KarmaView.getWpTemplate( 'karma-element-panel-price-filter' ) ); #>
 			</div>
 		</div>
 		<div class="karma-element-panel-add-element-view-right">
-			<# print( KarmaView.getWpTemplate( 'karma-element-panel-list', { elementInfo : data.elementInfo } ) ); #>
+
+			<#	var childTemplates = {
+					'karma-element-panel-list' 		: { elementInfo : data.elementInfo },
+					'karma-element-panel-section'	: {},
+					'karma-element-panel-header'	: {},
+					'karma-element-panel-footer'	: {},
+					'karma-element-panel-shop'		: {},
+					'karma-element-panel-image'		: {},
+
+				} #>
+			<# _.each( childTemplates, function( templateParams, templateName ){  #>
+				<# print( KarmaView.getWpTemplate( templateName, templateParams ) ); #>
+			<# });  #>
 		</div>
 	</div>
 
