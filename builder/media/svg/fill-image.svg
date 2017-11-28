@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="56px" viewBox="0 0 70 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 24 Copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="fill-image-path-1" points="0 0 49.4145015 0 49.5384615 36.6153846 0.123960013 36.6153846"></polygon>
+        <linearGradient x1="0.25781251%" y1="49.7500002%" x2="101.257813%" y2="49.7500002%" id="fill-image-linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#53A0FD" offset="100%"></stop>
+        </linearGradient>
+        <path d="M11.6923077,8.61538462 L61.3846154,8.61538462 L61.3846154,47.3846154 L9.69230769,47.3846154 L9.69230769,10.6153846 L9.69230769,10.6153846 C9.69230769,9.51081512 10.5877382,8.61538462 11.6923077,8.61538462 Z" id="fill-image-path-4"></path>
+        <mask id="fill-image-mask-5" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="51.6923077" height="38.7692308" fill="white">
+            <use xlink:href="#fill-image-path-4"></use>
+        </mask>
+    </defs>
+    <g id="fill-image-Setting-pannel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="fill-image-background-pannel1" transform="translate(-2251.000000, -296.000000)">
+            <g id="fill-image-Group-24-Copy-3" transform="translate(2251.000000, 296.000000)">
+                <path d="M4,0 L66,0 L66,1.86517468e-14 C68.209139,1.82459346e-14 70,1.790861 70,4 L70,52 L70,52 C70,54.209139 68.209139,56 66,56 L4,56 L4,56 C1.790861,56 2.705415e-16,54.209139 0,52 L0,4 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="fill-image-Rectangle-14-Copy-37" fill="#C6E1FC"></path>
+                <rect id="fill-image-Rectangle-14-Copy-18" fill="#C6E1FC" x="9.69230769" y="8.61538462" width="51.6923077" height="38.7692308"></rect>
+                <g id="fill-image-Group-13" transform="translate(10.769231, 9.692308)">
+                    <mask id="fill-image-mask-2" fill="white">
+                        <use xlink:href="#fill-image-path-1"></use>
+                    </mask>
+                    <use id="fill-image-Mask" fill="#7AB9FA" xlink:href="#fill-image-path-1"></use>
+                    <g id="fill-image-Group-8" opacity="0.5" mask="url(#fill-image-mask-2)" stroke="#FFFFFF">
+                        <g transform="translate(-7.770739, 4.817814)">
+                            <path d="M0.107629376,33.4864604 L25.9333105,9.47985723 L32.8201588,17.6421023 C23.4325968,27.4613989 16.2587965,34.0232038 11.2987579,37.3275169 C6.33871928,40.6318299 2.60834312,39.3514778 0.107629376,33.4864604 Z" id="fill-image-Path-3-Copy" fill="url(#fill-image-linearGradient-3)" fill-rule="evenodd"></path>
+                            <polygon id="fill-image-Path-3" fill="url(#fill-image-linearGradient-3)" fill-rule="evenodd" points="14.742182 34.4467245 43.1504313 7.55932898 68.1152564 34.4467245"></polygon>
+                            <ellipse id="fill-image-Oval" fill="none" cx="18.6781046" cy="4.23279352" rx="4.31033183" ry="4.23279352"></ellipse>
+                        </g>
+                    </g>
+                </g>
+                <use id="fill-image-Rectangle-14-Copy-20" stroke="#7AB9FA" mask="url(#fill-image-mask-5)" stroke-width="2" stroke-dasharray="3,2" xlink:href="#fill-image-path-4"></use>
+            </g>
+        </g>
+    </g>
+</svg>

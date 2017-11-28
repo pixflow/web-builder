@@ -393,6 +393,11 @@ img{
 			top: -17px;
 			z-index: $level3;
 
+			.column-setting{
+				align-items: center;
+				display: flex;
+			}
+
 			.karama-gizmo-icon {
 				svg {
 					@include box(10.31px, 11.31px);

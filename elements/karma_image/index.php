@@ -164,12 +164,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 						'value'	=> "fill",
 						"field"	=> array(
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
 								'title'	=> esc_attr__( "Real size", 'karma' ),
 								'value'	=> "real",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
+								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
 								'title'	=> "Fill",
 								'value'	=> "fill",
 							),

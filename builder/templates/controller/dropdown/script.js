@@ -5,13 +5,15 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 		return;
 	}
 
-	$( '.karma-dropdown-controller' ).each( function ( key ) {
 
-		var that = $( this ),
-		 selectedItem = $( this ).find( "li[ data-value *= " + $(this).find( '> input' ).val() + " ] .karma-dropdown-option-title" );
-		that.find( '.karma-dropdown-selected-item' ).html( selectedItem.text() );
+	$( '.karma-dropdown-controller' ).each(function () {
 
-		that.find( '.karma-dropdown-header' ).click( function () {
+		var	$ = jQuery,
+			that = this,
+		 selectedItem = $( this ).find( "li[ data-value *= " + $( this ).find( '> input' ).val() + " ] .karma-dropdown-option-title" );
+		$( that ).find( '.karma-dropdown-selected-item' ).html( selectedItem.text() );
+
+		$( that ).find( '.karma-dropdown-header' ).click(function () {
 
 			var optionsContainer =  $( this ).siblings( 'ul' );
 			$( '.karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
@@ -20,14 +22,14 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 
 		});
 
-		that.find( '.karma-dropdown-options > li' ).click( function () {
+		$( this ).find( '.karma-dropdown-options > li' ).click(function () {
 
-			$(this).find('.karma-selected-dropdown-option').removeClass( 'karma-selected-dropdown-option' );
-			$(this).addClass( 'karma-selected-dropdown-option' );
-			$(this).closest( ' .karma-dropdown-controller ' ).find( '> input' ).val( $(this).attr( 'data-value' ) ).trigger('input');
-			$(this).closest( ' .karma-dropdown-body ' ).find( ' .karma-dropdown-selected-item' ).html( $(this).find( ' .karma-dropdown-option-title' ).text() );
+			$( that ).find( '.karma-selected-dropdown-option' ).removeClass( 'karma-selected-dropdown-option' );
+			$( this ).addClass( 'karma-selected-dropdown-option' );
+			$( this ).closest( ' .karma-dropdown-controller ' ).find( '> input' ).val( $( this ).attr( 'data-value' ) ).trigger( 'input' );
+			$( this ).closest( ' .karma-dropdown-body ' ).find( ' .karma-dropdown-selected-item' ).html( $( this ).find( '.karma-dropdown-option-title' ).text() );
 			karmaCloseDropdown();
-			$(this).closest( ' .karma-dropdown-controller ' ).find( '> input' ).get(0).dispatchEvent( new Event('change') );
+			$( this ).closest( ' .karma-dropdown-controller ' ).find( '> input' ).get(0).dispatchEvent( new Event('change') );
 
 		});
 

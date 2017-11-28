@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="56px" viewBox="0 0 70 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 23</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="realsize-image-path-1" x="0" y="0" width="70" height="56" rx="5"></rect>
+        <linearGradient x1="0.25781251%" y1="49.7500002%" x2="101.257813%" y2="49.7500002%" id="realsize-image-linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#53A0FD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.7578127%" y1="100.25%" x2="50.7578127%" y2="-0.749999995%" id="realsize-image-linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#53A0FD" offset="100%"></stop>
+        </linearGradient>
+        <path d="M10.6153846,8.61538462 L60.3076923,8.61538462 L60.3076923,47.3846154 L8.61538462,47.3846154 L8.61538462,10.6153846 L8.61538462,10.6153846 C8.61538462,9.51081512 9.51081512,8.61538462 10.6153846,8.61538462 Z" id="realsize-image-path-5"></path>
+        <mask id="realsize-image-mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="51.6923077" height="38.7692308" fill="white">
+            <use xlink:href="#realsize-image-path-5"></use>
+        </mask>
+    </defs>
+    <g id="realsize-image" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="realsize-image1" transform="translate(-2144.000000, -297.000000)">
+            <g id="realsize-image-Group-23" transform="translate(2144.000000, 297.000000)">
+                <path d="M4,0 L66,0 L66,2.04281037e-14 C68.209139,2.00222914e-14 70,1.790861 70,4 L70,52 L70,52 C70,54.209139 68.209139,56 66,56 L4,56 L4,56 C1.790861,56 2.705415e-16,54.209139 0,52 L0,4 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z" id="realsize-image-Mask-Copy-2" fill-opacity="0.3" fill="#419CF8" opacity="0.699999988"></path>
+                <rect id="realsize-image-Rectangle-14-Copy-28" opacity="0.699999988" x="8.61538462" y="8.61538462" width="51.6923077" height="38.7692308"></rect>
+                <polygon id="realsize-image-Rectangle-14-Copy-29" fill="#7AB9FA" points="9.69230769 9.69230769 59.2307692 9.69230769 59.2307692 46.3076923 9.69230769 46.3076923"></polygon>
+                <g id="realsize-image-Group-8-Copy-2" opacity="0.699999988">
+                    <mask id="realsize-image-mask-2" fill="white">
+                        <use xlink:href="#realsize-image-path-1"></use>
+                    </mask>
+                    <g id="realsize-image-Mask"></g>
+                    <g id="realsize-image-Group-8" opacity="0.5" mask="url(#realsize-image-mask-2)" stroke="#FFFFFF">
+                        <g transform="translate(-6.805556, 4.827586)">
+                            <path d="M0,50.0472751 L36.0745614,16.4137931 L45.6944444,27.849177 C35.7710146,38.7686271 27.3450886,46.5430394 20.4166667,51.1724138 C13.4882447,55.8017882 6.68268914,55.426742 0,50.0472751 Z" id="realsize-image-Path-3-Copy" fill="url(#realsize-image-linearGradient-3)" fill-rule="evenodd"></path>
+                            <polygon id="realsize-image-Path-3" fill="url(#realsize-image-linearGradient-4)" fill-rule="evenodd" points="20.4166667 51.1724138 60.2620968 14.4827586 95.2777778 51.1724138"></polygon>
+                            <ellipse id="realsize-image-Oval" fill="none" cx="25.2777778" cy="6.75862069" rx="6.80555556" ry="6.75862069"></ellipse>
+                        </g>
+                    </g>
+                </g>
+                <use id="realsize-image-Rectangle-14-Copy-22" stroke="#7AB9FA" mask="url(#realsize-image-mask-6)" stroke-width="2" stroke-dasharray="3,2" xlink:href="#realsize-image-path-5"></use>
+            </g>
+        </g>
+    </g>
+</svg>

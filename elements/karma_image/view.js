@@ -17,6 +17,7 @@
 		preventFromOpen : function ( e ) {
 
 			e.preventDefault();
+			window.open( this.getAttributes( [ 'linkurl' ] ).linkurl , '_blank' );
 
 		},
 
@@ -120,6 +121,7 @@
 					var link = this.getAttributes( [ 'linkurl' ] );
 					elLink = link.linkurl;
 					$( this.el.querySelector( '.karma-image-link' ) ).off( 'click.karma-lightbox' );
+
 					break;
 				default:
 					return false;

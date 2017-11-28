@@ -9,7 +9,7 @@
   text-align: center;
   top: 0;
   width: 100%;
-  z-index: 200; }
+  z-index: 10000; }
   #karma-lightbox-opened:after {
     background-color: rgba(51, 51, 51, 0.9);
     color: #fff;
@@ -32,6 +32,7 @@
     z-index: -1; }
   #karma-lightbox-opened img {
     box-shadow: 0 0 6px 3px #333;
+    display: initial;
     max-height: 100%;
     max-width: 100%; }
 
@@ -1694,6 +1695,8 @@ html {
   .karma-image .karma-image-container .karma-image-fill {
     max-height: 100%;
     max-width: 100%; }
+  .karma-image .karma-image-container .karma-image-real {
+    max-width: initial; }
   .karma-image .karma-image-without-action {
     cursor: none; }
 
@@ -2354,6 +2357,9 @@ img {
     position: absolute;
     top: -17px;
     z-index: 80; }
+    .karma-builder-element.karma-active-column .karma-column-setting .column-setting {
+      align-items: center;
+      display: flex; }
     .karma-builder-element.karma-active-column .karma-column-setting .karama-gizmo-icon svg {
       width: 10.31px;
       height: 11.31px; }
