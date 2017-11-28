@@ -2,6 +2,9 @@
 
 	karmaBuilder.elementPanel = Backbone.View.extend({
 
+		/** Scroll used for dragging interval */
+		flyScroll : '' ,
+
 		/**
 		 * Define elements event
 		 *
@@ -9,8 +12,11 @@
 		 */
 		events : {
 
-			"click .element-panel-add-element-button"		: "openAddElementView",
-			"click "										: "stopClickInPanel",
+			"click .element-panel-add-element-button"		                           : "openAddElementView",
+			"click" 										                           : "stopClickInPanel",
+			"karma/after/finish_element_panel"                                         : "initDraggable" ,
+			'mousedown .karma-element-panel-list .karma-element-single-element'        : "addGrabHandler" ,
+			'mouseup .karma-element-panel-list .karma-element-single-element'          : "removeGrabHandler" ,
 
 		},
 
@@ -28,7 +34,7 @@
 			this.createTemplatesPanel();
 			this.createUnsplashPanel();
 			this.closeElementPanel();
-
+			this.$el.trigger( 'karma/after/finish_element_panel', [ this ] );
 
 		},
 
@@ -69,7 +75,6 @@
 			templateParams['elementInfo'] = KarmaView.getElementInfo();
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-add-element', templateParams ) + '</div>';
 			this.el.appendChild( $( template )[0] );
-			$( document ).trigger( 'karma_finish_element_panel_html', [ this ] );
 
 		},
 
@@ -82,8 +87,7 @@
 		createTemplatesPanel: function(){
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-templates', {} ) + '</div>';
-			this.el.appendChild( $( template )[0] )
-			$( document ).trigger( 'karma_finish_element_panel_html', [ this ] );
+			this.el.appendChild( $( template )[0] );
 
 		},
 
@@ -97,7 +101,7 @@
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-unsplash', {} ) + '</div>';
 			this.el.appendChild( $( template )[0] );
-			$( document ).trigger( 'karma_finish_element_panel_html', [ this ] );
+
 
 		},
 
@@ -132,6 +136,145 @@
 			});
 
 		},
+
+		/**
+		 * Add grab style for elements
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		addGrabHandler : function ( e ) {
+
+			var target = $( e.target );
+			if ( target.hasClass( 'karma-element-single-element' ) ) {
+				target.addClass('karma-grab-element');
+			} else {
+				target.closest('.karma-element-single-element').addClass('karma-grab-element');
+			}
+
+		},
+
+		/**
+		 * Remove grab style for elements
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		removeGrabHandler : function ( e ) {
+
+			var target = $( e.target );
+			if ( target.hasClass( 'karma-element-single-element' ) ) {
+				target.removeClass('karma-grab-element');
+			} else {
+				target.closest('.karma-element-single-element').removeClass('karma-grab-element');
+			}
+
+		},
+
+		/**
+		 * Scroll the browser down or up on dragging element
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		scroll : function ( element ) {
+
+			var element = element.helper,
+				toolbarHeight = 100;
+			this.scrollToDown( element, toolbarHeight );
+			this.scrollToTop();
+
+		},
+
+		/**
+		 * Scroll the browser down  dragging element
+		 *
+		 * @param   {object}    element        Helper element
+		 * @param   {object}    toolbarHeight  Height of builder toolbar
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		scrollToDown: function ( element, toolbarHeight ) {
+
+			var that = this;
+			if ( element.position().top +  toolbarHeight  > window.innerHeight  + $(window).scrollTop() ) {
+				clearInterval( that.flyScroll );
+				/** Start scrolling down */
+				that.flyScroll = setInterval( function(){
+					/** If scroll at the bottom stop scrolling */
+					if( window.innerHeight + window.scrollY == document.body.offsetHeight ){
+						clearInterval( that.flyScroll );
+					}
+					$( window ).scrollTop( $( window ).scrollTop() + 5 );
+				}, 1 );
+			} else {
+				clearInterval( that.flyScroll );
+			}
+
+		},
+
+		/**
+		 * Scroll the browser up on dragging element
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		scrollToTop : function () {
+
+			var that = this;
+			if ( event.clientY < 100 ) {
+				clearInterval( that.flyScroll );
+				/** Start scrolling up */
+				that.flyScroll = setInterval( function(){
+					/** If scroll at the top stop scrolling */
+					if( $( window ).scrollTop() == 0  ){
+						clearInterval( that.flyScroll );
+					}
+					$( window ).scrollTop( $( window ).scrollTop() - 5 );
+				}, 1 );
+			}
+
+		},
+
+		/**
+		 * Enable draggable functionality on any item element
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		initDraggable : function(){
+
+			var that = this;
+			$('.karma-element-single-element').draggable({
+				appendTo: "body",
+				containment: 'document',
+				zIndex: 9999999,
+				cursorAt: {top: 20, left: 50},
+				helper: 'clone' ,
+				start : function(){
+
+					var DOMOBJ = $( this ).get( 0 );
+					DOMOBJ.classList.add( 'karma-start-dragging', 'karma-grab-element' );
+
+				} ,
+
+				drag : function( event, UI ){
+
+					that.scroll( UI ) ;
+
+				},
+
+				stop: function(){
+
+					var DOMOBJ = $( this ).get( 0 );
+					DOMOBJ.classList.remove( 'karma-start-dragging', 'karma-grab-element' );
+					clearInterval( that.flyScroll );
+
+				}
+			});
+
+		}
 
 	});
 
