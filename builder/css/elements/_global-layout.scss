@@ -1,0 +1,11 @@
+.karma-insert-between-elements-placeholder{
+  @include box( 100%, 8px );
+  align-items: center;
+  display: none;
+  background-color: rgba( 65, 156, 248, 0.1 );
+  border-radius: 2px;
+  justify-content: center;
+  &.karma-column-placeholder{
+  		height: 130px;
+	}
+}

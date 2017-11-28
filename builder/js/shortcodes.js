@@ -117,6 +117,10 @@
 		+ '<# }) #>'
 		+ '</div>' ,
 
+		/** Drop area template for elements */
+		placeholderTemplate : '<div class="karma-insert-between-elements-placeholder {{ data.className }}" >'
+			+ '</div>' ,
+
 		/**
 		 * Set defaults in create
 		 *
@@ -134,11 +138,40 @@
 			}
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
+			this.createPlaceHolders();
 
 		},
 
 		/**
-		 * Set Gizmo Events
+		 * @summary Create placeholders for each elements as drop area
+		 * The function skip column and section for creating placeholders
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		createPlaceHolders : function () {
+
+			var getName = this.model.get('shortcode_name'),
+				placeholderHTML;
+			if ( 'karma_column' != getName && 'karma_section' != getName ) {
+				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className : 'karma-element-placeholder' } );
+				this.el.insertAdjacentHTML( 'afterend', placeholderHTML );
+				if( 1 == this.model.get('order') ){
+					this.el.insertAdjacentHTML( 'beforebegin', placeholderHTML );
+				}
+			} else if( 'karma_column' == getName && 0 == karmaBuilder.karmaModels.where({ parent_key : this.model.get('element_key') }).length ){
+				placeholderHTML =  KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className : 'karma-column-placeholder' } );
+				this.el.querySelector('.karma-column').innerHTML = placeholderHTML;
+			}
+
+
+		}
+
+		,
+
+		/**
+		 * @summary Set Gizmo Events
 		 *
 		 * @param {object}  gizmoParams     gizmo params of view
 		 *
