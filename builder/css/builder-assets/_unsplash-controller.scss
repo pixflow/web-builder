@@ -1,105 +1,107 @@
-.karma-unsplash-controller {
-	@include flexbox(center, center, center);
-	flex-direction: column;
-	padding: 0 10px;
-	position: relative;
-	margin-top: $top-space-orange;
+#karma-element-setting-panel-container{
+	.karma-unsplash-controller {
+		@include flexbox(center, center, center);
+		flex-direction: column;
+		padding: 0 10px;
+		position: relative;
+		margin-top: $top-space-orange;
 
-	.karma-unsplash-search {
-		margin-bottom: $top-space-orange-light;
+		.karma-unsplash-search {
+			margin-bottom: $top-space-orange-light;
 
-		input {
-			background: transparent;
-			border: 1px solid #E7E7E7;
-			border-radius: 4px;
-			font-size: 12px;
-			line-height: 14px;
-			padding: 10px;
-			text-align: left;
-			width: 243px;
-			&::placeholder {
-				color: #B3BAC1;
+			input {
+				background: transparent;
+				border: 1px solid #E7E7E7;
+				border-radius: 4px;
+				font-size: 12px;
+				line-height: 14px;
+				padding: 10px;
+				text-align: left;
+				width: 243px;
+				&::placeholder {
+					color: #B3BAC1;
+				}
 			}
 		}
-	}
 
-	.karma-unspalsh-icon {
-		@include box(9px, 9px);
-		border-left: 2px solid rgba(57, 73, 89, 0.5);
-		border-bottom: 2px solid rgba(57, 73, 89, 0.5);
-		cursor: pointer;
-		position: relative;
-		top: -3px;
-		transform: rotate(-45deg);
-		transition-duration: .3s;
-	}
-
-	.karma-unsplash-images-result {
-		@include flexbox(center, center, center);
-		@include box(100%, 215px);
-		flex-wrap: wrap;
-		margin-bottom: $top-space-red;
-		overflow: auto;
-		position: relative;
-		&::-webkit-scrollbar {
-			display: none;
-		}
-		.karma-unsplash-images-list {
-			@include box( 77px , 66px );
-			background-color: #607d8b0f;
-			background-position: center center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			border-radius: 2px;
+		.karma-unspalsh-icon {
+			@include box(9px, 9px);
+			border-left: 2px solid rgba(57, 73, 89, 0.5);
+			border-bottom: 2px solid rgba(57, 73, 89, 0.5);
 			cursor: pointer;
-			margin: 3px;
 			position: relative;
-			&:after {
-				@include box( 100%, 100% );
+			top: -3px;
+			transform: rotate(-45deg);
+			transition-duration: .3s;
+		}
+
+		.karma-unsplash-images-result {
+			@include flexbox(center, center, center);
+			@include box(100%, 215px);
+			flex-wrap: wrap;
+			margin-bottom: $top-space-red;
+			overflow: auto;
+			position: relative;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.karma-unsplash-images-list {
+				@include box( 77px , 66px );
+				background-color: #607d8b0f;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				border-radius: 2px;
+				cursor: pointer;
+				margin: 3px;
+				position: relative;
+				&:after {
+					@include box( 100%, 100% );
+					content: '';
+					left: 0;
+					position: absolute;
+					top: 0;
+					transition: .3s;
+				}
+				&:hover:after {
+					background-color: rgba(0, 0, 0, 0.2);
+					transform: scale(1);
+				}
+			}
+		}
+
+		.karma-unspalsh-selected {
+			&:before {
 				content: '';
+				animation: scaleUP .3s;
+				background-image: url(../media/svg/tik.svg);
+				background-position: center;
+				background-repeat: no-repeat;
+				height: 100%;
 				left: 0;
 				position: absolute;
 				top: 0;
-				transition: .3s;
+				width: 100%;
 			}
-			&:hover:after {
+			&:after {
 				background-color: rgba(0, 0, 0, 0.2);
-				transform: scale(1);
 			}
 		}
-	}
 
-	.karma-unspalsh-selected {
-		&:before {
-			content: '';
-			animation: scaleUP .3s;
-			background-image: url(../media/svg/tik.svg);
-			background-position: center;
-			background-repeat: no-repeat;
-			height: 100%;
-			left: 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
-		&:after {
-			background-color: rgba(0, 0, 0, 0.2);
-		}
-	}
+		.karma-unspalsh-media-library {
+			@include flexbox($text-align: inherit, $align-item: center, $justify-content: center);
+			margin-top: $top-space-orange;
+			margin-bottom: $top-space-orange;
 
-	.karma-unspalsh-media-library {
-		@include flexbox($text-align: inherit, $align-item: center, $justify-content: center);
-		margin-top: $top-space-orange;
-		margin-bottom: $top-space-orange;
-
-		.karma-unsplash-media-library-svg {
-			@include box( 26px , 26px );
-			margin-right: 6px;
-		}
-		.karma-unsplash-media-library-link {
-			color: $builder-accent-color;
-			font-size: 15px;
-			line-height: 17px;
+			.karma-unsplash-media-library-svg {
+				@include box( 26px , 26px );
+				margin-right: 6px;
+			}
+			.karma-unsplash-media-library-link {
+				color: $builder-accent-color;
+				font-size: 15px;
+				line-height: 17px;
+			}
 		}
 	}
 }

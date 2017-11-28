@@ -174,8 +174,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, button,
-input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li {
+.HelveticaNeue-font, #karma-element-setting-panel-container *, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li {
   font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
@@ -194,7 +193,7 @@ input[type="text"], .karma-builder-toolbar .karma-builder-left ul li, .karma-bui
   margin-top: 24px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, .karma-slider-controller-title {
+.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-slider-controller-title {
   font-size: 14px;
   line-height: 16px; }
 
@@ -353,10 +352,22 @@ a:active {
 a:focus {
   outline: none; }
 
-button,
-input[type="text"] {
-  border: none;
+#karma-element-setting-panel-container * {
   font-weight: 400; }
+#karma-element-setting-panel-container button,
+#karma-element-setting-panel-container input[type="text"],
+#karma-element-setting-panel-container input[type="number"] {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  text-transform: none; }
+  #karma-element-setting-panel-container button:focus, #karma-element-setting-panel-container button:active,
+  #karma-element-setting-panel-container input[type="text"]:focus,
+  #karma-element-setting-panel-container input[type="text"]:active,
+  #karma-element-setting-panel-container input[type="number"]:focus,
+  #karma-element-setting-panel-container input[type="number"]:active {
+    box-shadow: none;
+    outline: none; }
 
 /* _-_-_- base/BASE -_-_-_ */
 body {
@@ -2396,13 +2407,13 @@ img {
   display: none; }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
-.karma-text-input-controller {
+#karma-element-setting-panel-container .karma-text-input-controller {
   display: flex;
   text-align: inherit;
   align-items: inherit;
   justify-content: center;
   padding-bottom: 18px; }
-  .karma-text-input-controller input.karma-text-input-field {
+  #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field {
     width: 245px;
     height: 36px;
     padding: 11px 14px;
@@ -2411,7 +2422,7 @@ img {
     border-radius: 4px;
     color: rgba(57, 73, 89, 0.6);
     font-size: 12px; }
-  .karma-text-input-controller input::placeholder {
+  #karma-element-setting-panel-container .karma-text-input-controller input::placeholder {
     color: rgba(57, 73, 89, 0.6);
     font-family: HelveticaNeue;
     font-size: 12px; }
@@ -2506,7 +2517,7 @@ img {
     color: #394959;
     text-transform: capitalize; }
 
-.karma-range-slider-container {
+#karma-element-setting-panel-container .karma-range-slider-container {
   display: flex;
   text-align: center;
   align-items: center;
@@ -2514,20 +2525,20 @@ img {
   flex-direction: column;
   padding: 0 20px;
   position: relative; }
-  .karma-range-slider-container .karma-range-slider-content {
+  #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-content {
     display: flex;
     text-align: inherit;
     align-items: center;
     justify-content: inherit;
     padding: 11px 0 18px;
     width: 100%; }
-  .karma-range-slider-container .rangeslider--horizontal {
+  #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal {
     width: 68%;
     height: 3px;
     background: #cbe5fd;
     border-radius: 50px;
     box-shadow: none; }
-    .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle {
+    #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle {
       width: 14px;
       height: 14px;
       background-image: none;
@@ -2537,15 +2548,15 @@ img {
       top: -5px;
       touch-action: pan-y;
       -ms-touch-action: pan-y; }
-      .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
+      #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
         background-image: none; }
-    .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill {
+    #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill {
       background: rgba(65, 156, 248, 0.7);
       box-shadow: none; }
-  .karma-range-slider-container .karma-range-slider-number {
+  #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
     display: inline-flex;
     margin-left: 13px; }
-    .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input {
+    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input {
       display: flex;
       text-align: right;
       align-items: inherit;
@@ -2559,10 +2570,10 @@ img {
       color: #000;
       font-size: 12px;
       padding: 0; }
-      .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
+      #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
         border-color: rgba(57, 73, 89, 0.1);
         outline: none; }
-    .karma-range-slider-container .karma-range-slider-number .karma-unit {
+    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-unit {
       width: auto;
       height: 32px;
       padding-top: 0;
@@ -2577,16 +2588,15 @@ img {
       font-size: 14px;
       font-weight: 400;
       margin-bottom: 0; }
-  .karma-range-slider-container input::-webkit-inner-spin-button {
+  #karma-element-setting-panel-container .karma-range-slider-container input::-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none; }
-  .karma-range-slider-container input::-webkit-outer-spin-button {
+  #karma-element-setting-panel-container .karma-range-slider-container input::-webkit-outer-spin-button {
     margin: 0;
     -webkit-appearance: none; }
-  .karma-range-slider-container input[type=number] {
+  #karma-element-setting-panel-container .karma-range-slider-container input[type=number] {
     -moz-appearance: textfield; }
-
-.karma-slider-controller-title {
+#karma-element-setting-panel-container .karma-slider-controller-title {
   padding-top: 22px;
   color: #394959;
   text-align: left;
@@ -2630,14 +2640,14 @@ img {
       height: 37.64px;
       position: relative; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:before, .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
-        width: 8.42px;
-        height: 1.4px;
+        width: 8px;
+        height: 2px;
         background-color: #419cf8;
         content: '';
         position: absolute; }
       .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
-        width: 1.4px;
-        height: 8.42px; }
+        width: 2px;
+        height: 8px; }
   .grid-controller-template .karma-add-column-button button {
     width: 136px;
     height: 36px;
@@ -2702,7 +2712,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 73px;
+    width: 74px;
     margin: 0 auto; }
     .karma-image-position-container .karma-image-position-content .hidden-input {
       display: none; }
@@ -2724,12 +2734,20 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         justify-content: flex-end;
         align-items: flex-start;
         padding: 4px; }
+      .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-top-center-dot {
+        justify-content: center;
+        align-items: flex-start;
+        padding: 4px; }
       .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-bottom-left-dot {
         justify-content: flex-start;
         align-items: flex-end;
         padding: 4px; }
       .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-bottom-right-dot {
         justify-content: flex-end;
+        align-items: flex-end;
+        padding: 4px; }
+      .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-bottom-center-dot {
+        justify-content: center;
         align-items: flex-end;
         padding: 4px; }
       .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-center-dot {
@@ -2746,7 +2764,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
 .karma-image-position-selected-item {
   background-color: #67B0F9 !important; }
 
-.karma-unsplash-controller {
+#karma-element-setting-panel-container .karma-unsplash-controller {
   display: flex;
   text-align: center;
   align-items: center;
@@ -2755,9 +2773,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   padding: 0 10px;
   position: relative;
   margin-top: 18px; }
-  .karma-unsplash-controller .karma-unsplash-search {
+  #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-search {
     margin-bottom: 11px; }
-    .karma-unsplash-controller .karma-unsplash-search input {
+    #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-search input {
       background: transparent;
       border: 1px solid #E7E7E7;
       border-radius: 4px;
@@ -2766,9 +2784,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       padding: 10px;
       text-align: left;
       width: 243px; }
-      .karma-unsplash-controller .karma-unsplash-search input::placeholder {
+      #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-search input::placeholder {
         color: #B3BAC1; }
-  .karma-unsplash-controller .karma-unspalsh-icon {
+  #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-icon {
     width: 9px;
     height: 9px;
     border-left: 2px solid rgba(57, 73, 89, 0.5);
@@ -2778,7 +2796,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     top: -3px;
     transform: rotate(-45deg);
     transition-duration: .3s; }
-  .karma-unsplash-controller .karma-unsplash-images-result {
+  #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-images-result {
     display: flex;
     text-align: center;
     align-items: center;
@@ -2789,9 +2807,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     margin-bottom: 22px;
     overflow: auto;
     position: relative; }
-    .karma-unsplash-controller .karma-unsplash-images-result::-webkit-scrollbar {
+    #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-images-result::-webkit-scrollbar {
       display: none; }
-    .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list {
+    #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list {
       width: 77px;
       height: 66px;
       background-color: #607d8b0f;
@@ -2802,7 +2820,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       cursor: pointer;
       margin: 3px;
       position: relative; }
-      .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list:after {
+      #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list:after {
         width: 100%;
         height: 100%;
         content: '';
@@ -2810,10 +2828,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         position: absolute;
         top: 0;
         transition: .3s; }
-      .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list:hover:after {
+      #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list:hover:after {
         background-color: rgba(0, 0, 0, 0.2);
         transform: scale(1); }
-  .karma-unsplash-controller .karma-unspalsh-selected:before {
+  #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-selected:before {
     content: '';
     animation: scaleUP .3s;
     background-image: url(../media/svg/tik.svg);
@@ -2824,20 +2842,20 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     position: absolute;
     top: 0;
     width: 100%; }
-  .karma-unsplash-controller .karma-unspalsh-selected:after {
+  #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-selected:after {
     background-color: rgba(0, 0, 0, 0.2); }
-  .karma-unsplash-controller .karma-unspalsh-media-library {
+  #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-media-library {
     display: flex;
     text-align: inherit;
     align-items: center;
     justify-content: center;
     margin-top: 18px;
     margin-bottom: 18px; }
-    .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-svg {
+    #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-svg {
       width: 26px;
       height: 26px;
       margin-right: 6px; }
-    .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-link {
+    #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-link {
       color: #419cf8;
       font-size: 15px;
       line-height: 17px; }

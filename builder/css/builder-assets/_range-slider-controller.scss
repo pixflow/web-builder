@@ -1,99 +1,103 @@
-.karma-range-slider-container {
-	@include flexbox($text-align: center, $align-item: center, $justify-content: center);
-	flex-direction: column;
-	padding: 0 20px;
-	position: relative;
+#karma-element-setting-panel-container{
 
-	.karma-range-slider-content {
+	.karma-range-slider-container {
+		@include flexbox($text-align: center, $align-item: center, $justify-content: center);
+		flex-direction: column;
+		padding: 0 20px;
+		position: relative;
 
-		@include flexbox($align-item: center);
-		padding: $top-space-orange-light 0 $top-space-orange;
-		width: 100%;
+		.karma-range-slider-content {
 
-	}
+			@include flexbox($align-item: center);
+			padding: $top-space-orange-light 0 $top-space-orange;
+			width: 100%;
 
-	.rangeslider--horizontal {
-		@include box(68%, 3px);
-		background: #cbe5fd;
-		border-radius: 50px;
-		box-shadow: none;
-
-		.rangeslider__handle {
-			@include box(14px, 14px);
-			background-image: none;
-			background-color: $builder-accent-color;
-			border: 1px solid $builder-accent-color;
-			box-shadow: 0 2px 4px 0 rgba( $builder-accent-color, 0.45 );
-			top: -5px;
-			touch-action: pan-y;
-			-ms-touch-action: pan-y;
-
-			&:after {
-				background-image: none;
-			}
 		}
 
-		.rangeslider__fill {
-			background: rgba( $builder-accent-color, .7 );
+		.rangeslider--horizontal {
+			@include box(68%, 3px);
+			background: #cbe5fd;
+			border-radius: 50px;
 			box-shadow: none;
 
-		}
-	}
+			.rangeslider__handle {
+				@include box(14px, 14px);
+				background-image: none;
+				background-color: $builder-accent-color;
+				border: 1px solid $builder-accent-color;
+				box-shadow: 0 2px 4px 0 rgba( $builder-accent-color, 0.45 );
+				top: -5px;
+				touch-action: pan-y;
+				-ms-touch-action: pan-y;
 
-	.karma-range-slider-number {
-		display: inline-flex;
-		margin-left: 13px;
-
-		.karma-range-slider-input {
-
-			&:focus {
-				border-color: rgba( $builder-gray-color , .1 );
-				outline: none;
+				&:after {
+					background-image: none;
+				}
 			}
-			@include flexbox($text-align: right);
-			@include box(34px, 32px);
-			background: none;
-			border: 1px solid rgba( $builder-gray-color , .1 );
-			border-right: 0;
-			border-radius: 40px 0 0 40px;
-			color: #000;
-			font-size: 12px;
-			padding: 0;
+
+			.rangeslider__fill {
+				background: rgba( $builder-accent-color, .7 );
+				box-shadow: none;
+
+			}
 		}
 
-		.karma-unit {
-			@include box(auto, 32px);
-			@include padding(0, 7px, 2px, 0);
-			align-items: center;
-			border: 1px solid rgba( $builder-gray-color , .1 );
-			border-radius: 0 67px 68px 0;
-			border-left: 0;
-			display: flex;
-			font-size: 14px;
-			font-weight: 400;
-			margin-bottom: 0;
+		.karma-range-slider-number {
+			display: inline-flex;
+			margin-left: 13px;
+
+			.karma-range-slider-input {
+
+				&:focus {
+					border-color: rgba( $builder-gray-color , .1 );
+					outline: none;
+				}
+				@include flexbox($text-align: right);
+				@include box(34px, 32px);
+				background: none;
+				border: 1px solid rgba( $builder-gray-color , .1 );
+				border-right: 0;
+				border-radius: 40px 0 0 40px;
+				color: #000;
+				font-size: 12px;
+				padding: 0;
+			}
+
+			.karma-unit {
+				@include box(auto, 32px);
+				@include padding(0, 7px, 2px, 0);
+				align-items: center;
+				border: 1px solid rgba( $builder-gray-color , .1 );
+				border-radius: 0 67px 68px 0;
+				border-left: 0;
+				display: flex;
+				font-size: 14px;
+				font-weight: 400;
+				margin-bottom: 0;
+			}
+		}
+
+		input::-webkit-inner-spin-button {
+			margin: 0;
+			-webkit-appearance: none;
+		}
+
+		input::-webkit-outer-spin-button {
+			margin: 0;
+			-webkit-appearance: none;
+		}
+
+		input[type=number] {
+			-moz-appearance:textfield;
 		}
 	}
 
-	input::-webkit-inner-spin-button {
-		margin: 0;
-		-webkit-appearance: none;
+	.karma-slider-controller-title {
+		@extend .karma-builder-title-3;
+		padding-top: $top-space-red;
+		color: $builder-gray-color;
+		text-align: left;
+		width: 100%;
 	}
 
-	input::-webkit-outer-spin-button {
-		margin: 0;
-		-webkit-appearance: none;
-	}
-
-	input[type=number] {
-		-moz-appearance:textfield;
-	}
-}
-
-.karma-slider-controller-title {
-	@extend .karma-builder-title-3;
-	padding-top: $top-space-red;
-	color: $builder-gray-color;
-	text-align: left;
-	width: 100%;
 }

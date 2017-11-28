@@ -15,8 +15,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, button,
-input[type="text"] {
+.HelveticaNeue-font, #karma-element-setting-panel-container * {
   font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
@@ -194,10 +193,22 @@ a:active {
 a:focus {
   outline: none; }
 
-button,
-input[type="text"] {
-  border: none;
+#karma-element-setting-panel-container * {
   font-weight: 400; }
+#karma-element-setting-panel-container button,
+#karma-element-setting-panel-container input[type="text"],
+#karma-element-setting-panel-container input[type="number"] {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  text-transform: none; }
+  #karma-element-setting-panel-container button:focus, #karma-element-setting-panel-container button:active,
+  #karma-element-setting-panel-container input[type="text"]:focus,
+  #karma-element-setting-panel-container input[type="text"]:active,
+  #karma-element-setting-panel-container input[type="number"]:focus,
+  #karma-element-setting-panel-container input[type="number"]:active {
+    box-shadow: none;
+    outline: none; }
 
 /* _-_-_- base/BASE -_-_-_ */
 body {

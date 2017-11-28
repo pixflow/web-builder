@@ -22,10 +22,30 @@ a {
 	}
 }
 
-button,
-input[ type = "text" ] {
-	@extend .HelveticaNeue-font;
-	border: none;
-	font-weight: 400;
+
+
+#karma-element-setting-panel-container{
+	*{
+		font-weight: 400;
+		@extend .HelveticaNeue-font;
+	}
+
+	button,
+	input[ type = "text" ],
+	input[ type = "number" ] {
+		border: none;
+		box-shadow : none;
+		outline: none;
+		text-transform: none;
+
+		&:focus,
+		&:active{
+
+			box-shadow : none;
+			outline: none;
+
+		}
+	}
+
 }
 

@@ -37,14 +37,14 @@
 
 			&:before,
 			&:after {
-				@include box(8.42px, 1.4px);
+				@include box( 8px , 2px );
 				background-color: $builder-accent-color;
 				content: '';
 				position: absolute;
 			}
 			&:after {
 
-				@include box(1.4px, 8.42px);
+				@include box( 2px , 8px );
 
 			}
 		}

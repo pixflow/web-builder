@@ -4,29 +4,29 @@
     <title>Group 2 Copy 6</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="0" y="0" width="60" height="27" rx="3"></rect>
-        <linearGradient x1="0.25781251%" y1="49.7500002%" x2="101.257813%" y2="49.7500002%" id="linearGradient-3">
+        <rect id="section_container-path-1" x="0" y="0" width="60" height="27" rx="3"></rect>
+        <linearGradient x1="0.25781251%" y1="49.7500002%" x2="101.257813%" y2="49.7500002%" id="section_container-linearGradient-3">
             <stop stop-color="#FFFFFF" offset="0%"></stop>
             <stop stop-color="#53A0FD" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Setting-pannel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-2-Copy-6">
-            <rect id="Rectangle-14-Copy-25" fill="#C6E1FC" x="0" y="0" width="70" height="50" rx="3"></rect>
-            <rect id="Rectangle-14-Copy-27" fill="#7AB9FA" x="1" y="8" width="68" height="34"></rect>
-            <g id="Group-Copy-15" opacity="0.5" transform="translate(6.000000, 15.000000)">
-                <g id="Path-3-+-Path-3-Copy-Mask">
-                    <mask id="mask-2" fill="white">
-                        <use xlink:href="#path-1"></use>
+    <g id="section_container-Setting-pannel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="section_container-Group-2-Copy-6">
+            <rect id="section_container-Rectangle-14-Copy-25" fill="#C6E1FC" x="0" y="0" width="70" height="50" rx="3"></rect>
+            <rect id="section_container-Rectangle-14-Copy-27" fill="#7AB9FA" x="1" y="8" width="68" height="34"></rect>
+            <g id="section_container-Group-Copy-15" opacity="0.5" transform="translate(6.000000, 15.000000)">
+                <g id="section_container-Path-3-+-Path-3-Copy-Mask">
+                    <mask id="section_container-mask-2" fill="white">
+                        <use xlink:href="#section_container-path-1"></use>
                     </mask>
-                    <use id="Mask" fill-opacity="0" fill="#FFFFFF" xlink:href="#path-1"></use>
-                    <path d="M-3,32.0628284 L22.2631579,11 L29,18.1613617 C19.8169136,26.7765814 12.7993697,32.5337545 7.94736842,35.432881 C3.09536714,38.3320075 -0.553755666,37.2086566 -3,32.0628284 Z" id="Path-3-Copy" stroke="#FFFFFF" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
-                    <polygon id="Path-3" stroke="#FFFFFF" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="11 32 38.6774194 9 63 32"></polygon>
+                    <use id="section_container-Mask" fill-opacity="0" fill="#FFFFFF" xlink:href="#section_container-path-1"></use>
+                    <path d="M-3,32.0628284 L22.2631579,11 L29,18.1613617 C19.8169136,26.7765814 12.7993697,32.5337545 7.94736842,35.432881 C3.09536714,38.3320075 -0.553755666,37.2086566 -3,32.0628284 Z" id="section_container-Path-3-Copy" stroke="#FFFFFF" fill="url(#section_container-linearGradient-3)" mask="url(#section_container-mask-2)"></path>
+                    <polygon id="section_container-Path-3" stroke="#FFFFFF" fill="url(#section_container-linearGradient-3)" mask="url(#section_container-mask-2)" points="11 32 38.6774194 9 63 32"></polygon>
                 </g>
-                <ellipse id="Oval" stroke="#FFFFFF" cx="13.2989663" cy="6.56633008" rx="3.61148371" ry="3.49589087"></ellipse>
+                <ellipse id="section_container-Oval" stroke="#FFFFFF" cx="13.2989663" cy="6.56633008" rx="3.61148371" ry="3.49589087"></ellipse>
             </g>
-            <path d="M57.5,2.38095238 L57.5,49.6752198" id="Line-3-Copy-13" stroke="#ECF5FE" stroke-linecap="square" stroke-dasharray="3"></path>
-            <path d="M12.5,2.38095238 L12.5,49.6752198" id="Line-3-Copy-15" stroke="#ECF5FE" stroke-linecap="square" stroke-dasharray="3"></path>
+            <path d="M57.5,2.38095238 L57.5,49.6752198" id="section_container-Line-3-Copy-13" stroke="#ECF5FE" stroke-linecap="square" stroke-dasharray="3"></path>
+            <path d="M12.5,2.38095238 L12.5,49.6752198" id="section_container-Line-3-Copy-15" stroke="#ECF5FE" stroke-linecap="square" stroke-dasharray="3"></path>
         </g>
     </g>
 </svg>
