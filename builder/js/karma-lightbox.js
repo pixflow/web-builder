@@ -34,7 +34,8 @@ karmaImageLightbox.prototype.init = function () {
 	var that = this;
 	// Open Lightbox
 	var handler = that.openLightbox.bind( that );
-	$( document.querySelector( this.selector ) ).on( 'click.karma-lightbox', handler );
+	jQuery( document.querySelector( this.selector ) ).on( 'click.karma-lightbox', handler );
+	
 };
 
 /**
