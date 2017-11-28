@@ -35,6 +35,7 @@
 			this.createUnsplashPanel();
 			this.closeElementPanel();
 			this.$el.trigger( 'karma/after/finish_element_panel', [ this ] );
+			this.scrollElementPanel();
 
 		},
 
@@ -133,6 +134,22 @@
 				if( null != addElement ) {
 					addElement.classList.remove("element-panel-show");
 				}
+			});
+		},
+
+		/**
+		 * use niceScroll for element panel
+		 *
+		 * @since   1.0.0
+		 */
+		scrollElementPanel: function () {
+
+			$(".karma-element-panel-list").niceScroll({
+				cursorcolor:"#A9A9A9",
+				cursorwidth:"3px",
+				cursoropacitymax:0.56,
+				railalign: "left",
+				cursorborder : "none",
 			});
 
 		},

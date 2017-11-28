@@ -1,40 +1,43 @@
-.karma-element-panel-container{
+.karma-element-panel-container {
 	position: fixed;
 	top: 36%;
-	left:1.3%;
-	
-  	.karma-element-panel-list{
-	  @include flexbox( center, center, flex-start );
-	  padding: 40px;
-	  .karma-element-single-element{
-		&:hover{
-		  border: 1px solid $builder-accent-color;
-		  border-radius: 4px;
+	left: 1.3%;
+
+	.karma-element-panel-list {
+		@include flexbox(center, center, flex-start);
+		flex-wrap: wrap;
+		overflow: auto;
+		height: 657px;
+		padding: 30px;
+		.karma-element-single-element {
+			&:hover {
+				border: 1px solid $builder-accent-color;
+				border-radius: 4px;
+			}
 		}
-	  }
 	}
 
-	.element-panel-button{
+	.element-panel-button {
 		@include box(48px);
-		@include flexbox( center, center, center );
+		@include flexbox(center, center, center);
 		background-color: $white-color;
 		border-radius: 100px;
-		box-shadow: 0 7px 15px 3px rgba(57,73,89,0.2);
+		box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
 		margin-bottom: 15px;
 
 	}
-	
-	.karma-element-panel-add-element-view{
+
+	.karma-element-panel-add-element-view {
 		@include box(524px, 699px);
-		@include element_direction($top:13%, $left:5%);
+		@include element_direction($top: 13%, $left: 5%);
 		background-color: $white-color;
 		border-radius: 3px;
-		box-shadow: 0 2px 15px 7px rgba(57,73,89,0.07);
+		box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
 		display: none;
 		position: fixed;
 
-		&:after{
-			@include element_direction($top:38%, $left: 4.8%);
+		&:after {
+			@include element_direction($top: 38%, $left: 4.8%);
 			background-color: $white-color;
 			border: 1px solid #ffffffeb;
 			border-width: 0 2px 2px 0;
@@ -46,35 +49,34 @@
 			-webkit-transform: rotate(135deg);
 		}
 
-		.karma-element-panel-add-element-view-right{
+		.karma-element-panel-add-element-view-right {
 			@include box(350px, 100%);
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
 		}
 
-		.karma-element-panel-add-element-view-left{
+		.karma-element-panel-add-element-view-left {
 			@include box(174px, 100%);
 
-			.karma-element-panel-add-element-view-filtering{
+			.karma-element-panel-add-element-view-filtering {
 				@include box(100%, 400px);
 
+				.karma-element-panel-price-filter-container {
 
-				.karma-element-panel-price-filter-container{
+					.karma-element-panel-price-filter {
+						@include padding(21px, 0, 0, 30px);
 
-					.karma-element-panel-price-filter{
-						@include  padding( 21px, 0, 0, 30px );
-
-						ul li{
+						ul li {
 							display: block;
 							position: relative;
 						}
 
-						ul li input[type=radio]{
+						ul li input[type=radio] {
 							position: absolute;
 							visibility: hidden;
 						}
 
-						ul li label{
-							@include margin( 16px, auto, 16px, auto );
+						ul li label {
+							@include margin(16px, auto, 16px, auto);
 							display: block;
 							position: relative;
 							cursor: pointer;
@@ -84,9 +86,9 @@
 							z-index: 10;
 						}
 
-						ul li .check{
-							@include box( 13px, 13px );
-							@include element_direction($top:4px);
+						ul li .check {
+							@include box(13px, 13px);
+							@include element_direction($top: 4px);
 							display: block;
 							position: absolute;
 							border-radius: 100%;
@@ -96,8 +98,8 @@
 						}
 
 						ul li .check::before {
-							@include box( 5px, 5px );
-							@include element_direction($top:3px, $right:auto, $bottom:auto, $left:3px);
+							@include box(5px, 5px);
+							@include element_direction($top: 3px, $right: auto, $bottom: auto, $left: 3px);
 							display: block;
 							position: absolute;
 							content: '';
@@ -107,10 +109,10 @@
 						}
 
 						input[type=radio]:checked ~ .check {
-							border: 1px solid rgba( $builder-accent-color, 0.5 );
+							border: 1px solid rgba($builder-accent-color, 0.5);
 						}
 
-						input[type=radio]:checked ~ .check::before{
+						input[type=radio]:checked ~ .check::before {
 							background: $builder-accent-color;
 						}
 
@@ -120,7 +122,7 @@
 
 			}
 
-			.karma-element-panel-add-element-view-content-border{
+			.karma-element-panel-add-element-view-content-border {
 				border-top: 2px solid rgba(57, 73, 89, 0.08);
 				width: 106px;
 				margin-left: 30px;
@@ -131,13 +133,13 @@
 				font-size: 14px;
 			}
 
-			.karma-builder-addcontent{
+			.karma-builder-addcontent {
 				@include padding(30px, 0, 0, 30px);
 
 			}
 
-			li.karma-addcontent-disable .karma-addcontent-name{
-				color:rgba( $builder-gray-color , 0.2 ) ;
+			li.karma-addcontent-disable .karma-addcontent-name {
+				color: rgba($builder-gray-color, 0.2);
 			}
 
 			.karma-addcontent-name {
@@ -147,27 +149,27 @@
 				transition-duration: .3s;
 			}
 
-			li.karma-addcontent-disable .karma-addcontent-icon{
+			li.karma-addcontent-disable .karma-addcontent-icon {
 				svg {
 					* {
-						fill:#D0D6DA;
+						fill: #D0D6DA;
 						transition-duration: .3s;
 					}
 				}
 			}
 
-			.karma-builder-addcontent ul{
+			.karma-builder-addcontent ul {
 				display: flex;
 				flex-direction: column;
 				align-items: left;
 				list-style: none;
 			}
 
-			li.karma-addcontent{
-				@include flexbox( center, center, center );
+			li.karma-addcontent {
+				@include flexbox(center, center, center);
 				padding-top: 20px;
 				&:not(.karma-addcontent-disable):hover {
-					.karma-addcontent-icon{
+					.karma-addcontent-icon {
 						svg {
 							* {
 								fill: $builder-accent-color;
@@ -188,12 +190,15 @@
 		}
 	}
 
-	.element-panel-show{
+	.element-panel-show {
 		display: flex;
 	}
 
-}
+	#ascrail2000 .nicescroll-cursors {
+		height: 142px !important;
+	}
 
+}
 /** Separate these stylesheet for jquery UI */
 .karma-element-single-element{
   @include flexbox( center, center, center );
@@ -221,6 +226,7 @@
 	font-size: 12px;
 	line-height: 14px;
   }
+
 }
 
 
