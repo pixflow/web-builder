@@ -56,7 +56,7 @@ karmaImageLightbox.prototype.openLightbox = function ( e ) {
 	} else {
 		html.className += ' karma-image-lightbox-active';
 	}
-	var image = this.href;
+	var image = document.querySelector( this.selector ).href;
 
 	this.createLightboxHtml( image );
 
