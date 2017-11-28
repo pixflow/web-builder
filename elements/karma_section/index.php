@@ -180,7 +180,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						array(
 								"name"	=> "position",
 								"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
-								"label"	=> esc_attr__( "positin", 'karma' ),
+								"label"	=> esc_attr__( "position", 'karma' ),
 								'values'	=> 'center-center',
 								'separator' => "container",
 
