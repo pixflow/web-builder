@@ -30,37 +30,35 @@
 	}
 
 	.element-panel-button{
+		@include box(48px);
 		@include flexbox( center, center, center );
 		background-color: #FFFFFF;
 		border-radius: 100px;
 		box-shadow: 0 7px 15px 3px rgba(57,73,89,0.2);
-		height: 48px;
 		margin-bottom: 15px;
-		width: 48px;
+
 	}
 	
 	.karma-element-panel-add-element-view{
+		@include box(524px, 699px);
+		@include element_direction($top:13%, $left:5%);
 		background-color: #FFFFFF;
 		border-radius: 5px;
 		border-radius: 3px;
 		box-shadow: 0 2px 15px 7px rgba(57,73,89,0.07);
 		display: none;
-		height: 699px;
-		left: 5%;
 		position: fixed;
-		top: 13%;
-		width: 524px;
+
 
 		&:after{
+			@include element_direction($top:38%, $left: 4.8%);
 			background-color: white;
 			border: 1px solid #ffffffeb;
 			border-width: 0 2px 2px 0;
 			content: "";
 			display: inline-block;
-			left: 4.8%;
 			padding: 4px;
 			position: fixed;
-			top: 38%;
 			transform: rotate(135deg);
 			-webkit-transform: rotate(135deg);
 		}
@@ -69,7 +67,7 @@
 			@include box(350px, 100%);
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
 		}
-		
+
 		.karma-element-panel-add-element-view-left{
 			@include box(174px, 100%);
 
@@ -126,11 +124,11 @@
 						}
 
 						input[type=radio]:checked ~ .check {
-							border: 1px solid rgba(57,73,89,0.5);
+							border: 1px solid rgba( $builder-accent-color, 0.5 );
 						}
 
 						input[type=radio]:checked ~ .check::before{
-							background: #419CF8;
+							background: $builder-accent-color;
 						}
 
 					}

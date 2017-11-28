@@ -1995,8 +1995,8 @@ label {
   padding-left: 0; }
 
 img {
-  max-width: none;
-  max-height: none; }
+  max-width: inherit;
+  max-height: inherit; }
 
 .karma-spacing {
   height: 5px;
@@ -2938,6 +2938,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         color: #445363;
         line-height: 14px; }
   .karma-element-panel-container .element-panel-button {
+    width: 48px;
+    height: 48px;
     display: flex;
     text-align: center;
     align-items: center;
@@ -2945,30 +2947,32 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     background-color: #FFFFFF;
     border-radius: 100px;
     box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
-    height: 48px;
-    margin-bottom: 15px;
-    width: 48px; }
+    margin-bottom: 15px; }
   .karma-element-panel-container .karma-element-panel-add-element-view {
+    width: 524px;
+    height: 699px;
+    top: 13%;
+    right: auto;
+    bottom: auto;
+    left: 5%;
     background-color: #FFFFFF;
     border-radius: 5px;
     border-radius: 3px;
     box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
     display: none;
-    height: 699px;
-    left: 5%;
-    position: fixed;
-    top: 13%;
-    width: 524px; }
+    position: fixed; }
     .karma-element-panel-container .karma-element-panel-add-element-view:after {
+      top: 38%;
+      right: auto;
+      bottom: auto;
+      left: 4.8%;
       background-color: white;
       border: 1px solid #ffffffeb;
       border-width: 0 2px 2px 0;
       content: "";
       display: inline-block;
-      left: 4.8%;
       padding: 4px;
       position: fixed;
-      top: 38%;
       transform: rotate(135deg);
       -webkit-transform: rotate(135deg); }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right {
@@ -3031,9 +3035,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
             transition: background 0.25s linear;
             -webkit-transition: background 0.25s linear; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter input[type=radio]:checked ~ .check {
-            border: 1px solid rgba(57, 73, 89, 0.5); }
+            border: 1px solid rgba(65, 156, 248, 0.5); }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter input[type=radio]:checked ~ .check::before {
-            background: #419CF8; }
+            background: #419cf8; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-content-border {
         border-top: 2px solid rgba(57, 73, 89, 0.08);
         width: 106px;

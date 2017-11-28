@@ -1,5 +1,5 @@
 <div class="karma-upload-image-container">
-	<# if ( data.value != ""  ) { #>
+	<# if ( "" != data.value  ) { #>
 		<div class="karma-upload-image-content karma-upload-image-has-image" style="background-image:url({{ data.value }});">
 	<#}else { #>
 		<div class="karma-upload-image-content" style="background-image:url({{ data.value }});">
