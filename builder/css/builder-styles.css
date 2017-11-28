@@ -2944,7 +2944,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: #FFFFFF;
+    background-color: #fff;
     border-radius: 100px;
     box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
     margin-bottom: 15px; }
@@ -2955,8 +2955,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     right: auto;
     bottom: auto;
     left: 5%;
-    background-color: #FFFFFF;
-    border-radius: 5px;
+    background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
     display: none;
@@ -2966,7 +2965,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       right: auto;
       bottom: auto;
       left: 4.8%;
-      background-color: white;
+      background-color: #fff;
       border: 1px solid #ffffffeb;
       border-width: 0 2px 2px 0;
       content: "";
@@ -3050,12 +3049,16 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         padding-right: 0;
         padding-bottom: 0;
         padding-left: 30px; }
+      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-name {
+        color: rgba(57, 73, 89, 0.2); }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
         padding-left: 17px;
         color: #7C8691;
-        font-size: 14px; }
-      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-icon svg * {
-        fill: #7C8691; }
+        font-size: 14px;
+        transition-duration: .3s; }
+      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-icon svg * {
+        fill: #D0D6DA;
+        transition-duration: .3s; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent ul {
         display: flex;
         flex-direction: column;
@@ -3067,6 +3070,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         align-items: center;
         justify-content: center;
         padding-top: 20px; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable):hover .karma-addcontent-icon svg * {
+          fill: #419cf8;
+          transition-duration: .3s;
+          cursor: pointer; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable):hover .karma-addcontent-name {
+          color: #419cf8;
+          transition-duration: .3s;
+          cursor: pointer; }
   .karma-element-panel-container .element-panel-show {
     display: flex; }
 
