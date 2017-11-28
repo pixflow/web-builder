@@ -1,28 +1,28 @@
 jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'karma_finish_form_builder.dropdown-controller', function( e, view ) {
 
+	var	$ = jQuery;
 	if ( null == document.querySelector( '.karma-dropdown-controller' ) ) {
 		return;
 	}
 
-	$( '.karma-dropdown-controller' ).each(function ( key ) {
+	$( '.karma-dropdown-controller' ).each( function ( key ) {
 
-		var	$ = jQuery,
-			that = this,
-		 selectedItem = $(this).find( "li[ data-value *= " + $(this).find( '> input' ).val() + " ] .karma-dropdown-option-title" );
-		$(that).find( '.karma-dropdown-selected-item' ).html( selectedItem.text() );
+		var that = $( this ),
+		 selectedItem = $( this ).find( "li[ data-value *= " + $(this).find( '> input' ).val() + " ] .karma-dropdown-option-title" );
+		that.find( '.karma-dropdown-selected-item' ).html( selectedItem.text() );
 
-		$(that).find( '.karma-dropdown-header' ).click(function () {
+		that.find( '.karma-dropdown-header' ).click( function () {
 
-			var optionsContainer =  $(this).siblings( 'ul' );
+			var optionsContainer =  $( this ).siblings( 'ul' );
 			$( '.karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
 			optionsContainer.addClass( 'karma-doropdown-opened' );
 			optionsContainer.css( 'top' , optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 );
 
-		})
+		});
 
-		$(this).find( '.karma-dropdown-options > li' ).click(function () {
+		that.find( '.karma-dropdown-options > li' ).click( function () {
 
-			$(that).find('.karma-selected-dropdown-option').removeClass( 'karma-selected-dropdown-option' );
+			$(this).find('.karma-selected-dropdown-option').removeClass( 'karma-selected-dropdown-option' );
 			$(this).addClass( 'karma-selected-dropdown-option' );
 			$(this).closest( ' .karma-dropdown-controller ' ).find( '> input' ).val( $(this).attr( 'data-value' ) ).trigger('input');
 			$(this).closest( ' .karma-dropdown-body ' ).find( ' .karma-dropdown-selected-item' ).html( $(this).find( ' .karma-dropdown-option-title' ).text() );
