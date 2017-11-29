@@ -3004,7 +3004,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     margin-bottom: 15px;
     cursor: pointer; }
     .karma-element-panel-container .element-panel-button.element-panel-add-element-button svg {
-      margin-left: 2px;
+      margin-left: 1px;
       margin-top: 2px; }
   .karma-element-panel-container .karma-element-panel-add-element-view {
     width: 524px;
