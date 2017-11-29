@@ -1,4 +1,4 @@
-<div class="element-panel-section-container karma-element-panel-list" >
+<div class="element-panel-section-container karma-element-panel-list karma-active-tab" >
 	<# print( KarmaView.getWpTemplate( 'karma-element-panel-top-header' ) ); #>
 	<# _.each( data.elementInfo, function( element ){
 		if( false !== element.showInList ){
