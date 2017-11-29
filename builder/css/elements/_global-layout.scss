@@ -1,4 +1,4 @@
-.karma-insert-between-elements-placeholder{
+.karma-element-placeholder{
   @include box( 100%, 8px );
   align-items: center;
   display: none;
@@ -8,4 +8,7 @@
   &.karma-column-placeholder{
   		height: 130px;
 	}
+  &.karma-show-placeholder{
+	display: flex;
+  }
 }

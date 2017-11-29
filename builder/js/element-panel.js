@@ -277,6 +277,161 @@
 		},
 
 		/**
+		 * @summary None ro block overlay for detecting true elements
+		 *
+		 * @param {object}  element   Droppable elements
+		 *
+		 * @since   1.0.0
+		 * @returns {boolean | object}  Element info 
+		 */
+		getParentElementInfo : function ( element ) {
+
+			var parentElement = element.closest( ".karma-builder-element" );
+			if( null == parentElement ){
+				return false;
+			}
+			var elementName = parentElement.getAttribute( 'data-name' ) ,
+				info = {
+					node : parentElement ,
+					name : elementName
+				}
+			return info;
+
+		},
+
+		/**
+		 * @summary None ro block overlay for detecting true elements
+		 *
+		 * @param {object}  event   DOM events
+		 * @param {object}  UI      Dragging element
+		 * UI is jquery helper object
+		 *
+		 * @since   1.0.0
+		 * @returns {boolean}
+		 */
+		overlayBehavior : function ( event, UI ) {
+
+			var overlay = document.querySelector( '.karma-overlay-on-dragging' ) ,
+				targetElement;
+			overlay.style.display = 'none';
+			UI.helper.get( 0 ).style.display = 'none';
+			targetElement = document.elementFromPoint( event.clientX, event.clientY );
+			overlay.style.display = 'block';
+			UI.helper.get( 0 ).style.display = 'flex' ;
+			return targetElement;
+
+		},
+
+		/**
+		 * @summary Detect and show drop area placeholders while dragging
+		 *
+		 * @param {object}  event   DOM events
+		 * @param {object}  UI      Dragging element
+		 * UI is jquery helper object
+		 *
+		 * @since   1.0.0
+		 * @returns {boolean}
+		 */
+		removePlaceHolders : function () {
+
+			var activePlaceHolder = document.querySelector('.karma-show-placeholder');
+			if( null != activePlaceHolder ){
+				activePlaceHolder.classList.remove('karma-show-placeholder');
+			}
+
+		},
+
+		/**
+		 * @summary Detect and show drop area placeholders while dragging
+		 *
+		 * @param {object}  event   DOM events
+		 * @param {object}  UI      Dragging element
+		 * UI is jquery helper object
+		 *
+		 * @since   1.0.0
+		 * @returns {boolean}
+		 */
+		detectDropAreas : function ( event, UI ) {
+
+			var targetElement = this.overlayBehavior( event, UI );
+			targetElement = this.getParentElementInfo( targetElement );
+			this.removePlaceHolders();
+			if ( false == targetElement || 'karma_section' == targetElement.name ){
+				return false;
+			} else if ( 'karma_column' == targetElement.name ) {
+				var placeHolder =  targetElement.node.querySelector('.karma-column-placeholder');
+				if( null != placeHolder ){
+					placeHolder.classList.add('karma-show-placeholder');
+				}
+			} else {
+				this.showElementsPlaceHolder( event, targetElement );
+			}
+			return true;
+
+		},
+
+		/**
+		 * @summary Detect and show drop area placeholders while dragging
+		 * for elements ( Not for section and column )
+		 *
+		 * @param {object}  event           DOM events
+		 * @param {object}  targetElement   Droppable element
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		showElementsPlaceHolder : function ( event, targetElement ) {
+
+			var scrollTop = document.body.scrollTop,
+				topPosition = targetElement.node.getBoundingClientRect().top + scrollTop ,
+				elementHeight = targetElement.node.offsetHeight,
+				elementHalf = topPosition + elementHeight / 2;
+
+			if ( ( event.clientY + scrollTop ) < elementHalf ) {
+				/** Users drag at the top of element */
+				targetElement.node.previousElementSibling.classList.add( 'karma-show-placeholder' );
+			} else {
+				/** Users drag at the bottom of element */
+				targetElement.node.nextElementSibling.classList.add( 'karma-show-placeholder' );
+			}
+
+		},
+
+
+		/**
+		 * @summary Create overlay element to prevent from other mouse events while dragging
+		 * or blocking if exists
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		createOverlay : function () {
+
+			var overlay = document.querySelector( '.karma-overlay-on-dragging' );
+			if ( null == overlay ) {
+				overlay = document.createElement( 'div' );
+				overlay.classList.add( 'karma-overlay-on-dragging' );
+				document.body.appendChild( overlay );
+			} else {
+				overlay.style.display = 'block';
+			}
+
+		},
+		
+		/**
+		 * @summary Set display none for overlay
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		removeOverlay : function () {
+
+			var overlay = document.querySelector( '.karma-overlay-on-dragging' );
+			overlay.style.display = 'none';
+
+		},
+
+		/**
 		 * Enable draggable functionality on any item element
 		 *
 		 * @since   1.0.0
@@ -288,20 +443,21 @@
 			$('.karma-element-single-element').draggable({
 				appendTo: "body",
 				containment: 'document',
-				zIndex: 9999999,
 				cursorAt: { top : 20, left : 50 },
 				helper: 'clone' ,
 				start : function(){
 
 					var DOMOBJ = $( this ).get( 0 );
 					DOMOBJ.classList.add( 'karma-start-dragging', 'karma-grab-element' );
+					that.createOverlay();
 
 				} ,
 
 				drag : function( event, UI ){
 
-					that.scroll( UI ) ;
-
+					that.scroll( UI );
+					that.detectDropAreas( event, UI );
+					
 				},
 
 				stop: function(){
@@ -309,6 +465,8 @@
 					var DOMOBJ = $( this ).get( 0 );
 					DOMOBJ.classList.remove( 'karma-start-dragging', 'karma-grab-element' );
 					clearInterval( that.flyScroll );
+					that.removeOverlay();
+					that.removePlaceHolders();
 
 				}
 			});

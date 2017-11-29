@@ -119,7 +119,7 @@
 		+ '</div>' ,
 
 		/** Drop area template for elements */
-		placeholderTemplate : '<div class="karma-insert-between-elements-placeholder {{ data.className }}" >'
+		placeholderTemplate : '<div class="karma-element-placeholder {{ data.className }}" >'
 			+ '</div>' ,
 
 		/**
@@ -156,7 +156,7 @@
 			var getName = this.model.get('shortcode_name'),
 				placeholderHTML;
 			if ( 'karma_column' != getName && 'karma_section' != getName ) {
-				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className : 'karma-element-placeholder' } );
+				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className : 'karma-insert-between-elements-placeholder' } );
 				this.el.insertAdjacentHTML( 'afterend', placeholderHTML );
 				if( 1 == this.model.get('order') ){
 					this.el.insertAdjacentHTML( 'beforebegin', placeholderHTML );

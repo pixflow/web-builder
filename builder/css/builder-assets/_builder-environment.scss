@@ -142,3 +142,11 @@ div.media-modal {
 	margin-left: -350px;
 	margin-top: -250px;
 }
+
+/* Drag and drop styles */ 
+.karma-overlay-on-dragging{
+  @include box( 100% );
+  @include element_direction( 0, 0, 0, 0 );
+  position: fixed;
+  z-index: $level5;
+}
