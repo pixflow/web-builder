@@ -2998,9 +2998,11 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       height: 597px;
       flex-wrap: wrap;
       overflow: hidden; }
-    .karma-element-panel-container .karma-element-panel-list .karma-element-single-element:hover {
-      border: 1px solid #419cf8;
-      border-radius: 4px; }
+    .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
+      border: 1px solid transparent; }
+      .karma-element-panel-container .karma-element-panel-list .karma-element-single-element:hover {
+        border: 1px solid #419cf8;
+        border-radius: 4px; }
   .karma-element-panel-container .element-panel-button {
     width: 48px;
     height: 48px;

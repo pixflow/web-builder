@@ -17,6 +17,7 @@
 		}
 
 		.karma-element-single-element {
+		  border: 1px solid transparent;
 			&:hover {
 				border: 1px solid $builder-accent-color;
 				border-radius: 4px;
