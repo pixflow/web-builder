@@ -311,7 +311,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'elementName' => self::$element_name ,
 			'icon'         => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
 			'category'     => array(
-					'basic'
+				'basic',
+				str_replace( 'karma_', '', self::$element_name ),
 			),
 			'showInList'   => false ,
 		);

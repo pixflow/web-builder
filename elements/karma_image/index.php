@@ -364,6 +364,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 			'category'     => array(
 				'basic' ,
 				'media' ,
+				str_replace( 'karma_', '', self::$element_name ),
 			),
 			'showInList'   => true ,
 		);

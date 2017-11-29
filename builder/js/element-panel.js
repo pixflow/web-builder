@@ -18,6 +18,7 @@
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
 			"click li.karma-addcontent"													: "elementPanelTab",
+			"input .search-text"                                                        : "searchInElements"
 
 
 		},
@@ -267,7 +268,7 @@
 		scrollToTop : function () {
 
 			var that = this;
-			if ( event.clientY < 100 ) {
+			if ( event.clientY < 50 ) {
 				clearInterval( that.flyScroll );
 				/** Start scrolling up */
 				that.flyScroll = setInterval( function(){
@@ -422,7 +423,7 @@
 			}
 
 		},
-		
+
 		/**
 		 * @summary Set display none for overlay
 		 *
@@ -475,6 +476,24 @@
 
 				}
 			});
+
+		},
+
+		/**
+		 * Search in elements
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		searchInElements : function ( e ){
+			
+			var searchValue = $( e.target ).val();
+			$('.karma-element-single-element').hide();
+			if( '' != searchValue.trim() ){
+				$('[data-category*="' + searchValue.trim() + '"]').css( 'display', 'flex' );
+			}else{
+				$('.karma-element-single-element').css( 'display', 'flex' );
+			}
 
 		}
 
