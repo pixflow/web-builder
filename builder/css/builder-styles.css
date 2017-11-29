@@ -3164,7 +3164,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         padding-left: 30px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-name {
         color: rgba(57, 73, 89, 0.2);
-        cursor: context-menu; }
+        cursor: default; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
         color: #7C8691;
         font-size: 14px;
