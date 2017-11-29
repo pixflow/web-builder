@@ -205,7 +205,7 @@
 			}
 
 			.karma-builder-addcontent {
-				@include padding(30px, 0, 0, 30px);
+				@include padding(40px, 0, 0, 30px);
 			}
 
 			li.karma-addcontent-disable .karma-addcontent-name {
@@ -234,11 +234,12 @@
 				display: flex;
 				flex-direction: column;
 				list-style: none;
+				padding-bottom: 14px;
 			}
 
 			li.karma-addcontent {
 				@include flexbox(center, center, center);
-				padding-top: 20px;
+				padding-top: 23px;
 				&:not(.karma-addcontent-disable):hover {
 					.karma-addcontent-icon {
 						svg {
