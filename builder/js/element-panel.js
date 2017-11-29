@@ -18,7 +18,8 @@
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
 			"click li.karma-addcontent"													: "elementPanelTab",
-			"input .search-text"                                                        : "searchInElements"
+			"input .search-text"                                                        : "searchInElements",
+			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive"
 
 
 		},
@@ -507,7 +508,24 @@
 				$('.karma-element-single-element').css( 'display', 'flex' );
 			}
 
-		}
+		},
+
+		/**
+		 * @summary when active category filter get class
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		categoryFilterActive: function ( e ) {
+
+			var target = $( e.target ),
+				karmaAddcontentClass =	target.closest( '.karma-addcontent' );
+			if ( karmaAddcontentClass ) {
+			$( '.karma-addcontent' ).removeClass( 'karma-addcontent-active' );
+			karmaAddcontentClass.addClass( "karma-addcontent-active" );
+			}
+
+		},
 
 	});
 

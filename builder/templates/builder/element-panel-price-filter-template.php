@@ -4,7 +4,7 @@
 	<div class="karma-element-panel-price-filter">
 		<ul>
 			<li>
-				<input type="radio" id="all-item" name="selector">
+				<input type="radio" id="all-item" name="selector" checked="checked">
 				<label for="all-item">All Item</label>
 
 				<div class="check"></div>
