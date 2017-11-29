@@ -207,7 +207,7 @@
 		 * Scroll the browser down  dragging element
 		 *
 		 * @param   {object}    element        Helper element
-		 * @param   {object}    toolbarHeight  Height of builder toolbar
+		 * @param   {number}    toolbarHeight  Height of builder toolbar
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -267,7 +267,7 @@
 				appendTo: "body",
 				containment: 'document',
 				zIndex: 9999999,
-				cursorAt: {top: 20, left: 50},
+				cursorAt: { top : 20, left : 50 },
 				helper: 'clone' ,
 				start : function(){
 
