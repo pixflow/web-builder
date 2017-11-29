@@ -5,8 +5,11 @@
 	padding-bottom: 25px;
 
 	.karma-all-controller-title{
-		padding-left: 18px;
+		@extend .karma-builder-title-3;
+		color: #394959;;
+		padding: $top-space-red $top-space-blue $top-space-orange-light;
 	}
+
 	.karma-image-position-content{
 		display: flex;
 		flex-wrap: wrap;
@@ -61,6 +64,20 @@
 				align-items: flex-end;
 				padding: 4px;
 			}
+			&.karma-image-position-center-left-dot{
+				justify-content: flex-start;
+				text-align: center;
+				align-items:center;
+				padding: 4px;
+			}
+
+			&.karma-image-position-center-right-dot{
+				justify-content: flex-end;
+				text-align: center;
+				align-items:center;
+				padding: 4px;
+			}
+
 			&.karma-image-position-center-dot{
 				justify-content: center;
 				text-align: center;

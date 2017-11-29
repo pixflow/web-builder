@@ -10,7 +10,7 @@ jQuery( document ).off( 'karma_finish_form_builder.range' ).on('karma_finish_for
 		changingSlider,
 		doneChangingInterval = 10;
 
-		$karmaRangeInput.css( 'width' , ( $karmaRangeInput.val().length ) * 7 );
+		$karmaRangeInput.css( 'width' ,  $karmaRangeInput.val().length  * 7 );
 
 		$karmaRangeSlider.rangeslider({
 
@@ -37,7 +37,7 @@ jQuery( document ).off( 'karma_finish_form_builder.range' ).on('karma_finish_for
 			}
 			$( this ).val( changedValue );
 			$karmaRangeSlider.val( changedValue ).change();
-			this.style.width = (  ( changedValue.length + 1 ) * 7  ) + 'px';
+			this.style.width = (   changedValue.length * 7  ) + 'px';
 
 		});
 

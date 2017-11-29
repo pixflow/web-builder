@@ -200,6 +200,7 @@ a:focus {
 #karma-element-setting-panel-container input[type="number"] {
   border: none;
   box-shadow: none;
+  margin-bottom: 0;
   outline: none;
   text-transform: none; }
   #karma-element-setting-panel-container button:focus, #karma-element-setting-panel-container button:active,

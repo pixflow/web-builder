@@ -16,13 +16,13 @@
 			<div class="karma-image-position-box karma-image-position-top-right-dot" data-value="top-right">
 				<div class="karma-image-position-dot "></div>
 			</div>
-			<div class="karma-image-position-box karma-image-position-center-dot" data-value="center-left">
+			<div class="karma-image-position-box karma-image-position-center-left-dot" data-value="center-left">
 				<div class="karma-image-position-dot"></div>
 			</div>
 			<div class="karma-image-position-box karma-image-position-center-dot " data-value="center-center">
 				<div class="karma-image-position-dot"></div>
 			</div>
-			<div class="karma-image-position-box karma-image-position-center-dot" data-value="center-right">
+			<div class="karma-image-position-box karma-image-position-center-right-dot" data-value="center-right">
 				<div class="karma-image-position-dot"></div>
 			</div>
 			<div class="karma-image-position-box karma-image-position-bottom-left-dot" data-value="bottom-left">

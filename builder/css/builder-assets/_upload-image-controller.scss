@@ -9,20 +9,27 @@
 
 	.karma-upload-image-button{
 		@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
+		@extend .karma-builder-title-3;
 		background-color: rgba(255, 255, 255, 0.7);
 		border-radius: 100px;
-		color: #394959;
+		color: $builder-gray-color;
 		cursor: pointer;
-		font-family: HelveticaNeue;
-		font-size: 13px;
-		font-weight: 500;
 		height: 36px;
 		line-height: 16px;
+		padding: 0 20px;
 		text-transform: none;
-		width: 131px;
+		transition: background-color .2s;
+
+		&:hover{
+			background-color: #FFF;
+		}
 	}
 	a{
 		z-index: 99;
+
+		&:hover {
+			text-decoration: none;
+		}
 	}
 
 }

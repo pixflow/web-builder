@@ -5,8 +5,7 @@
 	.radio-image-controller-label {
 		@extend .karma-builder-title-3;
 		color: $builder-gray-color;
-		opacity: .8;
-		padding: $top-space-red 0 $top-space-orange;
+		padding: $top-space-red 0 $top-space-orange-light;
 	}
 	
 	.radio-image-controller-template {
@@ -19,17 +18,6 @@
 			padding: 0 5px $top-space-red;
 			text-align: center;
 
-			svg {
-				box-shadow: none;
-				display: block;
-				opacity: .8;
-				outline: 1px solid transparent;
-				transition: outline .2s, opacity .2s;
-
-				&:hover {
-					outline: 1px solid $builder-accent-color;
-				}
-			}
 		}
 		.radio-image-selected-item {
 			svg {
@@ -45,4 +33,39 @@
 			text-align: center;
 		}
 	}
+}
+
+.radio-image-border-hover{
+
+	svg {
+		box-shadow: none;
+		display: block;
+		border: 1px solid  transparent;
+		border-radius : 4px;
+		transition: border .2s;
+
+		&:hover {
+			border: 1px solid $builder-accent-color;
+		}
+	}
+}
+
+.radio-image-opacity-hover{
+
+	svg {
+		box-shadow: none;
+		display: block;
+		opacity: .3;
+		transition:  opacity .2s;
+
+		&:hover {
+			opacity: .6;
+		}
+	}
+
+	.radio-image-selected-item svg	{
+		opacity: 1;
+	}
+
+
 }

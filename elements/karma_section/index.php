@@ -44,22 +44,25 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "374",
+				"height" => "345",
 				"params" => array(
 					array(
 						"name"	=> "structure",
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 						"label"	=> esc_attr__( "Grid options", 'karma' ),
 						'value'	=> "full",
+						"class" => "radio-image-border-hover",
 						"field"	=> array(
 
 							array(
 								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
+								'style' => 'padding-left:29px; padding-right: 19px; ',
 								'title'	=> "Full screen",
 								'value'	=> "full",
 							),
 							array(
 								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
+								'style' => 'padding-left: 19px; padding-right: 38px; ',
 								'title'	=> "Container",
 								'value'	=> "container"
 							),
@@ -106,6 +109,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 						"label"	=> esc_attr__( "Grid options", 'karma' ),
 						'value'	=> "",
+						"class" => "radio-image-opacity-hover",
 						"field"	=> array(
 
 							array(
@@ -150,7 +154,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'background-panel'	=> array(
 				'name'		=> __( 'image position', 'karma' ),
 				"title"	=> esc_attr__( "Background Setting", 'karma' ),
-				'height'	=> '570',
+				'height'	=> '559',
 				'params'	=> array(
 						array(
 								'name'			=> 'upload' ,

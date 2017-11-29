@@ -215,7 +215,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   margin-top: 24px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-slider-controller-title {
+.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-slider-controller-title, .karma-image-position-container .karma-all-controller-title, .karma-upload-image-content .karma-upload-image-button {
   font-size: 14px;
   line-height: 16px; }
 
@@ -381,6 +381,7 @@ a:focus {
 #karma-element-setting-panel-container input[type="number"] {
   border: none;
   box-shadow: none;
+  margin-bottom: 0;
   outline: none;
   text-transform: none; }
   #karma-element-setting-panel-container button:focus, #karma-element-setting-panel-container button:active,
@@ -1917,8 +1918,8 @@ div.media-modal {
   display: flex;
   max-width: 330px;
   position: fixed;
-  right: 358px;
-  top: 408px;
+  left: 710px;
+  top: 90px;
   z-index: 100; }
   #karma-element-setting-panel-container .karma-hide-controller {
     display: none; }
@@ -1975,7 +1976,9 @@ div.media-modal {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      overflow: hidden; }
+      overflow: auto; }
+      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content::-webkit-scrollbar {
+        display: none; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
         transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
@@ -2490,8 +2493,7 @@ img {
   position: relative; }
   .karma-radio-image-controller .radio-image-controller-label {
     color: #394959;
-    opacity: .8;
-    padding: 22px 0 18px; }
+    padding: 22px 0 11px; }
   .karma-radio-image-controller .radio-image-controller-template {
     display: flex;
     text-align: center;
@@ -2503,14 +2505,6 @@ img {
       cursor: pointer;
       padding: 0 5px 22px;
       text-align: center; }
-      .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg {
-        box-shadow: none;
-        display: block;
-        opacity: .8;
-        outline: 1px solid transparent;
-        transition: outline .2s, opacity .2s; }
-        .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-img svg:hover {
-          outline: 1px solid #419cf8; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-selected-item svg {
       opacity: 1; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title {
@@ -2518,6 +2512,25 @@ img {
       display: block;
       padding-top: 18px;
       text-align: center; }
+
+.radio-image-border-hover svg {
+  box-shadow: none;
+  display: block;
+  border: 1px solid  transparent;
+  border-radius: 4px;
+  transition: border .2s; }
+  .radio-image-border-hover svg:hover {
+    border: 1px solid #419cf8; }
+
+.radio-image-opacity-hover svg {
+  box-shadow: none;
+  display: block;
+  opacity: .3;
+  transition: opacity .2s; }
+  .radio-image-opacity-hover svg:hover {
+    opacity: .6; }
+.radio-image-opacity-hover .radio-image-selected-item svg {
+  opacity: 1; }
 
 .karma-setting-panel-group-container {
   display: flex;
@@ -2748,7 +2761,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   position: relative;
   padding-bottom: 25px; }
   .karma-image-position-container .karma-all-controller-title {
-    padding-left: 18px; }
+    color: #394959;
+    padding: 22px 20px 11px; }
   .karma-image-position-container .karma-image-position-content {
     display: flex;
     flex-wrap: wrap;
@@ -2790,6 +2804,16 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-bottom-center-dot {
         justify-content: center;
         align-items: flex-end;
+        padding: 4px; }
+      .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-center-left-dot {
+        justify-content: flex-start;
+        text-align: center;
+        align-items: center;
+        padding: 4px; }
+      .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-center-right-dot {
+        justify-content: flex-end;
+        text-align: center;
+        align-items: center;
         padding: 4px; }
       .karma-image-position-container .karma-image-position-content .karma-image-position-box.karma-image-position-center-dot {
         justify-content: center;
@@ -2962,15 +2986,17 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     border-radius: 100px;
     color: #394959;
     cursor: pointer;
-    font-family: HelveticaNeue;
-    font-size: 13px;
-    font-weight: 500;
     height: 36px;
     line-height: 16px;
+    padding: 0 20px;
     text-transform: none;
-    width: 131px; }
+    transition: background-color .2s; }
+    .karma-upload-image-content .karma-upload-image-button:hover {
+      background-color: #FFF; }
   .karma-upload-image-content a {
     z-index: 99; }
+    .karma-upload-image-content a:hover {
+      text-decoration: none; }
 
 .karma-upload-image-has-image:after {
   background-color: rgba(0, 0, 0, 0.2);

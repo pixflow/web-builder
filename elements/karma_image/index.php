@@ -149,12 +149,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel' => array(
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
-				"height" => "544",
+				"height" => "558",
 				"params" => array(
 					array(
 						"name" 	=> "imgurl" ,
 						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"	=> esc_attr__( "Set image", 'karma' ),
+						"label"	=> esc_attr__( "Change image", 'karma' ),
 						"value"	=> "",
 					),
 					array(
@@ -162,14 +162,17 @@ class Karma_Image extends Karma_Shortcode_Base {
 						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
 						"label"	=> esc_attr__( "Scale", 'karma' ),
 						'value'	=> "fill",
+						"class" => "radio-image-border-hover",
 						"field"	=> array(
 							array(
 								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
+								'style' => 'padding-left: 35px; padding-right: 18px;',
 								'title'	=> esc_attr__( "Real size", 'karma' ),
 								'value'	=> "real",
 							),
 							array(
 								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
+								'style' => 'padding-left: 18px; padding-right: 34px; ',
 								'title'	=> "Fill",
 								'value'	=> "fill",
 							),
