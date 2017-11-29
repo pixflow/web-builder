@@ -36,10 +36,22 @@
 			this.createAddElementPanel();
 			this.createTemplatesPanel();
 			this.createUnsplashPanel();
-			this.closeElementPanel();
 			this.$el.trigger( 'karma/after/finish_element_panel', [ this ] );
-			this.scrollElementPanel();
+			this.setEvents();
 
+		},
+
+		/**
+		 * @summary set external Events
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		setEvents : function(){
+			var that = this;
+			$( document ).on( 'click', function(){
+				that.closeElementPanel();
+			});
 		},
 
 		/**
@@ -145,6 +157,7 @@
 				}else
 				addElement.classList.add( "element-panel-show" );
 			}
+			this.scrollElementPanel();
 
 		},
 
@@ -156,12 +169,11 @@
 		 */
 		closeElementPanel: function() {
 
-			$( document ).on( 'click', function(){
-				var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
-				if( null != addElement ) {
-					addElement.classList.remove("element-panel-show");
-				}
-			});
+			var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
+			if( null != addElement ) {
+				addElement.classList.remove("element-panel-show");
+			}
+
 		},
 
 		/**
