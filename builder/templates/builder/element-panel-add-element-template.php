@@ -15,12 +15,12 @@
 		<div class="karma-element-panel-add-element-view-right">
 
 			<#	var childTemplates = {
-					'karma-element-panel-list' 		: { elementInfo : data.elementInfo },
 					'karma-element-panel-section'	: {},
 					'karma-element-panel-header'	: {},
 					'karma-element-panel-footer'	: {},
 					'karma-element-panel-shop'		: {},
 					'karma-element-panel-image'		: {},
+					'karma-element-panel-list' 		: { elementInfo : data.elementInfo },
 
 				} #>
 			<# _.each( childTemplates, function( templateParams, templateName ){  #>
