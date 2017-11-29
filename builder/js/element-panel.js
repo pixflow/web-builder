@@ -160,13 +160,14 @@
 		},
 
 		/**
-		 * use niceScroll for element panel
+		 * @summary use niceScroll for element panel
 		 *
 		 * @since   1.0.0
+		 * @returns {void}
 		 */
 		scrollElementPanel: function () {
 
-			$(".karma-element-panel-list").niceScroll({
+			$(".karma-elements").niceScroll({
 				cursorcolor:"#A9A9A9",
 				cursorwidth:"3px",
 				cursoropacitymax:0.56,

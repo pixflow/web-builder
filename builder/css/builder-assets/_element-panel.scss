@@ -7,9 +7,15 @@
 	.karma-element-panel-list {
 		@include flexbox(center, center, flex-start);
 		flex-wrap: wrap;
-		height: 657px;
-		overflow: auto;
-		padding: 30px;
+
+		.karma-elements{
+			@include flexbox(center, flex-start, flex-start );
+			@include padding(0, 40px, 40px, 40px);
+			@include box( 100%,  597px );
+			flex-wrap: wrap;
+			overflow: hidden;
+		}
+
 		.karma-element-single-element {
 			&:hover {
 				border: 1px solid $builder-accent-color;
@@ -66,7 +72,6 @@
 
 				@include flexbox(center, center, flex-start);
 				display: none;
-				padding: 40px;
 
 				&.karma-active-tab {
 					display: flex;
@@ -199,7 +204,6 @@
 
 			.karma-builder-addcontent {
 				@include padding(30px, 0, 0, 30px);
-
 			}
 
 			li.karma-addcontent-disable .karma-addcontent-name {
@@ -258,10 +262,6 @@
 		display: flex;
 	}
 
-	#ascrail2000 .nicescroll-cursors {
-		height: 142px !important;
-	}
-
 }
 /** Separate these stylesheet for jquery UI */
 .karma-element-single-element{
@@ -294,9 +294,50 @@
 
 }
 
+.element-panel-section-container {
+	.karma-builder-element-panel-header {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		width: 100%;
+		@include padding(40px, 40px, 22px, 40px);
+	}
+}
+	.karma-builder-element-panel-gather-menu{
+		padding-left: 12px;
+		cursor: pointer;
+	}
+	.karma-builder-element-panel-search{
+		cursor: pointer;
+	}
 
+	input.search-text {
+		color: #9EA6AE;
+		position:relative;
+		z-index:5;
+		transition: z-index 0.8s, width 0.5s, background 0.3s ease, border 0.3s;
+		height: 40px;
+		width: 0;
+		margin: 0;
+		padding: 12px 0 12px 13px;
+		box-sizing: border-box;
+		font-size: 12px;
+		cursor: pointer;
+		border-radius: 2px;
+		border: 1px solid transparent;
+		padding-left: 26px;
+		background: url('../../builder/media/svg/search.svg')no-repeat left 9px center transparent;
+	}
+	input.search-text:focus {
+		z-index:3;
+		width: 250px;
+		border: 1px solid #F8F8F9;
+		background-color: #F8F8F9;
+		outline: none;
+		cursor:auto;
+		padding-left: 35px;
+	}
 
-
-
-
-
+	input.search-text::-webkit-search-cancel-button {
+		cursor:pointer;
+	}
