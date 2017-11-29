@@ -2555,39 +2555,36 @@ img {
       background: rgba(65, 156, 248, 0.7);
       box-shadow: none; }
   #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
+    width: 57px;
+    height: 32px;
     display: inline-flex;
-    margin-left: 13px; }
+    justify-content: center;
+    margin-left: 13px;
+    border: 1px solid rgba(57, 73, 89, 0.1);
+    border-radius: 40px; }
     #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input {
       display: flex;
       text-align: right;
       align-items: inherit;
       justify-content: inherit;
-      width: 34px;
-      height: 32px;
-      background: none;
-      border: 1px solid rgba(57, 73, 89, 0.1);
-      border-right: 0;
-      border-radius: 40px 0 0 40px;
+      background: transparent;
       color: #000;
       font-size: 12px;
+      height: 32px;
       padding: 0; }
       #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
         border-color: rgba(57, 73, 89, 0.1);
         outline: none; }
     #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-unit {
-      width: auto;
-      height: 32px;
       padding-top: 0;
       padding-right: 7px;
       padding-bottom: 2px;
       padding-left: 0;
       align-items: center;
-      border: 1px solid rgba(57, 73, 89, 0.1);
-      border-radius: 0 67px 68px 0;
-      border-left: 0;
       display: flex;
       font-size: 14px;
       font-weight: 400;
+      height: 32px;
       margin-bottom: 0; }
   #karma-element-setting-panel-container .karma-range-slider-container input::-webkit-inner-spin-button {
     margin: 0;
@@ -2602,6 +2599,11 @@ img {
   color: #394959;
   text-align: left;
   width: 100%; }
+#karma-element-setting-panel-container .karma-range-slider-editable {
+  display: inline-block;
+  min-width: 20px;
+  height: 32px;
+  cursor: text; }
 
 .karma-active-section {
   box-shadow: 0 0 0 1px #419cf8; }

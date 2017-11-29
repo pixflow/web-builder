@@ -10,6 +10,8 @@ jQuery( document ).off( 'karma_finish_form_builder.range' ).on('karma_finish_for
 		changingSlider,
 		doneChangingInterval = 10;
 
+		$karmaRangeInput.css( 'width' , ( $karmaRangeInput.val().length ) * 7 );
+
 		$karmaRangeSlider.rangeslider({
 
 			polyfill: false
@@ -27,8 +29,15 @@ jQuery( document ).off( 'karma_finish_form_builder.range' ).on('karma_finish_for
 		$karmaRangeInput.on( 'input', function () {
 
 			var changedValue = ( "" == this.value ) ? this.defaultValue : this.value;
-			$karmaRangeSlider.val( changedValue ).change();
 
+			if ( parseInt(changedValue) > parseInt( $( this ).attr( 'max' ) ) ){
+				changedValue = $( this ).attr( 'max' )
+			} else if ( parseInt( changedValue ) < parseInt( $( this ).attr( 'min' ) ) ){
+				changedValue = $( this ).attr( 'min' )
+			}
+			$( this ).val( changedValue );
+			$karmaRangeSlider.val( changedValue ).change();
+			this.style.width = (  ( changedValue.length + 1 ) * 7  ) + 'px';
 
 		});
 

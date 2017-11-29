@@ -7,6 +7,7 @@
 		<div class="karma-slider-controller-title">{{{data.label}}}</div>
 	<# } #>
 
+
 		<div class="karma-range-slider-content">
 			<input type="range" class="karma-range-slider-range no-trigger" value="{{{data.value}}}" min="{{{data.options.min}}}" max="{{{data.options.max}}}">
 			<div class="karma-range-slider-number">

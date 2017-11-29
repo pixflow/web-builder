@@ -43,8 +43,12 @@
 		}
 
 		.karma-range-slider-number {
+			@include box( 57px , 32px );
 			display: inline-flex;
+			justify-content: center;
 			margin-left: 13px;
+			border: 1px solid rgba( $builder-gray-color , .1 );
+			border-radius: 40px;
 
 			.karma-range-slider-input {
 
@@ -53,26 +57,20 @@
 					outline: none;
 				}
 				@include flexbox($text-align: right);
-				@include box(34px, 32px);
-				background: none;
-				border: 1px solid rgba( $builder-gray-color , .1 );
-				border-right: 0;
-				border-radius: 40px 0 0 40px;
+				background: transparent;
 				color: #000;
 				font-size: 12px;
+				height: 32px;
 				padding: 0;
 			}
 
 			.karma-unit {
-				@include box(auto, 32px);
 				@include padding(0, 7px, 2px, 0);
 				align-items: center;
-				border: 1px solid rgba( $builder-gray-color , .1 );
-				border-radius: 0 67px 68px 0;
-				border-left: 0;
 				display: flex;
 				font-size: 14px;
 				font-weight: 400;
+				height: 32px;
 				margin-bottom: 0;
 			}
 		}
@@ -98,6 +96,13 @@
 		color: $builder-gray-color;
 		text-align: left;
 		width: 100%;
+	}
+
+	.karma-range-slider-editable {
+		display : inline-block;
+		min-width : 20px;
+		height : 32px;
+		cursor : text;
 	}
 
 }
