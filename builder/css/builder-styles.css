@@ -3231,7 +3231,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  padding-top: 40px;
+  padding-top: 26px;
   padding-right: 40px;
   padding-bottom: 22px;
   padding-left: 40px; }
