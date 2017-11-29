@@ -5,7 +5,7 @@
 	<div class="karma-element-panel-add-element-view">
 		<div class="karma-element-panel-add-element-view-left">
 			<div class="karma-element-panel-add-element-view-content">
-                <# print( KarmaView.getWpTemplate( 'karma-category-filter' , data.leftParam ) ); #>
+                <# print( KarmaView.getWpTemplate( 'karma-element-panel-category-filter' , data.leftParam ) ); #>
             </div>
 			<div class="karma-element-panel-add-element-view-content-border"></div>
 			<div class="karma-element-panel-add-element-view-filtering">
