@@ -3005,8 +3005,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         display: none;
         padding: 40px; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-active-tab {
-          display: flex;
-          flex-direction: column; }
+          display: flex; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img {
           width: 100%; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
