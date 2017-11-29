@@ -1,7 +1,10 @@
 #karma-lightbox-opened {
+	align-items: center;
 	background-color: rgba(#333, 0.9);
 	cursor: pointer;
+	display: flex;
 	height: 100%;
+	justify-content: center;
 	left: 0;
 	overflow-y: scroll;
 	padding: 24px;
@@ -11,14 +14,33 @@
 	width: 100%;
 	z-index: 10000;
 
-	&:after {
-		background-color: rgba(#333, 0.9);
-		color: #fff;
-		content: "x";
-		margin-left: -35px;
-		padding: 6px 12px;
-		position: fixed;
-		text-transform: uppercase;
+	.karma-lightbox-close {
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		color: #FFF;
+		cursor: pointer;
+		display: block;
+		filter: alpha(opacity=65);
+		font-family: Arial,Baskervill;
+		font-size: 28px;
+		font-style: normal;
+		height: 44px;
+		line-height: 44px;
+		opacity: .65;
+		outline: 0;
+		overflow: visible;
+		padding: 0 0 18px 10px;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		text-decoration: none;
+		top: 0;
+		width: 44px;
+		z-index: 1046;
+		-webkit-appearance: none;
 	}
 
 	.karma-lightbox-loading {

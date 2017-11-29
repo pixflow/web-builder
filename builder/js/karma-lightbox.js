@@ -102,6 +102,12 @@ karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
 	loading.innerHTML = 'Loading ...';
 	lightbox.appendChild( loading );
 
+	// Close Light box close
+	var close = document.createElement( 'button' );
+	close.setAttribute( 'class', 'karma-lightbox-close' );
+	close.innerHTML = '×';
+	lightbox.appendChild( close );
+
 	// Create lightbox image
 	var image = document.createElement( 'img' );
 	image.setAttribute( 'src', url );

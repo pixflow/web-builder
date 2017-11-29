@@ -64,7 +64,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		?>
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?> karma-position-<?php echo $attributes[ 'position' ] ?>' >
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
-				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" target="<?php echo $attributes['linktarget']; ?> " >
+				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" target="<?php echo $attributes['linktarget']; ?>" >
 					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" alt="<?php echo $attributes['alt']; ?>" />
 				</a>
 			</div>

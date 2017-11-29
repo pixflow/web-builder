@@ -22,17 +22,17 @@
 
 			.rangeslider__handle {
 				@include box(14px, 14px);
-				background-image: none;
 				background-color: $builder-accent-color;
+				background-image: none;
 				border: 1px solid $builder-accent-color;
 				box-shadow: 0 2px 4px 0 rgba( $builder-accent-color, 0.45 );
 				top: -5px;
-				touch-action: pan-y;
-				-ms-touch-action: pan-y;
-
 				&:after {
 					background-image: none;
 				}
+				touch-action: pan-y;
+
+				-ms-touch-action: pan-y;
 			}
 
 			.rangeslider__fill {
@@ -44,34 +44,33 @@
 
 		.karma-range-slider-number {
 			@include box( 57px , 32px );
+			border: 1px solid rgba( $builder-gray-color , .1 );
+			border-radius: 40px;
 			display: inline-flex;
 			justify-content: center;
 			margin-left: 13px;
-			border: 1px solid rgba( $builder-gray-color , .1 );
-			border-radius: 40px;
 
 			.karma-range-slider-input {
 
-				&:focus {
-					border-color: rgba( $builder-gray-color , .1 );
-					outline: none;
-				}
-				@include flexbox($text-align: right);
 				background: transparent;
+				@include flexbox($text-align: right);
 				color: #000;
 				font-size: 12px;
 				height: 32px;
 				padding: 0;
+				&:focus {
+					border-color: rgba( $builder-gray-color , .1 );
+					outline: none;
+				}
 			}
 
 			.karma-unit {
-				@include padding(0, 7px, 2px, 0);
-				align-items: center;
-				display: flex;
 				font-size: 14px;
 				font-weight: 400;
 				height: 32px;
+				line-height: 28px;
 				margin-bottom: 0;
+				padding: 0 0 0 2px;
 			}
 		}
 
@@ -92,17 +91,17 @@
 
 	.karma-slider-controller-title {
 		@extend .karma-builder-title-3;
-		padding-top: $top-space-red;
 		color: $builder-gray-color;
+		padding-top: $top-space-red;
 		text-align: left;
 		width: 100%;
 	}
 
 	.karma-range-slider-editable {
-		display : inline-block;
-		min-width : 20px;
-		height : 32px;
 		cursor : text;
+		display : inline-block;
+		height : 32px;
+		min-width : 20px;
 	}
 
 }
