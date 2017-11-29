@@ -11,11 +11,11 @@
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
 			@include padding(0, 40px, 40px, 40px);
-			@include box( 100%,  628px );
+			@include box( 100%,  69vh );
 			flex-wrap: wrap;
 			overflow: hidden;
 		}
-
+		
 		.karma-element-single-element {
 		  border: 1px solid transparent;
 		  border-radius: 4px;
@@ -44,7 +44,7 @@
 	}
 
 	.karma-element-panel-add-element-view {
-		@include box(524px, 699px);
+		@include box(524px, inherit);
 		@include element_direction($top: 13%, $left: 5%);
 		background-color: $white-color;
 		border-radius: 3px;
@@ -130,7 +130,7 @@
 			@include box(174px, 100%);
 
 			.karma-element-panel-add-element-view-filtering {
-				@include box(100%, 400px);
+				@include box(100%, inherit);
 
 				.karma-element-panel-price-filter-container {
 
@@ -260,7 +260,7 @@
 						}
 					}
 					&.karma-addcontent-active{
-						
+
 						.karma-addcontent-icon {
 							svg {
 								* {
