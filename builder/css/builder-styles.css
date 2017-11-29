@@ -3202,6 +3202,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           color: #419cf8;
           cursor: pointer;
           transition-duration: .3s; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable).karma-addcontent-active .karma-addcontent-icon svg * {
+          cursor: pointer;
+          transition-duration: .3s;
+          fill: #419cf8; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable).karma-addcontent-active .karma-addcontent-name {
+          color: #419cf8;
+          cursor: pointer;
+          transition-duration: .3s; }
   .karma-element-panel-container .element-panel-show {
     display: flex; }
 

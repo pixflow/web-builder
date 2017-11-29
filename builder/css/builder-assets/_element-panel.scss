@@ -240,21 +240,43 @@
 			li.karma-addcontent {
 				@include flexbox(center, center, center);
 				padding-top: 23px;
-				&:not(.karma-addcontent-disable):hover {
-					.karma-addcontent-icon {
-						svg {
-							* {
-								cursor: pointer;
-								transition-duration: .3s;
-								fill: $builder-accent-color;
+				&:not(.karma-addcontent-disable) {
+
+					&:hover {
+						.karma-addcontent-icon {
+							svg {
+								* {
+									cursor: pointer;
+									transition-duration: .3s;
+									fill: $builder-accent-color;
+								}
 							}
 						}
-					}
 
-					.karma-addcontent-name {
-						color: $builder-accent-color;
-						cursor: pointer;
-						transition-duration: .3s;
+						.karma-addcontent-name {
+							color: $builder-accent-color;
+							cursor: pointer;
+							transition-duration: .3s;
+						}
+					}
+					&.karma-addcontent-active{
+						
+						.karma-addcontent-icon {
+							svg {
+								* {
+									cursor: pointer;
+									transition-duration: .3s;
+									fill: $builder-accent-color;
+								}
+							}
+						}
+
+						.karma-addcontent-name {
+							color: $builder-accent-color;
+							cursor: pointer;
+							transition-duration: .3s;
+						}
+
 					}
 				}
 
