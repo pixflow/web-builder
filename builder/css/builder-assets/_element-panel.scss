@@ -154,6 +154,7 @@
 							font-size: 12px;
 							padding-left: 31px;
 							position: relative;
+							line-height: 1.7;
 							z-index: 10;
 						}
 						
@@ -208,6 +209,7 @@
 
 			li.karma-addcontent-disable .karma-addcontent-name {
 				color: rgba($builder-gray-color, 0.2);
+				cursor: context-menu;
 			}
 
 			.karma-addcontent-name {

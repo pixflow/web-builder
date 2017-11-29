@@ -140,6 +140,7 @@
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
 			this.createPlaceHolders();
+			this.removeGizmo();
 
 		},
 
@@ -952,12 +953,29 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		showElementGizmo: function () {
+		showElementGizmo: function ( e ) {
 
+			e.stopPropagation();
 			$( '.karma-builder-element' ).removeClass( 'karma-active-element' );
 			this.$el.addClass( 'karma-active-element' );
 
 		},
+
+		/**
+		 * @summary remove gizmo when click in document
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		removeGizmo: function () {
+
+			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
+
+				$( ".karma-active-element" ).removeClass( 'karma-active-element' );
+
+			})
+
+		}
 
 	});
 

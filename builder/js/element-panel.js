@@ -137,7 +137,11 @@
 		openAddElementView: function () {
 
 			var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
+			var elementPanelShowClass = "element-panel-show";
 			if( null != addElement ){
+				if ( addElement.classList.contains( elementPanelShowClass ) ) {
+					addElement.classList.remove( "element-panel-show" );
+				}else
 				addElement.classList.add( "element-panel-show" );
 			}
 

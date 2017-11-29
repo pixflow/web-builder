@@ -3120,6 +3120,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
             font-size: 12px;
             padding-left: 31px;
             position: relative;
+            line-height: 1.7;
             z-index: 10; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
             width: 13px;
@@ -3162,7 +3163,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         padding-bottom: 0;
         padding-left: 30px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-name {
-        color: rgba(57, 73, 89, 0.2); }
+        color: rgba(57, 73, 89, 0.2);
+        cursor: context-menu; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
         color: #7C8691;
         font-size: 14px;
