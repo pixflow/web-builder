@@ -149,7 +149,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel' => array(
 				"title"	=> esc_attr__( "Image Setting", 'karma' ),
-				"height" => "558",
+				"height" => "570",
 				"params" => array(
 					array(
 						"name" 	=> "imgurl" ,
@@ -184,7 +184,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 						"type"		=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
 						"label"		=> esc_attr__( "Position", 'karma' ),
 						"values"	=> 'center-center',
-						"separator" => "container",
+						"separator" => "full",
 
 					),
 					array(

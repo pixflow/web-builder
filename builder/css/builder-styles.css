@@ -390,7 +390,7 @@ body {
     bottom: 0;
     left: 0;
     color: rgba(57, 73, 89, 0.2);
-    margin: 25px 0 15px 0; }
+    margin: 20px 0 0; }
   body .karma-container-separator {
     width: calc( 100% - 40px );
     height: 1px;
@@ -1893,7 +1893,7 @@ div.media-modal {
   #karma-element-setting-panel-container .karma-element-setting-panel {
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 4px 20px 11px rgba(57, 73, 89, 0.08);
     margin: 17px;
     min-height: 220px;
     position: relative;
@@ -1977,6 +1977,8 @@ div.media-modal {
     position: relative; }
     .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
       align-items: center; }
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-down-arrow {
+        margin-top: 1px; }
       .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
         width: 32px;
         height: 32px;
@@ -2467,6 +2469,8 @@ img {
   transition: border .2s; }
   .radio-image-border-hover svg:hover {
     border: 1px solid #419cf8; }
+.radio-image-border-hover .radio-image-selected-item svg {
+  border: 1px solid #419cf8; }
 
 .radio-image-opacity-hover svg {
   box-shadow: none;
@@ -2704,11 +2708,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
 .karma-image-position-container {
   align-items: center;
   justify-content: center;
-  position: relative;
-  padding-bottom: 25px; }
+  position: relative; }
   .karma-image-position-container .karma-all-controller-title {
     color: #394959;
-    padding: 22px 20px 11px; }
+    padding: 22px 20px 7px; }
   .karma-image-position-container .karma-image-position-content {
     display: flex;
     flex-wrap: wrap;

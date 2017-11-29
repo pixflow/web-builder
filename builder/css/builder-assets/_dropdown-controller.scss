@@ -23,6 +23,10 @@
 			@extend .space-between;
 			align-items: center;
 
+			.karma-down-arrow{
+				margin-top: 1px;
+			}
+
 			.karma-dropdown-icon{
 
 				@extend .center-both-flex;

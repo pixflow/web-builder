@@ -2,12 +2,11 @@
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	padding-bottom: 25px;
 
 	.karma-all-controller-title{
 		@extend .karma-builder-title-3;
 		color: #394959;;
-		padding: $top-space-red $top-space-blue $top-space-orange-light;
+		padding: $top-space-red $top-space-blue 7px;
 	}
 
 	.karma-image-position-content{

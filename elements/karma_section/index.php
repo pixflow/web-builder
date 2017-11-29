@@ -44,7 +44,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "345",
+				"height" => "365",
 				"params" => array(
 					array(
 						"name"	=> "structure",
