@@ -1,4 +1,3 @@
-
 <div class="karma-builder-addcontent">
     <div class="karma-builder-addcontent-title">Add Content</div>
     <ul>
