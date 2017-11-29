@@ -18,7 +18,12 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 			var optionsContainer =  $( this ).siblings( 'ul' );
 			$( '.karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
 			optionsContainer.addClass( 'karma-doropdown-opened' );
-			optionsContainer.css( 'top' , optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 );
+			var top =  optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 + $( this ).offset().top - $( window ).scrollTop(),
+				left = $( this ).offset().left - 5;
+			optionsContainer.css( {
+				'top' : top,
+				'left' : left
+			} );
 
 		});
 
@@ -37,14 +42,14 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 
 
 
-	$( 'body:not( .karma-dropdown-body )' ).click(function (e) {
+	$( 'body:not( .karma-dropdown-body )' ).on('mousedown',function (e) {
 
 		if( $(e.target).hasClass( '.karma-dropdown-body' ) || $(e.target).closest( '.karma-dropdown-body' ).length ){
 			return;
 		}
 		karmaCloseDropdown();
 
-	})
+	});
 
 	function karmaCloseDropdown(  ) {
 

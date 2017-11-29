@@ -35,20 +35,21 @@
 
 		.karma-dropdown-options{
 
-			@include box( 100%, 0 );
+			@include box( 250px, 0 );
 			background-color: $builder-element-panel-background-color;
 			box-shadow: 0 2px 12px 0 rgba($builder-gray-color,0.18);
-			display: flex;
+			display: none;
 			flex-direction: column;
 			left: 0;
 			list-style: none;
 			overflow: hidden;
 			padding: 7px;
-			position: absolute;
+			position: fixed;
 			top: 36px;
 			z-index: -1;
 
 			&.karma-doropdown-opened{
+			  	display: flex;
 				height: auto;
 				z-index: $level1;
 			}

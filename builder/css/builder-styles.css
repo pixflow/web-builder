@@ -1971,20 +1971,21 @@ div.media-modal {
         border: 1px solid rgba(57, 73, 89, 0.2);
         border-radius: 100px; }
     .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options {
-      width: 100%;
+      width: 250px;
       height: 0;
       background-color: #fff;
       box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.18);
-      display: flex;
+      display: none;
       flex-direction: column;
       left: 0;
       list-style: none;
       overflow: hidden;
       padding: 7px;
-      position: absolute;
+      position: fixed;
       top: 36px;
       z-index: -1; }
       .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
+        display: flex;
         height: auto;
         z-index: 100; }
   .karma-dropdown-controller .karma-dropdown-option {
