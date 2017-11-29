@@ -3008,19 +3008,21 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           display: flex; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img {
           width: 100%; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img img {
+            height: 305px; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
           color: #394959;
           font-family: HelveticaNeue;
           font-size: 24px;
           line-height: 29px;
-          padding-top: 37px;
+          padding-top: 65px;
           text-align: center; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
           color: #828B95;
           font-family: HelveticaNeue;
           font-size: 14px;
           line-height: 22px;
-          padding-top: 12px;
+          padding: 19px 33px;
           text-align: center; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button {
           display: flex;
@@ -3034,9 +3036,12 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           font-weight: 500;
           height: 40px;
           line-height: 17px;
-          padding-top: 34px;
+          margin-top: 10px;
           text-align: center;
           width: 106px; }
+      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-deactive-part {
+        flex-direction: column;
+        padding: 0; }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
       width: 174px;
       height: 100%; }

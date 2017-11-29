@@ -1,5 +1,5 @@
-<# print( KarmaView.getWpTemplate( 'karma-element-panel-top-header' ) ); #>
 <div class="element-panel-section-container karma-element-panel-list" >
+	<# print( KarmaView.getWpTemplate( 'karma-element-panel-top-header' ) ); #>
 	<# _.each( data.elementInfo, function( element ){
 		if( false !== element.showInList ){
 		#>
