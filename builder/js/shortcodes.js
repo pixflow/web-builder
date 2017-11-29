@@ -120,6 +120,8 @@
 
 		/** Drop area template for elements */
 		placeholderTemplate : '<div class="karma-element-placeholder {{ data.className }}" >'
+			+ '<div class="karma-inner-placeholder" >'
+			+ '</div>'
 			+ '</div>' ,
 
 		/**

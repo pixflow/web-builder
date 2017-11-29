@@ -2,13 +2,18 @@
   @include box( 100%, 8px );
   align-items: center;
   display: none;
-  background-color: rgba( 65, 156, 248, 0.1 );
-  border-radius: 2px;
   justify-content: center;
   &.karma-column-placeholder{
-  		height: 130px;
-	}
+	@include padding( 20px, 20px, 20px, 20px );
+	height: 130px;
+  }
   &.karma-show-placeholder{
 	display: flex;
+  }
+  .karma-inner-placeholder{
+	@include box( 100%, 100% );
+	background-color: rgba( 65, 156, 248, 0.1 );
+	border-radius: 2px;
+
   }
 }
