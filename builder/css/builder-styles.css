@@ -264,24 +264,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @output give width and height 
  */
 /**
- * padding mixin
- * @group helpers
- * @param {Number} $top - set padding top
- * @param {Number} $right - set padding right
- * @param {Number} $bottom - set padding bottom
- * @param {Number} $left - set padding left
- * @output all side padding
- */
-/**
- * margin mixin
- * @group helpers
- * @param {Number} $top - set margin top
- * @param {Number} $right - set margin right
- * @param {Number} $bottom - set margin bottom
- * @param {Number} $left - set margin left
- * @output all side margin
- */
-/**
  * Element Direction mixin
  * @group helpers
  * @param {Number} $top - set Element Direction top
@@ -403,15 +385,12 @@ body {
   body .karma-full-separator {
     width: 100%;
     height: 1px;
-    margin-top: 25px;
-    margin-right: 0;
-    margin-bottom: 15px;
-    margin-left: 0;
     top: auto;
     right: auto;
     bottom: 0;
     left: 0;
-    color: rgba(57, 73, 89, 0.2); }
+    color: rgba(57, 73, 89, 0.2);
+    margin: 25px 0 15px 0; }
   body .karma-container-separator {
     width: calc( 100% - 40px );
     height: 1px;
@@ -1697,11 +1676,8 @@ html {
   display: none;
   justify-content: center; }
   .karma-element-placeholder.karma-column-placeholder {
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    height: 130px; }
+    height: 130px;
+    padding: 20px; }
   .karma-element-placeholder.karma-show-placeholder {
     display: flex; }
   .karma-element-placeholder .karma-inner-placeholder {
@@ -1775,32 +1751,26 @@ html {
     .karma-builder-toolbar .karma-builder-left ul {
       width: auto;
       height: 100%;
-      padding-top: 0;
-      padding-right: 0;
-      padding-bottom: 0;
-      padding-left: 0;
-      margin-top: 0;
-      margin-right: 0;
-      margin-bottom: 0;
-      margin-left: 0;
       display: flex;
       text-align: inherit;
       align-items: stretch;
       justify-content: inherit;
-      list-style: none; }
+      list-style: none;
+      margin: 0;
+      padding: 0; }
       .karma-builder-toolbar .karma-builder-left ul li {
         display: flex;
         text-align: inherit;
         align-items: center;
         justify-content: center;
-        margin-top: inherit;
-        margin-right: 0;
-        margin-bottom: inherit;
-        margin-left: 39px;
         color: white;
         cursor: pointer;
         font-size: 14px;
-        line-height: 17px; }
+        line-height: 17px;
+        margin-bottom: inherit;
+        margin-left: 39px;
+        margin-right: 0;
+        margin-top: inherit; }
         .karma-builder-toolbar .karma-builder-left ul li > div:not(.builder-upgrade-icon) {
           transition: color .1s; }
         .karma-builder-toolbar .karma-builder-left ul li:hover > div {
@@ -1835,24 +1805,21 @@ html {
       justify-content: inherit;
       width: auto;
       height: 100%;
-      margin-top: 0;
-      margin-right: 0;
-      margin-bottom: 0;
-      margin-left: 0;
-      list-style: none; }
+      list-style: none;
+      margin: 0; }
       .karma-builder-toolbar .karma-builder-right ul li {
         display: flex;
         text-align: inherit;
         align-items: center;
         justify-content: center;
-        margin-top: inherit;
-        margin-right: inherit;
-        margin-bottom: 0;
-        margin-left: 20px;
         color: rgba(255, 255, 255, 0.8);
         cursor: pointer;
         font-size: 15px;
         line-height: 17px;
+        margin-bottom: 0;
+        margin-left: 20px;
+        margin-right: inherit;
+        margin-top: inherit;
         position: relative; }
         .karma-builder-toolbar .karma-builder-right ul li.builder-notification {
           padding-top: 4px; }
@@ -2055,14 +2022,8 @@ div.media-modal {
 
 /* _-_-_- modules/GIZMO -_-_-_ */
 label {
-  margin-top: 0;
-  margin-right: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  padding-top: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  padding-left: 0; }
+  margin: 0;
+  padding: 0; }
 
 img {
   max-width: inherit;
@@ -2179,15 +2140,12 @@ img {
       cursor: pointer;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon {
-      padding-top: 0;
-      padding-right: 12px;
-      padding-bottom: 0;
-      padding-left: 11px;
       width: auto;
       height: 22px;
       align-items: center;
       border-left: 1px solid rgba(151, 151, 151, 0.3);
       display: flex;
+      padding: 0 12px 0 11px;
       transition-duration: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon div {
         display: flex; }
@@ -2195,13 +2153,10 @@ img {
         transition-duration: 0.1s;
         fill: #419CF8; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleText {
-      padding-top: 0;
-      padding-right: 15px;
-      padding-bottom: 0;
-      padding-left: 15px;
       color: #394959;
       font-family: HelveticaNeue;
       font-size: 13px;
+      padding: 0 15px 0 15px;
       transition: all 0.3s ease; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleText:hover {
       color: #419CF8;
@@ -2225,21 +2180,15 @@ img {
       .karma-builder-element .karma-gizmo-template .row-gizmo-group div {
         cursor: pointer; }
       .karma-builder-element .karma-gizmo-template .row-gizmo-group .karma-builder-gizmo-icon {
-        padding-top: 0;
-        padding-right: 10px;
-        padding-bottom: 0;
-        padding-left: 10px;
         width: auto;
         height: 22px;
-        border-left: 1px solid rgba(151, 151, 151, 0.3); }
+        border-left: 1px solid rgba(151, 151, 151, 0.3);
+        padding: 0 10px 0 10px; }
       .karma-builder-element .karma-gizmo-template .row-gizmo-group .karma-builder-gizmo-text {
-        padding-top: 0;
-        padding-right: 15px;
-        padding-bottom: 0;
-        padding-left: 15px;
         color: #394959;
         font-family: HelveticaNeue;
-        font-size: 13px; }
+        font-size: 13px;
+        padding: 0 15px 0 15px; }
   .karma-builder-element .karma-spacing-dot-container {
     width: 22px;
     height: 23px;
@@ -2412,15 +2361,12 @@ img {
       background-color: rgba(51, 143, 252, 0.3);
       width: 4px; }
   .karma-builder-element.karma-active-column .karma-column-setting {
-    padding-top: 0;
-    padding-right: 4px;
-    padding-bottom: 0;
-    padding-left: 3px;
     background-color: #76818C;
     cursor: pointer;
     display: block;
     left: 0;
     line-height: 16px;
+    padding: 0 4px 0 3px;
     position: absolute;
     top: -17px;
     z-index: 80; }
@@ -3023,14 +2969,11 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       text-align: center;
       align-items: flex-start;
       justify-content: flex-start;
-      padding-top: 0;
-      padding-right: 40px;
-      padding-bottom: 40px;
-      padding-left: 40px;
       width: 100%;
-      height: 69vh;
+      height: 628px;
       flex-wrap: wrap;
-      overflow: hidden; }
+      overflow: hidden;
+      padding: 0 40px 40px 40px; }
     .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
       border: 1px solid transparent;
       border-radius: 4px; }
@@ -3053,14 +2996,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       margin-top: 1px; }
   .karma-element-panel-container .karma-element-panel-add-element-view {
     width: 524px;
-    height: inherit;
+    height: 699px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
     top: 13%;
     right: auto;
     bottom: auto;
     left: 5%;
-    background-color: #fff;
-    border-radius: 3px;
-    box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
     display: none;
     position: fixed; }
     .karma-element-panel-container .karma-element-panel-add-element-view:after {
@@ -3134,10 +3077,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         width: 100%;
         height: inherit; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter {
-          padding-top: 21px;
-          padding-right: 0;
-          padding-bottom: 0;
-          padding-left: 30px; }
+          padding: 21px 0 0 30px; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li {
             display: block;
             position: relative; }
@@ -3145,10 +3085,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
             position: absolute;
             visibility: hidden; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
-            margin-top: 16px;
-            margin-right: auto;
-            margin-bottom: 16px;
-            margin-left: auto;
+            margin: 16px auto;
             color: #445363;
             cursor: pointer;
             display: block;
@@ -3193,10 +3130,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         color: #445363;
         font-size: 14px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent {
-        padding-top: 40px;
-        padding-right: 0;
-        padding-bottom: 0;
-        padding-left: 30px; }
+        padding: 40px 0 0 30px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-name {
         color: rgba(57, 73, 89, 0.2);
         cursor: default; }
@@ -3273,14 +3207,32 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  padding-top: 26px;
-  padding-right: 40px;
-  padding-bottom: 6px;
-  padding-left: 40px; }
+  padding: 26px 40px 6px 40px; }
 
 .karma-builder-element-panel-gather-menu {
   padding-left: 12px;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
+  .karma-builder-element-panel-gather-menu ul {
+    width: 154px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
+    top: 25;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    color: #394959;
+    font-family: HelveticaNeue;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 5px;
+    position: absolute;
+    text-align: left;
+    display: none; }
+    .karma-builder-element-panel-gather-menu ul li {
+      padding: 10px 10px; }
 
 .karma-builder-element-panel-search {
   cursor: pointer; }

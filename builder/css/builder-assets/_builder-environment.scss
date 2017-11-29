@@ -13,19 +13,22 @@
 
 		ul {
 			@include box( auto, 100% );
-			@include padding( 0,0,0,0 );
-			@include margin( 0,0,0,0 );
 			@include flexbox( $align-item:stretch );
 			list-style: none;
+			margin: 0;
+			padding: 0;
 
 			li {
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
-				@include margin( inherit,0,inherit,39px );
 				@extend .HelveticaNeue-font;
 				color: white;
 				cursor: pointer;
 				font-size: 14px;
 				line-height: 17px;
+				margin-bottom: inherit;
+				margin-left: 39px;
+				margin-right: 0;
+				margin-top: inherit;
 
 				> div:not( .builder-upgrade-icon ){
 					transition: color .1s;
@@ -73,18 +76,21 @@
 		ul {
 			@include flexbox( $align-item:center );
 			@include box(auto, 100%);
-			@include margin( 0,0,0,0 );
 			list-style: none;
+			margin: 0;
 
 			li {
 
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
-				@include margin( inherit,inherit,0,20px );
 				@extend .HelveticaNeue-font;
 				color: rgba(255, 255, 255, 0.8);
 				cursor: pointer;
 				font-size: 15px;
 				line-height: 17px;
+				margin-bottom: 0;
+				margin-left: 20px;
+				margin-right: inherit;
+				margin-top: inherit;
 				position: relative;
 
 

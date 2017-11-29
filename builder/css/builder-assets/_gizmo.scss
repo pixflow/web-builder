@@ -1,8 +1,8 @@
 /* _-_-_- modules/GIZMO -_-_-_ */
 
 label{
-	@include margin( 0, 0, 0, 0 );
-	@include padding( 0, 0, 0, 0 );
+	margin: 0;
+	padding: 0;
 }
 img{
 	max-width: inherit;
@@ -134,11 +134,11 @@ img{
 		}
 
 		.karma-builder-gizmo-simpleIcon {
-			@include padding(0, 12px, 0, 11px);
 			@include box(auto, 22px);
 			align-items: center;
 			border-left: 1px solid rgba(151, 151, 151, 0.3);
 			display: flex;
+			padding: 0 12px 0 11px;
 			transition-duration: 0.1s;
 			div {
 				display: flex;
@@ -154,10 +154,10 @@ img{
 		}
 
 		.karma-builder-gizmo-simpleText {
-			@include padding(0, 15px, 0, 15px);
 			color: #394959;
 			font-family: HelveticaNeue;
 			font-size: 13px;
+			padding: 0 15px 0 15px;
 			transition: all 0.3s ease;
 		}
 
@@ -181,16 +181,16 @@ img{
 			}
 
 			.karma-builder-gizmo-icon {
-				@include padding(0, 10px, 0, 10px);
 				@include box(auto, 22px);
 				border-left: 1px solid rgba(151, 151, 151, 0.3);
+				padding: 0 10px 0 10px;
 
 			}
 			.karma-builder-gizmo-text {
-				@include padding(0, 15px, 0, 15px);
 				color: #394959;
 				font-family: HelveticaNeue;
 				font-size: 13px;
+				padding: 0 15px 0 15px;
 			}
 		}
 
@@ -383,12 +383,12 @@ img{
 
 	&.karma-active-column {
 		.karma-column-setting {
-			@include padding(0, 4px, 0, 3px);
 			background-color: #76818C;
 			cursor: pointer;
 			display: block;
 			left: 0;
 			line-height: 16px;
+			padding: 0 4px 0 3px;
 			position: absolute;
 			top: -17px;
 			z-index: $level3;

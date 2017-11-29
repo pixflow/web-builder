@@ -89,9 +89,16 @@
  * @param {Number}  $height - height of box
  * @output give width and height 
  */
-@mixin box($width, $height:$width) {
+@mixin box( $width, $height:$width ) {
 	width: $width;
 	height: $height;
+}
+
+@mixin karma-box( $width, $height:$width ) {
+	@include box( $width, $height );
+	background-color: $white-color;
+	border-radius: 3px;
+	box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
 }
 
 @mixin flex-position ( $horizontal, $vertical ){
@@ -131,38 +138,6 @@
 
 }
 
-/**
- * padding mixin
- * @group helpers
- * @param {Number} $top - set padding top
- * @param {Number} $right - set padding right
- * @param {Number} $bottom - set padding bottom
- * @param {Number} $left - set padding left
- * @output all side padding
- */
-
-@mixin padding($top, $right, $bottom, $left) {
-	padding-top: $top;
-	padding-right: $right;
-	padding-bottom: $bottom;
-	padding-left: $left;
-}
-/**
- * margin mixin
- * @group helpers
- * @param {Number} $top - set margin top
- * @param {Number} $right - set margin right
- * @param {Number} $bottom - set margin bottom
- * @param {Number} $left - set margin left
- * @output all side margin
- */
-
-@mixin margin($top, $right, $bottom, $left) {
-	margin-top: $top;
-	margin-right: $right;
-	margin-bottom: $bottom;
-	margin-left: $left;
-}
 
 /**
  * Element Direction mixin

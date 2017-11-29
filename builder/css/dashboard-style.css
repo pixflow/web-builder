@@ -83,24 +83,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @output give width and height 
  */
 /**
- * padding mixin
- * @group helpers
- * @param {Number} $top - set padding top
- * @param {Number} $right - set padding right
- * @param {Number} $bottom - set padding bottom
- * @param {Number} $left - set padding left
- * @output all side padding
- */
-/**
- * margin mixin
- * @group helpers
- * @param {Number} $top - set margin top
- * @param {Number} $right - set margin right
- * @param {Number} $bottom - set margin bottom
- * @param {Number} $left - set margin left
- * @output all side margin
- */
-/**
  * Element Direction mixin
  * @group helpers
  * @param {Number} $top - set Element Direction top
@@ -222,15 +204,12 @@ body {
   body .karma-full-separator {
     width: 100%;
     height: 1px;
-    margin-top: 25px;
-    margin-right: 0;
-    margin-bottom: 15px;
-    margin-left: 0;
     top: auto;
     right: auto;
     bottom: 0;
     left: 0;
-    color: rgba(57, 73, 89, 0.2); }
+    color: rgba(57, 73, 89, 0.2);
+    margin: 25px 0 15px 0; }
   body .karma-container-separator {
     width: calc( 100% - 40px );
     height: 1px;
