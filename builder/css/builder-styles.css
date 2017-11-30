@@ -3068,6 +3068,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           height: 40px;
           line-height: 17px;
           margin-top: 10px;
+          margin-bottom: 15.6vh;
           text-align: center;
           width: 106px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-deactive-part {
