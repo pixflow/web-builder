@@ -70,12 +70,16 @@
 		padding: 10px;
 		transition: background-color .2s;
 
+		.karma-dropdown-option-title {
+			transition: color .2s;
+		}
+
 		&.karma-selected-dropdown-option{
 
-			background-color: rgba( $builder-accent-color , .7 );
+			background-color: rgba( $builder-accent-color , .1 );
 
 			.karma-dropdown-option-title{
-				color: $builder-element-panel-background-color;
+				color: $builder-accent-color;
 				font-weight: 500;
 			}
 
@@ -83,11 +87,8 @@
 
 		&:not(.karma-selected-dropdown-option):hover{
 
-			background-color: rgba( $builder-accent-color , .1 );
-
-			.karma-dropdown-option-title{
+			.karma-dropdown-option-title {
 				color: $builder-accent-color;
-				font-weight: 500;
 			}
 
 		}

@@ -103,6 +103,7 @@
 			this.bindDragEvents();
 			this.applyDependency();
 			$( document ).trigger('karma_finish_form_builder', [ this ] );
+			this.scrollSettingPanel();
 
 		},
 
@@ -310,6 +311,7 @@
 				that.applyDependencyOnLoad( dependentElement, dependecyInfo, dependentElementOBJ );
 				dependentElementOBJ.addEventListener( 'change', function(){
 					that.doDependency(  dependentElement, dependecyInfo, this.value );
+
 				});
 			});
 
@@ -381,6 +383,7 @@
 					}else {
 						element.classList.remove('karma-hide-controller');
 						that.doDependency( element, JSON.parse( dependentElement.getAttribute( 'data-dependency' ) ), dependentElement.querySelector('input').value );
+						this.callScrollOnResize();
 					}
 					lastElement = element;
 				});
@@ -449,6 +452,35 @@
 				// Finally, open the modal on click
 				frame.open();
 			}, false );
+
+		},
+
+		/**
+		 * @summary use niceScroll for setting panel
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		scrollSettingPanel: function () {
+
+			$(".karma-element-setting-panel-content").niceScroll({
+				cursorcolor:"#A9A9A9",
+				cursorwidth:"2px",
+				cursoropacitymax:0.56,
+				cursorborder : "none",
+			});
+
+		},
+
+		/**
+		 * @summary call nicescroll on content panel resize
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		callScrollOnResize: function () {
+
+				$(".karma-element-setting-panel-content").getNiceScroll().resize();
 
 		},
 

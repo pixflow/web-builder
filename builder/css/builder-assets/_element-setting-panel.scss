@@ -76,10 +76,7 @@
 
 		.karma-element-setting-panel-content {
 
-			overflow: auto;
-			&::-webkit-scrollbar {
-				display: none;
-			}
+			overflow: hidden;
 
 			#karma-Builder-form {
 

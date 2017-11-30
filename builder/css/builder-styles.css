@@ -1943,9 +1943,7 @@ div.media-modal {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             fill: #fff; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
-      overflow: auto; }
-      #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content::-webkit-scrollbar {
-        display: none; }
+      overflow: hidden; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
         transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form div:last-child .karma-setting-panel-group-button {
@@ -2009,16 +2007,15 @@ div.media-modal {
     display: flex;
     padding: 10px;
     transition: background-color .2s; }
+    .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-title {
+      transition: color .2s; }
     .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option {
-      background-color: rgba(65, 156, 248, 0.7); }
-      .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
-        color: #fff;
-        font-weight: 500; }
-    .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover {
       background-color: rgba(65, 156, 248, 0.1); }
-      .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
+      .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
         color: #419cf8;
         font-weight: 500; }
+    .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
+      color: #419cf8; }
     .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-icon {
       margin-right: 15px; }
 
