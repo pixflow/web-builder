@@ -3225,15 +3225,20 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     bottom: auto;
     left: auto;
     color: #394959;
+    cursor: default;
     font-family: HelveticaNeue;
     font-size: 14px;
     line-height: 16px;
-    padding: 5px;
+    padding: 10px;
     position: absolute;
     text-align: left;
     display: none; }
     .karma-builder-element-panel-gather-menu ul li {
+      border-radius: 4px;
+      cursor: pointer;
       padding: 10px 10px; }
+      .karma-builder-element-panel-gather-menu ul li:hover {
+        background-color: rgba(65, 156, 248, 0.1); }
 
 .karma-builder-element-panel-search {
   cursor: pointer; }

@@ -336,16 +336,23 @@
 				@include karma-box( 154px, auto );
 				@include element_direction( $top:25, $right:0 );
 				color: #394959;
+				cursor: default;
 				font-family: HelveticaNeue;
 				font-size: 14px;
 				line-height: 16px;
-				padding: 5px;
+				padding: 10px;
 				position: absolute;
 				text-align: left;
 				display: none;
 
 				li{
+					border-radius: 4px;
+					cursor: pointer;
 					padding: 10px 10px;
+
+					&:hover{
+						background-color: rgba(65,156,248,0.1);
+					}
 				}
 			}
 		}
