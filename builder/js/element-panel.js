@@ -19,7 +19,8 @@
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
 			"click li.karma-addcontent"													: "elementPanelTab",
 			"input .search-text"                                                        : "searchInElements",
-			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive"
+			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
+			"click .karma-builder-reset-text"                                     : "elementSearchReset"
 
 
 		},
