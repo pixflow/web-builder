@@ -20,8 +20,7 @@
 			"click li.karma-addcontent"													: "elementPanelTab",
 			"input .search-text"                                                        : "searchInElements",
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
-			"click .karma-builder-reset-text"                                     : "elementSearchReset"
-
+			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu"
 
 		},
 
@@ -527,6 +526,21 @@
 			}
 
 		},
+
+		openCategoryMenu : function (e) {
+
+			var target = $( e.target ),
+			categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
+
+
+			if ( target.closest( 'svg' ).length ){
+
+				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
+
+			}
+
+
+		}
 
 	});
 

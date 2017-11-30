@@ -468,6 +468,7 @@
 				cursorwidth:"2px",
 				cursoropacitymax:0.56,
 				cursorborder : "none",
+				horizrailenabled : false
 			});
 
 		},

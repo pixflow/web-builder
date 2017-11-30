@@ -329,9 +329,18 @@
 
 
 		.karma-builder-element-panel-gather-menu{
+			
 			padding-left: 12px;
 			cursor: pointer;
 		  	position: relative;
+
+			&.karma-open-element-category-dropdown{
+
+				ul{
+					display: block;
+				}
+
+			}
 
 			ul{
 				@include karma-box( 154px, auto );
@@ -341,10 +350,11 @@
 				font-family: HelveticaNeue;
 				font-size: 14px;
 				line-height: 16px;
+				list-style: none;
 				padding: 10px;
 				position: absolute;
 				text-align: left;
-				display: none;
+				display: none ;
 
 				li{
 					border-radius: 4px;
