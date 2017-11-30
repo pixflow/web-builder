@@ -2996,7 +2996,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       margin-top: 1px; }
   .karma-element-panel-container .karma-element-panel-add-element-view {
     width: 524px;
-    height: 699px;
+    height: inherit;
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
@@ -3065,12 +3065,12 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           height: 40px;
           line-height: 17px;
           margin-top: 10px;
-          margin-bottom: 15.6vh;
           text-align: center;
           width: 106px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-deactive-part {
         flex-direction: column;
-        padding: 0; }
+        padding: 0;
+        height: 76.9vh; }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
       width: 174px;
       height: 100%; }
@@ -3274,7 +3274,6 @@ input.karma-builder-search-text:focus {
   padding-left: 35px; }
 
 input.karma-builder-search-text::-webkit-search-cancel-button {
-  -webkit-appearance: searchfield-cancel-button;
-  color: red; }
+  -webkit-appearance: searchfield-cancel-button; }
 
 /*# sourceMappingURL=builder-styles.css.map */
