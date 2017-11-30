@@ -10,7 +10,7 @@
 
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
-			@include box( 100%,  628px );
+			@include box( 100%,  69vh );
 			flex-wrap: wrap;
 			overflow: hidden;
 			padding: 0 40px 40px 40px;
