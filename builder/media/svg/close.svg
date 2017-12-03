@@ -4,11 +4,11 @@
     <title>Group 15</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="search-bar-in-add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Builder-interface-Copy-21" transform="translate(-555.000000, -190.000000)" stroke="#445363" stroke-width="0.7" fill="#445363">
-            <g id="Group-15" transform="translate(556.000000, 190.000000)">
-                <rect id="Rectangle-4" transform="translate(4.666667, 5.000000) rotate(45.000000) translate(-4.666667, -5.000000) " x="4.16666667" y="-1" width="1" height="12" rx="0.5"></rect>
-                <rect id="Rectangle-4-Copy" transform="translate(4.636337, 5.030330) rotate(-45.000000) translate(-4.636337, -5.030330) " x="4.1792298" y="-0.969669914" width="1" height="12" rx="0.5"></rect>
+    <g id="close-svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="close-icon" transform="translate(-555.000000, -190.000000)" stroke="#445363" stroke-width="0.7" fill="#445363">
+            <g id="close-svg-icon" transform="translate(556.000000, 190.000000)">
+                <rect id="close-1" transform="translate(4.666667, 5.000000) rotate(45.000000) translate(-4.666667, -5.000000) " x="4.16666667" y="-1" width="1" height="12" rx="0.5"></rect>
+                <rect id="close-2" transform="translate(4.636337, 5.030330) rotate(-45.000000) translate(-4.636337, -5.030330) " x="4.1792298" y="-0.969669914" width="1" height="12" rx="0.5"></rect>
             </g>
         </g>
     </g>
