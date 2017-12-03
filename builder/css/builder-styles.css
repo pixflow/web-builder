@@ -3244,37 +3244,38 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         background-color: rgba(65, 156, 248, 0.1); }
 
 .karma-builder-element-panel-gather-menu {
-  padding-left: 12px;
-  cursor: pointer; }
+  cursor: pointer;
+  padding-left: 12px; }
 
 .karma-builder-element-panel-search {
   cursor: pointer; }
 
 input.karma-builder-search-text {
-  color: #9EA6AE;
-  position: relative;
-  z-index: 5;
-  transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
-  height: 40px;
-  width: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: 12px;
-  cursor: pointer;
   border-radius: 2px;
   border: 1px solid transparent;
+  box-sizing: border-box;
+  background: url("../../builder/media/svg/search.svg") no-repeat left 9px center transparent;
+  color: #9EA6AE;
+  cursor: pointer;
+  font-size: 12px;
+  height: 40px;
+  margin: 0;
   padding-left: 26px;
-  background: url("../../builder/media/svg/search.svg") no-repeat left 9px center transparent; }
+  position: relative;
+  transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
+  width: 0;
+  z-index: 5; }
 
 input.karma-builder-search-text:focus {
-  z-index: 3;
-  width: 250px;
-  transition-duration: 0.1s;
   border: 1px solid #F8F8F9;
   background-color: #F8F8F9;
-  outline: none;
   cursor: auto;
-  padding-left: 35px; }
+  padding-left: 35px;
+  outline: none;
+  transition-duration: 0.1s;
+  transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
+  width: 250px;
+  z-index: 3; }
 
 input.karma-builder-search-text::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button; }
