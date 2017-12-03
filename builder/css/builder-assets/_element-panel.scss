@@ -207,7 +207,7 @@
 
 			li.karma-addcontent-disable .karma-addcontent-name {
 				color: rgba($builder-gray-color, 0.2);
-				cursor: default;
+				cursor: pointer;
 			}
 
 			.karma-addcontent-name {
@@ -220,6 +220,7 @@
 			li.karma-addcontent-disable .karma-addcontent-icon {
 				svg {
 					* {
+						cursor: pointer;
 						transition-duration: .3s;
 						fill: #D0D6DA;
 					}
