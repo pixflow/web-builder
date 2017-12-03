@@ -206,7 +206,7 @@
 			}
 
 			li.karma-addcontent-disable .karma-addcontent-name {
-				color: rgba($builder-gray-color, 0.2);
+				color: #D0D6DA;
 				cursor: pointer;
 			}
 
@@ -216,7 +216,14 @@
 				padding-left: 17px;
 				transition-duration: .3s;
 			}
-
+			.karma-addcontent-icon {
+				svg {
+					* {
+						cursor: pointer;
+						fill: #7C8691;
+					}
+				}
+			}
 			li.karma-addcontent-disable .karma-addcontent-icon {
 				svg {
 					* {
