@@ -117,6 +117,7 @@ karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
 	document.querySelector( 'body' ).appendChild( lightbox );
 	lightbox.addEventListener( 'click', function ( e ) {
 		e.preventDefault();
+		e.stopPropagation();
 		if ( 'IMG' === e.target.tagName ) {
 			return;
 		}

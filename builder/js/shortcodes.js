@@ -973,7 +973,7 @@
 
 			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
 
-				//$( ".karma-active-element" ).removeClass( 'karma-active-element' );
+				$( ".karma-active-element" ).removeClass( 'karma-active-element' );
 
 			})
 
