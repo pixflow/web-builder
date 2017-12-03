@@ -521,8 +521,8 @@
 			var target = $( e.target ),
 				karmaAddcontentClass =	target.closest( '.karma-addcontent' );
 			if ( karmaAddcontentClass ) {
-			$( '.karma-addcontent' ).removeClass( 'karma-addcontent-active' );
-			karmaAddcontentClass.addClass( "karma-addcontent-active" );
+				$( '.karma-addcontent' ).removeClass( 'karma-addcontent-active' );
+				karmaAddcontentClass.addClass( 'karma-addcontent-active' );
 			}
 
 		},

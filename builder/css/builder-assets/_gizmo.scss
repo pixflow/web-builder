@@ -120,11 +120,12 @@ img{
 		@include box(auto, 35px);
 		@include flexbox(center, center, center);
 		background-color: $white-color;
-		border-radius: 3px;
+		border-radius: 2px;
 		box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
 		direction: rtl;
 		font-size: initial;
 		position: absolute;
+		padding:0 9px;
 		z-index: $level2;
 		display: none;
 
@@ -136,9 +137,8 @@ img{
 		.karma-builder-gizmo-simpleIcon {
 			@include box(auto, 22px);
 			align-items: center;
-			border-left: 1px solid rgba(151, 151, 151, 0.3);
 			display: flex;
-			padding: 0 12px 0 11px;
+			padding: 0 9px 0 9px;
 			transition-duration: 0.1s;
 			div {
 				display: flex;
@@ -154,10 +154,12 @@ img{
 		}
 
 		.karma-builder-gizmo-simpleText {
+			border-right: 1px solid rgba(151, 151, 151, 0.3);
 			color: #394959;
-			font-family: HelveticaNeue;
-			font-size: 13px;
-			padding: 0 15px 0 15px;
+			font-family: HelveticaNeue_Medium;
+			font-size: 12px;
+			padding: 0 18px 0 9px;
+			margin-right: 9px;
 			transition: all 0.3s ease;
 		}
 

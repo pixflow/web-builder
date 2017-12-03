@@ -49,8 +49,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 				'imgurl'		=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
 				'action'        => 'none' ,
 				'linkurl'       => get_site_url(),
-				'linktarget'     => '_blank' ,
-				'alt'        => '' ,
+				'linktarget'    => '_blank' ,
+				'alt'     	 	=> '' ,
 				'scale'			=> 'fill',
 				'position'		=> 'center-center',
 
