@@ -319,19 +319,21 @@
 
 	.element-panel-section-container {
 		.karma-builder-element-panel-header {
-			display: flex;
+
 			align-items: center;
+			display: flex;
+			padding: 26px 40px 6px 40px;
 			justify-content: flex-end;
 			width: 100%;
-			padding: 26px 40px 6px 40px;
+
 		}
 }
 
 
 		.karma-builder-element-panel-gather-menu{
 			
-			padding-left: 12px;
 			cursor: pointer;
+			padding-left: 12px;
 		  	position: relative;
 
 			&.karma-open-element-category-dropdown{
@@ -347,6 +349,7 @@
 				@include element_direction( $top:25, $right:0 );
 				color: #394959;
 				cursor: default;
+				display: none ;
 				font-family: HelveticaNeue;
 				font-size: 14px;
 				line-height: 16px;
@@ -354,7 +357,7 @@
 				padding: 10px;
 				position: absolute;
 				text-align: left;
-				display: none ;
+
 
 				li{
 					border-radius: 4px;
