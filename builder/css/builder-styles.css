@@ -3026,6 +3026,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       width: 350px;
       height: 100%;
       border-left: 2px solid rgba(57, 73, 89, 0.08); }
+      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-permium {
+        flex-direction: column;
+        padding: 0;
+        height: 76.9vh; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container {
         display: flex;
         text-align: center;

@@ -18,7 +18,7 @@
 			</li>
 
 			<li>
-				<input type="radio" id="premium-item" name="selector">
+				<input type="radio" id="premium-item" class="karma-premium-deactivate" name="selector">
 				<label for="premium-item">Premium</label>
 
 				<div class="check"><div class="inside"></div></div>

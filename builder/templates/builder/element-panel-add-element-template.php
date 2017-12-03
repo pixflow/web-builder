@@ -20,6 +20,7 @@
 					'karma-element-panel-footer'	: {},
 					'karma-element-panel-shop'		: {},
 					'karma-element-panel-image'		: {},
+					'karma-element-panel-permium'	: {},
 					'karma-element-panel-list' 		: { elementInfo : data.elementInfo },
 
 				} #>

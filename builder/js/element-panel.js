@@ -14,6 +14,7 @@
 
 			"click .element-panel-add-element-button"		                           	: "openAddElementView",
 			"click" 										                           	: "stopClickInPanel",
+			"click .karma-premium-deactivate" 											: "checkingPermium",
 			"karma/after/finish_element_panel"                                         	: "initDraggable" ,
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
@@ -97,7 +98,9 @@
 			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
 			var tabData = orginalSelector.attr( 'data-tab' ),
 				tabContent = document.querySelector(  '.' + tabData  );
-			tabContent.classList.add( "karma-active-tab" );
+			if( null != tabContent){
+				tabContent.classList.add( "karma-active-tab" );
+			}
 
 		},
 
@@ -451,6 +454,15 @@
 
 			var overlay = document.querySelector( '.karma-overlay-on-dragging' );
 			overlay.style.display = 'none';
+
+		},
+
+
+		checkingPermium : function () {
+
+			var permiumTemplate = document.querySelector( '.element-panel-permium' ) ;
+			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
+			permiumTemplate.classList.add("karma-active-tab" );
 
 		},
 

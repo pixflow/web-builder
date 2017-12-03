@@ -57,6 +57,7 @@ class Karma_Views {
 		'element-panel-price-filter',
 		'element-setting-panel',
 		'element-panel-category-filter',
+		'element-panel-permium',
 	);
 
 	/*

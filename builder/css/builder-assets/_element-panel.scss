@@ -66,6 +66,12 @@
 			@include box(350px, 100%);
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
 
+			.element-panel-permium{
+				flex-direction: column;
+				padding: 0;
+				height: 76.9vh;
+			}
+
 			.element-panel-section-container {
 
 				@include flexbox(center, center, flex-start);
