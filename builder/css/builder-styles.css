@@ -3221,6 +3221,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   width: 100%; }
 
 .karma-builder-element-panel-gather-menu {
+  padding-left: 12px;
   cursor: pointer;
   padding-left: 12px;
   position: relative; }
