@@ -4,16 +4,30 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	public static $element_name = 'karma_section';
 
+	/**
+	 * Return default attributes
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function get_element_default_attributes(){
+
+		return 	array(
+			'structure'		=> 'container',
+			'space'			=> '200',
+			'element_key'	=> '',
+			'extraclass'	=> '',
+		);
+
+	}
+
 	public function render( $atts, $content ) {
 
 		$atts = shortcode_atts(
-			array(
-				'structure'		=> 'container',
-				'space'			=> '200',
-				'element_key'	=> '',
-				'extraclass'	=> '',
-			)
-			, $atts
+			$this->get_element_default_attributes(),
+			$atts
 		);
 		$container_class = ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
 		ob_start();
@@ -37,7 +51,6 @@ class Karma_Section extends Karma_Shortcode_Base {
 			. "</div>";
 
 	}
-
 
 	public function map() {
 

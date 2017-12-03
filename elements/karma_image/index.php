@@ -29,6 +29,30 @@ class Karma_Image extends Karma_Shortcode_Base {
 	public static $element_name = 'karma_image';
 
 	/**
+	 * Return default attributes
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function get_element_default_attributes(){
+
+		return 	array(
+			'element_key'   => 'kb' ,
+			'imgurl'		=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
+			'action'        => 'none' ,
+			'linkurl'       => get_site_url(),
+			'linktarget'    => '_blank' ,
+			'alt'           => get_bloginfo( 'name' ) ,
+			'scale'			=> 'fill',
+			'position'		=> 'center-center',
+
+		);
+
+	}
+
+	/**
 	 * Render image element output.
 	 *
 	 * Written in PHP and used to generate the final HTML.
@@ -44,18 +68,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 	public function render( $attributes, $content ) {
 
 		$attributes = shortcode_atts(
-			array(
-				'element_key'   => 'kb' ,
-				'imgurl'		=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-				'action'        => 'none' ,
-				'linkurl'       => get_site_url(),
-				'linktarget'    => '_blank' ,
-				'alt'     	 	=> '' ,
-				'scale'			=> 'fill',
-				'position'		=> 'center-center',
-
-			)
-			, $attributes
+			$this->get_element_default_attributes(),
+			$attributes
 		);
 
 		$image_extra = $this->get_image_url( $attributes );
@@ -86,14 +100,14 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function js_render() {
 
-		$js_template = '<div class="karma-image karma-image-{{ data.element_key }}" >'
-		               . '<div class="karma-image-container {{ data.extraclass }}">'
-		               . '<a class="karma-image-link" href="{{{ data.link }}}" target="{{ data.linktarget }}" >'
-		               . '<img src="" alt="{{ data.alt }}" />'
-		               . '</a>'
-		               . '</div>'
-		               . '</div>';
-
+		$js_template = "<# var scaleClass = ( 'fill' == data.scale ) ? 'karma-image-fill' : 'karma-image-real'; #>"
+			. '<div class="karma-image karma-image-{{ data.element_key }} karma-position-{{ data.position }}" >'
+			. '<div class="karma-image-container {{ data.extraclass }}">'
+			. '<a class="karma-image-link" href="{{{ data.linkurl }}}" target="{{ data.linktarget }}" >'
+			. '<img class="<# print( scaleClass ); #>" src="{{ data.imgurl }}" alt="{{ data.alt }}" />'
+			. '</a>'
+			. '</div>'
+			. '</div>';
 		return $js_template;
 
 	}

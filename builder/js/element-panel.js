@@ -20,7 +20,8 @@
 			"click li.karma-addcontent"													: "elementPanelTab",
 			"input .search-text"                                                        : "searchInElements",
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
-			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu"
+			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
+			'karma/after/dropElement'                                                   : "REOrderElements"
 
 		},
 
@@ -373,6 +374,9 @@
 		detectDropAreas : function ( event, UI ) {
 
 			var targetElement = this.overlayBehavior( event, UI );
+			if(  targetElement.classList.contains('.karma-element-placeholder') || null != targetElement.closest('.karma-element-placeholder') ){
+				return false;
+			}
 			targetElement = this.getParentElementInfo( targetElement );
 			this.removePlaceHolders();
 			if ( false == targetElement || 'karma_section' == targetElement.name ){
@@ -451,7 +455,7 @@
 		},
 
 		/**
-		 * Enable draggable functionality on any item element
+		 * @summary Enable draggable functionality on any item element
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -479,12 +483,14 @@
 					
 				},
 
-				stop: function(){
+				stop: function( event, UI ){
 
-					var DOMOBJ = $( this ).get( 0 );
+					var DOMOBJ = $( this ).get( 0 ),
+						dropArea = document.querySelector('.karma-show-placeholder');
 					DOMOBJ.classList.remove( 'karma-start-dragging', 'karma-grab-element' );
 					clearInterval( that.flyScroll );
 					that.removeOverlay();
+					that.prepareBeforeDrop( dropArea, UI.helper.attr('data-element-name') );
 					that.removePlaceHolders();
 
 				}
@@ -493,7 +499,73 @@
 		},
 
 		/**
-		 * Search in elements
+		 * @summary Prepare elements before drop
+		 *
+		 * @param {object}  whereToDrop DOM node
+		 * @param {string}  elementName Element name for drop
+		 *
+		 * @since   1.0.0
+		 * @returns {boolean}
+		 */
+		prepareBeforeDrop : function ( whereToDrop, elementName ) {
+
+			if( null == whereToDrop ){
+				return false;
+			}
+			var validateModel = this.getValidateElementModel( whereToDrop, elementName ),
+				CID = karmaBuilder.karmaModels.add( validateModel ).cid,
+				model = karmaBuilder.karmaModels.get({ 'cid' : CID });
+			whereToDrop.outerHTML = KarmaView.createBuilderModel( model );
+			KarmaView.createNewElement( elementName.replace( 'karma_', '' ), model, true );
+			this.$el.trigger( 'karma/after/dropElement', [ validateModel['parent_key'] ] );
+
+		},
+
+		/**
+		 * @summary Return validate model for initialize new element
+		 *
+		 * @param {object}  whereToDrop DOM node
+		 * @param {string}  elementName Element name for drop
+		 *
+		 * @since   1.0.0
+		 * @returns {object}
+		 */
+		getValidateElementModel : function ( whereToDrop, elementName ) {
+
+			return {
+				shortcode_name : elementName,
+				shortcode_content : '',
+				element_key : KarmaView.createNewElementKey(),
+				shortcode_attributes : $( document ).triggerHandler( 'karma/before/createElement/' + elementName ),
+				order : 1 ,
+				parent_key :  whereToDrop.closest('.karma-builder-element').getAttribute('data-element-key')
+			}
+
+		},
+
+		/**
+		 * @summary Order elements after drop or sortable
+		 * This function call by listeners (karma/before/createElement/:elementName )
+		 *
+		 * @param {string}  parent_key   Element key of parent element
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		REOrderElements : function ( e, parent_key ) {
+
+			var childElements = document.querySelectorAll('[data-element-key="' + parent_key + '"] .karma-builder-element'),
+				order = 1 ;
+			_.each( childElements, function( element ){
+				var elementInstance = $( element ).backboneView();
+				elementInstance.model.attributes.order = order;
+				order ++ ;
+			});
+
+		},
+
+		/**
+		 * @summary Search in elements
 		 *
 		 * @since   1.0.0
 		 * @returns {void}

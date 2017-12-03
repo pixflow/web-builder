@@ -30,8 +30,6 @@
 
 			var source = this.template( this.model );
 			this.el.innerHTML = source;
-			this.createGizmo();
-			this.delegateEvents();
 
 		},
 

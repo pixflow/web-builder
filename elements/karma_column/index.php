@@ -4,6 +4,32 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static $element_name = 'karma_column';
 
+	/**
+	 * Return default attributes
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function get_element_default_attributes(){
+
+		return 	array(
+			'sm_size'   	=> '12',
+			'md_size'   	=> '12',
+			'lg_size'   	=> '12',
+			'xl_size'   	=> '12',
+			'element_key'	=> '',
+			'rightspace'    => '20',
+			'leftspace'     => '20',
+			'extraclass'	=> '',
+			'rightspace'	=> '10',
+			'leftspace'		=> '10',
+
+		);
+
+	}
+
 	public function wrapper_classes( $classes, $atts ) {
 
 		$classes[] = 'karma-col-sm-' . $atts[ 'sm_size' ];
@@ -14,23 +40,11 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	}
 
-	public static function render( $atts, $content ) {
+	public  function render( $atts, $content ) {
 
 		$atts = shortcode_atts(
-			array(
-				'sm_size'   	=> '12',
-				'md_size'   	=> '12',
-				'lg_size'   	=> '12',
-				'xl_size'   	=> '12',
-				'element_key'	=> '',
-				'rightspace'    => '20',
-				'leftspace'     => '20',
-				'extraclass'	=> '',
-				'rightspace'	=> '10',
-				'leftspace'		=> '10',
-
-			)
-			, $atts
+			$this->get_element_default_attributes(),
+			$atts
 		);
 
 		return "<div class='"

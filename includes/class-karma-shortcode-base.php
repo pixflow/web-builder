@@ -143,9 +143,17 @@ class Karma_Shortcode_Base {
 	 */
 	public function load_js_templates(){
 
+		$model = $this->get_element_default_attributes() ;
+		unset( $model['element_key'] );
+		$element_model = ' jQuery( document ).on( "karma/before/createElement/' . static::$element_name . '" , function(){
+				return ' . json_encode( $model ) . ';
+			})  ';
 		?>
 		<script type="text/html" id="tmpl-karma-element-<?php echo static::$element_name; ?>">
 			<?php echo $this->js_render(); ?>
+		</script>
+		<script type="text/javascript" id="karma-element-<?php echo static::$element_name; ?>-model">
+			<?php echo $element_model; ?>
 		</script>
 		<?php
 

@@ -7,10 +7,27 @@
 			'click .karma-image' 		: 'showGizmo',
 		},
 
-		initialize: function () {
+		initialize: function ( options ) {
 
 			karmaBuilder.image.__super__.initialize.apply( this, arguments );
+			this.options = options;
 
+			if( this.options.renderStatus ){
+				this.render();
+			}
+
+		},
+
+		/**
+		 * @summary Render image element
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		render : function () {
+
+			var source = this.template( this.model.get('shortcode_attributes') );
+			this.el.innerHTML = source;
 
 		},
 

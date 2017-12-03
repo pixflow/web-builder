@@ -1,4 +1,3 @@
-var wp = _;
 var orginalHtml = document.getElementById('karma-tests').innerHTML;
 
 //insert default html to karma test
@@ -54,6 +53,46 @@ function getModelsAttributes(models) {
 
 (function ($, karmaBuilder) {
 
+	QUnit.test ( "createNewElement() Create new image element", function (assert) {
+
+		karmaBuilder.karmaModels.reset();
+		RCreateModels();
+		var model = {
+				shortcode_name : 'karma_image',
+				shortcode_content : '',
+				element_key : KarmaView.createNewElementKey(),
+				shortcode_attributes : $( document ).triggerHandler( 'karma/before/createElement/karma_image' ),
+				order : 1 ,
+				parent_key :  '1r312'
+		}
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="1r312"]').html( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		KarmaView.createNewElement( 'image', karmaBuilder.karmaModels.get( CID ), true );
+		assert.equal( document.querySelectorAll('.karma-image').length, 1 );
+
+	});
+
+	QUnit.test ( "REOrderElements() check orders", function (assert) {
+
+		karmaBuilder.karmaModels.reset();
+		RCreateModels();
+		var model = {
+			shortcode_name : 'karma_image',
+			shortcode_content : '',
+			element_key : KarmaView.createNewElementKey(),
+			shortcode_attributes : $( document ).triggerHandler( 'karma/before/createElement/karma_image' ),
+			order : 1 ,
+			parent_key :  '1r312'
+		}
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="1r312"]').html( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		KarmaView.createNewElement( 'image', karmaBuilder.karmaModels.get( CID ), true );
+		karmaBuilder.elementPanel.prototype.setElement( jQuery('body') );
+		karmaBuilder.elementPanel.prototype.prepareBeforeDrop( document.querySelector('.karma-element-placeholder'), 'karma_image' );
+		assert.equal( karmaBuilder.karmaModels.get( CID ).attributes.order, 2 );
+
+	});
+
 	QUnit.test("changeRowLayout() when the current grid layout is equal the new grid", function (assert) {
 
 		karmaBuilder.karmaModels.reset();
@@ -68,7 +107,7 @@ function getModelsAttributes(models) {
 				'parent_key': '',
 				'shortcode_content': '',
 				'shortcode_attributes': {
-					'space': "20"
+					'space' : "20"
 				},
 			},
 			{
@@ -111,7 +150,7 @@ function getModelsAttributes(models) {
 				},
 			}
 		];
-		sectionView.changeRowLayout(newGrid);
+		sectionView.changeRowLayout( newGrid );
 		var karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
 
 		assert.deepEqual(karmaTestResult, karmaResult);

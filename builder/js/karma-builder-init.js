@@ -35,8 +35,9 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 
-			'karma_builder_published' 	: 'karmaPublish',
-			'karma_builder_saved'		: 'karmaSaved',
+			'karma_builder_published' 	            : 'karmaPublish',
+			'before/elements/create/karma_column'   : 'createElementAction',
+			'karma_builder_saved'	               	: 'karmaSaved',
 
 		},
 
@@ -121,8 +122,7 @@ var karmaBuilder = karmaBuilder || {};
 						gizmoParams 	: that.getGizmoParam( element.attributes.shortcode_name ),
 						template 		: wp.template( 'karma-element-' + element.attributes.shortcode_name )
 					});
-					elementView.createGizmo();
-					elementView.delegateEvents();
+					elementView.renderSettings();
 				}
 			} );
 
@@ -226,25 +226,121 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * Drag Element from Shortcodes collection
+		 * Create unique id for each element of drop
 		 *
 		 * @since 1.0.0
-		 * @returns {void}
+		 *
+		 * @returns {String}	Random string
 		 */
-		dragElement : function(){
+		createNewElementKey : function () {
+
+			var randomString = 'kb' + this.createRandomString( 6 ) ;
+			if( karmaBuilder.karmaModels.where( { 'element_key' : randomString } ).length ){
+				return this.createNewElementKey();
+			}
+			return randomString;
 
 		},
 
 		/**
-		 * Drop Element function
+		 * Create random string
 		 *
-		 * @param	{object} 	droppedElement	Element to drop in placeHolder.
-		 * @param	{object} 	placeHolder	Placeholder to drop shortcode.
+		 * @param	{number}	length	The length of random string that need to be produce
 		 *
 		 * @since 1.0.0
-		 * @returns void
+		 * @returns String	Random string
 		 */
-		dropElement : function( droppedElement, placeHolder ){
+		createRandomString : function ( length ) {
+
+			var characters = '0123456789abcdefghijklmnopqrstuvwxyz' ,
+				charactersLength = characters.length ,
+				randomString = '';
+
+			for ( var i = 0; i < length; i++ ) {
+				randomString += characters[ Math.floor( ( Math.random() * ( charactersLength - 1 ) ) + 1 ) ];
+			}
+
+			return randomString;
+
+		},
+
+		/**
+		 * @summary Create new element
+		 *
+		 * @param	{string}    elementName     The element name wants to create
+		 * @param	{model}     model           The model of new element
+		 * @param   {boolean}   shouldRender    Call render method or not
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		createNewElement : function ( elementName, model, shouldRender ) {
+
+			if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
+				shouldRender = shouldRender ? shouldRender : true;
+				var elementView = new karmaBuilder[ elementName ]({
+					model 			: model,
+					gizmoParams 	: KarmaView.getGizmoParam( model.attributes.shortcode_name ),
+					el              : $( '[data-element-key="' + model.attributes.element_key + '"]' ) ,
+					template 		: wp.template( 'karma-element-' + model.attributes.shortcode_name ) ,
+					renderStatus    : shouldRender
+				});
+				elementView.renderSettings();
+			}
+
+		} ,
+
+		/**
+		 * @summary Create builder model html
+		 * If model param did not set, it automatically set by current model( this.model )
+		 *
+		 * @param	{object}    model   model of specific element
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {string} Builder html
+		 */
+		createBuilderModel : function( model ){
+
+			model = model ? model : this.model ;
+			var classes 			= this.$el.triggerHandler( 'before/elements/create/' + model.attributes.shortcode_name, [ model.attributes.shortcode_attributes ] ) ,
+				elementKey 			= model.attributes.element_key,
+				elementName			= model.attributes.shortcode_name,
+				karmaBuilderOutput,
+				tags;
+
+			classes = ( classes )
+				? classes + ' ' +  elementName.replace( "_", "-" ) + '-' + elementKey
+				: elementName.replace( "_", "-" ) + '-' + elementKey;
+
+			karmaBuilderOutput  = '<div class="karma-builder-element '
+				+ classes
+				+ '" data-element-key="' + elementKey +  '" data-name="' + elementName + '" > '
+				+ '</div>',
+				tags = '<style id="style-' + elementName.replace( "_", "-" ) + '-' + elementKey + '" ></style>'
+					+ '<script  id="script-' + elementName.replace( "_", "-" ) + '-' + elementKey + '" ></script>';
+
+
+			return tags + karmaBuilderOutput;
+
+		},
+
+		/**
+		 * @summary Set filter before create builder html
+		 *
+		 * @param {object}  atts    The attribute of element
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		createElementAction: function( e, atts ){
+
+			var classes = 'karma-col-sm-' + atts[ 'sm_size' ]
+				+ ' karma-col-md-' + atts[ 'md_size' ]
+				+ ' karma-col-lg-' + atts[ 'lg_size' ]
+				+ ' karma-col-xl-' + atts[ 'xl_size' ];
+			return classes;
 
 		},
 

@@ -220,7 +220,7 @@
 			for( counter; counter < newLayout.length; counter++ ){
 				var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes,
 					newModel = {
-						'element_key'           : this.createNewElementKey(),
+						'element_key'           : KarmaView.createNewElementKey(),
 						'parent_key'            : model.parent_key ,
 						'order'                 : model.order + 1 ,
 						'shortcode_content'     : '' ,
@@ -232,8 +232,10 @@
 				newModel.shortcode_attributes.sm_size = newLayout[ counter ];
 				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
 				newModel.shortcode_attributes.md_size = newLayout[ counter ];
-				var CID = karmaBuilder.karmaModels.add( newModel ).cid;
-				this.createNewElement( 'column', karmaBuilder.karmaModels.get({ 'cid' : CID }) );
+				var CID = karmaBuilder.karmaModels.add( newModel ).cid,
+					ColumnModel = karmaBuilder.karmaModels.get({ 'cid' : CID })
+				$( '[data-element-key="' + model.parent_key + '"]' ).find('.karma-row').append( KarmaView.createBuilderModel( ColumnModel ) );
+				KarmaView.createNewElement( 'column', ColumnModel );
 
 			}
 
