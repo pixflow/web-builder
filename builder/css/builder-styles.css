@@ -2998,8 +2998,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     background-color: #fff;
     border-radius: 100px;
     box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
-    margin-bottom: 15px;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-bottom: 15px; }
     .karma-element-panel-container .element-panel-button.element-panel-add-element-button svg {
       margin-left: 1px;
       margin-top: 1px; }
@@ -3035,8 +3035,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       border-left: 2px solid rgba(57, 73, 89, 0.08); }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-permium {
         flex-direction: column;
-        padding: 0;
-        height: 76.9vh; }
+        height: 76.9vh;
+        padding: 0; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container {
         display: flex;
         text-align: center;
@@ -3071,8 +3071,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           justify-content: center;
           background-color: #419cf8;
           border-radius: 2px;
-          cursor: pointer;
           color: #fff;
+          cursor: pointer;
           font-size: 14px;
           font-weight: 500;
           height: 40px;
@@ -3082,8 +3082,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           width: 106px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-deactive-part {
         flex-direction: column;
-        padding: 0;
-        height: 76.9vh; }
+        height: 76.9vh;
+        padding: 0; }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
       width: 174px;
       height: 100%; }
@@ -3099,14 +3099,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
             position: absolute;
             visibility: hidden; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
-            margin: 16px auto;
             color: #445363;
             cursor: pointer;
             display: block;
             font-size: 12px;
+            line-height: 1.7;
+            margin: 16px auto;
             padding-left: 31px;
             position: relative;
-            line-height: 1.7;
             z-index: 10; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
             width: 13px;
@@ -3223,13 +3223,13 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
 .element-panel-section-container .karma-builder-element-panel-header {
   align-items: center;
   display: flex;
-  padding: 26px 40px 6px 40px;
   justify-content: flex-end;
+  padding: 26px 40px 6px 40px;
   width: 100%; }
 
 .karma-builder-element-panel-gather-menu {
-  padding-left: 12px;
   cursor: pointer;
+  padding-left: 12px;
   padding-left: 12px;
   position: relative; }
   .karma-builder-element-panel-gather-menu.karma-open-element-category-dropdown ul {
@@ -3269,10 +3269,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   cursor: pointer; }
 
 input.karma-builder-search-text {
-  border-radius: 2px;
-  border: 1px solid transparent;
-  box-sizing: border-box;
   background: url("../../builder/media/svg/search.svg") no-repeat left 9px center transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-sizing: border-box;
   color: #9EA6AE;
   cursor: pointer;
   font-size: 12px;
@@ -3285,13 +3285,13 @@ input.karma-builder-search-text {
   z-index: 5; }
 
 input.karma-builder-search-text:focus {
-  border: 1px solid #F8F8F9;
   background-color: #F8F8F9;
+  border: 1px solid #F8F8F9;
   cursor: auto;
-  padding-left: 35px;
   outline: none;
-  transition-duration: 0.1s;
+  padding-left: 35px;
   transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
+  transition-duration: 0.1s;
   width: 250px;
   z-index: 3; }
 

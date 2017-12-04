@@ -31,8 +31,8 @@
 		background-color: $white-color;
 		border-radius: 100px;
 		box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
-		margin-bottom: 15px;
 		cursor: pointer;
+		margin-bottom: 15px;
 
 		&.element-panel-add-element-button{
 			svg{
@@ -68,8 +68,8 @@
 
 			.element-panel-permium{
 				flex-direction: column;
-				padding: 0;
 				height: 76.9vh;
+				padding: 0;
 			}
 
 			.element-panel-section-container {
@@ -109,8 +109,8 @@
 					@include flexbox(center, center, center);
 					background-color: $builder-accent-color;
 					border-radius: 2px;
-					cursor: pointer;
 					color: $white-color;
+					cursor: pointer;
 					font-size: 14px;
 					font-weight: 500;
 					height: 40px;
@@ -124,8 +124,8 @@
 
 			.element-panel-deactive-part{
 				flex-direction: column;
-				padding: 0;
 				height: 76.9vh;
+				padding: 0;
 			}
 		}
 
@@ -151,14 +151,14 @@
 						}
 
 						ul li label {
-							margin: 16px auto;
 							color: #445363;
 							cursor: pointer;
 							display: block;
 							font-size: 12px;
+							line-height: 1.7;
+							margin: 16px auto;
 							padding-left: 31px;
 							position: relative;
-							line-height: 1.7;
 							z-index: 10;
 						}
 						
@@ -338,8 +338,8 @@
 
 			align-items: center;
 			display: flex;
-			padding: 26px 40px 6px 40px;
 			justify-content: flex-end;
+			padding: 26px 40px 6px 40px;
 			width: 100%;
 
 		}
@@ -347,8 +347,8 @@
 
 .karma-builder-element-panel-gather-menu{
 
-			padding-left: 12px;
 			cursor: pointer;
+			padding-left: 12px;
 			padding-left: 12px;
 		  	position: relative;
 
@@ -397,10 +397,10 @@
 }
 
 input.karma-builder-search-text{
-	border-radius: 2px;
-	border: 1px solid transparent;
-	box-sizing: border-box;
 	background: url('../../builder/media/svg/search.svg')no-repeat left 9px center transparent;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	box-sizing: border-box;
 	color: #9EA6AE;
 	cursor: pointer;
 	font-size: 12px;
@@ -415,13 +415,13 @@ input.karma-builder-search-text{
 }
 
 input.karma-builder-search-text:focus {
-	border: 1px solid #F8F8F9;
 	background-color: #F8F8F9;
+	border: 1px solid #F8F8F9;
 	cursor:auto;
-	padding-left: 35px;
 	outline: none;
-	transition-duration: 0.1s;
+	padding-left: 35px;
 	transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
+	transition-duration: 0.1s;
 	width: 250px;
 	z-index:3;
 }
