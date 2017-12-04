@@ -2987,7 +2987,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       height: calc( 100% - 72px);
       flex-wrap: wrap;
       overflow: hidden;
-      padding: 0 40px 40px 40px; }
+      padding: 0 2vw 40px 2vw; }
     .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
       border: 1px solid transparent;
       border-radius: 4px; }
@@ -3053,22 +3053,37 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img {
           width: 100%; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img img {
-            height: 305px;
             max-width: 100%; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
           color: #394959;
           font-family: HelveticaNeue;
           font-size: 24px;
           line-height: 29px;
-          padding-top: 65px;
+          padding-top: 7.2vh;
           text-align: center; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
+            font-size: 20px; }
+            @media screen and (min-width: 1288px) {
+              .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
+                font-size: calc(20px + 4 * ((100vw - 1288px) / 78)); } }
+            @media screen and (min-width: 1366px) {
+              .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
+                font-size: 24px; } }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
           color: #828B95;
           font-family: HelveticaNeue;
           font-size: 14px;
           line-height: 22px;
-          padding: 19px 33px;
+          padding: 19px 1.7vw;
           text-align: center; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
+            font-size: 12px; }
+            @media screen and (min-width: 1288px) {
+              .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
+                font-size: calc(12px + 2 * ((100vw - 1288px) / 78)); } }
+            @media screen and (min-width: 1366px) {
+              .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
+                font-size: 14px; } }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button {
           display: flex;
           text-align: center;
@@ -3092,7 +3107,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
       width: 9.06vw; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter {
-        padding: 2.33vh 1.56vw 0 1.56vw; }
+        padding: 2.33vh 0.56vw 0 1.56vw; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li {
           display: block;
           position: relative; }

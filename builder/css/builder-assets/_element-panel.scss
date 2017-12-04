@@ -13,7 +13,7 @@
 			@include box( 100%,  calc( 100% - 72px) );
 			flex-wrap: wrap;
 			overflow: hidden;
-			padding: 0 40px 40px 40px;
+			padding: 0 2vw 40px 2vw;
 		}
 
 		.karma-element-single-element {
@@ -86,24 +86,25 @@
 					width: 100%;
 
 					img{
-						height: 305px;
 						max-width: 100%;
 					}
 				}
 				.element-panel-part-title {
+					@include fluid-type(1288px, 1366px, 20px, 24px);
 					color: $builder-gray-color;
 					font-family: HelveticaNeue;
 					font-size: 24px;
 					line-height: 29px;
-					padding-top: 65px;
+					padding-top: 7.2vh;
 					text-align: center;
 				}
 				.element-panel-part-description {
+					@include fluid-type(1288px, 1366px, 12px, 14px);
 					color: #828B95;
 					font-family: HelveticaNeue;
 					font-size: 14px;
 					line-height: 22px;
-					padding: 19px 33px;
+					padding: 19px 1.7vw;
 					text-align: center;
 				}
 				.element-panel-part-button {
@@ -138,7 +139,7 @@
 				.karma-element-panel-price-filter-container {
 
 					.karma-element-panel-price-filter {
-						padding: 2.33vh 1.56vw 0 1.56vw;
+						padding: 2.33vh 0.56vw 0 1.56vw;
 
 						ul li {
 							display: block;
