@@ -3104,6 +3104,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           padding-left: 1.61vw;
           position: relative;
           z-index: 10; }
+          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
+            font-size: 11px; }
+            @media screen and (min-width: 1288px) {
+              .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
+                font-size: calc(11px + 1 * ((100vw - 1288px) / 78)); } }
+            @media screen and (min-width: 1366px) {
+              .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
+                font-size: 12px; } }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
           width: 13px;
           height: 13px;
@@ -3139,6 +3147,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
         color: #445363;
         font-size: 14px; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
+          font-size: 12px; }
+          @media screen and (min-width: 1288px) {
+            .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
+              font-size: calc(12px + 2 * ((100vw - 1288px) / 78)); } }
+          @media screen and (min-width: 1366px) {
+            .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
+              font-size: 14px; } }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent {
         padding: 4.44vh 1.56vw 0 1.56vw; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-name {
@@ -3149,6 +3165,14 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         font-size: 14px;
         padding-left: 0.88vw;
         transition-duration: .3s; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
+          font-size: 12px; }
+          @media screen and (min-width: 1288px) {
+            .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
+              font-size: calc(12px + 2 * ((100vw - 1288px) / 78)); } }
+          @media screen and (min-width: 1366px) {
+            .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
+              font-size: 14px; } }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-icon svg * {
         cursor: pointer;
         fill: #7C8691; }
