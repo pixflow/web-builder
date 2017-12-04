@@ -59,19 +59,24 @@
 		},
 
 		/**
-		 * stop close panel when click in panel
+		 * @summary close panel when click in panel
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
 		stopClickInPanel : function (e) {
 
+
 			e.stopPropagation();
+			if( $( ".karma-open-element-category-dropdown" ).hasClass('karma-open-element-category-dropdown') ){
+				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
+			}
+
 
 		},
 
 		/**
-		 * call element-panel
+		 * @summary element-panel
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -83,7 +88,7 @@
 		},
 
 		/**
-		 * functionality for element panel tab
+		 * @summary functionality for element panel tab
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -614,24 +619,26 @@
 
 		openCategoryMenu: function (e) {
 
-			var target = $(e.target),
-				categoryMenu = target.closest('.karma-builder-element-panel-gather-menu');
-
-
-			if (target.closest('svg').length) {
-
-				categoryMenu.toggleClass('karma-open-element-category-dropdown')
-
+			/** @todo: change stopPropagation */
+			e.stopPropagation();
+			var target = $( e.target ),
+				categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
+			if ( target.closest('svg').length ) {
+				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
-
 			$( '.karma-elements' ).isotope();
 			this.elementGatherMenuFiltering();
 		},
 
 		elementGatherMenuFiltering : function () {
+
 			$('.karma-builder-element-panel-gather-menu ul li').click(function () {
+				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
+				panelGatherMenu.addClass( 'karma-stop-propagation' );
 
 				$('.karma-elements').isotope({filter: $(this).attr('data-filter')});
+				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
+
 
 			});
 
@@ -640,8 +647,7 @@
 		removeGatherMenuPanel: function () {
 
 			$( document ).off( "click.removeGatherMenuPanel" ).on( "click.removeGatherMenuPanel", function(){
-
-				$( ".karma-open-element-category-dropdown" ).removeClass( ".karma-open-element-category-dropdown" );
+			$( ".karma-open-element-category-dropdown" ).removeClass( ".karma-open-element-category-dropdown" );
 
 			});
 		}

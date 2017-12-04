@@ -91,7 +91,6 @@ class Karma_Image extends Karma_Shortcode_Base {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Render image element template.
 	 *
 	 * Written in JS and used to for underscore template.

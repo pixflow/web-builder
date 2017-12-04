@@ -1,7 +1,7 @@
 <div class="karma-builder-element-panel-header">
 	<input type="search" class="karma-builder-search-text" placeholder="Search...">
 
-	<div class="karma-builder-element-panel-gather-menu">
+	<div class="karma-builder-element-panel-gather-menu karma-stop-propagation">
 		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/gather-menu.svg' ); ?>
 		<ul>
 			<li class="active" data-filter="*"><?php echo esc_attr__("All Categories", 'karma');?></li>
