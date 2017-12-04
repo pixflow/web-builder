@@ -159,6 +159,7 @@
 			this.toolTipHtml();
 			this.removeGizmo();
 			this.karmaStopPropagation();
+			this.removeMoreSubmenu();
 
 		},
 
@@ -889,6 +890,23 @@
 			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
 
 				$( ".karma-active-element" ).removeClass( 'karma-active-element' );
+
+			})
+
+		},
+
+		/**
+		 * @summary close more sub menu when click in document
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		removeMoreSubmenu: function () {
+
+			$( document ).off( "click.removeMoreSubmenu" ).on( "click.removeMoreSubmenu", function(){
+
+				$( ".karma-more-submenu" ).removeClass( 'karma-more-submenu' );
+				$( ".karma-open-more-options" ).removeClass( 'karma-open-more-options' );
 
 			})
 
