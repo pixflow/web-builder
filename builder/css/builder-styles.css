@@ -3101,7 +3101,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           font-size: 12px;
           line-height: 1.7;
           margin: 1.77vh auto;
-          padding-left: 31px;
+          padding-left: 1.61vw;
           position: relative;
           z-index: 10; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
