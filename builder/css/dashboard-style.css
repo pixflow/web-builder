@@ -106,6 +106,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output justify content and align item
  */
+/**
+ * text responsive to change font size
+ * @group helpers
+ * @output responsive text
+ */
 /** Builder Colors **/
 /* Builder Major Levels */
 /* spaces */

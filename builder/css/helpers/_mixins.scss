@@ -189,7 +189,11 @@
 	justify-content: $justify-content;
 }
 
-
+/**
+ * text responsive to change font size
+ * @group helpers
+ * @output responsive text
+ */
 @function strip-unit($value) {
 	@return $value / ($value * 0 + 1);
 }
