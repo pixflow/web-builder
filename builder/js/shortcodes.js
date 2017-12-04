@@ -6,6 +6,7 @@
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/buildGizmo'                                     				: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
+			'click	.karma-more-setting'											: 'showGizmoRelatedToMore'
 		},
 
 		shortcodeParams: {},
@@ -875,7 +876,35 @@
 
 			})
 
-		}
+		},
+
+		/**
+		 * @summary show and hide options under more in gizmo panel
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		showGizmoRelatedToMore : function () {
+
+			var moreElements = this.el.querySelectorAll( 'div[data-form="more-panel"]:not(.karma-more-setting)' ),
+				moreButtonStatus = this.el.querySelectorAll( '.karma-more-setting' )[ 0 ].classList.contains( 'karma-open-more-options' ) ;
+
+			for ( var i = 0 ; i < moreElements.length; i++ ){
+
+				if ( moreButtonStatus ){
+
+					moreElements[ i ].classList.remove( 'karma-more-submenu' );
+					this.el.querySelectorAll( '.karma-more-setting' )[ 0 ].classList.remove( 'karma-open-more-options' )
+
+				}else {
+
+					moreElements[ i ].classList.add( 'karma-more-submenu' );
+					this.el.querySelectorAll( '.karma-more-setting' )[ 0 ].classList.add( 'karma-open-more-options' )
+
+				}
+			}
+
+		},
 
 	});
 

@@ -300,6 +300,7 @@
 	}
 
 }
+
 /** Separate these stylesheet for jquery UI */
 .karma-element-single-element{
 	@include flexbox( center, center, center );
@@ -320,6 +321,7 @@
 		}
 	}
 }
+
 .karma-element-single-element-name{
 	margin-top: 13px;
 	text-transform: capitalize;
@@ -331,7 +333,7 @@
 
 }
 
-	.element-panel-section-container {
+.element-panel-section-container {
 		.karma-builder-element-panel-header {
 
 			align-items: center;
@@ -341,10 +343,9 @@
 			width: 100%;
 
 		}
-}
+	}
 
-
-		.karma-builder-element-panel-gather-menu{
+.karma-builder-element-panel-gather-menu{
 
 			padding-left: 12px;
 			cursor: pointer;

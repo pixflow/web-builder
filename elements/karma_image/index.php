@@ -57,8 +57,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
-	 * @param array     $attributes   Attribute of element
-	 * @param string    $content      Content of element
+	 * @param array $attributes Attribute of element
+	 * @param string $content Content of element
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -76,10 +76,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$scale_class = ( 'fill' == $attributes['scale'] ) ? 'karma-image-fill' : 'karma-image-real';
 		ob_start();
 		?>
-		<div class='karma-image karma-image-<?php echo esc_attr( $attributes[ 'element_key' ] ); ?> karma-position-<?php echo $attributes[ 'position' ] ?>' >
+		<div class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-position-<?php echo $attributes['position'] ?>'>
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
-				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>" target="<?php echo $attributes['linktarget']; ?>" >
-					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes[ 'imgurl' ] ); ?>" alt="<?php echo $attributes['alt']; ?>" />
+				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>"
+				   target="<?php echo $attributes['linktarget']; ?>">
+					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes['imgurl'] ); ?>"
+						 alt="<?php echo $attributes['alt']; ?>"/>
 				</a>
 			</div>
 		</div>
@@ -89,6 +91,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Render image element template.
 	 *
 	 * Written in JS and used to for underscore template.
@@ -118,36 +121,34 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 * @since 1.0.0
 	 * @access private
 	 *
-	 * @param array $attributes    Attribute of element
+	 * @param array $attributes Attribute of element
 	 *
 	 * @return array | false special class and URL of image
 	 */
-	private function get_image_url( $attributes ){
+	private function get_image_url( $attributes ) {
 
 		$result = array();
-		switch ( $attributes['action'] ){
+		switch ( $attributes['action'] ) {
 			case 'none' :
-				$result['class'] = 'karma-image-without-action' ;
-				$result['link']  = 'javascript:void(0);' ;
+				$result['class'] = 'karma-image-without-action';
+				$result['link']  = 'javascript:void(0);';
 				break;
 			case 'link' :
-				$result['class'] = 'karma-image-with-url' ;
-				$result['link']  = $attributes['linkurl'] ;
+				$result['class'] = 'karma-image-with-url';
+				$result['link']  = $attributes['linkurl'];
 				break;
 			case 'popup' :
-				$result['class'] = 'karma-image-popup-mode' ;
-				$result['link']  = $attributes['imgurl'] ;
+				$result['class'] = 'karma-image-popup-mode';
+				$result['link']  = $attributes['imgurl'];
 				break;
 			default:
 				return false;
 				break;
 		}
+
 		return $result;
 
 	}
-
-
-
 
 	/**
 	 * Register image element controls.
@@ -162,97 +163,97 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 		$map = array(
 			'setting-panel' => array(
-				"title"	=> esc_attr__( "Image Setting", 'karma' ),
+				"title"  => esc_attr__( "Image Setting", 'karma' ),
 				"height" => "570",
 				"params" => array(
 					array(
-						"name" 	=> "imgurl" ,
-						"type" 	=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"	=> esc_attr__( "Change image", 'karma' ),
-						"value"	=> "",
+						"name"  => "imgurl",
+						"type"  => Karma_Builder_Setting_Panel::UPLOAD_IMAGE,
+						"label" => esc_attr__( "Change image", 'karma' ),
+						"value" => "",
 					),
 					array(
-						"name"	=> "scale",
-						"type"	=> Karma_Builder_Setting_Panel::RADIO_IMAGE,
-						"label"	=> esc_attr__( "Scale", 'karma' ),
-						'value'	=> "fill",
-						"class" => "radio-image-border-hover",
-						"field"	=> array(
+						"name"      => "scale",
+						"type"      => Karma_Builder_Setting_Panel::RADIO_IMAGE,
+						"label"     => esc_attr__( "Scale", 'karma' ),
+						'value'     => "fill",
+						"class"     => "radio-image-border-hover",
+						"field"     => array(
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
+								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
 								'style' => 'padding-left: 35px; padding-right: 18px;',
-								'title'	=> esc_attr__( "Real size", 'karma' ),
-								'value'	=> "real",
+								'title' => esc_attr__( "Real size", 'karma' ),
+								'value' => "real",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
+								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
 								'style' => 'padding-left: 18px; padding-right: 34px; ',
-								'title'	=> "Fill",
-								'value'	=> "fill",
+								'title' => "Fill",
+								'value' => "fill",
 							),
 						),
 						'separator' => "container",
 					),
 					array(
-						"name"		=> 'position' ,
-						"type"		=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
-						"label"		=> esc_attr__( "Position", 'karma' ),
-						"values"	=> 'center-center',
+						"name"      => 'position',
+						"type"      => Karma_Builder_Setting_Panel::IMAGE_POSITION,
+						"label"     => esc_attr__( "Position", 'karma' ),
+						"values"    => 'center-center',
 						"separator" => "full",
 
 					),
 					array(
-						"name"  	    => "action",
-						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
-						"label"  	    => esc_attr__( "Action on click", 'karma' ),
-						'value'   	    => "none",
-						'separator'	    => "container",
-						"options"  		=> array(
-							'none'   => array(
-								'title' => esc_attr( 'None' , 'karma' ),
+						"name"      => "action",
+						"type"      => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"     => esc_attr__( "Action on click", 'karma' ),
+						'value'     => "none",
+						'separator' => "container",
+						"options"   => array(
+							'none'  => array(
+								'title' => esc_attr( 'None', 'karma' ),
 							),
-							'popup'  => array(
+							'popup' => array(
 								'title' => esc_attr( "Popup", 'karma' ),
-							) ,
+							),
 							'link'  => array(
 								'title' => esc_attr( "Link", 'karma' ),
 							),
 						)
 					),
 					array(
-						"name"			=> "linkurl",
-						"type"			=> Karma_Builder_Setting_Panel::TEXT,
-						"label"			=> __( "URL", 'karma' ),
-						"dependency"	=> array(
-								"controller"	=> "action",
-								"value"			=> "link"
+						"name"       => "linkurl",
+						"type"       => Karma_Builder_Setting_Panel::TEXT,
+						"label"      => __( "URL", 'karma' ),
+						"dependency" => array(
+							"controller" => "action",
+							"value"      => "link"
 						)
 					),
 					array(
-						"name"  	    => "linktarget",
-						"type"   	    => Karma_Builder_Setting_Panel::DROPDOWN,
-						"label"  	    => esc_attr__( "Open image on", 'karma' ),
-						'value'   	    => "_blank",
-						'separator'	    => "container",
-						"options"  		=> array(
-							'_self'   => array(
-								'title' => esc_attr( 'This window' , 'karma' ),
+						"name"       => "linktarget",
+						"type"       => Karma_Builder_Setting_Panel::DROPDOWN,
+						"label"      => esc_attr__( "Open image on", 'karma' ),
+						'value'      => "_blank",
+						'separator'  => "container",
+						"options"    => array(
+							'_self'  => array(
+								'title' => esc_attr( 'This window', 'karma' ),
 							),
-							'_blank'  => array(
+							'_blank' => array(
 								'title' => esc_attr( "New window", 'karma' ),
-							) ,
+							),
 						),
-						"dependency"	=> array(
-							"controller"	=> "action",
-							"value"			=> "link"
+						"dependency" => array(
+							"controller" => "action",
+							"value"      => "link"
 						)
 					),
 
 					array(
-						"name"			=> "alt",
-						"type"			=> Karma_Builder_Setting_Panel::TEXT,
-						"label"			=> __( "Alt", 'karma' ),
-						"group"			=> "Advance option"
+						"name"  => "alt",
+						"type"  => Karma_Builder_Setting_Panel::TEXT,
+						"label" => __( "Alt", 'karma' ),
+						"group" => "Advance option"
 					),
 				),
 			),
@@ -260,6 +261,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 
 		parent::$elements_map[ self::$element_name ] = $map;
+
 		return parent::$elements_map;
 
 	}
@@ -275,51 +277,64 @@ class Karma_Image extends Karma_Shortcode_Base {
 	public function gimzo_controllers() {
 
 		$controllers = array(
-				array(
-						"type"		=> "outerGizmo",
-						"className"	=> "image-gizmo-group",
-						"params"	=> array(
-								array(
-										'type'		=> 'simpleIcon',
-										'form'		=> 'more-panel',
-										"params"	=> array(
-												'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
-												'className'	=> 'karma-image-more-setting',
-										)
-								),
-								array(
-										'type'		=> 'simpleIcon',
-										'form'		=> 'animation-panel',
-										"params"	=> array(
-												'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
-												'className'	=> 'karma-image-animation-layout',
-										)
-								),
-								array(
-										'type'		=> 'simpleIcon',
-										'className'	=> 'karma-image-setting-layout',
-										'form'		=> 'setting-panel',
-										"params"	=> array(
-												'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' ),
-
-
-										)
-								),
-								array(
-										'type'		=> 'simpleText',
-										'form'		=> 'background-panel',
-										'className'	=> 'karma-image-background-setting',
-										'params'	=> array(
-												'value'		=> esc_attr( 'Change Image', 'karma' ),
-										)
-
-
-								),
+			array(
+				"type"      => "outerGizmo",
+				"className" => "image-gizmo-group",
+				"params"    => array(
+					array(
+						'type'   => 'simpleIcon',
+						'form'   => 'more-panel',
+						'className' => 'karma-more-setting',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
 						)
-				),
+					),
+					array(
+						'type'   => 'simpleIcon',
+						'form'   => 'more-panel',
+						'className' => 'karma-delete-element-setting ',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
+						)
+					),
+					array(
+						'type'   => 'simpleIcon',
+						'form'   => 'more-panel',
+						'className' => 'karma-duplicate-element-setting ',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
+						)
+					),
+					array(
+						'type'   => 'simpleIcon',
+						'form'   => 'animation-panel',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+							'className' => 'karma-image-animation-layout',
+						)
+					),
+					array(
+						'type'      => 'simpleIcon',
+						'className' => 'karma-image-setting-layout',
+						'form'      => 'setting-panel',
+						"params"    => array(
+							'icon' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' ),
+						)
+					),
+					array(
+						'type'      => 'simpleText',
+						'form'      => 'background-panel',
+						'className' => 'karma-image-background-setting',
+						'params'    => array(
+							'value' => esc_attr( 'Change Image', 'karma' ),
+						)
+					),
+				)
+			),
 		);
 
 		parent::$elements_gizmo[ self::$element_name ] = $controllers;
+
 		return parent::$elements_gizmo;
 
 	}
@@ -334,8 +349,9 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function render_css() {
 
-		$styles =  '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
-		           ."}";
+		$styles = '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
+		          . "}";
+
 		return $styles;
 
 	}
@@ -351,14 +367,15 @@ class Karma_Image extends Karma_Shortcode_Base {
 	public function render_script() {
 
 		//wp_enqueue_script( 'karma-lightbox' ,  KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js', array(), true ); ?>
-		<script type="text/javascript" src="<?php echo KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'; ?>"></script>
+		<script type="text/javascript"
+				src="<?php echo KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'; ?>"></script>
 
-		<?php if( 'popup' ==  $this->element_attributes['action'] ){
+		<?php if ( 'popup' == $this->element_attributes['action'] ) {
 			?>
 			<script type="text/javascript">
-				document.addEventListener('DOMContentLoaded', function(){
-					new karmaImageLightbox('.karma-image-<?php echo esc_attr( $this->element_attributes[ 'element_key' ] ); ?> a.karma-image-link');
-				});
+				document.addEventListener( 'DOMContentLoaded', function () {
+					new karmaImageLightbox( '.karma-image-<?php echo esc_attr( $this->element_attributes['element_key'] ); ?> a.karma-image-link' );
+				} );
 
 			</script>
 			<?php
@@ -373,20 +390,21 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 * @access  public
 	 * @return  array   The element info
 	 */
-	public function get_element_info(){
+	public function get_element_info() {
 
 		$element_info = array(
-			'elementName' => self::$element_name ,
-			'icon'         => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg' ),
-			'category'     => array(
-				'basic' ,
-				'media' ,
+			'elementName' => self::$element_name,
+			'icon'        => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg' ),
+			'category'    => array(
+				'basic',
+				'media',
 				str_replace( 'karma_', '', self::$element_name ),
 			),
-			'showInList'   => true ,
+			'showInList'  => true,
 		);
 
 		parent::$elements_info[ self::$element_name ] = $element_info;
+
 		return parent::$elements_info;
 
 	}

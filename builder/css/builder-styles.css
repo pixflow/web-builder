@@ -2025,8 +2025,8 @@ label {
   padding: 0; }
 
 img {
-  max-width: inherit;
-  max-height: inherit; }
+  max-height: inherit;
+  max-width: inherit; }
 
 .karma-spacing {
   height: 5px;
@@ -2131,19 +2131,18 @@ img {
     border-radius: 2px;
     box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
     direction: rtl;
+    display: none;
     font-size: initial;
-    position: absolute;
     padding: 0 9px;
-    z-index: 90;
-    display: none; }
+    position: absolute;
+    z-index: 90; }
     .karma-builder-element .karma-gizmo-template div {
       cursor: pointer;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon {
-      width: auto;
-      height: 22px;
       align-items: center;
       display: flex;
+      height: 22px;
       padding: 0 9px 0 9px;
       transition-duration: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon div {
@@ -2156,8 +2155,8 @@ img {
       color: #394959;
       font-family: HelveticaNeue_Medium;
       font-size: 12px;
-      padding: 0 18px 0 9px;
       margin-right: 9px;
+      padding: 0 18px 0 9px;
       transition: all 0.3s ease; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleText:hover {
       color: #419CF8;
@@ -2190,6 +2189,11 @@ img {
         font-family: HelveticaNeue;
         font-size: 13px;
         padding: 0 15px 0 15px; }
+    .karma-builder-element .karma-gizmo-template div[data-form="more-panel"]:not(.karma-more-setting):not(.karma-more-submenu) {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      padding: 0; }
   .karma-builder-element .karma-spacing-dot-container {
     width: 22px;
     height: 23px;
@@ -2359,6 +2363,9 @@ img {
       top: 0;
       transition: background-color .3s , width .2s; }
     .karma-builder-element.karma-active-section .karma-row .resize-handler:hover:before {
+      background-color: rgba(51, 143, 252, 0.3);
+      width: 4px; }
+    .karma-builder-element.karma-active-section .karma-row .resize-dragging .resize-handler:before {
       background-color: rgba(51, 143, 252, 0.3);
       width: 4px; }
   .karma-builder-element.karma-active-column .karma-column-setting {
