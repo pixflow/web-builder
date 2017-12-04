@@ -95,6 +95,7 @@ karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
 	// Create lightbox container
 	var lightbox = document.createElement( 'div' );
 	lightbox.setAttribute( 'id', 'karma-lightbox-opened' );
+	lightbox.setAttribute( 'class', 'karma-stop-propagation' );
 
 	// Create lightbox loading
 	var loading = document.createElement( 'span' );
@@ -117,7 +118,6 @@ karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {
 	document.querySelector( 'body' ).appendChild( lightbox );
 	lightbox.addEventListener( 'click', function ( e ) {
 		e.preventDefault();
-		e.stopPropagation();
 		if ( 'IMG' === e.target.tagName ) {
 			return;
 		}

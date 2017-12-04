@@ -14,6 +14,21 @@
 
 
 		/**
+		 * @summary stop Propagation on click elements with karma-stop-propagation class
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaStopPropagation : function () {
+
+			$(document).off('click.stopPropagation').on('click.stopPropagation','.karma-stop-propagation',function(e){
+				e.stopPropagation();
+			})
+
+		},
+
+		/**
 		 *  Build html for inner gizmo
 		 */
 		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }}">'
@@ -143,6 +158,7 @@
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
 			this.removeGizmo();
+			this.karmaStopPropagation();
 
 		},
 
