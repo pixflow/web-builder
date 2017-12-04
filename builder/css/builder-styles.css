@@ -3004,7 +3004,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       margin-left: 1px;
       margin-top: 1px; }
   .karma-element-panel-container .karma-element-panel-add-element-view {
-    width: 524px;
+    width: 27.29vw;
     height: inherit;
     background-color: #fff;
     border-radius: 3px;
@@ -3085,73 +3085,69 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         height: 76.9vh;
         padding: 0; }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
-      width: 174px;
-      height: 100%; }
-      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering {
-        width: 100%;
-        height: inherit; }
-        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter {
-          padding: 21px 0 0 30px; }
-          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li {
-            display: block;
-            position: relative; }
-          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li input[type=radio] {
-            position: absolute;
-            visibility: hidden; }
-          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
-            color: #445363;
-            cursor: pointer;
-            display: block;
-            font-size: 12px;
-            line-height: 1.7;
-            margin: 16px auto;
-            padding-left: 31px;
-            position: relative;
-            z-index: 10; }
-          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
-            width: 13px;
-            height: 13px;
-            top: 4px;
-            right: auto;
-            bottom: auto;
-            left: auto;
-            border: 1px solid rgba(57, 73, 89, 0.5);
-            border-radius: 100%;
-            display: block;
-            position: absolute;
-            transition: border .25s linear;
-            -webkit-transition: border .25s linear; }
-          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check::before {
-            width: 5px;
-            height: 5px;
-            top: 3px;
-            right: auto;
-            bottom: auto;
-            left: 3px;
-            border-radius: 100%;
-            content: '';
-            display: block;
-            position: absolute;
-            transition: background 0.25s linear;
-            -webkit-transition: background 0.25s linear; }
-          .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter input[type=radio]:checked ~ .check::before {
-            background: #419cf8; }
+      width: 9.06vw; }
+      .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter {
+        padding: 2.33vh 1.56vw 0 1.56vw; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li {
+          display: block;
+          position: relative; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li input[type=radio] {
+          position: absolute;
+          visibility: hidden; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
+          color: #445363;
+          cursor: pointer;
+          display: block;
+          font-size: 12px;
+          line-height: 1.7;
+          margin: 1.77vh auto;
+          padding-left: 31px;
+          position: relative;
+          z-index: 10; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check {
+          width: 13px;
+          height: 13px;
+          top: 4px;
+          right: auto;
+          bottom: auto;
+          left: auto;
+          border: 1px solid rgba(57, 73, 89, 0.5);
+          border-radius: 100%;
+          display: block;
+          position: absolute;
+          transition: border .25s linear;
+          -webkit-transition: border .25s linear; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li .check::before {
+          width: 5px;
+          height: 5px;
+          top: 3px;
+          right: auto;
+          bottom: auto;
+          left: 3px;
+          border-radius: 100%;
+          content: '';
+          display: block;
+          position: absolute;
+          transition: background 0.25s linear;
+          -webkit-transition: background 0.25s linear; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter input[type=radio]:checked ~ .check::before {
+          background: #419cf8; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-content-border {
         border-top: 2px solid rgba(57, 73, 89, 0.08);
-        margin-left: 30px;
-        width: 106px; }
+        margin: 0 auto;
+        width: 5.52vw; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
         color: #445363;
         font-size: 14px; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent {
-        padding: 40px 0 0 30px; }
+        padding: 4.44vh 1.56vw 0 1.56vw; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent-disable .karma-addcontent-name {
         color: #D0D6DA;
         cursor: pointer; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name {
         color: #7C8691;
         font-size: 14px;
-        padding-left: 17px;
+        padding-left: 0.88vw;
         transition-duration: .3s; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-icon svg * {
         cursor: pointer;
@@ -3165,13 +3161,13 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         display: flex;
         flex-direction: column;
         list-style: none;
-        padding-bottom: 14px; }
+        padding-bottom: 1.55vh; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent {
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
-        padding-top: 23px; }
+        padding-top: 2.55vh; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable):hover .karma-addcontent-icon svg * {
           cursor: pointer;
           transition-duration: .3s;

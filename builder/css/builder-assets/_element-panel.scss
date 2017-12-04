@@ -44,7 +44,7 @@
 	}
 
 	.karma-element-panel-add-element-view {
-		@include karma-box(524px, inherit);
+		@include karma-box( 27.29vw, inherit );
 		@include element_direction($top: 13%, $left: 5%);
 		display: none;
 		position: fixed;
@@ -130,15 +130,14 @@
 		}
 
 		.karma-element-panel-add-element-view-left {
-			@include box(174px, 100%);
+			width: 9.06vw;
 
 			.karma-element-panel-add-element-view-filtering {
-				@include box(100%, inherit);
 
 				.karma-element-panel-price-filter-container {
 
 					.karma-element-panel-price-filter {
-						padding: 21px 0 0 30px;
+						padding: 2.33vh 1.56vw 0 1.56vw;
 
 						ul li {
 							display: block;
@@ -156,7 +155,7 @@
 							display: block;
 							font-size: 12px;
 							line-height: 1.7;
-							margin: 16px auto;
+							margin: 1.77vh auto;
 							padding-left: 31px;
 							position: relative;
 							z-index: 10;
@@ -198,8 +197,8 @@
 
 			.karma-element-panel-add-element-view-content-border {
 				border-top: 2px solid rgba(57, 73, 89, 0.08);
-				margin-left: 30px;
-				width: 106px;
+				margin: 0 auto;
+				width: 5.52vw;
 			}
 
 			.karma-builder-addcontent-title {
@@ -208,7 +207,7 @@
 			}
 
 			.karma-builder-addcontent {
-				padding: 40px 0 0 30px;
+                padding: 4.44vh 1.56vw 0 1.56vw;
 			}
 
 			li.karma-addcontent-disable .karma-addcontent-name {
@@ -219,7 +218,7 @@
 			.karma-addcontent-name {
 				color: #7C8691;
 				font-size: 14px;
-				padding-left: 17px;
+				padding-left: 0.88vw;
 				transition-duration: .3s;
 			}
 			.karma-addcontent-icon {
@@ -245,12 +244,12 @@
 				display: flex;
 				flex-direction: column;
 				list-style: none;
-				padding-bottom: 14px;
+				padding-bottom: 1.55vh;
 			}
 
 			li.karma-addcontent {
 				@include flexbox(center, center, center);
-				padding-top: 23px;
+				padding-top: 2.55vh;
 				&:not(.karma-addcontent-disable) {
 
 					&:hover {
