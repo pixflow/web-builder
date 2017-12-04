@@ -100,6 +100,7 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url(__FILE__) . 'js/karma-builder-init.min.js', array('jquery', 'backbone', 'wp-util'), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-jquery-ui' ,  plugin_dir_url( __FILE__ ). 'js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-jquery.nicescroll' ,  plugin_dir_url( __FILE__ ). 'js/jquery.nicescroll.min.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-jquery.isotope' ,  plugin_dir_url( __FILE__ ).'js/isotope.pkgd.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-range-slider' ,  plugin_dir_url( __FILE__ ). 'js/rangeslider.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-grid-resizer' ,  plugin_dir_url( __FILE__ ). 'js/grid-resizer.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/setting-panel.min.js', array( $this->plugin_name ), $this->version, false );

@@ -41,6 +41,7 @@
 			this.createUnsplashPanel();
 			this.$el.trigger( 'karma/after/finish_element_panel', [ this ] );
 			this.setEvents();
+			this.removeGatherMenuPanel();
 
 		},
 
@@ -611,19 +612,38 @@
 
 		},
 
-		openCategoryMenu : function (e) {
+		openCategoryMenu: function (e) {
 
-			var target = $( e.target ),
-			categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
+			var target = $(e.target),
+				categoryMenu = target.closest('.karma-builder-element-panel-gather-menu');
 
 
-			if ( target.closest( 'svg' ).length ){
+			if (target.closest('svg').length) {
 
-				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
+				categoryMenu.toggleClass('karma-open-element-category-dropdown')
 
 			}
 
+			$( '.karma-elements' ).isotope();
+			this.elementGatherMenuFiltering();
+		},
 
+		elementGatherMenuFiltering : function () {
+			$('.karma-builder-element-panel-gather-menu ul li').click(function () {
+
+				$('.karma-elements').isotope({filter: $(this).attr('data-filter')});
+
+			});
+
+		},
+
+		removeGatherMenuPanel: function () {
+
+			$( document ).off( "click.removeGatherMenuPanel" ).on( "click.removeGatherMenuPanel", function(){
+
+				$( ".karma-open-element-category-dropdown" ).removeClass( ".karma-open-element-category-dropdown" );
+
+			});
 		}
 
 	});

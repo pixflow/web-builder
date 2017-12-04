@@ -359,20 +359,20 @@
 				}
 
 			}
-
+	
 			ul{
 				@include karma-box( 154px, auto );
 				@include element_direction( $top:25, $right:0 );
 				color: #394959;
 				cursor: default;
 				display: none ;
-				font-family: HelveticaNeue;
 				font-size: 14px;
 				line-height: 16px;
 				list-style: none;
 				padding: 10px;
 				position: absolute;
 				text-align: left;
+				z-index: 20;
 
 
 				li{

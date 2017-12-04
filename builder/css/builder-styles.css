@@ -3243,13 +3243,13 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     color: #394959;
     cursor: default;
     display: none;
-    font-family: HelveticaNeue;
     font-size: 14px;
     line-height: 16px;
     list-style: none;
     padding: 10px;
     position: absolute;
-    text-align: left; }
+    text-align: left;
+    z-index: 20; }
     .karma-builder-element-panel-gather-menu ul li {
       border-radius: 4px;
       cursor: pointer;
