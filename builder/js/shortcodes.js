@@ -22,9 +22,9 @@
 		 */
 		karmaStopPropagation : function () {
 
-			$(document).off('click.stopPropagation').on('click.stopPropagation','.karma-stop-propagation',function(e){
+			$( document ).off( 'click.stopPropagation' ).on( 'click.stopPropagation', '.karma-stop-propagation', function ( e ) {
 				e.stopPropagation();
-			})
+			} );
 
 		},
 

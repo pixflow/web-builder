@@ -2984,10 +2984,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       align-items: flex-start;
       justify-content: flex-start;
       width: 100%;
-      height: calc( 100% - 72px);
+      height: calc( 100% - 8vh);
       flex-wrap: wrap;
       overflow: hidden;
-      padding: 0 2vw 40px 2vw; }
+      padding: 0 2vw 4.44vh 2vw; }
     .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
       border: 1px solid transparent;
       border-radius: 4px; }
@@ -3035,7 +3035,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       transform: rotate(135deg);
       -webkit-transform: rotate(135deg); }
     .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right {
-      width: 350px;
+      width: 18.2vw;
       height: 100%;
       border-left: 2px solid rgba(57, 73, 89, 0.08); }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-permium {
@@ -3264,23 +3264,22 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  padding: 26px 40px 6px 40px;
+  padding: 2.8vh 2.08vw 0.6vh 2.08vw;
   width: 100%; }
 
 .karma-builder-element-panel-gather-menu {
   cursor: pointer;
-  padding-left: 12px;
-  padding-left: 12px;
+  padding-left: 0.62vw;
   position: relative; }
   .karma-builder-element-panel-gather-menu.karma-open-element-category-dropdown ul {
     display: block; }
   .karma-builder-element-panel-gather-menu ul {
-    width: 154px;
+    width: 8.02vw;
     height: auto;
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
-    top: 25;
+    top: 25px;
     right: 0;
     bottom: auto;
     left: auto;
@@ -3290,26 +3289,30 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     font-size: 14px;
     line-height: 16px;
     list-style: none;
-    padding: 10px;
+    padding: 1.1vh 0.52vw;
     position: absolute;
     text-align: left;
     z-index: 20; }
+    .karma-builder-element-panel-gather-menu ul {
+      font-size: 12px; }
+      @media screen and (min-width: 1288px) {
+        .karma-builder-element-panel-gather-menu ul {
+          font-size: calc(12px + 2 * ((100vw - 1288px) / 78)); } }
+      @media screen and (min-width: 1366px) {
+        .karma-builder-element-panel-gather-menu ul {
+          font-size: 14px; } }
     .karma-builder-element-panel-gather-menu ul li {
       border-radius: 4px;
       cursor: pointer;
-      padding: 10px 10px; }
+      padding: 1.1vh 0.52vw; }
       .karma-builder-element-panel-gather-menu ul li:hover {
         background-color: rgba(65, 156, 248, 0.1); }
-
-.karma-builder-element-panel-gather-menu {
-  cursor: pointer;
-  padding-left: 12px; }
 
 .karma-builder-element-panel-search {
   cursor: pointer; }
 
 input.karma-builder-search-text {
-  background: url("../../builder/media/svg/search.svg") no-repeat left 9px center transparent;
+  background: url("../../builder/media/svg/search.svg") no-repeat left 0.46vw center transparent;
   border: 1px solid transparent;
   border-radius: 2px;
   box-sizing: border-box;
@@ -3318,7 +3321,7 @@ input.karma-builder-search-text {
   font-size: 12px;
   height: 40px;
   margin: 0;
-  padding-left: 26px;
+  padding-left: 1.35vw;
   position: relative;
   transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
   width: 0;
@@ -3329,10 +3332,10 @@ input.karma-builder-search-text:focus {
   border: 1px solid #F8F8F9;
   cursor: auto;
   outline: none;
-  padding-left: 35px;
+  padding-left: 1.82vw;
   transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
   transition-duration: 0.1s;
-  width: 250px;
+  width: 13.02vw;
   z-index: 3; }
 
 input.karma-builder-search-text::-webkit-search-cancel-button {

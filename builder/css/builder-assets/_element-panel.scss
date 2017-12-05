@@ -10,10 +10,10 @@
 
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
-			@include box( 100%,  calc( 100% - 72px) );
+			@include box( 100%,  calc( 100% - 8vh) );
 			flex-wrap: wrap;
 			overflow: hidden;
-			padding: 0 2vw 40px 2vw;
+			padding: 0 2vw 4.44vh 2vw;
 		}
 
 		.karma-element-single-element {
@@ -64,7 +64,7 @@
 		}
 
 		.karma-element-panel-add-element-view-right {
-			@include box(350px, 100%);
+			@include box(18.2vw, 100%);
 			border-left: 2px solid rgba(57, 73, 89, 0.08);
 
 			.element-panel-permium{
@@ -343,7 +343,7 @@
 			align-items: center;
 			display: flex;
 			justify-content: flex-end;
-			padding: 26px 40px 6px 40px;
+			padding: 2.8vh 2.08vw 0.6vh 2.08vw;
 			width: 100%;
 
 		}
@@ -352,8 +352,7 @@
 .karma-builder-element-panel-gather-menu{
 
 			cursor: pointer;
-			padding-left: 12px;
-			padding-left: 12px;
+			padding-left: 0.62vw;
 		  	position: relative;
 
 			&.karma-open-element-category-dropdown{
@@ -365,15 +364,16 @@
 			}
 	
 			ul{
-				@include karma-box( 154px, auto );
-				@include element_direction( $top:25, $right:0 );
-				color: #394959;
+				@include karma-box( 8.02vw, auto );
+				@include element_direction( $top:25px, $right:0 );
+                @include fluid-type(1288px, 1366px, 12px, 14px);
+                color: #394959;
 				cursor: default;
 				display: none ;
 				font-size: 14px;
 				line-height: 16px;
 				list-style: none;
-				padding: 10px;
+				padding: 1.1vh 0.52vw;
 				position: absolute;
 				text-align: left;
 				z-index: 20;
@@ -382,7 +382,7 @@
 				li{
 					border-radius: 4px;
 					cursor: pointer;
-					padding: 10px 10px;
+					padding: 1.1vh 0.52vw;
 
 					&:hover{
 						background-color: rgba(65,156,248,0.1);
@@ -391,17 +391,12 @@
 			}
 		}
 
-.karma-builder-element-panel-gather-menu{
-	cursor: pointer;
-	padding-left: 12px;
-}
-
 .karma-builder-element-panel-search{
 	cursor: pointer;
 }
 
 input.karma-builder-search-text{
-	background: url('../../builder/media/svg/search.svg')no-repeat left 9px center transparent;
+	background: url('../../builder/media/svg/search.svg')no-repeat left 0.46vw center transparent;
 	border: 1px solid transparent;
 	border-radius: 2px;
 	box-sizing: border-box;
@@ -410,7 +405,7 @@ input.karma-builder-search-text{
 	font-size: 12px;
 	height: 40px;
 	margin: 0;
-	padding-left: 26px;
+	padding-left: 1.35vw;
 	position:relative;
 	transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
 	width: 0;
@@ -423,10 +418,10 @@ input.karma-builder-search-text:focus {
 	border: 1px solid #F8F8F9;
 	cursor:auto;
 	outline: none;
-	padding-left: 35px;
+	padding-left: 1.82vw;
 	transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
 	transition-duration: 0.1s;
-	width: 250px;
+	width: 13.02vw;
 	z-index:3;
 }
 
