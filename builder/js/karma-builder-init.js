@@ -48,7 +48,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		initialize : function () {
-
+			this.karmaStopPropagation();
 		},
 
 		/**
@@ -380,6 +380,26 @@ var karmaBuilder = karmaBuilder || {};
 					that = this ;
 			compiled =  _.template( templateName, that.templateSettings );
 			return compiled( params );
+
+		},
+
+		/**
+		 * @summary stop Propagation on click elements with karma-stop-propagation class
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaStopPropagation : function () {
+
+			$( document ).off( 'click.stopPropagation' ).on( 'click.stopPropagation', '.karma-stop-propagation', function( e ){
+
+				e.stopPropagation();
+				if( this.classList.contains( 'karma-document-click' ) ){
+					$( document ).trigger( 'click' );
+				}
+
+			})
 
 		},
 

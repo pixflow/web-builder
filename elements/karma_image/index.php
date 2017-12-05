@@ -78,7 +78,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		?>
 		<div class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-position-<?php echo $attributes['position'] ?>'>
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
-				<a class="karma-image-link" href="<?php echo $image_extra['link']; ?>"
+				<a class="karma-image-link karma-document-click" href="<?php echo $image_extra['link']; ?>"
 				   target="<?php echo $attributes['linktarget']; ?>">
 					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes['imgurl'] ); ?>"
 						 alt="<?php echo $attributes['alt']; ?>"/>
@@ -105,7 +105,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$js_template = "<# var scaleClass = ( 'fill' == data.scale ) ? 'karma-image-fill' : 'karma-image-real'; #>"
 			. '<div class="karma-image karma-image-{{ data.element_key }} karma-position-{{ data.position }}" >'
 			. '<div class="karma-image-container {{ data.extraclass }}">'
-			. '<a class="karma-image-link" href="{{{ data.linkurl }}}" target="{{ data.linktarget }}" >'
+			. '<a class="karma-image-link karma-document-click" href="{{{ data.linkurl }}}" target="{{ data.linktarget }}" >'
 			. '<img class="<# print( scaleClass ); #>" src="{{ data.imgurl }}" alt="{{ data.alt }}" />'
 			. '</a>'
 			. '</div>'

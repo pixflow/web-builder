@@ -11,19 +11,19 @@
 
 		shortcodeParams: {},
 
-
-
 		/**
-		 * @summary stop Propagation on click elements with karma-stop-propagation class
+		 * @summary trigger document click on links which have karma-document-click class
 		 *
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
 		 */
-		karmaStopPropagation : function () {
+		karmaLinksDocumentClick : function () {
 
-			$( document ).off( 'click.stopPropagation' ).on( 'click.stopPropagation', '.karma-stop-propagation', function ( e ) {
-				e.stopPropagation();
+			this.$el.find( ".karma-document-click[href*=\"javascript:\"]" ).off( 'click.documentClick' ).on( 'click.documentClick', function(){
+
+				$( document ).trigger( 'click' );
+
 			} );
 
 		},
@@ -158,7 +158,7 @@
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
 			this.removeGizmo();
-			this.karmaStopPropagation();
+			this.karmaLinksDocumentClick();
 			this.removeMoreSubmenu();
 
 		},
@@ -444,14 +444,14 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return {integer} return value of maxwidth padding right
+		 * @return {integer} returns value of maxwidth padding right
 		 */
 		calculateMaxWidthSpacing : function ( spacingGizmo ) {
 
 			var $element = this.$el,
 				elementWidth = $element.width(),
 				elementSpacing = $element.find( spacingGizmo ).width(),
-				// -10 is for the  item's size ( minimom ) on the page
+				// -10 is for the  item's size ( minimum ) on the page
 				paddingValue = elementWidth - elementSpacing -10;
 			return paddingValue;
 
