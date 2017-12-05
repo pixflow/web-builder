@@ -2986,7 +2986,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       flex-wrap: wrap;
       max-height: calc( 100% - ( 72px + 4.44vh ) );
       overflow: hidden;
-      padding: 0 2vw 4.44vh 2vw;
+      padding: 0 1vw 4.44vh 2vw;
       width: 100%; }
     .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
       border: 1px solid transparent;
@@ -3274,7 +3274,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   .karma-builder-element-panel-gather-menu.karma-open-element-category-dropdown ul {
     display: block; }
   .karma-builder-element-panel-gather-menu ul {
-    width: 8.02vw;
+    width: 8.05vw;
     height: auto;
     background-color: #fff;
     border-radius: 3px;

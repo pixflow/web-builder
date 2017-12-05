@@ -13,7 +13,7 @@
 			flex-wrap: wrap;
 			max-height: calc( 100% - ( 72px + 4.44vh ) );
 			overflow: hidden;
-			padding: 0 2vw 4.44vh 2vw;
+			padding: 0 1vw 4.44vh 2vw;
 			width: 100%;
 		}
 
@@ -365,7 +365,7 @@
 			}
 	
 			ul{
-				@include karma-box( 8.02vw, auto );
+				@include karma-box( 8.05vw, auto );
 				@include element_direction( $top:25px, $right:0 );
                 @include fluid-type(1288px, 1366px, 12px, 14px);
                 color: #394959;
