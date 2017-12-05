@@ -632,11 +632,11 @@
 
 		elementGatherMenuFiltering : function () {
 
-			$('.karma-builder-element-panel-gather-menu ul li').click(function () {
+			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
 				panelGatherMenu.addClass( 'karma-stop-propagation' );
 
-				$('.karma-elements').isotope({filter: $(this).attr('data-filter')});
+				$( '.karma-elements' ).isotope( {filter: $( this ).attr( 'data-filter' )} );
 				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
 
 
