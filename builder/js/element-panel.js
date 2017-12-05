@@ -629,21 +629,31 @@
 			$( '.karma-elements' ).isotope();
 			this.elementGatherMenuFiltering();
 		},
-
+		
+		/**
+		 * @summary sorting elements with category filter
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		elementGatherMenuFiltering : function () {
 
-			$('.karma-builder-element-panel-gather-menu ul li').click(function () {
+			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
-				panelGatherMenu.addClass( 'karma-stop-propagation' );
+					panelGatherMenu.addClass( 'karma-stop-propagation' );
 
-				$('.karma-elements').isotope({filter: $(this).attr('data-filter')});
+				$( '.karma-elements' ).isotope( {filter: $( this ).attr( 'data-filter' )} );
 				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
-
-
 			});
 
 		},
 
+		/**
+		 * @summary Close gather menu panel
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		removeGatherMenuPanel: function () {
 
 			$( document ).off( "click.removeGatherMenuPanel" ).on( "click.removeGatherMenuPanel", function(){
