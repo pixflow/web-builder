@@ -11,7 +11,7 @@
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
 			flex-wrap: wrap;
-			max-height: calc( 100% - 72px);
+			max-height: calc( 100% - ( 72px + 4.44vh ) );
 			overflow: hidden;
 			padding: 0 2vw 4.44vh 2vw;
 			width: 100%;
