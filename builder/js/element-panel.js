@@ -6,7 +6,7 @@
 		flyScroll : '' ,
 
 		/**
-		 * Define elements event
+		 *@summary Define elements event
 		 *
 		 * @since   1.0.0
 		 */
@@ -27,7 +27,7 @@
 		},
 
 		/**
-		 * Set defaults on initialize
+		 * @summary Set defaults on initialize
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -111,7 +111,7 @@
 		},
 
 		/**
-		 * create add element panel with import template
+		 *@summary create add element panel with import template
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -126,7 +126,7 @@
 		},
 
 		/**
-		 * create Templates panel with import template
+		 *@summary create Templates panel with import template
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -139,7 +139,7 @@
 		},
 
 		/**
-		 * create Unsplash with import template
+		 *@summary create Unsplash with import template
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -153,7 +153,7 @@
 		},
 
 		/**
-		 * open add element panel
+		 *@summary open add element panel
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -173,7 +173,7 @@
 		},
 
 		/**
-		 * close add element panel
+		 *@summary close add element panel
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -206,7 +206,7 @@
 		},
 
 		/**
-		 * Add grab style for elements
+		 *@summary Add grab style for elements
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -223,7 +223,7 @@
 		},
 
 		/**
-		 * Remove grab style for elements
+		 * @summary Remove grab style for elements
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -240,7 +240,7 @@
 		},
 
 		/**
-		 * Scroll the browser down or up on dragging element
+		 * @summary Scroll the browser down or up on dragging element
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -255,7 +255,7 @@
 		},
 
 		/**
-		 * Scroll the browser down  dragging element
+		 * @summary Scroll the browser down  dragging element
 		 *
 		 * @param   {object}    element        Helper element
 		 * @param   {number}    toolbarHeight  Height of builder toolbar
@@ -283,7 +283,7 @@
 		},
 
 		/**
-		 * Scroll the browser up on dragging element
+		 * @summary Scroll the browser up on dragging element
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -617,6 +617,12 @@
 
 		},
 
+		/**
+		 * @summary open category dropdown on click hamburger menu
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		openCategoryMenu: function (e) {
 
 			/** @todo: change stopPropagation */

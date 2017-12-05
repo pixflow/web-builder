@@ -10,10 +10,11 @@
 
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
-			@include box( 100%,  calc( 100% - 8vh) );
 			flex-wrap: wrap;
+			max-height: calc( 100% - 72px);
 			overflow: hidden;
 			padding: 0 2vw 4.44vh 2vw;
+			width: 100%;
 		}
 
 		.karma-element-single-element {
