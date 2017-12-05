@@ -53,6 +53,7 @@ class Karma_Builder_Loader {
 		'section',
 		'column',
 		'image',
+		'text',
 	);
 
 	/**
