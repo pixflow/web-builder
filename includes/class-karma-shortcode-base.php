@@ -121,6 +121,7 @@ class Karma_Shortcode_Base {
 		//Apply hooks when builder is going to load
 		$builder = Karma_Factory_Pattern::$builder;
 		add_action( 'karma_before_shortcode_apply_' . static::$element_name , array( $this , 'load_assets' ) );
+		add_filter( 'karma/elements/load/dependencies/' . static::$element_name , array( $this, 'get_style_script_dependencies' ) );
 		if( $builder::is_in_builder() ){
 			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.js', array( KARMA_BUILDER_NAME . '-shortcodes' ) );
 			add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
@@ -211,6 +212,7 @@ class Karma_Shortcode_Base {
 		);
 
 		$block = Karma_Factory_Pattern::$stylesheet->create_css_block( $elements_style_attributes );
+		Cache_Manager::$css_blocks .= $block;
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) :
 			?>
@@ -234,13 +236,15 @@ class Karma_Shortcode_Base {
 	protected function render_scripts(){
 
 		$script_string = static::render_script();
-
+		Cache_Manager::$js_blocks .= $script_string;
+		$builder = Karma_Factory_Pattern::$builder;
+		if( $builder::is_in_builder() ) :
 		?>
 		<script id="script-<?php echo static::$element_name . '_' . $this->element_id; ?> ">
 			<?php echo $script_string; ?>
 		</script>
 		<?php
-
+		endif;
 	}
 
 

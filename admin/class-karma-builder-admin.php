@@ -96,7 +96,7 @@ class Karma_Builder_Admin {
 		} else {
 			echo '{ "result" : "false", "msg" : "error" }';
 		}
-		Cache_Manager::remove_cache_file( $id, 'css' );
+		Cache_Manager::remove_cache_file( $id );
 		wp_die();
 
 	}
@@ -118,7 +118,7 @@ class Karma_Builder_Admin {
 		} else {
 			echo '{ "result" : "false", "msg" : "error" }';
 		}
-		Cache_Manager::remove_cache_file( $id, 'css' );
+		Cache_Manager::remove_cache_file( $id );
 		wp_die();
 
 	}

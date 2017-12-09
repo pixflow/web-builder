@@ -195,6 +195,27 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
+		$block = '' ;
+		return $block;
+
+	}
+
+	/**
+	 * List of dependencies
+	 *
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return  array
+	 */
+	public function get_style_script_dependencies(){
+
+		$dependencies = array(
+			'css' => array() ,
+			'js' => array()
+		);
+
+		return $dependencies ;
 
 	}
 

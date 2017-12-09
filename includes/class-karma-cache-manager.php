@@ -36,6 +36,29 @@ class Cache_Manager extends File_System{
 	 */
 	const KARMA_STYLE_PREFIX = 'karma-style-';
 
+	/**
+	 * Prefix for script file
+	 *
+	 * @var String
+	 */
+	const KARMA_SCRIPT_PREFIX = 'karma-script-';
+
+	/**
+	 * Global style string
+	 *
+	 * @access public
+	 * @var String
+	 */
+	public static $css_blocks = '';
+
+	/**
+	 * Global sript string
+	 *
+	 * @access public
+	 * @var String
+	 */
+	public static $js_blocks = '';
+
 
 	/**
 	 * Page or post id
@@ -77,16 +100,17 @@ class Cache_Manager extends File_System{
 	/**
 	 * Check the cache file is exist or not
 	 *
-	 * @param string $ext File format .
 	 * @since 1.0.0
 	 * @return bool
 	 */
-	public function is_cache_file_exists( $ext ){
+	public function is_cache_file_exists(){
 
-		$path = self::get_cache_file_dir( $this->post_ID, $ext );
-		if( parent::file_exists( $path ) ){
-			return true;
+		$css_path = self::get_cache_file_dir( $this->post_ID, 'css' );
+		$js_path = self::get_cache_file_dir( $this->post_ID, 'js' );
+		if( parent::file_exists( $css_path ) &&  parent::file_exists( $js_path ) ){
+				return true;
 		}
+
 		return false;
 
 	}
@@ -112,6 +136,7 @@ class Cache_Manager extends File_System{
 
 		$builder = Karma_Factory_Pattern::$builder;
 		wp_enqueue_style( $builder->get_plugin_name() . "-{$this->post_ID}", self::get_cache_file_dir( $this->post_ID, 'css', true ), array(), $builder->get_version(), 'all' );
+		wp_enqueue_script( $builder->get_plugin_name() . "-{$this->post_ID}", self::get_cache_file_dir( $this->post_ID, 'js', true ), array(), $builder->get_version() );
 
 	}
 
@@ -137,9 +162,10 @@ class Cache_Manager extends File_System{
 	 */
 	private function create_cache_file(){
 
-		$css_content = Karma_Factory_Pattern::$stylesheet->css_blocks;
-		$file_name = self::get_cache_file_dir( $this->post_ID, 'css' );
-		if( parent::create_file( $file_name, $css_content ) ){
+		$css_file_name = self::get_cache_file_dir( $this->post_ID, 'css' );
+		$js_file_name = self::get_cache_file_dir( $this->post_ID, 'js' );
+		if( parent::create_file( $css_file_name, $this->minify_css( self::$css_blocks ) )
+			&&  parent::create_file( $js_file_name, $this->minify_js( self::$js_blocks ) ) ){
 			return true;
 		}
 		return false;
@@ -175,7 +201,7 @@ class Cache_Manager extends File_System{
 	public static function get_cache_file_dir( $page_id, $ext, $url = false ){
 
 		$target = ( true === $url ) ? CACHE_DIRECTORY_URL : CACHE_DIRECTORY_PATH;
-		$target .= '/' . self::KARMA_STYLE_PREFIX . $page_id . '.' . $ext;
+		$target .= '/' . ( ( 'css' == $ext ) ? self::KARMA_STYLE_PREFIX : self::KARMA_SCRIPT_PREFIX ) . $page_id . '.' . $ext;
 		return $target;
 
 	}
@@ -184,18 +210,167 @@ class Cache_Manager extends File_System{
 	 * Remove specific cache file
 	 *
 	 * @param int    $page_id  Page id
-	 * @param string $ext      File format
 	 *
 	 * @since 1.0.0
 	 * @return bool
 	 */
-	public static function remove_cache_file( $page_id, $ext ){
+	public static function remove_cache_file( $page_id ){
 
 		parent::get_wp_file_system();
-		if( parent::delete_file( self::get_cache_file_dir( $page_id, $ext ) ) ){
+		if( parent::delete_file( self::get_cache_file_dir( $page_id, 'js' ) ) && parent::delete_file( self::get_cache_file_dir( $page_id, 'css' ) ) ){
 			return true;
 		}
 		return false;
 
 	}
+
+	/**
+	 * Load dependency files
+	 *
+	 * @since 1.0.0
+	 */
+	public function load_dependecy_files(){
+
+		$elements_dependency = array(
+			'css' => array(),
+			'js'  => array()
+		);
+		$dependency = array();
+		$builder = Karma_Factory_Pattern::$builder_loader;
+		foreach ( $builder::$element_filename  as $element ){
+			$dependency = apply_filters( 'karma/elements/load/dependencies/karma_' .$element, $dependency );
+			if( ! empty( $dependency['css'] ) ) {
+				foreach ( $dependency['css'] as $css_url ){
+					$elements_dependency['css'][] = $css_url ;
+				}
+			}
+
+			if( ! empty( $dependency['js'] ) ) {
+				foreach ( $dependency['js'] as $js_url ){
+					$elements_dependency['js'][] = $js_url;
+				}
+			}
+
+		}
+
+		$this->enqueue_style_files(  $elements_dependency['css'] );
+		$this->enqueue_script_files( $elements_dependency['js'] );
+
+	}
+
+	/**
+	 * Load style dependency files
+	 *
+	 * @param array $file_list
+	 *
+	 * @since 1.0.0
+	 */
+	private function enqueue_style_files( $file_list ){
+
+		$file_list = array_unique( $file_list );
+		$builder = Karma_Factory_Pattern::$builder;
+		foreach ( $file_list as $file ){
+			wp_enqueue_style( 'karma-styles-dependency-' . uniqid() , $file, array(), $builder->get_version(), 'all' );
+		}
+
+	}
+
+	/**
+	 * Load script dependency files
+	 *
+	 * @param array $file_list
+	 *
+	 * @since 1.0.0
+	 */
+	private function enqueue_script_files( $file_list ){
+
+		$file_list = array_unique( $file_list );
+		$builder = Karma_Factory_Pattern::$builder;
+		foreach ( $file_list as $file ){
+			wp_enqueue_script( 'karma-script-dependency-' . uniqid() , $file, array(), $builder->get_version() );
+		}
+
+	}
+
+
+	/**
+	 * Minify Css
+	 *
+	 * @param string $content
+	 *
+	 * @return mixed
+	 */
+	private function minify_css( $content ) {
+
+		return preg_replace(
+			array(
+				// Remove comments
+				'#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')|\/\*(?!\!)(?>.*?\*\/)#s',
+				// Remove unused white-spaces
+				'#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\'|\/\*(?>.*?\*\/))|\s*+;\s*+(})\s*+|\s*+([*$~^|]?+=|[{};,>~+]|\s*+-(?![0-9\.])|!important\b)\s*+|([[(:])\s++|\s++([])])|\s++(:)\s*+(?!(?>[^{}"\']++|"(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')*+{)|^\s++|\s++\z|(\s)\s+#si',
+				// Replace `0(cm|em|ex|in|mm|pc|pt|px|vh|vw|%)` with `0`
+				'#(?<=[:\s])(0)(cm|em|ex|in|mm|pc|pt|px|vh|vw|%)#si',
+				// Replace `:0 0 0 0` with `:0`
+				'#:(0\s+0|0\s+0\s+0\s+0)(?=[;\}]|\!important)#i',
+				// Replace `background-position:0` with `background-position:0 0`
+				'#(background-position):0(?=[;\}])#si',
+				// Replace `0.6` with `.6`, but only when preceded by `:`, `-`, `,` or a white-space
+				'#(?<=[:\-,\s])0+\.(\d+)#s',
+				// Minify string value
+				'#(\/\*(?>.*?\*\/))|(?<!content\:)([\'"])([a-z_][a-z0-9\-_]*?)\2(?=[\s\{\}\];,])#si',
+				'#(\/\*(?>.*?\*\/))|(\burl\()([\'"])([^\s]+?)\3(\))#si',
+				// Minify HEX color code
+				'#(?<=[:\-,\s]\#)([a-f0-6]+)\1([a-f0-6]+)\2([a-f0-6]+)\3#i',
+				// Remove empty selectors
+				'#(\/\*(?>.*?\*\/))|(^|[\{\}])(?:[^\s\{\}]+)\{\}#s'
+			), array(
+			'$1',
+			'$1$2$3$4$5$6$7',
+			'$1',
+			':0',
+			'$1:0 0',
+			'.$1',
+			'$1$3',
+			'$1$2$4$5',
+			'$1$2$3',
+			'$1$2'
+		), trim( $content ) );
+	}
+
+
+	/**
+	 * Minify Js
+	 *
+	 * @param string $content
+	 *
+	 * @return string
+	 */
+	private function minify_js( $content ) {
+
+		// uniform line endings, make them all line feed
+		$content = str_replace( array( "\r\n", "\r" ), "\n", $content );
+
+		// collapse all non-line feed whitespace into a single space
+		$content = preg_replace( '/[^\S\n]+/', ' ', $content );
+
+		// strip leading & trailing whitespace
+		$content = str_replace( array( " \n", "\n " ), "\n", $content );
+
+		// collapse consecutive line feeds into just 1
+		$content = preg_replace( '/\n+/', "\n", $content );
+
+		// single-line comments
+		$content = preg_replace( '/\/\/.*$/m', '', $content );
+
+		// multi-line comments
+		$content = preg_replace( '/\/\*.*?\*\//s', '', $content );
+
+		// Remove newlines
+		$content = trim( preg_replace( '/\s+/', ' ', $content ) );
+
+		return $content;
+
+	}
+
+
 }

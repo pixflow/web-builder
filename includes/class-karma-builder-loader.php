@@ -180,18 +180,20 @@ class Karma_Builder_Loader {
 	public function load_cache_file(){
 
 		$builder = Karma_Factory_Pattern::$builder;
+		$cache = new Cache_Manager();
 
 		if( $builder::$edit_mode ){
 			add_filter( 'do_shortcode_tag', array( $this, 'render_assets' ), 9, 3 );
+			$cache->load_dependecy_files();
 			return ;
 		}
 
-		$cache = new Cache_Manager();
-		if ( ! $cache->is_cache_file_exists( 'css' ) ) {
+		if ( ! $cache->is_cache_file_exists() ) {
 			add_filter( 'do_shortcode_tag', array( $this, 'render_assets' ), 9, 3 );
 			add_filter( 'wp_footer',  array( $cache, 'set_up_cache' ) );
 		}
 
+		$cache->load_dependecy_files();
 		$cache->enqueue_file();
 
 	}

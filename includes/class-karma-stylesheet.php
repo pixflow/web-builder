@@ -27,14 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Stylesheet {
 
-	/**
-	 * Global style string
-	 *
-	 * @access public
-	 * @var String
-	 */
-	public $css_blocks = '';
-
 
 	/**
 	 * Create CSS blocks .
@@ -54,7 +46,6 @@ class Stylesheet {
 		$selector = $this->create_selector( $element_attributes['selector'], $prefix, $postfix );
 		$property= $this->parse_property( $element_attributes['css']['property'] );
 		$css_block = $selector . '{' . $property . '}';
-		$this->css_blocks .= $css_block;
 		return $css_block;
 
 	}

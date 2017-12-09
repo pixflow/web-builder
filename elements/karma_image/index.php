@@ -363,20 +363,36 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
-		//wp_enqueue_script( 'karma-lightbox' ,  KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js', array(), true ); ?>
-		<script type="text/javascript"
-				src="<?php echo KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'; ?>"></script>
-
-		<?php if ( 'popup' == $this->element_attributes['action'] ) {
-			?>
-			<script type="text/javascript">
-				document.addEventListener( 'DOMContentLoaded', function () {
-					new karmaImageLightbox( '.karma-image-<?php echo esc_attr( $this->element_attributes['element_key'] ); ?> a.karma-image-link' );
-				} );
-
-			</script>
-			<?php
+		$block = '' ;
+		if ( 'popup' == $this->element_attributes['action'] ) {
+			$block .= 'document.addEventListener( \'DOMContentLoaded\', function () {
+					new karmaImageLightbox( \'.karma-image-' . esc_attr( $this->element_attributes['element_key'] ) . ' a.karma-image-link\' );
+				} );';
 		}
+
+		return $block;
+
+	}
+
+	/**
+	 * List of dependencies
+	 *
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return  array
+	 */
+	public function get_style_script_dependencies(){
+
+		$dependencies = array(
+			'css' => array() ,
+			'js' => array(
+				KARMA_BUILDER_URL . 'builder/js/karma-lightbox.min.js'
+			)
+		);
+
+		return $dependencies ;
+
 	}
 
 	/**
