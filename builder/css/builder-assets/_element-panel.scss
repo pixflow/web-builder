@@ -146,12 +146,12 @@
 						ul{
 							li{
 
+								display: block;
+
+								position: relative;
 								&[ data-filter = '.mysection' ] {
 									display: none;
 								}
-
-								display: block;
-								position: relative;
 
 								label{
 
@@ -403,13 +403,13 @@
 			width: 100%;
 
 			.karma-search-close-icon{
+				background-color: inherit;
 				opacity: 0;
 				padding: 0;
-				background-color: inherit;
 				position: absolute;
 				right: 80px;
-				z-index: 0;
 				transition-duration: .2s;
+				z-index: 0;
 
 
 				&.show-search-close-icon{
