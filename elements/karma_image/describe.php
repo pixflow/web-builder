@@ -26,7 +26,7 @@ class Karma_Image_Describe extends Karma_Image {
 	 * @since 1.0.0
 	 * @access public
 	 *
-	 * @return array Element controls
+	 * @return array Element panels
 	 */
 	public function map() {
 

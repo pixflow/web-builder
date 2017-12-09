@@ -94,56 +94,6 @@ class Karma_Text extends Karma_Shortcode_Base {
 	}
 
 	/**
-	 * Register text element controls.
-	 * Adds different input fields to allow the user to change and customize the element settings.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 *
-	 * @return array Element controls
-	 */
-	public function map() {
-
-		$map = array(
-			'setting-panel' => array(
-				"title"  => esc_attr__( "Text Setting", 'karma' ),
-				"height" => "570",
-				"params" => array(
-
-				),
-			),
-		);
-
-
-		return $map;
-
-	}
-
-	/**
-	 * Set the gizmo controller
-	 *
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return    array    Gizmo controller of all elements
-	 */
-	public function gimzo_controllers() {
-
-		$controllers = array(
-			array(
-				"type"      => "outerGizmo",
-				"className" => "text-gizmo-group",
-				"params"    => array(
-
-				)
-			),
-		);
-
-		return $controllers;
-
-	}
-
-	/**
 	 * Load CSS
 	 *
 	 *
@@ -192,32 +142,6 @@ class Karma_Text extends Karma_Shortcode_Base {
 		);
 
 		return $dependencies ;
-
-	}
-
-
-	/**
-	 * Get element info
-	 *
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return  array   The element info
-	 */
-	public function element_info() {
-
-		$element_info = array(
-			'elementName' => self::$element_name,
-			'icon'        => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg' ),
-			'category'    => array(
-				'basic',
-				'media',
-				str_replace( 'karma_', '', self::$element_name ),
-			),
-			'showInList'  => true,
-		);
-
-		return $element_info;
 
 	}
 
