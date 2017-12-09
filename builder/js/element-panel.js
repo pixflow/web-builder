@@ -14,13 +14,13 @@
 
 			"click .element-panel-add-element-button"		                           	: "openAddElementView",
 			"click" 										                           	: "stopClickInPanel",
-			"click .karma-premium-deactivate" 											: "checkingPermium",
 			"karma/after/finish_element_panel"                                         	: "initDraggable" ,
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
 			"click li.karma-addcontent"													: "elementPanelTab",
 			"input .karma-builder-search-text"                                          : "searchInElements",
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
+			"click .karma-element-panel-price-filter ul li "							: "elementPanelPriceFilter",
 			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
 			'karma/after/dropElement'                                                   : "ReOrderElements"
 
@@ -94,18 +94,34 @@
 		 */
 		elementPanelTab: function (e) {
 
-			var target = $( e.target );
-			if ( target.hasClass( 'karma-addcontent' ) ) {
+			var target =  e.target ;
+			if ( target.classList.contains( 'karma-addcontent' ) ) {
 				var orginalSelector = target;
 			} else {
 				var orginalSelector = target.closest( '.karma-addcontent' );
 			}
+
+			this.setActiveTab( orginalSelector );
+
+		},
+
+		/**
+		 * @summary get the clicked element and show its related tab
+		 *
+		 * @param object orginalSelector active category filter
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		setActiveTab : function( orginalSelector ){
+
 			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
-			var tabData = orginalSelector.attr( 'data-tab' ),
-					tabContent = document.querySelector(  '.' + tabData  );
+			var tabData = orginalSelector.getAttribute( 'data-tab' ),
+				tabContent = document.querySelector(  '.' + tabData  );
 			if( null != tabContent){
 				tabContent.classList.add( "karma-active-tab" );
 			}
+
+			document.querySelector( '.karma-element-panel-add-element-view' ).setAttribute( 'data-active-tab', tabData );
 
 		},
 
@@ -166,6 +182,7 @@
 				}else
 					addElement.classList.add( "element-panel-show" );
 			}
+			this.callIsotopeOnElements();
 			this.scrollElementPanel();
 
 		},
@@ -470,9 +487,13 @@
 		 */
 		checkingPermium : function () {
 
-			var permiumTemplate = document.querySelector( '.element-panel-permium' ) ;
-			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
-			permiumTemplate.classList.add("karma-active-tab" );
+			if( $( '.karma-active-tab .karma-isotope' ).length
+				&&  !$( '.karma-active-tab .karma-isotope .premium' ).length
+			){
+				var permiumTemplate = document.querySelector( '.element-panel-permium' ) ;
+				document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
+				permiumTemplate.classList.add("karma-active-tab" );
+			}
 
 		},
 
@@ -618,7 +639,38 @@
 				$( '.karma-addcontent' ).removeClass( 'karma-addcontent-active' );
 				karmaAddcontentClass.addClass( 'karma-addcontent-active' );
 			}
+			this.setPriceFilterOnAll();
 
+		},
+
+		/**
+		 * @summary after click in each category set the price filter on all items
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		setPriceFilterOnAll : function () {
+
+			this.el.querySelector( '.karma-element-panel-price-filter ul .active' ).classList.remove( 'active' );
+			this.el.querySelector( '.karma-element-panel-price-filter ul li[ data-filter = "*" ]' ).classList.add( 'active' );
+			this.callIsotopeFilter( '*' );
+
+		},
+
+		/**
+		 * @summary initialize isotope on add element panel
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		callIsotopeOnElements: function () {
+
+			 $( '.karma-elements' ).isotope({
+
+				itemSelector: '.karma-element-single-element',
+				layoutMode: 'fitRows'
+
+			});
 		},
 
 		/**
@@ -636,9 +688,7 @@
 			if ( target.closest('svg').length ) {
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
-			$( '.karma-elements' ).isotope();
 			this.elementGatherMenuFiltering();
-			this.elementPanelPriceFilter();
 		},
 
 		/**
@@ -667,15 +717,35 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		elementPanelPriceFilter:function () {
+		elementPanelPriceFilter:function ( e ) {
 
-			$( '.karma-element-panel-price-filter ul li' ).click( function () {
+			var target = ( e.target.tagName == "li" ) ? e.target : e.target.closest( 'li' ) ;
 
-				var panelPriceFilter = $( '.karma-element-panel-price-filter' );
-				panelPriceFilter.addClass( 'karma-stop-propagation' );
-				$( '.karma-elements' ).isotope( { filter: $( this ).attr( 'data-filter' ) } );
+			if ( target.classList.contains( 'active' ) ){
+				return;
+			}
+			this.el.querySelector( '.active' ).classList.remove( 'active' );
+			target.classList.add( 'active' );
+			if( '.premium' == target.getAttribute( 'data-filter' ) ){
+				this.checkingPermium();
+			}else {
+				this.setActiveTab( this.el.querySelector( '.karma-addcontent-active' ) );
+			}
+			this.callIsotopeFilter( target.getAttribute( 'data-filter' ) );
 
-			});
+		},
+
+		/**
+		 * @summary call isotope filter
+		 *
+		 * @param 	string dataFilter filtered item
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		callIsotopeFilter : function( dataFilter ){
+
+			$( '.karma-active-tab .karma-isotope' ).isotope( { filter : dataFilter } );
+
 		},
 
 		/**
@@ -687,10 +757,11 @@
 		removeGatherMenuPanel: function () {
 
 			$( document ).off( "click.removeGatherMenuPanel" ).on( "click.removeGatherMenuPanel", function(){
-				
+
 				$( ".karma-open-element-category-dropdown" ).removeClass( ".karma-open-element-category-dropdown" );
 
 			});
+
 		}
 
 	});

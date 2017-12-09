@@ -142,55 +142,69 @@
 					.karma-element-panel-price-filter {
 						padding: 2.33vh 0.56vw 0 1.56vw;
 
-						ul li {
-							display: block;
-							position: relative;
-						}
+						ul{
+							li{
 
-						ul li input[type=radio] {
-							position: absolute;
-							visibility: hidden;
-						}
+								&[ data-filter = '.mysection' ] {
+									display: none;
+								}
 
-						ul li label {
-							@include fluid-type(1288px, 1366px, 11px, 12px);
-							color: #445363;
-							cursor: pointer;
-							display: block;
-							font-size: 12px;
-							line-height: 1.7;
-							margin: 1.77vh auto;
-							padding-left: 1.61vw;
-							position: relative;
-							z-index: 10;
-						}
-						
-						ul li .check {
-							@include box(13px, 13px);
-							@include element_direction($top: 4px);
-							border: 1px solid rgba(57, 73, 89, 0.5);
-							border-radius: 100%;
-							display: block;
-							position: absolute;
-							transition: border .25s linear;
-							-webkit-transition: border .25s linear;
-						}
+								display: block;
+								position: relative;
 
-						ul li .check::before {
-							@include box(5px, 5px);
-							@include element_direction($top: 3px, $right: auto, $bottom: auto, $left: 3px);
-							border-radius: 100%;
-							content: '';
-							display: block;
-							position: absolute;
-							transition: background 0.25s linear;
-							-webkit-transition: background 0.25s linear;
-						}
+								label{
 
+									@include fluid-type(1288px, 1366px, 11px, 12px);
+									color: #445363;
+									cursor: pointer;
+									display: block;
+									font-size: 12px;
+									line-height: 1.7;
+									margin: 1.77vh auto;
+									padding-left: 1.61vw;
+									position: relative;
+									z-index: 10;
 
+								}
 
-						input[type=radio]:checked ~ .check::before {
-							background: $builder-accent-color;
+								.check{
+
+									@include box(13px, 13px);
+									@include element_direction($top: 4px);
+									border: 1px solid rgba(57, 73, 89, 0.5);
+									border-radius: 100%;
+									display: block;
+									position: absolute;
+									transition: border .25s linear;
+									-webkit-transition: border .25s linear;
+
+									&:before{
+
+										@include box(5px, 5px);
+										@include element_direction($top: 3px, $right: auto, $bottom: auto, $left: 3px);
+										border-radius: 100%;
+										content: '';
+										display: block;
+										position: absolute;
+										transition: background 0.25s linear;
+										-webkit-transition: background 0.25s linear;
+
+									}
+
+								}
+
+								&.active{
+
+									.check:before{
+
+										background: $builder-accent-color;
+
+									}
+
+								}
+
+							}
+
 						}
 
 					}
@@ -298,6 +312,45 @@
 
 			}
 		}
+
+		&[ data-active-tab = 'element-panel-section' ]{
+			.karma-element-panel-add-element-view-left{
+				.karma-element-panel-add-element-view-filtering{
+					.karma-element-panel-price-filter-container{
+						.karma-element-panel-price-filter{
+							ul {
+								li[ data-filter = '.mysection' ] {
+									display: block;
+								}
+							}
+						}
+					}
+
+				}
+			}
+
+		}
+		&[ data-active-tab = 'element-panel-image' ]{
+			.karma-element-panel-add-element-view-left{
+				.karma-element-panel-add-element-view-filtering{
+					.karma-element-panel-price-filter-container{
+						.karma-element-panel-price-filter{
+							ul {
+								li{
+									display: none;
+								}
+								li[ data-filter = '*' ]{
+									display: block;
+								}
+							}
+						}
+					}
+
+				}
+			}
+
+		}
+
 	}
 
 	.element-panel-show {
