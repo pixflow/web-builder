@@ -358,9 +358,9 @@ class Tests_Core extends WP_UnitTestCase {
 
 	public function test_element_map(){
 
-		add_filter( 'karma_elements_map', array( $this, 'map_elements' ) );
+		add_filter( 'karma/elements/all/map', array( $this, 'map_elements' ) );
 		$elements_map = array();
-		$elements_map = apply_filters( 'karma_elements_map', $elements_map );
+		$elements_map = apply_filters( 'karma/elements/all/map', $elements_map );
 		$expect = array(
 			'karma_row'		=> array(
 				"name"		=> "Row",

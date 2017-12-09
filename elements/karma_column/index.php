@@ -117,8 +117,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 				)
 			)
 		);
-		parent::$elements_map[ self::$element_name ] = $map;
-		return parent::$elements_map;
+
+		return $map;
 
 	}
 
@@ -157,8 +157,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 			),
 		);
 
-		parent::$elements_gizmo[ self::$element_name ] = $controllers;
-		return parent::$elements_gizmo;
+		return $controllers;
 
 	}
 
@@ -227,7 +226,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 * @access  public
 	 * @return  array   The element info
 	 */
-	public function get_element_info(){
+	public function element_info(){
 
 		$element_info = array(
 			'elementName' => self::$element_name ,
@@ -239,8 +238,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 			'showInList'   => false ,
 		);
 
-		parent::$elements_info[ self::$element_name ] = $element_info;
-		return parent::$elements_info;
+		return $element_info;
 
 	}
 

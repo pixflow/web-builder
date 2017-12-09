@@ -242,9 +242,19 @@ class Karma_Builder_Loader {
 
 		self::$element_filename = apply_filters( 'karma_elements', self::$element_filename );
 		foreach ( self::$element_filename as $element ){
+
 			require_once KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/index.php';
 			$class_name  = 'Karma_' . ucfirst( $element ) ;
+
+			if( file_exists( KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php' ) ) {
+
+				require_once KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php';
+				$class_name  .= '_Map' ;
+
+			}
+
 			$class_name::get_instance() ;
+
 		}
 
 	}
@@ -369,7 +379,7 @@ class Karma_Builder_Loader {
 			'attributes'		=> $attr,
 			'output'			=> $output,
 		);
-		$classes = apply_filters( 'karma_builder/elements/' . $tag . '/classes', array(), $attr );
+		$classes = apply_filters( 'karma/elements/' . $tag . '/classes', array(), $attr );
 		$classes = implode( ' ',$classes );
 		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" >"
 			. $output

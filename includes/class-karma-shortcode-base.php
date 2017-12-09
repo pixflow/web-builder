@@ -54,35 +54,7 @@ class Karma_Shortcode_Base {
      */
     protected $element_id;
 
-
 	/**
-	 * It is an array that contains elements map
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 * @var      array    $elements_map    elements map.
-	 */
-    public static $elements_map = array();
-
-	/**
-	 * It s contains the some information like name and icon of all element
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 * @var      array    $elements_info    Elements info.
-	 */
-	public static $elements_info = array();
-
-	/**
-	 * It is an array that contains elements gizmo
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 * @var      array    $elements_gizmo    Elements gizmo.
-	 */
-	public static $elements_gizmo = array();
-
-    /**
 	 * The instance of all elements class
 	 *
 	 * @since    1.0.0
@@ -125,14 +97,62 @@ class Karma_Shortcode_Base {
 		if( $builder::is_in_builder() ){
 			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.js', array( KARMA_BUILDER_NAME . '-shortcodes' ) );
 			add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
-			add_filter( 'karma_elements_map', array( $this, 'map' ) );
-			add_filter( 'karma/elements/gizmo', array( $this, 'gimzo_controllers' ) );
-			add_filter( 'karma/elements/element_info', array( $this, 'get_element_info' ) );
+			add_filter( 'karma/elements/all/map', array( $this, 'map_injection' ) );
+			add_filter( 'karma/elements/all/gizmo', array( $this, 'gimzo_controllers_injection' ) );
+			add_filter( 'karma/elements/all/element_info', array( $this, 'element_info_injection' ) );
 			if( method_exists( $this, 'wrapper_classes' ) ) {
-				add_filter( 'karma_builder/elements/' . static::$element_name . '/classes', array( $this, 'wrapper_classes' ), 10, 2 );
+				add_filter( 'karma/elements/' . static::$element_name . '/classes', array( $this, 'wrapper_classes' ), 10, 2 );
 			}
 
 		}
+
+	}
+
+	/**
+	 * Add element map to the builder maps array
+	 * @since 1.0.0
+	 * @access public
+	 * @param $maps
+	 *
+	 * @return array
+	 */
+	public function map_injection( $maps ){
+
+		$map = $this->map();
+		$maps[ static::$element_name ] = $map;
+		return $maps;
+
+	}
+
+	/**
+	 * Add element gizmo to the builder gizmos array
+	 * @since 1.0.0
+	 * @access public
+	 * @param $controllers
+	 *
+	 * @return array
+	 */
+	public function gimzo_controllers_injection( $controllers ){
+
+		$controller = $this->gimzo_controllers();
+		$controllers[ static::$element_name ] = $controller;
+		return $controllers;
+
+	}
+
+	/**
+	 * Add element info to the builder element info array
+	 * @since 1.0.0
+	 * @access public
+	 * @param $element_info
+	 *
+	 * @return array
+	 */
+	public function element_info_injection( $element_info ){
+
+		$info = $this->element_info();
+		$element_info[ static::$element_name ] = $info;
+		return $element_info;
 
 	}
 

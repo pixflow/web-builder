@@ -594,7 +594,7 @@ class Karma_Builder_Core{
 	public function element_map() {
 
 		$elements_map = array();
-		$elements_map = apply_filters( 'karma_elements_map', $elements_map );
+		$elements_map = apply_filters( 'karma/elements/all/map', $elements_map );
 		return $elements_map;
 
 	}
@@ -608,7 +608,7 @@ class Karma_Builder_Core{
 	public function element_gimzo() {
 
 		$elements_gizmo = array();
-		$elements_gizmo = apply_filters( 'karma/elements/gizmo', $elements_gizmo );
+		$elements_gizmo = apply_filters( 'karma/elements/all/gizmo', $elements_gizmo );
 		return $elements_gizmo;
 
 	}
@@ -622,7 +622,7 @@ class Karma_Builder_Core{
 	public function element_info() {
 
 		$elements_info = array();
-		$elements_info = apply_filters( 'karma/elements/element_info', $elements_info );
+		$elements_info = apply_filters( 'karma/elements/all/element_info', $elements_info );
 		return $elements_info;
 
 	}

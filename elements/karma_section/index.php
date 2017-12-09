@@ -193,39 +193,34 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'new-panel'		=> array(
 				'name'		=> __( 'new panel', 'karma' ),
 				'params'	=> array(
+					array(
+							"name"	=> "position",
+							"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
+							"label"	=> esc_attr__( "position", 'karma' ),
+							'values'	=> 'center-center',
+							'separator' => "container",
 
-						array(
-								"name"	=> "position",
-								"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
-								"label"	=> esc_attr__( "position", 'karma' ),
-								'values'	=> 'center-center',
-								'separator' => "container",
 
+					),
+					array(
+							"name"	=> "checking",
+							"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
+							"label"	=> __( "checking", 'karma' ),
+					),
+					array(
+							"name"			=> "title",
+							"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
+							"label"			=> esc_attr__( "Back", 'karma' ),
+							'text'			=> 'back',
+							"action"		=> "close",
+							"shape"			=>"yes"
 
-						),
-
-						array(
-								"name"	=> "checking",
-								"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
-								"label"	=> __( "checking", 'karma' ),
-						),
-						array(
-								"name"			=> "title",
-								"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-								"label"			=> esc_attr__( "Back", 'karma' ),
-								'text'			=> 'back',
-								"action"		=> "close",
-								"shape"			=>"yes"
-
-						),
-
+					),
 				)
-		)
+			)
 		);
 
-
-		parent::$elements_map[ self::$element_name ] = $map;
-		return parent::$elements_map;
+		return $map;
 
 	}
 
@@ -279,8 +274,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			),
 		);
 
-		parent::$elements_gizmo[ self::$element_name ] = $controllers;
-		return parent::$elements_gizmo;
+		return $controllers;
 
 	}
 
@@ -346,7 +340,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 * @access  public
 	 * @return  array   The element info
 	 */
-	public function get_element_info(){
+	public function element_info(){
 
 		$element_info = array(
 			'elementName' => self::$element_name ,
@@ -358,8 +352,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'showInList'   => false ,
 		);
 
-		parent::$elements_info[ self::$element_name ] = $element_info;
-		return parent::$elements_info;
+		return $element_info;
 
 	}
 }
