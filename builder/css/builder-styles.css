@@ -3321,8 +3321,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       font-size: 11px; }
       @media screen and (min-width: 1288px) {
         .karma-builder-element-panel-gather-menu ul {
-          font-size: calc(11px + 3 * ((100vw - 1288px) / 152)); } }
-      @media screen and (min-width: 1440px) {
+          font-size: calc(11px + 3 * ((100vw - 1288px) / 212)); } }
+      @media screen and (min-width: 1500px) {
         .karma-builder-element-panel-gather-menu ul {
           font-size: 14px; } }
     .karma-builder-element-panel-gather-menu ul li {
