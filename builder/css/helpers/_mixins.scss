@@ -190,7 +190,7 @@
 }
 
 /**
- * text responsive to change font size
+ * Remove the unit of a length
  * @group helpers
  * @output responsive text
  */
@@ -200,7 +200,13 @@
 
 }
 
+/**
+ * text responsive to change font size
+ * @group helpers
+ * @output responsive text
+ */
 @mixin fluid-type( $min-vw, $max-vw, $min-font-size, $max-font-size ) {
+
 	$u1: unit( $min-vw );
 	$u2: unit( $max-vw );
 	$u3: unit( $min-font-size );
@@ -218,4 +224,5 @@
 			}
 		}
 	}
+
 }

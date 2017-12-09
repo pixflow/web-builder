@@ -107,6 +107,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @output justify content and align item
  */
 /**
+ * Remove the unit of a length
+ * @group helpers
+ * @output responsive text
+ */
+/**
  * text responsive to change font size
  * @group helpers
  * @output responsive text

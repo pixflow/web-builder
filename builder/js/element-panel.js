@@ -66,7 +66,6 @@
 		 */
 		stopClickInPanel : function (e) {
 
-
 			e.stopPropagation();
 			if( $( ".karma-open-element-category-dropdown" ).hasClass('karma-open-element-category-dropdown') ){
 				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
@@ -103,7 +102,7 @@
 			}
 			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
 			var tabData = orginalSelector.attr( 'data-tab' ),
-				tabContent = document.querySelector(  '.' + tabData  );
+					tabContent = document.querySelector(  '.' + tabData  );
 			if( null != tabContent){
 				tabContent.classList.add( "karma-active-tab" );
 			}
@@ -117,7 +116,7 @@
 		 * @returns {void}
 		 */
 		createAddElementPanel: function(){
-			
+
 			var templateParams = {} ;
 			templateParams['elementInfo'] = KarmaView.getElementInfo();
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-add-element', templateParams ) + '</div>';
@@ -149,7 +148,6 @@
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-unsplash', {} ) + '</div>';
 			this.el.appendChild( $( template )[0] );
 
-
 		},
 
 		/**
@@ -166,7 +164,7 @@
 				if ( addElement.classList.contains( elementPanelShowClass ) ) {
 					addElement.classList.remove( "element-panel-show" );
 				}else
-				addElement.classList.add( "element-panel-show" );
+					addElement.classList.add( "element-panel-show" );
 			}
 			this.scrollElementPanel();
 
@@ -248,7 +246,7 @@
 		scroll : function ( element ) {
 
 			var element = element.helper,
-				toolbarHeight = 100;
+					toolbarHeight = 100;
 			this.scrollToDown( element, toolbarHeight );
 			this.scrollToTop();
 
@@ -311,7 +309,7 @@
 		 * @param {object}  element   Droppable elements
 		 *
 		 * @since   1.0.0
-		 * @returns {boolean | object}  Element info 
+		 * @returns {boolean | object}  Element info
 		 */
 		getParentElementInfo : function ( element ) {
 
@@ -320,10 +318,10 @@
 				return false;
 			}
 			var elementName = parentElement.getAttribute( 'data-name' ) ,
-				info = {
-					node : parentElement ,
-					name : elementName
-				}
+					info = {
+						node : parentElement ,
+						name : elementName
+					}
 			return info;
 
 		},
@@ -341,7 +339,7 @@
 		overlayBehavior : function ( event, UI ) {
 
 			var overlay = document.querySelector( '.karma-overlay-on-dragging' ) ,
-				targetElement;
+					targetElement;
 			overlay.style.display = 'none';
 			UI.helper.get( 0 ).style.display = 'none';
 			targetElement = document.elementFromPoint( event.clientX, event.clientY );
@@ -415,9 +413,9 @@
 		showElementsPlaceHolder : function ( event, targetElement ) {
 
 			var scrollTop = document.body.scrollTop,
-				topPosition = targetElement.node.getBoundingClientRect().top + scrollTop ,
-				elementHeight = targetElement.node.offsetHeight,
-				elementHalf = topPosition + elementHeight / 2;
+					topPosition = targetElement.node.getBoundingClientRect().top + scrollTop ,
+					elementHeight = targetElement.node.offsetHeight,
+					elementHalf = topPosition + elementHeight / 2;
 
 			if ( ( event.clientY + scrollTop ) < elementHalf ) {
 				/** Users drag at the top of element */
@@ -428,7 +426,6 @@
 			}
 
 		},
-
 
 		/**
 		 * @summary Create overlay element to prevent from other mouse events while dragging
@@ -463,7 +460,12 @@
 
 		},
 
-
+		/**
+		 * @summary check if permium load permium template
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		checkingPermium : function () {
 
 			var permiumTemplate = document.querySelector( '.element-panel-permium' ) ;
@@ -498,13 +500,13 @@
 
 					that.scroll( UI );
 					that.detectDropAreas( event, UI );
-					
+
 				},
 
 				stop: function( event, UI ){
 
 					var DOMOBJ = $( this ).get( 0 ),
-						dropArea = document.querySelector('.karma-show-placeholder');
+							dropArea = document.querySelector('.karma-show-placeholder');
 					DOMOBJ.classList.remove( 'karma-start-dragging', 'karma-grab-element' );
 					clearInterval( that.flyScroll );
 					that.removeOverlay();
@@ -531,8 +533,8 @@
 				return false;
 			}
 			var validateModel = this.getValidateElementModel( whereToDrop, elementName ),
-				CID = karmaBuilder.karmaModels.add( validateModel ).cid,
-				model = karmaBuilder.karmaModels.get({ 'cid' : CID });
+					CID = karmaBuilder.karmaModels.add( validateModel ).cid,
+					model = karmaBuilder.karmaModels.get({ 'cid' : CID });
 			whereToDrop.outerHTML = KarmaView.createBuilderModel( model );
 			KarmaView.createNewElement( elementName.replace( 'karma_', '' ), model, true );
 			this.$el.trigger( 'karma/after/dropElement', [ validateModel['parent_key'] ] );
@@ -573,7 +575,7 @@
 		REOrderElements : function ( e, parent_key ) {
 
 			var childElements = document.querySelectorAll('[data-element-key="' + parent_key + '"] .karma-builder-element'),
-				order = 1 ;
+					order = 1 ;
 			_.each( childElements, function( element ){
 				var elementInstance = $( element ).backboneView();
 				elementInstance.model.attributes.order = order;
@@ -589,7 +591,7 @@
 		 * @returns {void}
 		 */
 		searchInElements : function ( e ){
-			
+
 			var searchValue = $( e.target ).val();
 			$('.karma-element-single-element').hide();
 			if( '' != searchValue.trim() ){
@@ -609,7 +611,7 @@
 		categoryFilterActive: function ( e ) {
 
 			var target = $( e.target ),
-				karmaAddcontentClass =	target.closest( '.karma-addcontent' );
+					karmaAddcontentClass =	target.closest( '.karma-addcontent' );
 			if ( karmaAddcontentClass ) {
 				$( '.karma-addcontent' ).removeClass( 'karma-addcontent-active' );
 				karmaAddcontentClass.addClass( 'karma-addcontent-active' );
@@ -628,7 +630,7 @@
 			/** @todo: change stopPropagation */
 			e.stopPropagation();
 			var target = $( e.target ),
-				categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
+					categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
 			if ( target.closest('svg').length ) {
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
@@ -636,7 +638,7 @@
 			this.elementGatherMenuFiltering();
 			this.elementPanelPriceFilter();
 		},
-		
+
 		/**
 		 * @summary sorting elements with category filter
 		 *
@@ -648,7 +650,7 @@
 			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 
 				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
-					panelGatherMenu.addClass( 'karma-stop-propagation' );
+				panelGatherMenu.addClass( 'karma-stop-propagation' );
 
 				$( '.karma-elements' ).isotope( { filter: $( this ).attr( 'data-filter' ) } );
 				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
@@ -668,7 +670,7 @@
 			$( '.karma-element-panel-price-filter ul li' ).click( function () {
 
 				var panelPriceFilter = $( '.karma-element-panel-price-filter' );
-					panelPriceFilter.addClass( 'karma-stop-propagation' );
+				panelPriceFilter.addClass( 'karma-stop-propagation' );
 				$( '.karma-elements' ).isotope( { filter: $( this ).attr( 'data-filter' ) } );
 
 			});
@@ -683,7 +685,8 @@
 		removeGatherMenuPanel: function () {
 
 			$( document ).off( "click.removeGatherMenuPanel" ).on( "click.removeGatherMenuPanel", function(){
-			$( ".karma-open-element-category-dropdown" ).removeClass( ".karma-open-element-category-dropdown" );
+				
+				$( ".karma-open-element-category-dropdown" ).removeClass( ".karma-open-element-category-dropdown" );
 
 			});
 		}

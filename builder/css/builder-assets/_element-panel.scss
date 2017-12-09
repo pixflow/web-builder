@@ -91,7 +91,7 @@
 					}
 				}
 				.element-panel-part-title {
-					@include fluid-type(1288px, 1366px, 20px, 24px);
+					@include fluid-type(1280px, 1366px, 20px, 24px);
 					color: $builder-gray-color;
 					font-family: HelveticaNeue;
 					font-size: 24px;
@@ -100,7 +100,7 @@
 					text-align: center;
 				}
 				.element-panel-part-description {
-					@include fluid-type(1288px, 1366px, 12px, 14px);
+					@include fluid-type(1280px, 1366px, 12px, 14px);
 					color: #828B95;
 					font-family: HelveticaNeue;
 					font-size: 14px;

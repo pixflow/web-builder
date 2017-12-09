@@ -288,6 +288,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @output justify content and align item
  */
 /**
+ * Remove the unit of a length
+ * @group helpers
+ * @output responsive text
+ */
+/**
  * text responsive to change font size
  * @group helpers
  * @output responsive text
@@ -3063,9 +3068,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           text-align: center; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
             font-size: 20px; }
-            @media screen and (min-width: 1288px) {
+            @media screen and (min-width: 1280px) {
               .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
-                font-size: calc(20px + 4 * ((100vw - 1288px) / 78)); } }
+                font-size: calc(20px + 4 * ((100vw - 1280px) / 86)); } }
             @media screen and (min-width: 1366px) {
               .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-title {
                 font-size: 24px; } }
@@ -3078,9 +3083,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           text-align: center; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
             font-size: 12px; }
-            @media screen and (min-width: 1288px) {
+            @media screen and (min-width: 1280px) {
               .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
-                font-size: calc(12px + 2 * ((100vw - 1288px) / 78)); } }
+                font-size: calc(12px + 2 * ((100vw - 1280px) / 86)); } }
             @media screen and (min-width: 1366px) {
               .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-description {
                 font-size: 14px; } }
