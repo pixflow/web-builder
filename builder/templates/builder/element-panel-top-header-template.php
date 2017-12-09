@@ -1,6 +1,8 @@
 <div class="karma-builder-element-panel-header">
-	<input type="search" class="karma-builder-search-text" placeholder="Search...">
-
+	<input id="karma-search-field" type="search" class="karma-builder-search-text" placeholder="Search...">
+	<button class="karma-search-close-icon" >
+		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/close-icon.svg' ); ?>
+	</button>
 	<div class="karma-builder-element-panel-gather-menu karma-stop-propagation">
 		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/gather-menu.svg' ); ?>
 		<ul>

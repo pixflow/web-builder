@@ -12,8 +12,9 @@
 		 */
 		events : {
 
-			"click .element-panel-add-element-button"		                           	: "openAddElementView",
-			"click" 										                           	: "stopClickInPanel",
+			"click .element-panel-add-element-button"									: "openAddElementView",
+			"click.stopClickInPanel" 										            : "stopClickInPanel",
+			"click.elementPanelCloseSearchBar" 										    : "elementPanelCloseSearchBar",
 			"karma/after/finish_element_panel"                                         	: "initDraggable" ,
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
@@ -22,7 +23,10 @@
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
 			"click .karma-element-panel-price-filter ul li "							: "elementPanelPriceFilter",
 			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
-			'karma/after/dropElement'                                                   : "ReOrderElements"
+			'karma/after/dropElement'                                                   : "ReOrderElements" ,
+			"click .karma-search-close-icon"											: "clearElementPanelSearchBar" ,
+			"click .karma-builder-search-text"											: "showElementPanelSearchBar" ,
+
 
 		},
 
@@ -615,6 +619,7 @@
 		 */
 		searchInElements : function ( e ){
 
+			this.showElementPanelSearchCloseIcon();
 			var searchValue = $( e.target ).val();
 			$('.karma-element-single-element').hide();
 			if( '' != searchValue.trim() ){
@@ -762,7 +767,73 @@
 
 			});
 
-		}
+		},
+
+		/**
+		 * @summary clear input of search when click close icon
+		 * @param {object}  event
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		clearElementPanelSearchBar: function ( e ) {
+
+			e.stopPropagation();
+			var searchInputVal = document.querySelector( ".karma-builder-search-text" );
+			searchInputVal.classList.add( "open-search-panel" );
+			searchInputVal.value = "";
+			$( ".karma-builder-search-text" ).trigger( 'input' );
+			
+		},
+
+		/**
+		 * @summary add class to show search bar in element panel
+		 * @param {object}  event
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		showElementPanelSearchBar: function ( e ) {
+
+			e.stopPropagation()
+			var searchInputVal = document.querySelector( ".karma-builder-search-text" );
+			searchInputVal.classList.add( "open-search-panel" );
+
+
+		},
+
+		/**
+		 * @summary Close search bar when click document
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		elementPanelCloseSearchBar: function () {
+
+			var searchInputVal = document.querySelector( ".karma-builder-search-text" ),
+				searchInputCloseButton = document.querySelector( ".karma-search-close-icon" );
+			searchInputCloseButton.classList.remove( "show-search-close-icon" ) ;
+			searchInputVal.classList.remove( "open-search-panel" );
+
+		},
+
+		/**
+		 * @summary show and hide close icon in search box in element panel
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		showElementPanelSearchCloseIcon: function () {
+
+			var searchInputVal = document.querySelector( ".karma-builder-search-text" ).value,
+				searchInputCloseButton = document.querySelector( ".karma-search-close-icon" );
+			if( "" != searchInputVal ){
+				searchInputCloseButton.classList.add( "show-search-close-icon" ) ;
+			}else{
+				searchInputCloseButton.classList.remove( "show-search-close-icon" ) ;
+			}
+		},
+
 
 	});
 

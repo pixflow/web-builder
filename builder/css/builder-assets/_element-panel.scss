@@ -133,6 +133,7 @@
 		}
 
 		.karma-element-panel-add-element-view-left {
+			box-shadow:1px 0px 8px -3px rgba(57, 73, 89, 0.07);
 			width: 9.06vw;
 
 			.karma-element-panel-add-element-view-filtering {
@@ -392,13 +393,32 @@
 }
 
 .element-panel-section-container {
-		.karma-builder-element-panel-header {
 
+		.karma-builder-element-panel-header {
 			align-items: center;
 			display: flex;
 			justify-content: flex-end;
 			padding: 2.8vh 2.08vw 0.6vh 2.08vw;
+			position: relative;
 			width: 100%;
+
+			.karma-search-close-icon{
+				opacity: 0;
+				padding: 0;
+				background-color: inherit;
+				position: absolute;
+				right: 80px;
+				z-index: 0;
+				transition-duration: .2s;
+
+
+				&.show-search-close-icon{
+					opacity: 1;
+					transition-duration: .2s;
+					z-index: $level4;
+
+				}
+			}
 
 		}
 	}
@@ -416,11 +436,10 @@
 				}
 
 			}
-	
+
 			ul{
 				@include karma-box( 8.05vw, auto );
 				@include element_direction( $top:25px, $right:0 );
-                @include fluid-type(1288px, 1366px, 12px, 14px);
                 color: #394959;
 				cursor: default;
 				display: none ;
@@ -431,7 +450,7 @@
 				position: absolute;
 				text-align: left;
 				z-index: 20;
-
+				@include fluid-type(1288px, 1440px, 11px, 14px);
 
 				li{
 					border-radius: 4px;
@@ -467,22 +486,18 @@ input.karma-builder-search-text{
 
 }
 
-input.karma-builder-search-text:focus {
+input.karma-builder-search-text.open-search-panel {
 	background-color: #F8F8F9;
 	border: 1px solid #F8F8F9;
 	cursor:auto;
 	outline: none;
 	padding-left: 1.82vw;
+	padding-right: 1.5vw;
 	transition: z-index 0.8s, width 0.5s, background  0.3s ease, border 0.3s;
 	transition-duration: 0.3s;
 	width: 13.02vw;
 	z-index:3;
 }
-
-input.karma-builder-search-text::-webkit-search-cancel-button {
-	-webkit-appearance: searchfield-cancel-button;
-}
-
 
 
 

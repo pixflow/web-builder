@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Element-panel" transform="translate(-1132.000000, -188.000000)" fill="#394959">
+            <path d="M1137.5,192.25 L1137.5,187.75 C1137.5,187.335786 1137.16421,187 1136.75,187 C1136.33579,187 1136,187.335786 1136,187.75 L1136,187.75 L1136,192.25 L1131.5,192.25 C1131.08579,192.25 1130.75,192.585786 1130.75,193 C1130.75,193.414214 1131.08579,193.75 1131.5,193.75 L1136,193.75 L1136,198.25 C1136,198.664214 1136.33579,199 1136.75,199 C1137.16421,199 1137.5,198.664214 1137.5,198.25 L1137.5,193.75 L1142,193.75 C1142.41421,193.75 1142.75,193.414214 1142.75,193 C1142.75,192.585786 1142.41421,192.25 1142,192.25 L1137.5,192.25 Z" id="Combined-Shape" transform="translate(1136.750000, 193.000000) rotate(45.000000) translate(-1136.750000, -193.000000) "></path>
+        </g>
+    </g>
+</svg>
