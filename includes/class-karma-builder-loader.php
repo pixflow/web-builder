@@ -249,7 +249,7 @@ class Karma_Builder_Loader {
 			if( file_exists( KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php' ) ) {
 
 				require_once KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php';
-				$class_name  .= '_Map' ;
+				$class_name  .= '_Describe' ;
 
 			}
 
