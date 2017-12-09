@@ -103,23 +103,96 @@ class Karma_Builder_Loader {
 	public function load_builder(){
 
 		$builder = Karma_Factory_Pattern::$builder;
-		if( $builder::is_in_builder() ){
 
-			// Don't display the admin bar when in live editor mode
-			add_filter( 'show_admin_bar', '__return_false' );
-			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
-			add_action( 'wp_head', array( $this, 'add_custom_meta_tags' ) );
-			add_action( 'wp_head', array( $this, 'load_builder_js_templates' ) );
-
-			$builder_views = Karma_Factory_Pattern::$builder_views;
-			$builder_views->load_builder_templates();
-
+		if ( $builder::$edit_mode ) {
+			add_action( 'wp_head', array( $this, 'execute_head_function' ), -1 );
 		}
+
+		if( $builder::$output_mode ){
+			add_action( 'wp_head', array( $this, 'prepare_builder' ), -1 );
+		}
+
 		$this->init_elements();
-		/** Read the content from post meta */
-		// @TODO : run below filter for only page that built with karma
+
+	}
+
+	/**
+	 * Call the functions needed in frontend
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function prepare_builder(){
+
+		if( true == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
+			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
+			$this->load_cache_file();
+		}
+
+	}
+
+	/**
+	 * Call the functions needed in builder
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function execute_head_function(){
+
+		add_filter( 'show_admin_bar', '__return_false' );
+		$this->set_is_karma_page( get_the_ID(), true );
 		add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
-		add_filter( 'do_shortcode_tag', array( $this, 'render_assets_in_frontend' ), 9, 3 );
+		add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
+		$this->add_custom_meta_tags();
+		$this->load_builder_js_templates();
+		$builder_views = Karma_Factory_Pattern::$builder_views;
+		$builder_views->load_builder_templates();
+		$this->load_cache_file();
+
+	}
+
+	/**
+	 * Set whether page is Karma page or not.
+	 *
+	 * @param int       $page_id    Page ID .
+	 * @param boolean   $is_karma   Created by Karma or not .
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function set_is_karma_page( $page_id, $is_karma = true ){
+
+		if ( $is_karma ) {
+			update_post_meta( $page_id, 'karma_page', 'true' );
+		} else {
+			delete_post_meta( $page_id, 'karma_page' );
+		}
+
+	}
+
+	/**
+	 * Load cache files for the current page
+	 *
+	 *
+	 * @since     1.0.0
+	 * @return    void
+	 */
+	public function load_cache_file(){
+
+		$builder = Karma_Factory_Pattern::$builder;
+
+		if( $builder::$edit_mode ){
+			add_filter( 'do_shortcode_tag', array( $this, 'render_assets' ), 9, 3 );
+			return ;
+		}
+
+		$cache = new Cache_Manager();
+		if ( ! $cache->is_cache_file_exists( 'css' ) ) {
+			add_filter( 'do_shortcode_tag', array( $this, 'render_assets' ), 9, 3 );
+			add_filter( 'wp_footer',  array( $cache, 'set_up_cache' ) );
+		}
+
+		$cache->enqueue_file();
 
 	}
 
@@ -131,7 +204,6 @@ class Karma_Builder_Loader {
 	 * @since     1.0.0
 	 * @return    string The content
 	 */
-
 	public function change_the_content( $content ){
 
 		$meta_info = get_post_meta( get_the_ID(), 'karma_post_content', true );
@@ -191,21 +263,6 @@ class Karma_Builder_Loader {
 	}
 
 
-	/**
-	 * Check for loading script and styles for builder
-	 *
-	 * @since     1.0.0
-	 * @return    boolean	true if should load otherwise false.
-	 */
-	private function is_in_iframe(){
-
-		if( isset( $_GET['in_builder'] ) && true === (boolean) $_GET['in_builder'] ){
-			return true ;
-		}else {
-			return false;
-		}
-
-	}
 
 	/**
 	 * Generate element page models and localize it for builder
@@ -331,7 +388,7 @@ class Karma_Builder_Loader {
 	 * @since     1.0.0
 	 * @return    string	the correct html source for builder
 	 */
-	public function render_assets_in_frontend( $output, $tag, $attr ){
+	public function render_assets( $output, $tag, $attr ){
 
 		$shortcode_info = array(
 			'shortcode_name' 	=> $tag,

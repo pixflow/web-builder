@@ -124,6 +124,15 @@ class Karma_Factory_Pattern {
 	 */
 	public static $builder_public;
 
+	/**
+	 * Class karma stylesheet instance
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      object
+	 */
+	public static $stylesheet;
+
 
 	/**
 	 * Private clone method to prevent cloning of the instance of the
@@ -167,7 +176,8 @@ class Karma_Factory_Pattern {
 		$this->load_builder_views();
 		$this->load_builder_controller();
 		$this->load_builder_admin();
-		$this->laod_builder_public();
+		$this->load_builder_public();
+		$this->load_builder_stylesheet();
 
 	}
 
@@ -181,6 +191,16 @@ class Karma_Factory_Pattern {
 
 	}
 
+
+	/**
+	 * Set builder i18n class instance
+	 * @since    1.0.0
+	 */
+	protected function load_builder_stylesheet(){
+
+		self::$stylesheet = new Stylesheet();
+
+	}
 
 	/**
 	 * Set builder i18n class instance
@@ -236,7 +256,7 @@ class Karma_Factory_Pattern {
 	 * Set builder public class instance
 	 * @since    1.0.0
 	 */
-	protected function laod_builder_public(){
+	protected function load_builder_public(){
 
 		self::$builder_public = new Karma_Builder_Public( self::$builder->get_plugin_name(), self::$builder->get_version() );
 

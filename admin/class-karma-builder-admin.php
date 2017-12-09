@@ -91,13 +91,14 @@ class Karma_Builder_Admin {
 		$id = $_POST['id'];
 		$builder_core = Karma_Builder_Core::get_instance();
 		$models = json_decode( stripslashes( $models ), true );
-		if ( $builder_core->publish_post( $models, $id ) ){
+		if ( $builder_core->publish_post( $models, $id ) ) {
 			echo '{ "result" : "true", "msg" : "success" }';
-		}else{
+		} else {
 			echo '{ "result" : "false", "msg" : "error" }';
 		}
-
+		Cache_Manager::remove_cache_file( $id, 'css' );
 		wp_die();
+
 	}
 
 	/**
@@ -112,13 +113,14 @@ class Karma_Builder_Admin {
 		$id = $_POST['id'];
 		$builder_core = Karma_Builder_Core::get_instance();
 		$models = json_decode( stripslashes( $models ), true );
-		if ( $builder_core->save_post( $models, $id ) ){
+		if ( $builder_core->save_post( $models, $id ) ) {
 			echo '{ "result" : "true", "msg" : "success" }';
-		}else{
+		} else {
 			echo '{ "result" : "false", "msg" : "error" }';
 		}
-
+		Cache_Manager::remove_cache_file( $id, 'css' );
 		wp_die();
+
 	}
 
 	/**

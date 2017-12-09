@@ -187,22 +187,10 @@ class Karma_Shortcode_Base {
 	 */
 	public function load_assets( $shortcode_info ){
 
-		$this->get_element_attributes( $shortcode_info )->render_assets();
-
-	}
-
-	/**
-	 * Load CSS and JS of each element
-	 *
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @return	void
-	 */
-	private function render_assets(){
-
-		$this->render_style();
-		$this->render_scripts();
+		$this
+			->get_element_attributes( $shortcode_info )
+			->render_style()
+			->render_scripts();
 
 	}
 
@@ -217,16 +205,21 @@ class Karma_Shortcode_Base {
 	 */
 	protected function render_style(){
 
+		$elements_style_attributes = array(
+			'selector' => str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id,
+			'css'      => static::get_css_attributes()
+		);
 
-		$style_string = '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
-			. static::render_css()
-			. '}';
-
-		?>
-		<style id="style-<?php echo str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id ?>" >
-			<?php echo static::render_css(); ?>
-		</style>
-		<?php
+		$block = Karma_Factory_Pattern::$stylesheet->create_css_block( $elements_style_attributes );
+		$builder = Karma_Factory_Pattern::$builder;
+		if( $builder::is_in_builder() ) :
+			?>
+				<style id="style-<?php echo $elements_style_attributes['selector']; ?>" >
+					<?php echo $block; ?>
+				</style>
+			<?php
+		endif;
+		return $this;
 
 	}
 

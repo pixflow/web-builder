@@ -19,10 +19,10 @@
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
 			"click li.karma-addcontent"													: "elementPanelTab",
-			"input .search-text"                                                        : "searchInElements",
+			"input .karma-builder-search-text"                                          : "searchInElements",
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
 			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
-			'karma/after/dropElement'                                                   : "REOrderElements"
+			'karma/after/dropElement'                                                   : "ReOrderElements"
 
 		},
 
@@ -240,15 +240,17 @@
 		/**
 		 * @summary Scroll the browser down or up on dragging element
 		 *
+		 * @param {object} element  Jquery helper
+		 *
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		scroll : function ( element ) {
+		scroll : function ( element, event ) {
 
 			var element = element.helper,
 					toolbarHeight = 100;
 			this.scrollToDown( element, toolbarHeight );
-			this.scrollToTop();
+			this.scrollToTop( event );
 
 		},
 
@@ -286,7 +288,7 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		scrollToTop : function () {
+		scrollToTop : function ( event ) {
 
 			var that = this;
 			if ( event.clientY < 50 ) {
@@ -498,7 +500,7 @@
 
 				drag : function( event, UI ){
 
-					that.scroll( UI );
+					that.scroll( UI, event );
 					that.detectDropAreas( event, UI );
 
 				},
@@ -572,7 +574,7 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		REOrderElements : function ( e, parent_key ) {
+		ReOrderElements : function ( e, parent_key ) {
 
 			var childElements = document.querySelectorAll('[data-element-key="' + parent_key + '"] .karma-builder-element'),
 					order = 1 ;

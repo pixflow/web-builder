@@ -163,21 +163,24 @@ class Karma_Column extends Karma_Shortcode_Base {
 	}
 
 	/**
-	 * Load CSS
+	 * Return CSS property
 	 *
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return    void
+	 * @return  array The style property of element
 	 */
-	public function render_css() {
-		
+	public function get_css_attributes() {
+
 		$leftSpace  = array_key_exists( 'leftspace', $this->element_attributes ) ? $this->element_attributes[ 'leftspace' ] : 20;
 		$rightSpace = array_key_exists( 'rightspace', $this->element_attributes ) ? $this->element_attributes[ 'rightspace' ] : 20 ;
-
-		$styles =  '.karma-no-gutters > .karma-builder-element > .karma-column.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
-		           ."padding-left:" . $leftSpace  . "px;padding-right:" . $rightSpace . "px;"
-		           ."}";
+		$styles = array(
+			'selector-prefix' => '.karma-no-gutters ' ,
+			'property'        => array(
+				'padding-left' => $leftSpace . "px" ,
+				'padding-right' => $rightSpace . "px",
+			)
+		);
 		return $styles;
 
 	}

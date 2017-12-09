@@ -58,6 +58,25 @@ class Karma_Builder {
 	 */
 	public $core;
 
+
+	/**
+	 * Builder status in frontend .
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      boolean
+	 */
+	public static $output_mode = false;
+
+	/**
+	 * Builder status in builder .
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      boolean
+	 */
+	public static $edit_mode = false ;
+
 	/**
 	 * Returns the *Singleton* instance of this class.
 	 *
@@ -136,6 +155,12 @@ class Karma_Builder {
 	 */
 	private function load_dependencies() {
 
+
+		/**
+		 * The class responsible for work and manage file and directory in plugin
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-file-system.php';
+
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
@@ -164,6 +189,16 @@ class Karma_Builder {
 		 * core plugin.
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-core.php';
+
+		/**
+		 * The class responsible for manager stylesheet and script cache file in output
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-cache-manager.php';
+
+		/**
+		 * The class responsible for working with
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-stylesheet.php';
 
 		/**
 		 * The class responsible for define all elements controllers
@@ -204,6 +239,10 @@ class Karma_Builder {
 
 		define( 'KARMA_BUILDER_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
 		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );
+
+		$wp_upload_directory = wp_upload_dir();
+		define( 'CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
+		define( 'CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
 
 	}
 
@@ -297,8 +336,43 @@ class Karma_Builder {
 		if ( self::is_in_builder() && isset( $_GET['load_builder'] ) ){
 			$this->prevent_from_loading_wordpress();
 		}
-
+		$this->set_builder_status();
 		$this->loader->load_builder();
+
+	}
+
+
+
+	/**
+	 * Check for loading script and styles for builder
+	 *
+	 * @since     1.0.0
+	 * @return    boolean	true if should load otherwise false.
+	 */
+	private function is_builder_environment(){
+
+		if( isset( $_GET['in_builder'] ) && true === (boolean) $_GET['in_builder'] ){
+			return true ;
+		}else {
+			return false;
+		}
+
+	}
+
+	/**
+	 * Set builder status in each different states.
+	 *
+	 * @since     1.0.0
+	 */
+	private function set_builder_status(){
+
+		if ( $this->is_builder_environment() ){
+			self::$edit_mode = true ;
+		}
+
+		if( ! $this->is_builder_environment() && ! self::is_in_builder() ){
+			self::$output_mode = true;
+		}
 
 	}
 

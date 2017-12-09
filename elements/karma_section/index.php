@@ -285,18 +285,21 @@ class Karma_Section extends Karma_Shortcode_Base {
 	}
 
 	/**
-	 * Load CSS
+	 * Return CSS property
 	 *
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return    string    The style of element
+	 * @return  array The style property of element
 	 */
-	public function render_css() {
+	public function get_css_attributes() {
 
-		$styles =  '.' . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id . '{'
-		."padding-top:" . $this->element_attributes[ 'space' ] . "px;padding-bottom:" . $this->element_attributes[ 'space' ] . "px;"
-		."}";
+		$styles = array(
+			'property' => array(
+				'padding-top'       => $this->element_attributes[ 'space' ] . 'px',
+				'padding-bottom'    => $this->element_attributes[ 'space' ] . 'px',
+			)
+		);
 		return $styles;
 
 	}
