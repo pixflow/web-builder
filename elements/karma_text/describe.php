@@ -37,6 +37,7 @@ class Karma_Text_Describe extends Karma_Text {
 				"height" => "570",
 				"params" => array(
 
+
 				),
 			),
 		);
@@ -62,6 +63,27 @@ class Karma_Text_Describe extends Karma_Text {
 				"className" => "text-gizmo-group",
 				"params"    => array(
 
+						array(
+								'type'   => 'alignmentGizmo',
+								'form'   => 'animation-panel',
+								"params" => array(
+										'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+										'className' => 'karma-image-animation-layout',
+										"field"  => array(
+												array(
+														'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+														'title' => esc_attr__( "Real size", 'karma' ),
+														'value' => "left",
+												),
+												array(
+														'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+														'title' => "Fill",
+														'value' => "right",
+												),
+										),
+								),
+
+						),
 				)
 			),
 		);
