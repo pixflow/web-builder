@@ -190,11 +190,11 @@ class Karma_Builder_Loader {
 
 		if ( ! $cache->is_cache_file_exists() ) {
 			add_filter( 'do_shortcode_tag', array( $this, 'render_assets' ), 9, 3 );
-			add_filter( 'wp_footer',  array( $cache, 'set_up_cache' ) );
+			add_filter( 'wp_footer',  array( $cache, 'set_up_cache' ), 1 );
 		}
 
-		$cache->load_dependecy_files();
-		$cache->enqueue_file();
+		add_filter( 'wp_footer',  array( $cache, 'load_dependecy_files' ), 2 );
+		add_filter( 'wp_footer',  array( $cache, 'enqueue_file' ), 3 );
 
 	}
 
