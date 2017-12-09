@@ -8,8 +8,12 @@
 
 		initialize: function ( options ) {
 
-			this.template = options.template;
-			this.render();
+			karmaBuilder.text.__super__.initialize.apply( this, arguments );
+			this.options = options;
+
+			if( this.options.renderStatus ){
+				this.render();
+			}
 
 		},
 
