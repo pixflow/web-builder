@@ -105,7 +105,13 @@ class Karma_Builder_Loader {
 		$builder = Karma_Factory_Pattern::$builder;
 
 		if ( $builder::$edit_mode ) {
+			add_filter( 'show_admin_bar', '__return_false' );
+			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
+			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'execute_head_function' ), -1 );
+			$builder_views = Karma_Factory_Pattern::$builder_views;
+			$builder_views->load_builder_templates();
+
 		}
 
 		if( $builder::$output_mode ){
@@ -139,14 +145,9 @@ class Karma_Builder_Loader {
 	 */
 	public function execute_head_function(){
 
-		add_filter( 'show_admin_bar', '__return_false' );
 		$this->set_is_karma_page( get_the_ID(), true );
-		add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
-		add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 		$this->add_custom_meta_tags();
 		$this->load_builder_js_templates();
-		$builder_views = Karma_Factory_Pattern::$builder_views;
-		$builder_views->load_builder_templates();
 		$this->load_cache_file();
 
 	}
