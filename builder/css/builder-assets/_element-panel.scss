@@ -94,7 +94,7 @@
 					}
 				}
 				.element-panel-part-title {
-					@include fluid-type(1280px, 1366px, 20px, 24px);
+					@include fluid-type(1280px, 1366px, 19px, 24px);
 					color: $builder-gray-color;
 					font-family: HelveticaNeue;
 					font-size: 24px;
@@ -103,7 +103,7 @@
 					text-align: center;
 				}
 				.element-panel-part-description {
-					@include fluid-type(1280px, 1366px, 12px, 14px);
+					@include fluid-type(1280px, 1366px, 11px, 14px);
 					color: #828B95;
 					font-family: HelveticaNeue;
 					font-size: 14px;
@@ -112,6 +112,7 @@
 					text-align: center;
 				}
 				.element-panel-part-button {
+					@include fluid-type(1280px, 1366px, 12px, 14px);
 					@include flexbox(center, center, center);
 					background-color: $builder-accent-color;
 					border-radius: 2px;
@@ -119,11 +120,11 @@
 					cursor: pointer;
 					font-size: 14px;
 					font-weight: 500;
-					height: 40px;
+					height: 4.5vh;
 					line-height: 17px;
 					margin-top: 10px;
 					text-align: center;
-					width: 106px;
+					width: 5.6vw;
 
 				}
 			}
