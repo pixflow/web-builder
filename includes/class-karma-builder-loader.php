@@ -247,7 +247,8 @@ class Karma_Builder_Loader {
 			require_once KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/index.php';
 			$class_name  = 'Karma_' . ucfirst( $element ) ;
 
-			if( file_exists( KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php' ) ) {
+			$file = File_System::get_instance();
+			if( $file->file_exists( KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php' ) ) {
 
 				require_once KARMA_BUILDER_DIR . 'elements/karma_' . $element . '/describe.php';
 				$class_name  .= '_Describe' ;
