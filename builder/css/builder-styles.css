@@ -2999,9 +2999,10 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       align-items: flex-start;
       justify-content: flex-start;
       flex-wrap: wrap;
+      margin-bottom: 4.44vh;
       max-height: calc( 100% - ( 72px + 4.44vh ) );
       overflow: hidden;
-      padding: 0 1vw 4.44vh 2vw;
+      padding: 0 1vw 0 2vw;
       width: 100%; }
     .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
       border: 1px solid transparent;
@@ -3062,7 +3063,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         text-align: center;
         align-items: center;
         justify-content: flex-start;
-        display: none; }
+        display: none;
+        height: 100%; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-active-tab {
           display: flex; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img {

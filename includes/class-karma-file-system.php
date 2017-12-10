@@ -28,15 +28,53 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class File_System{
 
-
-
 	/**
 	 * the WordPress Filesystem
 	 *
-	 * @access public
+	 * @access protected
 	 * @var String
 	 */
-	public static $file = null;
+	protected $file = null;
+
+	/**
+	 * A static variable that contains an instance of Karma_Builder
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      File_System    $instance    The reference to *Singleton* instance of this class.
+	 */
+	private static $instance;
+
+
+	/**
+	 * Init this class.
+	 *
+	 * @access   public
+	 * @since    1.0.0
+	 */
+	public function __construct(){
+
+		$this->get_wp_file_system();
+
+	}
+
+
+	/**
+	 * Returns the *Singleton* instance of this class.
+	 *
+	 * @access   public
+	 * @return   File_System - The *Singleton* instance.
+	 * @since    1.0.0
+	 */
+	public static function get_instance() {
+
+		if ( null === File_System::$instance ) {
+			File_System::$instance = new File_System();
+		}
+
+		return File_System::$instance;
+
+	}
 
 	/**
 	 * Initialises and connects the WordPress Filesystem Abstraction classes.
@@ -44,13 +82,13 @@ class File_System{
 	 *
 	 * @since   1.0.0
 	 */
-	public static function get_wp_file_system(){
+	public function get_wp_file_system(){
 
-		if ( null == self::$file ) {
+		if ( null == $this->file ) {
 			require_once( ABSPATH . 'wp-admin/includes/file.php'  );
 			WP_Filesystem( false, false, true );
 			global $wp_filesystem;
-			self::$file = $wp_filesystem;
+			$this->file = $wp_filesystem;
 		}
 
 	}
@@ -65,9 +103,9 @@ class File_System{
 	 * @param string $path
 	 * @return bool
 	 */
-	public static function file_exists( $path ){
+	public function file_exists( $path ){
 
-		if( self::$file->exists( $path ) ){
+		if( $this->file->exists( $path ) ){
 			return true;
 		}
 		return false;
@@ -82,9 +120,9 @@ class File_System{
 	 * @param string $path
 	 * @return bool
 	 */
-	public static function make_dir( $path ){
+	public function make_dir( $path ){
 
-		if ( self::$file->mkdir( $path, 0777 ) ) {
+		if ( $this->file->mkdir( $path, 0777 ) ) {
 			return true;
 		}
 		return false;
@@ -101,9 +139,9 @@ class File_System{
 	 *
 	 * @return bool
 	 */
-	public static function create_file( $path, $content ){
+	public function create_file( $path, $content ){
 
-		if( self::$file->put_contents( $path, $content ) ){
+		if( $this->file->put_contents( $path, $content ) ){
 			return true;
 		}
 		return false;
@@ -119,9 +157,9 @@ class File_System{
 	 *
 	 * @return bool
 	 */
-	public static function remove_dir( $path ){
+	public function remove_dir( $path ){
 
-		if( self::$file->rmdir( $path, true ) ){
+		if( $this->file->rmdir( $path, true ) ){
 			return true;
 		}
 		return false;
@@ -137,9 +175,9 @@ class File_System{
 	 *
 	 * @return bool
 	 */
-	public static function delete_file( $path ){
+	public function delete_file( $path ){
 
-		if( self::$file->delete( $path, true ) ){
+		if( $this->file->delete( $path, true ) ){
 			return true;
 		}
 
