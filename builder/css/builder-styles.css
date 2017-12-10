@@ -2722,16 +2722,38 @@ img {
     .karma-builder-element .karma-gizmo-template div {
       cursor: pointer;
       white-space: nowrap; }
+    .karma-builder-element .karma-gizmo-template .karma-drop-down-icon {
+      padding: 0;
+      margin: 0;
+      background-color: inherit; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
       position: absolute;
       background-color: white;
-      width: 100%;
-      left: 0;
-      display: none; }
-      .karma-builder-element .karma-gizmo-template .karma-drop-down-box div {
-        padding: 5px; }
+      top: 32px;
+      left: -11px;
+      display: none;
+      box-shadow: 3px 1px 28px;
+      border-radius: 4px;
+      flex-direction: column; }
+      .karma-builder-element .karma-gizmo-template .karma-drop-down-box:after {
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 8px solid white;
+        content: '';
+        top: -6px;
+        position: absolute;
+        left: 32%; }
+      .karma-builder-element .karma-gizmo-template .karma-drop-down-box button {
+        padding: 7px;
+        margin: 5px;
+        border-radius: 3px;
+        background-color: inherit; }
+        .karma-builder-element .karma-gizmo-template .karma-drop-down-box button:hover {
+          background-color: rgba(65, 156, 248, 0.15); }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
-        display: block; }
+        display: flex; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon {
       align-items: center;
       display: flex;
@@ -2754,6 +2776,8 @@ img {
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleText:hover {
       color: #419CF8;
       transition: all 0.3s ease; }
+    .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo {
+      position: relative; }
     .karma-builder-element .karma-gizmo-template .row-gizmo-group {
       width: auto;
       height: 35px;

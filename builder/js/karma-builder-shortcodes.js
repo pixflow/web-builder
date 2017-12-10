@@ -72,17 +72,17 @@
 		/**
 		 *  Build html for text shortcode alignment
 		 */
-		alignmentGizmoTemplate : ' <div class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </div> '
+		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
 		+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
-		+ '<div class="karma-align-left" data-value="align-left" >'
+		+ '<button class="karma-align-left" data-value="align-left" >'
 		+ '{{{data.leftAlignIcon}}}'
-		+ '</div>'
-		+ '<div class="karma-align-right" data-value="align-right" >'
+		+ '</button>'
+		+ '<button class="karma-align-right" data-value="align-right" >'
 		+ '{{{data.rightAlignIcon}}}'
-		+ '</div>'
-		+ '<div class="karma-align-center" data-value="align-center" >'
+		+ '</button>'
+		+ '<button class="karma-align-center" data-value="align-center" >'
 		+ '{{{data.centerAlignIcon}}}'
-		+ '</div>'
+		+ '</button>'
 		+ '</div>' ,
 
 		/**
@@ -1004,7 +1004,7 @@
 
 		openDropDownGzmo: function ( e ) {
 			
-			var dropDownIcon = (  e.target.classList.contains('karma-drop-down-icon') ) ? e.target : e.target.closest( 'div' ),
+			var dropDownIcon = (  e.target.classList.contains('karma-drop-down-icon') ) ? e.target : e.target.closest( 'button' ),
 				dropDownBox = dropDownIcon.nextElementSibling;
 
 			if( null != dropDownBox ){
