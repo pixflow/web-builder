@@ -77,7 +77,8 @@ class Cache_Manager extends File_System{
 	public function __construct( $post_ID = '' ){
 
 		$this->set_page_ID( $post_ID );
-		parent::get_wp_file_system();
+		parent::get_instance();
+		var_dump('ermia');
 
 	}
 
@@ -180,7 +181,7 @@ class Cache_Manager extends File_System{
 	 */
 	public function empty_cache(){
 
-		parent::get_wp_file_system();
+		parent::get_instance();
 		if( parent::remove_dir( CACHE_DIRECTORY_PATH ) ){
 			return true;
 		}
@@ -216,7 +217,7 @@ class Cache_Manager extends File_System{
 	 */
 	public static function remove_cache_file( $page_id ){
 
-		parent::get_wp_file_system();
+		parent::get_instance();
 		if( parent::delete_file( self::get_cache_file_dir( $page_id, 'js' ) ) && parent::delete_file( self::get_cache_file_dir( $page_id, 'css' ) ) ){
 			return true;
 		}
