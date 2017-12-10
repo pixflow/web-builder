@@ -103,6 +103,7 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-jquery.isotope' ,  plugin_dir_url( __FILE__ ).'js/isotope.pkgd.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-range-slider' ,  plugin_dir_url( __FILE__ ). 'js/rangeslider.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-grid-resizer' ,  plugin_dir_url( __FILE__ ). 'js/grid-resizer.min.js', array( ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-spectrum' ,  plugin_dir_url( __FILE__ ). 'js/spectrum.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-color-picker' ,  plugin_dir_url( __FILE__ ). 'js/karma-color-picker.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/setting-panel.min.js', array( $this->plugin_name ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-element-panel', plugin_dir_url(__FILE__) . 'js/element-panel.min.js', array( $this->plugin_name ), $this->version, false );

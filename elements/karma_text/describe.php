@@ -59,12 +59,12 @@ class Karma_Text_Describe extends Karma_Text {
 		$controllers = array(
 			array(
 				"type"      => "outerGizmo",
-				"className" => "text-gizmo-group",
+				"className" => esc_attr("text-gizmo-group"),
 				"params"    => array(
 
 					array(
 						'type'      => 'colorPicker',
-						'className' => 'karma-color-picker-gizmo',
+						'className' => esc_attr('karma-color-picker-gizmo'),
 						"params"    => array(
 							// @TODO: replace unique id with element key
 							'id' => uniqid('cpg_')

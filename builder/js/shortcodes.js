@@ -414,7 +414,7 @@
 					]
 				};
 
-			//new karmaColorPicker( options );
+			new karmaColorPicker( options );
 
 		},
 

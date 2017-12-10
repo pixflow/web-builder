@@ -29,6 +29,10 @@ var karmaColorPicker = function ( options ) {
 		this.options[ i ] = options[ i ] || this.defaultOptions[ i ];
 	}
 
+	var element = document.querySelector( this.options.selector );
+	if ( element == null || $( element ).hasClass( 'karma-color-picker-input' ) ) {
+		return;
+	}
 	this.generateColorPickerID();
 	this.init();
 
@@ -63,7 +67,6 @@ karmaColorPicker.prototype.generateColorPickerID = function () {
 karmaColorPicker.prototype.init = function () {
 
 	var that = this;
-
 	this.createColorPickerIcon();
 	this.createColorPickerPopup();
 	var handler = that.openColorPicker.bind( that );
@@ -139,11 +142,17 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 	}
 	var chooseColor = document.createElement( 'span' );
 	chooseColor.setAttribute( 'class', 'karma-color-picker-preset-color karma-color-picker-choose-color' );
-	chooseColor.innerText = '+';
+	chooseColor.addEventListener( 'click', function ( e ) {
+		e.preventDefault();
+		$( "#" + that.id ).spectrum("toggle");
+		return false;
+	}, true );
+	var chooseColorInput = document.createElement( 'input' );
+	chooseColorInput.setAttribute( 'id', that.id );
+	chooseColorInput.setAttribute( 'class', 'karma-color-picker-input' );
+	chooseColor.appendChild( chooseColorInput );
 	presetColors.appendChild( chooseColor );
 	popup.appendChild( presetColors );
-
-
 	// Add popup HTML to beside of input
 	var input = document.querySelector( this.options.selector );
 	input.parentElement.insertBefore( popup, input );
@@ -159,7 +168,19 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
  * @returns {void}
  */
 karmaColorPicker.prototype.initSpectrumColorPicker = function () {
+	$( "#" + this.id ).spectrum( {
+		color: "#1E8FE1",
+		showAlpha: true,
+		alphaVertical: true,
+		preferredFormat: "hex",
+		showInput: true,
+		replacerClassName: 'spectrum-color-preview'
+	} );
+	$( document ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function () {
 
+		$( ".karma-color-picker-container" ).removeClass( 'opened' );
+
+	} )
 };
 
 /**
@@ -172,7 +193,12 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 
 	e.preventDefault();
 	var colorPickerContaner = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' );
-	colorPickerContaner.className += ' opened';
+	if ( $( colorPickerContaner ).hasClass( 'opened' ) ) {
+		$( colorPickerContaner ).removeClass( 'opened' );
+	} else {
+		colorPickerContaner.className += ' opened';
+	}
+
 
 
 };
