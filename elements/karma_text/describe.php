@@ -67,7 +67,29 @@ class Karma_Text_Describe extends Karma_Text {
 						"params"    => array(
 							'value' => $this->element_attributes[ 'color' ],
 						)
-					)
+					),
+
+					array(
+						'type'   => 'alignmentGizmo',
+						'form'   => 'animation-panel',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+							'className' => 'karma-image-animation-layout',
+							"field"     => array(
+								array(
+									'icon'  => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+									'title' => esc_attr__( "Real size", 'karma' ),
+									'value' => "left",
+								),
+								array(
+									'icon'  => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+									'title' => "Fill",
+									'value' => "right",
+								),
+							),
+						),
+
+					),
 				)
 			)
 		);

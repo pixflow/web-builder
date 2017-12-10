@@ -2171,6 +2171,16 @@ img {
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleText:hover {
       color: #419CF8;
       transition: all 0.3s ease; }
+    .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo .gizmo-drop-down {
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      left: 0;
+      display: none; }
+      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo .gizmo-drop-down div {
+        padding: 5px; }
+      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo .gizmo-drop-down.open-drop-down-gizmo {
+        display: block; }
     .karma-builder-element .karma-gizmo-template .row-gizmo-group {
       width: auto;
       height: 35px;
@@ -3321,8 +3331,8 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       font-size: 11px; }
       @media screen and (min-width: 1288px) {
         .karma-builder-element-panel-gather-menu ul {
-          font-size: calc(11px + 3 * ((100vw - 1288px) / 152)); } }
-      @media screen and (min-width: 1440px) {
+          font-size: calc(11px + 3 * ((100vw - 1288px) / 212)); } }
+      @media screen and (min-width: 1500px) {
         .karma-builder-element-panel-gather-menu ul {
           font-size: 14px; } }
     .karma-builder-element-panel-gather-menu ul li {

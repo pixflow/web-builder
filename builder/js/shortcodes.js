@@ -6,7 +6,8 @@
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/buildGizmo'                                     				: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
-			'click	.karma-more-setting'											: 'showGizmoRelatedToMore'
+			'click	.karma-more-setting'											: 'showGizmoRelatedToMore',
+			'click .karma-drop-down-gizmo'											: 'openDropDownGzmo'
 		},
 
 		documentEvents: {
@@ -71,6 +72,18 @@
 		colorPickerTemplate: ' <div> <input type="text" value="{{{ data.value }}}"/>  </div> '
 		+ ' <# $( document ).trigger( "colorPickerRender", [data] ) #>',
 
+		/**
+		 *  Build html for text shortcode alignment
+		 */
+		alignmentGizmoTemplate : ' <div class="karma-drop-down-gizmo"> {{{ data.icon }}} </div>  '
+		+ '<div class="gizmo-drop-down">'
+		+ '<# for( var i in data.field ) { #>'
+		+ '<div class="{{data.class}}" data-value="{{ data.field[i].value }}" >'
+		+ '{{{data.field[i].icon}}}'
+		+ '</div>'
+		+ '<# } #>'
+		+ '</div>' ,
+		
 		/**
 		 *  Build html for gizmo resizeably for top&& bottom
 		 */
@@ -1003,6 +1016,13 @@
 			}
 
 		},
+
+		openDropDownGzmo: function () {
+
+			var dropsowngizmo = document.querySelector( '.gizmo-drop-down' );
+			dropsowngizmo.classList.toggle( "open-drop-down-gizmo" );
+			
+		}
 
 	});
 
