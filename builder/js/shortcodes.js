@@ -9,6 +9,10 @@
 			'click	.karma-more-setting'											: 'showGizmoRelatedToMore'
 		},
 
+		documentEvents: {
+			'colorPickerRender': 'colorPicker'
+		},
+
 		shortcodeParams: {},
 
 		/**
@@ -60,6 +64,12 @@
 		 *  Build html for icon gizmo
 		 */
 		simpleIconTemplate : ' <div> {{{ data.icon }}} </div> ',
+
+		/**
+		 *  Build html for color gizmo
+		 */
+		colorPickerTemplate: ' <div> <input type="text" value="{{{ data.value }}}"/>  </div> '
+		+ ' <# $( document ).trigger( "colorPickerRender", [data] ) #>',
 
 		/**
 		 *  Build html for gizmo resizeably for top&& bottom
@@ -155,11 +165,27 @@
 				this.model.bind( 'change', this.update );
 				this.model.bind( 'destroy', this.destroy );
 			}
+			this.delegateEventsOnDocument();
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
 			this.removeGizmo();
 			this.karmaLinksDocumentClick();
 			this.removeMoreSubmenu();
+
+		},
+
+		/**
+		 * @summary delegates events that set on document
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		delegateEventsOnDocument: function () {
+
+			for ( var i in this.documentEvents ) {
+				$( document ).off( i ).on( i, this[ this.documentEvents[ i ] ] );
+			}
 
 		},
 
@@ -328,6 +354,44 @@
 			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
 			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
 			this.$el.find( '.karma-bottom-spacing' ).resizable( options );
+
+		},
+
+		/**
+		 * @summary init karma color picker plugin on color picker gizmo
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		colorPicker: function ( e, data ) {
+
+			var that = this,
+				options = {
+					selector            : ".color-picker",
+					multiColor          : true,
+					firstColorTitle     : 'Main',
+					secondColorTitle    : 'Hover',
+					presetColors        : [
+						'#FFFFFF'
+						, '#FEF445'
+						, '#FAC711'
+						, '#F24726'
+						, '#E6E6E6'
+						, '#CEE741'
+						, '#8FD14F'
+						, '#DA0263'
+						, '#808080'
+						, '#13CDD4'
+						, '#0DA789'
+						, '#652CB3'
+						, '#141414'
+						, '#2D9BF0'
+						, '#404BB2'
+					]
+				};
+
+			//new karmaColorPicker( options );
 
 		},
 

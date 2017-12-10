@@ -213,6 +213,7 @@ class Karma_Shortcode_Base {
 			->render_style()
 			->render_scripts();
 
+
 	}
 
 

@@ -61,9 +61,15 @@ class Karma_Text_Describe extends Karma_Text {
 				"type"      => "outerGizmo",
 				"className" => "text-gizmo-group",
 				"params"    => array(
-
+					array(
+						'type'      => 'colorPicker',
+						'className' => 'karma-color-picker-gizmo',
+						"params"    => array(
+							'value' => $this->element_attributes[ 'color' ],
+						)
+					)
 				)
-			),
+			)
 		);
 
 		return $controllers;
