@@ -255,7 +255,7 @@ img{
 		border: 1px solid $builder-accent-color;
 		border-radius: 100%;
 		box-sizing: border-box;
-	    z-index:$level1;
+	    z-index:$level3;
 
 		&:after{
 			@include box( 22px, 22px );
@@ -390,7 +390,7 @@ img{
 				position: absolute;
 				right: -5px;
 				top: 0;
-				z-index: $level4;
+				z-index: $level2;
 			}
 
 			.resize-handler:before {

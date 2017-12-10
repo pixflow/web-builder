@@ -44,6 +44,7 @@
 			this.createAddElementPanel();
 			this.createTemplatesPanel();
 			this.createUnsplashPanel();
+			this.createUpgradePanel();
 			this.$el.trigger( 'karma/after/finish_element_panel', [ this ] );
 			this.setEvents();
 			this.removeGatherMenuPanel();
@@ -167,6 +168,19 @@
 		createUnsplashPanel: function(){
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-unsplash', {} ) + '</div>';
+			this.el.appendChild( $( template )[0] );
+
+		},
+
+		/**
+		 *@summary create Upgrade with import template
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		createUpgradePanel: function(){
+
+			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-upgrade', {} ) + '</div>';
 			this.el.appendChild( $( template )[0] );
 
 		},

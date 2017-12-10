@@ -2248,7 +2248,7 @@ img {
       border: 1px solid #419cf8;
       border-radius: 100%;
       box-sizing: border-box;
-      z-index: 100; }
+      z-index: 80; }
       .karma-builder-element .karma-spacing-dot-container .spacing-dot:after {
         width: 22px;
         height: 22px;
@@ -2371,7 +2371,7 @@ img {
       position: absolute;
       right: -5px;
       top: 0;
-      z-index: 70; }
+      z-index: 90; }
     .karma-builder-element.karma-active-section .karma-row .resize-handler:before {
       position: absolute;
       left: 50%;
@@ -3043,7 +3043,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       top: 38%;
       right: auto;
       bottom: auto;
-      left: 89px;
+      left: 90px;
       background-color: #fff;
       border: 1px solid #ffffffeb;
       border-width: 0 2px 2px 0;

@@ -53,7 +53,7 @@
 		position: fixed;
 
 		&:after {
-			@include element_direction($top: 38%, $left: 89px);
+			@include element_direction($top: 38%, $left: 90px);
 			background-color: $white-color;
 			border: 1px solid #ffffffeb;
 			border-width: 0 2px 2px 0;
