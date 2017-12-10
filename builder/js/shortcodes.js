@@ -14,6 +14,8 @@
 			'colorPickerRender': 'colorPicker'
 		},
 
+		gizmoTriggers: [],
+
 		shortcodeParams: {},
 
 		/**
@@ -69,8 +71,8 @@
 		/**
 		 *  Build html for color gizmo
 		 */
-		colorPickerTemplate: ' <div> <input type="text" value="{{{ data.value }}}"/>  </div> '
-		+ ' <# $( document ).trigger( "colorPickerRender", [data] ) #>',
+		colorPickerTemplate: ' <div> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> '
+		+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
 
 		/**
 		 *  Build html for text shortcode alignment
@@ -83,7 +85,7 @@
 		+ '</div>'
 		+ '<# } #>'
 		+ '</div>' ,
-		
+
 		/**
 		 *  Build html for gizmo resizeably for top&& bottom
 		 */
@@ -327,6 +329,10 @@
 					}
 				}
 				var $gizmo = this.gizmoBuilder( this.gizmoParams[ i ] );
+				for ( var j in this.gizmoTriggers ) {
+					$( document ).trigger( this.gizmoTriggers[ j ].event, [ this.gizmoTriggers[ j ].data ] );
+				}
+				this.gizmoTriggers = [];
 				this.$el.append( $gizmo );
 				if ( 'function' === typeof this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ] ) {
 					this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ]( $gizmo );
@@ -381,7 +387,7 @@
 
 			var that = this,
 				options = {
-					selector            : ".color-picker",
+					selector            : "#" + data.id,
 					multiColor          : true,
 					firstColorTitle     : 'Main',
 					secondColorTitle    : 'Hover',
