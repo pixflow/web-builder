@@ -183,8 +183,9 @@
 			if( null != addElement ){
 				if ( addElement.classList.contains( elementPanelShowClass ) ) {
 					addElement.classList.remove( "element-panel-show" );
-				}else
-					addElement.classList.add( "element-panel-show" );
+				}else {
+					addElement.classList.add("element-panel-show");
+				}
 			}
 			this.callIsotopeOnElements();
 			this.scrollElementPanel();
@@ -269,7 +270,7 @@
 		scroll : function ( element, event ) {
 
 			var element = element.helper,
-					toolbarHeight = 100;
+				toolbarHeight = 100;
 			this.scrollToDown( element, toolbarHeight );
 			this.scrollToTop( event );
 
@@ -362,7 +363,7 @@
 		overlayBehavior : function ( event, UI ) {
 
 			var overlay = document.querySelector( '.karma-overlay-on-dragging' ) ,
-					targetElement;
+				targetElement;
 			overlay.style.display = 'none';
 			UI.helper.get( 0 ).style.display = 'none';
 			targetElement = document.elementFromPoint( event.clientX, event.clientY );
@@ -436,9 +437,9 @@
 		showElementsPlaceHolder : function ( event, targetElement ) {
 
 			var scrollTop = document.body.scrollTop,
-					topPosition = targetElement.node.getBoundingClientRect().top + scrollTop ,
-					elementHeight = targetElement.node.offsetHeight,
-					elementHalf = topPosition + elementHeight / 2;
+				topPosition = targetElement.node.getBoundingClientRect().top + scrollTop ,
+				elementHeight = targetElement.node.offsetHeight,
+				elementHalf = topPosition + elementHeight / 2;
 
 			if ( ( event.clientY + scrollTop ) < elementHalf ) {
 				/** Users drag at the top of element */
@@ -533,7 +534,7 @@
 				stop: function( event, UI ){
 
 					var DOMOBJ = $( this ).get( 0 ),
-							dropArea = document.querySelector('.karma-show-placeholder');
+						dropArea = document.querySelector('.karma-show-placeholder');
 					DOMOBJ.classList.remove( 'karma-start-dragging', 'karma-grab-element' );
 					clearInterval( that.flyScroll );
 					that.removeOverlay();
@@ -560,8 +561,8 @@
 				return false;
 			}
 			var validateModel = this.getValidateElementModel( whereToDrop, elementName ),
-					CID = karmaBuilder.karmaModels.add( validateModel ).cid,
-					model = karmaBuilder.karmaModels.get({ 'cid' : CID });
+				CID = karmaBuilder.karmaModels.add( validateModel ).cid,
+				model = karmaBuilder.karmaModels.get({ 'cid' : CID });
 			whereToDrop.outerHTML = KarmaView.createBuilderModel( model );
 			KarmaView.createNewElement( elementName.replace( 'karma_', '' ), model, true );
 			this.$el.trigger( 'karma/after/dropElement', [ validateModel['parent_key'] ] );
@@ -602,7 +603,7 @@
 		ReOrderElements : function ( e, parent_key ) {
 
 			var childElements = document.querySelectorAll('[data-element-key="' + parent_key + '"] .karma-builder-element'),
-					order = 1 ;
+				order = 1 ;
 			_.each( childElements, function( element ){
 				var elementInstance = $( element ).backboneView();
 				elementInstance.model.attributes.order = order;
@@ -639,7 +640,7 @@
 		categoryFilterActive: function ( e ) {
 
 			var target = $( e.target ),
-					karmaAddcontentClass =	target.closest( '.karma-addcontent' );
+				karmaAddcontentClass =	target.closest( '.karma-addcontent' );
 			if ( karmaAddcontentClass ) {
 				$( '.karma-addcontent' ).removeClass( 'karma-addcontent-active' );
 				karmaAddcontentClass.addClass( 'karma-addcontent-active' );
@@ -689,7 +690,7 @@
 			/** @todo: change stopPropagation */
 			e.stopPropagation();
 			var target = $( e.target ),
-					categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
+				categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
 			if ( target.closest('svg').length ) {
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
