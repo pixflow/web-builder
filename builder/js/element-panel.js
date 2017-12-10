@@ -272,7 +272,25 @@
 			var element = element.helper,
 				toolbarHeight = 100;
 			this.scrollToDown( element, toolbarHeight );
-			this.scrollToTop( event );
+			this.scrollToTop( element, event );
+
+		},
+
+		/**
+		 * @summary Keep element position while dragging and scrolling
+		 *
+		 * @param   {object}    element        Helper element
+		 * @param   {string}    direction      Scroll direction
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		keepElementPosition : function( element, direction ){
+
+			var elementNode = element[ 0 ] ,
+				top = parseInt( elementNode.style.top );
+			top = ( 'up' === direction  ) ? ( top - 5 ) : ( top + 5 );
+			elementNode.style.top =  top + 'px';
 
 		},
 
@@ -288,7 +306,7 @@
 		scrollToDown: function ( element, toolbarHeight ) {
 
 			var that = this;
-			if ( element.position().top +  toolbarHeight  > window.innerHeight  + $(window).scrollTop() ) {
+			if ( parseInt( element[0].style.top ) +  toolbarHeight  > window.innerHeight  + $( window ).scrollTop() ) {
 				clearInterval( that.flyScroll );
 				/** Start scrolling down */
 				that.flyScroll = setInterval( function(){
@@ -296,6 +314,7 @@
 					if( window.innerHeight + window.scrollY == document.body.offsetHeight ){
 						clearInterval( that.flyScroll );
 					}
+					that.keepElementPosition( element, 'down' );
 					$( window ).scrollTop( $( window ).scrollTop() + 5 );
 				}, 1 );
 			} else {
@@ -307,10 +326,12 @@
 		/**
 		 * @summary Scroll the browser up on dragging element
 		 *
+		 * @param   {object}    element        Helper element
+		 *
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		scrollToTop : function ( event ) {
+		scrollToTop : function ( element, event ) {
 
 			var that = this;
 			if ( event.clientY < 50 ) {
@@ -321,6 +342,7 @@
 					if( $( window ).scrollTop() == 0  ){
 						clearInterval( that.flyScroll );
 					}
+					that.keepElementPosition( element, 'up' );
 					$( window ).scrollTop( $( window ).scrollTop() - 5 );
 				}, 1 );
 			}
@@ -519,6 +541,7 @@
 				start : function(){
 
 					var DOMOBJ = $( this ).get( 0 );
+					$(".karma-elements").getNiceScroll().remove();
 					DOMOBJ.classList.add( 'karma-start-dragging', 'karma-grab-element' );
 					that.createOverlay();
 
@@ -540,8 +563,10 @@
 					that.removeOverlay();
 					that.prepareBeforeDrop( dropArea, UI.helper.attr('data-element-name') );
 					that.removePlaceHolders();
+					that.scrollElementPanel();
 
 				}
+
 			});
 
 		},

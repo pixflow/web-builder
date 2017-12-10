@@ -1681,15 +1681,18 @@ html {
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
 .karma-element-placeholder {
   width: 100%;
-  height: 8px;
+  height: 0px;
   align-items: center;
-  display: none;
-  justify-content: center; }
+  display: flex;
+  justify-content: center;
+  transition: height 150ms cubic-bezier(0.47, 0, 0.745, 0.715); }
   .karma-element-placeholder.karma-column-placeholder {
-    height: 130px;
-    padding: 20px; }
+    padding: 20px;
+    transition: none; }
+    .karma-element-placeholder.karma-column-placeholder.karma-show-placeholder {
+      height: 130px; }
   .karma-element-placeholder.karma-show-placeholder {
-    display: flex; }
+    height: 8px; }
   .karma-element-placeholder .karma-inner-placeholder {
     width: 100%;
     height: 100%;
