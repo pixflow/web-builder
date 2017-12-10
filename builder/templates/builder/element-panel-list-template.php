@@ -1,6 +1,6 @@
 <div class="element-panel-section-container karma-element-panel-list karma-active-tab" >
 	<# print( KarmaView.getWpTemplate( 'karma-element-panel-top-header' ) ); #>
-		<div class="karma-elements karma-isotope" >
+	<div class="karma-elements karma-isotope" >
 			<# _.each( data.elementInfo, function( element ){
 		if( false !== element.showInList ){
 		#>

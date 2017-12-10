@@ -11,9 +11,10 @@
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
 			flex-wrap: wrap;
+			margin-bottom: 4.44vh;
 			max-height: calc( 100% - ( 72px + 4.44vh ) );
 			overflow: hidden;
-			padding: 0 1vw 4.44vh 2vw;
+			padding: 0 1vw 0 2vw;
 			width: 100%;
 		}
 
@@ -78,6 +79,7 @@
 
 				@include flexbox(center, center, flex-start);
 				display: none;
+				height: 100%;
 
 				&.karma-active-tab {
 					display: flex;
