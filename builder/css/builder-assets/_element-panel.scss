@@ -1,5 +1,5 @@
 .karma-element-panel-container {
-	left: 26px;
+	left: 1.35vw;
 	position: fixed;
 	top: 36%;
 	z-index: 1000;
@@ -50,6 +50,7 @@
 		@include karma-box(27.29vw, 77vh);
 		@include element_direction($top: 13vh, $left: 95px);
 		display: none;
+		max-height: 700px;
 		position: fixed;
 
 		&:after {

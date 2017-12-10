@@ -2152,6 +2152,16 @@ img {
     .karma-builder-element .karma-gizmo-template div {
       cursor: pointer;
       white-space: nowrap; }
+    .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      left: 0;
+      display: none; }
+      .karma-builder-element .karma-gizmo-template .karma-drop-down-box div {
+        padding: 5px; }
+      .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
+        display: block; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon {
       align-items: center;
       display: flex;
@@ -2174,16 +2184,6 @@ img {
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleText:hover {
       color: #419CF8;
       transition: all 0.3s ease; }
-    .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo .gizmo-drop-down {
-      position: absolute;
-      background-color: white;
-      width: 100%;
-      left: 0;
-      display: none; }
-      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo .gizmo-drop-down div {
-        padding: 5px; }
-      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-alignmentGizmo .gizmo-drop-down.open-drop-down-gizmo {
-        display: block; }
     .karma-builder-element .karma-gizmo-template .row-gizmo-group {
       width: auto;
       height: 35px;
@@ -2986,7 +2986,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   width: 100%; }
 
 .karma-element-panel-container {
-  left: 26px;
+  left: 1.35vw;
   position: fixed;
   top: 36%;
   z-index: 1000; }
@@ -3038,6 +3038,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     bottom: auto;
     left: 95px;
     display: none;
+    max-height: 700px;
     position: fixed; }
     .karma-element-panel-container .karma-element-panel-add-element-view:after {
       top: 38%;

@@ -867,8 +867,12 @@
 			var searchInputVal = document.querySelector( ".karma-builder-search-text" ),
 				searchInputCloseButton = document.querySelector( ".karma-search-close-icon" );
 
-			searchInputCloseButton.classList.remove( "show-search-close-icon" ) ;
+			if( null != searchInputVal ) {
+				if( null != searchInputCloseButton ) {
+					searchInputCloseButton.classList.remove( "show-search-close-icon" );
+				}
 			searchInputVal.classList.remove( "open-search-panel" );
+			}
 
 		},
 
@@ -882,11 +886,12 @@
 
 			var searchInputVal = document.querySelector( ".karma-builder-search-text" ).value,
 				searchInputCloseButton = document.querySelector( ".karma-search-close-icon" );
-
-			if( "" != searchInputVal ){
-				searchInputCloseButton.classList.add( "show-search-close-icon" ) ;
-			}else{
-				searchInputCloseButton.classList.remove( "show-search-close-icon" ) ;
+			if(null != searchInputCloseButton){
+				if( "" != searchInputVal ){
+					searchInputCloseButton.classList.add( "show-search-close-icon" ) ;
+				}else{
+					searchInputCloseButton.classList.remove( "show-search-close-icon" ) ;
+				}
 			}
 		},
 

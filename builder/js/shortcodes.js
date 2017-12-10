@@ -7,7 +7,7 @@
 			'before/buildGizmo'                                     				: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
 			'click	.karma-more-setting'											: 'showGizmoRelatedToMore',
-			'click .karma-drop-down-gizmo'											: 'openDropDownGzmo'
+			'click .karma-drop-down-icon'											: 'openDropDownGzmo'
 		},
 
 		documentEvents: {
@@ -77,13 +77,17 @@
 		/**
 		 *  Build html for text shortcode alignment
 		 */
-		alignmentGizmoTemplate : ' <div class="karma-drop-down-gizmo"> {{{ data.icon }}} </div>  '
-		+ '<div class="gizmo-drop-down">'
-		+ '<# for( var i in data.field ) { #>'
-		+ '<div class="{{data.class}}" data-value="{{ data.field[i].value }}" >'
-		+ '{{{data.field[i].icon}}}'
+		alignmentGizmoTemplate : ' <div class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </div> '
+		+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
+		+ '<div class="karma-align-left" data-value="align-left" >'
+		+ '{{{data.leftAlignIcon}}}'
 		+ '</div>'
-		+ '<# } #>'
+		+ '<div class="karma-align-right" data-value="align-right" >'
+		+ '{{{data.rightAlignIcon}}}'
+		+ '</div>'
+		+ '<div class="karma-align-center" data-value="align-center" >'
+		+ '{{{data.centerAlignIcon}}}'
+		+ '</div>'
 		+ '</div>' ,
 
 		/**
@@ -1023,11 +1027,15 @@
 
 		},
 
-		openDropDownGzmo: function () {
-
-			var dropsowngizmo = document.querySelector( '.gizmo-drop-down' );
-			dropsowngizmo.classList.toggle( "open-drop-down-gizmo" );
+		openDropDownGzmo: function ( e ) {
 			
+			var dropDownIcon = (  e.target.classList.contains('karma-drop-down-icon') ) ? e.target : e.target.closest( 'div' ),
+				dropDownBox = dropDownIcon.nextElementSibling;
+
+			if( null != dropDownBox ){
+			dropDownBox.classList.toggle( 'open-drop-down-gizmo' );
+			}
+
 		}
 
 	});

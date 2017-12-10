@@ -136,6 +136,20 @@ img{
 			cursor: pointer;
 			white-space: nowrap;
 		}
+		.karma-drop-down-box{
+			position: absolute;
+			background-color: white;
+			width: 100%;
+			left: 0;
+			display: none;
+			
+			div{
+				padding: 5px;
+			}
+			&.open-drop-down-gizmo{
+				display: block;
+			}
+		}
 
 		.karma-builder-gizmo-simpleIcon {
 			align-items: center;
@@ -172,20 +186,7 @@ img{
 		}
 		.karma-builder-gizmo-alignmentGizmo{
 
-			.gizmo-drop-down{
-				position: absolute;
-				background-color: white;
-				width: 100%;
-				left: 0;
-				display: none;
 
-				div{
-					padding: 5px;
-				}
-				&.open-drop-down-gizmo{
-					display: block;
-				}
-			}
 		}
 
 		.row-gizmo-group {

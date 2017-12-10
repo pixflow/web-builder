@@ -61,6 +61,7 @@ class Karma_Text_Describe extends Karma_Text {
 				"type"      => "outerGizmo",
 				"className" => "text-gizmo-group",
 				"params"    => array(
+
 					array(
 						'type'      => 'colorPicker',
 						'className' => 'karma-color-picker-gizmo',
@@ -70,24 +71,17 @@ class Karma_Text_Describe extends Karma_Text {
 						)
 					),
 
+
 					array(
 						'type'   => 'alignmentGizmo',
 						'form'   => 'animation-panel',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
-							'className' => 'karma-image-animation-layout',
-							"field"     => array(
-								array(
-									'icon'  => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
-									'title' => esc_attr__( "Real size", 'karma' ),
-									'value' => "left",
-								),
-								array(
-									'icon'  => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
-									'title' => "Fill",
-									'value' => "right",
-								),
-							),
+							'defaultIcon'    => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
+							'leftAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
+							'rightAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/centeralign.svg' ),
+							'centerAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/centeralign.svg' ),
+
+
 						),
 
 					),
