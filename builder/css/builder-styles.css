@@ -3379,4 +3379,8 @@ input.karma-builder-search-text.open-search-panel {
   width: 13.02vw;
   z-index: 3; }
 
+@media screen and (max-width: 1440px) {
+  .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left {
+    width: 11vw; } }
+
 /*# sourceMappingURL=builder-styles.css.map */
