@@ -26,6 +26,7 @@
 			'karma/after/dropElement'                                                   : "ReOrderElements" ,
 			"click .karma-search-close-icon"											: "clearElementPanelSearchBar" ,
 			"click .karma-builder-search-text"											: "showElementPanelSearchBar" ,
+			"mousewheel .karma-elements"                                                : "preventFromScrolling"
 
 
 		},
@@ -222,6 +223,18 @@
 				railalign: "left",
 				cursorborder : "none",
 			});
+
+		},
+
+		/**
+		 * @summary Prevent from scrolling window when scrolling on nice scroll elements
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		preventFromScrolling : function (e) {
+
+			e.preventDefault();
 
 		},
 
