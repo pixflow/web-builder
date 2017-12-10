@@ -192,7 +192,7 @@ class Karma_Image_Describe extends Karma_Image {
 						'form'      => 'background-panel',
 						'className' => 'karma-image-background-setting',
 						'params'    => array(
-							'value' => esc_attr( 'Change Image', 'karma' ),
+							'value' => esc_attr( 'change image', 'karma' ),
 						)
 					),
 				)

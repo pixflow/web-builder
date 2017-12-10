@@ -149,7 +149,7 @@ class Karma_Section_Describe extends Karma_Section {
 					array(
 						'name'			=> 'upload' ,
 						'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"			=> esc_attr__( "Change Image", 'karma' ),
+						"label"			=> esc_attr__( "change image", 'karma' ),
 						"value"		=> "",
 					),
 					array(
@@ -159,7 +159,7 @@ class Karma_Section_Describe extends Karma_Section {
 					array(
 						"name"		=> "switch",
 						"type"		=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-						"label"		=> esc_attr__( "Background Setting", 'karma' ),
+						"label"		=> esc_attr__( "background setting", 'karma' ),
 						"form"		=> "new-panel",
 						"action"	=> "open",
 						'height'	=> '271'
@@ -238,7 +238,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'form'		=> 'background-panel',
 						'className'	=> 'row-background-setting',
 						'params'	=> array(
-							'value'		=> esc_attr( 'Background', 'karma' ),
+							'value'		=> esc_attr( 'background', 'karma' ),
 						)
 
 
