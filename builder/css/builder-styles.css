@@ -2723,33 +2723,33 @@ img {
       cursor: pointer;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-icon {
-      padding: 0;
+      background-color: inherit;
       margin: 0;
-      background-color: inherit; }
+      padding: 0; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
-      position: absolute;
       background-color: white;
-      top: 32px;
-      left: -11px;
-      display: none;
-      box-shadow: 3px 1px 28px;
       border-radius: 4px;
-      flex-direction: column; }
+      box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
+      display: none;
+      flex-direction: column;
+      left: -11px;
+      position: absolute;
+      top: 32px; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box:after {
-        width: 0;
-        height: 0;
+        border-bottom: 8px solid white;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-bottom: 8px solid white;
         content: '';
-        top: -6px;
+        height: 0;
+        left: 32%;
         position: absolute;
-        left: 32%; }
+        top: -6px;
+        width: 0; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box button {
-        padding: 7px;
-        margin: 5px;
+        background-color: inherit;
         border-radius: 3px;
-        background-color: inherit; }
+        margin: 5px;
+        padding: 7px; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button:hover {
           background-color: rgba(65, 156, 248, 0.15); }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
