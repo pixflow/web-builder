@@ -4,19 +4,15 @@
 
 		events:{
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
-			'before/buildGizmo'                                     				: 'gimzoAction' ,
+			'before/buildGizmo'														: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
 			'click	.karma-more-setting'											: 'showGizmoRelatedToMore',
 			'click .karma-drop-down-icon'											: 'openDropDownGzmo'
 		},
 
-		documentEvents: {
-			'colorPickerRender': 'colorPicker'
-		},
-
-		gizmoTriggers: [],
-
 		shortcodeParams: {},
+
+		gizmos: {},
 
 		/**
 		 * @summary trigger document click on links which have karma-document-click class
@@ -50,8 +46,8 @@
 		 *  Build html for outer gizmo
 		 */
 		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }}">'
-		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
+		+ '<# _.each( data.params, function( param ){ #>'
+		+ '<div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
 		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
 		+ '</div>'
 		+ '<# }) #>'
@@ -71,8 +67,7 @@
 		/**
 		 *  Build html for color gizmo
 		 */
-		colorPickerTemplate: ' <div> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> '
-		+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
+		colorPickerTemplate: ' <div class="karma-color-gizmo"> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> ',
 
 		/**
 		 *  Build html for text shortcode alignment
@@ -91,7 +86,7 @@
 		+ '</div>' ,
 
 		/**
-		 *  Build html for gizmo resizeably for top&& bottom
+		 *  Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">' +
 		'<div class="karma-spacing karma-top-spacing  " data-direction="both" >'
@@ -184,27 +179,11 @@
 				this.model.bind( 'change', this.update );
 				this.model.bind( 'destroy', this.destroy );
 			}
-			this.delegateEventsOnDocument();
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
 			this.removeGizmo();
 			this.karmaLinksDocumentClick();
 			this.removeMoreSubmenu();
-
-		},
-
-		/**
-		 * @summary delegates events that set on document
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		delegateEventsOnDocument: function () {
-
-			for ( var i in this.documentEvents ) {
-				$( document ).off( i ).on( i, this[ this.documentEvents[ i ] ] );
-			}
 
 		},
 
@@ -333,10 +312,6 @@
 					}
 				}
 				var $gizmo = this.gizmoBuilder( this.gizmoParams[ i ] );
-				for ( var j in this.gizmoTriggers ) {
-					$( document ).trigger( this.gizmoTriggers[ j ].event, [ this.gizmoTriggers[ j ].data ] );
-				}
-				this.gizmoTriggers = [];
 				this.$el.append( $gizmo );
 				if ( 'function' === typeof this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ] ) {
 					this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ]( $gizmo );
@@ -347,7 +322,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeably for top and bottom
+		 * @summary Build gizmo resizeable for top and bottom
 		 *
 		 * @since 1.0.0
 		 *
