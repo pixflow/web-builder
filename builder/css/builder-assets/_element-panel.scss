@@ -371,16 +371,18 @@
 	background-color: $builder-element-panel-background-color;
 	cursor: -webkit-grab;
 	cursor: grab;
+	border-radius: 4px;
 	flex-direction: column;
 	transition: border .3s  cubic-bezier(0.445, 0.05, 0.55, 0.95);
 	&.karma-start-dragging{
 		visibility: hidden;
 	}
 	&.karma-grab-element{
-		box-shadow: 0 4px 4px 0 rgba( 68, 83, 99, 0.2 );
+		box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
 		z-index: 9999;
 		&:hover{
 			border: none !important;
+			border-radius: 4px;
 		}
 	}
 }

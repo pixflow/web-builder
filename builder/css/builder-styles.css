@@ -2166,7 +2166,7 @@ img {
       align-items: center;
       display: flex;
       height: 22px;
-      padding: 0 6px 0 9px;
+      padding: 0 6px 0 6px;
       transition-duration: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon div {
         display: flex; }
@@ -3277,15 +3277,17 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   background-color: #fff;
   cursor: -webkit-grab;
   cursor: grab;
+  border-radius: 4px;
   flex-direction: column;
   transition: border 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
   .karma-element-single-element.karma-start-dragging {
     visibility: hidden; }
   .karma-element-single-element.karma-grab-element {
-    box-shadow: 0 4px 4px 0 rgba(68, 83, 99, 0.2);
+    box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
     z-index: 9999; }
     .karma-element-single-element.karma-grab-element:hover {
-      border: none !important; }
+      border: none !important;
+      border-radius: 4px; }
 
 .karma-element-single-element-name {
   margin-top: 13px;
