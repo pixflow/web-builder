@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Cache_Manager extends File_System{
+class Cache_Manager{
 
 
 	/**
@@ -77,8 +77,7 @@ class Cache_Manager extends File_System{
 	public function __construct( $post_ID = '' ){
 
 		$this->set_page_ID( $post_ID );
-		parent::get_instance();
-		var_dump('ermia');
+		File_System::get_instance();
 
 	}
 
@@ -108,7 +107,8 @@ class Cache_Manager extends File_System{
 
 		$css_path = self::get_cache_file_dir( $this->post_ID, 'css' );
 		$js_path = self::get_cache_file_dir( $this->post_ID, 'js' );
-		if( parent::file_exists( $css_path ) &&  parent::file_exists( $js_path ) ){
+		$file = File_System::get_instance();
+		if( $file->file_exists( $css_path ) &&  $file->file_exists( $js_path ) ){
 				return true;
 		}
 
@@ -149,8 +149,9 @@ class Cache_Manager extends File_System{
 	 */
 	private function create_cache_directory() {
 
-		if ( ! parent::file_exists( CACHE_DIRECTORY_PATH ) ) {
-			parent::make_dir( CACHE_DIRECTORY_PATH );
+		$file = File_System::get_instance();
+		if ( ! $file->file_exists( CACHE_DIRECTORY_PATH ) ) {
+			$file->make_dir( CACHE_DIRECTORY_PATH );
 		}
 
 	}
@@ -165,8 +166,9 @@ class Cache_Manager extends File_System{
 
 		$css_file_name = self::get_cache_file_dir( $this->post_ID, 'css' );
 		$js_file_name = self::get_cache_file_dir( $this->post_ID, 'js' );
-		if( parent::create_file( $css_file_name, $this->minify_css( self::$css_blocks ) )
-			&&  parent::create_file( $js_file_name, $this->minify_js( self::$js_blocks ) ) ){
+		$file = File_System::get_instance();
+		if( $file->create_file( $css_file_name, $this->minify_css( self::$css_blocks ) )
+			&&  $file->create_file( $js_file_name, $this->minify_js( self::$js_blocks ) ) ){
 			return true;
 		}
 		return false;
@@ -181,8 +183,8 @@ class Cache_Manager extends File_System{
 	 */
 	public function empty_cache(){
 
-		parent::get_instance();
-		if( parent::remove_dir( CACHE_DIRECTORY_PATH ) ){
+		$file = File_System::get_instance();
+		if( $file->remove_dir( CACHE_DIRECTORY_PATH ) ){
 			return true;
 		}
 		return false;
@@ -217,8 +219,8 @@ class Cache_Manager extends File_System{
 	 */
 	public static function remove_cache_file( $page_id ){
 
-		parent::get_instance();
-		if( parent::delete_file( self::get_cache_file_dir( $page_id, 'js' ) ) && parent::delete_file( self::get_cache_file_dir( $page_id, 'css' ) ) ){
+		$file = File_System::get_instance();
+		if( $file->delete_file( self::get_cache_file_dir( $page_id, 'js' ) ) && $file->delete_file( self::get_cache_file_dir( $page_id, 'css' ) ) ){
 			return true;
 		}
 		return false;

@@ -28,8 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class File_System{
 
-
-
 	/**
 	 * the WordPress Filesystem
 	 *
@@ -56,7 +54,6 @@ class File_System{
 	 */
 	public function __construct(){
 
-		var_dump('sd');
 		$this->get_wp_file_system();
 
 	}
