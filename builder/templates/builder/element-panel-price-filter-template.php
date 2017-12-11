@@ -1,6 +1,6 @@
 <div class="karma-element-panel-price-filter-container">
 	<div class="karma-element-panel-price-filter-title"></div>
-	<div class="karma-element-panel-price-filter karma-stop-propagation">
+	<div class="karma-element-panel-price-filter ">
 		<ul>
 			<li class="active" data-filter="*">
 				<label for="all-item"><?php echo esc_attr__("All Item", 'karma');?></label>

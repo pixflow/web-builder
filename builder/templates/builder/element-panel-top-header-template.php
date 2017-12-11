@@ -3,7 +3,7 @@
 	<button class="karma-search-close-icon" >
 		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/close-icon.svg' ); ?>
 	</button>
-	<div class="karma-builder-element-panel-gather-menu karma-stop-propagation">
+	<div class="karma-builder-element-panel-gather-menu ">
 		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/gather-menu.svg' ); ?>
 		<ul>
 			<li class="active" data-filter="*"><?php echo esc_attr__("All Categories", 'karma');?></li>

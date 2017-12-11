@@ -739,7 +739,6 @@
 		 */
 		openCategoryMenu: function (e) {
 
-			/** @todo: change stopPropagation */
 			e.stopPropagation();
 			var target = $( e.target ),
 				categoryMenu = target.closest( '.karma-builder-element-panel-gather-menu' );
@@ -760,7 +759,6 @@
 			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 
 				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
-				panelGatherMenu.addClass( 'karma-stop-propagation' );
 
 				$( '.karma-elements' ).isotope( { filter: $( this ).attr( 'data-filter' ) } );
 				$( ".karma-open-element-category-dropdown" ).removeClass( "karma-open-element-category-dropdown" );
@@ -777,7 +775,7 @@
 		 */
 		elementPanelPriceFilter:function ( e ) {
 
-			var target = ( e.target.tagName == "li" ) ? e.target : e.target.closest( 'li' ) ;
+			var target = ( "li" == e.target.tagName ) ? e.target : e.target.closest( 'li' ) ;
 
 			if ( target.classList.contains( 'active' ) ){
 				return;

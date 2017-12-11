@@ -483,7 +483,7 @@ input.karma-builder-search-text{
 	color: #9EA6AE;
 	cursor: pointer;
 	font-size: 12px;
-	height: 40px;
+	height: 30px;
 	margin: 0;
 	padding-left: 1.35vw;
 	position:relative;
@@ -495,8 +495,10 @@ input.karma-builder-search-text{
 
 input.karma-builder-search-text.open-search-panel {
 	background-color: #F8F8F9;
+	background-size: 14px ;
 	border: 1px solid #F8F8F9;
 	cursor:auto;
+	font-size: 12px;
 	height: 30px;
 	outline: none;
 	padding-left: 1.82vw;

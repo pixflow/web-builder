@@ -101,6 +101,7 @@ karmaColorPicker.prototype.createColorPickerIcon = function () {
 	input.className += " karma-color-picker-input";
 	icon.addEventListener( 'click', function ( e ) {
 		e.preventDefault();
+		e.stopPropagation();
 		that.openColorPicker( e );
 	}, true );
 
@@ -215,6 +216,7 @@ karmaColorPicker.prototype.chooseColorEvent = function () {
 	var that = this;
 	$( that.chooseColor ).on( 'click', function ( e ) {
 		e.preventDefault();
+		e.stopPropagation();
 		var $spectrum = $( "#" + that.id );
 		$spectrum.spectrum( "set", that.mainInput.value );
 		$spectrum.spectrum( "toggle" );
