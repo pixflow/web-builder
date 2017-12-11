@@ -6,12 +6,17 @@
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/buildGizmo'														: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
-			'click	.karma-more-setting'											: 'showGizmoRelatedToMore',
-			'click .karma-drop-down-icon'											: 'openDropDownGzmo',
 			'click .karma-align-center'												: 'karmaTextShortcodealignCenter',
 			'click .karma-align-left'												: 'karmaTextShortcodealignLeft',
 			'click .karma-align-right'												: 'karmaTextShortcodealignRight',
+			'click .karma-more-setting'											    : 'showGizmoRelatedToMore',
+			'click .karma-drop-down-icon'											: 'openDropDownGzmo' ,
+			'click .karma-set-bold-style'											: 'setBoldStyle' ,
+			'click .karma-set-italic-style'											: 'setItalicStyle' ,
+			'click .karma-set-underline-style'										: 'setUnderlineStyle' ,
 		},
+
+
 		documentEvents: {
 			'colorPickerRender': 'colorPicker'
 		},
@@ -22,81 +27,30 @@
 
 		gizmos: {},
 
-		/**
-		 * @summary align left for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignLeft: function () {
 
-			document.execCommand( 'justifyLeft', false );
-		},
-
-		/**
-		 * @summary align center for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignCenter: function () {
-
-			document.execCommand( 'justifyCenter', false );
-		},
-
-		/**
-		 * @summary align right for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignRight: function () {
-
-			document.execCommand( 'justifyRight', false );
-		},
-
-
-		/**
-		 * @summary trigger document click on links which have karma-document-click class
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaLinksDocumentClick : function () {
-
-			this.$el.find( ".karma-document-click[href*=\"javascript:\"]" ).off( 'click.documentClick' ).on( 'click.documentClick', function(){
-
-				$( document ).trigger( 'click' );
-
-			} );
-
-		},
 
 		/**
 		 *  Build html for inner gizmo
 		 */
 		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }}">'
-		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
-		+ '</div>'
-		+ '<# }) #>'
-		+ '</div>' ,
+			+ ' <# _.each( data.params, function( param ){ #>'
+			+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
+			+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
+			+ '</div>'
+			+ '<# }) #>'
+			+ '</div>' ,
 
 		/**
 		 *  Build html for outer gizmo
 		 */
 		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }}">'
-		+ '<# _.each( data.params, function( param ){ #>'
-		+ '<div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
-		+ '</div>'
-		+ '<# }) #>'
-		+ '</div>' ,
+			+ ' <# _.each( data.params, function( param ){ #>'
+			+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
+			+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
+			+ '</div>'
+			+ '<# }) #>'
+			+ '</div>' ,
+
 
 
 		/**
@@ -112,104 +66,121 @@
 		/**
 		 *  Build html for color gizmo
 		 */
-		colorPickerTemplate: ' <div class="karma-color-gizmo"> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> '
-		+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
 
-		/**
-		 *  Build html for text shortcode alignment
-		 */
-		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
-		+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
-		+ '<button class="karma-align-left" data-value="align-left" >'
-		+ '{{{data.leftAlignIcon}}}'
-		+ '</button>'
-		+ '<button class="karma-align-right" data-value="align-right" >'
-		+ '{{{data.rightAlignIcon}}}'
-		+ '</button>'
-		+ '<button class="karma-align-center" data-value="align-center" >'
-		+ '{{{data.centerAlignIcon}}}'
-		+ '</button>'
-		+ '</div>' ,
-
+		colorPickerTemplate: ' <div> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> '
+			+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
 
 
 		/**
 		 *  Build html for gizmo resizeable for top & bottom
 		 */
-		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">' +
-		'<div class="karma-spacing karma-top-spacing  " data-direction="both" >'
-		+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-s karma-top-spacing-height">'
-		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-top-hover"><div class="spacing-dot-hover target-moving"></div></div>'
-		+ '</div>'
-		+ '</div>'
-		+ '<div class="karma-spacing karma-bottom-spacing " data-direction="both" style="height:{{ data.space }}px">'
-		+ '<div class="karma-spacing-dot-container ui-resizable-handle  ui-resizable-s">'
-		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-bottom-hover"><div class="spacing-dot-hover"></div></div>'
-		+ '</div>'
-		+ '</div>'
-		+ '</div>' ,
+		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
+			+ '<div class="karma-spacing karma-top-spacing  " data-direction="both" >'
+			+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-s karma-top-spacing-height">'
+			+ '<div class="spacing-dot"></div>'
+			+ '<div class="spacing-top-hover"><div class="spacing-dot-hover target-moving"></div></div>'
+			+ '</div>'
+			+ '</div>'
+			+ '<div class="karma-spacing karma-bottom-spacing " data-direction="both" style="height:{{ data.space }}px">'
+			+ '<div class="karma-spacing-dot-container ui-resizable-handle  ui-resizable-s">'
+			+ '<div class="spacing-dot"></div>'
+			+ '<div class="spacing-bottom-hover"><div class="spacing-dot-hover"></div></div>'
+			+ '</div>'
+			+ '</div>'
+			+ '</div>' ,
 
 		/**
 		 *  Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-left-spacing " data-direction="left" style="width:{{ data.leftspace}}px">'
-		+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-e">'
-		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-left-hover"><div class="spacing-dot-hover target-moving"></div></div>'
-		+ '</div>'
-		+ '</div>'
-		+ '</div>' ,
+			+'<div class="karma-spacing karma-left-spacing " data-direction="left" style="width:{{ data.leftspace}}px">'
+			+ '<div class="karma-spacing-dot-container ui-resizable-handle ui-resizable-e">'
+			+ '<div class="spacing-dot"></div>'
+			+ '<div class="spacing-left-hover"><div class="spacing-dot-hover target-moving"></div></div>'
+			+ '</div>'
+			+ '</div>'
+			+ '</div>' ,
 
 		/**
 		 *  Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-right-spacing" data-direction="right" style="width:{{ data.rightspace }}px">'
-		+ '<div class="karma-spacing-dot-container  ui-resizable-handle ui-resizable-w ">'
-		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-right-hover"><div class="spacing-dot-hover target-moving"></div></div>'
-		+ '</div>'
-		+ '</div>'
-		+ '</div>' ,
+			+'<div class="karma-spacing karma-right-spacing" data-direction="right" style="width:{{ data.rightspace }}px">'
+			+ '<div class="karma-spacing-dot-container  ui-resizable-handle ui-resizable-w ">'
+			+ '<div class="spacing-dot"></div>'
+			+ '<div class="spacing-right-hover"><div class="spacing-dot-hover target-moving"></div></div>'
+			+ '</div>'
+			+ '</div>'
+			+ '</div>' ,
 
 		/**
 		 * Build html for gizmo resizeably for top
 		 */
 		topSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
-		+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
-		+ '<div class="karma-spacing-dot-container">'
-		+ '<div class="spacing-dot"></div>'
-		+ '<div class="spacing-dot-hover target-moving"></div>'
-		+ '</div>'
-		+ '</div>'
-		+ '</div>' ,
+			+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
+			+ '<div class="karma-spacing-dot-container">'
+			+ '<div class="spacing-dot"></div>'
+			+ '<div class="spacing-dot-hover target-moving"></div>'
+			+ '</div>'
+			+ '</div>'
+			+ '</div>' ,
 
 
 		resizeGizmoTemplate : '<div class="{{data.class}}" data-snap="{{data.param.snapGrid}}" ></div>',
 
 		topGizmoTemplate : '<div class="{{data.class}}">'
-		+ ' <# _.each( data.params, function( param ){  #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ ' <# if( "icon" === param.type ){ #>'
-		+ ' <div>{{{ param.icon }}}</div>'
-		+ '<# } else if( "text" === param.type ) {#>'
-		+ '<div>{{{ param.value }}}</div>'
-		+ '<# } else if( "icon-text" === param.type ) {#>'
-		+ '<span class="karama-gizmo-icon">{{{ param.icon }}}</span>'
-		+ '<span class="karma-gizmo-title">{{{ param.text }}} {{param.counter}}</span>'
-		+ '<# } #>'
-		+ '</div>'
-		+ '<# }) #>'
-		+ '</div>' ,
+			+ ' <# _.each( data.params, function( param ){  #>'
+			+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
+			+ ' <# if( "icon" === param.type ){ #>'
+			+ ' <div>{{{ param.icon }}}</div>'
+			+ '<# } else if( "text" === param.type ) {#>'
+			+ '<div>{{{ param.value }}}</div>'
+			+ '<# } else if( "icon-text" === param.type ) {#>'
+			+ '<span class="karama-gizmo-icon">{{{ param.icon }}}</span>'
+			+ '<span class="karma-gizmo-title">{{{ param.text }}} {{param.counter}}</span>'
+			+ '<# } #>'
+			+ '</div>'
+			+ '<# }) #>'
+			+ '</div>' ,
 
 		/** Drop area template for elements */
 		placeholderTemplate : '<div class="karma-element-placeholder {{ data.className }}" >'
 			+ '<div class="karma-inner-placeholder" >'
 			+ '</div>'
 			+ '</div>' ,
+
+		/**
+		 *  Build html for text shortcode alignment
+		 */
+		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
+			+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
+			+ '<button class="karma-align-left" data-value="align-left" >'
+			+ '{{{data.leftAlignIcon}}}'
+			+ '</button>'
+			+ '<button class="karma-align-right" data-value="align-right" >'
+			+ '{{{data.rightAlignIcon}}}'
+			+ '</button>'
+			+ '<button class="karma-align-center" data-value="align-center" >'
+			+ '{{{data.centerAlignIcon}}}'
+			+ '</button>'
+			+ '</div>' ,
+
+
+		/** Drop area template for elements */
+		fontStyleGizmoTemplate :  ' <button class="karma-drop-down-icon  karma-font-style-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
+			+ '<div class="karma-drop-down-box karma-font-style-drop-down">'
+			+ '<button class="karma-set-bold-style" >'
+			+ '{{{ data.bold }}}'
+			+ '</button>'
+			+ '<button class="karma-set-italic-style" >'
+			+ '{{{ data.italic }}}'
+			+ '</button>'
+			+ '<button class="karma-set-underline-style" >'
+			+ '{{{ data.underline }}}'
+			+ '</button>'
+			+ '</div>' ,
+
+
 
 		/**
 		 * Set defaults in create
@@ -253,6 +224,103 @@
 
 
 		/**
+		 * @summary align left for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignLeft: function () {
+
+			document.execCommand( 'justifyLeft', true );
+
+		},
+
+		/**
+		 * @summary align center for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignCenter: function () {
+
+			document.execCommand( 'justifyCenter', true );
+
+		},
+
+		/**
+		 * @summary align right for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignRight: function () {
+
+			document.execCommand( 'justifyRight', true );
+
+		},
+
+
+		/**
+		 * @summary trigger document click on links which have karma-document-click class
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaLinksDocumentClick : function () {
+
+			this.$el.find( ".karma-document-click[href*=\"javascript:\"]" ).off( 'click.documentClick' ).on( 'click.documentClick', function(){
+
+				$( document ).trigger( 'click' );
+
+			} );
+
+		},
+
+		/**
+		 * @summary Set italic style
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setItalicStyle : function () {
+
+			document.execCommand( 'italic', true );
+
+		} ,
+
+		/**
+		 * @summary Set underline style
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setUnderlineStyle : function () {
+
+			document.execCommand( 'underline', true );
+
+		},
+
+		/**
+		 * @summary Set bold style
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setBoldStyle : function () {
+
+			document.execCommand( 'bold', true );
+
+		},
+
+
+		/**
 		 * @summary Call necessary function after init any elements
 		 *
 		 * @since 1.0.0
@@ -290,10 +358,7 @@
 				this.el.querySelector('.karma-column').innerHTML = placeholderHTML;
 			}
 
-
-		}
-
-		,
+		},
 
 		/**
 		 * @summary Set Gizmo Events
@@ -367,7 +432,7 @@
 		 * @returns {void}
 		 */
 		createGizmo: function () {
-
+			
 			for ( var i in this.gizmoParams ) {
 				for ( var param in this.gizmoParams[ i ].params ) {
 					if ( this.gizmoParams[ i ].params[ param ].hasOwnProperty( "showIndex" ) ) {
@@ -397,6 +462,7 @@
 		 *
 		 * @returns {void}
 		 */
+		//@TODO we dont need $gizmo here becuse this function now can acsees the current el and model of elements
 		bothSpacingGizmo : function ( $gizmo ) {
 
 			var that = this,
@@ -786,8 +852,7 @@
 				shortcodeAtrributes[ attr ] = newAttributes[ attr ];
 				shortcodeAtrributes.changed[ attr ] = newAttributes[ attr ];
 			}
-
-			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent: silent } );
+			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent : silent }  );
 
 		},
 
@@ -861,7 +926,7 @@
 
 			if ( this.el.classList ){
 				this.el.classList.remove( className );
-			} else{
+			} else {
 				this.el.className = this.el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 			}
 
@@ -1080,7 +1145,9 @@
 			dropDownBox.classList.toggle( 'open-drop-down-gizmo' );
 			}
 
-		}
+		},
+
+
 
 	});
 

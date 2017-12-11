@@ -14,7 +14,9 @@
  * @since 1.0.0
  * @returns {void}
  */
-var karmaColorPicker = function ( options ) {
+
+var $ = jQuery,
+	karmaColorPicker = function ( options ) {
 
 	this.options = {};
 	this.defaultOptions = {

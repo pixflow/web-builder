@@ -61,7 +61,6 @@ class Karma_Text_Describe extends Karma_Text {
 				"type"      => "outerGizmo",
 				"className" => esc_attr("text-gizmo-group"),
 				"params"    => array(
-
 					array(
 						'type'      => 'colorPicker',
 						'className' => esc_attr('karma-color-picker-gizmo'),
@@ -70,7 +69,6 @@ class Karma_Text_Describe extends Karma_Text {
 							'id' => uniqid('cpg_')
 						)
 					),
-
 
 					array(
 						'type'   => 'alignmentGizmo',
@@ -83,9 +81,17 @@ class Karma_Text_Describe extends Karma_Text {
 
 
 						),
-
 					),
-				)
+					array(
+						'type'   => 'fontStyleGizmo',
+						"params" => array(
+							'defaultIcon'    => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
+							'bold'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
+							'italic'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/italic.svg' ),
+							'underline'      => karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/underline.svg' ),
+						),
+					),
+				),
 			)
 		);
 

@@ -40,6 +40,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 
 		return 	array(
 			'element_key'   => 'kb' ,
+			'content'       => 'Click here to edit content...'
 		);
 
 	}
@@ -64,11 +65,10 @@ class Karma_Text extends Karma_Shortcode_Base {
 			$attributes
 		);
 
-
 		ob_start();
 		?>
 		<div class='karma-text karma-text-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
-			test
+			<div class="karma-text-content" contentEditable="true" ><?php echo $attributes['content']; ?></div>
 		</div>
 		<?php
 		return ob_get_clean();
@@ -87,7 +87,8 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 */
 	public function js_render() {
 
-		$js_template = '<div class="karma-text karma-text-{{ data.element_key }}" >test'
+		$js_template = '<div class="karma-text karma-text-{{ data.element_key }}" >'
+			. '<div class="karma-text-content" contentEditable="true" >{{ data.content }}</div>'
 			. '</div>';
 		return $js_template;
 
@@ -103,7 +104,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 */
 	public function get_css_attributes() {
 
-		$styles = '';
+		$styles = array();
 		return $styles;
 
 	}
