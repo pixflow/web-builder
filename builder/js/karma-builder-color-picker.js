@@ -35,6 +35,7 @@ var $ = jQuery,
 	if ( element == null || $( element ).hasClass( 'karma-color-picker-input' ) ) {
 		return;
 	}
+	this.mainInput = document.querySelector( this.options.selector );
 	this.generateColorPickerID();
 	this.init();
 
@@ -71,6 +72,8 @@ karmaColorPicker.prototype.init = function () {
 	var that = this;
 	this.createColorPickerIcon();
 	this.createColorPickerPopup();
+	this.setMainInputEvent();
+	this.chooseColorEvent();
 	var handler = that.openColorPicker.bind( that );
 	jQuery( document.querySelector( this.selector ) ).on( 'click.karma-color-picker', handler );
 
@@ -144,16 +147,13 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 		presetColors.appendChild( presetColor );
 	}
 	var chooseColor = document.createElement( 'span' );
-	chooseColor.setAttribute( 'class', 'karma-color-picker-preset-color karma-color-picker-choose-color' );
-	chooseColor.addEventListener( 'click', function ( e ) {
-		e.preventDefault();
-		$( "#" + that.id ).spectrum("toggle");
-		return false;
-	}, true );
+	chooseColor.setAttribute( 'class', 'karma-stop-propagation karma-color-picker-preset-color karma-color-picker-choose-color' );
+
 	var chooseColorInput = document.createElement( 'input' );
 	chooseColorInput.setAttribute( 'id', that.id );
 	chooseColorInput.setAttribute( 'class', 'karma-color-picker-input' );
 	chooseColor.appendChild( chooseColorInput );
+	that.chooseColor = chooseColor;
 	presetColors.appendChild( chooseColor );
 	popup.appendChild( presetColors );
 	// Add popup HTML to beside of input
@@ -167,7 +167,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 /**
  * @summary apply preset colors events
  *
- * @param el element that need event to change color
+ * @param  {object} el element that need event to change color
  *
  * @since 1.0.0
  * @returns {void}
@@ -182,24 +182,79 @@ karmaColorPicker.prototype.presetColorsEvent = function ( el ) {
 		} else {
 			$( e.target ).siblings().removeClass( 'selected' );
 			e.target.className += ' selected';
-			that.changeIconColor( e.target.style.backgroundColor );
+			that.updateMainColor( e.target.style.backgroundColor );
 		}
 	}, true );
 
 };
 
 /**
- * @summary change icon color background color
- *
- * @param newColor new color of background
+ * @summary set main input value
  *
  * @since 1.0.0
  * @returns {void}
  */
-karmaColorPicker.prototype.changeIconColor = function ( newColor ) {
+karmaColorPicker.prototype.setMainInputEvent = function () {
 
-	this.icon.style.background = newColor;
+	var that = this;
+	$( this.mainInput ).on( 'change', function () {
+		that.icon.style.background = this.value;
+	} );
+
 	
+};
+
+/**
+ * @summary set choose color event
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.chooseColorEvent = function () {
+
+	var that = this;
+	$( that.chooseColor ).on( 'click', function ( e ) {
+		e.preventDefault();
+		var $spectrum = $( "#" + that.id );
+		$spectrum.spectrum( "set", that.mainInput.value );
+		$spectrum.spectrum( "toggle" );
+		that.addColorToPallet( that.mainInput.value );
+		return false;
+	} );
+
+};
+
+/**
+ * @summary add user color pallet
+ *
+ * @param {color}   color   color of new pallet
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.addColorToPallet = function ( color ) {
+
+	var that = this;
+	var presetColor = document.createElement( 'span' );
+	presetColor.setAttribute( 'class', 'karma-color-picker-preset-color user-pallet temp-pallet' );
+	presetColor.style.backgroundColor = color;
+	this.presetColorsEvent( presetColor );
+	that.chooseColor.parentElement.insertBefore( presetColor, that.chooseColor );
+
+};
+
+/**
+ * @summary update main input value
+ *
+ * @param {string} newColor main color new value
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
+
+	$( this.mainInput ).val( newColor ).change();
+
 };
 
 /**
@@ -209,6 +264,8 @@ karmaColorPicker.prototype.changeIconColor = function ( newColor ) {
  * @returns {void}
  */
 karmaColorPicker.prototype.initSpectrumColorPicker = function () {
+
+	var that = this;
 	$( "#" + this.id ).spectrum( {
 		color: "#1E8FE1",
 		showAlpha: true,
@@ -217,9 +274,15 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 		showInput: true,
 		replacerClassName: 'spectrum-color-preview'
 	} );
-	$( document ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function () {
+	$( document ).off( "click.hideColorPickerContainer" ).on( "click.hideColorPickerContainer", function () {
 
 		$( ".karma-color-picker-container" ).removeClass( 'opened' );
+
+	} )
+	$( ".karma-color-picker-container" ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function () {
+
+		$( '.temp-pallet' ).remove();
+		$( "#" + that.id ).spectrum( 'hide' );
 
 	} )
 };

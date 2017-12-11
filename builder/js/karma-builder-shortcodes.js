@@ -19,7 +19,9 @@
 
 
 		documentEvents: {
+
 			'colorPickerRender': 'colorPicker'
+
 		},
 
 		gizmoTriggers: [],
