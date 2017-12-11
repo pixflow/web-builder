@@ -9,6 +9,11 @@
 			'click	.karma-more-setting'											: 'showGizmoRelatedToMore',
 			'click .karma-drop-down-icon'											: 'openDropDownGzmo'
 		},
+		documentEvents: {
+			'colorPickerRender': 'colorPicker'
+		},
+
+		gizmoTriggers: [],
 
 		shortcodeParams: {},
 
@@ -67,7 +72,8 @@
 		/**
 		 *  Build html for color gizmo
 		 */
-		colorPickerTemplate: ' <div class="karma-color-gizmo"> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> ',
+		colorPickerTemplate: ' <div class="karma-color-gizmo"> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> '
+		+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
 
 		/**
 		 *  Build html for text shortcode alignment
@@ -179,6 +185,7 @@
 				this.model.bind( 'change', this.update );
 				this.model.bind( 'destroy', this.destroy );
 			}
+			this.delegateEventsOnDocument();
 			this.gizmoParams = options.gizmoParams;
 			this.toolTipHtml();
 			this.removeGizmo();
@@ -186,6 +193,22 @@
 			this.removeMoreSubmenu();
 
 		},
+
+		/**
+		 * @summary delegates events that set on document
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		delegateEventsOnDocument: function () {
+
+			for ( var i in this.documentEvents ) {
+				$( document ).off( i ).on( i, this[ this.documentEvents[ i ] ] );
+			}
+
+		},
+
 
 		/**
 		 * @summary Call necessary function after init any elements
@@ -312,6 +335,10 @@
 					}
 				}
 				var $gizmo = this.gizmoBuilder( this.gizmoParams[ i ] );
+				for ( var j in this.gizmoTriggers ) {
+					$( document ).trigger( this.gizmoTriggers[ j ].event, [ this.gizmoTriggers[ j ].data ] );
+				}
+				this.gizmoTriggers = [];
 				this.$el.append( $gizmo );
 				if ( 'function' === typeof this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ] ) {
 					this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ]( $gizmo );
