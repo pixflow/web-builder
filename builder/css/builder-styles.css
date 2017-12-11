@@ -62,6 +62,7 @@
   overflow: hidden; }
 
 .karma-color-picker-icon {
+  border: 1px solid rgba(57, 73, 89, 0.2);
   border-radius: 50%;
   display: block;
   height: 18px;
@@ -112,6 +113,9 @@
       height: 23px;
       margin: 4.5px;
       width: 23px; }
+    .karma-color-picker-container .karma-color-picker-preset-colors .selected {
+      background: url("../../builder/media/svg/tik.svg") no-repeat center center transparent;
+      background-size: 14px; }
     .karma-color-picker-container .karma-color-picker-preset-colors .karma-color-picker-choose-color {
       color: #B0B6BD;
       line-height: 19px;
@@ -2719,8 +2723,9 @@ img {
     padding: 0 9px;
     position: absolute;
     z-index: 90; }
-    .karma-builder-element .karma-gizmo-template div {
+    .karma-builder-element .karma-gizmo-template > div {
       cursor: pointer;
+      padding: 0 6px;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-icon {
       background-color: inherit;

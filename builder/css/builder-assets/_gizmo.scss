@@ -132,8 +132,9 @@ img{
 		position: absolute;
 		z-index: $level2;
 
-		div {
+		> div {
 			cursor: pointer;
+			padding: 0 6px;
 			white-space: nowrap;
 		}
 		.karma-drop-down-icon{

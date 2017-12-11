@@ -66,9 +66,24 @@
 		/**
 		 *  Build html for color gizmo
 		 */
+		colorPickerTemplate: '<input class="karma-color-gizmo" id="{{{ data.id }}}"/>'
+		+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
 
-		colorPickerTemplate: ' <div> <input id="{{{ data.id }}}" type="text" value="{{{ data.value }}}"/>  </div> '
-			+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
+		/**
+		 *  Build html for text shortcode alignment
+		 */
+		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
+		+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
+		+ '<button class="karma-align-left" data-value="align-left" >'
+		+ '{{{data.leftAlignIcon}}}'
+		+ '</button>'
+		+ '<button class="karma-align-right" data-value="align-right" >'
+		+ '{{{data.rightAlignIcon}}}'
+		+ '</button>'
+		+ '<button class="karma-align-center" data-value="align-center" >'
+		+ '{{{data.centerAlignIcon}}}'
+		+ '</button>'
+		+ '</div>' ,
 
 
 		/**
