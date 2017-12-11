@@ -142,7 +142,7 @@
 			var templateParams = {} ;
 			templateParams['elementInfo'] = KarmaView.getElementInfo();
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-add-element', templateParams ) + '</div>';
-			this.el.appendChild( $( template )[0] );
+			this.el.appendChild( $( template )[ 0 ] );
 
 		},
 
@@ -155,7 +155,7 @@
 		createTemplatesPanel: function(){
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-templates', {} ) + '</div>';
-			this.el.appendChild( $( template )[0] );
+			this.el.appendChild( $( template )[ 0 ] );
 
 		},
 
@@ -168,7 +168,7 @@
 		createUnsplashPanel: function(){
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-unsplash', {} ) + '</div>';
-			this.el.appendChild( $( template )[0] );
+			this.el.appendChild( $( template )[ 0 ] );
 
 		},
 
@@ -181,7 +181,7 @@
 		createUpgradePanel: function(){
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-upgrade', {} ) + '</div>';
-			this.el.appendChild( $( template )[0] );
+			this.el.appendChild( $( template )[ 0 ] );
 
 		},
 
@@ -333,7 +333,7 @@
 		scrollToDown: function ( element, toolbarHeight ) {
 
 			var that = this;
-			if ( parseInt( element[0].style.top ) +  toolbarHeight  > window.innerHeight  + $( window ).scrollTop() ) {
+			if ( parseInt( element[ 0 ].style.top ) +  toolbarHeight  > window.innerHeight  + $( window ).scrollTop() ) {
 				clearInterval( that.flyScroll );
 				/** Start scrolling down */
 				that.flyScroll = setInterval( function(){
