@@ -7,6 +7,18 @@
 	<title><?php echo __( 'KARMA BUILDER', 'karma' ) . ' | ' . get_the_title(); ?> </title>
 </head>
 <body class="karma-builder">
+<style>
+	@font-face {
+		font-family: HelveticaNeue;
+		src: url("<?php echo  KARMA_BUILDER_URL . 'builder/font/HelveticaNeue.woff' ?>");
+		font-weight: normal;
+		font-style: normal; }
+	@font-face {
+		font-family: HelveticaNeue_Medium;
+		src: url("<?php echo  KARMA_BUILDER_URL . 'builder/font/HelveticaNeue_Medium.ttf' ?> ");
+		font-weight: normal;
+		font-style: normal; }
+</style>
 <div class="karma-builder-toolbar">
 	<div class="karma-builder-left">
 		<div class="karma-builder-menu">
