@@ -90,7 +90,7 @@ karmaColorPicker.prototype.createColorPickerIcon = function () {
 	var that = this;
 	// Create Icon
 	var icon = document.createElement( 'div' );
-	icon.setAttribute( 'class', 'karma-stop-propagation karma-color-picker-icon' );
+	icon.setAttribute( 'class', 'karma-color-picker-icon' );
 	icon.dataset.colorPickerId = this.id;
 	this.icon = icon;
 	// Add icon HTML to beside of input
@@ -147,7 +147,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 		presetColors.appendChild( presetColor );
 	}
 	var chooseColor = document.createElement( 'span' );
-	chooseColor.setAttribute( 'class', 'karma-stop-propagation karma-color-picker-preset-color karma-color-picker-choose-color' );
+	chooseColor.setAttribute( 'class', 'karma-color-picker-preset-color karma-color-picker-choose-color' );
 
 	var chooseColorInput = document.createElement( 'input' );
 	chooseColorInput.setAttribute( 'id', that.id );
@@ -177,8 +177,8 @@ karmaColorPicker.prototype.presetColorsEvent = function ( el ) {
 	var that = this;
 	el.addEventListener( 'click', function ( e ) {
 		e.preventDefault();
-		if ( $( e.target ).hasClass( 'selected' ) ) {
-			return flase;
+		if ( $( e.target ).hasClass( 'selected' ) || $( e.target ).hasClass( 'temp-pallet' ) ) {
+			return false;
 		} else {
 			$( e.target ).siblings().removeClass( 'selected' );
 			e.target.className += ' selected';
@@ -272,7 +272,18 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 		alphaVertical: true,
 		preferredFormat: "hex",
 		showInput: true,
-		replacerClassName: 'spectrum-color-preview'
+		replacerClassName: 'spectrum-color-preview',
+		move: function ( color ) {
+
+			if ( null != document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ) ) {
+				$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).removeClass( 'selected' );
+				document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).className += ' selected';
+				$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).removeClass( 'temp-pallet' );
+			}
+			document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).style.backgroundColor = color;
+			that.updateMainColor( color );
+			
+		}
 	} );
 	$( document ).off( "click.hideColorPickerContainer" ).on( "click.hideColorPickerContainer", function () {
 
