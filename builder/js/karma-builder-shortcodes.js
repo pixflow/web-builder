@@ -14,6 +14,7 @@
 			'click .karma-set-bold-style'											: 'setBoldStyle' ,
 			'click .karma-set-italic-style'											: 'setItalicStyle' ,
 			'click .karma-set-underline-style'										: 'setUnderlineStyle' ,
+			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
 		},
 
 
@@ -1101,6 +1102,7 @@
 			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
 
 				$( ".karma-active-element" ).removeClass( 'karma-active-element' );
+				$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
 
 			})
 
@@ -1151,16 +1153,38 @@
 
 		},
 
+		/**
+		 * @summary open dropDown in gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
 		openDropDownGzmo: function ( e ) {
-			
+
 			var dropDownIcon = (  e.target.classList.contains('karma-drop-down-icon') ) ? e.target : e.target.closest( 'button' ),
 				dropDownBox = dropDownIcon.nextElementSibling;
-
 			if( null != dropDownBox ){
-			dropDownBox.classList.toggle( 'open-drop-down-gizmo' );
+				if( dropDownBox.classList.contains('open-drop-down-gizmo') ){
+					dropDownBox.classList.remove( 'open-drop-down-gizmo' );
+				}else{
+					$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
+					dropDownBox.classList.add( 'open-drop-down-gizmo' );
+				}
 			}
 
 		},
+
+		/**
+		 * @summary close dropDown gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		closeDropDownBox: function () {
+
+			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
+
+		}
 
 
 

@@ -76,7 +76,7 @@ class Karma_Text_Describe extends Karma_Text {
 						"params" => array(
 							'defaultIcon'    => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
 							'leftAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
-							'rightAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/centeralign.svg' ),
+							'rightAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/rightalign.svg' ),
 							'centerAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/centeralign.svg' ),
 
 

@@ -135,12 +135,13 @@ img{
 		> div {
 			cursor: pointer;
 			padding: 0 6px;
+			position: relative;
 			white-space: nowrap;
 		}
 		.karma-drop-down-icon{
 			background-color: inherit;
 			margin: 0;
-			padding: 0;
+			padding: 0 6px;
 		}
 		.karma-drop-down-box{
 			background-color: white;
@@ -148,7 +149,7 @@ img{
 			box-shadow: 0 2px 12px 0 rgba(57,73,89,0.2);
 			display: none;
 			flex-direction: column;
-			left: -11px;
+			left: -8px;
 			position: absolute;
 			top: 32px;
 
@@ -168,10 +169,11 @@ img{
 				background-color: inherit;
 				border-radius: 3px;
 				margin: 5px;
-				padding: 7px;
+				padding: 6px;
 				&:hover{
 					background-color: rgba(65,156,248,0.15);
 				}
+
 			}
 			&.open-drop-down-gizmo{
 				display: flex;
