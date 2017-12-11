@@ -7,7 +7,10 @@
 			'before/buildGizmo'														: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
 			'click	.karma-more-setting'											: 'showGizmoRelatedToMore',
-			'click .karma-drop-down-icon'											: 'openDropDownGzmo'
+			'click .karma-drop-down-icon'											: 'openDropDownGzmo',
+			'click .karma-align-center'												: 'karmaTextShortcodealignCenter',
+			'click .karma-align-left'												: 'karmaTextShortcodealignLeft',
+			'click .karma-align-right'												: 'karmaTextShortcodealignRight',
 		},
 		documentEvents: {
 			'colorPickerRender': 'colorPicker'
@@ -18,6 +21,43 @@
 		shortcodeParams: {},
 
 		gizmos: {},
+
+		/**
+		 * @summary align left for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignLeft: function () {
+
+			document.execCommand( 'justifyLeft', false );
+		},
+
+		/**
+		 * @summary align center for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignCenter: function () {
+
+			document.execCommand( 'justifyCenter', false );
+		},
+
+		/**
+		 * @summary align right for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignRight: function () {
+
+			document.execCommand( 'justifyRight', false );
+		},
+
 
 		/**
 		 * @summary trigger document click on links which have karma-document-click class
@@ -90,6 +130,8 @@
 		+ '{{{data.centerAlignIcon}}}'
 		+ '</button>'
 		+ '</div>' ,
+
+
 
 		/**
 		 *  Build html for gizmo resizeable for top & bottom
