@@ -274,7 +274,7 @@
 		 * @summary form builder content action to create  html
 		 *
 		 * @param	{String}    source             get model attribute
-		 * @param   {Object}    dependecyParams    Dependecy params
+		 * @param   {Object}    dependencyParams    Dependecy params
 		 *
 		 * @since	1.0.0
 		 *

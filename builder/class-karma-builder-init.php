@@ -107,7 +107,9 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-color-picker' ,  plugin_dir_url( __FILE__ ). 'js/karma-builder-color-picker.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/karma-builder-setting-panel.min.js', array( $this->plugin_name ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-element-panel', plugin_dir_url(__FILE__) . 'js/karma-builder-element-panel.min.js', array( $this->plugin_name ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-setting-panel' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos', plugin_dir_url(__FILE__) . 'js/karma-builder-gizmos.min.js', array( $this->plugin_name ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-icon', plugin_dir_url(__FILE__) . 'js/gizmos/icon.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-setting-panel', $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_media();
 		}
 	}
