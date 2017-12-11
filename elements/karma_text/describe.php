@@ -93,6 +93,7 @@ class Karma_Text_Describe extends Karma_Text {
 									'h6Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h6-typography.svg' ),
 									'pTypography'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/p-typography.svg' ),
 									'h1Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h1-typography.svg' ),
+									'typographyLink' 	=> esc_attr('typography', 'karma'),
 
 							),
 					),

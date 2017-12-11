@@ -159,7 +159,7 @@ img{
 				border-right: 7px solid transparent;
 				content: '';
 				height: 0;
-				left: 35%;
+				left: 28%;
 				position: absolute;
 				top: -6px;
 				width: 0;
@@ -182,8 +182,12 @@ img{
 
 		.karma-typography-drop-down{
 
-			flex-direction: row;
+			flex-direction: column;
 			left: -18px;
+
+			.karma-typography-drop-down-icons{
+				flex-direction: row;
+			}
 
 			div{
 				display: flex;

@@ -67,33 +67,40 @@
 		 *  @summary Build html for text shortcode typography
 		 */
 		typographyGizmoTemplate : ' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
-		+ '<div class="karma-drop-down-box karma-typography-drop-down">'
-		+ '<div class="karma-typography-drop-down-right">'
-		+ '<button class="karma-typography-h5" data-value="karma-typography-h5" >'
-		+ '{{{data.h5Typography}}}'
-		+ '</button>'
-		+ '<button class="karma-typography-h6" data-value="karma-typography-h6" >'
-		+ '{{{data.h6Typography}}}'
-		+ '</button>'
-		+ '<button class="karma-typography-p" data-value="karma-typography-p" >'
-		+ '{{{data.pTypography}}}'
-		+ '</button>'
-		+ '</div>'
-		+ '<div class="karma-typography-drop-down-left">'
-		+ '<button class="karma-typography-h1" data-value="karma-typography-h1" >'
-		+ '{{{data.h1Typography}}}'
-		+ '</button>'
-		+ '<button class="karma-typography-h2" data-value="karma-typography-h2" >'
-		+ '{{{data.h2Typography}}}'
-		+ '</button>'
-		+ '<button class="karma-typography-h3" data-value="karma-typography-h3" >'
-		+ '{{{data.h3Typography}}}'
-		+ '</button>'
-		+ '<button class="karma-typography-h4" data-value="karma-typography-h4" >'
-		+ '{{{data.h4Typography}}}'
-		+ '</button>'
-		+ '</div>'
-		+ '</div>' ,
+			+ '<div class="karma-drop-down-box karma-typography-drop-down">'
+			+'<div class="karma-typography-drop-down-icons">'
+			+ '<div class="karma-typography-drop-down-right">'
+			+ '<button class="karma-typography-h5" data-value="karma-typography-h5" >'
+			+ '{{{data.h5Typography}}}'
+			+ '</button>'
+			+ '<button class="karma-typography-h6" data-value="karma-typography-h6" >'
+			+ '{{{data.h6Typography}}}'
+			+ '</button>'
+			+ '<button class="karma-typography-p" data-value="karma-typography-p" >'
+			+ '{{{data.pTypography}}}'
+			+ '</button>'
+			+ '</div>'
+			+ '<div class="karma-typography-drop-down-left">'
+			+ '<button class="karma-typography-h1" data-value="karma-typography-h1" >'
+			+ '{{{data.h1Typography}}}'
+			+ '</button>'
+			+ '<button class="karma-typography-h2" data-value="karma-typography-h2" >'
+			+ '{{{data.h2Typography}}}'
+			+ '</button>'
+			+ '<button class="karma-typography-h3" data-value="karma-typography-h3" >'
+			+ '{{{data.h3Typography}}}'
+			+ '</button>'
+			+ '<button class="karma-typography-h4" data-value="karma-typography-h4" >'
+			+ '{{{data.h4Typography}}}'
+			+ '</button>'
+			+ '</div>'
+			+ '</div>'
+			+ '<div>'
+			+ '<a href="">'
+			+ '{{{data.typographyLink}}}'
+			+ '</a>'
+			+ '</div>'
+			+ '</div>' ,
 
 
 
@@ -636,6 +643,7 @@
 			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
 
 				$( ".karma-active-element" ).removeClass( 'karma-active-element' );
+				$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
 
 			})
 
@@ -686,16 +694,39 @@
 
 		},
 
+		/**
+		 * @summary open dropDown in gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
 		openDropDownGzmo: function ( e ) {
 
 			var dropDownIcon = (  e.target.classList.contains('karma-drop-down-icon') ) ? e.target : e.target.closest( 'button' ),
-				dropDownBox = dropDownIcon.nextElementSibling;
-
+					dropDownBox = dropDownIcon.nextElementSibling;
 			if( null != dropDownBox ){
-				dropDownBox.classList.toggle( 'open-drop-down-gizmo' );
+				if( dropDownBox.classList.contains('open-drop-down-gizmo') ){
+					dropDownBox.classList.remove( 'open-drop-down-gizmo' );
+				}else{
+					$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
+					dropDownBox.classList.add( 'open-drop-down-gizmo' );
+				}
 			}
 
+		},
+
+		/**
+		 * @summary close dropDown gizmo
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		closeDropDownBox: function () {
+
+			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
+
 		}
+
 
 	});
 
