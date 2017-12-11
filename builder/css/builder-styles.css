@@ -770,7 +770,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, #karma-element-setting-panel-container *, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li {
+.HelveticaNeue-font, #karma-element-setting-panel-container *, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .sp-picker-container .sp-input {
   font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
@@ -805,6 +805,12 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-builder-title-in-box, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-title-controller div.karma-title-field, .karma-setting-panel-group-container button.karma-setting-panel-group-button p {
   font-size: 14px;
   line-height: 16px; }
+
+.karma-colorpicker-style-border-radius, .sp-vertical-alpha .sp-hue, .sp-vertical-alpha .sp-alpha, .sp-alpha .sp-alpha-inner {
+  border-radius: 23px; }
+
+.karma-colorpicker-style-border-radius-box, .sp-color, .sp-val, .sp-val .sp-dragger, .sp-container.sp-light, .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
+  border-radius: 5px; }
 
 /**
  * Media queries
@@ -4001,7 +4007,6 @@ input.karma-builder-search-text.open-search-panel {
 .sp-vertical-alpha .sp-hue {
   width: 11px;
   height: 120px;
-  border-radius: 23px;
   left: 152px; }
 
 .sp-fill {
@@ -4009,82 +4014,82 @@ input.karma-builder-search-text.open-search-panel {
 
 .sp-color {
   width: 145px;
-  height: 120px;
-  border-radius: 5px; }
+  height: 120px; }
 
 .sp-val {
   width: 146px;
-  height: 120px;
-  border-radius: 5px; }
+  height: 120px; }
 
 .sp-vertical-alpha .sp-alpha-handle {
+  top: -4px;
+  right: auto;
+  bottom: -4px;
+  left: 50%;
   background: transparent;
   border: 1.5px solid #fff;
   border-radius: 100px;
-  bottom: -4px;
   box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
   cursor: pointer;
-  left: 50%;
   opacity: 1;
   position: absolute;
-  top: -4px;
   width: 6px; }
 
 .sp-vertical-alpha .sp-alpha .sp-alpha-handle {
+  top: auto;
+  right: auto;
   bottom: auto;
-  height: 3.5px;
-  left: -3px !important;
-  width: 14px; }
+  left: -3px;
+  width: 14px;
+  height: 3.5px; }
 
 .sp-vertical-alpha .sp-alpha {
   width: 11px;
   height: 120px;
-  border-radius: 23px;
-  left: 168px !important;
-  position: absolute !important;
-  right: 0 !important;
-  top: 0 !important; }
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 168px;
+  position: absolute !important; }
 
 .sp-alpha .sp-alpha-inner {
-  border: none;
-  border-radius: 23px; }
+  border: none; }
 
 .sp-val .sp-dragger {
   width: 5px;
   height: 5px;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
   background-color: transparent;
   border: 1.5px solid #fff;
-  border-radius: 5px;
   box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
   cursor: pointer;
-  left: 0;
-  position: absolute;
-  top: 0; }
+  position: absolute; }
 
 .sp-hue .sp-slider {
   width: 15px;
   height: 3.5px;
+  top: 0;
+  right: -4px;
+  bottom: auto;
+  left: -4px;
   background: transparent;
   border: 1.5px solid #fff;
   border-radius: 100px;
   box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
   cursor: pointer;
-  left: -4px;
   opacity: 1;
-  position: absolute;
-  right: -4px;
-  top: 0; }
+  position: absolute; }
 
 .sp-container.sp-light {
-  background-color: #FFF;
+  background-color: #fff;
   border: none;
-  border-radius: 5px;
   box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
   padding: 0; }
 
 .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
-  border: none;
-  border-radius: 5px; }
+  border: none; }
 
 /* Input */
 .sp-initial-disabled .sp-input-container {
@@ -4094,7 +4099,6 @@ input.karma-builder-search-text.open-search-panel {
   background: transparent;
   border: none;
   color: #394959;
-  font-family: "HelveticaNeue";
   font-size: 14px !important;
   margin: 0;
   padding: 10px 4px;

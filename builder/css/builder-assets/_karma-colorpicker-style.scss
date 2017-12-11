@@ -6,7 +6,7 @@
 
 .sp-vertical-alpha .sp-hue {
 	@include box(11px, 120px);
-	border-radius: 23px;
+	@extend .karma-colorpicker-style-border-radius;
 	left: 152px;
 }
 
@@ -16,87 +16,78 @@
 
 .sp-color {
 	@include box(145px, 120px);
-	border-radius: 5px;
+	@extend .karma-colorpicker-style-border-radius-box;
 }
 
 .sp-val {
 	@include box(146px, 120px);
-	border-radius: 5px;
+	@extend .karma-colorpicker-style-border-radius-box;
 }
 
 .sp-vertical-alpha .sp-alpha-handle {
+	@include element_direction($top:-4px,$bottom:-4px, $left:50%);
 	background: transparent;
-	border: 1.5px solid #fff;
+	border: 1.5px solid $white-color;
 	border-radius: 100px;
-	bottom: -4px;
 	box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
 	cursor: pointer;
-	left: 50%;
 	opacity: 1;
 	position: absolute;
-	top: -4px;
 	width: 6px;
 }
 
 .sp-vertical-alpha .sp-alpha .sp-alpha-handle {
-	bottom: auto;
-	height: 3.5px;
-	left: -3px !important;
-	width: 14px;
+	@include element_direction($bottom: auto, $left: -3px);
+	@include box(14px, 3.5px);
 }
 
 .sp-vertical-alpha .sp-alpha {
 	@include box(11px, 120px);
-	border-radius: 23px;
-	left: 168px !important;
+	@extend .karma-colorpicker-style-border-radius;
+	@include element_direction($top:0, $right:0, $left:168px);
 	position: absolute !important;
-	right: 0 !important;
-	top: 0 !important;
 }
 
 .sp-alpha .sp-alpha-inner {
+	@extend .karma-colorpicker-style-border-radius;
 	border: none;
-	border-radius: 23px;
 }
 
 .sp-val .sp-dragger {
 	@include box(5px, 5px);
+	@extend .karma-colorpicker-style-border-radius-box;
+	@include element_direction($top:0, $left:0);
 	background-color: transparent;
-	border: 1.5px solid #fff;
-	border-radius: 5px;
+	border: 1.5px solid $white-color;
 	box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
 	cursor: pointer;
-	left: 0;
 	position: absolute;
-	top: 0;
 
 }
 
 .sp-hue .sp-slider {
 	@include box(15px, 3.5px);
+	@include element_direction($top:0, $right:-4px, $bottom:auto, $left:-4px);
 	background: transparent;
-	border: 1.5px solid #fff;
+	border: 1.5px solid $white-color;
 	border-radius: 100px;
 	box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
 	cursor: pointer;
-	left: -4px;
 	opacity: 1;
 	position: absolute;
-	right: -4px;
-	top: 0;
 }
 
 .sp-container.sp-light {
-	background-color: #FFF;
+	@extend .karma-colorpicker-style-border-radius-box;
+	background-color: $white-color;
 	border: none;
-	border-radius: 5px;
 	box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
 	padding: 0;
 }
 
 .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
+	@extend .karma-colorpicker-style-border-radius-box;
 	border: none;
-	border-radius: 5px;
 }
 
 /* Input */
@@ -106,10 +97,10 @@
 }
 
 .sp-picker-container .sp-input {
+	@extend .HelveticaNeue-font;
 	background: transparent;
 	border: none;
 	color: #394959;
-	font-family: "HelveticaNeue";
 	font-size: 14px !important;
 	margin: 0;
 	padding: 10px 4px;
