@@ -246,7 +246,7 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		preventFromScrolling : function (e) {
+		preventFromScrolling : function ( e ) {
 
 			e.preventDefault();
 

@@ -1,5 +1,5 @@
 .karma-element-placeholder {
-  @include box( 100%, 0px );
+  @include box( 100%, 0 );
   align-items: center;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@
   }
   .karma-inner-placeholder {
 	@include box( 100%, 100% );
-	background-color: rgba( 65, 156, 248, 0.1 );
+	background-color: $builder-placeholder-color;
 	border-radius: 2px;
   }
 }

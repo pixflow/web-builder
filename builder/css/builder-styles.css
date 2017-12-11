@@ -2275,7 +2275,7 @@ html {
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
 .karma-element-placeholder {
   width: 100%;
-  height: 0px;
+  height: 0;
   align-items: center;
   display: flex;
   justify-content: center;

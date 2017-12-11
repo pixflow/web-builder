@@ -567,23 +567,12 @@ class Karma_Builder_Core{
 		$post_content = str_replace( '\\', '\\\\', $post_content );
 		if ( update_post_meta( $id, 'karma_post_content', $post_content ) ){
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 
 	}
 
-	/**
-	 * Generate static JS and CSS for each page based on their shortcodes after publish
-	 *
-	 * @param $id - Page ID
-	 *
-	 * @return boolean
-	 * @since 1.0.0
-	 */
-	public function generate_static_js_css( $id ){
-		return true;
-	}
 
 	/**
 	 * Map element

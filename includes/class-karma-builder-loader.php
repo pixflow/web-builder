@@ -106,6 +106,7 @@ class Karma_Builder_Loader {
 
 		if ( $builder::$edit_mode ) {
 			add_filter( 'show_admin_bar', '__return_false' );
+			remove_filter('the_content','wpautop');
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
 			add_action( 'wp_head', array( $this, 'execute_head_function' ), -1 );
@@ -131,6 +132,7 @@ class Karma_Builder_Loader {
 	public function prepare_builder(){
 
 		if( true == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
+			remove_filter('the_content','wpautop');
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
 		}

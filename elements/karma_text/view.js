@@ -24,7 +24,9 @@
 		 */
 		render : function () {
 
-			var source = this.template( this.model.get('shortcode_attributes') );
+			var model =  JSON.parse( JSON.stringify( this.model.get( 'shortcode_attributes' ) ) );
+			model['content'] = this.model.get( 'shortcode_content' ) ;
+			var source = this.template( model );
 			this.el.innerHTML = source;
 
 		},
@@ -39,7 +41,8 @@
 		saveContent : function () {
 
 			var content = this.el.querySelector('.karma-text-content').innerHTML ;
-			this.setAttributes( { 'content' : content }, true );
+			console.log(content);
+			this.model.set( { 'shortcode_content' : content }, { silent : true } );
 
 		},
 
@@ -59,7 +62,6 @@
 			element.parentNode.replaceChild( newTag, element );
 
 		}
-
 
 
 	});
