@@ -17,7 +17,21 @@
   display: none;
   padding: 18px 0;
   position: absolute;
+  right: -65px;
+  top: 40px;
   width: 157px;
+  &:after {
+    background-color: #fff;
+    box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.16);
+    content: '';
+    display: block;
+    height: 10px;
+    left: 45%;
+    position: absolute;
+    top: -4px;
+    transform: rotate(45deg);
+    width: 10px;
+  }
   .karma-color-picker-mode {
     display: flex;
     flex-direction: row-reverse;
@@ -45,6 +59,7 @@
       text-align: right;
     }
   }
+
   .karma-color-picker-preset-colors {
     display: flex;
     flex-direction: row-reverse;
@@ -61,7 +76,7 @@
     }
     .selected{
       background: url('../../builder/media/svg/tik.svg')no-repeat center center transparent;
-      background-size: 14px;
+      background-size: 17px;
     }
     .karma-color-picker-choose-color {
       color: #B0B6BD;

@@ -1,20 +1,21 @@
 /** customize color picker styles **/
 
 .sp-container{
-	position: absolute;
-	top: 363px;
 	left: 657.69px;
 	overflow: inherit;
+	position: absolute;
+	top: 363px;
 	&:after {
+		background-color: $white-color;
 		box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.16);
 		content: '';
+		display: block;
 		height: 10px;
 		left: 45%;
 		position: absolute;
 		top: -6px;
-		width: 10px;
-		display: block;
 		transform: rotate(45deg);
+		width: 10px;
 	}
 }
 
