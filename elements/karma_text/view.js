@@ -41,7 +41,6 @@
 		saveContent : function () {
 
 			var content = this.el.querySelector('.karma-text-content').innerHTML ;
-			console.log(content);
 			this.model.set( { 'shortcode_content' : content }, { silent : true } );
 
 		},
