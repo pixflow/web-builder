@@ -404,6 +404,7 @@
 		 */
 		updateModel: function ( event ) {
 
+			// @TODO: change this to use this.setAttributes method
 			var attributes = JSON.parse( JSON.stringify( this.model.attributes.shortcode_attributes ) );
 			attributes[ event.target.name ] = event.target.value;
 			attributes.changed = {};

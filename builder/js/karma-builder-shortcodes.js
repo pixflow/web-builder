@@ -15,6 +15,13 @@
 			'click .karma-set-italic-style'											: 'setItalicStyle' ,
 			'click .karma-set-underline-style'										: 'setUnderlineStyle' ,
 			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
+			'click .karma-typography-h1'											: 'setTypographyH1' ,
+			'click .karma-typography-h2'											: 'setTypographyH2' ,
+			'click .karma-typography-h3'											: 'setTypographyH3' ,
+			'click .karma-typography-h4'											: 'setTypographyH4' ,
+			'click .karma-typography-h5'											: 'setTypographyH5' ,
+			'click .karma-typography-h6'											: 'setTypographyH6' ,
+			'click .karma-typography-p'												: 'setTypographyP' ,
 		},
 
 
@@ -76,21 +83,54 @@
 		 *  Build html for text shortcode alignment
 		 */
 		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
-		+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
-		+ '<button class="karma-align-left" data-value="align-left" >'
-		+ '{{{data.leftAlignIcon}}}'
-		+ '</button>'
-		+ '<button class="karma-align-right" data-value="align-right" >'
-		+ '{{{data.rightAlignIcon}}}'
-		+ '</button>'
-		+ '<button class="karma-align-center" data-value="align-center" >'
-		+ '{{{data.centerAlignIcon}}}'
-		+ '</button>'
+			+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
+			+ '<button class="karma-align-left" data-value="align-left" >'
+			+ '{{{data.leftAlignIcon}}}'
+			+ '</button>'
+			+ '<button class="karma-align-right" data-value="align-right" >'
+			+ '{{{data.rightAlignIcon}}}'
+			+ '</button>'
+			+ '<button class="karma-align-center" data-value="align-center" >'
+			+ '{{{data.centerAlignIcon}}}'
+			+ '</button>'
+			+ '</div>' ,
+
+		/**
+		 *  @summary Build html for text shortcode typography
+		 */
+		typographyGizmoTemplate : ' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
+		+ '<div class="karma-drop-down-box karma-typography-drop-down">'
+			+ '<div class="karma-typography-drop-down-right">'
+				+ '<button class="karma-typography-h5" data-value="karma-typography-h5" >'
+				+ '{{{data.h5Typography}}}'
+				+ '</button>'
+				+ '<button class="karma-typography-h6" data-value="karma-typography-h6" >'
+				+ '{{{data.h6Typography}}}'
+				+ '</button>'
+				+ '<button class="karma-typography-p" data-value="karma-typography-p" >'
+				+ '{{{data.pTypography}}}'
+				+ '</button>'
+		+ '</div>'
+			+ '<div class="karma-typography-drop-down-left">'
+				+ '<button class="karma-typography-h1" data-value="karma-typography-h1" >'
+				+ '{{{data.h1Typography}}}'
+				+ '</button>'
+				+ '<button class="karma-typography-h2" data-value="karma-typography-h2" >'
+				+ '{{{data.h2Typography}}}'
+				+ '</button>'
+				+ '<button class="karma-typography-h3" data-value="karma-typography-h3" >'
+				+ '{{{data.h3Typography}}}'
+				+ '</button>'
+				+ '<button class="karma-typography-h4" data-value="karma-typography-h4" >'
+				+ '{{{data.h4Typography}}}'
+				+ '</button>'
+			+ '</div>'
 		+ '</div>' ,
 
 
+
 		/**
-		 *  Build html for gizmo resizeable for top & bottom
+		 *  @summary Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
 			+ '<div class="karma-spacing karma-top-spacing  " data-direction="both" >'
@@ -108,7 +148,7 @@
 			+ '</div>' ,
 
 		/**
-		 *  Build html for gizmo resizeable for left
+		 *  @summary Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
 			+'<div class="karma-spacing karma-left-spacing " data-direction="left" style="width:{{ data.leftspace}}px">'
@@ -120,7 +160,7 @@
 			+ '</div>' ,
 
 		/**
-		 *  Build html for gizmo resizeable for right
+		 *  @summary Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 			+'<div class="karma-spacing karma-right-spacing" data-direction="right" style="width:{{ data.rightspace }}px">'
@@ -132,7 +172,7 @@
 			+ '</div>' ,
 
 		/**
-		 * Build html for gizmo resizeably for top
+		 * @summary Build html for gizmo resizeably for top
 		 */
 		topSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 			+'<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
@@ -165,22 +205,6 @@
 		placeholderTemplate : '<div class="karma-element-placeholder {{ data.className }}" >'
 			+ '<div class="karma-inner-placeholder" >'
 			+ '</div>'
-			+ '</div>' ,
-
-		/**
-		 *  Build html for text shortcode alignment
-		 */
-		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
-			+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
-			+ '<button class="karma-align-left" data-value="align-left" >'
-			+ '{{{data.leftAlignIcon}}}'
-			+ '</button>'
-			+ '<button class="karma-align-right" data-value="align-right" >'
-			+ '{{{data.rightAlignIcon}}}'
-			+ '</button>'
-			+ '<button class="karma-align-center" data-value="align-center" >'
-			+ '{{{data.centerAlignIcon}}}'
-			+ '</button>'
 			+ '</div>' ,
 
 
@@ -264,6 +288,97 @@
 		karmaTextShortcodealignCenter: function () {
 
 			document.execCommand( 'justifyCenter', true );
+
+		},
+
+		/**
+		 * @summary set h1 typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyH1: function () {
+
+			this.setAttributes( { 'tag': 'h1' }, false );
+
+		},
+
+		/**
+		 * @summary set h2 typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyH2: function () {
+
+			this.setAttributes( { 'tag': 'h2' }, false );
+
+		},
+
+		/**
+		 * @summary set h3 typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyH3: function () {
+
+			this.setAttributes( { 'tag': 'h3' }, false );
+
+		},
+
+		/**
+		 * @summary set h4 typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyH4: function () {
+
+			this.setAttributes( { 'tag': 'h4' }, false );
+
+		},
+
+		/**
+		 * @summary set h5 typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyH5: function () {
+
+			this.setAttributes( { 'tag': 'h5' }, false );
+
+		},
+
+		/**
+		 * @summary set h6 typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyH6: function () {
+
+			this.setAttributes( { 'tag': 'h6' }, false );
+
+		},
+
+		/**
+		 * @summary set p typography for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		setTypographyP: function () {
+
+			this.setAttributes( { 'tag': 'p' }, false );
 
 		},
 
@@ -870,6 +985,7 @@
 				shortcodeAtrributes[ attr ] = newAttributes[ attr ];
 				shortcodeAtrributes.changed[ attr ] = newAttributes[ attr ];
 			}
+
 			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent : silent }  );
 
 		},

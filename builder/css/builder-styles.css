@@ -2758,7 +2758,7 @@ img {
       box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
       display: none;
       flex-direction: column;
-      left: -8px;
+      left: -3px;
       position: absolute;
       top: 32px; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box:after {
@@ -2767,7 +2767,7 @@ img {
         border-right: 7px solid transparent;
         content: '';
         height: 0;
-        left: 32%;
+        left: 35%;
         position: absolute;
         top: -6px;
         width: 0; }
@@ -2780,6 +2780,12 @@ img {
           background-color: rgba(65, 156, 248, 0.15); }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
         display: flex; }
+    .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {
+      flex-direction: row;
+      left: -18px; }
+      .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
+        display: flex;
+        flex-direction: column; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon {
       align-items: center;
       display: flex;

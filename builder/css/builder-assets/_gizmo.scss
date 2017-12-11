@@ -149,7 +149,7 @@ img{
 			box-shadow: 0 2px 12px 0 rgba(57,73,89,0.2);
 			display: none;
 			flex-direction: column;
-			left: -8px;
+			left: -3px;
 			position: absolute;
 			top: 32px;
 
@@ -159,7 +159,7 @@ img{
 				border-right: 7px solid transparent;
 				content: '';
 				height: 0;
-				left: 32%;
+				left: 35%;
 				position: absolute;
 				top: -6px;
 				width: 0;
@@ -177,6 +177,17 @@ img{
 			}
 			&.open-drop-down-gizmo{
 				display: flex;
+			}
+		}
+
+		.karma-typography-drop-down{
+
+			flex-direction: row;
+			left: -18px;
+
+			div{
+				display: flex;
+				flex-direction: column;
 			}
 		}
 

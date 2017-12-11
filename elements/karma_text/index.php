@@ -40,7 +40,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 
 		return 	array(
 			'element_key'   => 'kb' ,
-			'content'       => 'Click here to edit content...'
+			'content'       => '<div class="karma-text-tag">Click here to edit content...</div>'
 		);
 
 	}
@@ -88,7 +88,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		$js_template = '<div class="karma-text karma-text-{{ data.element_key }}" >'
-			. '<div class="karma-text-content" contentEditable="true" >{{ data.content }}</div>'
+			. '<div class="karma-text-content" contentEditable="true" >{{{ data.content }}}</div>'
 			. '</div>';
 		return $js_template;
 

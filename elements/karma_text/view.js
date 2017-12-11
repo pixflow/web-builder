@@ -41,6 +41,23 @@
 			var content = this.el.querySelector('.karma-text-content').innerHTML ;
 			this.setAttributes( { 'content' : content }, true );
 
+		},
+
+		/**
+		 * @summary get text typography and change innerHtml of text
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		tag: function(){
+
+			var element = this.el.querySelector( '.karma-text-tag' ),
+				tagAttr = this.getAttributes( ['tag'] ),
+				newTag = document.createElement( tagAttr.tag );
+			newTag.innerHTML = element.innerHTML;
+			newTag.classList.add( 'karma-text-tag' );
+			element.parentNode.replaceChild( newTag, element );
+
 		}
 
 

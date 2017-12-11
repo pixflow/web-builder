@@ -74,13 +74,27 @@ class Karma_Text_Describe extends Karma_Text {
 						'type'   => 'alignmentGizmo',
 						'form'   => 'animation-panel',
 						"params" => array(
-							'defaultIcon'    => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
-							'leftAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
-							'rightAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/rightalign.svg' ),
-							'centerAlignIcon'      => karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/centeralign.svg' ),
-
-
+							'defaultIcon'			=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
+							'leftAlignIcon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
+							'rightAlignIcon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/rightalign.svg' ),
+							'centerAlignIcon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/centeralign.svg' ),
 						),
+					),
+					array(
+							'type'   => 'typographyGizmo',
+							'form'   => 'animation-panel',
+							"params" => array(
+									'defaultIcon'  		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h3-typography.svg' ),
+									'h1Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h1-typography.svg' ),
+									'h2Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h2-typography.svg' ),
+									'h3Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h3-typography.svg' ),
+									'h4Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h4-typography.svg' ),
+									'h5Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h5-typography.svg' ),
+									'h6Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h6-typography.svg' ),
+									'pTypography'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/p-typography.svg' ),
+									'h1Typography'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h1-typography.svg' ),
+
+							),
 					),
 					array(
 						'type'   => 'fontStyleGizmo',
