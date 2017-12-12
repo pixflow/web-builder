@@ -2794,7 +2794,8 @@ img {
         line-height: 33px; }
         .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a {
           border-bottom: none;
-          color: #419CF8; }
+          color: #419CF8;
+          box-shadow: none; }
           .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a:hover {
             opacity: 0.8; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
