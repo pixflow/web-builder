@@ -2794,6 +2794,8 @@ img {
         outline: none; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button:hover {
           background-color: rgba(65, 156, 248, 0.15); }
+        .karma-builder-element .karma-gizmo-template .karma-drop-down-box button.karma-drop-down-active-item {
+          background-color: rgba(65, 156, 248, 0.15); }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
         display: flex; }
     .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {

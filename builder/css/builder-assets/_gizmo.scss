@@ -165,7 +165,11 @@ img{
 				padding: 6px;
 				outline: none;
 				&:hover{
-					background-color: rgba(65,156,248,0.15);
+					background-color: rgba( 65,156,248,0.15 );
+				}
+
+				&.karma-drop-down-active-item{
+					background-color: rgba( 65,156,248,0.15 );
 				}
 
 			}

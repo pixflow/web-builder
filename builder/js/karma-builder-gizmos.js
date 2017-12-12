@@ -603,17 +603,27 @@
 		},
 
 		/**
-		 * @summary close dropDown gizmo
+		 * @summary close dropDown gizmo and add class to active item
+		 * @param {object}  event
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		closeDropDownBox: function () {
+		closeDropDownBox: function ( e ) {
 
+			var dropDownItem = $( e.target ).closest( 'button' ),
+				dropDownBox  = $( e.target ).closest( '.karma-drop-down-box' ),
+				allDropDownItem = dropDownBox.find( 'button' );
+
+			if( null != selector ){
+				if( allDropDownItem.hasClass( 'karma-drop-down-active-item' ) ){
+					allDropDownItem.removeClass( 'karma-drop-down-active-item' );
+				}
+				dropDownItem.addClass( 'karma-drop-down-active-item' );
+			}
 			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
 
 		}
-
 
 	});
 
