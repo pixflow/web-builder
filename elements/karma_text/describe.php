@@ -64,10 +64,7 @@ class Karma_Text_Describe extends Karma_Text {
 					array(
 						'type'      => 'color',
 						'className' => esc_attr('karma-color-picker-gizmo'),
-						"params"    => array(
-							// @TODO: replace unique id with element key
-							'id' => uniqid('cpg_')
-						)
+						"params"    => array()
 					),
 
 					array(
