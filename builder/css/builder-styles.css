@@ -2748,7 +2748,7 @@ img {
     padding: 0 9px;
     position: absolute;
     z-index: 95; }
-    .karma-builder-element .karma-gizmo-template > div > div {
+    .karma-builder-element .karma-gizmo-template > div {
       cursor: pointer;
       padding: 0 3px;
       position: relative;
