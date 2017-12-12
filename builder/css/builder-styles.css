@@ -2639,21 +2639,26 @@ img {
   height: 5px;
   position: relative; }
   .karma-spacing.karma-top-spacing-height {
+    width: initial;
     height: 0; }
   .karma-spacing.karma-top-spacing {
+    width: 100%;
+    height: initial;
     position: absolute;
-    top: 0;
-    width: 100%; }
+    top: 0; }
     .karma-spacing.karma-top-spacing .spacing-dot:after {
       top: 0;
       right: auto;
       bottom: auto;
       left: -8px; }
   .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing {
-    height: 100%;
+    top: 0;
+    right: auto;
+    bottom: auto;
     left: 0 !important;
-    position: absolute;
-    top: 0; }
+    width: initial;
+    height: 100%;
+    position: absolute; }
     .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing .karma-spacing-dot-container {
       cursor: e-resize;
       left: -12px !important;
@@ -2664,11 +2669,12 @@ img {
       bottom: auto;
       left: 0; }
   .karma-spacing.karma-right-spacing.ui-resizable.karma-right-spacing {
-    height: 100%;
-    left: initial !important;
-    position: absolute;
+    top: 0;
     right: 0 !important;
-    top: 0; }
+    bottom: auto;
+    left: initial !important;
+    height: 100%;
+    position: absolute; }
     .karma-spacing.karma-right-spacing.ui-resizable.karma-right-spacing .karma-spacing-dot-container {
       cursor: w-resize;
       left: calc(100% - 12px) !important;
@@ -2694,24 +2700,23 @@ img {
       left: -8px; }
 
 .karma-spacing .resize-handler {
+  width: 100%;
   height: 100%;
-  position: absolute;
-  width: 100%; }
+  position: absolute; }
 
 .tooltip-div {
+  width: 39px;
+  height: 16px;
+  display: flex;
+  text-align: center;
   align-items: center;
+  justify-content: center;
   background-color: #76c1f3;
   border-radius: 100px;
   color: #fff;
-  display: none;
-  display: flex;
   font-family: HelveticaNeue;
   font-size: 9px;
-  height: 16px;
-  justify-content: center;
-  position: fixed;
-  text-align: center;
-  width: 39px; }
+  position: fixed; }
 
 .karma-builder-element {
   position: relative; }
@@ -2753,28 +2758,33 @@ img {
       margin: 0;
       padding: 0 6px; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
+      top: 32px;
+      right: auto;
+      bottom: auto;
+      left: -3px;
       background-color: white;
       border-radius: 4px;
       box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
       cursor: auto;
       display: none;
       flex-direction: column;
-      left: -3px;
-      position: absolute;
-      top: 32px; }
+      position: absolute; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box:after {
+        top: -6px;
+        right: auto;
+        bottom: auto;
+        left: 28%;
+        width: 0;
+        height: 0;
         border-bottom: 8px solid white;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
         content: '';
-        height: 0;
-        left: 28%;
-        position: absolute;
-        top: -6px;
-        width: 0; }
+        position: absolute; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box button {
-        background-color: inherit;
         width: 30px;
+        height: auto;
+        background-color: inherit;
         border-radius: 3px;
         margin: 5px;
         padding: 6px; }

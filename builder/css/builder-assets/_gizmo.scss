@@ -15,13 +15,13 @@ img{
 	position: relative;
 
   	&.karma-top-spacing-height{
-	  height:0;
+		@include box( initial, 0 );
 	}
-
+	
 	&.karma-top-spacing {
+		@include box( 100%, initial );
 		position: absolute;
 		top: 0;
-		width: 100%;
 
 		.spacing-dot:after{
 			@include element_direction( $top: 0, $left: -8px )
@@ -29,11 +29,9 @@ img{
 	}
 
 	&.karma-left-spacing.ui-resizable.karma-left-spacing {
-
-		height: 100%;
-		left: 0 !important;
+		@include element_direction( $top:0,  $left:0 !important );
+		@include box( initial, 100% );
 		position: absolute;
-		top: 0;
 
 		.karma-spacing-dot-container {
 			cursor: e-resize;
@@ -47,11 +45,10 @@ img{
 	}
 
 	&.karma-right-spacing.ui-resizable.karma-right-spacing {
+		@include element_direction( $top:0, $right:0 !important,  $left:initial !important );
 		height: 100%;
-		left: initial !important;
 		position: absolute;
-		right: 0 !important;
-		top: 0;
+
 
 		.karma-spacing-dot-container {
 			cursor: w-resize;
@@ -83,25 +80,20 @@ img{
 }
 
 .karma-spacing .resize-handler {
-	height: 100%;
+	@include box( 100%, 100% );
 	position: absolute;
-	width: 100%;
 }
 
 .tooltip-div {
-	align-items: center;
+    @include box( 39px, 16px );
+	@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
 	background-color: #76c1f3;
 	border-radius: 100px;
 	color: $white-color;
-	display: none;
-	display: flex;
 	font-family: HelveticaNeue;
 	font-size: 9px;
-	height: 16px;
-	justify-content: center;
 	position: fixed;
-	text-align: center;
-	width: 39px;
+
 }
 
 .karma-builder-element {
@@ -143,31 +135,28 @@ img{
 			padding: 0 6px;
 		}
 		.karma-drop-down-box{
+			@include element_direction( $top: 32px, $left:-3px );
 			background-color: white;
 			border-radius: 4px;
 			box-shadow: 0 2px 12px 0 rgba(57,73,89,0.2);
 			cursor: auto;
 			display: none;
 			flex-direction: column;
-			left: -3px;
 			position: absolute;
-			top: 32px;
 
 			&:after{
+				@include element_direction( $top: -6px, $left:28% );
+				@include box( 0, 0 );
 				border-bottom: 8px solid white;
 				border-left: 7px solid transparent;
 				border-right: 7px solid transparent;
 				content: '';
-				height: 0;
-				left: 28%;
 				position: absolute;
-				top: -6px;
-				width: 0;
 			}
 
 			button{
+				@include box( 30px, auto );
 				background-color: inherit;
-				width: 30px;
 				border-radius: 3px;
 				margin: 5px;
 				padding: 6px;
