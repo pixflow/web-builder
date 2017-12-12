@@ -2802,15 +2802,15 @@ img {
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
         display: flex;
         flex-direction: column; }
-    .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon {
+    .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon {
       align-items: center;
       display: flex;
       height: 22px;
       padding: 0 6px 0 6px;
       transition-duration: 0.1s; }
-      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon div {
+      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon div {
         display: flex; }
-      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-simpleIcon:hover svg * {
+      .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon:hover svg * {
         transition-duration: 0.1s;
         fill: #419CF8; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text {
