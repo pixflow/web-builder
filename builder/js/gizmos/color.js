@@ -8,23 +8,25 @@
 
 		template : '<input class="karma-color-gizmo" id="{{{ data.id }}}"/>',
 
-		data: {
-			color: '#000',
-		},
-
 		initialize :function(){
+
 			this.setElement( $('<div>') );
+
 		},
 
-		setColor: function( value ){
-			this.data.color = value;
+		setColor: function( ){
+
 			this.render();
+
 		},
 
 		render: function( $el ){
+
+			this.data = this.data.params;
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 			$el.append( this.el );
-			this.colorPicker();
+			this.initColorPicker();
+
 		},
 
 		/**
@@ -34,7 +36,7 @@
 		 *
 		 * @returns {void}
 		 */
-		colorPicker: function ( e, data ) {
+		initColorPicker: function () {
 
 			var options = {
 					selector            : "#" + this.data.id,

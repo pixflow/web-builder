@@ -113,6 +113,7 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-gizmos-text', plugin_dir_url(__FILE__) . 'js/gizmos/text.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', plugin_dir_url(__FILE__) . 'js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', plugin_dir_url(__FILE__) . 'js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-color', plugin_dir_url(__FILE__) . 'js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-setting-panel', $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_media();
 		}
