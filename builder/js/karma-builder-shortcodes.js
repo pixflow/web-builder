@@ -6,9 +6,6 @@
 			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
 			'before/buildGizmo'														: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
-			'click .karma-align-center'												: 'karmaTextShortcodealignCenter',
-			'click .karma-align-left'												: 'karmaTextShortcodealignLeft',
-			'click .karma-align-right'												: 'karmaTextShortcodealignRight',
 			'click .karma-more-setting'											    : 'showGizmoRelatedToMore',
 			'click .karma-drop-down-icon'											: 'openDropDownGzmo' ,
 			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
@@ -45,48 +42,8 @@
 			this.removeGizmo();
 			this.karmaLinksDocumentClick();
 			this.removeMoreSubmenu();
-
+			
 		},
-
-		/**
-		 * @summary align left for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignLeft: function () {
-
-			this.setAttributes( { 'align': 'left' }, false );
-
-		},
-
-		/**
-		 * @summary align center for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignCenter: function () {
-
-			this.setAttributes( { 'align': 'right' }, false );
-
-		},
-
-		/**
-		 * @summary align right for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignRight: function () {
-
-			this.setAttributes( { 'align': 'center' }, false );
-
-		},
-
 
 		/**
 		 * @summary trigger document click on links which have karma-document-click class

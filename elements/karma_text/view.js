@@ -70,10 +70,10 @@
 		 */
 		align: function () {
 
-			var element = this.el.querySelector( '.karma-text-tag' ),
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				alignAttr = this.getAttributes( ['align'] );
 
-			this.renderCss( element , 'text-align', alignAttr.align  );
+			this.renderCss( "." + elementId + " .karma-text-tag" , 'text-align', alignAttr.align  );
 
 
 		}

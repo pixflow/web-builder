@@ -109,6 +109,7 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-element-panel', plugin_dir_url(__FILE__) . 'js/karma-builder-element-panel.min.js', array( $this->plugin_name ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos', plugin_dir_url(__FILE__) . 'js/karma-builder-gizmos.min.js', array( $this->plugin_name ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-icon', plugin_dir_url(__FILE__) . 'js/gizmos/icon.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-alignment', plugin_dir_url(__FILE__) . 'js/gizmos/alignment.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-text', plugin_dir_url(__FILE__) . 'js/gizmos/text.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', plugin_dir_url(__FILE__) . 'js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', plugin_dir_url(__FILE__) . 'js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
