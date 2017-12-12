@@ -46,7 +46,7 @@
 	}
 
 	.karma-element-panel-add-element-view {
-		@include karma-box(26.29vw, 77vh);
+		@include karma-box(24.2vw, 77vh);
 		@include element_direction($top: 13vh, $left: 95px);
 		display: none;
 		max-height: 700px;
