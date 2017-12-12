@@ -7,7 +7,7 @@
 			'before/buildGizmo'														: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
 			'click .karma-more-setting'											    : 'showGizmoRelatedToMore',
-			'click .karma-drop-down-icon'											: 'openDropDownGzmo' ,
+			'click .karma-drop-down-icon'											: 'openDropDownGizmo' ,
 			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
 		},
 

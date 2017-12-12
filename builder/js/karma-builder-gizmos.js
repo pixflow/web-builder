@@ -587,12 +587,12 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		openDropDownGzmo: function ( e ) {
+		openDropDownGizmo: function ( e ) {
 
-			var dropDownIcon = (  e.target.classList.contains('karma-drop-down-icon') ) ? e.target : e.target.closest( 'button' ),
+			var dropDownIcon = (  e.target.classList.contains( 'karma-drop-down-icon' ) ) ? e.target : e.target.closest( 'button' ),
 					dropDownBox = dropDownIcon.nextElementSibling;
 			if( null != dropDownBox ){
-				if( dropDownBox.classList.contains('open-drop-down-gizmo') ){
+				if( dropDownBox.classList.contains( 'open-drop-down-gizmo' ) ){
 					dropDownBox.classList.remove( 'open-drop-down-gizmo' );
 				}else{
 					$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
