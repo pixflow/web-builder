@@ -72,13 +72,18 @@
 		 *
 		 * @returns {void}
 		 */
-		render: function( $el ){
+		render: function(){
 
-			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
-			$el.append( this.el );
+			this.update();
+			this.$gizmoContainer.append( this.el );
 
 		},
 
+		update: function(){
+
+			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
+
+		},
 
 		/**
 		 * @summary set h1 typography for text shortcode

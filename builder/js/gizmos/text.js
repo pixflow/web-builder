@@ -15,15 +15,18 @@
 
 		setValue: function( value ){
 			this.data.params.value = value;
-			this.render();
+			this.update();
 		},
 
-		render: function( $el ){
+		render: function(){
+			this.update();
+			this.$gizmoContainer.append( this.el );
+		},
+
+		update: function(){
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
-			$el.append( this.el );
 		}
 
 	});
-
 
 } )( jQuery, karmaBuilder );

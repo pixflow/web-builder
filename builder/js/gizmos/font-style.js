@@ -27,9 +27,17 @@
 			this.setElement( $('<div>') );
 		},
 
-		render: function( $el ){
+		render: function(){
+
+			this.update();
+			this.$gizmoContainer.append( this.el );
+
+		},
+
+		update: function(){
+
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
-			$el.append( this.el );
+
 		},
 
 

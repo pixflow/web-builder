@@ -6,6 +6,7 @@
 		 * Build html for icon gizmo
 		 */
 
+
 		template: '<input class="karma-color-gizmo"/>',
 
 		initialize :function(){
@@ -14,9 +15,9 @@
 
 		},
 
-		setColor: function( ){
+		setColor: function(){
 
-			this.render();
+			this.update();
 
 		},
 
@@ -24,10 +25,14 @@
 
 			this.data = this.data.params;
 			this.selector = this.elementView.$el.selector + ' input.karma-color-gizmo';
-			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
-			$el.append( this.el );
+			this.update();
+			this.$gizmoContainer.append( this.el );
 			this.initColorPicker();
 
+		},
+
+		update: function(){
+			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 		},
 
 		/**

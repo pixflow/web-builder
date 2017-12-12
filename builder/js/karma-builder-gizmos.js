@@ -145,12 +145,12 @@
 		 */
 		gizmoBuilder: function ( gizmoParams ) {
 
-			var templateName = gizmoParams.type + 'Template',
-				that = this;
-			if ( "undefined" !== typeof this[ templateName ] ) {
-				gizmoParams = that.$el.triggerHandler('before/buildGizmo', [templateName, gizmoParams]);
+			var templateName = gizmoParams.type + 'Template';
 
-				var $gizmoPlaceHolder = $( KarmaView.getUnderscoreTemplate( that[ templateName ], gizmoParams ) ),
+			if ( "undefined" !== typeof this[ templateName ] ) {
+				gizmoParams = this.$el.triggerHandler('before/buildGizmo', [templateName, gizmoParams]);
+
+				var $gizmoPlaceHolder = $( KarmaView.getUnderscoreTemplate( this[ templateName ], gizmoParams ) ),
 					$gizmoContainer = $gizmoPlaceHolder.find( '.karma-gizmo-container' ).addBack('.karma-gizmo-container');
 				this.$el.append( $gizmoPlaceHolder );
 
@@ -160,7 +160,8 @@
 						var gizmo = new karmaBuilder.gizmos[ gizmoParams.params[ i ].type ]();
 						gizmo.data = gizmoParams.params[ i ];
 						gizmo.elementView = this;
-						gizmo.render( $gizmoContainer );
+						gizmo.$gizmoContainer = $gizmoContainer;
+						gizmo.render();
 					}
 				}
 

@@ -133,10 +133,13 @@ img{
 		z-index: $level2;
 
 		> div {
-			cursor: pointer;
-			padding: 0 6px;
-			position: relative;
-			white-space: nowrap;
+
+			>div {
+				cursor: pointer;
+				padding: 0 6px;
+				position: relative;
+				white-space: nowrap;
+			}
 		}
 		.karma-drop-down-icon{
 			background-color: inherit;
@@ -236,7 +239,7 @@ img{
 			}
 		}
 
-		.karma-builder-gizmo-simpleText {
+		.karma-builder-gizmo-text {
 			border-right: 1px solid rgba(151, 151, 151, 0.3);
 			color: #394959;
 			font-family: HelveticaNeue_Medium;
@@ -246,7 +249,7 @@ img{
 			transition: all 0.3s ease;
 		}
 
-		.karma-builder-gizmo-simpleText:hover {
+		.karma-builder-gizmo-text:hover {
 			color: #419CF8;
 			transition: all 0.3s ease;
 		}
