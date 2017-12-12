@@ -31,44 +31,6 @@
 		+ '</button>'
 		+ '</div>' ,
 
-		/**
-		 *  @summary Build html for text shortcode typography
-		 */
-		typographyGizmoTemplate : ' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
-			+ '<div class="karma-drop-down-box karma-typography-drop-down">'
-			+'<div class="karma-typography-drop-down-icons">'
-			+ '<div class="karma-typography-drop-down-right">'
-			+ '<button class="karma-typography-h5" data-value="karma-typography-h5" >'
-			+ '{{{data.h5Typography}}}'
-			+ '</button>'
-			+ '<button class="karma-typography-h6" data-value="karma-typography-h6" >'
-			+ '{{{data.h6Typography}}}'
-			+ '</button>'
-			+ '<button class="karma-typography-p" data-value="karma-typography-p" >'
-			+ '{{{data.pTypography}}}'
-			+ '</button>'
-			+ '</div>'
-			+ '<div class="karma-typography-drop-down-left">'
-			+ '<button class="karma-typography-h1" data-value="karma-typography-h1" >'
-			+ '{{{data.h1Typography}}}'
-			+ '</button>'
-			+ '<button class="karma-typography-h2" data-value="karma-typography-h2" >'
-			+ '{{{data.h2Typography}}}'
-			+ '</button>'
-			+ '<button class="karma-typography-h3" data-value="karma-typography-h3" >'
-			+ '{{{data.h3Typography}}}'
-			+ '</button>'
-			+ '<button class="karma-typography-h4" data-value="karma-typography-h4" >'
-			+ '{{{data.h4Typography}}}'
-			+ '</button>'
-			+ '</div>'
-			+ '</div>'
-			+ '<div class="karma-typography-link">'
-			+ '<a href="">'
-			+ '{{{data.typographyLink}}}'
-			+ '</a>'
-			+ '</div>'
-			+ '</div>' ,
 
 
 
@@ -210,6 +172,7 @@
 					if ( typeof karmaBuilder.gizmos[ gizmoParams.params[ i ].type ] !== "undefined" ) {
 						var gizmo = new karmaBuilder.gizmos[ gizmoParams.params[ i ].type ]();
 						gizmo.data = gizmoParams.params[ i ];
+						gizmo.elementView = this;
 						gizmo.render( $gizmoContainer );
 					}
 				}

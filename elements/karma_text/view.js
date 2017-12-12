@@ -52,7 +52,7 @@
 		 * @return {void}
 		 */
 		tag: function(){
-
+			
 			var element = this.el.querySelector( '.karma-text-tag' ),
 				tagAttr = this.getAttributes( ['tag'] ),
 				newTag = document.createElement( tagAttr.tag );

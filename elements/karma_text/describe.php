@@ -71,7 +71,7 @@ class Karma_Text_Describe extends Karma_Text {
 					),
 
 					array(
-						'type'   => 'alignmentGizmo',
+						'type'   => 'alignment',
 						'form'   => 'animation-panel',
 						"params" => array(
 							'defaultIcon'			=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/leftalign.svg' ),
@@ -81,7 +81,7 @@ class Karma_Text_Describe extends Karma_Text {
 						),
 					),
 					array(
-						'type'   => 'typographyGizmo',
+						'type'   => 'typography',
 						'form'   => 'animation-panel',
 						"params" => array(
 								'defaultIcon'  		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/h3-typography.svg' ),
@@ -98,7 +98,7 @@ class Karma_Text_Describe extends Karma_Text {
 						),
 					),
 					array(
-						'type'   => 'fontStyleGizmo',
+						'type'   => 'fontStyle',
 						"params" => array(
 							'defaultIcon'    => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
 							'bold'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),

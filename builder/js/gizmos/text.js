@@ -5,7 +5,7 @@
 		/**
 		 * Build html for icon gizmo
 		 */
-		template : '<div class="karma-builder-gizmo-{{ data.type }} {{ data.className }} " data-form="{{ data.form }}"> {{{ data.params.value }}} </div>',
+		template : '<div class="karma-builder-gizmo-text {{ data.className }} " data-form="{{ data.form }}"> {{{ data.params.value }}} </div>',
 
 		data: {},
 

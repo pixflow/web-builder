@@ -15,13 +15,6 @@
 			'click .karma-set-italic-style'											: 'setItalicStyle' ,
 			'click .karma-set-underline-style'										: 'setUnderlineStyle' ,
 			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
-			'click .karma-typography-h1'											: 'setTypographyH1' ,
-			'click .karma-typography-h2'											: 'setTypographyH2' ,
-			'click .karma-typography-h3'											: 'setTypographyH3' ,
-			'click .karma-typography-h4'											: 'setTypographyH4' ,
-			'click .karma-typography-h5'											: 'setTypographyH5' ,
-			'click .karma-typography-h6'											: 'setTypographyH6' ,
-			'click .karma-typography-p'												: 'setTypographyP' ,
 		},
 
 		shortcodeParams: {},
@@ -96,98 +89,6 @@
 			this.setAttributes( { 'align': 'center' }, false );
 
 		},
-
-		/**
-		 * @summary set h1 typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyH1: function () {
-
-			this.setAttributes( { 'tag': 'h1' }, false );
-
-		},
-
-		/**
-		 * @summary set h2 typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyH2: function () {
-
-			this.setAttributes( { 'tag': 'h2' }, false );
-
-		},
-
-		/**
-		 * @summary set h3 typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyH3: function () {
-
-			this.setAttributes( { 'tag': 'h3' }, false );
-
-		},
-
-		/**
-		 * @summary set h4 typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyH4: function () {
-
-			this.setAttributes( { 'tag': 'h4' }, false );
-
-		},
-
-		/**
-		 * @summary set h5 typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyH5: function () {
-
-			this.setAttributes( { 'tag': 'h5' }, false );
-
-		},
-
-		/**
-		 * @summary set h6 typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyH6: function () {
-
-			this.setAttributes( { 'tag': 'h6' }, false );
-
-		},
-
-		/**
-		 * @summary set p typography for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setTypographyP: function () {
-
-			this.setAttributes( { 'tag': 'p' }, false );
-
-		},
-
 
 
 		/**
