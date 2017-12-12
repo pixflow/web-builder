@@ -3723,7 +3723,13 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         align-items: center;
         justify-content: flex-start;
         display: none;
+        flex-direction: column;
         height: 100%; }
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-element-panel-list {
+          display: flex;
+          text-align: center;
+          align-items: flex-start;
+          justify-content: flex-start; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-active-tab {
           display: flex; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img {

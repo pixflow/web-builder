@@ -77,10 +77,15 @@
 			}
 
 			.element-panel-section-container {
-
+				
 				@include flexbox(center, center, flex-start);
 				display: none;
+				flex-direction: column;
 				height: 100%;
+
+				&.karma-element-panel-list {
+					@include flexbox(center, flex-start, flex-start);
+				}
 
 				&.karma-active-tab {
 					display: flex;
