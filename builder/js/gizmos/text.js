@@ -1,11 +1,11 @@
 ( function( $, karmaBuilder ){
 
-	karmaBuilder.gizmos.icon = Backbone.View.extend({
+	karmaBuilder.gizmos.text = Backbone.View.extend({
 
 		/**
 		 * Build html for icon gizmo
 		 */
-		template : '<div class="karma-builder-gizmo-{{ data.type }} {{ data.className }} " data-form="{{ data.form }}"> {{{ data.params.icon }}} </div>',
+		template : '<div class="karma-builder-gizmo-{{ data.type }} {{ data.className }} " data-form="{{ data.form }}"> {{{ data.params.value }}} </div>',
 
 		data: {},
 
@@ -13,8 +13,8 @@
 			this.setElement( $('<div>') );
 		},
 
-		setIcon: function( icon ){
-			this.data.params.icon = icon;
+		setValue: function( value ){
+			this.data.params.value = value;
 			this.render();
 		},
 

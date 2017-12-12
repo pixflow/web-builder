@@ -2,50 +2,18 @@
 
 	karmaBuilder.gizmos = Backbone.View.extend({
 
-		gizmoTriggers: [],
 		gizmos: {},
-
-
 
 		/**
 		 *  Build html for inner gizmo
 		 */
-		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }}">'
-		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
-		+ '</div>'
-		+ '<# }) #>'
-		+ '</div>' ,
+		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }} karma-gizmo-container"></div>' ,
 
 		/**
 		 *  Build html for outer gizmo
 		 */
-		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }}">'
-		+ ' <# _.each( data.params, function( param ){ #>'
-		+ ' <div class="karma-builder-gizmo-{{ param.type }} {{ param.className }} " data-form="{{ param.form }}">'
-		+ '<# print( KarmaView.getUnderscoreTemplate( karmaBuilder.shortcodes.prototype[ param.type + "Template" ] , param.params ) ) #>'
-		+ '</div>'
-		+ '<# }) #>'
-		+ '</div>' ,
+		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }} karma-gizmo-container"></div>' ,
 
-
-
-		/**
-		 *  Build html for text gizmo
-		 */
-		simpleTextTemplate : ' <div> {{ data.value }} </div> ',
-
-		/**
-		 *  Build html for icon gizmo
-		 */
-		simpleIconTemplate : ' <div> {{{ data.icon }}} </div> ',
-
-		/**
-		 *  Build html for color gizmo
-		 */
-		colorPickerTemplate: '<input class="karma-color-gizmo" id="{{{ data.id }}}"/>'
-		+ '<# karmaBuilder.shortcodes.prototype.gizmoTriggers.push({ event: "colorPickerRender", data: data }); #>',
 
 		/**
 		 *  Build html for text shortcode alignment
@@ -228,17 +196,30 @@
 		 */
 		gizmoBuilder: function ( gizmoParams ) {
 
-			if( gizmoParams.type !== 'icon' ) {
-				var tempName = gizmoParams.type + 'Template',
-					that = this;
-				if ("undefined" !== typeof this[tempName]) {
-					gizmoParams = that.$el.triggerHandler('before/buildGizmo', [tempName, gizmoParams]);
-					return $(KarmaView.getUnderscoreTemplate(that[tempName], gizmoParams, that));
+			var templateName = gizmoParams.type + 'Template',
+				that = this;
+			if ( "undefined" !== typeof this[ templateName ] ) {
+				gizmoParams = that.$el.triggerHandler('before/buildGizmo', [templateName, gizmoParams]);
+
+				var $gizmoPlaceHolder = $( KarmaView.getUnderscoreTemplate( that[ templateName ], gizmoParams ) ),
+					$gizmoContainer = $gizmoPlaceHolder.find( '.karma-gizmo-container' ).addBack('.karma-gizmo-container');
+				this.$el.append( $gizmoPlaceHolder );
+
+				for( var i in gizmoParams.params ) {
+
+					if ( typeof karmaBuilder.gizmos[ gizmoParams.params[ i ].type ] !== "undefined" ) {
+						var gizmo = new karmaBuilder.gizmos[ gizmoParams.params[ i ].type ]();
+						gizmo.data = gizmoParams.params[ i ];
+						gizmo.render( $gizmoContainer );
+					}
 				}
+
+				if ( 'function' === typeof this[ gizmoParams.type.replace( /-/g, '' ) ] ) {
+					this[ gizmoParams.type.replace( /-/g, '' ) ]( $gizmoPlaceHolder );
+				}
+				this.gizmoEvents( gizmoParams.params );
+
 			}
-			var gizmo = new karmaBuilder.gizmos.icon();
-			gizmo.data = gizmoParams;
-			return gizmo.render();
 
 
 		},
@@ -260,16 +241,7 @@
 						this.gizmoParams[ i ].params[ param ][ "counter" ] = "";
 					}
 				}
-				var $gizmo = this.gizmoBuilder( this.gizmoParams[ i ] );
-				for ( var j in this.gizmoTriggers ) {
-					$( document ).trigger( this.gizmoTriggers[ j ].event, [ this.gizmoTriggers[ j ].data ] );
-				}
-				this.gizmoTriggers = [];
-				this.$el.append( $gizmo );
-				if ( 'function' === typeof this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ] ) {
-					this[ this.gizmoParams[ i ].type.replace( /-/g, '' ) ]( $gizmo );
-				}
-				this.gizmoEvents( this.gizmoParams[ i ].params );
+				this.gizmoBuilder( this.gizmoParams[ i ] );
 			}
 
 		},
@@ -308,43 +280,7 @@
 
 		},
 
-		/**
-		 * @summary init karma color picker plugin on color picker gizmo
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		colorPicker: function ( e, data ) {
 
-			var that = this,
-				options = {
-					selector            : "#" + data.id,
-					multiColor          : true,
-					firstColorTitle     : 'Main',
-					secondColorTitle    : 'Hover',
-					presetColors        : [
-						'#FFFFFF'
-						, '#FEF445'
-						, '#FAC711'
-						, '#F24726'
-						, '#E6E6E6'
-						, '#CEE741'
-						, '#8FD14F'
-						, '#DA0263'
-						, '#808080'
-						, '#13CDD4'
-						, '#0DA789'
-						, '#652CB3'
-						, '#141414'
-						, '#2D9BF0'
-						, '#404BB2'
-					]
-				};
-
-			new karmaColorPicker( options );
-
-		},
 
 		/**
 		 * @summary Build gizmo resizeably for top

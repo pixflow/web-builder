@@ -148,7 +148,7 @@ class Karma_Image_Describe extends Karma_Image {
 				"className" => "image-gizmo-group",
 				"params"    => array(
 					array(
-						'type'   => 'simpleIcon',
+						'type'   => 'icon',
 						'form'   => 'more-panel',
 						'className' => 'karma-more-setting',
 						"params" => array(
@@ -156,7 +156,7 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 					array(
-						'type'   => 'simpleIcon',
+						'type'   => 'icon',
 						'form'   => 'more-panel',
 						'className' => 'karma-delete-element-setting ',
 						"params" => array(
@@ -164,7 +164,7 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 					array(
-						'type'   => 'simpleIcon',
+						'type'   => 'icon',
 						'form'   => 'more-panel',
 						'className' => 'karma-duplicate-element-setting ',
 						"params" => array(
@@ -172,15 +172,14 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 					array(
-						'type'   => 'simpleIcon',
+						'type'   => 'icon',
 						'form'   => 'animation-panel',
 						"params" => array(
 							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
-							'className' => 'karma-image-animation-layout',
 						)
 					),
 					array(
-						'type'      => 'simpleIcon',
+						'type'      => 'icon',
 						'className' => 'karma-image-setting-layout',
 						'form'      => 'setting-panel',
 						"params"    => array(
@@ -188,7 +187,7 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 					array(
-						'type'      => 'simpleText',
+						'type'      => 'text',
 						'form'      => 'background-panel',
 						'className' => 'karma-image-background-setting',
 						'params'    => array(

@@ -24,13 +24,6 @@
 			'click .karma-typography-p'												: 'setTypographyP' ,
 		},
 
-
-		documentEvents: {
-
-			'colorPickerRender': 'colorPicker'
-
-		},
-
 		shortcodeParams: {},
 
 		/** Drop area template for elements */
@@ -450,7 +443,7 @@
 		 * @returns void
 		 */
 		showSettingPanel : function ( e ) {
-
+			
 			var form = $( e.currentTarget ).data('form');
 			this.removeSettingPanel();
 			this.openSettingPanel( form );

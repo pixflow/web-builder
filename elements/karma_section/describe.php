@@ -217,7 +217,7 @@ class Karma_Section_Describe extends Karma_Section {
 				"className"	=> "row-gizmo-group",
 				"params"	=> array(
 					array(
-						'type'		=> 'simpleIcon',
+						'type'		=> 'icon',
 						'form'		=> 'setting-panel',
 						'className'	=> 'karma-element-setting',
 						'params'	=> array(
@@ -226,7 +226,7 @@ class Karma_Section_Describe extends Karma_Section {
 						)
 					),
 					array(
-						'type'		=> 'simpleIcon',
+						'type'		=> 'icon',
 						'form'		=> 'layout-panel',
 						'className'	=> 'row-setting-layout',
 						'params'	=> array(
@@ -234,7 +234,7 @@ class Karma_Section_Describe extends Karma_Section {
 						)
 					),
 					array(
-						'type'		=> 'simpleText',
+						'type'		=> 'text',
 						'form'		=> 'background-panel',
 						'className'	=> 'row-background-setting',
 						'params'	=> array(
