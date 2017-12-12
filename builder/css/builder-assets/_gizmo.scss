@@ -130,16 +130,12 @@ img{
 		font-size: initial;
 		padding:0 9px;
 		position: absolute;
-		z-index: $level2;
-
+		z-index: 95;
 		> div {
-
-			>div {
-				cursor: pointer;
-				padding: 0 6px;
-				position: relative;
-				white-space: nowrap;
-			}
+			cursor: pointer;
+			padding: 0 3px;
+			position: relative;
+			white-space: nowrap;
 		}
 		.karma-drop-down-icon{
 			background-color: inherit;
@@ -460,7 +456,7 @@ img{
 				position: absolute;
 				right: -5px;
 				top: 0;
-				z-index: $level2;
+				z-index: 92;
 			}
 
 			.resize-handler:before {

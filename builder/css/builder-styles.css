@@ -2742,10 +2742,10 @@ img {
     font-size: initial;
     padding: 0 9px;
     position: absolute;
-    z-index: 90; }
-    .karma-builder-element .karma-gizmo-template > div > div {
+    z-index: 95; }
+    .karma-builder-element .karma-gizmo-template > div {
       cursor: pointer;
-      padding: 0 6px;
+      padding: 0 3px;
       position: relative;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-icon {
@@ -3013,7 +3013,7 @@ img {
       position: absolute;
       right: -5px;
       top: 0;
-      z-index: 90; }
+      z-index: 92; }
     .karma-builder-element.karma-active-section .karma-row .resize-handler:before {
       position: absolute;
       left: 50%;
