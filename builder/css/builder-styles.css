@@ -2774,6 +2774,7 @@ img {
         width: 0; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box button {
         background-color: inherit;
+        width: 30px;
         border-radius: 3px;
         margin: 5px;
         padding: 6px; }
