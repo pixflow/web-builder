@@ -95,7 +95,7 @@
 			+ '</button>'
 			+ '</div>'
 			+ '</div>'
-			+ '<div>'
+			+ '<div class="karma-typography-link">'
 			+ '<a href="">'
 			+ '{{{data.typographyLink}}}'
 			+ '</a>'

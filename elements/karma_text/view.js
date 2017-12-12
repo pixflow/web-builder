@@ -60,6 +60,22 @@
 			newTag.classList.add( 'karma-text-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
+		},
+
+		/**
+		 * @summary get text shortcode alignment
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		align: function () {
+
+			var element = this.el.querySelector( '.karma-text-tag' ),
+				alignAttr = this.getAttributes( ['align'] );
+
+			this.renderCss( element , 'text-align', alignAttr.align  );
+
+
 		}
 
 

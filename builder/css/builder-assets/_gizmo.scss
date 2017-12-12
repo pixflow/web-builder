@@ -147,6 +147,7 @@ img{
 			background-color: white;
 			border-radius: 4px;
 			box-shadow: 0 2px 12px 0 rgba(57,73,89,0.2);
+			cursor: auto;
 			display: none;
 			flex-direction: column;
 			left: -3px;
@@ -183,10 +184,29 @@ img{
 		.karma-typography-drop-down{
 
 			flex-direction: column;
-			left: -18px;
+			left: -12px;
 
 			.karma-typography-drop-down-icons{
 				flex-direction: row;
+			}
+
+			.karma-typography-link{
+
+				border-top: 1px solid rgba(57,73,89,0.2);
+				font-family: HelveticaNeue;
+				font-size: 12px;
+				font-weight: 500;
+				line-height: 33px;
+
+				a{
+					border-bottom: none;
+					color: #419CF8;
+
+					&:hover{
+						 opacity: 0.8;
+					}
+				}
+
 			}
 
 			div{

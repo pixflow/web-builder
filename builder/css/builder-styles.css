@@ -2756,6 +2756,7 @@ img {
       background-color: white;
       border-radius: 4px;
       box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
+      cursor: auto;
       display: none;
       flex-direction: column;
       left: -3px;
@@ -2782,9 +2783,20 @@ img {
         display: flex; }
     .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {
       flex-direction: column;
-      left: -18px; }
+      left: -12px; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-icons {
         flex-direction: row; }
+      .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link {
+        border-top: 1px solid rgba(57, 73, 89, 0.2);
+        font-family: HelveticaNeue;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 33px; }
+        .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a {
+          border-bottom: none;
+          color: #419CF8; }
+          .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a:hover {
+            opacity: 0.8; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
         display: flex;
         flex-direction: column; }

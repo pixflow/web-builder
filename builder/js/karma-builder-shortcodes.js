@@ -74,7 +74,7 @@
 		 */
 		karmaTextShortcodealignLeft: function () {
 
-			document.execCommand( 'justifyLeft', true );
+			this.setAttributes( { 'align': 'left' }, false );
 
 		},
 
@@ -87,7 +87,20 @@
 		 */
 		karmaTextShortcodealignCenter: function () {
 
-			document.execCommand( 'justifyCenter', true );
+			this.setAttributes( { 'align': 'right' }, false );
+
+		},
+
+		/**
+		 * @summary align right for text shortcode
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaTextShortcodealignRight: function () {
+
+			this.setAttributes( { 'align': 'center' }, false );
 
 		},
 
@@ -182,18 +195,6 @@
 
 		},
 
-		/**
-		 * @summary align right for text shortcode
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		karmaTextShortcodealignRight: function () {
-
-			document.execCommand( 'justifyRight', true );
-
-		},
 
 
 		/**
