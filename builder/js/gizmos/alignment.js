@@ -74,7 +74,7 @@
 		 */
 		karmaTextShortcodealignCenter: function () {
 
-			this.elementView.setAttributes( { 'align': 'right' }, false );
+			this.elementView.setAttributes( { 'align': 'center' }, false );
 
 		},
 
@@ -87,7 +87,7 @@
 		 */
 		karmaTextShortcodealignRight: function () {
 
-			this.elementView.setAttributes( { 'align': 'center' }, false );
+			this.elementView.setAttributes( { 'align': 'right' }, false );
 
 		},
 
