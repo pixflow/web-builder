@@ -107,19 +107,6 @@
 		+ '</div>' ,
 
 
-		/** Drop area template for elements */
-		fontStyleGizmoTemplate :  ' <button class="karma-drop-down-icon  karma-font-style-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
-		+ '<div class="karma-drop-down-box karma-font-style-drop-down">'
-		+ '<button class="karma-set-bold-style" >'
-		+ '{{{ data.bold }}}'
-		+ '</button>'
-		+ '<button class="karma-set-italic-style" >'
-		+ '{{{ data.italic }}}'
-		+ '</button>'
-		+ '<button class="karma-set-underline-style" >'
-		+ '{{{ data.underline }}}'
-		+ '</button>'
-		+ '</div>' ,
 
 
 		/**

@@ -11,9 +11,6 @@
 			'click .karma-align-right'												: 'karmaTextShortcodealignRight',
 			'click .karma-more-setting'											    : 'showGizmoRelatedToMore',
 			'click .karma-drop-down-icon'											: 'openDropDownGzmo' ,
-			'click .karma-set-bold-style'											: 'setBoldStyle' ,
-			'click .karma-set-italic-style'											: 'setItalicStyle' ,
-			'click .karma-set-underline-style'										: 'setUnderlineStyle' ,
 			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
 		},
 
@@ -105,45 +102,6 @@
 				$( document ).trigger( 'click' );
 
 			} );
-
-		},
-
-		/**
-		 * @summary Set italic style
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setItalicStyle : function () {
-
-			document.execCommand( 'italic', true );
-
-		} ,
-
-		/**
-		 * @summary Set underline style
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setUnderlineStyle : function () {
-
-			document.execCommand( 'underline', true );
-
-		},
-
-		/**
-		 * @summary Set bold style
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		setBoldStyle : function () {
-
-			document.execCommand( 'bold', true );
 
 		},
 
