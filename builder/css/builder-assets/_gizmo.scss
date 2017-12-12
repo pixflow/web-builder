@@ -131,6 +131,7 @@ img{
 		}
 		.karma-drop-down-icon{
 			background-color: inherit;
+			border:none;
 			margin: 0;
 			padding: 0 6px;
 		}
@@ -157,6 +158,7 @@ img{
 			button{
 				@include box( 30px, auto );
 				background-color: inherit;
+				border:none;
 				border-radius: 3px;
 				margin: 5px;
 				padding: 6px;
@@ -189,8 +191,8 @@ img{
 
 				a{
 					border-bottom: none;
-					color: #419CF8;
 					box-shadow: none;
+					color: #419CF8;
 					
 					&:hover{
 						 opacity: 0.8;
