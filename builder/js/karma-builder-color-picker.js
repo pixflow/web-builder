@@ -209,7 +209,7 @@ karmaColorPicker.prototype.setMainInputEvent = function () {
  * @summary set choose color event
  *
  * @since 1.0.0
- * @returns {void}
+ * @returns {boolean}
  */
 karmaColorPicker.prototype.chooseColorEvent = function () {
 
