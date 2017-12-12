@@ -99,6 +99,5 @@
 
 	});
 
-
 } )( jQuery, karmaBuilder );
 

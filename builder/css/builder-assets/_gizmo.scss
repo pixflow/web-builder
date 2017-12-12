@@ -136,6 +136,7 @@ img{
 			border:none;
 			margin: 0;
 			padding: 0 6px;
+			outline: none;
 		}
 		.karma-drop-down-box{
 			@include element_direction( $top: 32px, $left:-3px );
@@ -164,6 +165,7 @@ img{
 				border-radius: 3px;
 				margin: 5px;
 				padding: 6px;
+				outline: none;
 				&:hover{
 					background-color: rgba(65,156,248,0.15);
 				}
@@ -187,14 +189,14 @@ img{
 
 				border-top: 1px solid rgba(57,73,89,0.2);
 				font-family: HelveticaNeue;
-				font-size: 12px;
-				font-weight: 500;
-				line-height: 33px;
 
 				a{
 					border-bottom: none;
 					box-shadow: none;
 					color: #419CF8;
+					font-size: 12px;
+					font-weight: 500;
+					line-height: 33px;
 					
 					&:hover{
 						 opacity: 0.8;

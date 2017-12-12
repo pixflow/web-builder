@@ -2757,7 +2757,8 @@ img {
       background-color: inherit;
       border: none;
       margin: 0;
-      padding: 0 6px; }
+      padding: 0 6px;
+      outline: none; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
       top: 32px;
       right: auto;
@@ -2789,7 +2790,8 @@ img {
         border: none;
         border-radius: 3px;
         margin: 5px;
-        padding: 6px; }
+        padding: 6px;
+        outline: none; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button:hover {
           background-color: rgba(65, 156, 248, 0.15); }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
@@ -2801,14 +2803,14 @@ img {
         flex-direction: row; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link {
         border-top: 1px solid rgba(57, 73, 89, 0.2);
-        font-family: HelveticaNeue;
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 33px; }
+        font-family: HelveticaNeue; }
         .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a {
           border-bottom: none;
           box-shadow: none;
-          color: #419CF8; }
+          color: #419CF8;
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 33px; }
           .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a:hover {
             opacity: 0.8; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
