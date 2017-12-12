@@ -23,7 +23,7 @@
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
 			"click .karma-element-panel-price-filter ul li "							: "elementPanelPriceFilter",
 			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
-			'karma/after/dropElement'                                                   : "ReOrderElements" ,
+			'karma/after/dropElement'                                                   : "reorderElements" ,
 			"click .karma-search-close-icon"											: "clearElementPanelSearchBar" ,
 			"click .karma-builder-search-text"											: "showElementPanelSearchBar" ,
 			"mousewheel .karma-elements"                                                : "preventFromScrolling"
@@ -454,6 +454,9 @@
 		detectDropAreas : function ( event, UI ) {
 
 			var targetElement = this.overlayBehavior( event, UI );
+			if( null == targetElement ){
+				return false;
+			}
 			if(  targetElement.classList.contains('.karma-element-placeholder') || null != targetElement.closest('.karma-element-placeholder') ){
 				return false;
 			}
@@ -652,7 +655,7 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		ReOrderElements : function ( e, parent_key ) {
+		reorderElements : function ( e, parent_key ) {
 
 			var childElements = document.querySelectorAll('[data-element-key="' + parent_key + '"] .karma-builder-element'),
 				order = 1 ;

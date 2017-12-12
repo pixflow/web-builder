@@ -87,7 +87,10 @@ jQuery( document ).off( 'karma_finish_form_builder.getUnsplashPhoto' ).on( 'karm
 	 */
 	karmaUnsplash.prototype.removeResults = function(){
 
-		document.querySelector('.karma-unsplash-images-result').innerHTML = '';
+		var element = document.querySelector('.karma-unsplash-images-result');
+		if(  null != element ){
+			element.innerHTML = '';
+		}
 
 	};
 
