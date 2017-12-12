@@ -198,7 +198,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		$dependencies = array(
 			'css' => array() ,
 			'js' => array(
-				KARMA_BUILDER_URL . 'builder/js/karma-builder-lightbox.min.js'
+				KARMA_BUILDER_URL . 'builder/js/karma-builder-lightbox.min.js',
 			)
 		);
 

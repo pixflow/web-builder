@@ -39,7 +39,7 @@ class Stylesheet {
 	public function create_css_block( array $element_attributes ){
 
 		if( ! isset( $element_attributes['css']['property'] ) ){
-			return ;
+			return '';
 		}
 		$prefix = isset( $element_attributes['css']["selector-prefix"] ) ? $element_attributes['css']["selector-prefix"] : '' ;
 		$postfix = isset( $element_attributes['css']["selector-postfix"] ) ? $element_attributes['css']["selector-postfix"] : '' ;

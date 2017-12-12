@@ -220,7 +220,8 @@ class Cache_Manager{
 	public static function remove_cache_file( $page_id ){
 
 		$file = File_System::get_instance();
-		if( $file->delete_file( self::get_cache_file_dir( $page_id, 'js' ) ) && $file->delete_file( self::get_cache_file_dir( $page_id, 'css' ) ) ){
+		if( $file->delete_file( self::get_cache_file_dir( $page_id, 'js' ) )
+		    && $file->delete_file( self::get_cache_file_dir( $page_id, 'css' ) ) ){
 			return true;
 		}
 		return false;
@@ -232,7 +233,7 @@ class Cache_Manager{
 	 *
 	 * @since 1.0.0
 	 */
-	public function load_dependecy_files(){
+	public function load_dependency_files(){
 
 		$elements_dependency = array(
 			'css' => array(),

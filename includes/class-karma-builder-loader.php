@@ -187,7 +187,7 @@ class Karma_Builder_Loader {
 
 		if( $builder::$edit_mode ){
 			add_filter( 'do_shortcode_tag', array( $this, 'render_assets' ), 9, 3 );
-			$cache->load_dependecy_files();
+			$cache->load_dependency_files();
 			return ;
 		}
 
@@ -196,7 +196,7 @@ class Karma_Builder_Loader {
 			add_filter( 'wp_footer',  array( $cache, 'set_up_cache' ), 1 );
 		}
 
-		add_filter( 'wp_footer',  array( $cache, 'load_dependecy_files' ), 2 );
+		add_filter( 'wp_footer',  array( $cache, 'load_dependency_files' ), 2 );
 		add_filter( 'wp_footer',  array( $cache, 'enqueue_file' ), 3 );
 
 	}

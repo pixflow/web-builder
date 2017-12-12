@@ -124,10 +124,12 @@ img{
 		position: absolute;
 		z-index: 95;
 		> div {
-			cursor: pointer;
-			padding: 0 3px;
-			position: relative;
-			white-space: nowrap;
+			>div {
+				cursor: pointer;
+				padding: 0 3px;
+				position: relative;
+				white-space: nowrap;
+			}
 		}
 		.karma-drop-down-icon{
 			background-color: inherit;
@@ -206,7 +208,7 @@ img{
 				flex-direction: column;
 			}
 		}
-		
+
 		.karma-builder-gizmo-icon {
 			align-items: center;
 			display: flex;
