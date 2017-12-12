@@ -58,6 +58,7 @@
 				newTag = document.createElement( tagAttr.tag );
 			newTag.innerHTML = element.innerHTML;
 			newTag.classList.add( 'karma-text-tag' );
+			newTag.setAttribute('contenteditable','true');
 			element.parentNode.replaceChild( newTag, element );
 
 		},

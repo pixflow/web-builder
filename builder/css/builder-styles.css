@@ -3952,7 +3952,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     opacity: 0;
     padding: 0;
     position: absolute;
-    right: 80px;
+    right: 4.1vw;
     transition-duration: .2s;
     z-index: 0; }
     .element-panel-section-container .karma-builder-element-panel-header .karma-search-close-icon.show-search-close-icon {
