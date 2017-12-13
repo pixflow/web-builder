@@ -4192,4 +4192,7 @@ input.karma-builder-search-text.open-search-panel {
   height: 170px;
   box-sizing: border-box !important; }
 
+.sp-vertical-alpha:not(.sp-alpha-enabled) .sp-picker-container {
+  width: 183px; }
+
 /*# sourceMappingURL=builder-styles.css.map */
