@@ -4,9 +4,9 @@
 
 		events: {
 
-			'click .karma-align-center'												: 'karmaTextShortcodealignCenter',
-			'click .karma-align-left'												: 'karmaTextShortcodealignLeft',
-			'click .karma-align-right'												: 'karmaTextShortcodealignRight',
+			'click .karma-align-center'			: 'karmaTextShortcodealignCenter',
+			'click .karma-align-left'			: 'karmaTextShortcodealignLeft',
+			'click .karma-align-right'			: 'karmaTextShortcodealignRight',
 		},
 
 		/**
@@ -67,7 +67,7 @@
 		 */
 		karmaTextShortcodealignLeft: function () {
 
-			this.elementView.setAttributes( { 'align': 'left' }, false );
+			this.elementView.setAttributes( { 'align' : 'left' }, false );
 
 		},
 
@@ -80,7 +80,7 @@
 		 */
 		karmaTextShortcodealignCenter: function () {
 
-			this.elementView.setAttributes( { 'align': 'center' }, false );
+			this.elementView.setAttributes( { 'align' : 'center' }, false );
 
 		},
 
@@ -93,7 +93,7 @@
 		 */
 		karmaTextShortcodealignRight: function () {
 
-			this.elementView.setAttributes( { 'align': 'right' }, false );
+			this.elementView.setAttributes( { 'align' : 'right' }, false );
 
 		},
 

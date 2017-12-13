@@ -58,7 +58,7 @@
 				newTag = document.createElement( tagAttr.tag );
 			newTag.innerHTML = element.innerHTML;
 			newTag.classList.add( 'karma-text-tag' );
-			newTag.setAttribute('contenteditable','true');
+			newTag.setAttribute( 'contenteditable','true' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
@@ -74,7 +74,7 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				alignAttr = this.getAttributes( ['align'] );
 
-			this.renderCss( "." + elementId + " .karma-text-tag" , 'text-align', alignAttr.align  );
+			this.renderCss( "." + elementId + " .karma-text-tag", 'text-align', alignAttr.align  );
 
 
 		}

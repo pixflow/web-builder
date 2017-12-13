@@ -88,31 +88,31 @@
 		 */
 		setTypography: function ( e ) {
 
-			var typographySelector = $( e.target ).closest( 'button' ),
-				typographyAttr = typographySelector.attr( 'data-karma-value' );
+			var typographySelector 	= $( e.target ).closest( 'button' ),
+				typographyAttr 		= typographySelector.attr( 'data-karma-value' );
 
 			switch ( typographyAttr )
 			{
 				case 'h1':
-					this.elementView.setAttributes( { 'tag': 'h1' }, false );
+					this.elementView.setAttributes( { 'tag' : 'h1' }, false );
 					break;
 				case 'h2':
-					this.elementView.setAttributes( { 'tag': 'h2' }, false );
+					this.elementView.setAttributes( { 'tag' : 'h2' }, false );
 					break;
 				case 'h3':
-					this.elementView.setAttributes( { 'tag': 'h3' }, false );
+					this.elementView.setAttributes( { 'tag' : 'h3' }, false );
 					break;
 				case 'h4':
-					this.elementView.setAttributes( { 'tag': 'h4' }, false );
+					this.elementView.setAttributes( { 'tag' : 'h4' }, false );
 					break;
 				case 'h5':
-					this.elementView.setAttributes( { 'tag': 'h5' }, false );
+					this.elementView.setAttributes( { 'tag' : 'h5' }, false );
 					break;
 				case 'h6':
-					this.elementView.setAttributes( { 'tag': 'h6' }, false );
+					this.elementView.setAttributes( { 'tag' : 'h6' }, false );
 					break;
 				case 'p':
-					this.elementView.setAttributes( { 'tag': 'p' }, false );
+					this.elementView.setAttributes( { 'tag' : 'p' }, false );
 					break;
 				default:
 					break;
