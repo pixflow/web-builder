@@ -10,9 +10,25 @@
 		template: '<input class="karma-color-gizmo"/>'
 		+'<input class="karma-color-gizmo-hover"/>',
 
+
 		initialize :function(){
 
 			this.setElement( $('<div>') );
+
+		},
+
+		/**
+		 * @summary Set event on input text colors
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		updateColor : function () {
+
+			var that = this;
+			$( this.selector ).on( 'change/updateColor', function ( event, color ) {
+				that.elementView.setAttributes( { 'color' : color }, false );
+			});
 
 		},
 
@@ -24,6 +40,7 @@
 			this.update();
 			this.$gizmoContainer.append( this.el );
 			this.initColorPicker();
+			this.updateColor();
 
 		},
 
@@ -43,7 +60,7 @@
 			var options = {
 					selector            : this.selector,
 					color               : this.colorAttribute.color,
-					opacity          : this.data.opacity,
+					opacity             : this.data.opacity,
 					multiColor          : this.data.multiColor,
 					firstColorTitle     : 'Main',
 					secondColorTitle    : 'Hover',

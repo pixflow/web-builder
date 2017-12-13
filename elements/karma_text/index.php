@@ -112,7 +112,13 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 */
 	public function get_css_attributes() {
 
-		$styles = array();
+		$styles = array(
+			'selector-postfix' => ' .karma-text-tag',
+			'property'         => array(
+				'text-align' => $this->element_attributes[ 'align' ],
+				'color'      => $this->element_attributes[ 'color' ]
+			)
+		);
 		return $styles;
 
 	}

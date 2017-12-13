@@ -235,6 +235,7 @@ karmaColorPicker.prototype.setMainInputEvent = function () {
 	var that = this;
 	$( this.activeInput ).on( 'change', function () {
 		that.icon.style.background = this.value;
+		$( that.options.selector ).trigger( 'change/updateColor', [ this.value ] );
 	} );
 
 	

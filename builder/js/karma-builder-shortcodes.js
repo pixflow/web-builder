@@ -330,58 +330,60 @@
 		 */
 		generateNewStyle: function ( selector, attribute, value ) {
 
-			var style 		= document.getElementById( 'style-'+this.elementSelector() ).innerHTML,
-				styleResult = style.split(/[{}]+/),
-				newStyle 	= "";
+			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
+				regex = /(.*?){(.*?)}/g ,
+				pattern = new RegExp( regex ),
+				content = '',
+				result;
 
-			if ( style.indexOf( selector ) < 0 ){
-				newStyle = style + selector + '{' + attribute + ':' + value + ';}';
-				return newStyle;
-			}
-
-			for ( var i = 0; i < styleResult.length ; i++ ){
-
-				if ( i % 2 == 1 || "" == styleResult[ i ] )
-					continue;
-				if( selector == styleResult[ i ].replace(/^\s+|\s+$/g, '') ){
-					newStyle +=  styleResult[ i ] + '{';
-					newStyle += this.generateStyleString( styleResult[ i + 1 ], attribute, value )
-
-				}else {
-					newStyle += styleResult[ i ] + '{' + styleResult[ i + 1 ] + '}';
+			while ( ( result = pattern.exec( oldStyle ) ) !== null ) {
+				// This is necessary to avoid infinite loops with zero-width matches
+				if ( result.index === regex.lastIndex ) {
+					regex.lastIndex++;
+				}
+				if( result[1].trim() == selector ){
+					content = result[2];
+					break;
 				}
 			}
 
-			return newStyle;
+			if ( '' !== content ) {
+				var splitContent = content.split(';'),
+					cssProperty = {};
+				_.each(  splitContent, function ( property ) {
+					var cssString = property.split(':');
+					if( "" != cssString[0] ){
+						cssProperty[ cssString[0] ] = cssString[1];
+					}
+				});
+				cssProperty[ attribute ] = value;
+				return this.generateStyleString( selector, cssProperty );
+			} else {
+				var cssProperty = {};
+				cssProperty[ attribute ] = value ;
+				return oldStyle + this.generateNewStyle( selector, cssProperty );
+			}
 
 		},
 
 		/**
 		 * @summary renders the css of model inside style tag
 		 *
-		 * @param	{ string } 	styleResult Old style of element
-		 * @param	{ string }	attribute	CSS attribute
-		 * @param	{ string }	value		CSS value
+		 * @param	{ string }	selector	    CSS attribute
+		 * @param	{ object }	cssProperty		CSS value
 		 *
 		 * @since 1.0.0
 		 *
 		 * @returns { string } new style of element to insert inside style tag
 		 */
-		generateStyleString: function ( styleResult, attribute, value  ) {
+		generateStyleString: function ( selector, cssProperty ) {
 
-			var newStyle = "";
-
-			if ( styleResult.indexOf( attribute ) >= 0 ){
-
-				var regex = new RegExp( attribute + ':([-0-9]*[a-z])*;' );
-				newStyle += styleResult.replace( regex , attribute + ':' + value + ';');
-				newStyle += '}';
-
-			}else{
-				newStyle += styleResult + attribute + ':' + value + ';}';
-			}
-			return newStyle;
-
+			var style = selector + '{' ;
+				_.each( cssProperty, function ( value, property ) {
+					style += property + ':' + value + ';';
+				} );
+			style += '}';
+			return style;
 		} ,
 
 	});

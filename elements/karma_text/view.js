@@ -74,9 +74,23 @@
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				alignAttr = this.getAttributes( ['align'] );
-
 			this.renderCss( "." + elementId + " .karma-text-tag", 'text-align', alignAttr.align  );
 
+
+		},
+
+
+		/**
+		 * @summary Set color for text element
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		color : function(){
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+				colorValue = this.getAttributes( ['color'] );
+			this.renderCss( "." + elementId + " .karma-text-tag", 'color', colorValue.color  );
 
 		}
 
