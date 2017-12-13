@@ -615,7 +615,7 @@
 				dropDownBox  = $( e.target ).closest( '.karma-drop-down-box' ),
 				allDropDownItem = dropDownBox.find( 'button' );
 
-			if( null != selector ){
+			if( null != dropDownItem  ){
 				if( allDropDownItem.hasClass( 'karma-drop-down-active-item' ) ){
 					allDropDownItem.removeClass( 'karma-drop-down-active-item' );
 				}
