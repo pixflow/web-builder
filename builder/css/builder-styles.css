@@ -2723,7 +2723,8 @@ img {
   .karma-builder-element .karma-text {
     width: fit-content; }
   .karma-builder-element.karma-active-element {
-    width: fit-content; }
+    width: fit-content;
+    outline: 1px solid #419cf8; }
     .karma-builder-element.karma-active-element .karma-gizmo-template {
       display: flex; }
   .karma-builder-element .karma-inner-gizmo-template {

@@ -105,6 +105,7 @@ img{
 
 	&.karma-active-element {
 		width: fit-content;
+		outline: 1px solid $builder-accent-color;
 		.karma-gizmo-template{
 			display: flex;
 		}
