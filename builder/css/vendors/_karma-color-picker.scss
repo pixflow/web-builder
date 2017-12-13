@@ -3,6 +3,7 @@
   border-radius: 50%;
   display: block;
   height: 15px;
+  margin: 12px 9px;
   width: 15px;
 }
 
@@ -18,11 +19,11 @@
   padding: 15px 0;
   position: absolute;
   right: -65px;
-  top: 40px;
+  top: 46px;
   width: 157px;
   &:after {
     background-color: #fff;
-    box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.16);
+    box-shadow:-2px -2px 5px 0 rgba(57, 73, 89, 0.08);
     content: '';
     display: block;
     height: 10px;

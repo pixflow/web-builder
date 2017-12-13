@@ -66,6 +66,7 @@
   border-radius: 50%;
   display: block;
   height: 15px;
+  margin: 12px 9px;
   width: 15px; }
 
 .karma-color-picker-input {
@@ -79,11 +80,11 @@
   padding: 15px 0;
   position: absolute;
   right: -65px;
-  top: 40px;
+  top: 46px;
   width: 157px; }
   .karma-color-picker-container:after {
     background-color: #fff;
-    box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.16);
+    box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.08);
     content: '';
     display: block;
     height: 10px;
@@ -2753,7 +2754,7 @@ img {
     z-index: 95; }
     .karma-builder-element .karma-gizmo-template.text-gizmo-group > div {
       cursor: pointer;
-      padding: 0 6px;
+      padding: 0;
       position: relative;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-icon {
@@ -2761,13 +2762,13 @@ img {
       border: none;
       margin: 0;
       outline: none;
-      padding: 0 3px;
+      padding: 12px 9px;
       transition: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-icon:hover svg * {
         transition: 0.1s;
         fill: rgba(57, 73, 89, 0.8); }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
-      top: 32px;
+      top: 45px;
       right: auto;
       bottom: auto;
       left: -5px;
