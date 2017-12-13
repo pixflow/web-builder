@@ -11,7 +11,6 @@
 			'click .karma-drop-down-box'											: 'closeDropDownBox' ,
 		},
 
-		shortcodeParams: {},
 
 		/** Drop area template for elements */
 		placeholderTemplate : '<div class="karma-element-placeholder {{ data.className }}" >'

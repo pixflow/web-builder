@@ -566,19 +566,19 @@
 		showGizmoRelatedToMore : function () {
 
 			var moreElements = this.el.querySelectorAll( 'div[data-form="more-panel"]:not(.karma-more-setting)' ),
-				moreButtonStatus = this.el.querySelectorAll( '.karma-more-setting' )[ 0 ].classList.contains( 'karma-open-more-options' ) ;
+				moreButtonStatus = this.el.querySelector( '.karma-more-setting' ).classList.contains( 'karma-open-more-options' ) ;
 
 			for ( var i = 0 ; i < moreElements.length; i++ ){
 
 				if ( moreButtonStatus ){
 
 					moreElements[ i ].classList.remove( 'karma-more-submenu' );
-					this.el.querySelectorAll( '.karma-more-setting' )[ 0 ].classList.remove( 'karma-open-more-options' )
+					this.el.querySelector( '.karma-more-setting' ).classList.remove( 'karma-open-more-options' )
 
 				}else {
 
 					moreElements[ i ].classList.add( 'karma-more-submenu' );
-					this.el.querySelectorAll( '.karma-more-setting' )[ 0 ].classList.add( 'karma-open-more-options' )
+					this.el.querySelector( '.karma-more-setting' ).classList.add( 'karma-open-more-options' )
 
 				}
 			}
