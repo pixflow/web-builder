@@ -147,6 +147,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 		this.presetColorsEvent( presetColor );
 		presetColors.appendChild( presetColor );
 	}
+
 	var chooseColor = document.createElement( 'span' );
 	chooseColor.setAttribute( 'class', 'karma-color-picker-preset-color karma-color-picker-choose-color' );
 
@@ -229,19 +230,22 @@ karmaColorPicker.prototype.chooseColorEvent = function () {
 /**
  * @summary add user color pallet
  *
- * @param {color}   color   color of new pallet
+ * @param {string} color     color of new pallet
+ * @param {bool}   addClass  Add extra class
  *
  * @since 1.0.0
  * @returns {void}
  */
-karmaColorPicker.prototype.addColorToPallet = function ( color ) {
+karmaColorPicker.prototype.addColorToPallet = function ( color, addClass ) {
 
-	var that = this;
 	var presetColor = document.createElement( 'span' );
 	presetColor.setAttribute( 'class', 'karma-color-picker-preset-color user-pallet temp-pallet' );
+	if ( true === addClass ) {
+		presetColor.classList.remove('temp-pallet');
+	}
 	presetColor.style.backgroundColor = color;
 	this.presetColorsEvent( presetColor );
-	that.chooseColor.parentElement.insertBefore( presetColor, that.chooseColor );
+	this.chooseColor.parentElement.insertBefore( presetColor, this.chooseColor );
 
 };
 
@@ -260,6 +264,32 @@ karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
 };
 
 /**
+ * @summary Save colors into local storage
+ *
+ * @param {String} Color main color new value
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.saveColors = function ( color ) {
+
+	if ( typeof( Storage ) !== "undefined") {
+		var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
+		if( true === savedColors.includes( color ) ){
+			return ;
+		}
+
+		if (  8 == savedColors.length ){
+			savedColors.shift();
+		}
+
+		savedColors.push( color );
+		localStorage.setItem( 'karmaColors', JSON.stringify( savedColors ) );
+	}
+
+}
+
+/**
  * @summary init spectrum color picker
  *
  * @since 1.0.0
@@ -275,7 +305,7 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 		preferredFormat: "hex",
 		showInput: true,
 		replacerClassName: 'spectrum-color-preview',
-		move: function ( color ) {
+		move : function ( color ) {
 
 			if ( null != document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ) ) {
 				$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).removeClass( 'selected' );
@@ -284,14 +314,23 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 			}
 			document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).style.backgroundColor = color;
 			that.updateMainColor( color );
-			
-		}
+
+		},
+
+		hide : function ( color ) {
+
+			that.saveColors( color.toHexString() );
+
+		},
+
 	} );
+
 	$( document ).off( "click.hideColorPickerContainer" ).on( "click.hideColorPickerContainer", function () {
 
 		$( ".karma-color-picker-container" ).removeClass( 'opened' );
 
-	} )
+	} );
+
 	$( ".karma-color-picker-container" ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function () {
 
 		$( '.temp-pallet' ).remove();
@@ -309,13 +348,19 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 karmaColorPicker.prototype.openColorPicker = function ( e ) {
 
 	e.preventDefault();
-	var colorPickerContaner = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' );
+	var colorPickerContaner = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
+		that = this;
 	if ( $( colorPickerContaner ).hasClass( 'opened' ) ) {
 		$( colorPickerContaner ).removeClass( 'opened' );
 	} else {
+		if ( typeof( Storage ) !== "undefined") {
+			$('.karma-color-picker-preset-color.user-pallet').remove();
+			var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
+			_.each( savedColors, function ( color ) {
+				that.addColorToPallet( color, true );
+			} );
+		}
 		colorPickerContaner.className += ' opened';
 	}
-
-
 
 };
