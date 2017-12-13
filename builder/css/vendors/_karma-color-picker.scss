@@ -2,8 +2,8 @@
   border: 1px solid rgba(57,73,89,0.2);
   border-radius: 50%;
   display: block;
-  height: 18px;
-  width: 18px;
+  height: 15px;
+  width: 15px;
 }
 
 .karma-color-picker-input {
@@ -15,7 +15,7 @@
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
   display: none;
-  padding: 18px 0;
+  padding: 15px 0;
   position: absolute;
   right: -65px;
   top: 40px;
@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    padding: 0 30px 21px 30px;
+    padding: 0 30px 15px 30px;
     span {
       color: #415364;
       cursor: pointer;
