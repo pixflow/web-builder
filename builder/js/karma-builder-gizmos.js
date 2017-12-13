@@ -598,6 +598,7 @@
 					$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
 					dropDownBox.classList.add( 'open-drop-down-gizmo' );
 				}
+				$( document ).trigger( "click.hideColorPickerContainer" )
 			}
 
 		},
@@ -621,6 +622,7 @@
 				}
 				dropDownItem.addClass( 'karma-drop-down-active-item' );
 			}
+
 			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
 
 		}

@@ -367,6 +367,7 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 			} );
 		}
 		colorPickerContaner.className += ' opened';
+		$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
 	}
 
 };
