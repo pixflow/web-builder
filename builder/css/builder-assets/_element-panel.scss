@@ -5,8 +5,11 @@
 	z-index: 1000;
 
 	.karma-element-panel-list {
-		@include flexbox(center, center, flex-start);
 		flex-wrap: wrap;
+
+		&.karma-active-tab{
+			@include flexbox(center, center, flex-start);
+		}
 
 		.karma-elements{
 			@include flexbox(center, flex-start, flex-start );
@@ -83,7 +86,7 @@
 				flex-direction: column;
 				height: 100%;
 
-				&.karma-element-panel-list {
+				&.karma-element-panel-list.karma-active-tab {
 					@include flexbox(center, flex-start, flex-start);
 				}
 
@@ -342,19 +345,10 @@
 		}
 		&[ data-active-tab = 'element-panel-image' ]{
 			.karma-element-panel-add-element-view-left{
-				.karma-element-panel-add-element-view-filtering{
-					.karma-element-panel-price-filter-container{
-						.karma-element-panel-price-filter{
-							ul {
-								li{
-									display: none;
-								}
-								li[ data-filter = '*' ]{
-									display: block;
-								}
-							}
-						}
-					}
+				.karma-element-panel-add-element-view-filtering,
+				.karma-element-panel-add-element-view-content-border{
+
+					display: none;
 
 				}
 			}

@@ -2827,6 +2827,7 @@ img {
         flex-direction: column; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon {
       align-items: center;
+      cursor: pointer;
       display: flex;
       height: 22px;
       padding: 0 6px 0 6px;
@@ -2843,7 +2844,20 @@ img {
       font-size: 12px;
       margin-right: 9px;
       padding: 0 10px 0 2px;
-      transition: all 0.3s ease; }
+      transition: all 0.3s ease;
+      -webkit-touch-callout: none;
+      /* iOS Safari */
+      -webkit-user-select: none;
+      /* Safari */
+      -khtml-user-select: none;
+      /* Konqueror HTML */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* Internet Explorer/Edge */
+      user-select: none;
+      			                   /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */ }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text:hover {
       color: #419CF8;
       transition: all 0.3s ease; }
@@ -3656,11 +3670,12 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   top: 36%;
   z-index: 1000; }
   .karma-element-panel-container .karma-element-panel-list {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: flex-start;
     flex-wrap: wrap; }
+    .karma-element-panel-container .karma-element-panel-list.karma-active-tab {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: flex-start; }
     .karma-element-panel-container .karma-element-panel-list .karma-elements {
       display: flex;
       text-align: center;
@@ -3736,7 +3751,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         display: none;
         flex-direction: column;
         height: 100%; }
-        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-element-panel-list {
+        .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-element-panel-list.karma-active-tab {
           display: flex;
           text-align: center;
           align-items: flex-start;
@@ -3931,10 +3946,9 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           transition-duration: .3s; }
     .karma-element-panel-container .karma-element-panel-add-element-view[data-active-tab='element-panel-section'] .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li[data-filter='.mysection'] {
       display: block; }
-    .karma-element-panel-container .karma-element-panel-add-element-view[data-active-tab='element-panel-image'] .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li {
+    .karma-element-panel-container .karma-element-panel-add-element-view[data-active-tab='element-panel-image'] .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering,
+    .karma-element-panel-container .karma-element-panel-add-element-view[data-active-tab='element-panel-image'] .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-content-border {
       display: none; }
-    .karma-element-panel-container .karma-element-panel-add-element-view[data-active-tab='element-panel-image'] .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li[data-filter='*'] {
-      display: block; }
   .karma-element-panel-container .element-panel-show {
     display: flex; }
 

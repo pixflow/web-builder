@@ -131,7 +131,7 @@ img{
 		padding:0 9px;
 		position: absolute;
 		z-index: 95;
-		
+
 		&.text-gizmo-group > div {
 
 			cursor: pointer;
@@ -236,6 +236,7 @@ img{
 
 		.karma-builder-gizmo-icon {
 			align-items: center;
+			cursor: pointer;
 			display: flex;
 			height: 22px;
 			padding: 0 6px 0 6px;
@@ -261,6 +262,15 @@ img{
 			margin-right: 9px;
 			padding: 0 10px 0 2px;
 			transition: all 0.3s ease;
+
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+			-khtml-user-select: none; /* Konqueror HTML */
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* Internet Explorer/Edge */
+			user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
 		}
 
 		.karma-builder-gizmo-text:hover {
