@@ -67,7 +67,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 		);
 
 		$content = ( '' === trim( $content ) ) ? 'Click here to edit content': $content;
-		$content = '<' . $attributes['tag'] . ' class="karma-text-content karma-text-tag" contentEditable="true" >' . $content . '</' . $attributes['tag'] . '>';
+		$content = '<' . $attributes['tag'] . ' class="karma-text-content karma-text-tag karma-document-click" contentEditable="true" >' . $content . '</' . $attributes['tag'] . '>';
 
 		ob_start();
 		?>
@@ -94,7 +94,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 
 		$js_template = '<# var content = ( "" === data.content.trim() ) ? "Click here to edit content..." : data.content; #>';
 		$js_template .= '<div class="karma-text karma-text-{{ data.element_key }}" >'
-			. '<{{{ data.tag }}} class="karma-text-content karma-text-tag" contentEditable="true" ><# print( content ); #></{{{ data.tag }}}>'
+			. '<{{{ data.tag }}} class="karma-text-content karma-text-tag karma-document-click" contentEditable="true" ><# print( content ); #></{{{ data.tag }}}>'
 			. '</div>';
 		return $js_template;
 
