@@ -7,7 +7,8 @@
 		 */
 
 
-		template: '<input class="karma-color-gizmo"/>',
+		template: '<input class="karma-color-gizmo"/>'
+		+'<input class="karma-color-gizmo-hover"/>',
 
 		initialize :function(){
 
@@ -18,7 +19,7 @@
 		render: function(){
 
 			this.data = this.data.params;
-			this.selector = this.elementView.$el.selector + ' input.karma-color-gizmo';
+			this.selector = this.elementView.$el.selector ;
 			this.colorAttribute = this.elementView.getAttributes(['color']);
 			this.update();
 			this.$gizmoContainer.append( this.el );
