@@ -15,16 +15,11 @@
 
 		},
 
-		setColor: function(){
-
-			this.update();
-
-		},
-
-		render: function( $el ){
+		render: function(){
 
 			this.data = this.data.params;
 			this.selector = this.elementView.$el.selector + ' input.karma-color-gizmo';
+			this.colorAttribute = this.elementView.getAttributes(['color']);
 			this.update();
 			this.$gizmoContainer.append( this.el );
 			this.initColorPicker();
@@ -46,7 +41,9 @@
 
 			var options = {
 					selector            : this.selector,
-					multiColor          : true,
+					color               : this.colorAttribute.color,
+					opacity          : this.data.opacity,
+					multiColor          : this.data.multiColor,
 					firstColorTitle     : 'Main',
 					secondColorTitle    : 'Hover',
 					presetColors        : [

@@ -16,11 +16,13 @@
  */
 
 var $ = jQuery,
-	karmaColorPicker = function ( options ) {
+karmaColorPicker = function ( options ) {
 
 	this.options = {};
 	this.defaultOptions = {
 		selector            : ".karma-color-picker",
+		color               : "#000000",
+		opacity             : true,
 		multiColor          : true,
 		firstColorTitle     : 'Main',
 		secondColorTitle    : 'Hover',
@@ -28,14 +30,18 @@ var $ = jQuery,
 	};
 
 	for ( var i in this.defaultOptions ) {
-		this.options[ i ] = options[ i ] || this.defaultOptions[ i ];
+		if ( options.hasOwnProperty( i ) ) {
+			this.options[ i ] = options[ i ];
+		} else {
+			this.options[ i ] = this.defaultOptions[ i ];
+		}
 	}
-
 	var element = document.querySelector( this.options.selector );
 	if ( element == null || $( element ).hasClass( 'karma-color-picker-input' ) ) {
 		return;
 	}
 	this.mainInput = document.querySelector( this.options.selector );
+	this.mainInput.value = this.options.color;
 	this.generateColorPickerID();
 	this.init();
 
@@ -299,8 +305,8 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 
 	var that = this;
 	$( "#" + this.id ).spectrum( {
-		color: "#1E8FE1",
-		showAlpha: true,
+		color: that.options.color,
+		showAlpha: that.options.opacity,
 		alphaVertical: true,
 		preferredFormat: "hex",
 		showInput: true,
