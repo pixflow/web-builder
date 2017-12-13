@@ -2639,13 +2639,11 @@ img {
   height: 5px;
   position: relative; }
   .karma-spacing.karma-top-spacing-height {
-    width: initial;
     height: 0; }
   .karma-spacing.karma-top-spacing {
-    width: 100%;
-    height: initial;
     position: absolute;
-    top: 0; }
+    top: 0;
+    width: 100%; }
     .karma-spacing.karma-top-spacing .spacing-dot:after {
       top: 0;
       right: auto;
@@ -2656,7 +2654,6 @@ img {
     right: auto;
     bottom: auto;
     left: 0 !important;
-    width: initial;
     height: 100%;
     position: absolute; }
     .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing .karma-spacing-dot-container {
