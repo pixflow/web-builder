@@ -3,9 +3,9 @@
 	karmaBuilder.gizmos.fontStyle = Backbone.View.extend({
 
 		events:{
-			'click .karma-set-bold-style'											: 'setBoldStyle' ,
-			'click .karma-set-italic-style'											: 'setItalicStyle' ,
-			'click .karma-set-underline-style'										: 'setUnderlineStyle' ,
+			'click .karma-set-bold-style'		: 'setBoldStyle' ,
+			'click .karma-set-italic-style'		: 'setItalicStyle' ,
+			'click .karma-set-underline-style'	: 'setUnderlineStyle' ,
 		},
 		/**
 		 * Drop area template for elements

@@ -17,11 +17,11 @@
 				+ '<button class="karma-align-left" data-value="align-left" >'
 					+ '{{{ data.params.leftAlignIcon }}}'
 				+ '</button>'
-				+ '<button class="karma-align-right" data-value="align-right" >'
-					+ '{{{ data.params.rightAlignIcon }}}'
-				+ '</button>'
 				+ '<button class="karma-align-center" data-value="align-center" >'
 					+ '{{{ data.params.centerAlignIcon }}}'
+				+ '</button>'
+				+ '<button class="karma-align-right" data-value="align-right" >'
+					+ '{{{ data.params.rightAlignIcon }}}'
 				+ '</button>'
 			+ '</div>' ,
 

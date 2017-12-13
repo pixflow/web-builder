@@ -2750,15 +2750,19 @@ img {
     z-index: 95; }
     .karma-builder-element .karma-gizmo-template > div {
       cursor: pointer;
-      padding: 0 3px;
+      padding: 0 6px;
       position: relative;
       white-space: nowrap; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-icon {
       background-color: inherit;
       border: none;
       margin: 0;
-      padding: 0 6px;
-      outline: none; }
+      outline: none;
+      padding: 0 3px;
+      transition: 0.1s; }
+      .karma-builder-element .karma-gizmo-template .karma-drop-down-icon:hover svg * {
+        transition: 0.1s;
+        fill: rgba(57, 73, 89, 0.8); }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
       top: 32px;
       right: auto;
@@ -2790,8 +2794,8 @@ img {
         border: none;
         border-radius: 3px;
         margin: 5px;
-        padding: 6px;
-        outline: none; }
+        outline: none;
+        padding: 6px; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button:hover {
           background-color: rgba(65, 156, 248, 0.15); }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button.karma-drop-down-active-item {
