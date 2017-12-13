@@ -2301,7 +2301,9 @@ html {
   text-align: inherit;
   align-items: inherit;
   justify-content: inherit;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative;
+  width: fit-content; }
   .karma-image.karma-position-top-left {
     align-items: flex-start;
     justify-content: flex-start; }
@@ -2717,8 +2719,12 @@ img {
 
 .karma-builder-element {
   position: relative; }
-  .karma-builder-element.karma-active-element .karma-gizmo-template {
-    display: flex; }
+  .karma-builder-element .karma-text {
+    width: fit-content; }
+  .karma-builder-element.karma-active-element {
+    width: fit-content; }
+    .karma-builder-element.karma-active-element .karma-gizmo-template {
+      display: flex; }
   .karma-builder-element .karma-inner-gizmo-template {
     top: 17px;
     right: 17px;
