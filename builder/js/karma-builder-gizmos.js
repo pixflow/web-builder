@@ -511,11 +511,10 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		showElementGizmo: function ( e ) {
+		showElementGizmo: function () {
 
-			e.stopPropagation();
+			$( ".karma-active-element" ).removeClass( 'karma-active-element' );
 			var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
-			$( '.karma-builder-element' ).removeClass( 'karma-active-element' );
 			this.$el.addClass( 'karma-active-element' );
 			if( null != addElement ) {
 				addElement.classList.remove("element-panel-show");
@@ -533,7 +532,6 @@
 
 			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
 
-				$( ".karma-active-element" ).removeClass( 'karma-active-element' );
 				$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
 
 			})

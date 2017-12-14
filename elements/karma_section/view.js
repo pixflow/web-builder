@@ -27,9 +27,9 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		showBorder: function (e) {
+		showBorder: function () {
 
-			if( this.$el.hasClass('karma-active-section') && $( e.target ).closest( '.karma-builder-element' ).hasClass('karma-active-column') ){
+			if( this.$el.hasClass('karma-active-section') ){
 				return;
 			}
 
