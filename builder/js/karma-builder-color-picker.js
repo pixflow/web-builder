@@ -343,6 +343,7 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 		replacerClassName: 'spectrum-color-preview',
 		move : function ( color ) {
 
+			color = color.toHexString();
 			if ( null != document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ) ) {
 				$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).removeClass( 'selected' );
 				document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).className += ' selected';
