@@ -336,18 +336,20 @@
 				content = '',
 				result;
 
-			while ( ( result = pattern.exec( oldStyle ) ) !== null ) {
-				// This is necessary to avoid infinite loops with zero-width matches
-				if ( result.index === regex.lastIndex ) {
-					regex.lastIndex++;
-				}
-				if( result[1].trim() == selector ){
-					content = result[2];
-					break;
+			if( '' != oldStyle ){
+				while ( ( result = pattern.exec( oldStyle ) ) !== null ) {
+					// This is necessary to avoid infinite loops with zero-width matches
+					if ( result.index === regex.lastIndex ) {
+						regex.lastIndex++;
+					}
+					if( result[1].trim() == selector ){
+						content = result[2];
+						break;
+					}
 				}
 			}
 
-			if ( '' !== content ) {
+			if ( '' != content ) {
 				var splitContent = content.split(';'),
 					cssProperty = {};
 				_.each(  splitContent, function ( property ) {
@@ -361,7 +363,7 @@
 			} else {
 				var cssProperty = {};
 				cssProperty[ attribute ] = value ;
-				return oldStyle + this.generateNewStyle( selector, cssProperty );
+				return oldStyle + this.generateStyleString( selector, cssProperty );
 			}
 
 		},

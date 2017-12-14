@@ -26,8 +26,14 @@
 		updateColor : function () {
 
 			var that = this;
-			$( this.selector ).on( 'change/updateColor', function ( event, color ) {
-				that.elementView.setAttributes( { 'color' : color }, false );
+			$( this.selector ).on( 'change/updateColor', function ( event, color, inputType ) {
+
+				if( ! inputType ){
+					that.elementView.setAttributes( { 'color' : color }, false );
+				}else{
+					that.elementView.setAttributes( { 'hovercolor' : color }, false );
+				}
+
 			});
 
 		},

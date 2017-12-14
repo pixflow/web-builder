@@ -235,7 +235,6 @@ karmaColorPicker.prototype.setMainInputEvent = function () {
 	var that = this;
 	$( this.activeInput ).on( 'change', function () {
 		that.icon.style.background = this.value;
-		$( that.options.selector ).trigger( 'change/updateColor', [ this.value ] );
 	} );
 
 	
@@ -294,7 +293,9 @@ karmaColorPicker.prototype.addColorToPallet = function ( color, addClass ) {
  */
 karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
 
-	$( this.activeInput ).val( newColor ).change();
+	$( this.activeInput ).val( newColor )
+			.change()
+			.trigger( 'change/updateColor', [ newColor, $( this.activeInput ).hasClass('karma-color-gizmo-hover') ] );
 
 };
 

@@ -92,6 +92,11 @@
 				colorValue = this.getAttributes( ['color'] );
 			this.renderCss( "." + elementId + " .karma-text-tag", 'color', colorValue.color  );
 
+		},
+
+		//@TODO it should be for text shortcode after demo
+		hovercolor : function(){
+
 		}
 
 
