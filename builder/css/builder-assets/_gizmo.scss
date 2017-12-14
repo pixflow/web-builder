@@ -99,10 +99,15 @@ img{
 .karma-builder-element {
 	position: relative;
 
-	&.karma-active-element .karma-gizmo-template{
+	&.karma-active-element .karma-gizmo-template {
 		display: flex;
 	}
 
+	.karma-text{
+		*:focus{
+			outline: $builder-accent-color solid 1px;
+		}
+	}
 
 	.karma-inner-gizmo-template{
 		@include element_direction($top: 17px, $right: 17px);

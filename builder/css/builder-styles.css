@@ -2720,6 +2720,8 @@ img {
   position: relative; }
   .karma-builder-element.karma-active-element .karma-gizmo-template {
     display: flex; }
+  .karma-builder-element .karma-text *:focus {
+    outline: #419cf8 solid 1px; }
   .karma-builder-element .karma-inner-gizmo-template {
     top: 17px;
     right: 17px;
