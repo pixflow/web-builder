@@ -1,8 +1,6 @@
 .karma-image {
 	@include flexbox();
 	overflow: hidden;
-	position: relative;
-	width: fit-content;
 
 	&.karma-position-top-left{
 		@include justify-align($align-item:flex-start, $justify-content:flex-start);

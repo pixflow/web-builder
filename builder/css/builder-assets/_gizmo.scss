@@ -99,16 +99,8 @@ img{
 .karma-builder-element {
 	position: relative;
 
-	.karma-text{
-		width: fit-content;
-	}
-
-	&.karma-active-element {
-		width: fit-content;
-		outline: 1px solid $builder-accent-color;
-		.karma-gizmo-template{
-			display: flex;
-		}
+	&.karma-active-element .karma-gizmo-template{
+		display: flex;
 	}
 
 
