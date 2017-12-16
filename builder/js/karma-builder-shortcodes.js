@@ -3,7 +3,7 @@
 	karmaBuilder.shortcodes = karmaBuilder.elementSettingPanel.extend({
 
 		events:{
-			'mousedown > .karma-spacing-container .karma-spacing-dot-container' 	: 'showMouseToolTip',
+
 			'before/buildGizmo'														: 'gimzoAction' ,
 			'click'																	: 'showElementGizmo',
 			'click .karma-more-setting'											    : 'showGizmoRelatedToMore',

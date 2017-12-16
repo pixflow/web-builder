@@ -212,9 +212,13 @@
 					minHeight 	: 0,
 					handles 	: {},
 					scroll 		: true ,
+					start: function ( event ) {
+						that.showMouseToolTip( event )
+					},
 					stop : function ( event, ui ) {
 
 						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
+						that.removeMouseToolTip( event );
 
 					},
 					resize: function( event, ui ){
@@ -381,9 +385,8 @@
 			this.showMouseToolTipValue( tooltipDiv, direction );
 
 			document.documentElement.addEventListener( 'mousemove', function(e){
-				that.moveMouseToolTip(e , that, direction);
+				that.moveMouseToolTip( e, that, direction );
 			} , false );
-			document.documentElement.addEventListener( 'mouseup', this.removeMouseToolTip, false );
 
 		},
 
@@ -451,10 +454,12 @@
 		removeMouseToolTip : function( e ) {
 
 			var tooltipDiv = document.body.querySelector( '.tooltip-div' );
-			tooltipDiv.style.display = 'none';
-			e.target.classList.remove( 'target-moving' );
-			document.documentElement.removeEventListener( 'mousemove', this.moveMouseToolTip );
-			document.documentElement.removeEventListener( 'mouseup', this.removeMouseToolTip );
+			if( null != tooltipDiv ){
+				tooltipDiv.style.display = 'none';
+				e.target.classList.remove( 'target-moving' );
+				document.documentElement.removeEventListener( 'mousemove', this.moveMouseToolTip );
+				document.documentElement.removeEventListener( 'mouseup', this.removeMouseToolTip );
+			}
 
 		},
 
@@ -511,8 +516,9 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		showElementGizmo: function () {
+		showElementGizmo: function ( e ) {
 
+			e.stopPropagation();
 			$( ".karma-active-element" ).removeClass( 'karma-active-element' );
 			var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
 			this.$el.addClass( 'karma-active-element' );
