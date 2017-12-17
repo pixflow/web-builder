@@ -2718,6 +2718,12 @@ img {
 
 .karma-builder-element {
   position: relative; }
+  .karma-builder-element .karma-text {
+    width: fit-content; }
+  .karma-builder-element.karma-active-element {
+    width: fit-content; }
+    .karma-builder-element.karma-active-element .karma-gizmo-template {
+      display: flex; }
   .karma-builder-element.karma-active-element .karma-gizmo-template {
     display: flex; }
   .karma-builder-element .karma-text *:focus {

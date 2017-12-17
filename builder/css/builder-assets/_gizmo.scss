@@ -95,9 +95,19 @@ img{
 	position: fixed;
 
 }
-
 .karma-builder-element {
 	position: relative;
+
+	.karma-text{
+		width: fit-content;
+	}
+
+	&.karma-active-element {
+		width: fit-content;
+		.karma-gizmo-template {
+			display: flex;
+		}
+	}
 
 	&.karma-active-element .karma-gizmo-template {
 		display: flex;
