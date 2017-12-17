@@ -1,29 +1,4 @@
 /* _-_-_- base/RESET -_-_-_ */
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-
-body {
-	background-color: transparent;
-}
-
-a {
-	&:hover{
-		outline: none;
-	}
-	&:active{
-		outline: none;
-	}
-	&:focus{
-		outline: none;
-	}
-}
-
-
-
 #karma-element-setting-panel-container{
 
 	*{

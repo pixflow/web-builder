@@ -191,21 +191,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-weight: normal;
   font-style: normal; }
 /* _-_-_- base/RESET -_-_-_ */
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-body {
-  background-color: transparent; }
-
-a:hover {
-  outline: none; }
-a:active {
-  outline: none; }
-a:focus {
-  outline: none; }
-
 #karma-element-setting-panel-container * {
   font-weight: 400; }
 #karma-element-setting-panel-container button,

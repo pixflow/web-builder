@@ -25,7 +25,7 @@
 				background-color: $builder-accent-color;
 				background-image: none;
 				border: 1px solid $builder-accent-color;
-				box-shadow: 0 2px 4px 0 rgba( $builder-accent-color, 0.45 );
+				box-shadow: 0 2px 4px 0 $builder-accent-color-2;
 				top: -5px;
 				&:after {
 					background-image: none;
@@ -36,7 +36,7 @@
 			}
 
 			.rangeslider__fill {
-				background: rgba( $builder-accent-color, .7 );
+				background:$builder-accent-color-1;
 				box-shadow: none;
 
 			}

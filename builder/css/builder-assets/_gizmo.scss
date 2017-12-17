@@ -178,7 +178,7 @@ img{
 			&:after{
 				@include element_direction( $top: -6px, $left:28% );
 				@include box( 0, 0 );
-				border-bottom: 8px solid white;
+				border-bottom: 8px solid #fff;
 				border-left: 7px solid transparent;
 				border-right: 7px solid transparent;
 				content: '';

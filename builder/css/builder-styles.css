@@ -961,21 +961,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-weight: normal;
   font-style: normal; }
 /* _-_-_- base/RESET -_-_-_ */
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-body {
-  background-color: transparent; }
-
-a:hover {
-  outline: none; }
-a:active {
-  outline: none; }
-a:focus {
-  outline: none; }
-
 #karma-element-setting-panel-container * {
   font-weight: 400; }
 #karma-element-setting-panel-container button,
@@ -2633,7 +2618,7 @@ div.media-modal {
     .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-title {
       transition: color .2s; }
     .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option {
-      background-color: rgba(65, 156, 248, 0.1); }
+      background-color: #ECF5FE; }
       .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
         color: #419CF8;
         font-weight: 500; }
@@ -2803,7 +2788,7 @@ img {
         left: 28%;
         width: 0;
         height: 0;
-        border-bottom: 8px solid white;
+        border-bottom: 8px solid #fff;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
         content: '';
@@ -3149,7 +3134,7 @@ img {
     font-size: 12px; }
 
 .karma-title-with-background-controller {
-  background-color: rgba(65, 156, 248, 0.1);
+  background-color: #ECF5FE;
   padding: 20px;
   width: 100%; }
   .karma-title-with-background-controller div.karma-title-with-background-field {
@@ -3277,14 +3262,14 @@ img {
       background-color: #419CF8;
       background-image: none;
       border: 1px solid #419CF8;
-      box-shadow: 0 2px 4px 0 rgba(65, 156, 248, 0.45);
+      box-shadow: 0 2px 4px 0 #A0CDFB;
       top: -5px;
       touch-action: pan-y;
       -ms-touch-action: pan-y; }
       #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
         background-image: none; }
     #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill {
-      background: rgba(65, 156, 248, 0.7);
+      background: #7AB9FA;
       box-shadow: none; }
   #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
     width: 57px;
@@ -3553,7 +3538,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
     #karma-element-setting-panel-container .karma-unsplash-controller .karma-unsplash-images-result .karma-unsplash-images-list {
       width: 77px;
       height: 66px;
-      background-color: #607d8b0f;
+      background-color: #D9EBFE;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;

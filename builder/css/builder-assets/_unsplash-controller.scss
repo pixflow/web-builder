@@ -47,7 +47,7 @@
 			}
 			.karma-unsplash-images-list {
 				@include box( 77px , 66px );
-				background-color: #607d8b0f;
+				background-color: $builder-accent-color-3;
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: cover;

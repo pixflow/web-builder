@@ -76,7 +76,7 @@
 
 		&.karma-selected-dropdown-option{
 
-			background-color: rgba( $builder-accent-color , .1 );
+			background-color: $builder-accent-color-4;
 
 			.karma-dropdown-option-title{
 				color: $builder-accent-color;
