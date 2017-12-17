@@ -14,7 +14,6 @@
 
 			"click .element-panel-add-element-button"									: "openAddElementView",
 			"click.stopClickInPanel" 										            : "stopClickInPanel",
-			"click.elementPanelCloseSearchBar" 										    : "elementPanelCloseSearchBar",
 			"karma/after/finish_element_panel"                                         	: "initDraggable" ,
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
 			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
@@ -30,6 +29,7 @@
 
 
 		},
+
 
 		/**
 		 * @summary Set defaults on initialize
@@ -702,6 +702,7 @@
 				karmaAddcontentClass.addClass( 'karma-addcontent-active' );
 			}
 			this.setPriceFilterOnAll();
+			this.elementPanelCloseSearchBar( e );
 
 		},
 
@@ -750,7 +751,7 @@
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
 			this.elementGatherMenuFiltering();
-			this.elementPanelCloseSearchBar();
+
 		},
 
 		/**
@@ -763,10 +764,7 @@
 
 			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 
-				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
-
 				$( '.karma-elements' ).isotope( { filter: $( this ).attr( 'data-filter' ) } );
-
 				$( '.karma-builder-element-panel-gather-menu' ).trigger( '.removeGatherMenuPane' );
 
 			});
@@ -869,12 +867,12 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		elementPanelCloseSearchBar: function () {
+		elementPanelCloseSearchBar: function ( e ) {
 
 			var searchInputVal = document.querySelector( ".karma-builder-search-text" ),
 				searchInputCloseButton = document.querySelector( ".karma-search-close-icon" );
 
-			$( '.karma-search-close-icon' ).trigger( 'click' );
+			this.clearElementPanelSearchBar( e );
 			if( null != searchInputVal ) {
 				if( null != searchInputCloseButton ) {
 					searchInputCloseButton.classList.remove( "show-search-close-icon" );

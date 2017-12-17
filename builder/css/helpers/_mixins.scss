@@ -235,9 +235,35 @@
 @mixin border-button {
 
 	@include flexbox( center );
-	@include box-color( #419CF8, inherit, 2px );
+	@include box-color( $builder-accent-color, inherit, 2px );
 	@extend .karma-builder-title-3;
-	border: 1px solid #419CF8;
+	border: 1px solid $builder-accent-color;
+	height:40px;
+	font-weight: 400;
+	padding: 0 20px;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+
+}
+
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+@mixin fill-button {
+
+	@include flexbox( center );
+	@include box-color( #fff, $builder-accent-color, 2px );
+	@extend .karma-builder-title-3;
+	border: none;
 	height:40px;
 	font-weight: 400;
 	padding: 0 20px;
