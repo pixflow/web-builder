@@ -226,3 +226,42 @@
 	}
 
 }
+
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+@mixin border-button {
+
+	@include flexbox( center );
+	@include box-color( #419CF8, inherit, 2px );
+	@extend .karma-builder-title-3;
+	border: 1px solid #419CF8;
+	height:40px;
+	font-weight: 400;
+	padding: 0 20px;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+
+}
+
+/**
+ * mixin for box color and border radius
+ * @group helpers
+ * @output box color
+ */
+@mixin box-color( $color, $background-color, $border-radius ) {
+
+	color: $color;
+	background-color: $background-color;
+	border-radius: $border-radius;
+
+}

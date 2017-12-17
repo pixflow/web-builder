@@ -892,6 +892,16 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output responsive text
  */
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+/**
+ * mixin for box color and border radius
+ * @group helpers
+ * @output box color
+ */
 /** Builder Colors **/
 /* Builder Major Levels */
 /* spaces */
