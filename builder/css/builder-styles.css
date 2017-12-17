@@ -1004,7 +1004,7 @@ body {
     right: auto;
     bottom: 0;
     left: 0;
-    color: rgba(57, 73, 89, 0.2);
+    color: #C8D0D5;
     margin: 20px 0 0; }
   body .karma-container-separator {
     width: calc( 100% - 40px );
@@ -1013,7 +1013,7 @@ body {
     right: auto;
     bottom: 0;
     left: 20px;
-    color: rgba(57, 73, 89, 0.2);
+    color: #C8D0D5;
     margin: 0;
     position: absolute; }
   body ul, body ol {
@@ -2356,7 +2356,7 @@ html {
   text-align: inherit;
   align-items: inherit;
   justify-content: space-between;
-  background-color: #419cf8;
+  background-color: #419CF8;
   backface-visibility: hidden; }
   .karma-builder-toolbar .karma-builder-left {
     width: auto;
@@ -2451,7 +2451,7 @@ html {
           margin-left: 8px; }
           .karma-builder-toolbar .karma-builder-right ul li.builder-publish:hover, .karma-builder-toolbar .karma-builder-right ul li.builder-save:hover {
             background-color: rgba(255, 255, 255, 0.7);
-            color: #419cf8;
+            color: #419CF8;
             transition-duration: .3s; }
         .karma-builder-toolbar .karma-builder-right ul li .builder-notification-number {
           display: flex;
@@ -2465,7 +2465,7 @@ html {
           bottom: auto;
           left: auto;
           background-color: #FF5D5C;
-          border: 2px solid #419cf8;
+          border: 2px solid #419CF8;
           border-radius: 100%;
           box-sizing: border-box;
           color: #FFFFFF;
@@ -2519,7 +2519,7 @@ div.media-modal {
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header {
       width: 285px;
       height: 46px;
-      background: linear-gradient(270deg, #8876FC 0%, #419cf8 100%);
+      background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
       border-radius: 4px 4px 0 0;
       cursor: all-scroll;
       position: relative; }
@@ -2604,7 +2604,7 @@ div.media-modal {
       width: 250px;
       height: 0;
       background-color: #fff;
-      box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.18);
+      box-shadow: 0 2px 12px 0 #C8D0D5;
       display: none;
       flex-direction: column;
       left: 0;
@@ -2630,10 +2630,10 @@ div.media-modal {
     .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option {
       background-color: rgba(65, 156, 248, 0.1); }
       .karma-dropdown-controller .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
-        color: #419cf8;
+        color: #419CF8;
         font-weight: 500; }
     .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
-      color: #419cf8; }
+      color: #419CF8; }
     .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-icon {
       margin-right: 15px; }
 
@@ -2737,7 +2737,7 @@ img {
   .karma-builder-element.karma-active-element .karma-gizmo-template {
     display: flex; }
   .karma-builder-element .karma-text *:focus {
-    outline: #419cf8 solid 1px; }
+    outline: #419CF8 solid 1px; }
   .karma-builder-element .karma-inner-gizmo-template {
     top: 17px;
     right: 17px;
@@ -2938,7 +2938,7 @@ img {
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       background-color: #fff;
-      border: 1px solid #419cf8;
+      border: 1px solid #419CF8;
       border-radius: 100%;
       box-sizing: border-box;
       z-index: 80; }
@@ -3043,7 +3043,7 @@ img {
       width: 18px; }
     .karma-builder-element .row-bottom-spacing-dot-container .spacing-bottom-dot {
       background-color: #fff;
-      border: 1px solid #419cf8;
+      border: 1px solid #419CF8;
       border-radius: 100%;
       box-sizing: border-box;
       height: 8px;
@@ -3134,9 +3134,9 @@ img {
     height: 36px;
     padding: 11px 14px;
     background: transparent;
-    border: 1px solid rgba(57, 73, 89, 0.2);
+    border: 1px solid #C8D0D5;
     border-radius: 4px;
-    color: rgba(57, 73, 89, 0.6);
+    color: #667480;
     font-size: 12px; }
   #karma-element-setting-panel-container .karma-text-input-controller input::placeholder {
     color: rgba(57, 73, 89, 0.6);
@@ -3148,7 +3148,7 @@ img {
   padding: 20px;
   width: 100%; }
   .karma-title-with-background-controller div.karma-title-with-background-field {
-    color: #419cf8;
+    color: #419CF8;
     font-family: "HelveticaNeue_Medium"; }
 
 .karma-title-controller {
@@ -3178,7 +3178,7 @@ img {
     .karma-radio-image-controller .radio-image-controller-template .radio-image-selected-item svg {
       opacity: 1; }
     .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title {
-      color: rgba(57, 73, 89, 0.7);
+      color: #667480;
       display: block;
       padding-top: 18px;
       text-align: center; }
@@ -3190,9 +3190,9 @@ img {
   border-radius: 4px;
   transition: border .2s; }
   .radio-image-border-hover svg:hover {
-    border: 1px solid #419cf8; }
+    border: 1px solid #419CF8; }
 .radio-image-border-hover .radio-image-selected-item svg {
-  border: 1px solid #419cf8; }
+  border: 1px solid #419CF8; }
 
 .radio-image-opacity-hover svg {
   box-shadow: none;
@@ -3269,9 +3269,9 @@ img {
     #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle {
       width: 14px;
       height: 14px;
-      background-color: #419cf8;
+      background-color: #419CF8;
       background-image: none;
-      border: 1px solid #419cf8;
+      border: 1px solid #419CF8;
       box-shadow: 0 2px 4px 0 rgba(65, 156, 248, 0.45);
       top: -5px;
       touch-action: pan-y;
@@ -3284,7 +3284,7 @@ img {
   #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
     width: 57px;
     height: 32px;
-    border: 1px solid rgba(57, 73, 89, 0.1);
+    border: 1px solid #E4E6EA;
     border-radius: 40px;
     display: inline-flex;
     justify-content: center;
@@ -3300,7 +3300,7 @@ img {
       height: 32px;
       padding: 0; }
       #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
-        border-color: rgba(57, 73, 89, 0.1);
+        border-color: #E4E6EA;
         outline: none; }
     #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-unit {
       font-size: 14px;
@@ -3329,7 +3329,7 @@ img {
   min-width: 20px; }
 
 .karma-active-section {
-  box-shadow: 0 0 0 1px #419cf8; }
+  box-shadow: 0 0 0 1px #419CF8; }
   .karma-active-section .row-gizmo-group {
     display: flex; }
   .karma-active-section div.karma-spacing-dot-container {
@@ -3347,7 +3347,7 @@ img {
     padding-top: 22px; }
   #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border {
     background-color: rgba(255, 255, 255, 0.54);
-    border: 1px solid #419cf8;
+    border: 1px solid #419CF8;
     border-radius: 4px;
     flex-wrap: nowrap;
     padding: 0px 3px;
@@ -3360,7 +3360,7 @@ img {
       margin: 11px 2px 10px 2px; }
     #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
       background-color: transparent;
-      border: 1px dotted #419cf8;
+      border: 1px dotted #419CF8;
       border-radius: 3px;
       cursor: pointer;
       height: 37.64px;
@@ -3368,7 +3368,7 @@ img {
       #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:before, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
         width: 8px;
         height: 2px;
-        background-color: #419cf8;
+        background-color: #419CF8;
         content: '';
         position: absolute; }
       #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add:after {
@@ -3379,7 +3379,7 @@ img {
     height: 36px;
     background-color: rgba(65, 156, 248, 0.18);
     border-radius: 19px;
-    color: #419cf8;
+    color: #419CF8;
     font-family: "HelveticaNeue_Medium";
     font-size: 14px;
     margin: 18px;
@@ -3418,7 +3418,7 @@ img {
         .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle .check-box-circle-fill {
           width: 10px;
           height: 10px;
-          background-color: #419cf8;
+          background-color: #419CF8;
           border-radius: 19px;
           transform: scale(0.01, 0.01);
           transition-duration: .3s; }
@@ -3592,7 +3592,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       height: 26px;
       margin-right: 6px; }
     #karma-element-setting-panel-container .karma-unsplash-controller .karma-unspalsh-media-library .karma-unsplash-media-library-link {
-      color: #419cf8;
+      color: #419CF8;
       font-size: 15px;
       line-height: 17px; }
 
@@ -3705,7 +3705,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       border: 1px solid transparent;
       border-radius: 4px; }
       .karma-element-panel-container .karma-element-panel-list .karma-element-single-element:hover {
-        border: 1px solid #419cf8; }
+        border: 1px solid #419CF8; }
   .karma-element-panel-container .element-panel-button {
     width: 48px;
     height: 48px;
@@ -3811,7 +3811,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           text-align: center;
           align-items: center;
           justify-content: center;
-          background-color: #419cf8;
+          background-color: #419CF8;
           border-radius: 2px;
           color: #fff;
           cursor: pointer;
@@ -3889,7 +3889,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
               transition: background 0.25s linear;
               -webkit-transition: background 0.25s linear; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li.active .check:before {
-            background: #419cf8; }
+            background: #419CF8; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-content-border {
         border-top: 2px solid rgba(57, 73, 89, 0.08);
         margin: 0 auto;
@@ -3945,17 +3945,17 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable):hover .karma-addcontent-icon svg * {
           cursor: pointer;
           transition-duration: .3s;
-          fill: #419cf8; }
+          fill: #419CF8; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable):hover .karma-addcontent-name {
-          color: #419cf8;
+          color: #419CF8;
           cursor: pointer;
           transition-duration: .3s; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable).karma-addcontent-active .karma-addcontent-icon svg * {
           cursor: pointer;
           transition-duration: .3s;
-          fill: #419cf8; }
+          fill: #419CF8; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left li.karma-addcontent:not(.karma-addcontent-disable).karma-addcontent-active .karma-addcontent-name {
-          color: #419cf8;
+          color: #419CF8;
           cursor: pointer;
           transition-duration: .3s; }
     .karma-element-panel-container .karma-element-panel-add-element-view[data-active-tab='element-panel-section'] .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li[data-filter='.mysection'] {

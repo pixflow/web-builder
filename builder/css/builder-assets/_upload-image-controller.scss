@@ -1,6 +1,6 @@
 .karma-upload-image-content{
 	@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
-	background-color: #ECF5FE;;
+	background-color: $builder-accent-color-4;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -12,7 +12,7 @@
 		@extend .karma-builder-title-3;
 		background-color: rgba(255, 255, 255, 0.7);
 		border-radius: 100px;
-		color: $builder-gray-color;
+		color: $builder-main-color;
 		cursor: pointer;
 		height: 36px;
 		line-height: 16px;

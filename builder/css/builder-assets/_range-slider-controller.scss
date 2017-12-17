@@ -44,7 +44,7 @@
 
 		.karma-range-slider-number {
 			@include box( 57px , 32px );
-			border: 1px solid rgba( $builder-gray-color , .1 );
+			border: 1px solid $builder-main-color-4;
 			border-radius: 40px;
 			display: inline-flex;
 			justify-content: center;
@@ -59,7 +59,7 @@
 				height: 32px;
 				padding: 0;
 				&:focus {
-					border-color: rgba( $builder-gray-color , .1 );
+					border-color: $builder-main-color-4;
 					outline: none;
 				}
 			}
@@ -91,7 +91,7 @@
 
 	.karma-slider-controller-title {
 		@extend .karma-builder-title-3;
-		color: $builder-gray-color;
+		color: $builder-main-color;
 		padding-top: $top-space-red;
 		text-align: left;
 		width: 100%;

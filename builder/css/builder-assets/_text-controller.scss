@@ -7,9 +7,9 @@
 			@include box( 245px, 36px );
 			padding: 11px 14px;
 			background: transparent;
-			border: 1px solid rgba( $builder-gray-color, 0.2 );
+			border: 1px solid $builder-main-color-3;
 			border-radius: 4px;
-			color: rgba( $builder-gray-color, 0.6 );
+			color: $builder-main-color-1;
 			font-size: 12px;
 		}
 

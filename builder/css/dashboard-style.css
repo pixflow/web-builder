@@ -234,7 +234,7 @@ body {
     right: auto;
     bottom: 0;
     left: 0;
-    color: rgba(57, 73, 89, 0.2);
+    color: #C8D0D5;
     margin: 20px 0 0; }
   body .karma-container-separator {
     width: calc( 100% - 40px );
@@ -243,7 +243,7 @@ body {
     right: auto;
     bottom: 0;
     left: 20px;
-    color: rgba(57, 73, 89, 0.2);
+    color: #C8D0D5;
     margin: 0;
     position: absolute; }
   body ul, body ol {

@@ -4,7 +4,7 @@
 
 	.radio-image-controller-label {
 		@extend .karma-builder-title-3;
-		color: $builder-gray-color;
+		color: $builder-main-color;
 		padding: $top-space-red 0 $top-space-orange-light;
 	}
 	
@@ -27,7 +27,7 @@
 
 		.radio-image-controller-title {
 			@extend .karma-builder-title-4;
-			color: rgba( $builder-gray-color, .7);
+			color: $builder-main-color-1;
 			display: block;
 			padding-top: $top-space-orange;
 			text-align: center;

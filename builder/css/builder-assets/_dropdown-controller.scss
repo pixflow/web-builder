@@ -41,7 +41,7 @@
 
 			@include box( 250px, 0 );
 			background-color: #fff;
-			box-shadow: 0 2px 12px 0 rgba($builder-gray-color,0.18);
+			box-shadow: 0 2px 12px 0 $builder-main-color-3;
 			display: none;
 			flex-direction: column;
 			left: 0;

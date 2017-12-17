@@ -1,12 +1,22 @@
 //Variables
 /** Builder Colors **/
-$extra-icon-secondary-color: #394959;
-$builder-accent-color: #419cf8;
-$builder-gray-color: #394959;
+$builder-accent-color: #419CF8;
+$builder-accent-color-1: #7AB9FA;
+$builder-accent-color-2: #A0CDFB;
+$builder-accent-color-3: #D9EBFE;
+$builder-accent-color-4: #ECF5FE;
+
+$builder-main-color: #394959;
+$builder-main-color-1: #667480;
+$builder-main-color-2: #9CA4AC;
+$builder-main-color-3: #C8D0D5;
+$builder-main-color-4: #E4E6EA;
+$builder-main-color-5: #F4F6F7;
+
 $builder-upgrade-color: #f58f23;
 $builder-notice-color: #194be6;
 $builder-simple-text-color: #445363;
-$setting-panel-separator-color: rgba($builder-gray-color, 0.2);
+$setting-panel-separator-color: $builder-main-color-3;
 $builder-placeholder-color : rgba( 65, 156, 248, 0.1 );
 
 /* Builder Major Levels */
