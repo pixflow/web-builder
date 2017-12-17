@@ -280,6 +280,107 @@
 }
 
 /**
+ * mixin for oval button
+ * @group helpers
+ * @output oval button
+ */
+@mixin oval-button {
+
+	@include flexbox( center );
+	@include box-color( #394959, #ffffffb3, 100px );
+	@extend .karma-builder-title-3;
+	height:36px;
+	font-weight: 400;
+	padding: 0 20px;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+
+}
+
+/**
+ * mixin for oval with icon button
+ * @group helpers
+ * @output oval with icon button
+ */
+@mixin oval-button-with-icon {
+
+	@include flexbox( center );
+	@include box-color( #394959, #ffffffb3, 100px );
+	@extend .karma-builder-title-3;
+	border: 1px solid #D7DBDE;
+	height:36px;
+	font-weight: 400;
+	padding: 0 20px 0 18px;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+	div{
+		margin-right: 9px;
+	}
+
+}
+
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+@mixin input-number-type {
+
+	height: 32px;
+	border: 1px solid #D7DBDE;
+	border-radius: 40px;
+	display: inline-flex;
+	justify-content: center;
+	margin-left: 13px;
+	padding: 0 14px;
+	color: #394959;
+
+	input.karma-input-number-type-input{
+
+		@include flexbox( $text-align: right );
+		@extend .karma-builder-title-4;
+		color: #000;
+		background: transparent;
+		padding: 0;
+		&:focus {
+			border-color: $builder-main-color-4;
+			outline: none;
+		}
+	}
+
+	label.karma-input-number-type-unit {
+
+		@extend .karma-builder-title-3;
+		font-weight: 400;
+		line-height: 28px;
+		margin-bottom: 0;
+	}
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+}
+
+/**
  * mixin for box color and border radius
  * @group helpers
  * @output box color

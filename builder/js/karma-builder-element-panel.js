@@ -751,6 +751,7 @@
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
 			this.elementGatherMenuFiltering();
+			this.elementPanelCloseSearchBar( e );
 
 		},
 

@@ -804,11 +804,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   margin-top: 24px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-slider-controller-title, .karma-image-position-container .karma-all-controller-title, .karma-upload-image-content .karma-upload-image-button {
+.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label.karma-input-number-type-unit, #karma-element-setting-panel-container .karma-slider-controller-title, .karma-image-position-container .karma-all-controller-title, .karma-upload-image-content .karma-upload-image-button {
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title {
+.karma-builder-title-4, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input.karma-input-number-type-input {
   font-size: 12px;
   line-height: 14px; }
 
@@ -901,6 +901,21 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * mixin for border button
  * @group helpers
  * @output border button
+ */
+/**
+ * mixin for oval button
+ * @group helpers
+ * @output oval button
+ */
+/**
+ * mixin for oval with icon button
+ * @group helpers
+ * @output oval with icon button
+ */
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
  */
 /**
  * mixin for box color and border radius
@@ -3272,33 +3287,29 @@ img {
       background: #7AB9FA;
       box-shadow: none; }
   #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
-    width: 57px;
     height: 32px;
-    border: 1px solid #E4E6EA;
+    border: 1px solid #D7DBDE;
     border-radius: 40px;
     display: inline-flex;
     justify-content: center;
-    margin-left: 13px; }
-    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input {
-      background: transparent;
+    margin-left: 13px;
+    padding: 0 14px;
+    color: #394959; }
+    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input.karma-input-number-type-input {
       display: flex;
       text-align: right;
       align-items: inherit;
       justify-content: inherit;
       color: #000;
-      font-size: 12px;
-      height: 32px;
+      background: transparent;
       padding: 0; }
-      #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-range-slider-input:focus {
+      #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input.karma-input-number-type-input:focus {
         border-color: #E4E6EA;
         outline: none; }
-    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number .karma-unit {
-      font-size: 14px;
+    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label.karma-input-number-type-unit {
       font-weight: 400;
-      height: 32px;
       line-height: 28px;
-      margin-bottom: 0;
-      padding: 0 0 0 2px; }
+      margin-bottom: 0; }
   #karma-element-setting-panel-container .karma-range-slider-container input::-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none; }

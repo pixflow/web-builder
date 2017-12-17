@@ -133,6 +133,21 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @output border button
  */
 /**
+ * mixin for oval button
+ * @group helpers
+ * @output oval button
+ */
+/**
+ * mixin for oval with icon button
+ * @group helpers
+ * @output oval with icon button
+ */
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+/**
  * mixin for box color and border radius
  * @group helpers
  * @output box color

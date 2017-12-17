@@ -43,35 +43,7 @@
 		}
 
 		.karma-range-slider-number {
-			@include box( 57px , 32px );
-			border: 1px solid $builder-main-color-4;
-			border-radius: 40px;
-			display: inline-flex;
-			justify-content: center;
-			margin-left: 13px;
-
-			.karma-range-slider-input {
-
-				background: transparent;
-				@include flexbox($text-align: right);
-				color: #000;
-				font-size: 12px;
-				height: 32px;
-				padding: 0;
-				&:focus {
-					border-color: $builder-main-color-4;
-					outline: none;
-				}
-			}
-
-			.karma-unit {
-				font-size: 14px;
-				font-weight: 400;
-				height: 32px;
-				line-height: 28px;
-				margin-bottom: 0;
-				padding: 0 0 0 2px;
-			}
+		 @include input-number-type;
 		}
 
 		input::-webkit-inner-spin-button {
