@@ -40,7 +40,7 @@
 		.karma-dropdown-options{
 
 			@include box( 250px, 0 );
-			background-color: $builder-element-panel-background-color;
+			background-color: #fff;
 			box-shadow: 0 2px 12px 0 rgba($builder-gray-color,0.18);
 			display: none;
 			flex-direction: column;

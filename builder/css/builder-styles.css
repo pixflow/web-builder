@@ -3731,7 +3731,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
       bottom: auto;
       left: 90px;
       background-color: #fff;
-      border: 1px solid #ffffffeb;
+      border: 1px solid #fff;
       border-width: 0 2px 2px 0;
       content: "";
       display: inline-block;

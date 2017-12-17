@@ -33,7 +33,7 @@
 	.element-panel-button {
 		@include box(48px);
 		@include flexbox(center, center, center);
-		background-color: $white-color;
+		background-color: #fff;
 		border-radius: 100px;
 		box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
 		cursor: pointer;
@@ -58,8 +58,8 @@
 
 		&:after {
 			@include element_direction($top: 38%, $left: 90px);
-			background-color: $white-color;
-			border: 1px solid #ffffffeb;
+			background-color: #fff;
+			border: 1px solid #fff;
 			border-width: 0 2px 2px 0;
 			content: "";
 			display: inline-block;
@@ -124,7 +124,7 @@
 					@include flexbox(center, center, center);
 					background-color: $builder-accent-color;
 					border-radius: 2px;
-					color: $white-color;
+					color: #fff;
 					cursor: pointer;
 					font-size: 14px;
 					font-weight: 500;
@@ -367,7 +367,7 @@
 .karma-element-single-element{
 	@include flexbox( center, center, center );
 	@include box( 89px, 94px );
-	background-color: $builder-element-panel-background-color;
+	background-color: #fff;
 	border-radius: 4px;
 	cursor: -webkit-grab;
 	cursor: grab;

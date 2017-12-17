@@ -96,7 +96,7 @@
 
 @mixin karma-box( $width, $height:$width ) {
 	@include box( $width, $height );
-	background-color: $white-color;
+	background-color:#fff;
 	border-radius: 3px;
 	box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
 }
