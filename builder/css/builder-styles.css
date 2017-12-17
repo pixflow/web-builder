@@ -785,7 +785,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   display: flex;
   justify-content: space-around; }
 
-.HelveticaNeue-font, #karma-element-setting-panel-container *, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .sp-picker-container .sp-input {
+.HelveticaNeue-font, #karma-element-setting-panel-container *, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .sp-picker-container .sp-input {
   font-family: "HelveticaNeue"; }
 
 @keyframes scaleUP {
@@ -804,11 +804,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   margin-top: 24px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label.karma-input-number-type-unit, #karma-element-setting-panel-container .karma-slider-controller-title, .karma-image-position-container .karma-all-controller-title, .karma-upload-image-content .karma-upload-image-button {
+.karma-builder-title-3, .karma-title-with-background-controller div.karma-title-with-background-field, .karma-radio-image-controller .radio-image-controller-label, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label, #karma-element-setting-panel-container .karma-slider-controller-title, .karma-image-position-container .karma-all-controller-title, .karma-upload-image-content .karma-upload-image-button {
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input.karma-input-number-type-input {
+.karma-builder-title-4, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input {
   font-size: 12px;
   line-height: 14px; }
 
@@ -916,6 +916,21 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * mixin for input number type
  * @group helpers
  * @output input number type
+ */
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+/**
+ * mixin for dropDown button
+ * @group helpers
+ * @output dropDown button
+ */
+/**
+ * mixin for radio button
+ * @group helpers
+ * @output radio button
  */
 /**
  * mixin for box color and border radius
@@ -2598,13 +2613,13 @@ div.media-modal {
     position: relative; }
     .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
       align-items: center; }
-      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-down-arrow {
-        margin-top: 1px; }
       .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
         width: 32px;
         height: 32px;
-        border: 1px solid rgba(57, 73, 89, 0.2);
-        border-radius: 100px; }
+        border-radius: 100px;
+        border: 1px solid #D7DBDE; }
+        .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon span {
+          margin-top: 1px; }
     .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options {
       width: 250px;
       height: 0;
@@ -3139,14 +3154,14 @@ img {
     height: 36px;
     padding: 11px 14px;
     background: transparent;
-    border: 1px solid #C8D0D5;
+    border: 1px solid #D7DBDE;
     border-radius: 4px;
     color: #667480;
     font-size: 12px; }
-  #karma-element-setting-panel-container .karma-text-input-controller input::placeholder {
-    color: rgba(57, 73, 89, 0.6);
-    font-family: HelveticaNeue;
-    font-size: 12px; }
+    #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder {
+      color: rgba(57, 73, 89, 0.6);
+      font-family: HelveticaNeue;
+      font-size: 12px; }
 
 .karma-title-with-background-controller {
   background-color: #ECF5FE;
@@ -3287,6 +3302,7 @@ img {
       background: #7AB9FA;
       box-shadow: none; }
   #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
+    width: 57px;
     height: 32px;
     border: 1px solid #D7DBDE;
     border-radius: 40px;
@@ -3295,7 +3311,7 @@ img {
     margin-left: 13px;
     padding: 0 14px;
     color: #394959; }
-    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input.karma-input-number-type-input {
+    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input {
       display: flex;
       text-align: right;
       align-items: inherit;
@@ -3303,10 +3319,10 @@ img {
       color: #000;
       background: transparent;
       padding: 0; }
-      #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input.karma-input-number-type-input:focus {
+      #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input:focus {
         border-color: #E4E6EA;
         outline: none; }
-    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label.karma-input-number-type-unit {
+    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label {
       font-weight: 400;
       line-height: 28px;
       margin-bottom: 0; }
@@ -3401,12 +3417,6 @@ img {
       line-height: 17px; }
     .karma-check-box-controller .check-box-controller-template .karma-check-box-container {
       position: relative; }
-      .karma-check-box-controller .check-box-controller-template .karma-check-box-container input.check-box-input {
-        cursor: pointer;
-        opacity: 0;
-        position: absolute;
-        width: 100%;
-        z-index: 100; }
       .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle {
         display: flex;
         text-align: inherit;
@@ -3414,19 +3424,24 @@ img {
         justify-content: center;
         width: 24px;
         height: 24px;
-        border: 1px solid rgba(57, 73, 89, 0.2);
-        border-radius: 19px; }
-        .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle .check-box-circle-fill {
+        border: 1px solid #D7DBDE;
+        border-radius: 100px; }
+        .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle label {
           width: 10px;
           height: 10px;
           background-color: #419CF8;
-          border-radius: 19px;
+          border-radius: 100px;
           transform: scale(0.01, 0.01);
           transition-duration: .3s; }
-
-input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
-  transform: scale(1, 1);
-  transition-duration: .3s; }
+        .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle input {
+          cursor: pointer;
+          opacity: 0;
+          position: absolute;
+          width: 100%;
+          z-index: 100; }
+        .karma-check-box-controller .check-box-controller-template .karma-check-box-container .check-box-circle input:checked + label {
+          transform: scale(1, 1);
+          transition-duration: .3s; }
 
 .karma-image-position-container {
   align-items: center;

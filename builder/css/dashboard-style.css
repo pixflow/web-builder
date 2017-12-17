@@ -148,6 +148,21 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @output input number type
  */
 /**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+/**
+ * mixin for dropDown button
+ * @group helpers
+ * @output dropDown button
+ */
+/**
+ * mixin for radio button
+ * @group helpers
+ * @output radio button
+ */
+/**
  * mixin for box color and border radius
  * @group helpers
  * @output box color

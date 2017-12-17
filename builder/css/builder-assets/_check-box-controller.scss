@@ -15,34 +15,11 @@
 
 			position: relative;
 
-			input.check-box-input{
-				cursor: pointer;
-				opacity: 0;
-				position: absolute;
-				width: 100%;
-				z-index: 100;
-			}
-
 			.check-box-circle{
-				@include flexbox( $align-item:center, $justify-content:center );
-				@include  box(24px, 24px);
-				border: 1px solid rgba(57,73,89,0.2);
-				border-radius: 19px;
-
-				.check-box-circle-fill{
-					@include  box(10px, 10px);
-					background-color: $builder-accent-color;
-					border-radius: 19px;
-					transform: scale(0.01 , 0.01);
-					transition-duration: .3s;
-				}
-
+	     		@include check-box-button;
 			}
 		}
 	}
 }
 
-input#karma-input-checkbox-controller:checked + .check-box-circle-fill{
-	transform : scale(1, 1);
-	transition-duration : .3s;
-}
+

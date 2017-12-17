@@ -23,16 +23,9 @@
 			@extend .space-between;
 			align-items: center;
 
-			.karma-down-arrow{
-				margin-top: 1px;
-			}
-
 			.karma-dropdown-icon{
 
-				@extend .center-both-flex;
-				@include box( 32px, 32px);
-				border: 1px solid rgba(57,73,89,0.2);
-				border-radius: 100px;
+				@include dropdown-button;
 
 			}
 		}
