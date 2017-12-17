@@ -11,14 +11,14 @@ body {
 	.karma-full-separator {
 		@include box( 100%, 1px );
 		@include element_direction( $bottom: 0, $left: 0 );
-		color: $setting-panel-separator-color;
+		color: $builder-main-color-3;
 		margin : 20px 0 0;
 	}
 
 	.karma-container-separator {
 		@include box( calc( 100% - 40px ), 1px );
 		@include element_direction( $bottom: 0, $left: 20px );
-		color: $setting-panel-separator-color;
+		color: $builder-main-color-3;
 		margin: 0;
 		position: absolute;
 	}

@@ -264,7 +264,7 @@ img{
 
 		.karma-builder-gizmo-text {
 			border-right: 1px solid rgba(151, 151, 151, 0.3);
-			color: #394959;
+			color: $builder-main-color;
 			font-family: HelveticaNeue_Medium;
 			font-size: 12px;
 			margin-right: 9px;
@@ -312,7 +312,7 @@ img{
 
 			}
 			.karma-builder-gizmo-text {
-				color: #394959;
+				color: $builder-main-color;
 				font-family: HelveticaNeue;
 				font-size: 13px;
 				padding: 0 15px 0 15px;

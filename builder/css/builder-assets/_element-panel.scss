@@ -168,7 +168,7 @@
 								label{
 
 									@include fluid-type(1288px, 1366px, 11px, 12px);
-									color: #445363;
+									color: $builder-main-color;
 									cursor: pointer;
 									display: block;
 									font-size: 12px;
@@ -234,7 +234,7 @@
 
 			.karma-builder-addcontent-title {
 				@include fluid-type(1288px, 1366px, 12px, 14px);
-				color: $builder-simple-text-color;
+				color: $builder-main-color;
 				font-size: 14px;
 			}
 
@@ -390,7 +390,7 @@
 	margin-top: 13px;
 	text-transform: capitalize;
 	span{
-		color: $builder-simple-text-color;
+		color: $builder-main-color;
 		font-size: 12px;
 		line-height: 14px;
 	}

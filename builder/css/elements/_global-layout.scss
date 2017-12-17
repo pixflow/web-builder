@@ -16,7 +16,7 @@
   }
   .karma-inner-placeholder {
 	@include box( 100%, 100% );
-	background-color: $builder-placeholder-color;
+	background-color: rgba( 65, 156, 248, 0.1 );
 	border-radius: 2px;
   }
 }

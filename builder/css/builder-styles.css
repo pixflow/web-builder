@@ -3845,7 +3845,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li[data-filter='.mysection'] {
             display: none; }
           .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-element-panel-add-element-view-filtering .karma-element-panel-price-filter-container .karma-element-panel-price-filter ul li label {
-            color: #445363;
+            color: #394959;
             cursor: pointer;
             display: block;
             font-size: 12px;
@@ -3895,7 +3895,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
         margin: 0 auto;
         width: 5.52vw; }
       .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
-        color: #445363;
+        color: #394959;
         font-size: 14px; }
         .karma-element-panel-container .karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
           font-size: 12px; }
@@ -3993,7 +3993,7 @@ input#karma-input-checkbox-controller:checked + .check-box-circle-fill {
   margin-top: 13px;
   text-transform: capitalize; }
   .karma-element-single-element-name span {
-    color: #445363;
+    color: #394959;
     font-size: 12px;
     line-height: 14px; }
 
