@@ -40,7 +40,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 
 		return 	array(
 			'element_key'   => 'kb',
-			'tag'           => 'div',
+			'tag'           => 'p',
 			'color'			=> '#000',
 			'align'         => 'left'
 		);
