@@ -627,6 +627,9 @@
 					allDropDownItem.removeClass( 'karma-drop-down-active-item' );
 				}
 				dropDownItem.addClass( 'karma-drop-down-active-item' );
+				dropDownBox.prev().find('.karma-default-icon').css({
+					backgroundImage : dropDownItem.find(' > div ').css('background-image')
+				})
 			}
 
 			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );

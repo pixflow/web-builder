@@ -12,16 +12,16 @@
 		/**
 		 * Build html for alignment gizmo
 		 */
-		template :' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.params.defaultIcon }}} </button> '
+		template :' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"><div class="karma-default-icon" style="background-image: url({{ data.params.defaultIcon }})" ></div> </button> '
 			+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
 				+ '<button class="karma-align-left" data-value="align-left" >'
-					+ '{{{ data.params.leftAlignIcon }}}'
+					+ '<div class="karma-alignment-left-icon" style="background-image: url({{ data.params.leftAlignIcon }})"></div>'
 				+ '</button>'
 				+ '<button class="karma-align-center" data-value="align-center" >'
-					+ '{{{ data.params.centerAlignIcon }}}'
+					+ '<div class="karma-alignment-center-icon" style="background-image: url({{ data.params.centerAlignIcon }})"></div>'
 				+ '</button>'
 				+ '<button class="karma-align-right" data-value="align-right" >'
-					+ '{{{ data.params.rightAlignIcon }}}'
+					+ '<div class="karma-alignment-right-icon" style="background-image: url({{ data.params.rightAlignIcon }})"></div>'
 				+ '</button>'
 			+ '</div>' ,
 
@@ -54,6 +54,7 @@
 
 		update: function(){
 
+			this.data.params['defaultIcon'] = this.data.params[ this.elementView.getAttributes( ['align'] ).align + 'AlignIcon' ];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 
 		},

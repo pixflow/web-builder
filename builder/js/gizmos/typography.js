@@ -10,32 +10,32 @@
 		/**
 		 * Build html for typography gizmo
 		 */
-		template : ' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> {{{ data.params.defaultIcon }}} </button> '
+		template : ' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> <div class="karma-default-icon" style="background-image: url({{ data.params.defaultIcon }})" ></div> </button> '
 			+ '<div class="karma-drop-down-box karma-typography-drop-down">'
 				+'<div class="karma-typography-drop-down-icons">'
 					+ '<div class="karma-typography-drop-down-right">'
 						+ '<button class="karma-typography-h5" data-karma-value="h5" >'
-							+ '{{{ data.params.h5Typography }}}'
+							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h5Typography }})"></div>'
 						+ '</button>'
 						+ '<button class="karma-typography-h6" data-karma-value="h6" >'
-							+ '{{{ data.params.h6Typography }}}'
+							+ '<div class="karma-typography-h6-icon" style="background-image: url({{ data.params.h6Typography }})"></div>'
 						+ '</button>'
 						+ '<button class="karma-typography-p" data-karma-value="p" >'
-							+ '{{{ data.params.pTypography }}}'
+							+ '<div class="karma-typography-p-icon" style="background-image: url({{ data.params.pTypography }})"></div>'
 						+ '</button>'
 					+ '</div>'
 					+ '<div class="karma-typography-drop-down-left">'
 						+ '<button class="karma-typography-h1" data-karma-value="h1" >'
-							+ '{{{ data.params.h1Typography }}}'
+							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h1Typography }})"></div>'
 						+ '</button>'
 						+ '<button class="karma-typography-h2" data-karma-value="h2" >'
-							+ '{{{ data.params.h2Typography }}}'
+							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h2Typography }})"></div>'
 						+ '</button>'
 						+ '<button class="karma-typography-h3" data-karma-value="h3" >'
-							+ '{{{ data.params.h3Typography }}}'
+							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h3Typography }})"></div>'
 						+ '</button>'
 						+ '<button class="karma-typography-h4" data-karma-value="h4" >'
-							+ '{{{ data.params.h4Typography }}}'
+							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h5Typography }})"></div>'
 						+ '</button>'
 					+ '</div>'
 				+ '</div>'
@@ -75,12 +75,13 @@
 
 		update: function(){
 
+			this.data.params['defaultIcon'] = this.data.params[ this.elementView.getAttributes( ['tag'] ).tag + 'Typography' ];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 
 		},
 
 		/**
-		 * @summary set  typography for text shortcode
+		 * @summary set  typography for text element
 		 *
 		 * @since 1.0.0
 		 *

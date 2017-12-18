@@ -148,7 +148,7 @@ img{
 			white-space: nowrap;
 
 		}
-
+	  
 		.karma-drop-down-icon {
 			background-color: inherit;
 			border: none;
@@ -164,6 +164,12 @@ img{
 					}
 				}
 			}
+		  div {
+			@include box( 18px, 13px );
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			 }
 		}
 		.karma-drop-down-box{
 			@include element_direction( $top: 45px, $left:-5px );
@@ -185,6 +191,7 @@ img{
 				position: absolute;
 			}
 
+
 			button{
 				@include box( 30px, auto );
 				background-color: inherit;
@@ -200,6 +207,13 @@ img{
 				&.karma-drop-down-active-item{
 					background-color: $builder-accent-color-3;
 				}
+
+			  div{
+				@include box( 18px, 13px );
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+			  }
 
 			}
 			&.open-drop-down-gizmo{
@@ -326,7 +340,6 @@ img{
 			padding: 0;
 
 		}
-
 
 	}
 

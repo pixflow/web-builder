@@ -2846,6 +2846,12 @@ img {
       .karma-builder-element .karma-gizmo-template .karma-drop-down-icon:hover svg * {
         transition: 0.1s;
         fill: #747F8A; }
+      .karma-builder-element .karma-gizmo-template .karma-drop-down-icon div {
+        width: 18px;
+        height: 13px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain; }
     .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
       top: 45px;
       right: auto;
@@ -2883,6 +2889,12 @@ img {
           background-color: #D9EBFE; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button.karma-drop-down-active-item {
           background-color: #D9EBFE; }
+        .karma-builder-element .karma-gizmo-template .karma-drop-down-box button div {
+          width: 18px;
+          height: 13px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
         display: flex; }
     .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {
