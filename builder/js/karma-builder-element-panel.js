@@ -563,7 +563,7 @@
 		initDraggable : function(){
 
 			var that = this;
-			$('.karma-element-single-element').draggable({
+			$('.karma-element-single-element:not(.karma-deactive-element)').draggable({
 				appendTo: "body",
 				containment: 'document',
 				cursorAt: { top : 20, left : 50 },

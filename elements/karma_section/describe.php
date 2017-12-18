@@ -267,7 +267,7 @@ class Karma_Section_Describe extends Karma_Section {
 
 		$element_info = array(
 			'elementName' => self::$element_name ,
-			'icon'         => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
+			'icon'         => KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg',
 			'category'     => array(
 				'basic',
 				str_replace( 'karma_', '', self::$element_name ),

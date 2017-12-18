@@ -127,7 +127,7 @@ class Karma_Text_Describe extends Karma_Text {
 
 		$element_info = array(
 			'elementName' => self::$element_name,
-			'icon'        => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg' ),
+			'icon'        => KARMA_BUILDER_URL . 'builder/media/svg/text-element.svg',
 			'category'    => array(
 				'basic',
 				'media',

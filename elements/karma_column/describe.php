@@ -137,9 +137,9 @@ class Karma_Column_Describe extends Karma_Column {
 	public function element_info(){
 
 		$element_info = array(
-			'elementName' => self::$element_name ,
-			'icon'         => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
-			'category'     => array(
+			'elementName'   => self::$element_name ,
+			'icon'          => KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg',
+			'category'      => array(
 				'basic',
 				str_replace( 'karma_', '', self::$element_name ),
 			),

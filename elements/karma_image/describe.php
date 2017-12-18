@@ -214,7 +214,7 @@ class Karma_Image_Describe extends Karma_Image {
 
 		$element_info = array(
 			'elementName' => self::$element_name,
-			'icon'        => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg' ),
+			'icon'        => KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg',
 			'category'    => array(
 				'basic',
 				'media',

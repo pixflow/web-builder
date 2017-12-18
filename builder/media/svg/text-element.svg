@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="40px" viewBox="0 0 52 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 26</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="43.7514124" height="31.751938" rx="4"></rect>
+        <filter x="-18.3%" y="-12.6%" width="136.6%" height="150.4%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.266666667   0 0 0 0 0.325490196   0 0 0 0 0.388235294  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="43.7561471%" y1="36.1052177%" x2="75.4321919%" y2="91.0404624%" id="linearGradient-4">
+            <stop stop-color="#990113" stop-opacity="0.425979393" offset="0%"></stop>
+            <stop stop-color="#D61A31" stop-opacity="0.519191576" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Element-panel" transform="translate(-473.000000, -334.000000)">
+            <g id="Group-26" transform="translate(477.000000, 334.000000)">
+                <g id="Path-4-Copy-4">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                        <use fill="#D0021B" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <polygon fill="url(#linearGradient-4)" mask="url(#mask-2)" points="40.2824493 31.5487351 19.7290639 31.5487351 8.24962308 20.7719494 8.24962308 14.2418155 18.0743901 14.2418155 24.2660362 20.2213542 26.803077 17.1019345"></polygon>
+                </g>
+                <g id="Group-9" transform="translate(7.719298, 10.666667)" fill="#FFFFFF">
+                    <rect id="Rectangle-13-Copy-5" x="0.111528463" y="0.0238633117" width="4.59985877" height="1.29466884"></rect>
+                    <rect id="Rectangle-13-Copy-6" x="0.258771233" y="3.3375193" width="10.3496822" height="1.29466884"></rect>
+                    <rect id="Rectangle-13-Copy-9" x="0.258771233" y="6.65117529" width="8.31647852" height="1.29466884"></rect>
+                    <rect id="Rectangle-13-Copy-11" x="0.258771233" y="9.96483127" width="10.3496822" height="1.29466884"></rect>
+                </g>
+                <path d="M36.2586466,21.3333333 L36.2586466,10.6666667 C36.2586466,9.82857143 35.5650125,9.14285714 34.7172375,9.14285714 L23.927374,9.14285714 C23.079599,9.14285714 22.3859649,9.82857143 22.3859649,10.6666667 L22.3859649,21.3333333 C22.3859649,22.1714286 23.079599,22.8571429 23.927374,22.8571429 L34.7172375,22.8571429 C35.5650125,22.8571429 36.2586466,22.1714286 36.2586466,21.3333333 Z M26.7211779,17.0714286 L28.5791264,19.2214286 L31.1802542,16 L34.5245614,20.2857143 L24.1200501,20.2857143 L26.7211779,17.0714286 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

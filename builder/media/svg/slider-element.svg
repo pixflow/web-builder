@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="40px" viewBox="0 0 52 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="44" height="31.751938" rx="4"></rect>
+        <filter x="-18.2%" y="-12.6%" width="136.4%" height="150.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.266666667   0 0 0 0 0.325490196   0 0 0 0 0.388235294  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="44.2328553%" y1="36.5555945%" x2="79.8006944%" y2="88.3476472%" id="linearGradient-3">
+            <stop stop-color="#804CD2" stop-opacity="0.451171875" offset="0%"></stop>
+            <stop stop-color="#895BD2" stop-opacity="0.408910779" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Element-panel" transform="translate(-377.000000, -432.000000)">
+            <g id="Group-4" transform="translate(381.000000, 432.000000)">
+                <g id="Rectangle-13-Copy-10">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#9159E9" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <polygon id="Path-4-Copy-2" fill="url(#linearGradient-3)" points="28.3481445 10.1705426 43.6601563 31.8333333 24.121582 31.8333333 14.972168 21.001938"></polygon>
+                <path d="M30.6666667,15.8346253 C30.6666667,20.4786219 26.8886111,24.2273902 22.2083333,24.2273902 C17.5280556,24.2273902 13.75,20.4786219 13.75,15.8346253 C13.75,11.1906288 17.5280556,7.44186047 22.2083333,7.44186047 C26.8886111,7.44186047 30.6666667,11.1906288 30.6666667,15.8346253 Z" id="Path" fill="#AB76FF"></path>
+                <path d="M28.5,15.875969 C28.5,19.3074935 25.7083333,22.0775194 22.25,22.0775194 C18.7916667,22.0775194 16,19.3074935 16,15.875969 C16,12.4444444 18.7916667,9.6744186 22.25,9.6744186 C25.7083333,9.6744186 28.5,12.4444444 28.5,15.875969 Z" id="Path-Copy" fill="#FFFFFF"></path>
+                <polygon id="Path" fill="#9159E9" points="21.25 18.8527132 21.25 13.1472868 25 16"></polygon>
+                <polyline id="Path-6" stroke="#D3C4EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="36.75 14.3875969 38.2936782 15.9553489 36.75 17.5231009"></polyline>
+                <polyline id="Path-6-Copy" stroke="#D3C4EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(6.771839, 15.955349) scale(-1, 1) translate(-6.771839, -15.955349) " points="6 14.3875969 7.5436782 15.9553489 6 17.5231009"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

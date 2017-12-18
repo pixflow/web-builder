@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="46px" viewBox="0 0 33 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="32.5287136%" y1="21.4198447%" x2="77.575748%" y2="94.809052%" id="linearGradient-1">
+            <stop stop-color="#00C2A0" stop-opacity="0.458050272" offset="0%"></stop>
+            <stop stop-color="#00CFAB" stop-opacity="0.420827672" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Element-panel" transform="translate(-386.000000, -623.000000)">
+            <g id="Group-8" transform="translate(386.000000, 623.000000)">
+                <rect id="Rectangle-13-Copy-12" fill="#12D5B3" transform="translate(16.500000, 23.000000) rotate(90.000000) translate(-16.500000, -23.000000) " x="-6.13953488" y="6.9" width="45.2790698" height="32.2" rx="4"></rect>
+                <polygon id="Path-4" fill="url(#linearGradient-1)" points="21.7209384 13.0333333 31.9882358 25.6039714 31.9882358 42.1449544 12.2790698 20.4154948"></polygon>
+                <g id="Group-7" transform="translate(9.209302, 9.200000)" fill="#FFFFFF">
+                    <polygon id="Star" points="7.52093038 9.9169881 3.82135009 11.96 4.52790705 7.63283135 1.53488372 4.56831349 5.67114023 3.9369881 7.52093038 0 9.37072053 3.9369881 13.506977 4.56831349 10.5139537 7.63283135 11.2205107 11.96"></polygon>
+                    <g id="Group-6" transform="translate(0.000000, 18.400000)">
+                        <rect id="Rectangle-13-Copy-5" x="3.8372093" y="0" width="6.90697674" height="1.53333333"></rect>
+                        <rect id="Rectangle-13-Copy-6" x="0" y="3.83333333" width="14.5813953" height="1.53333333"></rect>
+                        <rect id="Rectangle-13-Copy-14" x="0" y="7.66666667" width="14.5813953" height="1.53333333"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
