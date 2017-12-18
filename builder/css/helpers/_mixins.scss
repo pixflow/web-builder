@@ -237,10 +237,10 @@
 	@include flexbox( center );
 	@include box-color( $builder-accent-color, inherit, 2px );
 	@extend .karma-builder-title-3;
+	@extend .karma-button-padding;
 	border: 1px solid $builder-accent-color;
 	height:40px;
 	font-weight: 400;
-	padding: 0 20px;
 
 	&:focus {
 	}
@@ -263,10 +263,10 @@
 	@include flexbox( center );
 	@include box-color( #fff, $builder-accent-color, 2px );
 	@extend .karma-builder-title-3;
+	@extend .karma-button-padding;
 	border: none;
 	height:40px;
 	font-weight: 400;
-	padding: 0 20px;
 
 	&:focus {
 	}
@@ -289,9 +289,9 @@
 	@include flexbox( center );
 	@include box-color( #394959, #ffffffb3, 100px );
 	@extend .karma-builder-title-3;
+	@extend .karma-button-padding;
 	height:36px;
 	font-weight: 400;
-	padding: 0 20px;
 
 	&:focus {
 	}
@@ -327,7 +327,7 @@
 
 	&:active {
 	}
-	div{
+	.karma-oval-button-icon{
 		margin-right: 9px;
 	}
 
@@ -350,7 +350,6 @@
 	color: #394959;
 
 	input{
-
 		@include flexbox( $text-align: right );
 		@extend .karma-builder-title-4;
 		color: #000;
@@ -363,7 +362,6 @@
 	}
 
 	label{
-
 		@extend .karma-builder-title-3;
 		font-weight: 400;
 		line-height: 28px;

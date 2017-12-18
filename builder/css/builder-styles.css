@@ -827,6 +827,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box, .sp-color, .sp-val, .sp-val .sp-dragger, .sp-container.sp-light, .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
   border-radius: 5px; }
 
+.karma-button-padding {
+  padding: 0 20px; }
+
 /**
  * Media queries
  * @group helpers

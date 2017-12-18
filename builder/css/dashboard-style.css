@@ -57,6 +57,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box {
   border-radius: 5px; }
 
+.karma-button-padding {
+  padding: 0 20px; }
+
 /**
  * Media queries
  * @group helpers
