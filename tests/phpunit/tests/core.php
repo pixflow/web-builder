@@ -17,49 +17,51 @@ class Tests_Core extends WP_UnitTestCase {
 	public function test_parse_shortcode(){
 		
 		$title = '"this is a \\" title \\" "';
-		$shortcode = "[test_shortcode element_key='w4trwe' color = 'red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test'] Test Content Goes here[/test_shortcode]";
-		$shortcode2 = "[test_shortcode element_key='w4trwv' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test']";
-		$shortcode3 = "[test_shortcode element_key='w4tfwe']";
-		$shortcode4 = "[test_shortcode element_key='w46rwe' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test'";
+		$shortcode1 = "[karma_text element_key='w4trwe' color = 'red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test'] Test Content Goes here[/karma_text]";
+		$shortcode2 = "[karma_text element_key='w4trwv' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test']";
+		$shortcode3 = "[karma_text element_key='w4tfwe']";
+		$shortcode4 = "[karma_text element_key='w46rwe' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test'";
 
 
-		$this->assertEquals( array(
-			"shortcode_name"        =>  "test_shortcode",
-			"element_key"         => 'w4trwe',
-			"shortcode_attributes"  =>  array(
+		$shortcode1_expect = array(
+			"shortcode_name"        => "karma_text",
+			"element_key"           => 'w4trwe',
+			"shortcode_attributes"  => array(
+				"bg"        =>  "#000fff",
 				"color"     =>  "red",
 				"font"      =>  "arial",
-				"bg"        =>  "#000fff",
-				"style"     =>  'font-family: "tahoma";',
 				"radius"    =>  '18',
-				"title"     =>  'this is a " title " ',
-				"sub_title" =>  "this is a subtitle's test"
-			),
-			"shortcode_content"             =>  " Test Content Goes here"
-		), $this->builder->parse_shortcode( $shortcode ) );
-
-
-		$this->assertEquals( array(
-			"shortcode_name"        =>  "test_shortcode",
-			"element_key"         => 'w4trwv',
-			"shortcode_attributes"  =>  array(
-				"color"     =>  "red",
-				"font"      =>  "arial",
-				"bg"        =>  "#000fff",
 				"style"     =>  'font-family: "tahoma";',
-				"radius"    =>  '18',
-				"title"     =>  'this is a " title " ',
-				"sub_title" =>  "this is a subtitle's test"
+				"sub_title" =>  "this is a subtitle's test",
+				"title"     =>  'this is a " title " '
 			),
-			"shortcode_content"             =>  ""
-		), $this->builder->parse_shortcode( $shortcode2 ) );
+			"shortcode_content" => " Test Content Goes here"
+		);
+		$this->assertEquals( ksort( $shortcode1_expect ), ksort( $this->builder->parse_shortcode( $shortcode1 ) ) );
 
-		$this->assertEquals( array(
-			"shortcode_name"        =>  "test_shortcode",
-			"element_key"         => 'w4tfwe' ,
-			"shortcode_attributes"  =>  array(),
-			"shortcode_content"     =>  ""
-		), $this->builder->parse_shortcode( $shortcode3 ) );
+		$shortcode2_expect = array(
+			"shortcode_name"        => "karma_text",
+			"element_key"           => 'w4trwv',
+			"shortcode_attributes"  => array(
+				"color"     => "red",
+				"font"      => "arial",
+				"bg"        => "#000fff",
+				"style"     => 'font-family: "tahoma";',
+				"radius"    => '18',
+				"title"     => 'this is a " title " ',
+				"sub_title" => "this is a subtitle's test"
+			),
+			"shortcode_content" => ""
+		);
+		$this->assertEquals( ksort( $shortcode2_expect ), ksort( $this->builder->parse_shortcode( $shortcode2 ) ) );
+
+		$shortcode3_expect = array(
+			"shortcode_name"        => "karma_text",
+			"element_key"           => 'w4tfwe' ,
+			"shortcode_attributes"  => array(),
+			"shortcode_content"     => ""
+		);
+		$this->assertEquals( ksort( $shortcode3_expect ), ksort( $this->builder->parse_shortcode( $shortcode3 ) ) );
 
 		$this->assertEquals( false, $this->builder->parse_shortcode( $shortcode4 ) );
 	}
@@ -67,15 +69,15 @@ class Tests_Core extends WP_UnitTestCase {
 	public function test_parse_shortcodes(){
 
 		$shortcodes =
-			'[shortcode_test color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
-			.'[shortcode_test2 element_key="w3erts"] Test Content Goes here[/shortcode_test2]'
-			.'[shortcode_test4 element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/shortcode_test4]'
-			.'[/shortcode_test]'
-			.'[shortcode_test3 element_key="w4ebtz"][/shortcode_test3]';
+			'[karma_section color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
+			.'[karma_text element_key="w3erts"] Test Content Goes here[/karma_text]'
+			.'[karma_image element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/karma_image]'
+			.'[/karma_section]'
+			.'[karma_column element_key="w4ebtz"][/karma_column]';
 
 		$expect = array(
 			array(
-				"shortcode_name"        => "shortcode_test",
+				"shortcode_name"        => "karma_section",
 				"shortcode_attributes"  =>  array(
 					"color"     =>  "red",
 					"font"      =>  "arial",
@@ -90,7 +92,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"parent_key"	=> ''
 			),
 			array(
-				"shortcode_name"        => "shortcode_test2",
+				"shortcode_name"        => "karma_text",
 				"shortcode_attributes"  =>  array(),
 				"shortcode_content"     => " Test Content Goes here",
 				"element_key" 		    => "w3erts" ,
@@ -98,7 +100,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"parent_key"			=> 'w3test'
 			),
 			array(
-				"shortcode_name"        => "shortcode_test4",
+				"shortcode_name"        => "karma_image",
 				"shortcode_attributes"  =>  array(
 					"color"     =>  "blue",
 					"font"      =>  "arial",
@@ -114,7 +116,7 @@ class Tests_Core extends WP_UnitTestCase {
 				"element_key" 		=> 'w3ebty' ,
 			),
 			array(
-				"shortcode_name"        => "shortcode_test3",
+				"shortcode_name"        => "karma_column",
 				"shortcode_attributes"  =>  array(),
 				'shortcode_content' 	=> '' ,
 				"element_key" 			=> 'w4ebtz' ,
@@ -124,7 +126,7 @@ class Tests_Core extends WP_UnitTestCase {
 			),
 		);
 
-		$this->assertEquals( $expect, $this->builder->parse_shortcodes( $shortcodes ) );
+		$this->assertEquals( ksort( $expect ), ksort( $this->builder->parse_shortcodes( $shortcodes ) ) );
 
 	}
 
@@ -432,6 +434,21 @@ class Tests_Core extends WP_UnitTestCase {
 		);
 
 		$this->assertEquals( $expect, $elements_map );
+	}
+
+	public function test_add_default_attributes() {
+		$element_name = 'karma_text';
+		$element_attributes = array(
+			'element_key'   => '8682364'
+		);
+		$expect = array(
+			'element_key'   => '8682364',
+			'tag'           => 'div',
+			'color'         => '#000',
+			'align'         => 'left'
+		);
+		$this->assertEquals( ksort( $expect ), ksort( $this->builder->add_default_attributes( $element_name, $element_attributes ) ) );
+
 	}
 
 }

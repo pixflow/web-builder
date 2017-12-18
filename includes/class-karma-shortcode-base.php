@@ -181,9 +181,9 @@ class Karma_Shortcode_Base {
 	}
 
     /**
-     * Set the attributes of current elements and also
-     * set the unique id
+     * Set the attributes of current elements and also set the unique id
      *
+     * @param	array	$attributes	contains element attribute
      *
      * @since   1.0.0
      * @access  public
@@ -191,9 +191,11 @@ class Karma_Shortcode_Base {
      */
     public function get_element_attributes( $attributes ) {
 
-        $this->element_attributes = $attributes['attributes'];
-        $this->element_id = $this->element_attributes['element_key'] ;
-        return $this;
+	    $default_attributes = $this->get_element_default_attributes();
+	    $element_attributes = $attributes[ 'attributes' ];
+	    $this->element_attributes = array_merge( $default_attributes, $element_attributes );
+	    $this->element_id = $this->element_attributes[ 'element_key' ];
+	    return $this;
 
     }
 

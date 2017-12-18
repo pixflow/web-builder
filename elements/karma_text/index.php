@@ -36,10 +36,10 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 *
 	 * @return array
 	 */
-	public function get_element_default_attributes(){
+	static function get_element_default_attributes(){
 
 		return 	array(
-			'element_key'   => 'kb' ,
+			'element_key'   => 'kb',
 			'tag'           => 'div',
 			'color'			=> '#000',
 			'align'         => 'left'

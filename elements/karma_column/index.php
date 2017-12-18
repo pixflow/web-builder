@@ -12,7 +12,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 *
 	 * @return array
 	 */
-	public function get_element_default_attributes(){
+	static function get_element_default_attributes(){
 
 		return 	array(
 			'sm_size'   	=> '12',
@@ -31,7 +31,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	}
 
 	public function wrapper_classes( $classes, $atts ) {
-
+		
 		$classes[] = 'karma-col-sm-' . $atts[ 'sm_size' ];
 		$classes[] = 'karma-col-md-' . $atts[ 'md_size' ];
 		$classes[] = 'karma-col-lg-' . $atts[ 'lg_size' ];

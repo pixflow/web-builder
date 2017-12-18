@@ -235,6 +235,7 @@ class Karma_Builder_Core{
 		preg_match_all( $pattern , $element_attributes , $matches );
 		$shortcode_models["shortcode_name"] = $matches[2][0];
 		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[3][0] );
+		$shortcode_models[ "shortcode_attributes" ] = $this->add_default_attributes( $shortcode_models[ "shortcode_name" ], $shortcode_models[ "shortcode_attributes" ] );
 		$shortcode_models['shortcode_content'] = $matches[5][0];
 		$shortcode_models['element_key'] = $shortcode_models["shortcode_attributes"]['element_key'];
 		unset( $shortcode_models["shortcode_attributes"]['element_key'] );
@@ -311,6 +312,26 @@ class Karma_Builder_Core{
 			}
 		}
 		return $atts;
+
+	}
+
+	/**
+	 * Check element attributes and add default values if attribute is not exist
+	 *
+	 * @param   string  $element_name       element name
+	 * @param   array   $element_attributes element attributes
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return  array    The group of attributes of element
+	 */
+	private function add_default_attributes( $element_name, $element_attributes ) {
+
+		$element_name = explode( '_', $element_name );
+		$element_calss_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$default_attributes = $element_calss_neme::get_element_default_attributes();
+		$atributes = array_merge( $default_attributes, $element_attributes );
+		return $atributes;
 
 	}
 

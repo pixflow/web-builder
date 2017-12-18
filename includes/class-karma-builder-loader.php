@@ -371,7 +371,7 @@ class Karma_Builder_Loader {
 	 *
 	 * @param	string	$output	Html source of each element
 	 * @param	string	$tag	The name of element
-	 * @param 	string	$attr	The attribute of element
+	 * @param 	array	$attr	The attribute of element
 	 *
 	 * @since     1.0.0
 	 * @return    string	the correct html source for builder
@@ -383,6 +383,8 @@ class Karma_Builder_Loader {
 			'attributes'		=> $attr,
 			'output'			=> $output,
 		);
+
+		$attr = $this->add_default_attributes( $tag, $attr );
 		$classes = apply_filters( 'karma/elements/' . $tag . '/classes', array(), $attr );
 		$classes = implode( ' ',$classes );
 		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" >"
@@ -399,7 +401,7 @@ class Karma_Builder_Loader {
 	 *
 	 * @param	string	$output	Html source of each element
 	 * @param	string	$tag	The name of element
-	 * @param 	string	$attr	The attribute of element
+	 * @param 	array	$attr	The attribute of element
 	 *
 	 * @since     1.0.0
 	 * @return    string	the correct html source for builder
@@ -411,8 +413,29 @@ class Karma_Builder_Loader {
 			'attributes'		=> $attr,
 			'output'			=> $output,
 		);
+		$shortcode_info[ 'attributes' ] = $this->add_default_attributes( $tag, $attr );
 		do_action( 'karma_before_shortcode_apply_' . $tag, $shortcode_info );
 		return $output;
+
+	}
+
+	/**
+	 * Check element attributes and add default values if attribute is not exist
+	 *
+	 * @param	string	$element_name		element name
+	 * @param	array	$element_attributes	element attributes
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array - The group of attributes of element
+	 */
+	private function add_default_attributes( $element_name, $element_attributes ) {
+
+		$element_name = explode( '_', $element_name );
+		$element_calss_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$default_attributes = $element_calss_neme::get_element_default_attributes();
+		$atributes = array_merge( $default_attributes, $element_attributes );
+		return $atributes;
 
 	}
 

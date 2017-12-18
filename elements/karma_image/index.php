@@ -36,7 +36,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 *
 	 * @return array
 	 */
-	public function get_element_default_attributes(){
+	static function get_element_default_attributes(){
 
 		return 	array(
 			'element_key'   => 'kb' ,
