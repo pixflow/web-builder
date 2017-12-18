@@ -21,7 +21,7 @@
 			li {
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@extend .HelveticaNeue-font;
-				color: white;
+				color: #fff;
 				cursor: pointer;
 				font-size: 14px;
 				line-height: 17px;
@@ -35,16 +35,16 @@
 				}
 
 				&:hover > div {
-					color: rgba( 255, 255, 255, 0.6 );
+					color: $builder-main-color-5;
 				}
 
 				#karma-upgrade-menu{
-					fill: rgba( 255,255,255,1 );
+					fill: #fff;
 					 transition: fill .1s ;
 				 }
 
 				&:hover  #karma-upgrade-menu{
-					fill: rgba( 255, 255, 255, .6 );
+					fill: $builder-main-color-5;
 				}
 
 				.builder-upgrade-icon{
@@ -60,7 +60,7 @@
 				}
 
 				&.builder-brand{
-					border-right: 1px solid rgba( 255,255,255,0.19 );
+					border-right: 1px solid rgba(255, 255, 255, 0.19);
 					margin-left: 0;
 					padding-right: 25.5px;
 				}
@@ -83,7 +83,7 @@
 
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@extend .HelveticaNeue-font;
-				color: rgba(255, 255, 255, 0.8);
+				color: $builder-main-color-5;
 				cursor: pointer;
 				font-size: 15px;
 				line-height: 17px;
@@ -100,7 +100,7 @@
 
 				&.builder-publish{
 					@include box( 112px, 32px );
-					background-color: rgba( 255,255,255,0.2 );
+					background-color: rgba(255, 255, 255, 0.2);
 					border-radius: 3px;
 					box-shadow: 0 4px 7px 1px rgba( 57,73,89,0.15 );
 					transition-duration: .3s;
@@ -124,7 +124,7 @@
 					border: 2px solid $builder-accent-color;
 					border-radius: 100%;
 					box-sizing: border-box;
-					color: #FFFFFF;
+					color: #FFF;
 					font-family: "Helvetica Neue";
 					font-size: 8px;
 					font-weight: bold;

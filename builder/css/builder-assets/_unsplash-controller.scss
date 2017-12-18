@@ -11,7 +11,7 @@
 
 			input {
 				background: transparent;
-				border: 1px solid #E7E7E7;
+				border: 1px solid $builder-main-color-4;
 				border-radius: 4px;
 				font-size: 12px;
 				line-height: 14px;
@@ -19,15 +19,15 @@
 				text-align: left;
 				width: 243px;
 				&::placeholder {
-					color: #B3BAC1;
+					color: $builder-main-color-2;
 				}
 			}
 		}
 
 		.karma-unspalsh-icon {
 			@include box(9px, 9px);
-			border-left: 2px solid rgba(57, 73, 89, 0.5);
-			border-bottom: 2px solid rgba(57, 73, 89, 0.5);
+			border-left: 2px solid $builder-main-color-1;
+			border-bottom: 2px solid $builder-main-color-1;
 			cursor: pointer;
 			position: relative;
 			top: -3px;

@@ -10,9 +10,9 @@
 	button.karma-setting-panel-group-button {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-between);
 		padding: 20px;
-		background-color: #f7f8f9;
+		background-color: $builder-main-color-5;
 		border: none;
-		border-top: 1px solid rgba(57, 73, 89, 0.2);
+		border-top: 1px solid $builder-main-color-5;
 		color: $builder-main-color;
 		cursor: pointer;
 		font-size: 15px;
@@ -40,7 +40,7 @@
 	}
 
 	div.karma-group-panel {
-		background-color: #f7f8f9;
+		background-color: $builder-main-color-5;
 		border-radius: 0 0 7px 7px;
 		display: none;
 		overflow: hidden;

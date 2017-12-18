@@ -16,7 +16,7 @@
 
 		.rangeslider--horizontal {
 			@include box(68%, 3px);
-			background: #cbe5fd;
+			background: $builder-accent-color-3;
 			border-radius: 50px;
 			box-shadow: none;
 

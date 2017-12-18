@@ -13,7 +13,7 @@
 .karma-builder-element[data-name="karma_section"] {
 
 	&:not(.karma-active-section):hover {
-		box-shadow: 0 0 0 1px rgba(65, 156, 248, 0.51);
+		box-shadow: 0 0 0 1px $builder-accent-color-2;
 	}
 
 }

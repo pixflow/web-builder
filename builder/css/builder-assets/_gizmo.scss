@@ -87,7 +87,7 @@ img{
 .tooltip-div {
     @include box( 39px, 16px );
 	@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
-	background-color: #76c1f3;
+	background-color: $builder-accent-color-1;
 	border-radius: 100px;
 	color: #fff;
 	font-family: HelveticaNeue;
@@ -160,16 +160,16 @@ img{
 				svg {
 					* {
 						transition:0.1s;
-						fill: rgba(57, 73, 89, 0.80);
+						fill: $builder-main-color-1;
 					}
 				}
 			}
 		}
 		.karma-drop-down-box{
 			@include element_direction( $top: 45px, $left:-5px );
-			background-color: white;
+			background-color: #fff;
 			border-radius: 4px;
-			box-shadow: 0 2px 12px 0 rgba(57,73,89,0.2);
+			box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
 			cursor: auto;
 			display: none;
 			flex-direction: column;
@@ -194,11 +194,11 @@ img{
 				outline: none;
 				padding: 6px;
 				&:hover{
-					background-color: rgba( 65,156,248,0.15 );
+					background-color: $builder-accent-color-3;
 				}
 
 				&.karma-drop-down-active-item{
-					background-color: rgba( 65,156,248,0.15 );
+					background-color: $builder-accent-color-3;
 				}
 
 			}
@@ -218,7 +218,7 @@ img{
 
 			.karma-typography-link{
 
-				border-top: 1px solid rgba(57,73,89,0.2);
+				border-top: 1px solid $builder-main-color-4;
 				font-family: HelveticaNeue;
 
 				a{
@@ -263,7 +263,7 @@ img{
 		}
 
 		.karma-builder-gizmo-text {
-			border-right: 1px solid rgba(151, 151, 151, 0.3);
+			border-right: 1px solid $builder-main-color-4;
 			color: $builder-main-color;
 			font-family: HelveticaNeue_Medium;
 			font-size: 12px;
@@ -307,7 +307,7 @@ img{
 
 			.karma-builder-gizmo-icon {
 				@include box(auto, 22px);
-				border-left: 1px solid rgba(151, 151, 151, 0.3);
+				border-left: 1px solid $builder-main-color-4;
 				padding: 0 10px 0 10px;
 
 			}
@@ -346,7 +346,7 @@ img{
 
 	.spacing-dot-hover {
 		@include box( 0, 0 );
-		background-color: rgba(51, 143, 252, 0.3);
+		background-color: $builder-accent-color-3;
 		border-radius: 100%;
 		transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
 	}
@@ -448,7 +448,7 @@ img{
 
 	.spacing-bottom-dot-hover {
 		align-items: center;
-		background-color: rgba(51, 143, 252, 0.3);
+		background-color: $builder-accent-color-3;
 		border-radius: 100%;
 		display: none;
 		height: 18px;
@@ -475,7 +475,7 @@ img{
 	&.karma-active-section {
 
 		.karma-row {
-			box-shadow: 0 0 0 1px rgba(118, 129, 140, 0.18);
+			box-shadow: 0 0 0 1px $builder-main-color-4;
 
 			> .karma-builder-element:last-child {
 				.resize-handler {
@@ -499,7 +499,7 @@ img{
 			.resize-handler:before {
 				@include center( 'horizontal' );
 				@include box( 1px, 100% );
-				background-color: rgba(118, 129, 140, 0.18);
+				background-color: $builder-main-color-4;
 				content: " ";
 				cursor: col-resize;
 				top: 0;
@@ -507,14 +507,14 @@ img{
 			}
 
 			.resize-handler:hover:before {
-				background-color: rgba(51, 143, 252, 0.3);
+				background-color: $builder-accent-color-3;
 				width: 4px;
 			}
 
 			.resize-dragging {
 
 				.resize-handler:before {
-					background-color: rgba(51, 143, 252, 0.3);
+					background-color: $builder-accent-color-3;
 					width: 4px;
 				}
 
@@ -526,7 +526,7 @@ img{
 
 	&.karma-active-column {
 		.karma-column-setting {
-			background-color: #76818C;
+			background-color: $builder-main-color-2;
 			cursor: pointer;
 			display: block;
 			left: 0;
@@ -562,13 +562,13 @@ img{
 	}
 
 	.karma-right-spacing.ui-resizable-resizing {
-		background-color: rgba(51, 143, 252, 0.1);
-		border-left: 1px solid rgba(51, 143, 252, 0.3); ;
+		background-color: $builder-accent-color-4;
+		border-left: 1px solid $builder-accent-color-3;
 	}
 
 	.karma-left-spacing.ui-resizable-resizing {
-		background-color: rgba(51, 143, 252, 0.1);
-		border-right: 1px solid rgba(51, 143, 252, 0.3); ;
+		background-color: $builder-accent-color-4;
+		border-right: 1px solid $builder-accent-color-3 ;
 	}
 
 	.karma-right-spacing .spacing-dot{

@@ -2,9 +2,9 @@
 	.karma-switch-panel-container {
 
 		@include flexbox($justify-content: center);
-		background-color: #F7F8F9;
+		background-color: $builder-main-color-5;
 		border-radius: 0 0 7px 7px;
-		border-top: 1px solid rgba(57, 73, 89, 0.2);
+		border-top: 1px solid $builder-main-color-3;
 
 		#new-form-builder-panel {
 			@include element_direction($top: 0, $left: 360px);
@@ -14,15 +14,15 @@
 
 		.karma-switch-panel-button {
 			@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
-			background-color: #FFFFFF;
-			border: 1px solid rgba(57, 73, 89, 0.2);
+			background-color: #FFF;
+			border: 1px solid $builder-main-color-3;
 			border-radius: 100px;
 			margin: $top-space-orange 0;
 			padding: 10px 21px;
 			text-transform: capitalize;
 
 			p {
-				color: #445362;
+				color: $builder-main-color-1;
 				font-size: 14px;
 				line-height: 14px;
 				margin: 0;
@@ -30,8 +30,8 @@
 
 			.karma-switch-panel-shape {
 				@include box(9px, 9px);
-				border-bottom: 2px solid rgba(57, 73, 89, 0.46);
-				border-left: 2px solid rgba(57, 73, 89, 0.46);
+				border-bottom: 2px solid $builder-main-color-1;
+				border-left: 2px solid $builder-main-color-1;
 				margin-right: 4px;
 				transform: rotate(45deg);
 				transition-duration: .3s;
