@@ -2,7 +2,8 @@
 	<div class="element-panel-button element-panel-add-element-button" data-open-panel="karma-element-panel-add-element-view">
 		<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/element-panel-1.svg' ); ?>
 	</div>
-	<div class="karma-element-panel-view karma-element-panel-add-element-view" data-active-tab = 'karma-element-panel-list' >
+	<div class="karma-element-panel-view
+	karma-element-panel-add-element-view" data-active-tab = 'karma-element-panel-list' >
 		<div class="karma-element-panel-add-element-view-left">
 			<div class="karma-element-panel-add-element-view-content">
                 <# print( KarmaView.getWpTemplate( 'karma-element-panel-category-filter' , data.leftParam ) ); #>

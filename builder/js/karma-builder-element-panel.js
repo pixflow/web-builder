@@ -38,7 +38,7 @@
 		 * @returns {void}
 		 */
 		initialize: function() {
-			
+
 			this.setElement( $( '<div class="karma-element-panel-container">' ) );
 			this.render();
 			this.createAddElementPanel();
