@@ -48,6 +48,7 @@
 			this.$el.trigger( 'karma/after/finish_element_panel', [ this ] );
 			this.setEvents();
 			this.removeGatherMenuPanel();
+			this.elementGatherMenuFiltering();
 
 		},
 
@@ -202,7 +203,6 @@
 					addElement.classList.add("element-panel-show");
 				}
 			}
-			this.callIsotopeOnElements();
 			this.scrollElementPanel();
 
 		},
@@ -679,11 +679,10 @@
 			var searchValue = $( e.target ).val();
 			$('.karma-element-single-element').hide();
 			if( '' != searchValue.trim() ){
-				$('[data-category*="' + searchValue.trim() + '"]').css( 'display', 'flex' );
+				$('[data-id*="' + searchValue.trim() + '"]').css( 'display', 'flex' );
 			}else{
 				$('.karma-element-single-element').css( 'display', 'flex' );
 			}
-			this.isotopeRelayout();
 
 		},
 
@@ -715,25 +714,39 @@
 		setPriceFilterOnAll : function () {
 
 			this.el.querySelector( '.karma-element-panel-price-filter ul .active' ).classList.remove( 'active' );
-			this.el.querySelector( '.karma-element-panel-price-filter ul li[ data-filter = "*" ]' ).classList.add( 'active' );
-			this.callIsotopeFilter( '*' );
+			this.el.querySelector( '.karma-element-panel-price-filter ul li[ data-id = "*" ]' ).classList.add( 'active' );
+		//	this.callfiltering( '*' );
 
 		},
 
 		/**
-		 * @summary initialize isotope on add element panel
+		 * @summary initialize quicksand on add element panel
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		callIsotopeOnElements: function () {
+		callIQuicksandOnElements: function ( $data ) {
 
-			 $( '.karma-elements' ).isotope({
+			var filteredElements = this.callfiltering( $data );
+			$('.karma-elements ').quicksand( filteredElements ,{
+				duration: 500,
+				useScaling : true ,
+				easing : 'easeOutQuad',
+			}  );
 
-				itemSelector: '.karma-element-single-element',
-				layoutMode: 'fitRows'
+		},
 
-			});
+		callfiltering : function ( $data ) {
+
+			if ( $('.karma-builder-element-panel-gather-menu .active').attr( 'data-id' ) == '*' ) {
+				var $filteredData = $data.find('.karma-element-single-element');
+			} else {
+				var $filteredData = $data.find(
+					'.karma-element-single-element[data-id*=' + $('.karma-builder-element-panel-gather-menu .active').attr( 'data-id' ) +']'
+				);
+			}
+			return $filteredData
+
 		},
 
 		/**
@@ -763,9 +776,14 @@
 		 */
 		elementGatherMenuFiltering : function () {
 
+			var that = this;
+			var $data = $('.karma-isotope').clone();
 			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 
-				$( '.karma-elements' ).isotope( { filter: $( this ).attr( 'data-filter' ) } );
+				$('.karma-builder-element-panel-gather-menu .active').removeClass('active');
+				$( this ).addClass('active');
+				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
+				that.callIQuicksandOnElements( $data );
 				$( '.karma-builder-element-panel-gather-menu' ).trigger( '.removeGatherMenuPane' );
 
 			});
@@ -787,31 +805,15 @@
 			}
 			this.el.querySelector( '.active' ).classList.remove( 'active' );
 			target.classList.add( 'active' );
-			if( '.premium' == target.getAttribute( 'data-filter' ) ){
+			if( '.premium' == target.getAttribute( 'data-id' ) ){
 				this.checkingPermium();
 			}else {
 				this.setActiveTab( this.el.querySelector( '.karma-addcontent-active' ) );
 			}
-			this.callIsotopeFilter( target.getAttribute( 'data-filter' ) );
+			//this.callfiltering( target.getAttribute( 'data-id' ) );
 
 		},
 
-		/**
-		 * @summary call isotope filter
-		 *
-		 * @param 	string dataFilter filtered item
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
-		callIsotopeFilter : function( dataFilter ){
-
-			$( '.karma-active-tab .karma-isotope' ).isotope( { filter : dataFilter } );
-
-		},
-
-		isotopeRelayout : function () {
-			$( '.karma-active-tab .karma-isotope' ).isotope( 'layout' );
-		},
 
 		/**
 		 * @summary Close gather menu panel

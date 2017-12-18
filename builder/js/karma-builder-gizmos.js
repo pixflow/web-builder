@@ -519,12 +519,9 @@
 		showElementGizmo: function ( e ) {
 
 			e.stopPropagation();
-			$( ".karma-active-element" ).removeClass( 'karma-active-element' );
-			var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
+			$( '.karma-builder-element' ).removeClass( 'karma-active-element' );
 			this.$el.addClass( 'karma-active-element' );
-			if( null != addElement ) {
-				addElement.classList.remove("element-panel-show");
-			}
+			window.karmaElementPanel.closeElementPanel();
 
 		},
 

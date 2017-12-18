@@ -16,14 +16,18 @@
 			flex-wrap: wrap;
 			margin-bottom: 4.44vh;
 			max-height: calc( 100% - ( 72px + 4.44vh ) );
+			min-width: 16vw;
 			overflow: hidden;
 			padding: 0 .5vw 0 1vw;
 			width: 100%;
 		}
 
 		.karma-element-single-element {
-		  border: 1px solid transparent;
-		  border-radius: 4px;
+			background-color: #fff;
+			border: 0 solid transparent;
+			border-radius: 4px;
+			transition: none;
+			opacity: 1;
 			&:hover {
 				border: 1px solid $builder-accent-color;
 			}
@@ -80,7 +84,7 @@
 			}
 
 			.element-panel-section-container {
-				
+
 				@include flexbox(center, center, flex-start);
 				display: none;
 				flex-direction: column;
@@ -364,6 +368,7 @@
 }
 
 /** Separate these stylesheet for jquery UI */
+
 .karma-element-single-element{
 	@include flexbox( center, center, center );
 	@include box( 89px, 94px );

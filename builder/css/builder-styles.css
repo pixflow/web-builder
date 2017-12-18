@@ -3761,12 +3761,16 @@ img {
       flex-wrap: wrap;
       margin-bottom: 4.44vh;
       max-height: calc( 100% - ( 72px + 4.44vh ) );
+      min-width: 16vw;
       overflow: hidden;
       padding: 0 .5vw 0 1vw;
       width: 100%; }
     .karma-element-panel-container .karma-element-panel-list .karma-element-single-element {
-      border: 1px solid transparent;
-      border-radius: 4px; }
+      background-color: #fff;
+      border: 0 solid transparent;
+      border-radius: 4px;
+      transition: none;
+      opacity: 1; }
       .karma-element-panel-container .karma-element-panel-list .karma-element-single-element:hover {
         border: 1px solid #419CF8; }
   .karma-element-panel-container .element-panel-button {

@@ -48,6 +48,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		initialize : function () {
+
 		},
 
 		/**
@@ -155,7 +156,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		settingPanelHtml : function () {
 
-			new karmaBuilder.elementPanel();
+			window.karmaElementPanel = new karmaBuilder.elementPanel();
 
 		},
 

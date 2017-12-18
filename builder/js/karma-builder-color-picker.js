@@ -17,6 +17,7 @@
 
 var $ = jQuery,
 karmaColorPicker = function ( options ) {
+	var $ = jQuery
 
 	this.options = {};
 	this.defaultOptions = {
@@ -209,7 +210,8 @@ karmaColorPicker.prototype.presetColorsEvent = function ( el ) {
  */
 karmaColorPicker.prototype.changeColorAction = function () {
 
-	var that = this;
+	var that = this,
+		$ = jQuery;
 	$( this.options.selector + " .karma-color-picker-mode span" ).off( "click.changeModes" ).on( "click.changeModes", function () {
 
 		$( this ).siblings().removeClass( 'active' );
@@ -232,7 +234,8 @@ karmaColorPicker.prototype.changeColorAction = function () {
  */
 karmaColorPicker.prototype.setMainInputEvent = function () {
 
-	var that = this;
+	var that = this,
+	$ = jQuery;
 	$( this.activeInput ).on( 'change', function () {
 		that.icon.style.background = this.value;
 	} );
@@ -248,7 +251,9 @@ karmaColorPicker.prototype.setMainInputEvent = function () {
  */
 karmaColorPicker.prototype.chooseColorEvent = function () {
 
-	var that = this;
+	var that = this,
+		$ = jQuery;
+
 	$( that.chooseColor ).on( 'click', function ( e ) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -293,9 +298,11 @@ karmaColorPicker.prototype.addColorToPallet = function ( color, addClass ) {
  */
 karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
 
+	var $ = jQuery;
 	$( this.activeInput ).val( newColor )
 			.change()
 			.trigger( 'change/updateColor', [ newColor, $( this.activeInput ).hasClass('karma-color-gizmo-hover') ] );
+	$( this.activeInput ).val( newColor ).change();
 
 };
 
@@ -333,7 +340,8 @@ karmaColorPicker.prototype.saveColors = function ( color ) {
  */
 karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 
-	var that = this;
+	var that = this,
+		$ = jQuery;
 	$( "#" + this.id ).spectrum( {
 		color: that.options.color,
 		showAlpha: that.options.opacity,
@@ -386,7 +394,8 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 
 	e.preventDefault();
 	var colorPickerContaner = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
-		that = this;
+		that = this,
+		$ = jQuery;
 	if ( $( colorPickerContaner ).hasClass( 'opened' ) ) {
 		$( colorPickerContaner ).removeClass( 'opened' );
 	} else {
