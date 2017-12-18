@@ -12,7 +12,6 @@
 		 */
 		events : {
 
-			"click .element-panel-add-element-button"									: "openAddElementView",
 			"click.stopClickInPanel" 										            : "stopClickInPanel",
 			"karma/after/finish_element_panel"                                         	: "initDraggable" ,
 			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
@@ -25,7 +24,8 @@
 			'karma/after/dropElement'                                                   : "reorderElements" ,
 			"click .karma-search-close-icon"											: "clearElementPanelSearchBar" ,
 			"click .karma-builder-search-text"											: "showElementPanelSearchBar" ,
-			"mousewheel .karma-elements"                                                : "preventFromScrolling"
+			"mousewheel .karma-elements"                                                : "preventFromScrolling" ,
+			"click .element-panel-button"												: "openElementPanel"
 
 
 		},
@@ -38,7 +38,7 @@
 		 * @returns {void}
 		 */
 		initialize: function() {
-
+			
 			this.setElement( $( '<div class="karma-element-panel-container">' ) );
 			this.render();
 			this.createAddElementPanel();
@@ -183,27 +183,6 @@
 
 			var template = '<div>' + KarmaView.getWpTemplate( 'karma-element-panel-upgrade', {} ) + '</div>';
 			this.el.appendChild( $( template )[ 0 ] );
-
-		},
-
-		/**
-		 *@summary open add element panel
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
-		openAddElementView: function () {
-
-			var addElement = document.querySelector( '.karma-element-panel-add-element-view' );
-			var elementPanelShowClass = "element-panel-show";
-			if( null != addElement ){
-				if ( addElement.classList.contains( elementPanelShowClass ) ) {
-					addElement.classList.remove( "element-panel-show" );
-				}else {
-					addElement.classList.add("element-panel-show");
-				}
-			}
-			this.scrollElementPanel();
 
 		},
 
@@ -763,7 +742,7 @@
 			if ( target.closest('svg').length ) {
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
-			this.elementGatherMenuFiltering();
+			//this.elementGatherMenuFiltering();
 			this.elementPanelCloseSearchBar( e );
 
 		},
@@ -782,7 +761,6 @@
 
 				$('.karma-builder-element-panel-gather-menu .active').removeClass('active');
 				$( this ).addClass('active');
-				var panelGatherMenu = $( '.karma-builder-element-panel-gather-menu' );
 				that.callIQuicksandOnElements( $data );
 				$( '.karma-builder-element-panel-gather-menu' ).trigger( '.removeGatherMenuPane' );
 
@@ -902,6 +880,40 @@
 					searchInputCloseButton.classList.remove( "show-search-close-icon" ) ;
 				}
 			}
+		},
+
+		/**
+		 *@summary open element panel for each button
+		 * @param event
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		openElementPanel: function ( e ) {
+
+			var elementPanelIcon = ( e.target.classList.contains( 'element-panel-button' ) ) ? e.target : e.target.closest( '.element-panel-button' ),
+				elementPanelAttr =elementPanelIcon.getAttribute( "data-open-panel" ),
+				elementPanelShowClass = "element-panel-show";
+
+			if( "" != elementPanelAttr && null != elementPanelAttr ){
+					var addElement = document.querySelector( '.' + elementPanelAttr ),
+						openElementPanel = document.querySelector( ".element-panel-show" );
+
+				if( null != openElementPanel ){
+					openElementPanel.classList.remove( "element-panel-show" );
+				}
+
+				if( null != addElement ){
+					if ( addElement.classList.contains( elementPanelShowClass ) ) {
+						addElement.classList.remove( "element-panel-show" );
+					}else {
+						addElement.classList.add( "element-panel-show" );
+					}
+				}
+
+			this.scrollElementPanel();
+			}
+
 		},
 
 	});

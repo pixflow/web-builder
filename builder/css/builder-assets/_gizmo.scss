@@ -257,11 +257,10 @@ img{
 		}
 
 		.karma-builder-gizmo-icon {
-			align-items: center;
+			@include flexbox( $align-item:center );
 			cursor: pointer;
-			display: flex;
-			height: 22px;
-			padding: 0 6px 0 6px;
+			height: 32px;
+			padding: 0 6px;
 			transition-duration: 0.1s;
 			div {
 				display: flex;

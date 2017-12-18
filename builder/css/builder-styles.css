@@ -2918,11 +2918,13 @@ img {
         display: flex;
         flex-direction: column; }
     .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon {
-      align-items: center;
-      cursor: pointer;
       display: flex;
-      height: 22px;
-      padding: 0 6px 0 6px;
+      text-align: inherit;
+      align-items: center;
+      justify-content: inherit;
+      cursor: pointer;
+      height: 32px;
+      padding: 0 6px;
       transition-duration: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon div {
         display: flex; }
