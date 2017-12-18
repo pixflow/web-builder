@@ -534,11 +534,12 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
+		//@TODo need refactor
 		removeGizmo: function () {
 
 			$( document ).off( "click.removeGizmo" ).on( "click.removeGizmo", function(){
 
-				$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
+				//$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
 
 			})
 

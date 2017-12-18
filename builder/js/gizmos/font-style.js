@@ -50,7 +50,7 @@
 		 */
 		setItalicStyle : function () {
 
-			document.execCommand( 'italic', true );
+			document.execCommand( 'italic', false, null );
 
 		} ,
 
@@ -63,7 +63,7 @@
 		 */
 		setUnderlineStyle : function () {
 
-			document.execCommand( 'underline', true );
+			document.execCommand( 'underline', false, null );
 
 		},
 
@@ -76,7 +76,7 @@
 		 */
 		setBoldStyle : function () {
 
-			document.execCommand( 'bold', true );
+			document.execCommand( 'bold', false, null );
 
 		},
 
