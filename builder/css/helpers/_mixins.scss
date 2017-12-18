@@ -287,7 +287,7 @@
 @mixin oval-button {
 
 	@include flexbox( center );
-	@include box-color( #394959, #ffffffb3, 100px );
+	@include box-color( $builder-main-color, #fff, 100px );
 	@extend .karma-builder-title-3;
 	@extend .karma-button-padding;
 	height:36px;
@@ -312,9 +312,9 @@
 @mixin oval-button-with-icon {
 
 	@include flexbox( center );
-	@include box-color( #394959, #ffffffb3, 100px );
+	@include box-color( $builder-main-color, #fff, 100px );
 	@extend .karma-builder-title-3;
-	border: 1px solid #D7DBDE;
+	border: 1px solid $builder-main-color-3;
 	height:36px;
 	font-weight: 400;
 	padding: 0 20px 0 18px;
@@ -341,13 +341,13 @@
 @mixin input-number-type {
 
 	@include box( 57px , 32px );
-	border: 1px solid #D7DBDE;
+	border: 1px solid $builder-main-color-3;
 	border-radius: 40px;
 	display: inline-flex;
 	justify-content: center;
 	margin-left: 13px;
 	padding: 0 14px;
-	color: #394959;
+	color: $builder-main-color;
 
 	input{
 		@include flexbox( $text-align: right );
@@ -388,7 +388,7 @@
 	@include box( 245px, 36px );
 	padding: 11px 14px;
 	background: transparent;
-	border: 1px solid #D7DBDE;
+	border: 1px solid $builder-main-color-3;
 	border-radius: 4px;
 	color: $builder-main-color-1;
 	font-size: 12px;
@@ -422,7 +422,7 @@
 	@extend .center-both-flex;
 	@include box( 32px );
 	border-radius: 100px;
-	border: 1px solid #D7DBDE;
+	border: 1px solid $builder-main-color-3;
 
     span{
 		margin-top: 1px;
@@ -438,7 +438,7 @@
 
 	@include flexbox( $align-item:center, $justify-content:center );
 	@include  box( 24px );
-	border: 1px solid #D7DBDE;
+	border: 1px solid $builder-main-color-3;
 	border-radius: 100px;
 
 	label{
