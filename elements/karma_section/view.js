@@ -285,11 +285,12 @@
 		 */
 		space: function () {
 
-			 var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-			 	padding		= this.model.attributes.shortcode_attributes.space + 'px';
-			this.$el.find( '.karma-bottom-spacing' ).css( 'height', padding )
-			this.renderCss( '.' + elementId, 'padding-top', padding );
-			this.renderCss( '.' + elementId, 'padding-bottom', padding );
+			var padding	= this.model.attributes.shortcode_attributes.space + 'px';
+			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
+			this.$el.find('.karma-section').css({
+				'padding-top'      : padding,
+				'padding-bottom'   : padding
+			});
 
 		},
 
@@ -309,12 +310,36 @@
 
 		},
 
+		/**
+		 * @summary Change the grid layout
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		grid: function () {
 
 			var newGrid = JSON.parse( this.getAttributes( ['grid'] ).grid );
 			this.changeRowLayout( newGrid );
 
+		},
+
+		/**
+		 * @summary extra class field changes. Add class to the element instead of render
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		columnspace : function () {
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+				margin = this.getAttributes( ['columnspace'] ).columnspace;
+			this.renderCss( '.' + elementId + ' .karma-column-margin', 'margin-left', margin );
+			this.renderCss( '.' + elementId + ' .karma-column-margin', 'margin-right', margin );
+
 		}
 
 	} );
+
 })( jQuery, karmaBuilder );

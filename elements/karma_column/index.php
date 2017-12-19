@@ -40,7 +40,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	}
 
-	public  function render( $atts, $content ) {
+	public function render( $atts, $content ) {
 
 		$atts = shortcode_atts(
 			$this->get_element_default_attributes(),
@@ -54,13 +54,15 @@ class Karma_Column extends Karma_Shortcode_Base {
 			. " karma-col-md-" . $atts[ 'md_size' ]
 			. " karma-col-lg-" . $atts[ 'lg_size' ]
 			. " karma-col-xl-" . $atts[ 'xl_size' ]
-			. "'> " . do_shortcode( $content ) . "</div>";
+			. "'> <div class='karma-column-margin' >" .  do_shortcode( $content ) . "</div></div>";
 
 	}
 
 	public static function js_render() {
 
-		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}'> {{ data.attributes.shortcode_attributes.shortcode_content }} </div>";
+		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}'> 
+				<div class='karma-column-margin' >{{ data.attributes.shortcode_attributes.shortcode_content }} </div>
+				</div>";
 
 	}
 

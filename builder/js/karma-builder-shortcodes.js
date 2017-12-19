@@ -97,7 +97,7 @@
 				}
 			} else if( 'karma_column' == getName && 0 == karmaBuilder.karmaModels.where({ parent_key : this.model.get('element_key') }).length ){
 				placeholderHTML =  KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className : 'karma-column-placeholder' } );
-				this.el.querySelector('.karma-column').innerHTML = placeholderHTML;
+				this.el.querySelector('.karma-column-margin').innerHTML = placeholderHTML;
 			}
 
 		},

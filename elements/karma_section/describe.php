@@ -70,7 +70,7 @@ class Karma_Section_Describe extends Karma_Section {
 						"label"		=> esc_attr__( "Top & bottom spacing", 'karma' ),
 						'value'		=> 0,
 						"options"	=> array(
-							'value'	=> 200,
+							'value'	=> 0,
 							'min'   => 0,
 							'max'   => 800,
 							'step'  => 1,
@@ -136,6 +136,19 @@ class Karma_Section_Describe extends Karma_Section {
 							),
 
 
+						)
+					),
+					array(
+						"name"		=> "columnspace",
+						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
+						"label"		=> esc_attr__( "Space between column", 'karma' ),
+						'value'		=> 0,
+						"options"	=> array(
+							'value'	=> 0,
+							'min'   => 0,
+							'max'   => 100,
+							'step'  => 1,
+							'unit'  => 'px'
 						)
 					),
 				)

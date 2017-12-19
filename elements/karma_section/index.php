@@ -19,6 +19,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'space'			=> '200',
 			'element_key'	=> '',
 			'extraclass'	=> '',
+			'columnspace'   => '0'
 		);
 
 	}
@@ -32,7 +33,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$container_class = ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
 		ob_start();
 		?>
-		<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'>
+		<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'
+		     style="padding-top:<?php echo esc_attr( $atts['space'] );?>px;padding-bottom:<?php echo esc_attr( $atts['space'] ); ?>px;">
 			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 				<?php echo do_shortcode( $content ); ?>
 			</div>
@@ -64,9 +66,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 	public function get_css_attributes() {
 
 		$styles = array(
+			'selector-postfix' => ' .karma-column-margin',
 			'property' => array(
-				'padding-top'       => $this->element_attributes[ 'space' ] . 'px',
-				'padding-bottom'    => $this->element_attributes[ 'space' ] . 'px',
+				'margin-left'       => $this->element_attributes[ 'columnspace' ] . 'px',
+				'margin-right'      => $this->element_attributes[ 'columnspace' ] . 'px',
 			)
 		);
 		return $styles;
