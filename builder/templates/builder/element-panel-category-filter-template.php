@@ -1,7 +1,7 @@
 <div class="karma-builder-addcontent">
     <div class="karma-builder-addcontent-title"><?php echo esc_attr__("Add Content", 'Karma'); ?></div>
     <ul>
-        <li class="karma-addcontent karma-addcontent-active" data-tab="karma-element-panel-list" >
+        <li title="Elements" class="karma-addcontent karma-addcontent-active karma-tooltip" data-tab="karma-element-panel-list" >
             <div class="karma-addcontent-icon">
                 <?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/add-panel-elements.svg' ); ?>
             </div>

@@ -21,45 +21,46 @@
   }
 }
 
+/* Tooltip styles for karma*/
 .ui-tooltip, .arrow:after {
-	background: black;
-	border: 2px solid white;
+	background: $builder-main-color;
 }
 .ui-tooltip {
-	padding: 10px 20px;
-	color: white;
-	border-radius: 20px;
-	font: bold 14px "Helvetica Neue", Sans-Serif;
-	text-transform: uppercase;
-	box-shadow: 0 0 7px black;
+	@include box( 70px, 30px );
+	align-items: center;
+	border-radius: 3px;
+	color: #fff;
+	display: flex;
+	font-size: 12px;
+	justify-content: center;
+	padding: 10px;
+	position: absolute;
+	z-index: $level5;
 }
 .arrow {
-	width: 70px;
-	height: 16px;
-	overflow: hidden;
-	position: absolute;
+	@include box( 70px, 16px );
+	bottom: -16px;
 	left: 50%;
 	margin-left: -35px;
-	bottom: -16px;
+	overflow: hidden;
+	position: absolute;
 }
 .arrow.top {
-	top: -16px;
 	bottom: auto;
+	top: -16px;
 }
 .arrow.left {
-	left: 20%;
+	left: 55%;
 }
 .arrow:after {
+	@include box( 20px, 20px );
+	@include element_direction($top:-20px, $left:20px);
+	box-shadow: 6px 5px 9px -9px $builder-main-color;
 	content: "";
 	position: absolute;
-	left: 20px;
-	top: -20px;
-	width: 25px;
-	height: 25px;
-	box-shadow: 6px 5px 9px -9px black;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 }
 .arrow.top:after {
 	bottom: -20px;

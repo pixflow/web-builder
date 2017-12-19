@@ -2327,45 +2327,52 @@ html {
     background-color: rgba(65, 156, 248, 0.1);
     border-radius: 2px; }
 
+/* Tooltip styles for karma*/
 .ui-tooltip, .arrow:after {
-  background: black;
-  border: 2px solid white; }
+  background: #394959; }
 
 .ui-tooltip {
-  padding: 10px 20px;
-  color: white;
-  border-radius: 20px;
-  font: bold 14px "Helvetica Neue", Sans-Serif;
-  text-transform: uppercase;
-  box-shadow: 0 0 7px black; }
+  width: 70px;
+  height: 30px;
+  align-items: center;
+  border-radius: 3px;
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  padding: 10px;
+  position: absolute;
+  z-index: 110; }
 
 .arrow {
   width: 70px;
   height: 16px;
-  overflow: hidden;
-  position: absolute;
+  bottom: -16px;
   left: 50%;
   margin-left: -35px;
-  bottom: -16px; }
+  overflow: hidden;
+  position: absolute; }
 
 .arrow.top {
-  top: -16px;
-  bottom: auto; }
+  bottom: auto;
+  top: -16px; }
 
 .arrow.left {
-  left: 20%; }
+  left: 55%; }
 
 .arrow:after {
+  width: 20px;
+  height: 20px;
+  top: -20px;
+  right: auto;
+  bottom: auto;
+  left: 20px;
+  box-shadow: 6px 5px 9px -9px #394959;
   content: "";
   position: absolute;
-  left: 20px;
-  top: -20px;
-  width: 25px;
-  height: 25px;
-  box-shadow: 6px 5px 9px -9px black;
-  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  transform: rotate(45deg); }
+  -webkit-transform: rotate(45deg); }
 
 .arrow.top:after {
   bottom: -20px;
@@ -3759,7 +3766,7 @@ img {
   left: 1.35vw;
   position: fixed;
   top: 36%;
-  z-index: 1000; }
+  z-index: 100; }
   .karma-element-panel-container .karma-element-panel-list {
     flex-wrap: wrap; }
     .karma-element-panel-container .karma-element-panel-list.karma-active-tab {

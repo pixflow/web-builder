@@ -411,10 +411,10 @@ var karmaBuilder = karmaBuilder || {};
 		karmaBuilder.karmaModels = new KarmaShortcodesCollection( JSON.parse( builderModels ) );
 		window.KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels } );
 		KarmaView.render();
-		$( document ).tooltip({
+		$( '.karma-tooltip' ).tooltip({
 			position: {
-				my: "center bottom-20",
-				at: "center top",
+				my: "center+10 top",
+				at: "center bottom+5",
 				using: function( position, feedback ) {
 					$( this ).css( position );
 					$( "<div>" )
