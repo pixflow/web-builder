@@ -35,7 +35,7 @@ class Tests_Core extends WP_UnitTestCase {
 					'radius'    => '18',
 					'style'     => 'font-family: "tahoma";',
 					'sub_title' => 'this is a subtitle\'s test',
-					'tag'       => 'div',
+					'tag'       => 'p',
 					'title'     => 'this is a " title " ',
 				),
 			'shortcode_content'    => ' Test Content Goes here',
@@ -54,7 +54,7 @@ class Tests_Core extends WP_UnitTestCase {
 					'bg'        => '#000fff',
 					'style'     => 'font-family: "tahoma";',
 					'radius'    => '18',
-					'tag'       => 'div',
+					'tag'       => 'p',
 					'title'     => 'this is a " title " ',
 					'sub_title' => 'this is a subtitle\'s test',
 				),
@@ -69,7 +69,7 @@ class Tests_Core extends WP_UnitTestCase {
 			'shortcode_attributes' => array(
 				'align' => 'left',
 				'color' => '#000',
-				'tag'   => 'div'
+				'tag'   => 'p'
 			),
 			'shortcode_content'    => '',
 			'shortcode_name'       => 'karma_text',
@@ -111,7 +111,7 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"shortcode_name"       => "karma_text",
 				"shortcode_attributes" => array(
-					'tag'   => 'div',
+					'tag'   => 'p',
 					'color' => '#000',
 					'align' => 'left'
 				),
@@ -481,7 +481,7 @@ class Tests_Core extends WP_UnitTestCase {
 		);
 		$expect = array(
 			'element_key' => '8682364',
-			'tag'         => 'div',
+			'tag'         => 'p',
 			'color'       => '#000',
 			'align'       => 'left'
 		);
