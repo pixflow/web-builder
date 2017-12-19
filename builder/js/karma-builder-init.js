@@ -177,6 +177,8 @@ var karmaBuilder = karmaBuilder || {};
 
 			this.prepareAjax( 'publish', data ).done( function ( response ) {
 
+				//@TODO Just for notify us, it should be refine after we have popup manger
+				alert('saved');
 				var result = JSON.parse( response );
 				return result.result;
 

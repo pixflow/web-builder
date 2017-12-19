@@ -4,7 +4,7 @@ jQuery( document ).off( 'karma_finish_form_builder.add-column' ).on( 'karma_fini
 	$('.karma-add-column-button, .karma-add-column-view-add').on( 'click', function () {
 
 		var parentElement = $(this).closest('.grid-controller-template') ,
-			gridCount = parseInt( parentElement.attr('data-current-grid') );
+			gridCount = viewObject.currentGrid().length;
 
 		if( 6 <= gridCount ){
 			parentElement.find('.karma-add-column-view-add').css({ display : 'none' });
@@ -16,13 +16,22 @@ jQuery( document ).off( 'karma_finish_form_builder.add-column' ).on( 'karma_fini
 
 	});
 
+
 });
 
-jQuery( document ).off( 'changeRowLayout/finished.changeViewColumn' ).on( 'changeRowLayout/finished.changeViewColumn', function(){
 
-	var getElement = document.getElementsByClassName('karma-add-column-view-add');
-	if ( getElement.length ) {
-		getElement[0].insertAdjacentHTML( 'beforebegin', '<div class="karma-add-column-view-length" > </div>' );
+jQuery( document ).off( 'changeRowLayout/finished.changeViewColumn' ).on( 'changeRowLayout/finished.changeViewColumn', function( e, layout ){
+
+	var $ = jQuery,
+		addButton = $('.karma-add-column-view-add');
+	$( '.karma-add-column-view-length:not( .karma-add-column-view-add )' ).remove();
+	for( var i=0; i < layout.length; i++ ){
+		addButton.before('<div class="karma-add-column-view-length"></div>');
+	}
+	if( 6 > layout.length ){
+		addButton.css( { display : 'flex' } );
+	}else{
+		addButton.css( { display : 'none' } );
 	}
 
 });

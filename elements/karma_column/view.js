@@ -242,23 +242,23 @@
 		 */
 		deleteColumn : function( lastColumnKey ) {
 
-			var columnKey = this.model.attributes.element_key,
+			var columnKey = this.model.get( 'element_key' ),
 				models = karmaBuilder.karmaModels.where({ 'parent_key': columnKey }),
 				lastColChild = karmaBuilder.karmaModels.where({ 'parent_key': lastColumnKey }),
-				newOrder = 1 ;
+				newOrder = 1 ,
+				that = this;
 
 			if( lastColChild.length ){
-				newOrder = lastColChild.last().attributes.order + 1;
+				newOrder = lastColChild[ Object.keys( lastColChild )[ Object.keys( lastColChild ).length - 1] ].attributes.order + 1;
 			}
 
 			_.each( models, function ( model) {
-				var newAtttibutes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
-				newAtttibutes.order = newOrder ;
+				model.set({ 'parent_key': lastColumnKey , 'order' : newOrder }, { silent: true } );
+				that.moveContent( lastColumnKey, model );
 				newOrder++;
-				model.set({ 'parent_key': lastColumnKey , 'shortcode_attributes' : newAtttibutes }, { silent: true } );
 			});
 
-			this.moveContent( lastColumnKey );
+			this.el.innerHTML = '';
 			this.model.destroy();
 
 		} ,
@@ -267,15 +267,44 @@
 		 * @summary Move the content from column to another column
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
+		 * @param {object{  model           Element model
 		 *
 		 * @since 1.0.0
 		 * @return {void}
 		 */
-		moveContent : function ( lastColumnKey ) {
+		moveContent : function ( lastColumnKey, model ) {
 
-			var contentWithData = this.el.querySelector('.karma-column').cloneNode( true ) ;
-			$( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column')
-				.append( contentWithData.innerHTML );
+			var viewObject = $('[data-element-key="' + model.get('element_key') + '"]').backboneView() ,
+				elementID = model.get('shortcode_name').replace( '_', '-' ) + '-' + model.get('element_key'),
+				moveToColumn = $( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column'),
+				script = $( '#script-' + elementID ).clone(),
+				style = $( '#style-' + elementID ).clone();
+
+			this.removeExtraAssets( $( '#script-' + elementID ), $( '#style-' + elementID ) );
+			moveToColumn.append( viewObject.$el );
+			moveToColumn.append( script );
+			moveToColumn.append( style );
+
+		},
+
+		/**
+		 * @summary Remove script and style tag of element
+		 *
+		 * @param   {object}    script  Script tag
+		 * @param   {object}    style   Style tag
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		removeExtraAssets : function( script, style ){
+
+			if( script.length ){
+				script.remove();
+			}
+
+			if( style.length ){
+				style.remove()
+			}
 
 		},
 

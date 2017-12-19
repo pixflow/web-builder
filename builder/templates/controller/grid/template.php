@@ -5,9 +5,9 @@
 				<# for( var i=0; i < data.value; i++ ){ #>
 					<div class="karma-add-column-view-length"></div>
 				<# } #>
-					<# if( 7 > data.value ) { #>
-						<div class="karma-add-column-view-length karma-add-column-view-add" ></div>
-					<# } #>
+
+						<div class="karma-add-column-view-length karma-add-column-view-add" <# if( 6 == data.value ) { print('style="display:none"'); } #> ></div>
+
 			</div>
 		</div>
 

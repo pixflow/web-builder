@@ -299,7 +299,7 @@ class Karma_Builder_Core{
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array - The group of attributes of shortcode
+	 * @return array - The group of attributes of element
 	 */
 	private function get_shortcode_attributes( $shortcode_attributes ){
 

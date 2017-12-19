@@ -263,7 +263,7 @@ class Karma_Shortcode_Base {
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) :
 		?>
-		<script id="script-<?php echo static::$element_name . '_' . $this->element_id; ?> ">
+		<script id="script-<?php echo static::$element_name . '-' . $this->element_id; ?> ">
 			<?php echo $script_string; ?>
 		</script>
 		<?php

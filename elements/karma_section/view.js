@@ -185,7 +185,6 @@
 				lastColumn ,
 				columns = this.getColumnsKey();
 
-
 			for ( var counter in currentGrid ){
 				if ( newLayout[ counter ] ){
 					this.updateColumnModel( columns[ counter ], parentKey, newLayout[ counter ] );
@@ -199,7 +198,8 @@
 				this.createNewColumn( counter, newLayout, columns[ counter ] );
 			}
 
-			$( document ).trigger( 'changeRowLayout/finished' );
+			this.setAttributes( { grid : '' }, true );
+			$( document ).trigger( 'changeRowLayout/finished', [ newLayout ] );
 			return true;
 
 		},
@@ -217,17 +217,18 @@
 		createNewColumn : function ( counter, newLayout, columnKey ) {
 
 			counter = parseInt( counter ) + 1;
+			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes,
+				order = model.order + 1;
 			for( counter; counter < newLayout.length; counter++ ){
-				var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes,
-					newModel = {
-						'element_key'           : KarmaView.createNewElementKey(),
-						'parent_key'            : model.parent_key ,
-						'order'                 : model.order + 1 ,
-						'shortcode_content'     : '' ,
-						'shortcode_name'        : model.shortcode_name ,
-						'shortcode_attributes'  : JSON.parse( JSON.stringify( model.shortcode_attributes ) )
-					};
-
+				var newModel = {
+						shortcode_name          : 'karma_column',
+						shortcode_content       : '',
+						element_key             : KarmaView.createNewElementKey(),
+						shortcode_attributes    : $( document ).triggerHandler( 'karma/before/createElement/karma_column' ),
+						order                   : order ,
+						parent_key              : model.parent_key
+				 }
+				order++;
 				newModel.shortcode_attributes.lg_size = newLayout[ counter ];
 				newModel.shortcode_attributes.sm_size = newLayout[ counter ];
 				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
@@ -305,6 +306,13 @@
 				defaultClasses =  elementClass + " karma-section  "  + this.model.attributes.shortcode_attributes.extraclass;
 
 			this.el.firstElementChild.setAttribute( 'class', defaultClasses );
+
+		},
+
+		grid: function () {
+
+			var newGrid = JSON.parse( this.getAttributes( ['grid'] ).grid );
+			this.changeRowLayout( newGrid );
 
 		}
 
