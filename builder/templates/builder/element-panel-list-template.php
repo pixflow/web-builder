@@ -9,14 +9,14 @@
 							<div class="karma-element-single-element-icon" style="background-image: url( <# print( element.icon ); #> );"></div>
 							<div class="karma-element-single-element-name" >
 							<span>
-								<# print( element.elementName.replace( 'karma', '', element.elementName ) ); #>
+								<# print( element.elementName.replace( 'karma_', '', element.elementName ) ); #>
 							</span>
 							</div>
 						</div>
 
 					<# } #>
 			<# }); #>
-				<div class="karma-element-single-element karma-deactive-element" data-id="creative2" data-category="Team member" data-element-name="Team member" >
+				<div class="karma-element-single-element karma-deactive-element" data-id="agency23" data-category="team member" data-element-name="Team member" >
 					<div class="karma-element-single-element-icon" style="background-image: url( <?php echo KARMA_BUILDER_URL . 'builder/media/svg/team-element.svg' ?> );"></div>
 					<div class="karma-element-single-element-name" >
 							<span>
@@ -24,7 +24,7 @@
 							</span>
 					</div>
 				</div>
-				<div class="karma-element-single-element karma-deactive-element" data-id="creative3" data-category="Icon" data-element-name="Icon" >
+				<div class="karma-element-single-element karma-deactive-element" data-id="shop32" data-category="icon" data-element-name="Icon" >
 					<div class="karma-element-single-element-icon" style="background-image: url( <?php echo KARMA_BUILDER_URL . 'builder/media/svg/icon-box-element.svg' ?> );"></div>
 					<div class="karma-element-single-element-name" >
 							<span>
@@ -32,7 +32,7 @@
 							</span>
 					</div>
 				</div>
-				<div class="karma-element-single-element karma-deactive-element" data-id="creative4" data-category="slider" data-element-name="slider" >
+				<div class="karma-element-single-element karma-deactive-element" data-id="portfolio56" data-category="slider" data-element-name="slider" >
 					<div class="karma-element-single-element-icon" style="background-image: url( <?php echo KARMA_BUILDER_URL . 'builder/media/svg/slider-element.svg' ?> );"></div>
 					<div class="karma-element-single-element-name" >
 							<span>
@@ -40,7 +40,7 @@
 							</span>
 					</div>
 				</div>
-				<div class="karma-element-single-element karma-deactive-element" data-id="creative5" data-category="Team member" data-element-name="Video" >
+				<div class="karma-element-single-element karma-deactive-element" data-id="portfolio60" data-category="video" data-element-name="Video" >
 					<div class="karma-element-single-element-icon" style="background-image: url( <?php echo KARMA_BUILDER_URL . 'builder/media/svg/video-element.svg' ?> );"></div>
 					<div class="karma-element-single-element-name" >
 							<span>
@@ -48,6 +48,7 @@
 							</span>
 					</div>
 				</div>
+				<span class="karma-not-found karma-hide">Element not found</span>
 
 		</div>
 </div>

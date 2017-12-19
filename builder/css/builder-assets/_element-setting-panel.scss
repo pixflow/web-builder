@@ -107,3 +107,9 @@
 	position: fixed;
 	width: 50px;
 }
+
+.karma-not-found{
+	@extend .karma-builder-title-4;
+	color : $builder-main-color-1;
+	margin: 20px;
+}

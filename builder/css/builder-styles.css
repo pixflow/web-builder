@@ -808,7 +808,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input {
+.karma-builder-title-4, .karma-not-found, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input {
   font-size: 12px;
   line-height: 14px; }
 
@@ -829,6 +829,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 
 .karma-button-padding {
   padding: 0 20px; }
+
+.karma-hide {
+  display: none; }
 
 /**
  * Media queries
@@ -2652,6 +2655,10 @@ div.media-modal {
   height: 50px;
   position: fixed;
   width: 50px; }
+
+.karma-not-found {
+  color: #747F8A;
+  margin: 20px; }
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */

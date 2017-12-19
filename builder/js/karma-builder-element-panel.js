@@ -655,11 +655,26 @@
 		searchInElements : function ( e ){
 
 			this.showElementPanelSearchCloseIcon();
-			var searchValue = $( e.target ).val();
+			var searchValue 	= $( e.target ).val(),
+				notFoundElement	= document.querySelector( '.karma-active-tab .karma-isotope .karma-not-found' );
 			$('.karma-element-single-element').hide();
-			if( '' != searchValue.trim() ){
-				$('[data-id*="' + searchValue.trim() + '"]').css( 'display', 'flex' );
+			if( '' != searchValue.trim()  ){
+				if (  $('[data-category*="' + searchValue.trim() + '"]').length ) {
+
+					if ( 'undefined' != typeof( notFoundElement ) && null != notFoundElement ){
+						notFoundElement.classList.add('karma-hide');
+					}
+					$('[data-category*="' + searchValue.trim() + '"]').css( 'display', 'flex' );
+
+				}else {
+					if ( 'undefined' != typeof( notFoundElement ) && null != notFoundElement ){
+						notFoundElement.classList.remove('karma-hide');
+					}
+				}
 			}else{
+				if ( 'undefined' != typeof( notFoundElement ) && null != notFoundElement ){
+					notFoundElement.classList.add('karma-hide');
+				}
 				$('.karma-element-single-element').css( 'display', 'flex' );
 			}
 
@@ -692,8 +707,15 @@
 		 */
 		setPriceFilterOnAll : function () {
 
-			this.el.querySelector( '.karma-element-panel-price-filter ul .active' ).classList.remove( 'active' );
-			this.el.querySelector( '.karma-element-panel-price-filter ul li[ data-id = "*" ]' ).classList.add( 'active' );
+			var element = this.el.querySelector( '.karma-element-panel-price-filter ul .active' ),
+				allFilter = this.el.querySelector( '.karma-element-panel-price-filter ul li[ data-filter = "*" ]' );
+
+			if (typeof(element) != 'undefined' && element != null){
+				element.classList.remove( 'active' );
+			}
+			if (typeof(allFilter) != 'undefined' && allFilter != null){
+				allFilter.classList.add( 'active' );
+			}
 		//	this.callfiltering( '*' );
 
 		},

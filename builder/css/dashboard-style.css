@@ -60,6 +60,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-button-padding {
   padding: 0 20px; }
 
+.karma-hide {
+  display: none; }
+
 /**
  * Media queries
  * @group helpers
