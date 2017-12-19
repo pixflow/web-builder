@@ -325,7 +325,7 @@ class Karma_Builder_Core{
 	 *
 	 * @return  array    The group of attributes of element
 	 */
-	private function add_default_attributes( $element_name, $element_attributes ) {
+	public function add_default_attributes( $element_name, $element_attributes ) {
 
 		$element_name = explode( '_', $element_name );
 		$element_calss_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
