@@ -22,8 +22,8 @@
             <feColorMatrix values="0 0 0 0 0.0181659915   0 0 0 0 0.145576001   0 0 0 0 0.371439201  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
-    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Element-panel" transform="translate(-286.000000, -327.000000)">
+    <g id="team-element" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="team-element-panel" transform="translate(-286.000000, -327.000000)">
             <g id="Group-2" transform="translate(290.000000, 327.000000)">
                 <g id="Group-5">
                     <g id="Rectangle-4-+-Rectangle-4-Copy-Mask">

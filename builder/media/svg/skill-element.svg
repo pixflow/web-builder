@@ -9,8 +9,8 @@
             <stop stop-color="#1E7947" stop-opacity="0.0834182518" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Element-panel" transform="translate(-382.000000, -329.000000)">
+    <g id="skill" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="skill-element-panel" transform="translate(-382.000000, -329.000000)">
             <g id="Group-22" transform="translate(382.000000, 329.000000)">
                 <rect id="Rectangle-13-Copy-2" fill="#1F7E4A" transform="translate(20.559992, 19.726415) rotate(90.000000) translate(-20.559992, -19.726415) " x="0.891304348" y="0" width="39.3373746" height="39.4528302" rx="4"></rect>
                 <polygon id="Path-10" fill="url(#linearGradient-1)" points="30.5404645 11.2411557 40.3175616 25.5630528 40.3175616 40.3004496 28.7259015 40.3004496 11.8992009 11.2411557"></polygon>

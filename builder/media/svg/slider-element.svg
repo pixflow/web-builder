@@ -15,8 +15,8 @@
             <stop stop-color="#895BD2" stop-opacity="0.408910779" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Element-panel" transform="translate(-377.000000, -432.000000)">
+    <g id="slider" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="slider-element-panel" transform="translate(-377.000000, -432.000000)">
             <g id="Group-4" transform="translate(381.000000, 432.000000)">
                 <g id="Rectangle-13-Copy-10">
                     <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>

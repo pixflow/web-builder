@@ -15,8 +15,8 @@
             <feColorMatrix values="0 0 0 0 0.851589073   0 0 0 0 0.596293531   0 0 0 0 0.186940333  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
-    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Element-panel" transform="translate(-524.000000, -233.000000)">
+    <g id="image" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="image-element-panel" transform="translate(-524.000000, -233.000000)">
             <g id="Group-3" transform="translate(524.000000, 233.000000)">
                 <rect id="Rectangle-13-Copy-7" fill="#FFC15D" x="0" y="0" width="43.7514124" height="31.751938" rx="4"></rect>
                 <polygon id="Path-4-Copy" fill="url(#linearGradient-1)" points="27.0873058 10.1705426 43.8456038 31.8333333 25.0350018 31.8333333 17.6497175 22.2063953"></polygon>

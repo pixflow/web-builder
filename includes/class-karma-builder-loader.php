@@ -432,8 +432,8 @@ class Karma_Builder_Loader {
 	private function add_default_attributes( $element_name, $element_attributes ) {
 
 		$element_name = explode( '_', $element_name );
-		$element_calss_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
-		$default_attributes = $element_calss_neme::get_element_default_attributes();
+		$element_class_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$default_attributes = $element_class_neme::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
 		return $atributes;
 

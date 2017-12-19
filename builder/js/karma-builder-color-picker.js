@@ -316,7 +316,7 @@ karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
  */
 karmaColorPicker.prototype.saveColors = function ( color ) {
 
-	if ( typeof( Storage ) !== "undefined") {
+	if ( "undefined" !== typeof( Storage ) ) {
 		var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
 		if( true === savedColors.includes( color ) ){
 			return ;
@@ -399,7 +399,7 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 	if ( $( colorPickerContaner ).hasClass( 'opened' ) ) {
 		$( colorPickerContaner ).removeClass( 'opened' );
 	} else {
-		if ( typeof( Storage ) !== "undefined") {
+		if ( "undefined" !== typeof( Storage ) ) {
 			$('.karma-color-picker-preset-color.user-pallet').remove();
 			var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
 			_.each( savedColors, function ( color ) {

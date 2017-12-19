@@ -4135,10 +4135,11 @@ img {
   height: 94px;
   background-color: #fff;
   border-radius: 4px;
-  cursor: -webkit-grab;
-  cursor: grab;
   flex-direction: column;
   transition: border 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+  .karma-element-single-element:not(.karma-deactive-element) {
+    cursor: -webkit-grab;
+    cursor: grab; }
   .karma-element-single-element.karma-start-dragging {
     visibility: hidden; }
   .karma-element-single-element.karma-grab-element:not(.karma-deactive-element) {
