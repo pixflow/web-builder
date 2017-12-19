@@ -622,14 +622,23 @@
 				dropDownBox  = $( e.target ).closest( '.karma-drop-down-box' ),
 				allDropDownItem = dropDownBox.find( 'button' );
 
-			if( null != dropDownItem  ){
-				if( allDropDownItem.hasClass( 'karma-drop-down-active-item' ) ){
+			if( null != dropDownItem ){
+
+				if( allDropDownItem.hasClass( 'karma-drop-down-active-item' ) && false == dropDownBox.hasClass('karma-font-style-drop-down') ){
 					allDropDownItem.removeClass( 'karma-drop-down-active-item' );
 				}
-				dropDownItem.addClass( 'karma-drop-down-active-item' );
-				dropDownBox.prev().find('.karma-default-icon').css({
-					backgroundImage : dropDownItem.find(' > div ').css('background-image')
-				})
+				if(  dropDownBox.hasClass('karma-font-style-drop-down') ){
+					dropDownItem.toggleClass( 'karma-drop-down-active-item' );
+					dropDownBox.prev().find('.karma-default-icon').css({
+						backgroundImage : dropDownItem.find(' > div ').css('background-image')
+					});
+				}else{
+					dropDownItem.addClass( 'karma-drop-down-active-item' );
+					dropDownBox.prev().find('.karma-default-icon').css({
+						backgroundImage : dropDownItem.find(' > div ').css('background-image')
+					});
+				}
+
 			}
 
 			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
