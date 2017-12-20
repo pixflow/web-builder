@@ -74,3 +74,16 @@
 .karma-hide{
 	display: none;
 }
+
+.karma-builder-shadow-box-1{
+	box-shadow: 0 2px 4px 0 $builder-main-color-3;
+}
+
+.karma-builder-shadow-box-2{
+	box-shadow: 0 2px 12px 0 $builder-main-color-3;
+}
+
+.karma-builder-shadow-box-3{
+	box-shadow: 0 4px 15px 4px $builder-main-color-3;
+}
+

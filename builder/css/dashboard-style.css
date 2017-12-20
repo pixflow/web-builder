@@ -2,6 +2,9 @@
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
+/** Builder Colors **/
+/* Builder Major Levels */
+/* spaces */
 .center-both-flex {
   align-items: center;
   display: flex;
@@ -62,6 +65,15 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 
 .karma-hide {
   display: none; }
+
+.karma-builder-shadow-box-1 {
+  box-shadow: 0 2px 4px 0 #D7DBDE; }
+
+.karma-builder-shadow-box-2 {
+  box-shadow: 0 2px 12px 0 #D7DBDE; }
+
+.karma-builder-shadow-box-3 {
+  box-shadow: 0 4px 15px 4px #D7DBDE; }
 
 /**
  * Media queries
@@ -173,9 +185,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output box color
  */
-/** Builder Colors **/
-/* Builder Major Levels */
-/* spaces */
 @font-face {
   font-family: HelveticaNeu_Bold;
   src: url("../font/Helvetica_Neu_Bold.ttf");

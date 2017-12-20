@@ -13,7 +13,7 @@
 		height: 10px;
 		left: 45%;
 		position: absolute;
-		top: -6px;
+		top: -5px;
 		transform: rotate(45deg);
 		width: 10px;
 	}
@@ -98,9 +98,10 @@
 
 .sp-container.sp-light {
 	@extend .karma-colorpicker-style-border-radius-box;
+	@extend .karma-builder-shadow-box-3;
 	background-color: #fff;
 	border: none;
-	box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
+	//box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
 	padding: 0;
 }
 

@@ -772,6 +772,9 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
+/** Builder Colors **/
+/* Builder Major Levels */
+/* spaces */
 .center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
   align-items: center;
   display: flex;
@@ -832,6 +835,15 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 
 .karma-hide {
   display: none; }
+
+.karma-builder-shadow-box-1 {
+  box-shadow: 0 2px 4px 0 #D7DBDE; }
+
+.karma-builder-shadow-box-2, .karma-builder-element .karma-gizmo-template, .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
+  box-shadow: 0 2px 12px 0 #D7DBDE; }
+
+.karma-builder-shadow-box-3, .sp-container.sp-light {
+  box-shadow: 0 4px 15px 4px #D7DBDE; }
 
 /**
  * Media queries
@@ -943,9 +955,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output box color
  */
-/** Builder Colors **/
-/* Builder Major Levels */
-/* spaces */
 @font-face {
   font-family: HelveticaNeu_Bold;
   src: url("../font/Helvetica_Neu_Bold.ttf");
@@ -2773,7 +2782,7 @@ img {
       bottom: auto;
       left: auto; }
   .karma-spacing.karma-bottom-spacing {
-    bottom: 0px !important;
+    bottom: 0 !important;
     position: absolute;
     top: initial !important;
     width: 100%; }
@@ -2837,7 +2846,6 @@ img {
     justify-content: center;
     background-color: #fff;
     border-radius: 2px;
-    box-shadow: 0 2px 4px 3px rgba(57, 73, 89, 0.16);
     direction: rtl;
     display: none;
     font-size: initial;
@@ -2854,7 +2862,7 @@ img {
       border: none;
       margin: 0;
       outline: none;
-      padding: 12px 9px;
+      padding: 11px 9px;
       transition: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-drop-down-icon:hover svg * {
         transition: 0.1s;
@@ -2870,9 +2878,9 @@ img {
       right: auto;
       bottom: auto;
       left: -5px;
+      padding: 0 6px 6px 6px;
       background-color: #fff;
       border-radius: 4px;
-      box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
       cursor: auto;
       display: none;
       flex-direction: column;
@@ -2895,9 +2903,9 @@ img {
         background-color: inherit;
         border: none;
         border-radius: 3px;
-        margin: 5px;
+        margin-top: 6px;
         outline: none;
-        padding: 6px; }
+        padding: 8px; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button:hover {
           background-color: #D9EBFE; }
         .karma-builder-element .karma-gizmo-template .karma-drop-down-box button.karma-drop-down-active-item {
@@ -2911,8 +2919,17 @@ img {
       .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
         display: flex; }
     .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {
+      padding: 0;
       flex-direction: column;
       left: -12px; }
+      .karma-builder-element .karma-gizmo-template .karma-typography-drop-down button {
+        margin-left: 6px;
+        padding: 11px 9px;
+        width: 35px; }
+      .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-left {
+        padding-bottom: 6px; }
+      .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-right {
+        padding-right: 6px; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-icons {
         flex-direction: row; }
       .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link {
@@ -2936,8 +2953,8 @@ img {
       align-items: center;
       justify-content: inherit;
       cursor: pointer;
-      height: 32px;
-      padding: 0 6px;
+      height: 32px !important;
+      padding: 11px 9px;
       transition-duration: 0.1s; }
       .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-icon div {
         display: flex; }
@@ -2950,7 +2967,7 @@ img {
       font-family: HelveticaNeue_Medium;
       font-size: 12px;
       margin-right: 9px;
-      padding: 0 10px 0 2px;
+      padding: 0px 15px 0 9px;
       transition: all 0.3s ease;
       white-space: nowrap;
       -webkit-touch-callout: none;
@@ -3184,7 +3201,7 @@ img {
     display: block;
     left: 0;
     line-height: 16px;
-    padding: 0 4px 0 3px;
+    padding: 0 7px 0 5px;
     position: absolute;
     top: -17px;
     z-index: 80; }
@@ -4282,7 +4299,7 @@ input.karma-builder-search-text.open-search-panel {
     height: 10px;
     left: 45%;
     position: absolute;
-    top: -6px;
+    top: -5px;
     transform: rotate(45deg);
     width: 10px; }
 
@@ -4370,7 +4387,6 @@ input.karma-builder-search-text.open-search-panel {
 .sp-container.sp-light {
   background-color: #fff;
   border: none;
-  box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
   padding: 0; }
 
 .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {

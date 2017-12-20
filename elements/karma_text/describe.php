@@ -86,8 +86,8 @@ class Karma_Text_Describe extends Karma_Text {
 						'type'      => 'color',
 						'className' => esc_attr('karma-color-picker-gizmo'),
 						"params"    => array(
-							'opacity'       => false,
-							'multiColor'    => false
+							'opacity'       => true,
+							'multiColor'    => true
 							)
 					),
 					array(
