@@ -49,6 +49,7 @@
 			this.setEvents();
 			this.removeGatherMenuPanel();
 			this.elementGatherMenuFiltering();
+			window.karmaIsotope = $('.karma-isotope').clone();
 
 		},
 
@@ -716,20 +717,20 @@
 			if (typeof(allFilter) != 'undefined' && allFilter != null){
 				allFilter.classList.add( 'active' );
 			}
-		//	this.callfiltering( '*' );
+			this.callIQuicksandOnElements( this.callfiltering( '*' ) );
 
 		},
 
 		/**
 		 * @summary initialize quicksand on add element panel
 		 *
+		 * @param 	array $elementToFilter set of elements to filter
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		callIQuicksandOnElements: function ( $data ) {
+		callIQuicksandOnElements: function ( $elementToFilter ) {
 
-			var filteredElements = this.callfiltering( $data );
-			$('.karma-elements ').quicksand( filteredElements ,{
+			$('.karma-elements ').quicksand( $elementToFilter ,{
 				duration: 500,
 				useScaling : true ,
 				easing : 'easeOutQuad',
@@ -737,13 +738,20 @@
 
 		},
 
-		callfiltering : function ( $data ) {
+		/**
+		 * @summary filter elements
+		 *
+		 * @param   {string} clickedItemData  data which eant to filter
+		 * @since   1.0.0
+		 * @returns { array } array of selected objects
+		 */
+		callfiltering : function ( clickedItemData ) {
 
-			if ( $('.karma-builder-element-panel-gather-menu .active').attr( 'data-id' ) == '*' ) {
-				var $filteredData = $data.find('.karma-element-single-element');
+			if ( clickedItemData == '*' ) {
+				var $filteredData = karmaIsotope.find('.karma-element-single-element');
 			} else {
-				var $filteredData = $data.find(
-					'.karma-element-single-element[data-id*=' + $('.karma-builder-element-panel-gather-menu .active').attr( 'data-id' ) +']'
+				var $filteredData = karmaIsotope.find(
+					'.karma-element-single-element[data-id*=' + clickedItemData +']'
 				);
 			}
 			return $filteredData
@@ -764,7 +772,6 @@
 			if ( target.closest('svg').length ) {
 				categoryMenu.toggleClass( 'karma-open-element-category-dropdown' )
 			}
-			//this.elementGatherMenuFiltering();
 			this.elementPanelCloseSearchBar( e );
 
 		},
@@ -778,12 +785,13 @@
 		elementGatherMenuFiltering : function () {
 
 			var that = this;
-			var $data = $('.karma-isotope').clone();
+
 			$( '.karma-builder-element-panel-gather-menu ul li' ).click( function () {
 
 				$('.karma-builder-element-panel-gather-menu .active').removeClass('active');
 				$( this ).addClass('active');
-				that.callIQuicksandOnElements( $data );
+
+				that.callIQuicksandOnElements(  that.callfiltering( $( this ).attr( 'data-id' ) )  );
 				$( '.karma-builder-element-panel-gather-menu' ).trigger( '.removeGatherMenuPane' );
 
 			});
@@ -805,12 +813,12 @@
 			}
 			this.el.querySelector( '.active' ).classList.remove( 'active' );
 			target.classList.add( 'active' );
-			if( '.premium' == target.getAttribute( 'data-id' ) ){
+			if( '.premium' == target.getAttribute( 'data-filter' ) ){
 				this.checkingPermium();
 			}else {
 				this.setActiveTab( this.el.querySelector( '.karma-addcontent-active' ) );
 			}
-			//this.callfiltering( target.getAttribute( 'data-id' ) );
+			this.callIQuicksandOnElements( this.callfiltering( target.getAttribute( 'data-filter' ) ) );
 
 		},
 

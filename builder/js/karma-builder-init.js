@@ -428,6 +428,10 @@ var karmaBuilder = karmaBuilder || {};
 			}
 		});
 
+		$(document).on( 'click', '.ui-tooltip', function ( e ) {
+			e.stopPropagation();
+		});
+
 	});
 
 

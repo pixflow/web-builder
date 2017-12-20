@@ -7,17 +7,17 @@
 				<div class="check"></div>
 			</li>
 
-			<li data-filter=".free">
+			<li data-filter="free">
 				<label for="free-item"><?php echo esc_attr__("Free", 'karma');?></label>
 				<div class="check"><div class="inside"></div></div>
 			</li>
 
-			<li data-filter=".premium">
+			<li data-filter="premium">
 				<label for="premium-item"><?php echo esc_attr__("Premium", 'karma');?></label>
 				<div class="check"><div class="inside"></div></div>
 			</li>
 
-			<li data-filter=".mysection">
+			<li data-filter="mysection">
 				<label for="my-section-item"><?php echo esc_attr__("My Section", 'karma');?></label>
 				<div class="check"><div class="inside"></div></div>
 			</li>

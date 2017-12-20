@@ -38,24 +38,23 @@
 	z-index: $level5;
 }
 .arrow {
-	@include box( 70px, 16px );
+	@include box( 14px, 10px );
 	bottom: -16px;
 	left: 50%;
-	margin-left: -35px;
+	margin-left: -6px;
 	overflow: hidden;
 	position: absolute;
 }
 .arrow.top {
 	bottom: auto;
-	top: -16px;
+	top: -10px;
 }
 .arrow.left {
-	left: 55%;
+	left: 50%;
 }
 .arrow:after {
-	@include box( 20px, 20px );
-	@include element_direction($top:-20px, $left:20px);
-	box-shadow: 6px 5px 9px -9px $builder-main-color;
+	@include box( 6px, 6px );
+	@include element_direction($top:-20px, $left:3px);
 	content: "";
 	position: absolute;
 	transform: rotate(45deg);
@@ -63,6 +62,6 @@
 	-webkit-transform: rotate(45deg);
 }
 .arrow.top:after {
-	bottom: -20px;
+	bottom: -3px;
 	top: auto;
 }
