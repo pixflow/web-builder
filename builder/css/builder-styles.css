@@ -3844,15 +3844,15 @@ img {
     max-width: 466px;
     position: fixed;
     transition-duration: 1s;
-    transition: opacity .1s linear, left 1s; }
+    transition: opacity .1s ease-in, left 1s ease-in; }
     .karma-element-panel-container .karma-element-panel-view:after {
-      left: 80px;
+      left: 81px;
       content: "";
       position: fixed;
       width: 0;
       height: 0;
-      border-top: 6px solid transparent;
-      border-right: 8px solid #ffffff;
+      border-top: 5px solid transparent;
+      border-right: 6px solid #ffffff;
       border-bottom: 6px solid transparent; }
     .karma-element-panel-container .karma-element-panel-view.karma-element-panel-add-element-view {
       width: 24.2vw;
@@ -4137,16 +4137,22 @@ img {
               font-size: 14px; } }
     .karma-element-panel-container .karma-element-panel-view.karma-element-panel-templates-template:after {
       top: 45%;
-      border-right: 8px solid #ECF5FE; }
+      border-right: 6px solid #ECF5FE; }
     .karma-element-panel-container .karma-element-panel-view.karma-element-panel-unsplash-template {
       top: 22vh; }
+      .karma-element-panel-container .karma-element-panel-view.karma-element-panel-unsplash-template:after {
+        top: 52%;
+        border-right: 6px solid #ECF5FE; }
     .karma-element-panel-container .karma-element-panel-view.karma-element-panel-upgrade-template {
       top: 28vh; }
+      .karma-element-panel-container .karma-element-panel-view.karma-element-panel-upgrade-template:after {
+        top: 59%;
+        border-right: 6px solid #ECF5FE; }
   .karma-element-panel-container .element-panel-show {
     visibility: visible;
     opacity: 1;
     left: 87px;
-    transition: opacity .1s linear, left .3s; }
+    transition: opacity .1s ease-in , left .2s ease-in; }
 
 /** Separate these stylesheet for jquery UI */
 .karma-element-single-element {

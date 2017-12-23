@@ -61,17 +61,16 @@
 		max-width: 466px;
 		position: fixed;
 		transition-duration: 1s;
-		transition: opacity .1s linear, left 1s;
-
-
+		transition: opacity .1s ease-in, left 1s ease-in;
+		
 		&:after{
-			left:80px;
+			left: 81px;
 			content: "";
 			position: fixed;
 			width: 0;
 			height: 0;
-			border-top: 6px solid transparent;
-			border-right: 8px solid #ffffff;
+			border-top: 5px solid transparent;
+			border-right: 6px solid #ffffff;
 			border-bottom: 6px solid transparent;
 		}
 
@@ -428,15 +427,25 @@
 
 			&:after {
 				top:45%;
-				border-right: 8px solid $builder-accent-color-4;
+				border-right: 6px solid $builder-accent-color-4;
 			}
 		}
 
 		&.karma-element-panel-unsplash-template{
 			top:22vh;
+
+			&:after {
+				top:52%;
+				border-right: 6px solid $builder-accent-color-4;
+			}
 		}
 		&.karma-element-panel-upgrade-template{
 			top:28vh;
+
+			&:after {
+				top:59%;
+				border-right: 6px solid $builder-accent-color-4;
+			}
 		}
 	}
 
@@ -447,7 +456,7 @@
 		visibility: visible;
 		opacity: 1;
 		left:87px;
-		transition: opacity .1s linear, left .3s;
+		transition: opacity .1s ease-in , left .2s ease-in;
 	}
 
 }
