@@ -4532,6 +4532,7 @@ div.karma-element-content .karma-top-spacing {
       box-shadow: none;
       color: #747F8A;
       min-height: 36px;
+      -webkit-appearance: none;
       width: 239px; }
       .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder {
         color: rgba(57, 73, 89, 0.6);
