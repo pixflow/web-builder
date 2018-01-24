@@ -870,6 +870,7 @@
 
 			var section = this.el.nextElementSibling;
 			section.classList.toggle("open-new-section");
+			$( section ).click();
 
 		},
 
