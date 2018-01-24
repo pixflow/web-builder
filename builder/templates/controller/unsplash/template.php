@@ -1,23 +1,22 @@
 <div class="karma-unsplash karma-unsplash-controller" >
 	<div class="karma-unsplash-search" >
-		<input type="search" id="karma-unsplash-search"  class="no-trigger" placeholder="Over 300,000 free photos of Unsplash" required >
+		<input type="search" id="karma-unsplash-search"  class="no-trigger" placeholder="Search over 300,000 free photos of Unsplash" required >
 	</div>
+	<div class="karma-unsplash-images-result-fake"></div>
 	<div class="karma-unsplash-images-result" >
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
-		<div class="karma-unsplash-images-list"></div>
+		<?php for( $i=0; $i < 30; $i++ ){ ?>
+			<div class="karma-unsplash-images-list"></div>
+		<?php } ?>
 	</div>
 
-	<div class="karma-unspalsh-icon" ></div>
-	<a class="karma-unspalsh-media-library" href="#">
+	<div class="karma-change-loading-icon karma-unspalsh-icon" ></div>
+	<a class="karma-unspalsh-media-library">
+
 		<span class="karma-unsplash-media-library-svg"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/upload.svg' ); ?></span>
 		<span class="karma-unsplash-media-library-link"><?php _e( 'Or upload from media library', 'karma' ); ?></span>
 	</a>
-	<input	type="text" name="{{{ data.name }}}" class="hidden-input karma-unsplash-image-input" value="{{{data.value}}}">
+	<# if( data.name ){ #>
+		<input	type="text" name="{{{ data.name }}}" class="hidden-input karma-unsplash-image-input" value="{{{data.value}}}">
+	<# } #>
+	<div class="karma-unsplash-copyright">&copy;  <a href="https://unsplash.com/" target="_blank" rel="nofollow" >Unsplash.com</a> all rights reserved. </div>
 </div>

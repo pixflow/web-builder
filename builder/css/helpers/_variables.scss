@@ -1,4 +1,10 @@
 //Variables
+/** builder Font  **/
+$builder-light-font	: "HelveticaNeue_light";
+$builder-normal-font: "HelveticaNeue";
+$builder-medium-font: HelveticaNeue_med;
+$builder-bold-font	: "HelveticaNeue_bold";
+
 /** Builder Colors **/
 $builder-accent-color: #419CF8;
 $builder-accent-color-1: #7AB9FA;
@@ -18,17 +24,20 @@ $builder-premium-color-1: #FEEEDE;
 
 
 /* Builder Major Levels */
-$level1: 100;
-$level2: 90;
-$level3: 80;
-$level4: 70;
-$level5: 110;
+$level-minus-5:-70;
+$level-0:0;
+$level-5: 70;
+$level-10: 80;
+$level-15: 90;
+$level-20: 100;
+$level-25: 110;
+$level-30: 120;
 
 /* spaces */
-$top-space-red: 22px;
-$top-space-blue: 20px;
-$top-space-orange: 18px;
-$top-space-orange-light: 11px;
+$builder-red-space: 22px;
+$builder-blue-space: 20px;
+$builder-orange-space: 18px;
+$builder-light-orange-space: 11px;
 
 
 

@@ -19,8 +19,9 @@
 
 }
 
-.HelveticaNeue-font {
-	font-family: "HelveticaNeue";
+.karma-remove-list-margin,
+.karma-remove-list-margin li{
+	margin: 0;
 }
 
 @keyframes scaleUP {
@@ -28,15 +29,14 @@
   100%{ transform : scale( 1 ) }
 }
 /* Classes to extend for fonts */
+
 .karma-builder-title-1 {
 	font-size: 20px;
-	margin-top: 28px;
 	line-height: 32px;
 }
 
 .karma-builder-title-2 {
 	font-size: 16px;
-	margin-top: 24px;
 	line-height: 28px;
 }
 
@@ -47,16 +47,25 @@
 
 .karma-builder-title-4 {
 	font-size: 12px;
-	line-height: 14px;
+	line-height: 22px;
 }
+
 .karma-builder-title-5 {
 	font-size: 10px;
-	margin-top: 18px;
 	line-height: 20px;
 }
-.karma-builder-title-in-box{
+
+.karma-paragraph{
 	font-size: 14px;
-	line-height: 16px;
+	line-height: 24px;
+}
+
+.karma-coming-soon-typo{
+	color 		: $builder-main-color;
+	font-family : $builder-medium-font ;
+	font-size 	: 12px;
+	line-height : 15px;
+	margin 		: 38px 38px 35px ;
 }
 
 .karma-colorpicker-style-border-radius{
@@ -76,14 +85,68 @@
 }
 
 .karma-builder-shadow-box-1{
-	box-shadow: 0 2px 4px 0 $builder-main-color-3;
+	box-shadow: 0 2px 4px 0 rgba($builder-main-color, 0.20);
 }
 
 .karma-builder-shadow-box-2{
-	box-shadow: 0 2px 12px 0 $builder-main-color-3;
+	box-shadow: 0 2px 12px 0 rgba($builder-main-color, 0.20);
 }
 
 .karma-builder-shadow-box-3{
-	box-shadow: 0 4px 15px 4px $builder-main-color-3;
+	box-shadow: 0 4px 15px 4px rgba($builder-main-color, 0.20);
 }
 
+
+.karma-dropdown-option{
+
+	align-items: center;
+	border-radius: 4px;
+	cursor: pointer;
+	display: flex;
+	padding: 10px;
+	transition: background-color .2s;
+
+	.karma-dropdown-option-title {
+		transition: color .2s;
+	}
+
+	&.karma-selected-dropdown-option{
+
+		background-color: $builder-accent-color-4;
+
+		.karma-dropdown-option-title{
+			color: $builder-accent-color;
+			font-family: $builder-medium-font;
+		}
+
+	}
+
+	&:not(.karma-selected-dropdown-option):hover{
+
+		.karma-dropdown-option-title {
+			color: $builder-accent-color;
+		}
+
+	}
+
+	.karma-dropdown-option-icon{
+		margin-right: 15px;
+
+	}
+
+}
+
+.dot-gizmo{
+	@include box(8px, 8px);
+	background-color: #fff;
+	border:1px solid $builder-accent-color;
+	border-radius: 100%;
+	box-sizing: border-box;
+	position: absolute;
+	z-index: $level-15;
+
+	&:after {
+		@include box(22px, 22px);
+		content: "";
+	}
+}

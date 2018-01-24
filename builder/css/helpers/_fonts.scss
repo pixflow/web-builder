@@ -1,11 +1,5 @@
 //font import
-@include font-face( HelveticaNeu_Bold, '../font/Helvetica_Neu_Bold.ttf' );
-@include font-face( HelveticaNeue, '../font/HelveticaNeue.woff' );
-@include font-face( HelveticaNeue_BlackCond, '../font/Helvetica_Neue_Black.woff' );
-@include font-face( HelveticaNeue_Light, '../font/HelveticaNeue_Light.ttf' );
-@include font-face( HelveticaNeue_Medium, '../font/HelveticaNeue_Medium.ttf' );
-@include font-face( HelveticaNeue_Thin, '../font/HelveticaNeueThin.woff' );
-@include font-face( HelveticaNeueBd, '../font/HelveticaNeueBd.ttf' );
-@include font-face( HelveticaNeueHv, '../font/HelveticaNeueHv.ttf' );
-@include font-face( HelveticaNeueIt, '../font/HelveticaNeueLt.ttf' );
-@include font-face( HelveticaNeueMed, '../font/HelveticaNeueMed.ttf' );
+@include font-face( HelveticaNeue_bold, '../font/helvetiva_bold.ttf', 700, normal );
+@include font-face( HelveticaNeue, '../font/helvetica.ttf', 400, normal );
+@include font-face( HelveticaNeue_med, '../font/helvetica_med.ttf', 500, normal );
+@include font-face( HelveticaNeue_light, '../font/helvetica_light.ttf', 300, normal );

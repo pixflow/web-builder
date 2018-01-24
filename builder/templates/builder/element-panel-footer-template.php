@@ -1,7 +1,16 @@
 <div class="element-panel-section-container element-panel-footer element-panel-deactive-part" >
-	<div class="element-panel-part-img"> <img  src="<?php  echo KARMA_BUILDER_URL . 'builder/media/karma-premium.png' ; ?>"></div>
-	<div class="element-panel-part-title"><?php echo esc_attr__("Footer Premium", 'karma');?></div>
-	<div class="element-panel-part-description"> All you need to do your best work, together in one package that works seamlessly from your computer, phone or tablet.
+
+	<div class="deactivate-title"><?php _e( 'COMING SOON...!', 'karma' ) ?></div>
+
+	<div class="karma-add-element-inactive-container">
+	<?php for ( $i = 0; $i < 3 ; $i++ ){
+
+		$imageUrl =  KARMA_BUILDER_URL . 'builder/media/deactive/footer' . ( $i + 1 ) . '.jpg'; ?>
+		<div class="karma-section-element" style="height: 117px; width: 240px;" >
+			<img class="karma-section-image" width="240" height="117" src="<?php echo $imageUrl; ?>">
+		</div>
+
+	<?php } ?>
 	</div>
-	<div class="element-panel-part-button"><?php echo esc_attr__("Subscribe", 'karma');?></div>
+
 </div>

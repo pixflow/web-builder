@@ -24,6 +24,7 @@
 				snapToGrid  : false,
 				direction   : 'x',
 				gridPrefix  : 'col-md',
+				onStart     : function () {},
 				onStop      : function () {},
 				onDrag      : function () {}
 			};
@@ -136,6 +137,7 @@
 	 */
 	gridResizer.prototype.initDrag = function( e ) {
 
+		e.stopPropagation();
 		var el = e.target.parentNode;
 
 		el.classList.add( 'resize-dragging' );
@@ -163,17 +165,18 @@
 		this.doDragFunc = this.doDrag.bind( this );
 		this.stopDragFunc = this.stopDrag.bind( this );
 
+
 		document.documentElement.addEventListener( 'mousemove', this.doDragFunc, false );
 		document.documentElement.addEventListener( 'mouseup', this.stopDragFunc, false );
 
+		this.options.onStart( document.querySelector( '.resize-dragging' ) );
 		return true;
 
 	};
 
 	/**
-	 * Do drag while mouse is moving
+	 * @summary Do drag while mouse is moving
 	 *
-	 * @param {event}    e
 	 * @returns {boolean}
 	 */
 	gridResizer.prototype.doDrag = function( e ) {
@@ -224,6 +227,7 @@
 			returnObject.height = el.style.height;
 		}
 
+
 		this.options.onDrag( el, returnObject );
 		return true;
 
@@ -256,8 +260,10 @@
 		return nextElement;
 	};
 
+
+
 	/**
-	 * Stop dragging after mouseup
+	 * @summary Stop dragging after mouseup
 	 *
 	 * @returns {boolean}
 	 */

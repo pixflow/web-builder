@@ -6,7 +6,7 @@
 	.karma-all-controller-title{
 		@extend .karma-builder-title-3;
 		color: $builder-main-color;
-		padding: $top-space-red $top-space-blue 7px;
+		padding: $builder-red-space $builder-blue-space 7px;
 	}
 
 	.karma-image-position-content{

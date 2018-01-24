@@ -59,8 +59,34 @@ class Karma_Text_Describe extends Karma_Text {
 		$controllers = array(
 			array(
 				"type"      => "outerGizmo",
+				"selector" 	=> '.karma-element-content',
 				"className" => esc_attr("text-gizmo-group"),
+				'selector' 	=> '.karma-element-content',
 				"params"    => array(
+					array(
+							'type'   	=> 'icon',
+							'form'   	=> 'more-panel',
+							'className' => 'karma-more-setting',
+							"params" => array(
+									'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
+							)
+					),
+					array(
+							'type'   	=> 'icon',
+							'form'   	=> 'more-panel',
+							'className' => 'karma-delete-element-setting ',
+							"params" => array(
+									'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
+							)
+					),
+					array(
+							'type'   	=> 'icon',
+							'form'   	=> 'more-panel',
+							'className' => 'karma-duplicate-element-setting ',
+							"params" => array(
+									'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
+							)
+					),
 					array(
 
 						'type'   => 'fontStyle',
@@ -86,8 +112,8 @@ class Karma_Text_Describe extends Karma_Text {
 						'type'      => 'color',
 						'className' => esc_attr('karma-color-picker-gizmo'),
 						"params"    => array(
-							'opacity'       => true,
-							'multiColor'    => true
+							'opacity'       => false,
+							'multiColor'    => false
 							)
 					),
 					array(
@@ -108,7 +134,25 @@ class Karma_Text_Describe extends Karma_Text {
 						),
 					),
 				),
-			)
+			),
+			array(
+				"type"      => "titleGizmo",
+				'selector' 	=> '.karma-element-content',
+				"params"    => array(
+					array(
+						'type'      => 'text',
+						'className' => 'element-name-text-gizmo',
+						'params'    => array(
+							'value' => __( 'Edit', 'karma' ) . ' ' . str_replace( 'karma_', '', self::$element_name )
+						)
+					)
+				)
+			),
+		array(
+				"type"		=> "topSpacingGizmo",
+				"className"	=> "element-top-spacing",
+				'selector' 	=> '.karma-element-content',
+			),
 		);
 
 		return $controllers;

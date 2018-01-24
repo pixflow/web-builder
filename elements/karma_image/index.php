@@ -39,15 +39,21 @@ class Karma_Image extends Karma_Shortcode_Base {
 	static function get_element_default_attributes(){
 
 		return 	array(
-			'element_key'   => 'kb' ,
-			'imgurl'		=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-			'action'        => 'none' ,
-			'linkurl'       => get_site_url(),
-			'linktarget'    => '_blank' ,
-			'alt'           => get_bloginfo( 'name' ) ,
-			'scale'			=> 'fill',
-			'position'		=> 'center-center',
-
+			'element_key'   	=> 'kb' ,
+			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
+			'action'        	=> 'none' ,
+			'linkurl'       	=> get_site_url(),
+			'linktarget'    	=> '_blank' ,
+			'alt'          		=> get_bloginfo( 'name' ) ,
+			'scale'				=> 'fill',
+			'position'			=> 'center-center',
+			'width'				=> '514',
+			'height'			=> '386',
+			'resizing'			=> false,
+			'naturalwidth'		=> '514',
+			'naturalheight' 	=> '386',
+			'topspacepadding'	=> '10',
+			'elementalign'	=> 'left',
 		);
 
 	}
@@ -72,17 +78,25 @@ class Karma_Image extends Karma_Shortcode_Base {
 			$attributes
 		);
 
-		$image_extra = $this->get_image_url( $attributes );
-		$scale_class = ( 'fill' == $attributes['scale'] ) ? 'karma-image-fill' : 'karma-image-real';
+		$image_extra 	= $this->get_image_url( $attributes );
+		$scale_class 	= ( 'fill' == $attributes['scale'] ) ? 'karma-image-fill' : 'karma-image-real';
+		$scale_class 	.= ( $attributes['resizing'] ) ? ' karma-image-both-resize' : '';
+		$elem_width 	=  $attributes['width'] . 'px';
+		$elem_height 	=  $attributes['height'].'px';
+
 		ob_start();
 		?>
-		<div class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-position-<?php echo $attributes['position'] ?>'>
+		<div class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
 				<a class="karma-image-link karma-document-click" href="<?php echo $image_extra['link']; ?>"
 				   target="<?php echo $attributes['linktarget']; ?>">
-					<img class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes['imgurl'] ); ?>"
-						 alt="<?php echo $attributes['alt']; ?>"/>
+					<div class="karma-image-resize karma-position-<?php echo $attributes['position'] ?>" style=" width: <?php echo esc_attr( $elem_width  ); ?> ;height: <?php echo esc_attr( $elem_height); ?>;">
+						<div class="karma-image-resize-crop karma-position-<?php echo $attributes['position'] ?>" style=" width: <?php echo esc_attr( $elem_width ) ?> ;height: <?php echo esc_attr( $elem_height ); ?>;" >
+						<img style="width:<?php echo $attributes['naturalwidth'] ; ?>px;height:<?php echo $attributes['naturalheight'] ; ?>px;" class="<?php echo $scale_class; ?>" src="<?php echo esc_url( $attributes['imgurl'] ); ?>" alt="<?php echo $attributes['alt']; ?>"/>
+					</div>
+				</div>
 				</a>
+
 			</div>
 		</div>
 		<?php
@@ -102,14 +116,23 @@ class Karma_Image extends Karma_Shortcode_Base {
 	 */
 	public function js_render() {
 
-		$js_template = "<# var scaleClass = ( 'fill' == data.scale ) ? 'karma-image-fill' : 'karma-image-real'; #>"
-			. '<div class="karma-image karma-image-{{ data.element_key }} karma-position-{{ data.position }}" >'
-			. '<div class="karma-image-container {{ data.extraclass }}">'
-			. '<a class="karma-image-link karma-document-click" href="{{{ data.linkurl }}}" target="{{ data.linktarget }}" >'
-			. '<img class="<# print( scaleClass ); #>" src="{{ data.imgurl }}" alt="{{ data.alt }}" />'
+		$js_template = "<# var scaleClass = ( 'fill' == data.attributes.shortcode_attributes.scale ) ? 'karma-image-fill' : 'karma-image-real'; #> "
+		   	. '<# scaleClass += ( data.attributes.shortcode_attributes.resizing ) ? " karma-image-both-resize" : "" #>'
+		   	. '<# var elemWidth =  data.attributes.shortcode_attributes.width + "px"; #>'
+		   	. '<# var elemHeight =  data.attributes.shortcode_attributes.height + "px"; #>'
+		    . '<# var elemStyle = " width:" + elemWidth +";height:" + elemHeight +";" #>'
+			. '<div class="karma-image karma-image-{{ data.attributes.element_key }} " >'
+			. '<div class="karma-image-container {{ data.attributes.shortcode_attributes.extraclass }}">'
+			. '<a class="karma-image-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.linktarget }}" >'
+		    . '<div class="karma-image-resize karma-position-{{ data.attributes.shortcode_attributes.position }}" style="{{ elemStyle }}" >'
+		    . '<div class="karma-image-resize-crop karma-position-{{ data.attributes.shortcode_attributes.position }}" style="{{ elemStyle }};" >'
+			. '<img style="width:{{ data.attributes.shortcode_attributes.naturalwidth }}px;height:{{ data.attributes.shortcode_attributes.naturalheight }}px;" class="<# print( scaleClass ); #>" src="{{ data.attributes.shortcode_attributes.imgurl }}" alt="{{ data.attributes.shortcode_attributes.alt }}" />'
+		    . '</div>'
+		    . '</div>'
 			. '</a>'
 			. '</div>'
 			. '</div>';
+
 		return $js_template;
 
 	}
@@ -151,15 +174,22 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 	/**
 	 * Return CSS property
-	 *
+	 * Note : postfix or prefix are the CSS selectors
+	 * @example if yor prefix is .karma-prefix so your CSS selector is .karma-prefix .karma-section-{element-key}
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 * @return  array The style property of element
 	 */
-	public function get_css_attributes() {
+	public static function get_css_attributes() {
 
-		$styles = array();
+		$styles = array(
+			array(
+				'property'		=> array(
+					'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				)
+			)
+		);
 		return $styles;
 
 	}
@@ -175,9 +205,9 @@ class Karma_Image extends Karma_Shortcode_Base {
 	public function render_script() {
 
 		$block = '' ;
-		if ( 'popup' == $this->element_attributes['action'] ) {
+		if ( 'popup' == self::$element_attributes['action'] ) {
 			$block .= 'document.addEventListener( \'DOMContentLoaded\', function () {
-					new karmaImageLightbox( \'.karma-image-' . esc_attr( $this->element_attributes['element_key'] ) . ' a.karma-image-link\' );
+					new karmaImageLightbox( \'.karma-image-' . esc_attr( self::$element_attributes['element_key'] ) . ' a.karma-image-link\' );
 				} );';
 		}
 

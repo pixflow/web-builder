@@ -31,7 +31,7 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 	function openMediaLibrary() {
 
 		var addImgLink = document.querySelector( '.karma-upload-image-button' );
-		viewObject.openMediaLibrary( addImgLink, callback );
+		window.top.karmaBuilderEnviroment.openMediaLibrary( addImgLink, callback );
 
 	};
 

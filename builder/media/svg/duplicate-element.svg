@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="duplicate-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="A39" fill-rule="nonzero" fill="#394959">
-            <path d="M0,10.8333333 L3.31675175e-16,5.41666667 C1.85131862e-16,4.22004971 0.970049709,3.25 2.16666667,3.25 L7.58333333,3.25 C8.77995029,3.25 9.75,4.22004971 9.75,5.41666667 L9.75,10.8333333 C9.75,12.0299503 8.77995029,13 7.58333333,13 L2.16666667,13 C0.970049709,13 6.27639957e-16,12.0299503 0,10.8333333 Z" id="A37"></path>
-            <path d="M3.25006276,2.15 C3.2590202,0.961055347 4.22561018,-1.77635684e-15 5.41666667,-1.77635684e-15 L10.8333333,-1.77635684e-15 C12.0299503,-1.77635684e-15 13,0.970049709 13,2.16666667 L13,7.58333333 C13,8.77438982 12.0389447,9.7409798 10.85,9.74993724 L10.85,5.41666667 C10.85,3.61253648 9.38746352,2.15 7.58333333,2.15 L3.2500556,2.15 L3.25006276,2.15 Z" id="A38"></path>
+<svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="3" width="9" height="10" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c1" transform="translate(1.000000, 0.000000)">
+            <path d="M4,1 L4,9 L11,9 L11,1 L4,1 Z M4,0 L11,0 C11.5522847,-1.01453063e-16 12,0.44771525 12,1 L12,9 C12,9.55228475 11.5522847,10 11,10 L4,10 C3.44771525,10 3,9.55228475 3,9 L3,1 C3,0.44771525 3.44771525,1.01453063e-16 4,0 Z" id="c2" fill="#394959" fill-rule="nonzero"></path>
+            <g>
+                <use fill="#394959" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#FFFFFF" stroke-width="1" x="-0.5" y="2.5" width="10" height="11" rx="1"></rect>
+            </g>
         </g>
     </g>
 </svg>

@@ -98,7 +98,7 @@
 	@include box( $width, $height );
 	background-color:#fff;
 	border-radius: 3px;
-	box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
+	box-shadow: 0 2px 15px 7px rgba( $builder-main-color, 0.07);
 }
 
 @mixin flex-position ( $horizontal, $vertical ){
@@ -180,6 +180,20 @@
 }
 
 /**
+ * Unselectable
+ * @group helpers
+ * @output make unselectable element
+ */
+@mixin unselectable() {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+
+/**
  * check justify content and align item (use for image position)
  * @group helpers
  * @output justify content and align item
@@ -232,20 +246,25 @@
  * @group helpers
  * @output border button
  */
-@mixin border-button {
+@mixin border-button ($color:$builder-accent-color, $background-color:inherit, $border:$builder-accent-color) {
 
 	@include flexbox( center );
-	@include box-color( $builder-accent-color, inherit, 2px );
+	@include box-color( $color, $background-color, 2px );
 	@extend .karma-builder-title-3;
 	@extend .karma-button-padding;
-	border: 1px solid $builder-accent-color;
+	border: 1px solid $border;
+	cursor: pointer;
 	height:40px;
-	font-weight: 400;
+	transition-duration: .2s;
 
 	&:focus {
+		transition-duration: .2s;
 	}
 
 	&:hover {
+		transition-duration: .2s ;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 15px 0 rgba(57,73,89,0.2);
 	}
 
 	&:active {
@@ -258,20 +277,25 @@
  * @group helpers
  * @output border button
  */
-@mixin fill-button {
+@mixin fill-button ($color:#fff, $background-color:$builder-accent-color) {
 
-	@include flexbox( center );
-	@include box-color( #fff, $builder-accent-color, 2px );
+	@include flexbox( center, center, center );
+	@include box-color( $color, $background-color, 2px );
 	@extend .karma-builder-title-3;
 	@extend .karma-button-padding;
 	border: none;
+	cursor: pointer;
 	height:40px;
-	font-weight: 400;
+	transition-duration: .2s;
 
 	&:focus {
+		transition-duration: .2s;
 	}
 
 	&:hover {
+		transition-duration: .2s ;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 15px 0 rgba(57,73,89,0.2);
 	}
 
 	&:active {
@@ -284,14 +308,14 @@
  * @group helpers
  * @output oval button
  */
-@mixin oval-button {
+@mixin oval-button($color:$builder-main-color, $background-color:rgba(255, 255, 255, 0.7)) {
 
-	@include flexbox( center );
-	@include box-color( $builder-main-color, #fff, 100px );
+	@include flexbox( center, center, center );
+	@include box-color( $color, $background-color, 100px );
 	@extend .karma-builder-title-3;
 	@extend .karma-button-padding;
 	height:36px;
-	font-weight: 400;
+	cursor: pointer;
 
 	&:focus {
 	}
@@ -309,15 +333,15 @@
  * @group helpers
  * @output oval with icon button
  */
-@mixin oval-button-with-icon {
+@mixin oval-button-with-icon ($color:$builder-main-color, $background-color:#fff, $border:$builder-main-color-3) {
 
-	@include flexbox( center );
-	@include box-color( $builder-main-color, #fff, 100px );
+	@include flexbox( center,center,center );
+	@include box-color( $color, $background-color, 100px );
 	@extend .karma-builder-title-3;
-	border: 1px solid $builder-main-color-3;
+	border: 1px solid $border;
+	cursor: pointer;
 	height:36px;
-	font-weight: 400;
-	padding: 0 20px 0 18px;
+	padding: 0 20px 0 20px;
 
 	&:focus {
 	}
@@ -327,8 +351,9 @@
 
 	&:active {
 	}
+
 	.karma-oval-button-icon{
-		margin-right: 9px;
+		margin-right: 10px;
 	}
 
 }
@@ -386,18 +411,19 @@
 @mixin input-text-type {
 
 	@include box( 245px, 36px );
-	padding: 11px 14px;
+	padding: 7px 14px;
 	background: transparent;
 	border: 1px solid $builder-main-color-3;
 	border-radius: 4px;
+	box-sizing: border-box;
+  	box-shadow: none;
 	color: $builder-main-color-1;
 	font-size: 12px;
 
 	&::placeholder {
-		@extend .HelveticaNeue-font;
 		@extend .karma-builder-title-4;
-		color: rgba( 57, 73, 89, 0.6 );
-		font-family: HelveticaNeue;
+		color: rgba( $builder-main-color, 0.6 );
+		font-family: $builder-normal-font;
 		font-size: 12px;
 
 	}
@@ -425,7 +451,7 @@
 	border: 1px solid $builder-main-color-3;
 
     span{
-		margin-top: 1px;
+		margin-top: -1px;
 	}
 }
 
@@ -454,15 +480,13 @@
 		opacity: 0;
 		position: absolute;
 		width: 100%;
-		z-index: 100;
+		z-index: $level-20;
 	}
 
-	input:checked + label{
-		transform : scale( 1, 1 );
-		transition-duration : .3s;
+	input:checked + label {
+		transform: scale(1, 1);
+		transition-duration: .3s;
 	}
-
-
 }
 
 /**
@@ -476,4 +500,125 @@
 	background-color: $background-color;
 	border-radius: $border-radius;
 
+}
+
+@mixin delete-message-box( $width, $height ){
+	@include element_direction( $top:0, $left:0 );
+	@include box( 100vw, 100vh );
+	@include flexbox( center, center, center );
+	animation: load_delete_overlay .7s ;
+	background-color: rgba(#000 , 0.3);
+	position: fixed;
+	z-index: $level-30;
+	&.karma-delete-box-animation{
+		animation: close_delete_overlay .7s ;
+	}
+
+	.karma-delete-message-container{
+		@include box( $width, $height );
+		@extend .karma-builder-shadow-box-3;
+		@include flexbox( left, normal , center );
+		@extend .karma-builder-title-2;
+		animation: load_delete_box 10ms cubic-bezier( 0.165, 0.84, 0.44, 1 ) forwards;
+		border-radius: 4px;
+		background-color: #fff;
+		color: $builder-main-color;
+		opacity: 0;
+		padding: 21px 33px 30px 30px;
+		transform: scale(.6);
+		z-index: $level-25;
+
+		&.karma-delete-container-animation{
+			animation: close_delete_box 150ms cubic-bezier( 0.165, 0.84, 0.44, 1 ) forwards;
+		}
+
+		.karma-delete-message-box-buttons{
+
+			@include flexbox( center, center, flex-end );
+			padding:43px 0 0 31px;
+
+			.karma-delete-message-box-delete-button{
+				@include fill-button( #fff, #FF243F );
+			}
+
+			.karma-delete-message-box-cancel-button{
+				@extend .karma-builder-title-3;
+				color: $builder-main-color;
+				cursor: pointer;
+				padding-right: 19px;
+				transition-duration: .3s ;
+
+				&:hover{
+					color:$builder-main-color-2;
+					transition-duration: .3s ;
+				}
+			}
+		}
+	}
+}
+
+@keyframes load_delete_overlay {
+	00% {
+		background-color: transparent;
+	}
+	100% {
+		background-color: rgba( #000 , 0.3 );
+	}
+}
+
+@keyframes close_delete_overlay {
+	00% {
+		background-color: rgba( #000 , 0.3 );
+	}
+	100% {
+		background-color: transparent;
+	}
+}
+
+@keyframes load_delete_box {
+	0% {
+		opacity: 0;
+		transform: scale(.6);
+	}
+	25% {
+		opacity: .3;
+		transform: scale(.7);
+	}
+	50% {
+		opacity: .6;
+		transform: scale(.8);
+	}
+	75% {
+		opacity: .8;
+		transform: scale(.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+
+	}
+}
+
+@keyframes close_delete_box {
+	00% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	25% {
+		opacity: .8;
+		transform: scale(1);
+	}
+	50% {
+		opacity: .6;
+		transform: scale(.9);
+	}
+	75% {
+		opacity: .3;
+		transform: scale(.8);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(.7);
+
+	}
 }

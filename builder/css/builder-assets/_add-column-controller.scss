@@ -7,7 +7,7 @@
 
 		.karma-add-column-view {
 			@extend .center-both-flex;
-			padding-top: $top-space-red;
+			padding-top: $builder-red-space;
 		}
 
 		.karma-add-column-view-border {
@@ -34,7 +34,6 @@
 				border-radius: 3px;
 				cursor: pointer;
 				height: 37.64px;
-				position: relative;
 
 				&:before,
 				&:after {
@@ -53,14 +52,11 @@
 
 		.karma-add-column-button button {
 
-			@include box( 136px, 36px );
-			background-color: $builder-accent-color-3;
-			border-radius: 19px;
-			color: $builder-accent-color;
-			font-family: "HelveticaNeue_Medium";
-			font-size: 14px;
-			margin: $top-space-orange;
-			padding: 0 ;
+			@include oval-button-with-icon($builder-accent-color,$builder-accent-color-3,$builder-accent-color-3);
+			@extend .karma-builder-title-3;
+			font-family: $builder-medium-font;
+			margin: $builder-orange-space 0;
+			text-transform: capitalize;
 
 		}
 

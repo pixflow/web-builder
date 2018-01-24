@@ -1,11 +1,10 @@
 #karma-element-setting-panel-container{
 	.karma-text-input-controller {
 		@include flexbox( $justify-content: center );
-		padding-bottom: $top-space-orange;
+		padding-bottom: $builder-orange-space;
 
 		input.karma-text-input-field {
-
-			@include input-text-type
+			@include input-text-type();
 		}
 	}
 }

@@ -104,14 +104,13 @@ class Karma_Builder_Loader {
 
 		$builder = Karma_Factory_Pattern::$builder;
 
+		add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
+
 		if ( $builder::$edit_mode ) {
 			add_filter( 'show_admin_bar', '__return_false' );
 			remove_filter('the_content','wpautop');
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
-			add_filter( 'do_shortcode_tag', array( $this, 'create_builder_element_model' ), 10, 3 );
-			add_action( 'wp_head', array( $this, 'execute_head_function' ), -1 );
-			$builder_views = Karma_Factory_Pattern::$builder_views;
-			$builder_views->load_builder_templates();
+			add_action( 'wp_head', array( $this, 'execute_head_functions' ), -1 );
 
 		}
 
@@ -120,6 +119,23 @@ class Karma_Builder_Loader {
 		}
 
 		$this->init_elements();
+		add_filter( 'the_content',  array( $this, 'create_general_element' ), 100 );
+
+	}
+
+	/**
+	 * Put all the content into unique div
+	 *
+	 * @param string $content  Content of current page
+	 *
+	 * @since     1.0.0
+	 * @return    string The content
+	 */
+	public function create_general_element( $content ) {
+
+		return '<div id="karma-builder-layout">'
+			. $content
+			. '</div>';
 
 	}
 
@@ -131,7 +147,7 @@ class Karma_Builder_Loader {
 	 */
 	public function prepare_builder(){
 
-		if( true == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
+		if( 'true' == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
 			remove_filter('the_content','wpautop');
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
@@ -145,13 +161,33 @@ class Karma_Builder_Loader {
 	 * @since     1.0.0
 	 * @return    void
 	 */
-	public function execute_head_function(){
-
-		$this->set_is_karma_page( get_the_ID(), true );
+	public function execute_head_functions(){
+		
 		$this->add_custom_meta_tags();
 		$this->load_builder_js_templates();
 		$this->load_cache_file();
+		$builder_views = Karma_Factory_Pattern::$builder_views;
+		$builder_views->load_builder_iframe_templates();
+		$stylesheet = Karma_Factory_Pattern::$stylesheet;
+		$stylesheet->create_default_styles();
+		// Apply filter
+		add_filter('body_class', array( $this ,'add_custom_body_classes') );
 
+	}
+
+
+	/**
+	 * Add custom class to body tag
+	 *
+	 * @param array	$classes	List of body class.
+	 *
+	 * @since     1.0.0
+	 * @return    array	New list of body class
+	 */
+	function add_custom_body_classes( $classes ) {
+
+		$classes[] = 'karma-builder-environment';
+		return $classes;
 	}
 
 	/**
@@ -212,8 +248,13 @@ class Karma_Builder_Loader {
 	public function change_the_content( $content ){
 
 		$meta_info = get_post_meta( get_the_ID(), 'karma_post_content', true );
+		$builder = Karma_Factory_Pattern::$builder;
+		$view = Karma_Factory_Pattern::$builder_views;
+
 		if( '' !== $meta_info ){
 			$content = $meta_info;
+		} else {
+			$content = ( $builder::$edit_mode ) ? $view->get_blank_page_template() : '';
 		}
 		return $content;
 
@@ -263,7 +304,6 @@ class Karma_Builder_Loader {
 
 	}
 
-
 	/**
 	 * Add custom meta tags in header 
 	 *
@@ -274,6 +314,7 @@ class Karma_Builder_Loader {
 
 		?>
 		<meta name="post-id" content="<?php echo get_the_ID(); ?>"  />
+		<base target="_blank">
 		<?php
 
 	}
@@ -385,11 +426,27 @@ class Karma_Builder_Loader {
 		);
 
 		$attr = $this->add_default_attributes( $tag, $attr );
+		$element_name = str_replace( '_', '-', $tag );
 		$classes = apply_filters( 'karma/elements/' . $tag . '/classes', array(), $attr );
-		$classes = implode( ' ',$classes );
-		$karma_builder_output = "<div class=\"karma-builder-element $classes\" data-element-key=\"{$shortcode_info['attributes']['element_key']}\" data-name=\"{$tag}\" >"
+		if( 'karma-section' != $element_name && 'karma-column' != $element_name ){
+			$output = "<div class='karma-element-content' >"
 			. $output
-			. '</div>' ;
+			.'</div>';
+		}
+
+		$classes = implode( ' ', $classes );
+		if ( "karma-column" == $element_name ) {
+			$classes .= ' karma-col-sm-' . $attr['sm_size'] . ' karma-col-md-' . $attr['md_size'] . ' karma-col-lg-' . $attr['lg_size'] . ' karma-col-xl-' . $attr['xl_size'];
+		}
+		if ( isset( $attr['elementalign'] ) ) {
+			$classes .= ' karma-element-alignment-'. $attr['elementalign'];
+		}
+		$karma_builder_output = "<div id=\"{$element_name}-{$shortcode_info['attributes']['element_key']}\""
+			. "class=\"karma-builder-element $classes\" "
+			. " data-element-key=\"{$shortcode_info['attributes']['element_key']}\" "
+			. " data-name=\"{$tag}\" >"
+			. $output
+			.'</div>' ;
 		$shortcode_info['output'] = $karma_builder_output;
 		do_action( 'karma_after_shortcode_apply_' . $tag, $shortcode_info );
 		return $karma_builder_output;
@@ -414,7 +471,7 @@ class Karma_Builder_Loader {
 			'output'			=> $output,
 		);
 		$shortcode_info[ 'attributes' ] = $this->add_default_attributes( $tag, $attr );
-		do_action( 'karma_before_shortcode_apply_' . $tag, $shortcode_info );
+		do_action( 'karma/before/shortcode/apply/' . $tag, $shortcode_info );
 		return $output;
 
 	}

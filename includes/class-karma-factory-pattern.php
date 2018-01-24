@@ -198,7 +198,7 @@ class Karma_Factory_Pattern {
 	 */
 	protected function load_builder_stylesheet(){
 
-		self::$stylesheet = new Stylesheet();
+		self::$stylesheet = new Karma_Stylesheet();
 
 	}
 

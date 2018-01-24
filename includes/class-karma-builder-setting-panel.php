@@ -36,6 +36,7 @@ class Karma_Builder_Setting_Panel {
 	const IMAGE = 'image';
 	const RANGE = 'range';
 	const TEXT = 'text';
+	const COLOR_PICKER = 'color-picker';
 	const RADIO_IMAGE = 'radio-image';
 	const RANGE_SLIDER = 'range-slider';
 	const GRID = 'grid';
@@ -45,6 +46,7 @@ class Karma_Builder_Setting_Panel {
 	const SWITCH_PANEL = 'switch-panel';
 	const UPLOAD_IMAGE = 'upload-image';
 	const DROPDOWN = 'dropdown';
+	const TAB = 'tab';
 
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'

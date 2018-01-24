@@ -14,13 +14,13 @@
 		 */
 		template :' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"><div class="karma-default-icon" style="background-image: url({{ data.params.defaultIcon }})" ></div> </button> '
 			+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
-				+ '<button class="karma-align-left" data-value="align-left" >'
+				+ '<button class="karma-align-left <# if( "left" == data.align ){ print("karma-drop-down-active-item"); } #>" data-value="align-left" >'
 					+ '<div class="karma-alignment-left-icon" style="background-image: url({{ data.params.leftAlignIcon }})"></div>'
 				+ '</button>'
-				+ '<button class="karma-align-center" data-value="align-center" >'
+				+ '<button class="karma-align-center <# if( "center" == data.align ){ print("karma-drop-down-active-item"); } #> " data-value="align-center" >'
 					+ '<div class="karma-alignment-center-icon" style="background-image: url({{ data.params.centerAlignIcon }})"></div>'
 				+ '</button>'
-				+ '<button class="karma-align-right" data-value="align-right" >'
+				+ '<button class="karma-align-right <# if( "right" == data.align ){ print("karma-drop-down-active-item"); } #> " data-value="align-right" >'
 					+ '<div class="karma-alignment-right-icon" style="background-image: url({{ data.params.rightAlignIcon }})"></div>'
 				+ '</button>'
 			+ '</div>' ,
@@ -54,7 +54,8 @@
 
 		update: function(){
 
-			this.data.params['defaultIcon'] = this.data.params[ this.elementView.getAttributes( ['align'] ).align + 'AlignIcon' ];
+			this.data.align = this.elementView.getAttributes( ['align'] ).align;
+			this.data.params['defaultIcon'] = this.data.params[ this.data.align  + 'AlignIcon' ];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 
 		},

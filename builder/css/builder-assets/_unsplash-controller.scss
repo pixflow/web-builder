@@ -1,108 +1,209 @@
-#karma-element-setting-panel-container{
-	.karma-unsplash-controller {
-		@include flexbox(center, center, center);
-		flex-direction: column;
-		padding: 0 10px;
-		position: relative;
-		margin-top: $top-space-orange;
+.karma-unsplash-controller {
+	@include flexbox(center, center, center);
+	flex-direction: column;
+	overflow: hidden;
+	padding: 0 $builder-red-space;
+	position: relative;
 
-		.karma-unsplash-search {
-			margin-bottom: $top-space-orange-light;
+	.karma-change-loading-icon {
+		@include box(22px);
+		background-position: center center;
+		background-size: initial;
+		transition: background-image .1s;
+	}
+	.unsplash-loading-more {
+		background-image: url(../media/svg/loading.svg);
+		background-repeat: no-repeat;
+		background-size: 24px;
 
-			input {
-				background: transparent;
-				border: 1px solid $builder-main-color-4;
-				border-radius: 4px;
-				font-size: 12px;
-				line-height: 14px;
-				padding: 10px;
-				text-align: left;
-				width: 243px;
-				&::placeholder {
-					color: $builder-main-color-2;
-				}
+	}
+
+	.karma-unsplash-search {
+
+		margin-bottom: $builder-light-orange-space;
+		margin-top: $builder-orange-space;
+
+		input {
+			@include input-text-type;
+			min-height: 36px;
+			width: 239px;
+			&::placeholder {
+				color: $builder-main-color-2;
+				font-size: 10px;
+				text-align: center;
 			}
 		}
+	}
 
-		.karma-unspalsh-icon {
-			@include box(9px, 9px);
-			border-left: 2px solid $builder-main-color-1;
-			border-bottom: 2px solid $builder-main-color-1;
-			cursor: pointer;
-			position: relative;
-			top: -3px;
-			transform: rotate(-45deg);
+	.karma-unspalsh-icon {
+		background-image: url(../media/svg/unsplash-icon.svg);
+		background-repeat: no-repeat;
+		cursor: pointer;
+	}
+
+	.karma-unsplash-images-result-fake {
+		@include flexbox(left, left, left);
+		@include box(100%, 210px);
+		margin-bottom: 15px;
+	}
+
+	.karma-unsplash-images-result {
+		@include flexbox(left, left, left);
+		@include box(100%, 210px);
+		flex-wrap: wrap;
+		margin-bottom: 15px;
+		margin-top: 12px;
+		overflow: auto;
+		position: absolute;
+		right: -22px;
+		top: 60px;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		&.unsplash-empty-result {
+			@extend .karma-builder-title-4;
+			@include flexbox(center, center, center);
+
+			span#karma-not-found-text {
+				font-family: $builder-bold-font;
+				margin-left: 6px;
+			}
+
+		}
+
+	}
+
+	.karma-unspalsh-selected {
+		&:before {
+			animation: scaleUP .3s;
+			background-image: url(../media/svg/tik.svg);
+			background-position: center;
+			background-repeat: no-repeat;
+			content: '';
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+		&:after {
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	.karma-unspalsh-media-library {
+		@include flexbox($text-align: inherit, $align-item: center, $justify-content: center);
+		cursor: pointer;
+		margin-bottom: $builder-orange-space;
+		margin-top: $builder-orange-space;
+
+		.karma-unsplash-media-library-svg {
+			@include box(26px, 26px);
+			margin-right: 6px;
+		}
+		.karma-unsplash-media-library-link {
+			color: $builder-accent-color;
+			font-size: 15px;
+			line-height: 17px;
+		}
+	}
+
+	.karma-unsplash-copyright {
+		color: $builder-main-color;
+		display: none;
+		font-size: 11px;
+		line-height: 12px;
+		margin-top: 1px;
+		text-align: center;
+		a {
+			color: $builder-main-color;
+			font-size: 11px;
+			line-height: 12px;
+		}
+	}
+
+}
+
+.karma-unsplash-images-list {
+	@include box(77px, 66px);
+	background-color: $builder-accent-color-3;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 2px;
+	cursor: pointer;
+	margin: 2.3px;
+	position: relative;
+	&:after {
+		@include box(100%, 100%);
+		content: '';
+		left: 0;
+		position: absolute;
+		top: 0;
+		transition: .3s;
+	}
+	&:hover:after {
+		background-color: rgba(0, 0, 0, 0.2);
+		transform: scale(1);
+	}
+
+	.karma-unsplash-avatar {
+		@include box(19px);
+		background: url(../media/svg/avatar.svg) no-repeat center;
+		bottom: 0;
+		opacity: 0;
+		position: absolute;
+		right: 0;
+		transition-duration: .3s;
+		z-index: $level-20;
+
+	}
+	&:hover {
+		.karma-unsplash-avatar {
+			opacity: 1;
 			transition-duration: .3s;
 		}
+	}
 
-		.karma-unsplash-images-result {
-			@include flexbox(center, center, center);
-			@include box(100%, 215px);
-			flex-wrap: wrap;
-			margin-bottom: $top-space-red;
-			overflow: auto;
-			position: relative;
-			&::-webkit-scrollbar {
-				display: none;
-			}
-			.karma-unsplash-images-list {
-				@include box( 77px , 66px );
-				background-color: $builder-accent-color-3;
-				background-position: center center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				border-radius: 2px;
-				cursor: pointer;
-				margin: 3px;
-				position: relative;
-				&:after {
-					@include box( 100%, 100% );
-					content: '';
-					left: 0;
-					position: absolute;
-					top: 0;
-					transition: .3s;
-				}
-				&:hover:after {
-					background-color: rgba(0, 0, 0, 0.2);
-					transform: scale(1);
-				}
-			}
+	&.karma-start-dragging {
+		visibility: hidden;
+	}
+	&.karma-grab-element {
+		box-shadow: 0 2px 15px 7px rgba($builder-main-color, 0.07);
+		z-index: $level-30;
+
+		.karma-unsplash-avatar,
+		&:after {
+			display: none;
 		}
 
-		.karma-unspalsh-selected {
-			&:before {
-				content: '';
-				animation: scaleUP .3s;
-				background-image: url(../media/svg/tik.svg);
-				background-position: center;
-				background-repeat: no-repeat;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-			}
-			&:after {
-				background-color: rgba(0, 0, 0, 0.2);
-			}
-		}
+	}
+}
 
-		.karma-unspalsh-media-library {
-			@include flexbox($text-align: inherit, $align-item: center, $justify-content: center);
-			margin-top: $top-space-orange;
-			margin-bottom: $top-space-orange;
+.element-panel-image .karma-unsplash-images-list {
+	@include box(75px, 65px);
+	margin: 3.2px;
+}
 
-			.karma-unsplash-media-library-svg {
-				@include box( 26px , 26px );
-				margin-right: 6px;
-			}
-			.karma-unsplash-media-library-link {
-				color: $builder-accent-color;
-				font-size: 15px;
-				line-height: 17px;
+.unsplash-avatar {
+
+	background: #fff;
+	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.42);
+	color: $builder-main-color;
+	padding: 5px 8px;
+
+	.ui-tooltip-content{
+		font-family: $builder-medium-font;
+	}
+	.arrow {
+		height: 4px;
+		&.top {
+			top: -4px;
+			&:after{
+				background: #fff;
 			}
 		}
 	}
 }
-

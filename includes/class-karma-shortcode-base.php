@@ -37,11 +37,11 @@ class Karma_Shortcode_Base {
      *
      * Holds the element attributes .
      *
-     * @access protected
+     * @access public
      *
      * @var array
      */
-    protected $element_attributes;
+    public static $element_attributes;
 
     /**
      * Generic ID.
@@ -92,10 +92,10 @@ class Karma_Shortcode_Base {
 
 		//Apply hooks when builder is going to load
 		$builder = Karma_Factory_Pattern::$builder;
-		add_action( 'karma_before_shortcode_apply_' . static::$element_name , array( $this , 'load_assets' ) );
+		add_action( 'karma/before/shortcode/apply/' . static::$element_name , array( $this , 'load_assets' ) );
 		add_filter( 'karma/elements/load/dependencies/' . static::$element_name , array( $this, 'get_style_script_dependencies' ) );
 		if( $builder::is_in_builder() ){
-			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.js', array( KARMA_BUILDER_NAME . '-shortcodes' ) );
+			wp_enqueue_script( static::$element_name, KARMA_BUILDER_URL . '/elements/' . static::$element_name . '/view.min.js', array( KARMA_BUILDER_NAME . '-shortcodes' ) );
 			add_action( 'wp_footer', array( $this, 'load_js_templates' ) );
 			add_filter( 'karma/elements/all/map', array( $this, 'map_injection' ) );
 			add_filter( 'karma/elements/all/gizmo', array( $this, 'gimzo_controllers_injection' ) );
@@ -193,8 +193,8 @@ class Karma_Shortcode_Base {
 
 	    $default_attributes = $this->get_element_default_attributes();
 	    $element_attributes = $attributes[ 'attributes' ];
-	    $this->element_attributes = array_merge( $default_attributes, $element_attributes );
-	    $this->element_id = $this->element_attributes[ 'element_key' ];
+	    self::$element_attributes = array_merge( $default_attributes, $element_attributes );
+	    $this->element_id = self::$element_attributes[ 'element_key' ];
 	    return $this;
 
     }
@@ -229,17 +229,18 @@ class Karma_Shortcode_Base {
 	 */
 	protected function render_style(){
 
+		$builder = Karma_Factory_Pattern::$builder;
+		$element_selector =  '#' ;
 		$elements_style_attributes = array(
-			'selector' => str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id,
+			'selector' => $element_selector . str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id,
 			'css'      => static::get_css_attributes()
 		);
 
 		$block = Karma_Factory_Pattern::$stylesheet->create_css_block( $elements_style_attributes );
 		Cache_Manager::$css_blocks .= $block;
-		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) :
 			?>
-				<style id="style-<?php echo $elements_style_attributes['selector']; ?>" >
+				<style id="style-<?php echo str_replace( "_", "-", static::$element_name ) . '-' . $this->element_id; ?>" >
 					<?php echo $block; ?>
 				</style>
 			<?php
@@ -263,7 +264,7 @@ class Karma_Shortcode_Base {
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) :
 		?>
-		<script id="script-<?php echo static::$element_name . '-' . $this->element_id; ?> ">
+		<script id="script-<?php echo str_replace( "_", "-", static::$element_name ). '-' . $this->element_id; ?>">
 			<?php echo $script_string; ?>
 		</script>
 		<?php

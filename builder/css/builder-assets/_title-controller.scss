@@ -1,26 +1,26 @@
 
-.karma-title-with-background-controller {
+#karma-element-setting-panel-container .karma-title-with-background-controller {
 
 	background-color:$builder-accent-color-4;
-	padding: $top-space-blue;
+	padding: $builder-blue-space;
 	width: 100%;
 
 	div.karma-title-with-background-field {
 
 		@extend .karma-builder-title-3;
 		color: $builder-accent-color;
-		font-family: "HelveticaNeue_Medium";
+		font-family: $builder-medium-font;
 
 	}
 }
 
 .karma-title-controller {
-	padding: $top-space-red 20px $top-space-orange ;
+	padding: $builder-red-space 20px $builder-orange-space;
 	position: relative;
 	width: 100%;
 
 	div.karma-title-field {
-		@extend .karma-builder-title-in-box;
+		@extend .karma-builder-title-3;
 		color: $builder-main-color;
 	}
 }

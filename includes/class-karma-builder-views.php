@@ -61,6 +61,20 @@ class Karma_Views {
 		'element-panel-permium',
 	);
 
+	/**
+	 * The list of builder template names that need to load inside iframe
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private $builder_iframe_templates = array(
+		'delete-message-box',
+		'new-section',
+		'blank-page'
+
+	);
+
+
 	/*
 	 * Print navbar html and create builder environment
 	 *
@@ -82,6 +96,23 @@ class Karma_Views {
 	public function load_builder_templates(){
 
 		foreach ( $this->builder_templates as $temp ){
+			?>
+			<script type="text/html" id="tmpl-karma-<?php echo $temp; ?>" >
+				<?php include KARMA_BUILDER_DIR . 'builder/templates/builder/' . $temp . '-template.php'; ?>
+			</script>
+			<?php
+		}
+
+	}
+
+	/*
+	 * Print Element Panel, Setting Panel and other buttons html inside iframe
+	 *
+	 * @return	void
+	 */
+	public function load_builder_iframe_templates(){
+
+		foreach ( $this->builder_iframe_templates as $temp ){
 			?>
 			<script type="text/html" id="tmpl-karma-<?php echo $temp; ?>" >
 				<?php include KARMA_BUILDER_DIR . 'builder/templates/builder/' . $temp . '-template.php'; ?>
@@ -114,7 +145,7 @@ class Karma_Views {
 	 */
 	public function load_controller_script( $controller ){
 
-		wp_enqueue_script( $controller, KARMA_BUILDER_URL . "builder/templates/controller/{$controller}/script.js" );
+		wp_enqueue_script( $controller, KARMA_BUILDER_URL . "builder/templates/controller/{$controller}/script.min.js" );
 
 	}
 
@@ -140,10 +171,21 @@ class Karma_Views {
 	 */
 	public function load_extend_script( $extend ){
 
-		wp_enqueue_script( $extend, KARMA_BUILDER_URL . "builder/templates/extends/{$extend}/script.js" );
+		wp_enqueue_script( $extend, KARMA_BUILDER_URL . "builder/templates/extends/{$extend}/script.min.js" );
 
 	}
 
+	/*
+	 * Enqueue blank page
+	 *
+	 * @return {html} html of template
+	 */
+	public function get_blank_page_template(){
 
+		ob_start();
+		include( KARMA_BUILDER_DIR . "builder/templates/builder/blank-page-template.php" );
+		return ob_get_clean();
+
+	}
 
 }

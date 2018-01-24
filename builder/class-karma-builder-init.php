@@ -72,7 +72,7 @@ class Karma_Builder_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/builder-styles.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
 
 	}
 
@@ -97,26 +97,20 @@ class Karma_Builder_Public {
 
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) {
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url(__FILE__) . 'js/karma-builder-init.min.js', array('jquery', 'backbone', 'wp-util'), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-jquery-ui' ,  plugin_dir_url( __FILE__ ). 'js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-jquery.nicescroll' ,  plugin_dir_url( __FILE__ ). 'js/jquery.nicescroll.min.js', array( 'jquery' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-jquery.easing' ,  plugin_dir_url( __FILE__ ).'js/jquery-easing.min.js', array( 'jquery' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-jquery.qiucksand' ,  plugin_dir_url( __FILE__ ).'js/quicksand.min.js', array( 'jquery' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-range-slider' ,  plugin_dir_url( __FILE__ ). 'js/rangeslider.min.js', array( 'jquery' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-grid-resizer' ,  plugin_dir_url( __FILE__ ). 'js/grid-resizer.min.js', array( ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-spectrum' ,  plugin_dir_url( __FILE__ ). 'js/spectrum.min.js', array( ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-color-picker' ,  plugin_dir_url( __FILE__ ). 'js/karma-builder-color-picker.min.js', array( ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-setting-panel', plugin_dir_url(__FILE__) . 'js/karma-builder-setting-panel.min.js', array( $this->plugin_name ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-element-panel', plugin_dir_url(__FILE__) . 'js/karma-builder-element-panel.min.js', array( $this->plugin_name ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos', plugin_dir_url(__FILE__) . 'js/karma-builder-gizmos.min.js', array( $this->plugin_name ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-icon', plugin_dir_url(__FILE__) . 'js/gizmos/icon.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-alignment', plugin_dir_url(__FILE__) . 'js/gizmos/alignment.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-text', plugin_dir_url(__FILE__) . 'js/gizmos/text.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', plugin_dir_url(__FILE__) . 'js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', plugin_dir_url(__FILE__) . 'js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-color', plugin_dir_url(__FILE__) . 'js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-shortcodes', plugin_dir_url(__FILE__) . 'js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-setting-panel', $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_media();
+			wp_enqueue_script( $this->plugin_name . '-jquery-ui' , KARMA_BUILDER_URL . 'builder/js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-grid-resizer' , KARMA_BUILDER_URL . 'builder/js/grid-resizer.min.js', array( ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-spectrum' , KARMA_BUILDER_URL . 'builder/js/spectrum.min.js', array( ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-color-picker' , KARMA_BUILDER_URL . 'builder/js/karma-builder-color-picker.min.js', array( ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, KARMA_BUILDER_URL . 'builder/js/karma-builder-init.min.js', array( 'jquery', 'backbone', 'wp-util', $this->plugin_name . '-jquery-ui' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos', KARMA_BUILDER_URL . 'builder/js/karma-builder-gizmos.min.js', array( $this->plugin_name ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-icon', KARMA_BUILDER_URL . 'builder/js/gizmos/icon.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-alignment', KARMA_BUILDER_URL . 'builder/js/gizmos/alignment.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-text', KARMA_BUILDER_URL . 'builder/js/gizmos/text.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', KARMA_BUILDER_URL . 'builder/js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', KARMA_BUILDER_URL . 'builder/js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-color', KARMA_BUILDER_URL . 'builder/js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-shortcodes', KARMA_BUILDER_URL . 'builder/js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+
 		}
 	}
 

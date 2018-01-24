@@ -18,6 +18,53 @@ function karma_load_svg( $url ){
 
 }
 
+/**
+ * check and set user have avatar and print it in header
+ *
+ * @since    1.0.0
+ * @return avatar or first character of user that login in wordpress
+ */
+function get_user_avatar(){
+
+	global $current_user;
+
+	$current_user = wp_get_current_user();
+	$email = $current_user->user_email;
+	$data = checking_avatar_exist( $email );
+	if ( '200' == $data ){
+		return get_avatar( $current_user->ID, 32 );
+	} else {
+		return substr( $current_user->display_name, 0, 1 );
+	}
+
+
+}
+
+/**
+ * check user have avatar or no
+ * @param    String $email email of user
+ *
+ * @since    1.0.0
+ * @return mixed for checking avatar exist
+ *
+ */
+function checking_avatar_exist( $email ){
+
+	$hashkey = md5( strtolower( trim( $email ) ) );
+	$uri = 'http://www.gravatar.com/avatar/' . $hashkey . '?d=404';
+	$data = wp_cache_get( $hashkey );
+	if ( false === $data ) {
+		$response = wp_remote_head( $uri );
+		if( is_wp_error( $response ) ) {
+			$data = 'not200';
+		} else {
+			$data = $response['response']['code'];
+		}
+		wp_cache_set( $hashkey, $data, $group = '', $expire = 60*5 );
+	}
+	return $data;
+}
+
 
 /**
  * Get remote image url and add it to media library

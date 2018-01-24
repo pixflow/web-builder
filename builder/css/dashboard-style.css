@@ -2,79 +2,10 @@
 This file is used to contain all helper imports.
 Files inside this folder can contain abstract settings, helpers or functions. They have no direct output.
 */
+/** builder Font  **/
 /** Builder Colors **/
 /* Builder Major Levels */
 /* spaces */
-.center-both-flex {
-  align-items: center;
-  display: flex;
-  justify-content: center; }
-
-.space-between {
-  display: flex;
-  justify-content: space-between; }
-
-.space-around {
-  display: flex;
-  justify-content: space-around; }
-
-.HelveticaNeue-font, #karma-element-setting-panel-container * {
-  font-family: "HelveticaNeue"; }
-
-@keyframes scaleUP {
-  0% {
-    transform: scale(0); }
-  100% {
-    transform: scale(1); } }
-/* Classes to extend for fonts */
-.karma-builder-title-1 {
-  font-size: 20px;
-  margin-top: 28px;
-  line-height: 32px; }
-
-.karma-builder-title-2 {
-  font-size: 16px;
-  margin-top: 24px;
-  line-height: 28px; }
-
-.karma-builder-title-3 {
-  font-size: 14px;
-  line-height: 16px; }
-
-.karma-builder-title-4 {
-  font-size: 12px;
-  line-height: 14px; }
-
-.karma-builder-title-5 {
-  font-size: 10px;
-  margin-top: 18px;
-  line-height: 20px; }
-
-.karma-builder-title-in-box {
-  font-size: 14px;
-  line-height: 16px; }
-
-.karma-colorpicker-style-border-radius {
-  border-radius: 23px; }
-
-.karma-colorpicker-style-border-radius-box {
-  border-radius: 5px; }
-
-.karma-button-padding {
-  padding: 0 20px; }
-
-.karma-hide {
-  display: none; }
-
-.karma-builder-shadow-box-1 {
-  box-shadow: 0 2px 4px 0 #D7DBDE; }
-
-.karma-builder-shadow-box-2 {
-  box-shadow: 0 2px 12px 0 #D7DBDE; }
-
-.karma-builder-shadow-box-3 {
-  box-shadow: 0 4px 15px 4px #D7DBDE; }
-
 /**
  * Media queries
  * @group helpers
@@ -124,6 +55,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * flexbox
  * @group helpers
  * @output with display flex and  center element
+ */
+/**
+ * Unselectable
+ * @group helpers
+ * @output make unselectable element
  */
 /**
  * check justify content and align item (use for image position)
@@ -185,59 +121,184 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output box color
  */
+@keyframes load_delete_overlay {
+  00% {
+    background-color: transparent; }
+  100% {
+    background-color: rgba(0, 0, 0, 0.3); } }
+@keyframes close_delete_overlay {
+  00% {
+    background-color: rgba(0, 0, 0, 0.3); }
+  100% {
+    background-color: transparent; } }
+@keyframes load_delete_box {
+  0% {
+    opacity: 0;
+    transform: scale(0.6); }
+  25% {
+    opacity: .3;
+    transform: scale(0.7); }
+  50% {
+    opacity: .6;
+    transform: scale(0.8); }
+  75% {
+    opacity: .8;
+    transform: scale(0.9); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+@keyframes close_delete_box {
+  00% {
+    opacity: 1;
+    transform: scale(1); }
+  25% {
+    opacity: .8;
+    transform: scale(1); }
+  50% {
+    opacity: .6;
+    transform: scale(0.9); }
+  75% {
+    opacity: .3;
+    transform: scale(0.8); }
+  100% {
+    opacity: 0;
+    transform: scale(0.7); } }
+.center-both-flex {
+  align-items: center;
+  display: flex;
+  justify-content: center; }
+
+.space-between {
+  display: flex;
+  justify-content: space-between; }
+
+.space-around {
+  display: flex;
+  justify-content: space-around; }
+
+.karma-remove-list-margin,
+.karma-remove-list-margin li {
+  margin: 0; }
+
+@keyframes scaleUP {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+/* Classes to extend for fonts */
+.karma-builder-title-1 {
+  font-size: 20px;
+  line-height: 32px; }
+
+.karma-builder-title-2 {
+  font-size: 16px;
+  line-height: 28px; }
+
+.karma-builder-title-3 {
+  font-size: 14px;
+  line-height: 16px; }
+
+.karma-builder-title-4 {
+  font-size: 12px;
+  line-height: 22px; }
+
+.karma-builder-title-5 {
+  font-size: 10px;
+  line-height: 20px; }
+
+.karma-paragraph {
+  font-size: 14px;
+  line-height: 24px; }
+
+.karma-coming-soon-typo {
+  color: #394959;
+  font-family: HelveticaNeue_med;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 38px 38px 35px; }
+
+.karma-colorpicker-style-border-radius {
+  border-radius: 23px; }
+
+.karma-colorpicker-style-border-radius-box {
+  border-radius: 5px; }
+
+.karma-button-padding {
+  padding: 0 20px; }
+
+.karma-hide {
+  display: none; }
+
+.karma-builder-shadow-box-1 {
+  box-shadow: 0 2px 4px 0 rgba(57, 73, 89, 0.2); }
+
+.karma-builder-shadow-box-2 {
+  box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2); }
+
+.karma-builder-shadow-box-3 {
+  box-shadow: 0 4px 15px 4px rgba(57, 73, 89, 0.2); }
+
+.karma-dropdown-option {
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  padding: 10px;
+  transition: background-color .2s; }
+  .karma-dropdown-option .karma-dropdown-option-title {
+    transition: color .2s; }
+  .karma-dropdown-option.karma-selected-dropdown-option {
+    background-color: #ECF5FE; }
+    .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
+      color: #419CF8;
+      font-family: HelveticaNeue_med; }
+  .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
+    color: #419CF8; }
+  .karma-dropdown-option .karma-dropdown-option-icon {
+    margin-right: 15px; }
+
+.dot-gizmo {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border: 1px solid #419CF8;
+  border-radius: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 90; }
+  .dot-gizmo:after {
+    width: 22px;
+    height: 22px;
+    content: ""; }
+
 @font-face {
-  font-family: HelveticaNeu_Bold;
-  src: url("../font/Helvetica_Neu_Bold.ttf");
-  font-weight: normal;
+  font-family: HelveticaNeue_bold;
+  src: url("../font/helvetiva_bold.ttf");
+  font-weight: 700;
   font-style: normal; }
 @font-face {
   font-family: HelveticaNeue;
-  src: url("../font/HelveticaNeue.woff");
-  font-weight: normal;
+  src: url("../font/helvetica.ttf");
+  font-weight: 400;
   font-style: normal; }
 @font-face {
-  font-family: HelveticaNeue_BlackCond;
-  src: url("../font/Helvetica_Neue_Black.woff");
-  font-weight: normal;
+  font-family: HelveticaNeue_med;
+  src: url("../font/helvetica_med.ttf");
+  font-weight: 500;
   font-style: normal; }
 @font-face {
-  font-family: HelveticaNeue_Light;
-  src: url("../font/HelveticaNeue_Light.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_Medium;
-  src: url("../font/HelveticaNeue_Medium.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_Thin;
-  src: url("../font/HelveticaNeueThin.woff");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueBd;
-  src: url("../font/HelveticaNeueBd.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueHv;
-  src: url("../font/HelveticaNeueHv.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueIt;
-  src: url("../font/HelveticaNeueLt.ttf");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeueMed;
-  src: url("../font/HelveticaNeueMed.ttf");
-  font-weight: normal;
+  font-family: HelveticaNeue_light;
+  src: url("../font/helvetica_light.ttf");
+  font-weight: 300;
   font-style: normal; }
 /* _-_-_- base/RESET -_-_-_ */
 #karma-element-setting-panel-container * {
-  font-weight: 400; }
+  font-weight: 400;
+  font-family: "HelveticaNeue"; }
+#karma-element-setting-panel-container button,
+#karma-element-setting-panel-container form {
+  margin: 0;
+  background: transparent; }
 #karma-element-setting-panel-container button,
 #karma-element-setting-panel-container input[type="text"],
 #karma-element-setting-panel-container input[type="number"] {
@@ -253,11 +314,240 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   #karma-element-setting-panel-container input[type="number"]:active {
     box-shadow: none;
     outline: none; }
+#karma-element-setting-panel-container hr {
+  border: 0;
+  height: 1px;
+  background: #D7DBDE; }
+
+#karma-add-element html, #karma-add-element body, #karma-add-element span, #karma-add-element object, #karma-add-element iframe,
+#karma-add-element h1, #karma-add-element h2, #karma-add-element h3, #karma-add-element h4, #karma-add-element h5, #karma-add-element h6, #karma-add-element p, #karma-add-element blockquote, #karma-add-element pre,
+#karma-add-element abbr, #karma-add-element address, #karma-add-element cite, #karma-add-element code,
+#karma-add-element del, #karma-add-element dfn, #karma-add-element em, #karma-add-element img, #karma-add-element ins, #karma-add-element kbd, #karma-add-element q, #karma-add-element samp,
+#karma-add-element small, #karma-add-element strong, #karma-add-element sub, #karma-add-element sup, #karma-add-element var,
+#karma-add-element b, #karma-add-element i,
+#karma-add-element dl, #karma-add-element dt, #karma-add-element dd, #karma-add-element ol, #karma-add-element ul, #karma-add-element li,
+#karma-add-element fieldset, #karma-add-element button, #karma-add-element form, #karma-add-element label, #karma-add-element legend,
+#karma-add-element table, #karma-add-element caption, #karma-add-element tbody, #karma-add-element tfoot, #karma-add-element thead, #karma-add-element tr, #karma-add-element th, #karma-add-element td,
+#karma-add-element article, #karma-add-element aside, #karma-add-element canvas, #karma-add-element details, #karma-add-element figcaption, #karma-add-element figure,
+#karma-add-element footer, #karma-add-element header, #karma-add-element hgroup, #karma-add-element menu, #karma-add-element nav, #karma-add-element section, #karma-add-element summary,
+#karma-add-element time, #karma-add-element mark, #karma-add-element audio, #karma-add-element video, #karma-add-element input[class*="karma"] {
+  animation: none;
+  animation-delay: 0s;
+  animation-direction: normal;
+  animation-duration: 0s;
+  animation-fill-mode: none;
+  animation-iteration-count: 1;
+  animation-name: none;
+  animation-play-state: running;
+  animation-timing-function: ease;
+  backface-visibility: visible;
+  background: 0;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: transparent;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  border: 0;
+  border-style: none;
+  border-width: medium;
+  border-color: inherit;
+  border-bottom: 0;
+  border-bottom-color: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-collapse: separate;
+  border-image: none;
+  border-left: 0;
+  border-left-color: inherit;
+  border-left-style: none;
+  border-left-width: medium;
+  border-radius: 0;
+  border-right: 0;
+  border-right-color: inherit;
+  border-right-style: none;
+  border-right-width: medium;
+  border-spacing: 0;
+  border-top: 0;
+  border-top-color: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-style: none;
+  border-top-width: medium;
+  bottom: auto;
+  box-shadow: none;
+  box-sizing: content-box;
+  caption-side: top;
+  clear: none;
+  clip: auto;
+  color: inherit;
+  columns: auto;
+  column-count: auto;
+  column-fill: balance;
+  column-gap: normal;
+  column-rule: medium none currentColor;
+  column-rule-color: currentColor;
+  column-rule-style: none;
+  column-rule-width: none;
+  column-span: 1;
+  column-width: auto;
+  content: normal;
+  counter-increment: none;
+  counter-reset: none;
+  cursor: auto;
+  direction: ltr;
+  display: inline;
+  empty-cells: show;
+  float: none;
+  font-family: "HelveticaNeue";
+  font-size: medium;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  height: auto;
+  hyphens: none;
+  left: auto;
+  letter-spacing: normal;
+  line-height: normal;
+  list-style: none;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: disc;
+  margin: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  max-height: none;
+  max-width: none;
+  min-height: 0;
+  min-width: 0;
+  opacity: 1;
+  orphans: 0;
+  outline: 0;
+  outline-color: invert;
+  outline-style: none;
+  outline-width: medium;
+  overflow: visible;
+  overflow-x: visible;
+  overflow-y: visible;
+  padding: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  page-break-after: auto;
+  page-break-before: auto;
+  page-break-inside: auto;
+  perspective: none;
+  perspective-origin: 50% 50%;
+  position: static;
+  /* May need to alter quotes for different locales (e.g fr) */
+  quotes: '\201C' '\201D' '\2018' '\2019';
+  right: auto;
+  tab-size: 8;
+  table-layout: auto;
+  text-align: inherit;
+  text-align-last: auto;
+  text-decoration: none;
+  text-decoration-color: inherit;
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  top: auto;
+  transform: none;
+  transform-style: flat;
+  transition: none;
+  transition-delay: 0s;
+  transition-duration: 0s;
+  transition-property: none;
+  transition-timing-function: ease;
+  unicode-bidi: normal;
+  vertical-align: baseline;
+  visibility: visible;
+  white-space: normal;
+  widows: 0;
+  width: auto;
+  word-spacing: normal;
+  z-index: auto;
+  /* basic modern patch */
+  all: initial;
+  all: unset; }
+  #karma-add-element html:active, #karma-add-element html:focus, #karma-add-element body:active, #karma-add-element body:focus, #karma-add-element span:active, #karma-add-element span:focus, #karma-add-element object:active, #karma-add-element object:focus, #karma-add-element iframe:active, #karma-add-element iframe:focus,
+  #karma-add-element h1:active,
+  #karma-add-element h1:focus, #karma-add-element h2:active, #karma-add-element h2:focus, #karma-add-element h3:active, #karma-add-element h3:focus, #karma-add-element h4:active, #karma-add-element h4:focus, #karma-add-element h5:active, #karma-add-element h5:focus, #karma-add-element h6:active, #karma-add-element h6:focus, #karma-add-element p:active, #karma-add-element p:focus, #karma-add-element blockquote:active, #karma-add-element blockquote:focus, #karma-add-element pre:active, #karma-add-element pre:focus,
+  #karma-add-element abbr:active,
+  #karma-add-element abbr:focus, #karma-add-element address:active, #karma-add-element address:focus, #karma-add-element cite:active, #karma-add-element cite:focus, #karma-add-element code:active, #karma-add-element code:focus,
+  #karma-add-element del:active,
+  #karma-add-element del:focus, #karma-add-element dfn:active, #karma-add-element dfn:focus, #karma-add-element em:active, #karma-add-element em:focus, #karma-add-element img:active, #karma-add-element img:focus, #karma-add-element ins:active, #karma-add-element ins:focus, #karma-add-element kbd:active, #karma-add-element kbd:focus, #karma-add-element q:active, #karma-add-element q:focus, #karma-add-element samp:active, #karma-add-element samp:focus,
+  #karma-add-element small:active,
+  #karma-add-element small:focus, #karma-add-element strong:active, #karma-add-element strong:focus, #karma-add-element sub:active, #karma-add-element sub:focus, #karma-add-element sup:active, #karma-add-element sup:focus, #karma-add-element var:active, #karma-add-element var:focus,
+  #karma-add-element b:active,
+  #karma-add-element b:focus, #karma-add-element i:active, #karma-add-element i:focus,
+  #karma-add-element dl:active,
+  #karma-add-element dl:focus, #karma-add-element dt:active, #karma-add-element dt:focus, #karma-add-element dd:active, #karma-add-element dd:focus, #karma-add-element ol:active, #karma-add-element ol:focus, #karma-add-element ul:active, #karma-add-element ul:focus, #karma-add-element li:active, #karma-add-element li:focus,
+  #karma-add-element fieldset:active,
+  #karma-add-element fieldset:focus, #karma-add-element button:active, #karma-add-element button:focus, #karma-add-element form:active, #karma-add-element form:focus, #karma-add-element label:active, #karma-add-element label:focus, #karma-add-element legend:active, #karma-add-element legend:focus,
+  #karma-add-element table:active,
+  #karma-add-element table:focus, #karma-add-element caption:active, #karma-add-element caption:focus, #karma-add-element tbody:active, #karma-add-element tbody:focus, #karma-add-element tfoot:active, #karma-add-element tfoot:focus, #karma-add-element thead:active, #karma-add-element thead:focus, #karma-add-element tr:active, #karma-add-element tr:focus, #karma-add-element th:active, #karma-add-element th:focus, #karma-add-element td:active, #karma-add-element td:focus,
+  #karma-add-element article:active,
+  #karma-add-element article:focus, #karma-add-element aside:active, #karma-add-element aside:focus, #karma-add-element canvas:active, #karma-add-element canvas:focus, #karma-add-element details:active, #karma-add-element details:focus, #karma-add-element figcaption:active, #karma-add-element figcaption:focus, #karma-add-element figure:active, #karma-add-element figure:focus,
+  #karma-add-element footer:active,
+  #karma-add-element footer:focus, #karma-add-element header:active, #karma-add-element header:focus, #karma-add-element hgroup:active, #karma-add-element hgroup:focus, #karma-add-element menu:active, #karma-add-element menu:focus, #karma-add-element nav:active, #karma-add-element nav:focus, #karma-add-element section:active, #karma-add-element section:focus, #karma-add-element summary:active, #karma-add-element summary:focus,
+  #karma-add-element time:active,
+  #karma-add-element time:focus, #karma-add-element mark:active, #karma-add-element mark:focus, #karma-add-element audio:active, #karma-add-element audio:focus, #karma-add-element video:active, #karma-add-element video:focus, #karma-add-element input[class*="karma"]:active, #karma-add-element input[class*="karma"]:focus {
+    box-shadow: none;
+    outline: none; }
+  #karma-add-element html:before, #karma-add-element body:before, #karma-add-element span:before, #karma-add-element object:before, #karma-add-element iframe:before,
+  #karma-add-element h1:before, #karma-add-element h2:before, #karma-add-element h3:before, #karma-add-element h4:before, #karma-add-element h5:before, #karma-add-element h6:before, #karma-add-element p:before, #karma-add-element blockquote:before, #karma-add-element pre:before,
+  #karma-add-element abbr:before, #karma-add-element address:before, #karma-add-element cite:before, #karma-add-element code:before,
+  #karma-add-element del:before, #karma-add-element dfn:before, #karma-add-element em:before, #karma-add-element img:before, #karma-add-element ins:before, #karma-add-element kbd:before, #karma-add-element q:before, #karma-add-element samp:before,
+  #karma-add-element small:before, #karma-add-element strong:before, #karma-add-element sub:before, #karma-add-element sup:before, #karma-add-element var:before,
+  #karma-add-element b:before, #karma-add-element i:before,
+  #karma-add-element dl:before, #karma-add-element dt:before, #karma-add-element dd:before, #karma-add-element ol:before, #karma-add-element ul:before, #karma-add-element li:before,
+  #karma-add-element fieldset:before, #karma-add-element button:before, #karma-add-element form:before, #karma-add-element label:before, #karma-add-element legend:before,
+  #karma-add-element table:before, #karma-add-element caption:before, #karma-add-element tbody:before, #karma-add-element tfoot:before, #karma-add-element thead:before, #karma-add-element tr:before, #karma-add-element th:before, #karma-add-element td:before,
+  #karma-add-element article:before, #karma-add-element aside:before, #karma-add-element canvas:before, #karma-add-element details:before, #karma-add-element figcaption:before, #karma-add-element figure:before,
+  #karma-add-element footer:before, #karma-add-element header:before, #karma-add-element hgroup:before, #karma-add-element menu:before, #karma-add-element nav:before, #karma-add-element section:before, #karma-add-element summary:before,
+  #karma-add-element time:before, #karma-add-element mark:before, #karma-add-element audio:before, #karma-add-element video:before, #karma-add-element input[class*="karma"]:before {
+    border: none; }
+  #karma-add-element html:after, #karma-add-element body:after, #karma-add-element span:after, #karma-add-element object:after, #karma-add-element iframe:after,
+  #karma-add-element h1:after, #karma-add-element h2:after, #karma-add-element h3:after, #karma-add-element h4:after, #karma-add-element h5:after, #karma-add-element h6:after, #karma-add-element p:after, #karma-add-element blockquote:after, #karma-add-element pre:after,
+  #karma-add-element abbr:after, #karma-add-element address:after, #karma-add-element cite:after, #karma-add-element code:after,
+  #karma-add-element del:after, #karma-add-element dfn:after, #karma-add-element em:after, #karma-add-element img:after, #karma-add-element ins:after, #karma-add-element kbd:after, #karma-add-element q:after, #karma-add-element samp:after,
+  #karma-add-element small:after, #karma-add-element strong:after, #karma-add-element sub:after, #karma-add-element sup:after, #karma-add-element var:after,
+  #karma-add-element b:after, #karma-add-element i:after,
+  #karma-add-element dl:after, #karma-add-element dt:after, #karma-add-element dd:after, #karma-add-element ol:after, #karma-add-element ul:after, #karma-add-element li:after,
+  #karma-add-element fieldset:after, #karma-add-element button:after, #karma-add-element form:after, #karma-add-element label:after, #karma-add-element legend:after,
+  #karma-add-element table:after, #karma-add-element caption:after, #karma-add-element tbody:after, #karma-add-element tfoot:after, #karma-add-element thead:after, #karma-add-element tr:after, #karma-add-element th:after, #karma-add-element td:after,
+  #karma-add-element article:after, #karma-add-element aside:after, #karma-add-element canvas:after, #karma-add-element details:after, #karma-add-element figcaption:after, #karma-add-element figure:after,
+  #karma-add-element footer:after, #karma-add-element header:after, #karma-add-element hgroup:after, #karma-add-element menu:after, #karma-add-element nav:after, #karma-add-element section:after, #karma-add-element summary:after,
+  #karma-add-element time:after, #karma-add-element mark:after, #karma-add-element audio:after, #karma-add-element video:after, #karma-add-element input[class*="karma"]:after {
+    border: none; }
+#karma-add-element .karma-not-found {
+  display: none; }
+#karma-add-element .nicescroll-rails {
+  background-color: transparent;
+  width: 0 !important; }
+#karma-add-element .minimal-form-input {
+  padding-top: 0; }
 
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;
   font-family: "HelveticaNeue"; }
+  body button {
+    margin: 0;
+    padding: 0;
+    line-height: .8em; }
   body iframe {
     height: calc( 100vh - 49px );
     width: 100%;
@@ -281,8 +571,19 @@ body {
     color: #D7DBDE;
     margin: 0;
     position: absolute; }
-  body ul, body ol {
-    margin: 0 0 1.75em 0; }
+
+.karma-builder-element.karma-element-alignment-left {
+  display: flex;
+  justify-content: flex-start; }
+.karma-builder-element.karma-element-alignment-center {
+  display: flex;
+  justify-content: center; }
+.karma-builder-element.karma-element-alignment-right {
+  display: flex;
+  justify-content: flex-end; }
+
+.ui-draggable-dragging {
+  pointer-events: none !important; }
 
 @-ms-viewport {
   width: device-width; }
@@ -297,7 +598,16 @@ html {
 
 .karma-section {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
+  .karma-section .karma-background-section {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    z-index: -1; }
 
 .karma-container {
   margin-right: auto;
@@ -347,8 +657,12 @@ html {
 .karma-no-gutters > [class*="karma-col-"],
 .karma-no-gutters > .karma-builder-element > .karma-col,
 .karma-no-gutters > .karma-builder-element > [class*="karma-col-"] {
+  box-sizing: border-box;
+  min-height: 50px;
   padding-right: 0;
-  padding-left: 0;
+  padding-left: 0; }
+
+.karma-no-gutters > .karma-empty-column > [class*="karma-col-"] {
   min-height: 300px; }
 
 .karma-col-1, .karma-col-2, .karma-col-3, .karma-col-4, .karma-col-5, .karma-col-6, .karma-col-7, .karma-col-8, .karma-col-9, .karma-col-10, .karma-col-11, .karma-col-12, .karma-col,

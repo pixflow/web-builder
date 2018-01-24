@@ -10,26 +10,24 @@
 		data: {},
 
 		initialize: function(){
-			this.setElement( $('<div>') );
+
+			this.setElement( this.$gizmoContainer );
+
 		},
 
 		setIcon: function( icon ){
+
 			this.data.params.icon = icon;
 			this.update();
 		},
 
 		render: function(){
 
-			this.update();
-			this.$gizmoContainer.append( this.el );
+			this.$gizmoContainer.append( KarmaView.getUnderscoreTemplate( this.template, this.data ) );
+
 
 		},
 
-		update: function(){
-
-			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
-
-		}
 
 	});
 

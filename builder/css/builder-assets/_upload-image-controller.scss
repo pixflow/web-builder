@@ -8,15 +8,7 @@
 	position: relative;
 
 	.karma-upload-image-button{
-		@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
-		@extend .karma-builder-title-3;
-		background-color: rgba(255, 255, 255, 0.7);
-		border-radius: 100px;
-		color: $builder-main-color;
-		cursor: pointer;
-		height: 36px;
-		line-height: 16px;
-		padding: 0 20px;
+	    @include oval-button();
 		text-transform: none;
 		transition: background-color .2s;
 
@@ -25,7 +17,7 @@
 		}
 	}
 	a{
-		z-index: 99;
+		z-index: $level-20;
 
 		&:hover {
 			text-decoration: none;

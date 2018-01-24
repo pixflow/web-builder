@@ -3,8 +3,8 @@
 	karmaBuilder.image = karmaBuilder.shortcodes.extend({
 
 		events: {
-			'click .karma-image-link' 	: 'preventFromOpen',
-			'click .karma-image' 		: 'showGizmo',
+			'click .karma-image-link' 					: 'preventFromOpen',
+			'karma/finish/renderElement.karma-image' 	: 'openMediaLibraryOnEditImage'
 		},
 
 		initialize: function ( options ) {
@@ -16,7 +16,9 @@
 				this.render();
 			}
 
+
 		},
+
 
 		/**
 		 * @summary Render image element
@@ -26,8 +28,40 @@
 		 */
 		render : function () {
 
-			var source = this.template( this.model.get('shortcode_attributes') );
-			this.el.innerHTML = source;
+			var source = this.template( this.model );
+			this.el.querySelector('.karma-element-content').innerHTML = source;
+			this.setImageSize();
+			var parentColumnInstance = $('.karma-builder-element[data-element-key="' + this.model.get('element_key') +'"]').backboneView();
+			parentColumnInstance.$el.trigger('karma/finish/modifyColumns');
+
+		},
+
+		/**
+		 * @summary set Image width and height attribute of image
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		setImageSize : function () {
+
+			var IMG = this.el.querySelector('img'),
+				that = this,
+				newIMG = new Image();
+
+			newIMG.onload = function () {
+
+				var naturalWidth = this.naturalWidth,
+					naturalHeight = this.naturalHeight;
+
+				IMG.style.width = naturalWidth + 'px';
+				IMG.style.height = naturalHeight + 'px';
+				that.setAttributes( {
+					naturalwidth : naturalWidth,
+					naturalheight : naturalHeight
+				}, true );
+
+			}
+			newIMG.src = IMG.getAttribute('src');
 
 		},
 
@@ -37,16 +71,11 @@
 
 		},
 
-		showGizmo : function () {
-
-			this.el.classList.add( 'karma-active-element' );
-
-		},
-
 		imgurl : function () {
 
 			var imageAddress = this.getAttributes( [ 'imgurl' ] );
 			this.el.querySelector('img').setAttribute( 'src', imageAddress.imgurl );
+			this.setImageSize();
 
 		},
 
@@ -57,13 +86,19 @@
 			this.el.querySelector( 'img' ).setAttribute( "class", containerClass );
 
 		},
-		
+
+		/**
+		 * @summary change position of image
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		position : function () {
 
 			var regex = new RegExp('(?:^|\\s)karma-position-(.*?)(?!\\S)'),
 				imagePosition = this.getAttributes( [ 'position' ] );
-			this.el.firstElementChild.className = this.el.firstElementChild.className.replace( regex, " karma-position-" + imagePosition.position );
-
+			this.el.querySelector( '.karma-image-resize-crop' ).className = this.el.querySelector( '.karma-image-resize-crop' ).className.replace( regex, " karma-position-" + imagePosition.position );
 
 		},
 
@@ -108,6 +143,38 @@
 			this.el.querySelector( '.karma-image-link' ).setAttribute( "target", imageTarget.linktarget );
 
 		},
+
+		/**
+		 * @summary open media library
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		openMediaLibraryOnEditImage : function () {
+
+			var imgBackgroundSetting =this.el.querySelector( '.karma-image-background-setting' );
+
+			if( imgBackgroundSetting ){
+				window.top.karmaBuilderEnviroment.openMediaLibrary( imgBackgroundSetting, this.karmaEditImage, this );
+			}
+
+		},
+
+		/**
+		 * @summary change image url
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		karmaEditImage : function ( frame, view ) {
+
+			view.setAttributes( {
+				imgurl  : frame.state().get( 'selection' ).first().toJSON().url,
+			}, false );
+
+		},
 		/**
 		 * @summary change image click action
 		 *
@@ -147,7 +214,7 @@
 			// Change link
 			this.el.querySelector( '.karma-image-link' ).setAttribute( "href", elLink );
 
-		}
+		},
 
 	});
 

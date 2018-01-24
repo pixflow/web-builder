@@ -58,12 +58,12 @@ function getModelsAttributes(models) {
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
 		var model = {
-				shortcode_name : 'karma_image',
-				shortcode_content : '',
-				element_key : KarmaView.createNewElementKey(),
-				shortcode_attributes : $( document ).triggerHandler( 'karma/before/createElement/karma_image' ),
-				order : 1 ,
-				parent_key :  '1r312'
+			shortcode_name : 'karma_image',
+			shortcode_content : '',
+			element_key : KarmaView.createNewElementKey(),
+			shortcode_attributes : $( document ).triggerHandler( 'karma/before/createElement/karma_image' ),
+			order : 1 ,
+			parent_key :  '1r312'
 		}
 		var CID = karmaBuilder.karmaModels.add( model ).cid;
 		$('[data-element-key="1r312"]').html( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
@@ -72,7 +72,7 @@ function getModelsAttributes(models) {
 
 	});
 
-	QUnit.test ( "REOrderElements() check orders", function (assert) {
+	QUnit.test ( "duplicateElement() Check the element have been created", function ( assert ) {
 
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
@@ -86,10 +86,30 @@ function getModelsAttributes(models) {
 		}
 		var CID = karmaBuilder.karmaModels.add( model ).cid;
 		$('[data-element-key="1r312"]').html( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
-		KarmaView.createNewElement( 'image', karmaBuilder.karmaModels.get( CID ), true );
-		karmaBuilder.elementPanel.prototype.setElement( jQuery('body') );
-		karmaBuilder.elementPanel.prototype.prepareBeforeDrop( document.querySelector('.karma-element-placeholder'), 'karma_image' );
-		assert.equal( karmaBuilder.karmaModels.get( CID ).attributes.order, 2 );
+		var view = KarmaView.createNewElement( 'image', karmaBuilder.karmaModels.get( CID ), true );
+		view.duplicateElement();
+		assert.equal( document.querySelectorAll('.karma-image').length, 2 );
+
+	});
+
+
+	QUnit.test ( "REOrderElements() check orders", function (assert) {
+
+		karmaBuilder.karmaModels.reset();
+		RCreateModels();
+		var model = {
+			shortcode_name : 'karma_image',
+			shortcode_content : '',
+			element_key : KarmaView.createNewElementKey(),
+			shortcode_attributes : $( document ).triggerHandler( 'karma/before/createElement/karma_image' ),
+			order : 5 ,
+			parent_key :  '1r312'
+		}
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="1r312"]').html( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		var view = KarmaView.createNewElement( 'image', karmaBuilder.karmaModels.get( CID ), true );
+		KarmaView.$el.trigger( 'karma/after/dropElement', [ '1r312' ] );
+		assert.equal( view.model.get( 'order' ), 1 );
 
 	});
 
@@ -97,63 +117,20 @@ function getModelsAttributes(models) {
 
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
-		var newGrid = [5, 5, 2],
-			sectionView = $('[data-element-key="firtstrow_12312"]').backboneView();
-		karmaResult = [
-			{
-				'element_key': "firtstrow_12312",
-				'shortcode_name': 'karma_section',
-				'order': 1,
-				'parent_key': '',
-				'shortcode_content': '',
-				'shortcode_attributes': {
-					'space' : "20"
-				},
-			},
-			{
-				'element_key': "12a12",
-				'shortcode_name': 'karma_column',
-				'order': 1,
-				'parent_key': 'firtstrow_12312',
-				'shortcode_content': 'test',
-				'shortcode_attributes': {
-					lg_size: 5,
-					md_size: 5,
-					sm_size: 5,
-					xl_size: 5,
-				},
-			},
-			{
-				'element_key': "1r312",
-				'shortcode_name': 'karma_column',
-				'order': 2,
-				'parent_key': 'firtstrow_12312',
-				'shortcode_content': 'test',
-				'shortcode_attributes': {
-					lg_size: 5,
-					md_size: 5,
-					sm_size: 5,
-					xl_size: 5,
-				},
-			},
-			{
-				'element_key': "ssssscolumn_12g12",
-				'shortcode_name': 'karma_column',
-				'order': 3,
-				'parent_key': 'firtstrow_12312',
-				'shortcode_content': 'test',
-				'shortcode_attributes': {
-					lg_size: 2,
-					md_size: 2,
-					sm_size: 2,
-					xl_size: 2,
-				},
-			}
-		];
-		sectionView.changeRowLayout( newGrid );
-		var karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
-
-		assert.deepEqual(karmaTestResult, karmaResult);
+		var newGrid = [ 5, 5, 2 ],
+			model = {
+				shortcode_name : 'karma_section',
+				shortcode_content : '',
+				element_key : KarmaView.createNewElementKey(),
+				shortcode_attributes : { structure: "container", space: "200", extraclass: "", columnspace: "0" },
+				order : 2 ,
+				parent_key :  ''
+			};
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="firtstrow_12312"]').after( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		var view = KarmaView.createNewElement( 'section', karmaBuilder.karmaModels.get( CID ), true );
+		view.changeRowLayout( newGrid );
+		assert.deepEqual( view.currentGrid(), newGrid );
 
 	});
 
@@ -161,53 +138,22 @@ function getModelsAttributes(models) {
 
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
-		var newGrid = [8, 4],
-			karmaTestResult,
-			sectionView = $('[data-element-key="firtstrow_12312"]').backboneView(),
-			karmaResult = [
-				{
-					'shortcode_name': 'karma_section',
-					'order': 1,
-					'parent_key': '',
-					'shortcode_content': '',
-					'shortcode_attributes': {
-						'space': "20"
-					},
-					'element_key': "firtstrow_12312"
-				},
-				{
-					'shortcode_name': 'karma_column',
-					'order': 1,
-					'parent_key': 'firtstrow_12312',
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: 8,
-						md_size: 8,
-						sm_size: 8,
-						xl_size: 8,
-					},
-					'element_key': "12a12"
-				},
-				{
-					'shortcode_name': 'karma_column',
-					'order': 2,
-					'parent_key': 'firtstrow_12312',
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: 4,
-						md_size: 4,
-						sm_size: 4,
-						xl_size: 4,
-					},
-					'element_key': "1r312"
-				}
-			];
-
-		sectionView.changeRowLayout(newGrid);
-
-		karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
-
-		assert.deepEqual(karmaTestResult, karmaResult);
+		var newGrid = [ 5, 5, 2 ],
+			model = {
+				shortcode_name : 'karma_section',
+				shortcode_content : '',
+				element_key : KarmaView.createNewElementKey(),
+				shortcode_attributes : { structure: "container", space: "200", extraclass: "", columnspace: "0" },
+				order : 2 ,
+				parent_key :  ''
+			};
+		//document.getElementById('karma-tests').innerHTML = '';
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="firtstrow_12312"]').after( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		var view = KarmaView.createNewElement( 'section', karmaBuilder.karmaModels.get( CID ), true );
+		view.changeRowLayout( newGrid );
+		view.changeRowLayout( [ 8, 4 ] );
+		assert.deepEqual( view.currentGrid(), [ 8, 4 ] );
 
 	});
 
@@ -215,77 +161,22 @@ function getModelsAttributes(models) {
 
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
-		var newGrid = [8, 2, 1, 1],
-			sectionView = $('[data-element-key="firtstrow_12312"]').backboneView(),
-			karmaResult = [
-				{
-					'element_key': "firtstrow_12312",
-					'shortcode_name': 'karma_section',
-					'order': 1,
-					'parent_key': '',
-					'shortcode_content': '',
-					'shortcode_attributes': {
-						'space': "20"
-					},
-				},
-				{
-					'element_key': "12a12",
-					'shortcode_name': 'karma_column',
-					'order': 1,
-					'parent_key': 'firtstrow_12312',
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: 8,
-						md_size: 8,
-						sm_size: 8,
-						xl_size: 8,
-					},
-				},
-				{
-					'element_key': "1r312",
-					'shortcode_name': 'karma_column',
-					'order': 2,
-					'parent_key': 'firtstrow_12312',
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: 2,
-						md_size: 2,
-						sm_size: 2,
-						xl_size: 2,
-					},
-				},
-				{
-					'element_key': "ssssscolumn_12g12",
-					'shortcode_name': 'karma_column',
-					'order': 3,
-					'parent_key': 'firtstrow_12312',
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: 1,
-						md_size: 1,
-						sm_size: 1,
-						xl_size: 1,
-					},
-				},
-				{
-					'shortcode_name': 'karma_column',
-					'order': 4,
-					'parent_key': 'firtstrow_12312',
-					'shortcode_content': '',
-					'shortcode_attributes': {
-						lg_size: 1,
-						md_size: 1,
-						sm_size: 1,
-						xl_size: 1,
-					},
-				}
-			];
-
-		sectionView.changeRowLayout(newGrid);
-
-		var karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
-		delete    karmaTestResult[karmaTestResult.length - 1].element_key;
-		assert.deepEqual(karmaTestResult, karmaResult);
+		var newGrid = [ 8, 4 ],
+			model = {
+				shortcode_name : 'karma_section',
+				shortcode_content : '',
+				element_key : KarmaView.createNewElementKey(),
+				shortcode_attributes : { structure: "container", space: "200", extraclass: "", columnspace: "0" },
+				order : 2 ,
+				parent_key :  ''
+			};
+		//document.getElementById('karma-tests').innerHTML = '';
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="firtstrow_12312"]').after( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		var view = KarmaView.createNewElement( 'section', karmaBuilder.karmaModels.get( CID ), true );
+		view.changeRowLayout( newGrid );
+		view.changeRowLayout( [ 5, 5, 2 ] );
+		assert.deepEqual( view.currentGrid(), [ 5, 5, 2 ] );
 
 	});
 
@@ -293,68 +184,21 @@ function getModelsAttributes(models) {
 
 		karmaBuilder.karmaModels.reset();
 		RCreateModels();
-		var newGrid = [8, 2, 1, 1, 1],
-			karmaTestResult,
-			sectionView = new karmaBuilder.section({
-				el: $('[data-element-key="firtstrow_12312"]'),
-				model: karmaBuilder.karmaModels.models[0]
-			}),
-			karmaResult = [
-				{
-					'element_key': "firtstrow_12312",
-					'shortcode_name': 'karma_section',
-					'order': 1,
-					'parent_key': '',
-					'shortcode_content': '',
-					'shortcode_attributes': {
-						'space': "20"
-					},
-				},
-				{
-					'element_key': "12a12",
-					'shortcode_name': 'karma_column',
-					'order': 1,
-					'parent_key': "firtstrow_12312",
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: '4',
-						md_size: '4',
-						sm_size: '4',
-						xl_size: '4',
-					},
-				},
-				{
-					'element_key': "1r312",
-					'shortcode_name': 'karma_column',
-					'order': 2,
-					'parent_key': "firtstrow_12312",
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: '4',
-						md_size: '4',
-						sm_size: '4',
-						xl_size: '4',
-					},
-				},
-				{
-					'element_key': "ssssscolumn_12g12",
-					'shortcode_name': 'karma_column',
-					'order': 3,
-					'parent_key': "firtstrow_12312",
-					'shortcode_content': 'test',
-					'shortcode_attributes': {
-						lg_size: '4',
-						md_size: '4',
-						sm_size: '4',
-						xl_size: '4',
-					},
-				}
-			];
-
-		sectionView.changeRowLayout(newGrid);
-		karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
-
-		assert.deepEqual(karmaTestResult, karmaResult);
+		var newGrid = [ 8, 12 ],
+			model = {
+				shortcode_name : 'karma_section',
+				shortcode_content : '',
+				element_key : KarmaView.createNewElementKey(),
+				shortcode_attributes : { structure: "container", space: "200", extraclass: "", columnspace: "0" },
+				order : 2 ,
+				parent_key :  ''
+			};
+		//document.getElementById('karma-tests').innerHTML = '';
+		var CID = karmaBuilder.karmaModels.add( model ).cid;
+		$('[data-element-key="firtstrow_12312"]').after( KarmaView.createBuilderModel( karmaBuilder.karmaModels.get( CID ) ) );
+		var view = KarmaView.createNewElement( 'section', karmaBuilder.karmaModels.get( CID ), true );
+		view.changeRowLayout( newGrid );
+		assert.deepEqual( view.currentGrid(), [] );
 
 	});
 
@@ -391,90 +235,28 @@ function getModelsAttributes(models) {
 		assert.deepEqual( karmaTestResult, karmaResult );
 
 	});
+	
 
-	QUnit.test("destroy() Check if a child removed its parent still exist", function (assert) {
+	QUnit.test("createUnsplashURL() Check if url string is correct", function (assert) {
 
-		karmaBuilder.karmaModels.reset();
-		RCreateModels();
-		var karmaTestResult,
-			karmaResult = [
-				{
-					'element_key'			 : "firtstrow_12312" ,
-					'shortcode_name'        : 'karma_section' ,
-					'order'                 : 1 ,
-					'parent_key'             :  '' ,
-					'shortcode_content'     : '' ,
-					'shortcode_attributes'  : {
-						'space'       : "20"
-					} ,
-				} ,
-				{
-					'element_key'			 : "12a12" ,
-					'shortcode_name'        : 'karma_column' ,
-					'order'                 : 1 ,
-					'parent_key'             : "firtstrow_12312" ,
-					'shortcode_content'     : 'test' ,
-					'shortcode_attributes'  : {
-						lg_size     : "4" ,
-						md_size     : "4" ,
-						sm_size     : "4" ,
-						xl_size     : "4" ,
-					} ,
-				} ,
-				{
-					'element_key'			 : "ssssscolumn_12g12" ,
-					'shortcode_name'        : 'karma_column' ,
-					'order'                 : 3 ,
-					'parent_key'             : "firtstrow_12312" ,
-					'shortcode_content'     : 'test' ,
-					'shortcode_attributes'  : {
-						lg_size     : "4" ,
-						md_size     : "4" ,
-						sm_size     : "4" ,
-						xl_size     : "4" ,
-					} ,
-				} ,
-			],
-			sectionView = new karmaBuilder.section({
-				el    : $('[data-element-key="1r312"]') ,
-				model : karmaBuilder.karmaModels.models[2]
-			}) ;
+		var unsplash = new karmaUnsplash(),
+			url = unsplash.createUnsplashURL( 'photos', { page : 12 } );
 
-		sectionView.model.destroy();
-		karmaTestResult = getModelsAttributes(karmaBuilder.karmaModels.models);
-		assert.deepEqual( karmaTestResult, karmaResult );
+		assert.equal( url, 'https://api.unsplash.com/photos/?client_id=100034b1de5815805647bef611d9ed7575b6c1812daa39730488d32be4461e12&page=12' );
 
 	});
 
-	QUnit.test("destroy() Check if a child removed its parent still exist", function (assert) {
+	QUnit.test("cacheTimeExpire() Check for time expire cache in unsplash images", function (assert) {
 
-		karmaBuilder.karmaModels.reset();
-		RCreateModels();
-		var karmaTestResult,
-			karmaResult = 3,
-			sectionView = new karmaBuilder.section({
-				el    : $('[data-element-key="1r312"]') ,
-				model : karmaBuilder.karmaModels.models[2]
-			}) ;
+		var unsplash = new karmaUnsplash(),
+				date = new Date(),
+				yesterday = date.setDate( date.getDate() - 1 );
 
-		sectionView.model.destroy();
-		karmaTestResult = document.querySelectorAll('.karma-builder-element').length;
-		assert.deepEqual( karmaTestResult, karmaResult );
+		localStorage.setItem( 'karmaUnsplashImagesTime', yesterday );
+		assert.equal( unsplash.cacheTimeExpire(), true );
 
 	});
 
-	QUnit.test("assert.async() publish", function ( assert ) {
-
-		var done = assert.async();
-		karmaBuilder.view.prototype.prepareAjax().done( function ( response ) {
-
-			response = JSON.parse(response);
-			assert.equal(response.result, "true");
-
-		});
-		done();
-
-	});
 
 	QUnit.test("karmaFindChildren", function (assert) {
 
@@ -521,6 +303,7 @@ function getModelsAttributes(models) {
 
 	QUnit.test("karmaCurrentGrid", function ( assert ) {
 
+		karmaBuilder.karmaModels.reset();
 		karmaBuilder.karmaModels.reset();
 		var shortcodes = [];
 		for (var i = 1; i < 5; i++) {
@@ -670,3 +453,7 @@ function getModelsAttributes(models) {
 	});
 
 } )( jQuery, karmaBuilder );
+
+window.onload = function () {
+	
+}

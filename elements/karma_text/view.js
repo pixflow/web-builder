@@ -3,8 +3,11 @@
 	karmaBuilder.text = karmaBuilder.shortcodes.extend({
 
 		events: {
-			'blur .karma-editable-content'      : 'saveContent',
-			'click .karma-editable-content'     : 'updateFontStyleGizmo',
+			'blur .karma-editable-content'               : 'saveContent',
+			'click .karma-editable-content'              : 'updateFontStyleGizmo',
+			'click.focusElement'						 : 'focusElement',
+			'keydown .karma-editable-content'	         : 'preventFromNewLine',
+			'paste [contenteditable]'					 : 'pasteAsPlainText'
 		},
 
 		initialize: function ( options ) {
@@ -28,7 +31,7 @@
 			var model =  JSON.parse( JSON.stringify( this.model.get( 'shortcode_attributes' ) ) );
 			model['content'] = this.model.get( 'shortcode_content' ) ;
 			var source = this.template( model );
-			this.el.innerHTML = source;
+			this.el.querySelector('.karma-element-content').innerHTML = source;
 
 		},
 
@@ -41,8 +44,18 @@
 		 */
 		saveContent : function () {
 
-			var content = this.el.querySelector('.karma-editable-content').innerHTML ;
-			this.model.set( { 'shortcode_content' : content }, { silent : true } );
+			var content = this.el.querySelector( '.karma-text-tag' ),
+				contentData = this.el.querySelector('.karma-text-tag').innerHTML,
+				focusElement = this.el.querySelector('.karma-editable-content'),
+				contentValue = content.innerText ;
+
+			if ( "" == contentValue.trim() ) {
+				content.innerText = "Click here to edit content...";
+			}
+
+			focusElement.classList.remove('karma-text-element-focus');
+
+			this.model.set( { 'shortcode_content' : contentData }, { silent : true } );
 
 		},
 
@@ -58,8 +71,8 @@
 				tagAttr = this.getAttributes( ['tag'] ),
 				newTag = document.createElement( tagAttr.tag );
 			newTag.innerHTML = element.innerHTML;
-			newTag.classList.add( 'karma-text-tag' );
-			newTag.classList.add( 'karma-document-click' );
+			newTag.classList.add( 'karma-text-tag', 'karma-document-click', 'karma-editable-content' );
+			newTag.contentEditable = true ;
 			element.parentNode.replaceChild( newTag, element );
 
 		},
@@ -74,7 +87,7 @@
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				alignAttr = this.getAttributes( ['align'] );
-			this.renderCss( "." + elementId + " .karma-text-tag", 'text-align', alignAttr.align  );
+			this.renderCss( "#" + elementId + " .karma-text-tag", 'text-align', alignAttr.align  );
 
 
 		},
@@ -90,7 +103,33 @@
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				colorValue = this.getAttributes( ['color'] );
-			this.renderCss( "." + elementId + " .karma-text-tag", 'color', colorValue.color  );
+			this.renderCss( "#" + elementId + " .karma-text-tag", 'color', colorValue.color  );
+
+		},
+
+
+		/**
+		 * @summary Active on editable elements and check inner text
+		 *
+		 * @since 1.0.0
+		 * @return {boolean}
+		 */
+		focusElement : function () {
+
+			var content = this.el.querySelector( '.karma-text-tag' ),
+				contentValue = content.innerText ,
+				focusElement = this.el.querySelector( '.karma-editable-content' );
+
+			if ( "Click here to edit content..." == contentValue.trim() ) {
+				content.innerText = "";
+			}
+			if( false == focusElement.classList.contains( 'focus' ) ){
+				focusElement.contentEditable = true ;
+				focusElement.classList.add( 'karma-text-element-focus' );
+				focusElement.focus();
+			}
+
+			return true;
 
 		},
 
@@ -109,7 +148,7 @@
 
 			this.updateBoldStyle( computedObject, tagName );
 			this.updateItalicStyle( computedObject, tagName );
-			this.updateUnderlineStyle( computedObject, tagName );
+			this.updateUnderlineStyle( computedObject, tagName , getClickedElement );
 
 		},
 
@@ -141,9 +180,9 @@
 		 * @since 1.0.0
 		 * @return {void}
 		 */
-		updateUnderlineStyle : function( computedObject, tagName ){
-
-			if ( 'U' == tagName || 'underline' == computedObject.getPropertyValue('text-decoration') ){
+		updateUnderlineStyle : function( computedObject, tagName, getClickedElement ){
+			
+			if ( 'U' == tagName || 'underline' == computedObject.getPropertyValue('text-decoration')  || getClickedElement.closest("U")  ){
 				this.el.querySelector('.karma-set-underline-style').classList.add('karma-drop-down-active-item');
 			} else {
 				this.el.querySelector('.karma-set-underline-style ').classList.remove('karma-drop-down-active-item');
@@ -205,8 +244,23 @@
 				'parent'    : parentEl
 			};
 
-		}
+		},
 
+		/**
+		 * @summary paste as plain text for pasting in text shortcode
+		 *
+		 * @param   {Object}    event
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		pasteAsPlainText : function ( e ) {
+
+				e.preventDefault();
+				var text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
+				document.execCommand( 'insertText', false, text );
+
+		},
 
 	});
 

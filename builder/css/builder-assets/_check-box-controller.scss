@@ -1,5 +1,5 @@
 .karma-check-box-controller{
-	padding: $top-space-orange-light 20px 0;
+	padding: $builder-light-orange-space 20px 0;
 	position: relative;
 
 	.check-box-controller-template{
@@ -7,16 +7,15 @@
 		flex-direction: row;
 
 		.karma-check-box-title{
+			@extend .karma-builder-title-3;
 			color: $builder-main-color;
-			font-size: 14px;
-			line-height: 17px;
 		}
 		.karma-check-box-container{
 
 			position: relative;
 
 			.check-box-circle{
-	     		@include check-box-button;
+	     		@include check-box-button();
 			}
 		}
 	}

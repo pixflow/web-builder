@@ -33,7 +33,7 @@ class Karma_Image_Describe extends Karma_Image {
 		$map = array(
 			'setting-panel' => array(
 				"title"  => esc_attr__( "Image Setting", 'karma' ),
-				"height" => "570",
+				"height" => "589",
 				"params" => array(
 					array(
 						"name"  => "imgurl",
@@ -57,7 +57,7 @@ class Karma_Image_Describe extends Karma_Image {
 							array(
 								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
 								'style' => 'padding-left: 18px; padding-right: 34px; ',
-								'title' => "Fill",
+								'title' => esc_attr__( "Fill", 'karma' ),
 								'value' => "fill",
 							),
 						),
@@ -117,7 +117,6 @@ class Karma_Image_Describe extends Karma_Image {
 							"value"      => "link"
 						)
 					),
-
 					array(
 						"name"  => "alt",
 						"type"  => Karma_Builder_Setting_Panel::TEXT,
@@ -145,6 +144,7 @@ class Karma_Image_Describe extends Karma_Image {
 		$controllers = array(
 			array(
 				"type"      => "outerGizmo",
+				"selector" 	=> '.karma-element-content',
 				"className" => "image-gizmo-group",
 				"params"    => array(
 					array(
@@ -183,7 +183,7 @@ class Karma_Image_Describe extends Karma_Image {
 						'className' => 'karma-image-setting-layout',
 						'form'      => 'setting-panel',
 						"params"    => array(
-							'icon' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting.svg' ),
+							'icon' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
 						)
 					),
 					array(
@@ -195,6 +195,28 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 				)
+			),
+			array(
+				"type"      => "titleGizmo",
+				'selector' 	=> '.karma-element-content',
+				"params"    => array(
+					array(
+						'type'      => 'text',
+						'className' => 'element-name-text-gizmo',
+						'params'    => array(
+							'value' => __( 'Edit', 'karma' ) . ' ' . str_replace( 'karma_', '', self::$element_name )
+						)
+					)
+				)
+			),
+			array(
+				"type"      => "imageResizeGizmo",
+				"className"	=> "karma-image-resize",
+			),
+			array(
+					"type"		=> "topSpacingGizmo",
+					"className"	=> "section-top-spacing",
+					'selector' 	=> '.karma-element-content',
 			),
 		);
 
@@ -214,7 +236,7 @@ class Karma_Image_Describe extends Karma_Image {
 
 		$element_info = array(
 			'elementName' => self::$element_name,
-			'icon'        => KARMA_BUILDER_URL . 'builder/media/svg/image-element-icon.svg',
+			'icon'        => KARMA_BUILDER_URL . 'builder/media/svg/image-element.svg',
 			'category'    => array(
 				'basic',
 				'media',

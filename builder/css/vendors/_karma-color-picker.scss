@@ -1,102 +1,102 @@
 .karma-color-picker-icon {
-  border: 1px solid rgba(57,73,89,0.2);
-  border-radius: 50%;
-  display: block;
-  height: 15px;
-  margin: 12px 9px;
-  width: 15px;
+	border: 1px solid rgba(57, 73, 89, 0.2);
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	height: 15px;
+	margin: 10px 7px;
+	width: 15px;
 }
 
 .karma-color-picker-input {
-  display: none;
+	display: none;
 }
 
 .karma-color-picker-container {
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
-  display: none;
-  padding: 15px 0;
-  position: absolute;
-  right: -65px;
-  top: 46px;
-  width: 157px;
-  &:after {
-    background-color: #fff;
-    box-shadow:-2px -2px 5px 0 rgba(57, 73, 89, 0.08);
-    content: '';
-    display: block;
-    height: 10px;
-    left: 45%;
-    position: absolute;
-    top: -4px;
-    transform: rotate(45deg);
-    width: 10px;
-  }
-  .karma-color-picker-mode {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    padding: 0 30px 15px 30px;
-    span {
-      color: #415364;
-      cursor: pointer;
-      font-size: 14px;
-      line-height: 1.14em;
-      opacity: 1;
-      transition: all .3s;
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-    .active {
-      color: #419CF8;
-      font-weight: bold;
-    }
-    .first-color {
-      text-align: left;
-    }
-    .second-color {
-      text-align: right;
-    }
-  }
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
+	display: none;
+	padding: 15px 0;
+	position: absolute;
+	width: 157px;
+	z-index: 100;
+	&:after {
+		background-color: #fff;
+		box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.08);
+		content: '';
+		display: block;
+		height: 10px;
+		left: 45%;
+		position: absolute;
+		top: -4px;
+		transform: rotate(45deg);
+		width: 10px;
+	}
+	.karma-color-picker-mode {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		padding: 0 30px 15px 30px;
+		span {
+			color: #415364;
+			cursor: pointer;
+			font-size: 14px;
+			line-height: 1.14em;
+			opacity: 1;
+			transition: all .3s;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+		.active {
+			color: #419CF8;
+			font-family: HelveticaNeue_med;
+		}
+		.first-color {
+			text-align: left;
+		}
+		.second-color {
+			text-align: right;
+		}
+	}
 
-  .karma-color-picker-preset-colors {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    padding-left: 13.5px;
-    .karma-color-picker-preset-color {
-      border: 1px solid rgba(57, 73, 89, 0.2);
-      border-radius: 50%;
-      cursor: pointer;
-      display: inline-block;
-      height: 23px;
-      margin: 4.5px;
-      width: 23px;
-    }
-    .selected{
-      background: url('../../builder/media/svg/tik.svg')no-repeat center center transparent;
-      background-size: 17px;
-    }
-    .karma-color-picker-choose-color {
-      color: #B0B6BD;
-      line-height: 19px;
-      text-align: center;
-      &:before {
-        content: '+';
-        display: block;
-      }
-      .spectrum-color-preview {
-        display: inline-block;
-        height: 1px;
-        visibility: hidden;
-        width: 1px;
-      }
-    }
-  }
+	.karma-color-picker-preset-colors {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding-left: 13.5px;
+		.karma-color-picker-preset-color {
+			border: 1px solid rgba(57, 73, 89, 0.2);
+			border-radius: 50%;
+			cursor: pointer;
+			display: inline-block;
+			height: 23px;
+			margin: 4.5px;
+			width: 23px;
+		}
+		.selected {
+			background: url('../../builder/media/svg/tik.svg') no-repeat center center transparent;
+			background-size: 17px;
+		}
+		.karma-color-picker-choose-color {
+			color: #B0B6BD;
+			line-height: 19px;
+			text-align: center;
+			&:before {
+				content: '+';
+				display: block;
+			}
+			.spectrum-color-preview {
+				display: inline-block;
+				height: 1px;
+				visibility: hidden;
+				width: 1px;
+			}
+		}
+	}
 }
 
-.karma-color-picker-container.opened {
-  display: block;
+.karma-color-picker-container.karma-color-picker-opened {
+	display: block;
 }

@@ -11,6 +11,28 @@
 		initialize: function( options ){
 
 			karmaBuilder.section.__super__.initialize.apply( this, arguments );
+			this.options = options;
+			if( this.options.renderStatus ){
+				this.render();
+			}
+			this.setSortable();
+
+
+		},
+
+		/**
+		 * @summary Add specific class for empty columns
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		checkEmptyColumn : function () {
+
+			var parentSection = this.el;
+
+			if( 0 == parentSection.querySelectorAll('.karma-column .karma-builder-element').length ){
+				$( parentSection ).find('.karma-builder-element[data-name="karma_column"]').addClass('karma-empty-column');
+			}
 
 		},
 
@@ -22,6 +44,18 @@
 		},
 
 		/**
+		 * @summary Add section to sortable sections
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		setSortable: function () {
+
+			$( "#karma-builder-layout" ).sortable( "refresh" );
+
+		},
+
+		/**
 		 * @summary Set the active row with specific class
 		 *
 		 * @since 1.0.0
@@ -29,6 +63,8 @@
 		 */
 		showBorder: function () {
 
+			this.removeDropDownGizmo();
+			this.removeMoreSubmenu();
 			if( this.$el.hasClass('karma-active-section') ){
 				return;
 			}
@@ -143,6 +179,7 @@
 			if ( 12 == grid.reduce( this.getSum ) ) {
 				return true ;
 			}
+
 			return false;
 
 		},
@@ -163,6 +200,7 @@
 			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ) ,
 				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
 			columnInstance.updateWidthColumn( newWidth );
+			columnInstance.$el.trigger('karma/finish/modifyColumns');
 
 		},
 
@@ -215,28 +253,32 @@
 		 * @returns {void}
 		 */
 		createNewColumn : function ( counter, newLayout, columnKey ) {
+			
+			counter = ( counter ) ? parseInt( counter ) + 1 : 0;
+			var model =  $( document ).triggerHandler( 'karma/before/createElement/karma_column' ),
+				order = ( columnKey ) ? ( karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes.order + 1 ) : 1,
+				that = this;
 
-			counter = parseInt( counter ) + 1;
-			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes,
-				order = model.order + 1;
 			for( counter; counter < newLayout.length; counter++ ){
+
 				var newModel = {
 						shortcode_name          : 'karma_column',
 						shortcode_content       : '',
 						element_key             : KarmaView.createNewElementKey(),
-						shortcode_attributes    : $( document ).triggerHandler( 'karma/before/createElement/karma_column' ),
+						shortcode_attributes    : JSON.parse( JSON.stringify( model ) ),
 						order                   : order ,
-						parent_key              : model.parent_key
+						parent_key              : that.model.get('element_key')
 				 }
 				order++;
 				newModel.shortcode_attributes.lg_size = newLayout[ counter ];
 				newModel.shortcode_attributes.sm_size = newLayout[ counter ];
 				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
 				newModel.shortcode_attributes.md_size = newLayout[ counter ];
-				var CID = karmaBuilder.karmaModels.add( newModel ).cid,
-					ColumnModel = karmaBuilder.karmaModels.get({ 'cid' : CID })
-				$( '[data-element-key="' + model.parent_key + '"]' ).find('.karma-row').append( KarmaView.createBuilderModel( ColumnModel ) );
-				KarmaView.createNewElement( 'column', ColumnModel );
+
+
+				var columnModel = karmaBuilder.karmaModels.add( newModel );
+				$( '[data-element-key="' + columnModel.get('parent_key') + '"] .karma-row' ).append( KarmaView.createBuilderModel( columnModel ) );
+				KarmaView.createNewElement( 'column', columnModel );
 
 			}
 
@@ -269,10 +311,10 @@
 		structure: function () {
 
 			var defaultClasses 	= 'karma-row karma-no-gutters ',
-				containerClass	= ( 'container' == this.model.attributes.shortcode_attributes.structure ) ? 'karma-container' : 'karma-container-fluid',
+				containerClass	= ( 'container' == this.getAttributes( ['structure'] ).structure ) ? 'karma-container' : 'karma-container-fluid',
 				newStructure 	= defaultClasses + containerClass;
 
-			this.el.firstElementChild.firstElementChild.setAttribute( "class", newStructure );
+			this.el.querySelector('.karma-row').setAttribute( "class", newStructure );
 
 		},
 
@@ -285,7 +327,7 @@
 		 */
 		space: function () {
 
-			var padding	= this.model.attributes.shortcode_attributes.space + 'px';
+			var padding	= this.getAttributes( ['space'] ).space + 'px';
 			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
 			this.$el.find('.karma-section').css({
 				'padding-top'      : padding,
@@ -303,10 +345,45 @@
 		 */
 		extraclass: function(){
 
-			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.attributes.shortcode_attributes.element_key,
-				defaultClasses =  elementClass + " karma-section  "  + this.model.attributes.shortcode_attributes.extraclass;
+			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.get('element_key'),
+				defaultClasses =  elementClass + " karma-section  "  + this.getAttributes( ['extraclass'] ).extraclass;
 
-			this.el.firstElementChild.setAttribute( 'class', defaultClasses );
+			this.el.querySelector('.karma-section').setAttribute( 'class', defaultClasses );
+
+		},
+
+		/**
+		 * @summary background type changes. change background type
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		backgroundtype: function () {
+
+			var backgroundClasses = 'karma-background-section ',
+				backgroundType = this.getAttributes( [ 'backgroundtype' ] ).backgroundtype;
+			if ( 'color' == backgroundType ) {
+				backgroundClasses = backgroundClasses + ' karma-section-color-background';
+			} else if ( 'image' == backgroundType ) {
+				backgroundClasses = backgroundClasses + ' karma-section-image-background karma-background-image-' + this.getAttributes( [ 'backgroundsize' ] ).backgroundsize + ' karma-background-position-' + this.getAttributes( [ 'backgroundposition' ] ).backgroundposition;
+			}
+
+			this.el.querySelector( '.karma-background-section' ).setAttribute( 'class', backgroundClasses );
+
+		},
+
+		/**
+		 * @summary background color changes. change background color
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		backgroundcolor: function () {
+
+			var elementId = this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
+			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
 
 		},
 
@@ -319,7 +396,11 @@
 		 */
 		grid: function () {
 
-			var newGrid = JSON.parse( this.getAttributes( ['grid'] ).grid );
+			var grid = this.getAttributes( ['grid'] ).grid;
+			if( '' == grid || 'undefined' == typeof grid ){
+				return ;
+			}
+			var newGrid = JSON.parse( grid );
 			this.changeRowLayout( newGrid );
 
 		},
@@ -334,11 +415,67 @@
 		columnspace : function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				margin = this.getAttributes( ['columnspace'] ).columnspace;
-			this.renderCss( '.' + elementId + ' .karma-column-margin', 'margin-left', margin );
-			this.renderCss( '.' + elementId + ' .karma-column-margin', 'margin-right', margin );
+				margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
+			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-left', margin );
+			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-right', margin );
 
-		}
+		},
+
+		/**
+		 * @summary fire on change background image controller
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		backgroundimage : function () {
+
+			var imageAddress = this.getAttributes( [ 'backgroundimage' ] ),
+				elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+				imageUrl = '' ;
+
+			if( 'none' == imageAddress.backgroundimage ){
+				imageUrl = 'none';
+			}else{
+				imageUrl = 'url('+ imageAddress.backgroundimage  +')';
+			}
+			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
+
+
+		},
+
+		/**
+		 * @summary change background size to cover and contain
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		backgroundsize  : function () {
+
+			var regex = new RegExp('(?:^|\\s)karma-background-image-(.*?)(?!\\S)'),
+				backgroundsize = this.getAttributes( [ 'backgroundsize' ] ).backgroundsize,
+				sectionBackground = this.el.querySelector( '.karma-background-section' );
+
+			sectionBackground.className = sectionBackground.className.replace( regex, " karma-background-image-" + backgroundsize );
+
+		},
+
+		/**
+		 * @summary change position of background image
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		backgroundposition : function () {
+
+			var regex = new RegExp('(?:^|\\s)karma-background-position-(.*?)(?!\\S)'),
+				imagePosition = this.getAttributes( [ 'backgroundposition' ] );
+
+			this.el.querySelector( '.karma-background-section' ).className = this.el.querySelector( '.karma-background-section' ).className.replace( regex, " karma-background-position-" + imagePosition.backgroundposition );
+
+		},
 
 	} );
 

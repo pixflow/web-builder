@@ -129,6 +129,7 @@ class Karma_Builder {
 		Karma_Factory_Pattern::$builder = $this;
 		$factory->set_builder_class_instance();
 		$this->set_locale();
+		//@TODO it should load just in admin area
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->load_core();
@@ -275,7 +276,7 @@ class Karma_Builder {
 		$plugin_admin = Karma_Factory_Pattern::$builder_admin;
 
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ), 10 , 1 );
 		add_action( 'wp_ajax_publish', array( $plugin_admin, 'publish' ) );
 		add_action( 'wp_ajax_save', array( $plugin_admin, 'save' ) );
 		add_action( 'karma_before_load_builder_window', array( $plugin_admin, 'load_builder_assets' ) );
@@ -389,12 +390,81 @@ class Karma_Builder {
 		// Don't display the admin bar when in live editor mode
 		add_filter( 'show_admin_bar', '__return_false' );
 		do_action( 'karma_before_load_builder_window' );
+
+		$this->modify_wordpress_action();
 		$builder_views = Karma_Factory_Pattern::$builder_views;
 		$builder_views->load_builder_environment();
 		die();
 
 	}
 
+	/**
+	 * Modify wordpress actions and hooks
+	 *
+	 * @since    1.0.0
+	 *
+	 * @return void
+	 */
+	public function modify_wordpress_action(){
+
+		// Remove all WordPress actions
+		remove_all_actions( 'wp_head' );
+		remove_all_actions( 'wp_print_styles' );
+		remove_all_actions( 'wp_print_head_scripts' );
+		remove_all_actions( 'wp_footer' );
+
+		// Handle wp_head
+		add_action( 'wp_head', 'wp_enqueue_scripts', 1 );
+		add_action( 'wp_head', 'wp_print_styles', 8 );
+		add_action( 'wp_head', 'wp_print_head_scripts', 9 );
+		add_action( 'wp_head', 'wp_site_icon' );
+
+		// Handle wp_footer
+		add_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
+		add_action( 'wp_footer', 'wp_auth_check_html', 30 );
+
+		// Handle wp_enqueue_scripts
+		remove_all_actions( 'wp_enqueue_scripts' );
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_builder_assets' ], 999999 );
+
+	}
+
+	/**
+	 * Enqueue styles and scripts to top iFrame
+	 *
+	 * @since    1.0.0
+	 *
+	 * @return void
+	 */
+	public function enqueue_builder_assets(){
+
+		wp_print_scripts( array( 'jquery','wp-util', 'backbone' ) );
+		wp_enqueue_script( 'karma-unsplash' , KARMA_BUILDER_URL . 'builder/js/karma-unsplash.min.js', array( ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'jquery-ui' , KARMA_BUILDER_URL . 'builder/js/jquery-ui.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-jquery.nicescroll' , KARMA_BUILDER_URL . 'builder/js/jquery.nicescroll.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-spectrum' , KARMA_BUILDER_URL . 'builder/js/spectrum.min.js', array( ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-color-picker' , KARMA_BUILDER_URL . 'builder/js/karma-builder-color-picker.min.js', array( ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-jquery.easing' , KARMA_BUILDER_URL .'builder/js/jquery-easing.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-jquery.qiucksand' , KARMA_BUILDER_URL .'builder/js/quicksand.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-range-slider' , KARMA_BUILDER_URL . 'builder/js/rangeslider.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-builder-actions' , KARMA_BUILDER_URL . 'builder/js/karma-builder-actions.min.js', array( 'backbone' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-element-panel', KARMA_BUILDER_URL . 'builder/js/karma-builder-element-panel.min.js', array( 'karma-builder-actions' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-setting-panel', KARMA_BUILDER_URL . 'builder/js/karma-builder-setting-panel.min.js', array( 'karma-builder-actions' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_style( 'karma-builder-styles', KARMA_BUILDER_URL . 'builder/css/builder-styles.css', KARMA_BUILDER_VERSION, false );
+		wp_enqueue_media();
+
+		$this->load_templates();
+
+
+	}
+
+	private function load_templates(){
+
+		Karma_Factory_Pattern::$builder_views->load_builder_templates();
+		Karma_Factory_Pattern::$builder_loader->load_builder_js_templates();
+
+	}
 
 	/**
 	 * Get the current page url

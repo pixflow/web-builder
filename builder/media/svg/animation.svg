@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="20px" height="12px" viewBox="0 0 20 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
-    <title>Group Copy</title>
+    <title>Group</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <rect id="path-1" x="2" y="2" width="8.56401384" height="8.56401384" rx="2"></rect>
-        <rect id="path-2" x="6" y="2" width="8.56401384" height="8.56401384" rx="2"></rect>
-    </defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="image-gizmo" transform="translate(-153.000000, -10.000000)">
-            <g id="Group-Copy" transform="translate(154.000000, 11.000000)">
-                <g id="Rectangle-Copy-16" transform="translate(6.282007, 6.282007) rotate(-45.000000) translate(-6.282007, -6.282007) ">
-                    <use fill="#848E98" fill-rule="evenodd" xlink:href="#path-1"></use>
-                    <rect stroke="#FFFFFF" stroke-width="1.2" x="1.4" y="1.4" width="9.76401384" height="9.76401384" rx="2"></rect>
-                </g>
-                <g id="Rectangle-Copy-17" transform="translate(10.282007, 6.282007) rotate(-45.000000) translate(-10.282007, -6.282007) ">
-                    <use fill="#394959" fill-rule="evenodd" xlink:href="#path-2"></use>
-                    <rect stroke="#FFFFFF" stroke-width="1.1" x="5.45" y="1.45" width="9.66401384" height="9.66401384" rx="2"></rect>
-                </g>
+    <defs></defs>
+    <g id="animation-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="animation-icon-1" transform="translate(-81.000000, -12.000000)" fill="#394959">
+            <g id="animation-icon-Group" transform="translate(81.000000, 12.000000)">
+                <rect id="animation-icon-2" transform="translate(14.152286, 6.106831) rotate(-45.000000) translate(-14.152286, -6.106831) " x="9.83410402" y="1.78864947" width="8.63636364" height="8.63636364" rx="1"></rect>
+                <path d="M9.69805159,1.32511376 C9.87760696,1.11531749 9.85309186,0.799685607 9.64329558,0.620130233 C9.4334993,0.440574859 9.11786743,0.465089956 8.93831205,0.674886235 L4.62013023,5.72034078 C4.45884787,5.90878649 4.46009897,6.18698427 4.62306972,6.37397176 L8.94125154,11.3285172 C9.12268659,11.5366901 9.43852619,11.5583653 9.64669904,11.3769303 C9.85487188,11.1954952 9.87654715,10.8796556 9.6951121,10.6714828 L5.66066313,6.04248344 L9.69805159,1.32511376 Z" id="animation-icon-Path" fill-rule="nonzero"></path>
+                <path d="M4.86124362,2.30285781 C5.040799,2.09306153 5.0162839,1.77742965 4.80648762,1.59787427 C4.59669134,1.4183189 4.28105946,1.442834 4.10150409,1.65263028 L0.620130233,5.72034078 C0.458847866,5.90878649 0.460098967,6.18698427 0.623069718,6.37397176 L4.08709067,10.34848 C4.26852572,10.5566529 4.58436532,10.5783281 4.79253817,10.3968931 C5.00071101,10.215458 5.02238628,9.89961842 4.84095123,9.69144557 L1.66066313,6.04248344 L4.86124362,2.30285781 Z" id="animation-icon-Path-4" fill-rule="nonzero"></path>
             </g>
         </g>
     </g>

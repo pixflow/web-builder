@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file that defines the builder core class
  *
@@ -230,11 +231,12 @@ class Karma_Builder_Core{
 		if ( ! $this->validate_shortcode_syntax( $element_attributes ) ){
 			return false;
 		}
+
 		$shortcode_models = array();
 		$pattern = $this->get_shortcode_regex('.*?');
 		preg_match_all( $pattern , $element_attributes , $matches );
 		$shortcode_models["shortcode_name"] = $matches[2][0];
-		$shortcode_models["shortcode_attributes"] = $this->get_shortcode_attributes( $matches[3][0] );
+		$shortcode_models["shortcode_attributes"] = $this->get_element_attributes( $matches[3][0] );
 		$shortcode_models[ "shortcode_attributes" ] = $this->add_default_attributes( $shortcode_models[ "shortcode_name" ], $shortcode_models[ "shortcode_attributes" ] );
 		$shortcode_models['shortcode_content'] = $matches[5][0];
 		$shortcode_models['element_key'] = $shortcode_models["shortcode_attributes"]['element_key'];
@@ -243,75 +245,49 @@ class Karma_Builder_Core{
 
 	}
 
-	/**
-	 * Remove empty values
-	 *
-	 * It s call back function for array_filter function that used in merge_attributes_matches and
-	 * avoid of delete false boolean type
-	 *
-	 * @param string - $value - value of current index in array
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string - correct value
-	 */
-	private function remove_empty_value( $value ){
-
-		return $value !== "";
-
-	}
-
 
 	/**
-	 * Combine the attributes and values of shortcode
+	 * Combine the attributes and values of element
 	 *
 	 *
 	 * @param array	$matches attributes of shortcodes
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array - that contains the attributes and values of shortcode
+	 * @return array - that contains the attributes and values of element
 	 */
 	private function merge_attributes_matches( $matches ){
 
-		$first_group_attributes = array_filter( $matches[1] ,array($this, 'remove_empty_value') );
-		$second_group_attributes = array_filter( $matches[4] ,array($this, 'remove_empty_value') );
-		$third_group_attributes = array_filter( $matches[7] ,array($this, 'remove_empty_value') );
-		$all_group_attribute = array_merge( $first_group_attributes , $second_group_attributes , $third_group_attributes );
-		$first_group_value =  array_filter( $matches[2] ,array($this, 'remove_empty_value') );
-		$second_group_value =  array_filter( $matches[5] ,array($this, 'remove_empty_value') );
-		$third_group_value =  array_filter( $matches[8] ,array($this, 'remove_empty_value') );
-		$all_group_value = array_merge( $first_group_value, $second_group_value, $third_group_value );
-		$result = array(
-			'attributes' => $all_group_attribute,
-			'values' => $all_group_value
-		);
-		return $result;
+		$attribute_list = array();
+		$regex = '/(\'|")(.*?)(\'|")$/';
+		foreach ( $matches[0] as $attribute ){
+			$attr_data = explode( '=', trim( $attribute ) );
+			$attr_data[1] = stripslashes( preg_replace( $regex, '$2', $attr_data[1] ) );
+			$attribute_list[ $attr_data[0] ] = $attr_data[1] ;
+		}
+		return $attribute_list;
 
 	}
 
 	/**
-	 * Get all shortcode attributes with their values
+	 * Get all element attributes with their values
 	 *
 	 * If the function dose not found any attribute return empty array
 	 *
-	 * @param string	$shortcode_attributes	Shortcode string
+	 * @param string    $element_attributes element string
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return array - The group of attributes of element
 	 */
-	private function get_shortcode_attributes( $shortcode_attributes ){
+	private function get_element_attributes( $element_attributes ){
 
-		$atts = array();
-		preg_match_all( $this->shortcode_attr_pattern , $shortcode_attributes , $matches );
-		if( $matches ){
-			$shortcode_group_attribute = $this->merge_attributes_matches( $matches );
-			for( $count = 0 ; $count < count( $shortcode_group_attribute['attributes'] ); $count++ ){
-				$atts[ $shortcode_group_attribute['attributes'][ $count ] ] =  stripslashes( $shortcode_group_attribute['values'][ $count ] );
-			}
+		preg_match_all( $this->shortcode_attr_pattern , $element_attributes, $matches );
+		if( $matches ) {
+			return $this->merge_attributes_matches($matches);
+		}else{
+			return array();
 		}
-		return $atts;
 
 	}
 
@@ -328,8 +304,8 @@ class Karma_Builder_Core{
 	public function add_default_attributes( $element_name, $element_attributes ) {
 
 		$element_name = explode( '_', $element_name );
-		$element_calss_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
-		$default_attributes = $element_calss_neme::get_element_default_attributes();
+		$element_class_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$default_attributes = $element_class_neme::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
 		return $atributes;
 
@@ -636,7 +612,5 @@ class Karma_Builder_Core{
 		return $elements_info;
 
 	}
-
-
 
 }

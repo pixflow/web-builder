@@ -38,11 +38,13 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 */
 	static function get_element_default_attributes(){
 
-		return 	array(
-			'element_key'   => 'kb',
-			'tag'           => 'p',
-			'color'			=> '#000',
-			'align'         => 'left'
+		return array(
+			'element_key'  		=> 'kb',
+			'tag'           	=> 'p',
+			'color'				=> '#000',
+			'align'       		=> 'left',
+			'topspacepadding'	=> '10',
+			'elementalign'	=> 'left',
 		);
 
 	}
@@ -67,15 +69,13 @@ class Karma_Text extends Karma_Shortcode_Base {
 			$attributes
 		);
 
-		$content = ( '' === trim( $content ) ) ? 'Click here to edit content': $content;
-		$content = '<' . $attributes['tag'] . ' class="karma-text-content karma-text-tag karma-document-click" >' . $content . '</' . $attributes['tag'] . '>';
+		$content = ( '' === trim( $content ) ) ? 'Click here to edit content...': $content;
+		$content = '<' . $attributes['tag'] . ' class="karma-text-content karma-text-tag karma-document-click karma-editable-content ">' . $content . '</' . $attributes['tag'] . '>';
 
 		ob_start();
 		?>
 		<div class='karma-text karma-text-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
-			<div class="karma-editable-content" contentEditable="true" >
 				<?php echo $content; ?>
-			</div>
 		</div>
 		<?php
 		return ob_get_clean();
@@ -97,9 +97,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 
 		$js_template = '<# var content = ( "" === data.content.trim() ) ? "Click here to edit content..." : data.content; #>';
 		$js_template .= '<div class="karma-text karma-text-{{ data.element_key }}" >'
-			. '<div class="karma-editable-content" contentEditable="true" >'
-			. '<{{{ data.tag }}} class="karma-text-content karma-text-tag karma-document-click" contentEditable="true" ><# print( content ); #></{{{ data.tag }}}>'
-			. '</div>'
+			. '<{{{ data.tag }}} class="karma-text-content karma-text-tag karma-document-click karma-editable-content" ><# print( content ); #></{{{ data.tag }}}>'
 			. '</div>';
 		return $js_template;
 
@@ -109,20 +107,29 @@ class Karma_Text extends Karma_Shortcode_Base {
 
 	/**
 	 * Return CSS property
-	 *
+	 * Note : postfix or prefix are the CSS selectors
+	 * @example if yor prefix is .karma-prefix so your CSS selector is .karma-prefix .karma-section-{element-key}
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 * @return  array The style property of element
 	 */
-	public function get_css_attributes() {
+	public static function get_css_attributes() {
 
 		$styles = array(
-			'selector-postfix' => ' .karma-text-tag',
-			'property'         => array(
-				'text-align' => $this->element_attributes[ 'align' ],
-				'color'      => $this->element_attributes[ 'color' ]
-			)
+			array(
+				'postfix'		 => ' .karma-text-tag',
+				'property'       => array(
+				'text-align'	 => self::$element_attributes[ 'align' ],
+				'color'     	 => self::$element_attributes[ 'color' ],
+				)
+			),
+			array(
+				'property'		=> array(
+					'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px"	,
+				)
+		  	)
+
 		);
 		return $styles;
 

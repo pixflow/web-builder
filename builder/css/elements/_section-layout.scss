@@ -2,5 +2,53 @@
 	&[data-name="karma_section"] {
 		position: relative;
 	}
-}
 
+}
+.karma-background-section{
+	background-repeat: no-repeat;
+
+	&.karma-background-image-contain{
+		background-size: contain;
+	}
+	
+	&.karma-background-image-cover{
+		background-size: cover;
+	}
+
+	&.karma-background-position-top-left{
+		background-position: top left;
+	}
+
+	&.karma-background-position-top-center{
+		background-position: top center;
+	}
+
+	&.karma-background-position-top-right{
+		background-position: top right;
+	}
+
+	&.karma-background-position-center-left{
+		background-position: center left;
+	}
+
+	&.karma-background-position-center-center{
+		background-position: center center;
+	}
+
+	&.karma-background-position-center-right{
+		background-position: center right;
+	}
+
+	&.karma-background-position-bottom-left{
+		background-position: bottom left;
+	}
+
+	&.karma-background-position-bottom-center{
+		background-position: bottom center;
+	}
+
+	&.karma-background-position-bottom-right{
+		background-position: bottom right;
+	}
+
+}

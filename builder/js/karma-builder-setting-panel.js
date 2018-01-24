@@ -1,7 +1,14 @@
-( function( $, karmaBuilder){
 
-	karmaBuilder.elementSettingPanel = Backbone.View.extend({
+( function( $, karmaBuilderActions ){
 
+	karmaBuilderActions.elementSettingPanel = karmaBuilderActions.view.extend({
+
+		KarmaView : null,
+
+		/** The params of each elements */
+		shortcodeParams: {},
+
+		viewInstance : {},
 
 		/**
 		 * Define elements event
@@ -9,11 +16,12 @@
 		 * @since   1.0.0
 		 */
 		events : {
-			"click .delete-karma-element"				: "removeElement",
-			"click .karma-setting-panel-close-svg" 		: "removeSettingPanel",
-			"input input:not(.no-trigger)"				: "updateModel",
-			"input textarea:not(.no-trigger)"			: "updateModel" ,
-			"change input[type=checkbox]"				: "updateModel" ,
+			"click.stopParent"                                                                  : "stopFromCallingParent",
+			"click .delete-karma-element"				                                        : "removeElement",
+			"click .karma-setting-panel-close-svg" 		                                        : "removeSettingPanel",
+			"input #karma-element-setting-panel-container input:not(.no-trigger)"				: "updateModel",
+			"input #karma-element-setting-panel-container textarea:not(.no-trigger)"			: "updateModel" ,
+			"change #karma-element-setting-panel-container input[type=checkbox]"				: "updateModel" ,
 		},
 
 		/**
@@ -22,24 +30,39 @@
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		initialize: function() {
+		initialize: function( options ) {
 
+			this.viewInstance = options.viewInstance ;
 			this.setElement( $( 'body' ) );
+			this.removeSettingPanel();
+			this.openSettingPanel( options.form );
+
 
 		},
 
 		/**
-		 * call setting panel
+		 * @summary	Create the Object of params for all element
+		 * Find the given element name param
 		 *
-		 * @since   1.0.0
-		 * @returns {void}
+		 * @param	{String}	elementName	The name of element
+		 * @param	{String}	form	which form
+		 *
+		 * @since 1.0.0
+		 * @returns {Array}	The element params
 		 */
-		render : function () {
+		getElementMap: function ( elementName, form ) {
+
+			if ( this.shortcodeParams ) {
+				this.shortcodeParams = JSON.parse( this.getIframe().builderMaps );
+			}
+
+			return this.shortcodeParams[ elementName ][form];
 
 		},
 
+
 		/**
-		 * shortcode setting panel draggable event
+		 * @summary Element setting panel draggable event
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
@@ -51,16 +74,22 @@
 				scroll: true,
 				scrollSpeed: 100 ,
 				distance: 10,
+				cancel: ".karma-shortcode-setting-panel-extra, input, .rangeslider__handle",
 				drag : function() {
 					$( this ).css({ width : '', height : '' });
-				},
-				cancel: ".karma-shortcode-setting-panel-extra, input"
+				}
 			});
 
 		},
 
+		stopFromCallingParent : function ( e ) {
+
+			e.stopPropagation();
+
+		},
+
 		/**
-		 * On click removes element
+		 * @summary On click removes element
 		 *
 		 * @since 1.0.0
 		 *
@@ -76,7 +105,7 @@
 		},
 
 		/**
-		 * On click removes element
+		 * @summary On click removes element
 		 *
 		 * @param	{string}	form of element
 		 *
@@ -84,8 +113,10 @@
 		 *
 		 * @returns	{mixed}
 		 */
-		 openSettingPanel: function( form ){
+		openSettingPanel: function( form ){
 
+			this.KarmaView = document.getElementById('karma-builder-iframe').contentWindow.window.KarmaView;
+			this.removeSettingPanel();
 			var html = document.createElement( 'div' ),
 				formHtml = this.formBuilder( form );
 			if( null == formHtml ){
@@ -93,22 +124,22 @@
 			}
 			var elementAttributes = this.model.attributes,
 				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
-			html.innerHTML = KarmaView.getWpTemplate( 'karma-element-setting-panel' , {
+			html.innerHTML = this.KarmaView.getWpTemplate( 'karma-element-setting-panel' , {
 				headerTitle: formHtml.title,
 				content: formHtml.content,
 				selector: elementSelector
-			}  );
+			} , 1 );
 
 			document.body.appendChild( html );
 			this.bindDragEvents();
 			this.applyDependency();
-			$( document ).trigger('karma_finish_form_builder', [ this ] );
+			$( document ).trigger('karma_finish_form_builder', [ this.viewInstance ] );
 			this.scrollSettingPanel();
 
 		},
 
 		/**
-		 * update each param value with its model
+		 * @summary update each param value with its model
 		 *
 		 * @param	{object} 	model			model of clicked element.
 		 * @param	{object} 	elementParam	default controllers value in define.
@@ -122,7 +153,7 @@
 			for ( var index in elementParam.params ){
 				var paramName = elementParam.params[ index ].name;
 				if( 'gridlayout' === paramName ){
-					elementParam.params[ index ].value = this.currentGrid().length;
+					elementParam.params[ index ].value = this.viewInstance.currentGrid().length;
 				}
 				if( undefined !== model.shortcode_attributes[ paramName ] ) {
 
@@ -153,7 +184,7 @@
 			}
 			var popup = document.createElement('div'),
 				settingPanelHeight = shortcodeParams.height;
-				karmaformhtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
+			karmaformhtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
 				formBuilderContents = this.formBuilderContentHtml( form );
 
 			karmaformhtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
@@ -163,9 +194,9 @@
 		},
 
 		/**
-		 * create form builder content html
+		 * @summary create form builder content html
 		 *
-		 * @param	{string}	form	of element
+		 * @param	{string}    form	        The name of from
 		 *
 		 * @since	1.0.0
 		 *
@@ -174,7 +205,7 @@
 		formBuilderContentHtml : function ( form ) {
 
 			var shortcodeModel = this.model.attributes ,
-				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form );
+				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
 				shortcodeParams = this.updateElementParams( shortcodeModel, shortcodeParams );
 			return this.formBuilderContentAction( shortcodeParams );
 
@@ -182,7 +213,7 @@
 
 
 		/**
-		 *  form builder content action to create  html
+		 * @summary form builder content action to create  html
 		 *
 		 * @param	{object}	get model attribute
 		 *
@@ -197,17 +228,17 @@
 				groupHtml_group = [];
 			for( var counter in shortcodeParams.params ){
 				if ( ! shortcodeParams.params[counter].group && "switch-panel" != shortcodeParams.params[counter].type ) {
-					controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ], 1 );
 					groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] ) ;
 				}else if( "switch-panel" === shortcodeParams.params[counter].type ) {
 					if( "undefined" !== typeof shortcodeParams.params[counter].form ){
 						shortcodeParams.params[counter]['view'] = this;
 						shortcodeParams.params[counter]['formBuilder'] = true;
-						controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ], 1 );
 						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					}else{
 						shortcodeParams.params[counter]['formBuilder'] = false;
-						controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ] );
+						controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ], 1 );
 						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					}
 				} else {
@@ -217,7 +248,7 @@
 							title: shortcodeParams.params[counter].group
 						};
 					}
-					controllerSource = KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter] );
+					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter], 1 );
 					var html = this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
 					groupHtml_group[ shortcodeParams.params[counter].group ]['items'].push( html );
 				}
@@ -242,7 +273,7 @@
 			var settingPanelGroup = '' ,
 				controllerSource ;
 			for( var counter in htmlGroup ) {
-				controllerSource = KarmaView.getWpTemplate( 'karma-setting-panel-groups-extend', htmlGroup[counter] );
+				controllerSource = this.KarmaView.getWpTemplate( 'karma-setting-panel-groups-extend', htmlGroup[counter], 1 );
 				settingPanelGroup += this.setGeneralContainer( controllerSource, htmlGroup[ counter ] );
 			}
 			return settingPanelGroup;
@@ -258,14 +289,16 @@
 		removeSettingPanel : function() {
 
 			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
-			if( null != settingPanel ){
-				settingPanel.parentNode.removeChild( settingPanel );
 
+			if( null != settingPanel ) {
+				settingPanel.parentNode.removeChild(settingPanel);
+			}
+
+			if( 'undefined' != typeof karmaBuilderEnviroment.getIframe().elementSettingPanel ){
 				// COMPLETELY UNBIND THE ELEMENT SETTING PANEL VIEW
-				elementSettingPanel.undelegateEvents();
-				elementSettingPanel.$el.removeData().unbind();
-				delete elementSettingPanel;
-
+				karmaBuilderEnviroment.getIframe().elementSettingPanel.undelegateEvents();
+				karmaBuilderEnviroment.getIframe().elementSettingPanel.$el.removeData().unbind();
+				delete karmaBuilderEnviroment.getIframe().elementSettingPanel;
 			}
 
 		},
@@ -306,12 +339,11 @@
 				dependecyInfo ;
 
 			_.each( dependentElements, function( dependentElement ){
-				dependecyInfo = JSON.parse( dependentElement.getAttribute( 'data-dependency' ) ) ,
+				dependecyInfo = JSON.parse( dependentElement.getAttribute( 'data-dependency' ) )  ,
 					dependentElementOBJ = document.querySelector('input[name="' + dependecyInfo.controller + '"]');
 				that.applyDependencyOnLoad( dependentElement, dependecyInfo, dependentElementOBJ );
 				dependentElementOBJ.addEventListener( 'change', function(){
-					that.doDependency(  dependentElement, dependecyInfo, this.value );
-
+					that.doDependency(  dependentElement, this.value );
 				});
 			});
 
@@ -330,7 +362,7 @@
 		applyDependencyOnLoad : function ( dependentElement, dependencyInfo, dependentElementOBJ ) {
 
 			var dependentValue = dependentElementOBJ.value ;
-			this.doDependency( dependentElement, dependencyInfo, dependentValue );
+			this.doDependency( dependentElement, dependentValue );
 
 		},
 
@@ -338,15 +370,16 @@
 		 * @summary Apply dependencies to the element setting panel when the html created
 		 *
 		 * @param {Object}  dependentElement    Dependent element
-		 * @param {Object}  dependencyInfo      Dependent element info
 		 * @param {String}  dependentValue      Value of input
 		 *
 		 * @since 1.0.0
 		 * @return {void}
 		 */
-		doDependency : function ( dependentElement, dependencyInfo, dependentValue ) {
+		doDependency : function ( dependentElement, dependentValue ) {
 
-			var isHide;
+			var isHide,
+				dependencyInfo = JSON.parse( dependentElement.getAttribute( 'data-dependency' ) );
+
 			if ( dependencyInfo.value == dependentValue ) {
 				dependentElement.classList.remove('karma-hide-controller');
 				isHide = false;
@@ -369,6 +402,10 @@
 		 */
 		findDependentElements : function ( dependentElement, isHide ) {
 
+			var dependInput = dependentElement.querySelector('input');
+			if( null == dependInput  ){
+					return;
+			}
 			var controller = dependentElement.querySelector('input').getAttribute( 'name') ,
 				dependentElements = document.querySelectorAll('[data-dependency-element="' + controller + '"]') ,
 				that = this,
@@ -382,7 +419,7 @@
 						element.classList.add('karma-hide-controller');
 					}else {
 						element.classList.remove('karma-hide-controller');
-						that.doDependency( element, JSON.parse( dependentElement.getAttribute( 'data-dependency' ) ), dependentElement.querySelector('input').value );
+						that.doDependency( element, dependentElement.querySelector('input').value );
 						this.callScrollOnResize();
 					}
 					lastElement = element;
@@ -413,48 +450,6 @@
 
 		},
 
-		/**
-		 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
-		 *
-		 * @param {Object} 		 addImgLink    Selector dom object
-		 * @param {function}	 callBack      callback function
-		 * @param {String} 		 multiple      multiple in frame default false
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		openMediaLibrary : function ( addImgLink, callBack, multiple ) {
-
-			// Set all variables to be used in scope
-			var frame;
-
-			// ADD IMAGE LINK
-			addImgLink.addEventListener( 'click', function () {
-
-				// If the media frame already exists, reopen it.
-				if ( frame ) {
-					frame.open();
-					return;
-				}
-
-				// Create a new media frame
-				frame = wp.media( {
-					title: 'Select or Upload Media Of Your Chosen Persuasion',
-					button: {
-						text: 'Use this media'
-					},
-					multiple: ( multiple ) ? multiple : false
-				} );
-
-				// When an image is selected in the media frame...
-				frame.on( 'select',  callBack.bind( frame, frame ) );
-
-				// Finally, open the modal on click
-				frame.open();
-			}, false );
-
-		},
 
 		/**
 		 * @summary use niceScroll for setting panel
@@ -482,11 +477,11 @@
 		 */
 		callScrollOnResize: function () {
 
-				$(".karma-element-setting-panel-content").getNiceScroll().resize();
+			$(".karma-element-setting-panel-content").getNiceScroll().resize();
 
 		},
 
-
 	});
 
-} )( jQuery, karmaBuilder );
+
+} )( jQuery, karmaBuilderActions );

@@ -1,49 +1,78 @@
 .karma-image {
-	@include flexbox();
-	overflow: hidden;
 
-	&.karma-position-top-left{
-		@include justify-align($align-item:flex-start, $justify-content:flex-start);
-	}
-	&.karma-position-top-center{
-		@include justify-align($align-item:flex-start, $justify-content:center);
-	}
-	&.karma-position-top-right{
-		@include justify-align($align-item:flex-start, $justify-content:flex-end);
-	}
-	&.karma-position-center-left{
-		@include justify-align($align-item:center, $justify-content:flex-start);
-	}
-	&.karma-position-center-center{
-		@include justify-align($align-item:center, $justify-content:center);
-	}
-	&.karma-position-center-right{
-		@include justify-align($align-item:center, $justify-content:flex-end);
-	}
-	&.karma-position-bottom-left{
-		@include justify-align($align-item:flex-end, $justify-content:flex-start);
-	}
-	&.karma-position-bottom-center{
-		@include justify-align($align-item:flex-end, $justify-content:center);
-	}
-	&.karma-position-bottom-right{
-		@include justify-align($align-item:flex-end, $justify-content:flex-end);
+	.karma-image-link {
+		position: relative;
+		display: flex;
 	}
 
-	.karma-image-container{
+	.karma-image-container {
 
-		.karma-image-fill{
+		img {
+			object-fit: cover;
+		}
+		.karma-image-fill {
+			height: 100%;
+			width: 100%;
 			max-height: 100%;
 			max-width: 100%;
 		}
-		.karma-image-real{
+		.karma-image-real {
 			max-width: initial;
 		}
 	}
 
 	.karma-image-without-action {
-		cursor: none;
+		cursor: auto;
+	}
+
+	.karma-image-resize-crop {
+		overflow: hidden;
+		display: flex;
+
+		&.karma-position-top-left {
+			@include justify-align($align-item: flex-start, $justify-content: flex-start);
+		}
+		&.karma-position-top-center {
+			@include justify-align($align-item: flex-start, $justify-content: center);
+		}
+		&.karma-position-top-right {
+			@include justify-align($align-item: flex-start, $justify-content: flex-end);
+		}
+		&.karma-position-center-left {
+			@include justify-align($align-item: center, $justify-content: flex-start);
+		}
+		&.karma-position-center-center {
+			@include justify-align($align-item: center, $justify-content: center);
+		}
+		&.karma-position-center-right {
+			@include justify-align($align-item: center, $justify-content: flex-end);
+		}
+		&.karma-position-bottom-left {
+			@include justify-align($align-item: flex-end, $justify-content: flex-start);
+		}
+		&.karma-position-bottom-center {
+			@include justify-align($align-item: flex-end, $justify-content: center);
+		}
+		&.karma-position-bottom-right {
+			@include justify-align($align-item: flex-end, $justify-content: flex-end);
+		}
+
+	}
+
+	.karma-image-both-resize {
+		&:not(.karma-image-real) {
+			height: 100%;
+			width: 100%;
+		}
+
 	}
 
 }
 
+.karma-builder-element[data-name="karma_image"] {
+	&:not(.karma-active-element) {
+		.karma-image-link {
+			overflow: hidden;
+		}
+	}
+}

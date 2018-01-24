@@ -13,26 +13,21 @@
 		}
 
 		.karma-switch-panel-button {
-			@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
-			background-color: #FFF;
-			border: 1px solid $builder-main-color-3;
-			border-radius: 100px;
-			margin: $top-space-orange 0;
-			padding: 10px 21px;
+			@include oval-button-with-icon();
+			margin: $builder-orange-space 0;
 			text-transform: capitalize;
 
 			p {
-				color: $builder-main-color-1;
-				font-size: 14px;
-				line-height: 14px;
+				@extend .karma-builder-title-3;
+				color: #000;
 				margin: 0;
 			}
 
 			.karma-switch-panel-shape {
-				@include box(9px, 9px);
-				border-bottom: 2px solid $builder-main-color-1;
-				border-left: 2px solid $builder-main-color-1;
-				margin-right: 4px;
+				@include box(8px, 8px);
+				border-bottom: 1px solid $builder-main-color-1;
+				border-left: 1px solid $builder-main-color-1;
+				margin-right: 9px;
 				transform: rotate(45deg);
 				transition-duration: .3s;
 			}

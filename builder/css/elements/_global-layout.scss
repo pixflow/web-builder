@@ -1,67 +1,158 @@
 .karma-element-placeholder {
-  @include box( 100%, 0 );
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  transition: height 150ms cubic-bezier( 0.47, 0, 0.745, 0.715 );
-  &.karma-column-placeholder {
-	padding: 20px;
-	transition: none;
-	&.karma-show-placeholder {
-	  height: 130px;
+	@include box( 100%, 0 );
+	align-items     : center;
+	display         : flex;
+	justify-content : center;
+	transition      : height 150ms cubic-bezier( 0.47, 0, 0.745, 0.715 );
+	&.karma-column-placeholder {
+		padding    : 20px;
+		transition : none;
+		&.karma-show-placeholder {
+			height : 130px;
+		}
 	}
-  }
-  &.karma-show-placeholder {
-	height:8px;
-  }
-  .karma-inner-placeholder {
+	&.karma-show-placeholder {
+		height : 8px;
+	}
+	.karma-inner-placeholder {
+		@include box( 100%, 100% );
+		background-color : rgba( $builder-main-color, 0.1 );
+		border-radius    : 2px;
+	}
+}
+/*Alignment placeholder for elements*/
+.karma-alignment-placeholder{
 	@include box( 100%, 100% );
-	background-color: rgba( 65, 156, 248, 0.1 );
-	border-radius: 2px;
-  }
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	transition: height 150ms cubic-bezier( 0.47, 0, 0.745, 0.715 );
+	z-index: -1;
+
+	&.karma-show-placeholder {
+		opacity: 1;
+		z-index: 1;
+	}
+
+	div{
+		@include box( 33%, 100% );
+		border-radius    : 2px;
+		margin: 3px;
+	}
+	.karma-active-align{
+		background-color : rgba( $builder-accent-color, .2 );
+	}
 }
 
 /* Tooltip styles for karma*/
 .ui-tooltip, .arrow:after {
-	background: $builder-main-color;
+	background : $builder-main-color;
 }
+
 .ui-tooltip {
+
 	@include box( 70px, 30px );
-	align-items: center;
-	border-radius: 3px;
-	color: #fff;
-	display: flex;
-	font-size: 12px;
-	justify-content: center;
-	padding: 10px;
-	position: absolute;
-	z-index: $level5;
+	@extend .karma-builder-title-4;
+	align-items     : center;
+	border-radius   : 3px;
+	color           : #fff;
+	display         : flex;
+	justify-content : center;
+	padding         : 10px;
+	position        : absolute;
+	white-space     : nowrap;
+	z-index         : $level-25;
 }
+.tooltip{
+	height: 28px;
+
+	.tooltip-inner {
+		@include flexbox(center, center, center);
+		background: #394959;
+		height: 28px;
+		border-radius: 3px;
+		color: #fff;
+		padding: 0 12px;
+		white-space: nowrap;
+		z-index: 110;
+		min-width: auto;
+	}
+	.tooltip-arrow{
+		border-color: transparent;
+		top:1px;
+		border-bottom-color: $builder-main-color;
+		border-width: 0px 5px 6px !important;
+	}
+}
+
+.unsplash-avatar {
+	@include box( auto, 26px );
+	font-size : 10px;
+}
+
 .arrow {
 	@include box( 14px, 10px );
-	bottom: -16px;
-	left: 50%;
-	margin-left: -6px;
-	overflow: hidden;
-	position: absolute;
+	bottom      : -16px;
+	left        : 50%;
+	margin-left : -6px;
+	overflow    : hidden;
+	position    : absolute;
 }
+
 .arrow.top {
-	bottom: auto;
-	top: -10px;
+	bottom : auto;
+	top    : -10px;
 }
+
 .arrow.left {
-	left: 50%;
+	left : 50%;
 }
+
 .arrow:after {
 	@include box( 6px, 6px );
-	@include element_direction($top:-20px, $left:3px);
-	content: "";
-	position: absolute;
-	transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
+	@include element_direction( $top : -20px, $left : 3px );
+	content           : "";
+	position          : absolute;
+	transform         : rotate( 45deg );
+	-ms-transform     : rotate( 45deg );
+	-webkit-transform : rotate( 45deg );
 }
+
 .arrow.top:after {
-	bottom: -3px;
-	top: auto;
+	bottom : -3px;
+	top    : auto;
+}
+
+.karma-builder-element {
+	&.ui-draggable-dragging {
+		cursor  : grab;
+		cursor  : -webkit-grab;
+		z-index : $level-30;
+	}
+	&.karma-self-placeholder {
+
+		.karma-element-content{
+			background-color : rgba( 57, 73, 89, 0.1 );
+			opacity : 0;
+		}
+
+		&.karma-show-placeholder {
+			opacity : 1;
+		}
+		*:not(div[class *= 'alignment-placeholder']) {
+			opacity : 0;
+		}
+		+ .karma-element-placeholder {
+			display : none !important;
+		}
+	}
+}
+
+.karma-delete-message-box {
+	@include delete-message-box( 297px, 190px  );
+
 }

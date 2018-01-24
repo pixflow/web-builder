@@ -6,11 +6,11 @@
 	karma-element-panel-add-element-view" data-active-tab = 'karma-element-panel-list' >
 		<div class="karma-element-panel-add-element-view-left">
 			<div class="karma-element-panel-add-element-view-content">
-                <# print( KarmaView.getWpTemplate( 'karma-element-panel-category-filter' , data.leftParam ) ); #>
+                <# print( karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( 'karma-element-panel-category-filter' , data.leftParam, 1 ) ); #>
             </div>
 			<div class="karma-element-panel-add-element-view-content-border"></div>
 			<div class="karma-element-panel-add-element-view-filtering">
-				<# print( KarmaView.getWpTemplate( 'karma-element-panel-price-filter' ) ); #>
+				<# print( karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( 'karma-element-panel-price-filter', {}, 1 ) ); #>
 			</div>
 		</div>
 		<div class="karma-element-panel-add-element-view-right">
@@ -26,7 +26,7 @@
 
 				} #>
 			<# _.each( childTemplates, function( templateParams, templateName ){  #>
-				<# print( KarmaView.getWpTemplate( templateName, templateParams ) ); #>
+				<# print( karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( templateName, templateParams, 1 ) ); #>
 			<# });  #>
 		</div>
 	</div>

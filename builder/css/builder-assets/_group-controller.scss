@@ -9,7 +9,6 @@
 
 	button.karma-setting-panel-group-button {
 		@include flexbox($text-align: center, $align-item: center, $justify-content: space-between);
-		padding: 20px;
 		background-color: $builder-main-color-5;
 		border: none;
 		border-top: 1px solid $builder-main-color-5;
@@ -17,6 +16,7 @@
 		cursor: pointer;
 		font-size: 15px;
 		outline: none;
+		padding: 20px;
 		transition: 0.4s;
 		width: 100%;
 
@@ -50,7 +50,7 @@
 
 
 	button.karma-setting-panel-group-button p {
-		@extend .karma-builder-title-in-box;
+		@extend .karma-builder-title-3;
 		color: $builder-main-color;
 		text-transform: capitalize;
 	}

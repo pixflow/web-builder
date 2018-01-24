@@ -35,7 +35,11 @@ jQuery( document ).off( 'karma_finish_form_builder.dropdown-controller' ).on( 'k
 			$( this ).closest( ' .karma-dropdown-body ' ).find( ' .karma-dropdown-selected-item' ).html( $( this ).find( '.karma-dropdown-option-title' ).text() );
 			karmaCloseDropdown();
 			$( this ).closest( ' .karma-dropdown-controller ' ).find( '> input' ).get(0).dispatchEvent( new Event('change') );
-
+			var settingPanelContent = document.body.querySelector('.karma-element-setting-panel-content');
+			if ( undefined != settingPanelContent ){
+				settingPanelContent.style.overflow = '';
+				settingPanelContent.style.overflow = 'hidden';
+			}
 		});
 
 	});

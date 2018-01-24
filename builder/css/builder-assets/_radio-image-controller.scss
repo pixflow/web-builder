@@ -5,7 +5,7 @@
 	.radio-image-controller-label {
 		@extend .karma-builder-title-3;
 		color: $builder-main-color;
-		padding: $top-space-red 0 $top-space-orange-light;
+		padding: $builder-red-space 0 $builder-red-space;
 	}
 	
 	.radio-image-controller-template {
@@ -15,7 +15,7 @@
 
 		.radio-image-controller-img {
 			cursor: pointer;
-			padding: 0 5px $top-space-red;
+			padding: 0 5px $builder-red-space;
 			text-align: center;
 
 		}
@@ -29,7 +29,7 @@
 			@extend .karma-builder-title-4;
 			color: $builder-main-color-1;
 			display: block;
-			padding-top: $top-space-orange;
+			padding-top: $builder-orange-space;
 			text-align: center;
 		}
 	}

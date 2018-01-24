@@ -1,21 +1,21 @@
 /* _-_-_- modules/DROPDOWN -_-_-_ */
-.karma-dropdown-controller{
+#karma-element-setting-panel-container .karma-dropdown-controller{
 
-	@extend .karma-builder-title-in-box;
+	@extend .karma-builder-title-3;
 	padding: 0 20px;
 
 	.karma-dropdown-label{
 
 		color: $builder-main-color;
-		margin-top: $top-space-red;
+		margin-top: $builder-red-space;
 
 	}
 	.karma-dropdown-body{
 
 
 		cursor: pointer;
-		margin-bottom: $top-space-orange;
-		margin-top: $top-space-orange-light;
+		margin-bottom: $builder-orange-space;
+		margin-top: $builder-light-orange-space;
 		position: relative;
 
 		.karma-dropdown-header{
@@ -34,7 +34,7 @@
 
 			@include box( 250px, 0 );
 			background-color: #fff;
-			box-shadow: 0 2px 12px 0 $builder-main-color-3;
+			box-shadow: 0 2px 12px 0 rgba($builder-main-color , 0.20);
 			display: none;
 			flex-direction: column;
 			left: 0;
@@ -43,54 +43,20 @@
 			padding: 7px;
 			position: fixed;
 			top: 36px;
-			z-index: -1;
+			z-index: $level-minus-5;
 
 			&.karma-doropdown-opened{
 			  	display: flex;
 				height: auto;
-				z-index: $level1;
+				z-index: $level-20;
 			}
 
 		}
 
 	}
+
 	.karma-dropdown-option{
-
-		align-items: center;
-		border-radius: 4px;
-		cursor: pointer;
-		display: flex;
-		padding: 10px;
-		transition: background-color .2s;
-
-		.karma-dropdown-option-title {
-			transition: color .2s;
-		}
-
-		&.karma-selected-dropdown-option{
-
-			background-color: $builder-accent-color-4;
-
-			.karma-dropdown-option-title{
-				color: $builder-accent-color;
-				font-weight: 500;
-			}
-
-		}
-
-		&:not(.karma-selected-dropdown-option):hover{
-
-			.karma-dropdown-option-title {
-				color: $builder-accent-color;
-			}
-
-		}
-
-		.karma-dropdown-option-icon{
-			margin-right: 15px;
-
-		}
-
+		@extend .karma-dropdown-option;
 	}
 }
 

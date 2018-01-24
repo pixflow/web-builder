@@ -185,4 +185,19 @@ class File_System{
 
 	}
 
+	/**
+	 * Retrieve file content
+	 *
+	 * @access public
+	 *
+	 * @param string $path
+	 *
+	 * @return bool
+	 */
+	public function file_get_content( $path ){
+
+		return $this->file->get_contents( $path );
+
+	}
+
 }

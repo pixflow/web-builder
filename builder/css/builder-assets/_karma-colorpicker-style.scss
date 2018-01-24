@@ -7,7 +7,7 @@
 	top: 363px;
 	&:after {
 		background-color: #fff;
-		box-shadow: -2px -2px 5px 0 rgba(57, 73, 89, 0.16);
+		box-shadow: -2px -2px 5px 0 rgba($builder-main-color, 0.16);
 		content: '';
 		display: block;
 		height: 10px;
@@ -48,7 +48,7 @@
 	background: transparent;
 	border: 1.5px solid #fff;
 	border-radius: 100px;
-	box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
+	box-shadow: 0 1px 3px 1px rgba($builder-main-color, 0.3);
 	cursor: pointer;
 	opacity: 1;
 	position: absolute;
@@ -78,7 +78,7 @@
 	@include element_direction($top:0, $left:0);
 	background-color: transparent;
 	border: 1.5px solid #fff;
-	box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
+	box-shadow: 0 1px 3px 1px rgba($builder-main-color, 0.3);
 	cursor: pointer;
 	position: absolute;
 
@@ -90,7 +90,7 @@
 	background: transparent;
 	border: 1.5px solid #fff;
 	border-radius: 100px;
-	box-shadow: 0 1px 3px 1px rgba(43, 43, 43, 0.3);
+	box-shadow: 0 1px 3px 1px rgba($builder-main-color, 0.3);
 	cursor: pointer;
 	opacity: 1;
 	position: absolute;
@@ -101,7 +101,6 @@
 	@extend .karma-builder-shadow-box-3;
 	background-color: #fff;
 	border: none;
-	//box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
 	padding: 0;
 }
 
@@ -117,7 +116,6 @@
 }
 
 .sp-picker-container .sp-input {
-	@extend .HelveticaNeue-font;
 	background: transparent;
 	border: none;
 	color: $builder-main-color;

@@ -20,8 +20,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 			'lg_size'   	=> '12',
 			'xl_size'   	=> '12',
 			'element_key'	=> '',
-			'rightspace'    => '20',
-			'leftspace'     => '20',
 			'extraclass'	=> '',
 			'rightspace'	=> '10',
 			'leftspace'		=> '10',
@@ -60,7 +58,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	public static function js_render() {
 
-		return "<div class='karma-column karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}'> 
+		return "<div class='karma-column karma-column-{{ data.attributes.element_key }}  karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}'> 
 				<div class='karma-column-margin' >{{ data.attributes.shortcode_attributes.shortcode_content }} </div>
 				</div>";
 
@@ -68,21 +66,22 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	/**
 	 * Return CSS property
-	 *
+	 * Note : postfix or prefix are the CSS selectors
+	 * @example if yor prefix is .karma-prefix so your CSS selector is .karma-prefix .karma-section-{element-key}
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 * @return  array The style property of element
 	 */
-	public function get_css_attributes() {
+	public static function get_css_attributes() {
 
-		$leftSpace  = array_key_exists( 'leftspace', $this->element_attributes ) ? $this->element_attributes[ 'leftspace' ] : 20;
-		$rightSpace = array_key_exists( 'rightspace', $this->element_attributes ) ? $this->element_attributes[ 'rightspace' ] : 20 ;
 		$styles = array(
-			'selector-prefix' => '.karma-no-gutters ' ,
-			'property'        => array(
-				'padding-left' => $leftSpace . "px" ,
-				'padding-right' => $rightSpace . "px",
+			array(
+				'prefix' => '.karma-no-gutters ' ,
+				'property'        => array(
+					'padding-left' => self::$element_attributes[ 'leftspace' ] . "px" ,
+					'padding-right' => self::$element_attributes[ 'rightspace' ] . "px",
+				)
 			)
 		);
 		return $styles;

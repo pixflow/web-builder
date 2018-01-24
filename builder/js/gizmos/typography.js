@@ -14,33 +14,33 @@
 			+ '<div class="karma-drop-down-box karma-typography-drop-down">'
 				+'<div class="karma-typography-drop-down-icons">'
 					+ '<div class="karma-typography-drop-down-right">'
-						+ '<button class="karma-typography-h5" data-karma-value="h5" >'
+						+ '<button class="karma-typography-h5 <# if( "h5" == data.tag ){ print("karma-drop-down-active-item"); } #> " data-karma-value="h5" >'
 							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h5Typography }})"></div>'
 						+ '</button>'
-						+ '<button class="karma-typography-h6" data-karma-value="h6" >'
+						+ '<button class="karma-typography-h6 <# if( "h6" == data.tag ){ print("karma-drop-down-active-item"); } #>  " data-karma-value="h6" >'
 							+ '<div class="karma-typography-h6-icon" style="background-image: url({{ data.params.h6Typography }})"></div>'
 						+ '</button>'
-						+ '<button class="karma-typography-p" data-karma-value="p" >'
+						+ '<button class="karma-typography-p <# if( "p" == data.tag ){ print("karma-drop-down-active-item"); } #>" data-karma-value="p" >'
 							+ '<div class="karma-typography-p-icon" style="background-image: url({{ data.params.pTypography }})"></div>'
 						+ '</button>'
 					+ '</div>'
 					+ '<div class="karma-typography-drop-down-left">'
-						+ '<button class="karma-typography-h1" data-karma-value="h1" >'
-							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h1Typography }})"></div>'
+						+ '<button class="karma-typography-h1 <# if( "h1" == data.tag ){ print("karma-drop-down-active-item"); } #> " data-karma-value="h1" >'
+							+ '<div class="karma-typography-h1-icon" style="background-image: url({{ data.params.h1Typography }})"></div>'
 						+ '</button>'
-						+ '<button class="karma-typography-h2" data-karma-value="h2" >'
-							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h2Typography }})"></div>'
+						+ '<button class="karma-typography-h2 <# if( "h2" == data.tag ){ print("karma-drop-down-active-item"); } #> " data-karma-value="h2" >'
+							+ '<div class="karma-typography-h2-icon" style="background-image: url({{ data.params.h2Typography }})"></div>'
 						+ '</button>'
-						+ '<button class="karma-typography-h3" data-karma-value="h3" >'
-							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h3Typography }})"></div>'
+						+ '<button class="karma-typography-h3 <# if( "h3" == data.tag ){ print("karma-drop-down-active-item"); } #> " data-karma-value="h3" >'
+							+ '<div class="karma-typography-h3-icon" style="background-image: url({{ data.params.h3Typography }})"></div>'
 						+ '</button>'
-						+ '<button class="karma-typography-h4" data-karma-value="h4" >'
-							+ '<div class="karma-typography-h5-icon" style="background-image: url({{ data.params.h5Typography }})"></div>'
+						+ '<button class="karma-typography-h4 <# if( "h4" == data.tag ){ print("karma-drop-down-active-item"); } #> " data-karma-value="h4" >'
+							+ '<div class="karma-typography-h4-icon" style="background-image: url({{ data.params.h4Typography }})"></div>'
 						+ '</button>'
 					+ '</div>'
 				+ '</div>'
 				+ '<div class="karma-typography-link">'
-					+ '<a href="">'
+					+ '<a>'
 						+ '{{{ data.params.typographyLink }}}'
 					+ '</a>'
 				+ '</div>'
@@ -75,7 +75,8 @@
 
 		update: function(){
 
-			this.data.params['defaultIcon'] = this.data.params[ this.elementView.getAttributes( ['tag'] ).tag + 'Typography' ];
+			this.data.tag = this.elementView.getAttributes( ['tag'] ).tag;
+			this.data.params['defaultIcon'] = this.data.params[ this.data.tag + 'Typography' ];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 
 		},

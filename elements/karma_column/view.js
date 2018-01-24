@@ -2,9 +2,10 @@
 
 	karmaBuilder.column = karmaBuilder.shortcodes.extend({
 
-		events:{
+		events : {
 
-				'click'	: 'activeColumn',
+			'click'	: 'activeColumn',
+			'karma/finish/modifyColumns.karmaImage'          : 'updateImageSize'
 
 		},
 
@@ -17,8 +18,23 @@
 				this.render();
 			}
 			this.liveChangeGrid();
+			this.checkEmptyColumn();
 
 		},
+
+		/**
+		 * @summary Add specific class for empty columns
+		 *
+		 * @since 1.0.0
+		 * @return {void}
+		 */
+		checkEmptyColumn : function () {
+
+			var parentSection = $('[data-element-key="' + this.model.get('parent_key') + '"]').backboneView();
+			parentSection.checkEmptyColumn();
+
+		},
+
 
 		/**
 		 * @summary Render column element
@@ -30,6 +46,29 @@
 
 			var source = this.template( this.model );
 			this.el.innerHTML = source;
+
+		},
+
+		/**
+		 * @summery update images width  on their column resize
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return {void}
+		 */
+		updateImageSize : function () {
+
+			var imageLinks =  this.el.querySelectorAll('.karma-builder-element[data-name="karma_image"]') ;
+			_.each( imageLinks, function( image ){
+
+				var trueWidth = image.offsetWidth;
+				if( trueWidth < image.querySelector('img').offsetWidth ){
+					image.querySelector('.karma-image-resize').style.width = trueWidth + 'px';
+					image.querySelector('.karma-image-resize-crop').style.width = trueWidth + 'px';
+				}
+
+			} );
+
 
 		},
 
@@ -58,11 +97,12 @@
 		 * @returns {void}
 		 */
 		rightspace: function () {
-
+			
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px';
 
-			this.renderCss( '.' + elementId, 'padding-right', padding );
+			this.$el.trigger('karma/finish/modifyColumns');
+			this.renderCss( '.karma-no-gutters #' + elementId, 'padding-right', padding );
 
 		},
 
@@ -77,7 +117,8 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px';
 
-			this.renderCss( '.' + elementId, 'padding-left', padding );
+			this.$el.trigger('karma/finish/modifyColumns');
+			this.renderCss( '.karma-no-gutters #' + elementId, 'padding-left', padding );
 
 		},
 
@@ -111,11 +152,26 @@
 				selector: '.karma-builder-element[data-element-key="' + key + '"]',
 				snapToGrid: true,
 				gridPrefix: 'karma-col-md',
+				onStart : function () {
+
+					KarmaView.removeActiveElement();
+
+				},
 				onStop: function ( result ) {
-					var newGrid = result.grid;
+
+					var newGrid = result.grid,
+						nextSibilingColumn = that.$el.next('.karma-builder-element[data-name="karma_column"]');
+
 					that.newGrid( newGrid );
+					that.$el.trigger('karma/finish/modifyColumns');
+					if( nextSibilingColumn.length ){
+						var columnInstance = nextSibilingColumn.backboneView();
+						columnInstance.$el.trigger('karma/finish/modifyColumns')
+					}
+
 				}
 			};
+
 			gridResizer( changeGridOptions );
 
 		},
@@ -276,65 +332,14 @@
 
 			var viewObject = $('[data-element-key="' + model.get('element_key') + '"]').backboneView() ,
 				elementID = model.get('shortcode_name').replace( '_', '-' ) + '-' + model.get('element_key'),
-				moveToColumn = $( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column'),
+				moveToColumn = $( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column-margin'),
 				script = $( '#script-' + elementID ).clone(),
 				style = $( '#style-' + elementID ).clone();
 
-			this.removeExtraAssets( $( '#script-' + elementID ), $( '#style-' + elementID ) );
+			this.removeExtraAssets( elementID );
 			moveToColumn.append( viewObject.$el );
 			moveToColumn.append( script );
 			moveToColumn.append( style );
-
-		},
-
-		/**
-		 * @summary Remove script and style tag of element
-		 *
-		 * @param   {object}    script  Script tag
-		 * @param   {object}    style   Style tag
-		 *
-		 * @since 1.0.0
-		 * @return {void}
-		 */
-		removeExtraAssets : function( script, style ){
-
-			if( script.length ){
-				script.remove();
-			}
-
-			if( style.length ){
-				style.remove()
-			}
-
-		},
-
-		/**
-		 * right space field changes. It updates the right space of column
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		rightspace: function () {
-
-			var padding	= this.model.attributes.shortcode_attributes.rightspace + 'px';
-			this.$el.find( '.karma-right-spacing' ).css( 'width', padding );
-			this.renderCss( '.karma-no-gutters > .karma-builder-element > .karma-column.' + this.elementSelector(), 'padding-right', padding );
-
-		},
-
-		/**
-		 * left space field changes. It updates the left space of column
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns {void}
-		 */
-		leftspace: function () {
-
-			var padding	= this.model.attributes.shortcode_attributes.leftspace + 'px';
-			this.$el.find( '.karma-left-spacing' ).css( 'width', padding );
-			this.renderCss( '.karma-no-gutters > .karma-builder-element > .karma-column.' + this.elementSelector(), 'padding-left', padding );
 
 		},
 

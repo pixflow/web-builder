@@ -34,7 +34,7 @@ class Karma_Section_Describe extends Karma_Section {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "365",
+				"height" => "384",
 				"params" => array(
 					array(
 						"name"	=> "structure",
@@ -139,6 +139,11 @@ class Karma_Section_Describe extends Karma_Section {
 						)
 					),
 					array(
+						"name"	=> "title",
+						"type"	=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,
+						"label"	=> esc_attr__( "Spacing", 'karma' )
+					),
+					array(
 						"name"		=> "columnspace",
 						"type"		=> Karma_Builder_Setting_Panel::RANGE_SLIDER,
 						"label"		=> esc_attr__( "Space between column", 'karma' ),
@@ -155,56 +160,103 @@ class Karma_Section_Describe extends Karma_Section {
 			),
 
 			'background-panel'	=> array(
-				'name'		=> __( 'image position', 'karma' ),
 				"title"	=> esc_attr__( "Background Setting", 'karma' ),
-				'height'	=> '559',
+				'height'	=> '499',
 				'params'	=> array(
 					array(
-						'name'			=> 'upload' ,
-						'type'			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE ,
-						"label"			=> esc_attr__( "change image", 'karma' ),
-						"value"		=> "",
+						'name'      => 'backgroundtype' ,
+						'type'      => Karma_Builder_Setting_Panel::TAB ,
+						'value'		=> 'color',
+						'params'	=> array(
+							array(
+								'name' 		=> 'image',
+								'icon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-tab.svg' ),
+								'text' 		=> esc_attr__( "Image", 'karma' ),
+							),
+							array(
+								'name' 		=> 'color',
+								'icon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/color-tab.svg' ),
+								'text' 		=> esc_attr__( "Color", 'karma' ),
+							),
+							array(
+								'name' 		=> 'video',
+								'icon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/video-tab.svg' ),
+								'text' 		=> esc_attr__( "Video", 'karma' ),
+							),
+						)
 					),
 					array(
-						'name'      => 'unsplash' ,
+						'name'  => 'backgroundcolor',
+						'type'  => Karma_Builder_Setting_Panel::COLOR_PICKER,
+						"label" => esc_attr__( "Background Color", 'karma' ),
+						'id'    => uniqid( 'kama-colorpicker-controller-' ),
+						"dependency" => array(
+							"controller" => "backgroundtype",
+							"value"      => "color"
+						)
+					),
+					array(
+						'name'      => 'backgroundimage' ,
 						'type'      => Karma_Builder_Setting_Panel::UNSPLASH ,
+						"dependency" => array(
+							"controller" => "backgroundtype",
+							"value"      => "image"
+						)
 					),
 					array(
-						"name"		=> "switch",
+						"name"		=> "backgroundsetting",
 						"type"		=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-						"label"		=> esc_attr__( "background setting", 'karma' ),
-						"form"		=> "new-panel",
+						"label"		=> esc_attr__( "Background Setting", 'karma' ),
+						"form"      => "background-setting-panel",
+						"height"	=> "392",
 						"action"	=> "open",
-						'height'	=> '271'
+						"dependency" => array(
+							"controller" => "backgroundtype",
+							"value"      => "image"
+						)
 					),
 				),
 			),
 
-			'new-panel'		=> array(
-				'name'		=> __( 'new panel', 'karma' ),
-				'params'	=> array(
+			'background-setting-panel' => array(
+				'title'  => __( 'Background Setting', 'karma' ),
+				'params' => array(
 					array(
-						"name"	=> "position",
-						"type"	=> Karma_Builder_Setting_Panel::IMAGE_POSITION,
-						"label"	=> esc_attr__( "position", 'karma' ),
-						'values'	=> 'center-center',
+						"name"      => "backgroundsize",
+						"type"      => Karma_Builder_Setting_Panel::RADIO_IMAGE,
+						"label"     => esc_attr__( "Scale", 'karma' ),
+						'value'     => "cover",
+						"class"     => "radio-image-border-hover",
+						"field"     => array(
+							array(
+								'image' =>  karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ) ,
+								'style' => 'padding-left: 35px; padding-right: 18px;',
+								'title' => esc_attr__( "Real size", 'karma' ),
+								'value' => "contain",
+							),
+							array(
+								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
+								'style' => 'padding-left: 18px; padding-right: 34px; ',
+								'title' => esc_attr__( "Fill", 'karma' ),
+								'value' => "cover",
+							),
+						),	
 						'separator' => "container",
-
+					),
+					array(
+						"name"      => 'backgroundposition',
+						"type"      => Karma_Builder_Setting_Panel::IMAGE_POSITION,
+						"label"     => esc_attr__( "Position", 'karma' ),
+						"values"    => 'center-center',
+						"separator" => "full",
 
 					),
 					array(
-						"name"	=> "checking",
-						"type"	=> Karma_Builder_Setting_Panel::CHECK_BOX,
-						"label"	=> __( "checking", 'karma' ),
-					),
-					array(
-						"name"			=> "title",
-						"type"			=> Karma_Builder_Setting_Panel::SWITCH_PANEL,
-						"label"			=> esc_attr__( "Back", 'karma' ),
-						'text'			=> 'back',
-						"action"		=> "close",
-						"shape"			=>"yes"
-
+						"name"   => "back",
+						"type"   => Karma_Builder_Setting_Panel::SWITCH_PANEL,
+						"label"  => esc_attr__( "Back", 'karma' ),
+						"action" => "close",
+						"shape"  => "yes"
 					),
 				)
 			)
@@ -227,13 +279,37 @@ class Karma_Section_Describe extends Karma_Section {
 		$controllers = array(
 			array(
 				"type"		=> "innerGizmo",
-				"className"	=> "row-gizmo-group",
+				"className"	=> "section-gizmo-group",
 				"params"	=> array(
+					array(
+						'type'   	=> 'icon',
+						'form'   	=> 'more-panel',
+						'className' => 'karma-more-setting',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
+						)
+					),
+					array(
+						'type'   	=> 'icon',
+						'form'   	=> 'more-panel',
+						'className' => 'karma-delete-element-setting ',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
+						)
+					),
+					array(
+						'type'   	=> 'icon',
+						'form'   	=> 'more-panel',
+						'className' => 'karma-duplicate-element-setting ',
+						"params" => array(
+							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
+						)
+					),
 					array(
 						'type'		=> 'icon',
 						'form'		=> 'setting-panel',
 						'className'	=> 'karma-element-setting',
-						'params'	=> array(
+						'params'=> array(
 							'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
 
 						)
@@ -242,7 +318,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'type'		=> 'icon',
 						'form'		=> 'layout-panel',
 						'className'	=> 'row-setting-layout',
-						'params'	=> array(
+						'params'=> array(
 							'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' ),
 						)
 					),
@@ -250,7 +326,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'type'		=> 'text',
 						'form'		=> 'background-panel',
 						'className'	=> 'row-background-setting',
-						'params'	=> array(
+						'params'=> array(
 							'value'		=> esc_attr( 'background', 'karma' ),
 						)
 
@@ -262,6 +338,11 @@ class Karma_Section_Describe extends Karma_Section {
 				"type"		=> "bothSpacingGizmo",
 				"className"	=> "section-both-spacing",
 			),
+			array(
+				"type"		=> "newSectionButton",
+				'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus-new.svg' ),
+			),
+
 		);
 
 		return $controllers;

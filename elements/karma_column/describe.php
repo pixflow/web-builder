@@ -39,13 +39,12 @@ class Karma_Column_Describe extends Karma_Column {
 						"name"  => "extraclasslabel",
 						"type"  => Karma_Builder_Setting_Panel::TITLE,
 						"label" => esc_attr__( "Extra class name", 'karma' ),
-
 					),
 
 					array(
 						"name"          => "extraclass",
 						"type"          => Karma_Builder_Setting_Panel::TEXT,
-						"label"         => esc_attr__( "Put Your URL", 'karma' ),
+						"label"         => esc_attr__( "Class Name", 'karma' ),
 					),
 					array(
 						"name"  		=> "space",
@@ -100,7 +99,7 @@ class Karma_Column_Describe extends Karma_Column {
 		$controllers = array(
 			array(
 				"type"      => "topGizmo",
-				"class"     => "karma-column-setting",
+				"class"     => "column-gizmo-group",
 				"params"    => array(
 					array(
 						'type'      => 'icon-text',

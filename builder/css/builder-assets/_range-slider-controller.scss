@@ -9,7 +9,7 @@
 		.karma-range-slider-content {
 
 			@include flexbox($align-item: center);
-			padding: $top-space-orange-light 0 $top-space-orange;
+			padding: $builder-light-orange-space 0 $builder-orange-space;
 			width: 100%;
 
 		}
@@ -64,7 +64,7 @@
 	.karma-slider-controller-title {
 		@extend .karma-builder-title-3;
 		color: $builder-main-color;
-		padding-top: $top-space-red;
+		padding-top: $builder-red-space;
 		text-align: left;
 		width: 100%;
 	}

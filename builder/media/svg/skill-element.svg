@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="41px" height="40px" viewBox="0 0 41 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 22</title>
+    <title>c56</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <linearGradient x1="34.087775%" y1="2.4473852%" x2="94.4815522%" y2="100%" id="linearGradient-1">
-            <stop stop-color="#0B3D22" stop-opacity="0.413751132" offset="0%"></stop>
-            <stop stop-color="#1E7947" stop-opacity="0.0834182518" offset="100%"></stop>
+        <rect id="path-1" x="0.891304348" y="0" width="39.3373746" height="39.4528302" rx="4"></rect>
+        <linearGradient x1="34.087775%" y1="2.4473852%" x2="94.4815522%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#008A3F" offset="0%"></stop>
+            <stop stop-color="#1E7947" stop-opacity="0.0921082428" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="skill" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="skill-element-panel" transform="translate(-382.000000, -329.000000)">
-            <g id="Group-22" transform="translate(382.000000, 329.000000)">
-                <rect id="Rectangle-13-Copy-2" fill="#1F7E4A" transform="translate(20.559992, 19.726415) rotate(90.000000) translate(-20.559992, -19.726415) " x="0.891304348" y="0" width="39.3373746" height="39.4528302" rx="4"></rect>
-                <polygon id="Path-10" fill="url(#linearGradient-1)" points="30.5404645 11.2411557 40.3175616 25.5630528 40.3175616 40.3004496 28.7259015 40.3004496 11.8992009 11.2411557"></polygon>
-                <g id="Group-10" transform="translate(10.918478, 10.830189)">
-                    <g id="Group-7">
-                        <rect id="Rectangle-13-Copy-39" fill="#FFFFFF" x="0" y="0" width="19.6978261" height="2.69207547" rx="1.34603774"></rect>
-                        <rect id="Rectangle-13-Copy-41" fill="#FFFFFF" x="0" y="7.58886792" width="19.6978261" height="2.69207547" rx="1.34603774"></rect>
-                        <rect id="Rectangle-13-Copy-43" fill="#FFFFFF" x="0" y="15.1777358" width="19.6978261" height="2.69207547" rx="1.34603774"></rect>
-                        <rect id="Rectangle-13-Copy-40" fill="#24FF8C" x="0" y="0" width="8.33369565" height="2.69207547" rx="1.34603774"></rect>
-                        <path d="M1.34603774,7.58886792 L13.7787114,7.58886792 L13.7787114,7.58886792 C14.5221075,7.58886792 15.1247492,8.19150955 15.1247492,8.93490566 L15.1247492,8.93490566 L15.1247492,8.93490566 C15.1247492,9.67830177 14.5221075,10.2809434 13.7787114,10.2809434 L1.34603774,10.2809434 L1.34603774,10.2809434 C0.602641622,10.2809434 7.51308153e-16,9.67830177 0,8.93490566 L0,8.93490566 L0,8.93490566 C-9.10397672e-17,8.19150955 0.602641622,7.58886792 1.34603774,7.58886792 Z" id="Rectangle-13-Copy-42" fill="#24FF8C"></path>
-                        <path d="M1.34603774,15.1777358 L9.97695558,15.1777358 L9.97695558,15.1777358 C10.7203517,15.1777358 11.3229933,15.7803775 11.3229933,16.5237736 L11.3229933,16.5237736 L11.3229933,16.5237736 C11.3229933,17.2671697 10.7203517,17.8698113 9.97695558,17.8698113 L1.34603774,17.8698113 L1.34603774,17.8698113 C0.602641622,17.8698113 9.10397672e-17,17.2671697 0,16.5237736 L0,16.5237736 L0,16.5237736 C-9.10397672e-17,15.7803775 0.602641622,15.1777358 1.34603774,15.1777358 Z" id="Rectangle-13-Copy-44" fill="#24FF8C"></path>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c156" transform="translate(-3.000000, -3.000000)">
+            <g id="c56" transform="translate(3.000000, 3.000000)">
+                <g id="c47">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="c45" fill="#0A994B" transform="translate(20.559992, 19.726415) rotate(90.000000) translate(-20.559992, -19.726415) " xlink:href="#path-1"></use>
+                    <polygon id="c46" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="30.5404645 11.2411557 40.3175616 25.5630528 40.3175616 40.3004496 28.7259015 40.3004496 11.8992009 11.2411557"></polygon>
+                </g>
+                <g id="c55" transform="translate(10.918478, 10.830189)">
+                    <g id="c54">
+                        <rect id="c48" fill="#FFFFFF" x="0" y="0" width="19.6978261" height="2.69207547" rx="1.34603774"></rect>
+                        <rect id="c49" fill="#FFFFFF" x="0" y="7.58886792" width="19.6978261" height="2.69207547" rx="1.34603774"></rect>
+                        <rect id="c50" fill="#FFFFFF" x="0" y="15.1777358" width="19.6978261" height="2.69207547" rx="1.34603774"></rect>
+                        <rect id="c51" fill="#24FF8C" x="0" y="0" width="8.33369565" height="2.69207547" rx="1.34603774"></rect>
+                        <path d="M1.34603774,7.58886792 L13.7787114,7.58886792 L13.7787114,7.58886792 C14.5221075,7.58886792 15.1247492,8.19150955 15.1247492,8.93490566 L15.1247492,8.93490566 L15.1247492,8.93490566 C15.1247492,9.67830177 14.5221075,10.2809434 13.7787114,10.2809434 L1.34603774,10.2809434 L1.34603774,10.2809434 C0.602641622,10.2809434 7.51308153e-16,9.67830177 0,8.93490566 L0,8.93490566 L0,8.93490566 C-9.10397672e-17,8.19150955 0.602641622,7.58886792 1.34603774,7.58886792 Z" id="c52" fill="#24FF8C"></path>
+                        <path d="M1.34603774,15.1777358 L9.97695558,15.1777358 L9.97695558,15.1777358 C10.7203517,15.1777358 11.3229933,15.7803775 11.3229933,16.5237736 L11.3229933,16.5237736 L11.3229933,16.5237736 C11.3229933,17.2671697 10.7203517,17.8698113 9.97695558,17.8698113 L1.34603774,17.8698113 L1.34603774,17.8698113 C0.602641622,17.8698113 9.10397672e-17,17.2671697 0,16.5237736 L0,16.5237736 L0,16.5237736 C-9.10397672e-17,15.7803775 0.602641622,15.1777358 1.34603774,15.1777358 Z" id="c53" fill="#24FF8C"></path>
                     </g>
                 </g>
             </g>

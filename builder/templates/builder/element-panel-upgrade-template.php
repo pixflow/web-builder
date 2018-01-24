@@ -6,13 +6,18 @@
 
 		<div class="karma-element-panel-view karma-element-panel-upgrade-template karma-deactive-element-panel"  >
 			<div class="element-panel-section-container element-panel-permium" >
-				<div class="element-panel-part-img"> <img  src="<?php  echo KARMA_BUILDER_URL . 'builder/media/element-panel-templates.jpg' ; ?>"></div>
-				<div class="element-panel-part-title"><?php echo esc_attr__("Upgrade to premium", 'karma');?></div>
-				<div class="element-panel-part-description"><?php echo esc_attr__("Enjoy professional templates
-More access to lots of shorcodes
-Make your shop with e-commerce easily
-Get free support at anytime", 'karma');?> </div>
-				<div class="element-panel-part-button"><?php echo esc_attr__("Subscribe", 'karma');?></div>
+				<div class="element-panel-part-img"> <img  src="<?php  echo KARMA_BUILDER_URL . 'builder/media/premium_panel.jpg' ; ?>"></div>
+				<div class="element-panel-part-title"><?php echo esc_attr__( "Upgrade to Premium", 'karma' );?></div>
+				<span><?php echo esc_attr__( "coming soon", 'karma' ); ?></span>
+				<div class="element-panel-part-description">
+					<ul class="checkmark">
+						<li>Professional templates</li>
+						<li>Tons of elements</li>
+						<li>More premade sections</li>
+						<li>E-Commerce website options & elements</li>
+						<li>VIP support in no time</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

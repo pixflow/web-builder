@@ -17,9 +17,9 @@ class Tests_Core extends WP_UnitTestCase {
 	public function test_parse_shortcode() {
 
 		$title = '"this is a \\" title \\" "';
-		$shortcode1 = "[karma_text element_key='w4trwe' color = 'red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test'] Test Content Goes here[/karma_text]";
-		$shortcode2 = "[karma_text element_key='w4trwv' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius = 18 title=" . $title . " sub_title='this is a subtitle\'s test']";
-		$shortcode3 = "[karma_text element_key='w4tfwe']";
+		$shortcode1 = "[karma_text element_key='w4trwe' color='red' elementalign=\"left\" font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test'] Test Content Goes here[/karma_text]";
+		$shortcode2 = "[karma_text element_key='w4trwv' color='red' elementalign=\"left\" font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test']";
+		$shortcode3 = "[karma_text element_key='w4tfwe' ]";
 		$shortcode4 = "[karma_text element_key='w46rwe' color='red' font=\"arial\" bg='#000fff' style='font-family: \"tahoma\";' radius=18 title=" . $title . " sub_title='this is a subtitle\'s test'";
 
 		$result = $this->builder->parse_shortcode( $shortcode1 );
@@ -28,15 +28,16 @@ class Tests_Core extends WP_UnitTestCase {
 			'element_key'          => 'w4trwe',
 			'shortcode_attributes' =>
 				array(
-					'align'     => 'left',
-					'bg'        => '#000fff',
-					'color'     => 'red',
-					'font'      => 'arial',
-					'radius'    => '18',
-					'style'     => 'font-family: "tahoma";',
-					'sub_title' => 'this is a subtitle\'s test',
-					'tag'       => 'p',
-					'title'     => 'this is a " title " ',
+					'align'         => 'left',
+					'bg'            => '#000fff',
+					'color'         => 'red',
+					'font'          => 'arial',
+					'radius'        => '18',
+					'style'         => 'font-family: "tahoma";',
+					'sub_title'     => 'this is a subtitle\'s test',
+					'tag'           => 'p',
+					'title'         => 'this is a " title " ',
+					'elementalign'	=> 'left',
 				),
 			'shortcode_content'    => ' Test Content Goes here',
 			'shortcode_name'       => 'karma_text',
@@ -48,15 +49,16 @@ class Tests_Core extends WP_UnitTestCase {
 			'element_key'          => 'w4trwv',
 			'shortcode_attributes' =>
 				array(
-					'align'     => 'left',
-					'color'     => 'red',
-					'font'      => 'arial',
-					'bg'        => '#000fff',
-					'style'     => 'font-family: "tahoma";',
-					'radius'    => '18',
-					'tag'       => 'p',
-					'title'     => 'this is a " title " ',
-					'sub_title' => 'this is a subtitle\'s test',
+					'align'         => 'left',
+					'color'         => 'red',
+					'font'          => 'arial',
+					'bg'            => '#000fff',
+					'style'         => 'font-family: "tahoma";',
+					'radius'        => '18',
+					'tag'           => 'p',
+					'title'         => 'this is a " title " ',
+					'sub_title'     => 'this is a subtitle\'s test',
+					'elementalign'	=> 'left'
 				),
 			'shortcode_content'    => '',
 			'shortcode_name'       => 'karma_text',
@@ -67,9 +69,10 @@ class Tests_Core extends WP_UnitTestCase {
 		$this->assertEquals( array(
 			'element_key'          => 'w4tfwe',
 			'shortcode_attributes' => array(
-				'align' => 'left',
-				'color' => '#000',
-				'tag'   => 'p'
+				'align'         => 'left',
+				'color'         => '#000',
+				'tag'           => 'p',
+				'elementalign'	=> 'left',
 			),
 			'shortcode_content'    => '',
 			'shortcode_name'       => 'karma_text',
@@ -82,7 +85,7 @@ class Tests_Core extends WP_UnitTestCase {
 	public function test_parse_shortcodes() {
 
 		$shortcodes =
-			'[karma_section columnspace="20" color=\'red\' font = "arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
+			'[karma_section columnspace="20" color=\'red\' font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test" element_key="w3test"]'
 			. '[karma_text element_key="w3erts"] Test Content Goes here[/karma_text]'
 			. '[karma_image element_key="w3ebty" color="blue" font="arial" bg="#000fff" style="font-family: \"tahoma\";" radius=18 title="this is a \" title \" " sub_title="this is a subtitle\'s test"][/karma_image]'
 			. '[/karma_section]'
@@ -92,17 +95,20 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"shortcode_name"       => "karma_section",
 				"shortcode_attributes" => array(
-					"columnspace" => "20",
-					"color"       => "red",
-					"font"        => "arial",
-					"bg"          => "#000fff",
-					"style"       => 'font-family: "tahoma";',
-					"radius"      => '18',
-					"title"       => 'this is a " title " ',
-					"sub_title"   => "this is a subtitle's test",
-					"structure"   => "container",
-					"space"       => "200",
-					"extraclass"  => "",
+					"columnspace"			=> "20",
+					"color"  				=> "red",
+					"font"    				=> "arial",
+					"bg"       				=> "#000fff",
+					"style"     			=> 'font-family: "tahoma";',
+					"radius"   				=> '18',
+					"title"      			=> 'this is a " title " ',
+					"sub_title"  			=> "this is a subtitle's test",
+					"structure" 			=> "container",
+					"space"   			    => "70",
+					"extraclass"  			=> "",
+					'backgroundimage'       => 'none',
+					'backgroundsize'        => 'cover',
+					'backgroundposition'    => 'center-center',
 
 				),
 				"element_key"          => 'w3test',
@@ -112,9 +118,10 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"shortcode_name"       => "karma_text",
 				"shortcode_attributes" => array(
-					'tag'   => 'p',
-					'color' => '#000',
-					'align' => 'left'
+					'tag'           => 'p',
+					'color'         => '#000',
+					'align'         => 'left',
+					'elementalign'	=> 'left'
 				),
 				"shortcode_content"    => " Test Content Goes here",
 				"element_key"          => "w3erts",
@@ -124,20 +131,26 @@ class Tests_Core extends WP_UnitTestCase {
 			array(
 				"shortcode_name"       => "karma_image",
 				"shortcode_attributes" => array(
-					"color"      => "blue",
-					"font"       => "arial",
-					"bg"         => "#000fff",
-					"style"      => 'font-family: "tahoma";',
-					"radius"     => '18',
-					"title"      => 'this is a " title " ',
-					"sub_title"  => "this is a subtitle's test",
-					'imgurl'     => KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-					'action'     => 'none',
-					'linkurl'    => 'http://example.org',
-					'linktarget' => '_blank',
-					'alt'        => 'Test Blog',
-					'scale'      => 'fill',
-					'position'   => 'center-center'
+					"color"         => "blue",
+					"font"          => "arial",
+					"bg"            => "#000fff",
+					"style"         => 'font-family: "tahoma";',
+					"radius"        => '18',
+					"title"         => 'this is a " title " ',
+					"sub_title"     => "this is a subtitle's test",
+					'imgurl'        => KARMA_BUILDER_URL . 'builder/media/defult-img.png',
+					'action'        => 'none',
+					'linkurl'       => 'http://example.org',
+					'linktarget'    => '_blank',
+					'alt'           => 'Test Blog',
+					'scale'         => 'fill',
+					'position'      => 'center-center',
+					'width'			=> '514',
+					'height'		=> '386',
+					'resizing'		=> false,
+					'naturalwidth'	=> '514',
+					'naturalheight' => '386',
+					'elementalign'	=> 'left'
 				),
 				'shortcode_content'    => '',
 				"order"                => 2,

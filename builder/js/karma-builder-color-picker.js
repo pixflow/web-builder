@@ -17,7 +17,6 @@
 
 var $ = jQuery,
 karmaColorPicker = function ( options ) {
-	var $ = jQuery
 
 	this.options = {};
 	this.defaultOptions = {
@@ -38,8 +37,8 @@ karmaColorPicker = function ( options ) {
 		}
 	}
 
-	this.mainInput = document.querySelector( this.options.selector + ' input.karma-color-gizmo' );
-	this.hoverInput = document.querySelector( this.options.selector + ' input.karma-color-gizmo-hover' );
+	this.mainInput = document.querySelector( this.options.selector + ' input.karma-colorpicker-main-color' );
+	this.hoverInput = document.querySelector( this.options.selector + ' input.karma-colorpicker-second-color' );
 
 	if ( this.mainInput == null || $( this.mainInput ).hasClass( 'karma-color-picker-input' ) ) {
 		return;
@@ -107,7 +106,9 @@ karmaColorPicker.prototype.createColorPickerIcon = function () {
 	this.icon = icon;
 	// Add icon HTML to beside of input
 	this.mainInput.classList.add( 'karma-color-picker-input' );
-	this.hoverInput.classList.add( 'karma-color-picker-input' );
+	if ( null != this.hoverInput ) {
+		this.hoverInput.classList.add( 'karma-color-picker-input' );
+	}
 	icon.style.background = this.mainInput.value;
 	this.mainInput.parentElement.insertBefore( icon, this.mainInput );
 	icon.addEventListener( 'click', function ( e ) {
@@ -156,6 +157,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 	for ( var i = 0; that.options.presetColors.length > i; i++ ) {
 		var presetColor = document.createElement( 'span' );
 		presetColor.setAttribute( 'class', 'karma-color-picker-preset-color' );
+		presetColor.setAttribute( 'data-color', that.options.presetColors[ i ].toLowerCase() );
 		presetColor.style.backgroundColor = that.options.presetColors[ i ];
 		this.presetColorsEvent( presetColor );
 		presetColors.appendChild( presetColor );
@@ -170,10 +172,12 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 	chooseColor.appendChild( chooseColorInput );
 	that.chooseColor = chooseColor;
 	presetColors.appendChild( chooseColor );
+	popup.addEventListener( 'click', function ( e ) {
+		e.stopPropagation();
+	} );
 	popup.appendChild( presetColors );
-	// Add popup HTML to beside of input
-	var input = this.mainInput;
-	input.parentElement.insertBefore( popup, input );
+	// Add popup HTML to body
+	document.body.appendChild( popup );
 	that.initSpectrumColorPicker();
 
 };
@@ -191,6 +195,7 @@ karmaColorPicker.prototype.presetColorsEvent = function ( el ) {
 	var that = this;
 	el.addEventListener( 'click', function ( e ) {
 		e.preventDefault();
+		e.stopPropagation();
 		if ( $( e.target ).hasClass( 'selected' ) || $( e.target ).hasClass( 'temp-pallet' ) ) {
 			return false;
 		} else {
@@ -259,7 +264,7 @@ karmaColorPicker.prototype.chooseColorEvent = function () {
 		e.stopPropagation();
 		var $spectrum = $( "#" + that.id );
 		$spectrum.spectrum( "set", that.activeInput.value );
-		$spectrum.spectrum( "toggle" );
+		$spectrum.spectrum( "show" );
 		that.addColorToPallet( that.activeInput.value );
 		return false;
 	} );
@@ -279,6 +284,7 @@ karmaColorPicker.prototype.addColorToPallet = function ( color, addClass ) {
 
 	var presetColor = document.createElement( 'span' );
 	presetColor.setAttribute( 'class', 'karma-color-picker-preset-color user-pallet temp-pallet' );
+	presetColor.setAttribute( 'data-color', color.toLowerCase() );
 	if ( true === addClass ) {
 		presetColor.classList.remove('temp-pallet');
 	}
@@ -301,8 +307,11 @@ karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
 	var $ = jQuery;
 	$( this.activeInput ).val( newColor )
 			.change()
-			.trigger( 'change/updateColor', [ newColor, $( this.activeInput ).hasClass('karma-color-gizmo-hover') ] );
+			.trigger( 'change/updateColor', [ newColor, $( this.activeInput ).hasClass('karma-colorpicker-second-color') ] );
 	$( this.activeInput ).val( newColor ).change();
+	if ( $( this.activeInput ).parents( '#karma-element-setting-panel-container' ).length ) {
+		$( this.activeInput ).trigger( 'input' );
+	}
 
 };
 
@@ -318,10 +327,9 @@ karmaColorPicker.prototype.saveColors = function ( color ) {
 
 	if ( "undefined" !== typeof( Storage ) ) {
 		var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
-		if( true === savedColors.includes( color ) ){
+		if( true === savedColors.includes( color ) || true === this.options.presetColors.includes( color.toUpperCase() ) ){
 			return ;
 		}
-
 		if (  8 == savedColors.length ){
 			savedColors.shift();
 		}
@@ -329,6 +337,29 @@ karmaColorPicker.prototype.saveColors = function ( color ) {
 		savedColors.push( color );
 		localStorage.setItem( 'karmaColors', JSON.stringify( savedColors ) );
 	}
+
+};
+
+/**
+ * @summary change color of elements
+ *
+ * @param {String}  color   Color selected in color picker
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.onChangeColor = function ( color ) {
+
+	var that = this;
+	if ( null != document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ) ) {
+		$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).removeClass( 'selected' );
+		document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).className += ' selected';
+		$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).removeClass( 'temp-pallet' );
+	}
+	var selectedPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' );
+	selectedPallet.style.backgroundColor = color;
+	selectedPallet.setAttribute( 'data-color', color );
+	that.updateMainColor( color );
 
 }
 
@@ -351,14 +382,13 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 		replacerClassName: 'spectrum-color-preview',
 		move : function ( color ) {
 
-			color = color.toHexString();
-			if ( null != document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ) ) {
-				$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).removeClass( 'selected' );
-				document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).className += ' selected';
-				$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .temp-pallet' ).removeClass( 'temp-pallet' );
-			}
-			document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).style.backgroundColor = color;
-			that.updateMainColor( color );
+			that.onChangeColor( color.toHexString() );
+
+		},
+
+		change: function( color ) {
+
+			that.onChangeColor( color.toHexString() );
 
 		},
 
@@ -372,14 +402,19 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 
 	$( document ).off( "click.hideColorPickerContainer" ).on( "click.hideColorPickerContainer", function () {
 
-		$( ".karma-color-picker-container" ).removeClass( 'opened' );
+		$( ".karma-color-picker-container" ).removeClass( 'karma-color-picker-opened' );
+		var $spectrum =$( "#" + that.id );
+		$spectrum.spectrum( "show" );
+		$spectrum.spectrum( "hide" );
 
 	} );
 
 	$( ".karma-color-picker-container" ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function () {
 
 		$( '.temp-pallet' ).remove();
-		$( "#" + that.id ).spectrum( 'hide' );
+		var $spectrum =$( "#" + that.id );
+		$spectrum.spectrum( "show" );
+		$spectrum.spectrum( 'hide' );
 
 	} )
 };
@@ -393,21 +428,83 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 karmaColorPicker.prototype.openColorPicker = function ( e ) {
 
 	e.preventDefault();
-	var colorPickerContaner = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
+	var colorPickerContainer = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
 		that = this,
 		$ = jQuery;
-	if ( $( colorPickerContaner ).hasClass( 'opened' ) ) {
-		$( colorPickerContaner ).removeClass( 'opened' );
+	if ( $( colorPickerContainer ).hasClass( 'karma-color-picker-opened' ) ) {
+		$( colorPickerContainer ).removeClass( 'karma-color-picker-opened' );
+		var $spectrum =$( "#" + that.id );
+		$spectrum.spectrum( "show" );
+		$spectrum.spectrum( "hide" );
 	} else {
 		if ( "undefined" !== typeof( Storage ) ) {
 			$('.karma-color-picker-preset-color.user-pallet').remove();
 			var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
 			_.each( savedColors, function ( color ) {
-				that.addColorToPallet( color, true );
+				if ( !that.options.presetColors.includes( color.toUpperCase() ) ) {
+					that.addColorToPallet( color, true );
+				}
 			} );
 		}
-		colorPickerContaner.className += ' opened';
+		var icon = document.querySelector( '.karma-color-picker-icon[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
+			rect = icon.getBoundingClientRect(),
+			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+			scrollTop = window.pageYOffset || document.documentElement.scrollTop,
+			topPosition = rect.top + scrollTop + icon.offsetHeight + 15,
+			leftPosition = rect.left + scrollLeft + (icon.offsetWidth / 2) - 76;
+		colorPickerContainer.style.top = topPosition + 'px';
+		colorPickerContainer.style.left = leftPosition + 'px';
+		colorPickerContainer.className += ' karma-color-picker-opened';
 		$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
+	}
+	this.addCurrentColor();
+
+};
+
+/**
+ * @summary check if current color is not exist in pallets, add it
+ *
+ * @since 1.0.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.addCurrentColor = function () {
+
+	var currentColorHex = this.rgbToHex( this.activeInput.value ).toLowerCase();
+	var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorHex + '"]' );
+	if ( null != currentPallet ) {
+		currentPallet.classList.add( 'selected' );
+	} else {
+		this.addColorToPallet( currentColorHex, true );
+		var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorHex + '"]' );
+		currentPallet.classList.add( 'selected' );
+	}
+
+};
+
+/**
+ * @summary convert rgb color to hex color
+ *
+ * @since 1.0.0
+ * @returns {string} return hex color or passed color if color is not rgb
+ */
+karmaColorPicker.prototype.rgbToHex = function ( color ) {
+
+	if ( '#' === color.substr( 0, 1 ) ) {
+		return color;
+	}
+	var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec( color );
+	if ( null != digits ) {
+		var red = parseInt( digits[ 2 ] );
+		var green = parseInt( digits[ 3 ] );
+		var blue = parseInt( digits[ 4 ] );
+		var rgb = blue | ( green << 8 ) | ( red << 16 );
+		if( 0 == rgb ){
+			return '#000000';
+		}else{
+			return digits[ 1 ] + '#' + rgb.toString( 16 );
+		}
+	} else {
+		return color;
 	}
 
 };

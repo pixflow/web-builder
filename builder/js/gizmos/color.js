@@ -7,8 +7,8 @@
 		 */
 
 
-		template: '<input class="karma-color-gizmo"/>'
-		+'<input class="karma-color-gizmo-hover"/>',
+		template: '<input class="karma-color-gizmo karma-colorpicker-main-color"/>'
+		+'<input class="karma-color-gizmo-hover karma-colorpicker-second-color"/>',
 
 
 		initialize :function(){

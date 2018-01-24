@@ -1,13 +1,20 @@
 /* _-_-_- base/BASE -_-_-_ */
 body {
 	margin: 0;
+
+	button{
+		margin: 0;
+		padding: 0;
+		line-height: .8em;
+	}
+	
 	iframe {
 		height: calc( 100vh - 49px );
 		width: 100%;
 		border:none;
 	}
 
-	font-family: "HelveticaNeue";
+	font-family: $builder-normal-font;
 	.karma-full-separator {
 		@include box( 100%, 1px );
 		@include element_direction( $bottom: 0, $left: 0 );
@@ -22,9 +29,30 @@ body {
 		margin: 0;
 		position: absolute;
 	}
+}
 
-	ul, ol {
-		margin: 0 0 1.75em 0;
+.karma-builder-element{
+
+	&.karma-element-alignment-left{
+
+		display: flex;
+		justify-content: flex-start;
+	}
+	&.karma-element-alignment-center{
+
+		display: flex;
+		justify-content: center;
+	}
+	&.karma-element-alignment-right{
+
+		display: flex;
+		justify-content: flex-end;
 	}
 }
+
+.ui-draggable-dragging {
+	pointer-events: none !important;
+}
+
+
 
