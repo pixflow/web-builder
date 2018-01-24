@@ -6,7 +6,7 @@ jQuery( document ).off( 'karma_finish_form_builder.color-picker' ).on( 'karma_fi
 		var options = {
 			selector: '#' + colorPickerController.id,
 			color: document.querySelector( '#' + colorPickerController.id + ' .karma-colorpicker-main-color' ).value,
-			opacity: true,
+			opacity: false,
 			multiColor: false
 		};
 		new karmaColorPicker( options );
