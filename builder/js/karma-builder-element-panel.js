@@ -19,7 +19,6 @@
 			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
 			"click .karma-search-close-icon"											: "clearElementPanelSearchBar" ,
 			"click .karma-builder-search-text"											: "showElementPanelSearchBar" ,
-			"mousewheel .karma-elements"                                                : "preventFromScrolling" ,
 			"click .element-panel-button"												: "openElementPanel",
 			"click .karma-search-close-icon"											: "elementPanelCloseSearchBar"
 
@@ -44,6 +43,7 @@
 			this.removeGatherMenuPanel();
 			this.elementGatherMenuFiltering();
 			this.karmaIsotope = $( '.karma-isotope' ).clone( true, true );
+			karmaBuilderEnviroment.getIframe().KarmaView.preventFromScrollingOnParent( $('preventFromScrollingOnParent') );
 
 		},
 
@@ -54,10 +54,12 @@
 		 * @returns {void}
 		 */
 		setEvents : function(){
+
 			var that = this;
 			$( document ).on( 'click', function(){
 				that.closeElementPanel();
 			});
+
 		},
 
 		/**
@@ -246,17 +248,6 @@
 
 		},
 
-		/**
-		 * @summary Prevent from scrolling window when scrolling on nice scroll elements
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
-		preventFromScrolling : function ( e ) {
-
-			e.preventDefault();
-
-		},
 
 		/**
 		 * @summary check if permium load permium template

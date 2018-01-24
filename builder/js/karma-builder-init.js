@@ -38,15 +38,15 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		events : {
 
-			'click.bindDocumentEvent'                               : 'bindDocumentEvent',
-			'karma/before/publish' 	                                : 'karmaPublish',
-			'karma/before/elements/create/karma_column'             : 'createElementAction',
-			'karma/before/save'	                   	                : 'karmaSaved',
-			'karma/after/dropElement.reorderElements'               : "reorderElements" ,
-			'karma/after/dropElement.emptyColumn'                   : "removeEmptyColumn" ,
-			'karma/after/finishElementPanel'                        : 'makeElementsDraggable',
-			'click .karma-new-section-layout'						: 'createNewSection',
-			'click .karma-blank-page-section-link'					: 'openSectionPanel',
+			'click.bindDocumentEvent'                      				        : 'bindDocumentEvent',
+			'karma/before/publish' 	                            			    : 'karmaPublish',
+			'karma/before/elements/create/karma_column'      			        : 'createElementAction',
+			'karma/before/save'	                   	     				        : 'karmaSaved',
+			'karma/after/dropElement.reorderElements'   			            : "reorderElements" ,
+			'karma/after/dropElement.emptyColumn'       			            : "removeEmptyColumn" ,
+			'karma/after/finishElementPanel'            			            : 'makeElementsDraggable',
+			'click .karma-blank-page-simple-layout .karma-new-section-layout'	: 'createNewSection',
+			'click .karma-blank-page-section-link'								: 'openSectionPanel',
 
 		},
 
@@ -179,24 +179,24 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 */
 		openSectionPanel : function ( e ) {
-
+			
 			e.stopPropagation();
-			var elementPanel = document.querySelector( '.karma-element-panel-add-element-view' );
+			var elementPanel = window.top.document.querySelector( '.karma-element-panel-add-element-view' );
 			if( null != elementPanel ){
 				elementPanel.classList.add( 'element-panel-show' );
 			};
 
-			var elementPanelSection = document.querySelector( '.element-panel-section' );
+			var elementPanelSection = window.top.document.querySelector( '.element-panel-section' );
 			if( null != elementPanelSection ){
 				elementPanelSection.classList.add( 'karma-active-tab' );
 			};
 
-			var elementPanelSectionActiveButton = document.querySelector( '.karma-addcontent[data-tab="karma-element-panel-list"]' );
+			var elementPanelSectionActiveButton = window.top.document.querySelector( '.karma-addcontent[data-tab="karma-element-panel-list"]' );
 			if( null != elementPanelSectionActiveButton ){
 				elementPanelSectionActiveButton.classList.remove( 'karma-addcontent-active' );
 			};
 
-			var elementPanelSectionButton  = document.querySelector( '.karma-addcontent[data-tab="element-panel-section"]' );
+			var elementPanelSectionButton  = window.top.document.querySelector( '.karma-addcontent[data-tab="element-panel-section"]' );
 			if( null != elementPanelSectionButton ){
 				elementPanelSectionButton.classList.add( 'karma-addcontent-active' );
 			};
@@ -1133,7 +1133,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {object}    children    Children models in column
 		 *
 		 * @since   1.0.0
-		 * @returns {void}
+		 * @returns {array}
 		 */
 		sortChildren : function ( children ) {
 
