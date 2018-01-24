@@ -574,11 +574,10 @@
 				elementPanelAttr =elementPanelIcon.getAttribute( "data-open-panel" ),
 				elementPanelShowClass = "element-panel-show";
 
-			if( 'undefined' != typeof elementSettingPanel ){
-				elementSettingPanel.removeSettingPanel();
+			if( 'undefined' != typeof karmaBuilderEnviroment.getIframe().elementSettingPanel ){
+				karmaBuilderEnviroment.getIframe().elementSettingPanel.removeSettingPanel();
 			}
 
-			document.dispatchEvent( new CustomEvent( 'click' ) );
 			if( "" != elementPanelAttr && null != elementPanelAttr ){
 				var addElement = document.querySelector( '.' + elementPanelAttr ),
 					openElementPanel = document.querySelector( ".element-panel-show" );

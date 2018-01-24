@@ -10,6 +10,8 @@
 
 		viewInstance : {},
 
+
+
 		/**
 		 * Define elements event
 		 *
@@ -33,10 +35,8 @@
 		initialize: function( options ) {
 
 			this.viewInstance = options.viewInstance ;
+			karmaElementPanel.closeElementPanel();
 			this.setElement( $( 'body' ) );
-			this.removeSettingPanel();
-			this.openSettingPanel( options.form );
-
 
 		},
 
@@ -75,6 +75,18 @@
 				scrollSpeed: 100 ,
 				distance: 10,
 				cancel: ".karma-shortcode-setting-panel-extra, input, .rangeslider__handle",
+				start : function () {
+
+					karmaBuilderEnviroment.createOverlay();
+
+				},
+
+				stop: function () {
+
+					karmaBuilderEnviroment.removeOverlay();
+
+				},
+
 				drag : function() {
 					$( this ).css({ width : '', height : '' });
 				}
@@ -113,16 +125,15 @@
 		 *
 		 * @since	1.0.0
 		 *
-		 * @returns	{mixed}
+		 * @returns	{boolean}
 		 */
 		openSettingPanel: function( form ){
 
 			this.KarmaView = document.getElementById('karma-builder-iframe').contentWindow.window.KarmaView;
-			this.removeSettingPanel();
 			var html = document.createElement( 'div' ),
 				formHtml = this.formBuilder( form );
 			if( null == formHtml ){
-				return;
+				return false;
 			}
 			var elementAttributes = this.model.attributes,
 				elementSelector = elementAttributes[ 'shortcode_name' ].replace( '_', '-' ) + '-' + elementAttributes.element_key;
@@ -137,6 +148,7 @@
 			this.applyDependency();
 			$( document ).trigger('karma_finish_form_builder', [ this.viewInstance ] );
 			this.scrollSettingPanel();
+			return true;
 
 		},
 
@@ -296,6 +308,7 @@
 			if( null != settingPanel ) {
 				settingPanel.parentNode.removeChild(settingPanel);
 			}
+
 
 			if( 'undefined' != typeof karmaBuilderEnviroment.getIframe().elementSettingPanel ){
 				// COMPLETELY UNBIND THE ELEMENT SETTING PANEL VIEW

@@ -421,7 +421,6 @@ class Karma_Builder {
 
 		// Handle wp_footer
 		add_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
-		add_action( 'wp_footer', 'wp_auth_check_html', 30 );
 
 		// Handle wp_enqueue_scripts
 		remove_all_actions( 'wp_enqueue_scripts' );

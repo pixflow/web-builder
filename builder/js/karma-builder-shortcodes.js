@@ -707,7 +707,7 @@
 		},
 
 		/**
-		 * find children of model
+		 * @summary find children of model
 		 *
 		 * @since 1.0.0
 		 *
@@ -720,7 +720,7 @@
 		},
 
 		/**
-		 * Open setting panel of each Element
+		 * @summary Open setting panel of each Element
 		 *
 		 * @since 1.0.0
 		 *
@@ -732,13 +732,17 @@
 			var form = $( e.currentTarget ).data('form'),
 				that = this;
 
-			window.elementSettingPanel = new window.top.karmaBuilderActions.elementSettingPanel( { model : this.model, form : form, viewInstance : that  } );
+			window.elementSettingPanel = new window.top.karmaBuilderActions.elementSettingPanel( { model : this.model, viewInstance : that  } );
+			var result = elementSettingPanel.openSettingPanel( form );
 			elementSettingPanel.delegateEvents();
+			if( false == result ){
+				elementSettingPanel.removeSettingPanel();
+			}
 
 		},
 
 		/**
-		 * Remove Class from javascript element
+		 * @summary Remove Class from javascript element
 		 *
 		 * @param    {object}    el        element to remove Class
 		 * @param    {string}    className   name of class to remove
@@ -758,7 +762,7 @@
 		},
 
 		/**
-		 * returns the element name with its key
+		 * @summary returns the element name with its key
 		 *
 		 * @since 1.0.0
 		 *
@@ -771,7 +775,7 @@
 		},
 
 		/**
-		 * renders the css of model inside style tag
+		 * @summary renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector    Css selector
 		 * @param    { string }    attribute    CSS attribute
@@ -788,7 +792,7 @@
 		},
 
 		/**
-		 * renders the css of model inside style tag
+		 * @summary renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector    Css selector
 		 * @param    { string }    attribute    CSS attribute
