@@ -47,20 +47,6 @@
 
 		},
 
-		/**
-		 * @summary set external Events
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
-		setEvents : function(){
-
-			var that = this;
-			$( document ).on( 'click', function(){
-				that.closeElementPanel();
-			});
-
-		},
 
 		/**
 		 * @summary Call draggable on elements in add new elements item;

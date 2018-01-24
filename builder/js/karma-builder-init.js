@@ -213,18 +213,10 @@ var karmaBuilder = karmaBuilder || {};
 		bindDocumentEvent: function () {
 
 			this.removeActiveElement();
-
-			// Close element panel
-			if( 'undefined' != typeof window.top.karmaElementPanel ){
-				window.top.karmaElementPanel.closeElementPanel();
-			}
-
-			// Close element setting panel
-			if( 'undefined' != typeof elementSettingPanel ){
-				elementSettingPanel.removeSettingPanel();
-			}
-
-			$( document ).trigger( "click.hideColorPickerContainer" );
+			this.removeActiveColumn();
+			this.removeActiveSection();
+			this.removeSettingPanel();
+			this.closeElementPanel();
 
 		},
 
@@ -232,7 +224,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @summary Remove all active elements
 		 *
 		 * @since   1.0.0
-		 * @returns {void}
+		 * @returns {object}
 		 */
 		removeActiveElement : function () {
 
@@ -241,15 +233,75 @@ var karmaBuilder = karmaBuilder || {};
 				activeElement.classList.remove('karma-active-element');
 			}
 
-			var activeElement = document.querySelector('.karma-active-section')
-			if( null != activeElement ){
-				activeElement.classList.remove('karma-active-section');
-			}
+			$( document ).trigger( "click.hideColorPickerContainer" );
+
+			return this;
+
+		},
+
+		/**
+		 * @summary Remove active column
+		 *
+		 * @since   1.0.0
+		 * @returns {object}
+		 */
+		removeActiveColumn : function () {
 
 			var activeElement = document.querySelector('.karma-active-column')
 			if( null != activeElement ){
 				activeElement.classList.remove('karma-active-column');
 			}
+
+			return this;
+
+		},
+
+		/**
+		 * @summary Remove element setting panel
+		 *
+		 * @since   1.0.0
+		 * @returns {object}
+		 */
+		removeSettingPanel : function () {
+
+			if( 'undefined' != typeof elementSettingPanel ){
+				elementSettingPanel.removeSettingPanel();
+			}
+
+			return this;
+
+		},
+
+		/**
+		 * @summary Close element panel
+		 *
+		 * @since   1.0.0
+		 * @returns {object}
+		 */
+		closeElementPanel : function () {
+
+			if( 'undefined' != typeof window.top.karmaElementPanel ){
+				window.top.karmaElementPanel.closeElementPanel();
+			}
+
+			return this;
+
+		},
+
+		/**
+		 * @summary Remove active section
+		 *
+		 * @since   1.0.0
+		 * @returns {object}
+		 */
+		removeActiveSection : function () {
+
+			var activeElement = document.querySelector('.karma-active-section')
+			if( null != activeElement ){
+				activeElement.classList.remove('karma-active-section');
+			}
+
+			return this;
 
 		},
 
@@ -856,7 +908,8 @@ var karmaBuilder = karmaBuilder || {};
 		detectDropAreas : function ( event, UI ) {
 
 			var targetElement = this.overlayBehavior( event, UI );
-			if( null == targetElement ){
+
+			if( null == targetElement || false == targetElement ){
 				return false;
 			}
 			if(  targetElement.classList.contains('karma-element-placeholder') || null != targetElement.closest('.karma-element-placeholder') ){

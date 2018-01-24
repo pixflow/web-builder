@@ -395,7 +395,7 @@
 						that.showMouseToolTip( event );
 						that.el.classList.add( 'karma-resizing-padding' );
 						KarmaView.removeActiveElement();
-
+						
 					},
 
 					stop : function ( event, ui ) {
@@ -710,7 +710,7 @@
 
 			KarmaView.$el.trigger( 'karma/callParent', [ this.el, [ 'activeColumn' ] , 1  ] );
 			this.el.classList.add( 'karma-active-element' );
-			window.top.karmaElementPanel.closeElementPanel();
+			KarmaView.closeElementPanel().removeSettingPanel();
 
 		},
 

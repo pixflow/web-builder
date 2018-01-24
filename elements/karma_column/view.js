@@ -81,21 +81,9 @@
 		 */
 		closeExtraPanel : function(){
 
-			// Close element setting panel
-			if( 'undefined' != typeof elementSettingPanel ){
-				elementSettingPanel.removeSettingPanel();
-			}
-
-			// Close element panel
-			if( 'undefined' != typeof window.top.karmaElementPanel ){
-				window.top.karmaElementPanel.closeElementPanel();
-			}
-
-			var activeElement = document.querySelector('.karma-active-element')
-			if( null != activeElement ){
-				activeElement.classList.remove('karma-active-element');
-			}
-
+			KarmaView.removeSettingPanel()
+				.closeElementPanel()
+				.removeActiveElement();
 
 		},
 
