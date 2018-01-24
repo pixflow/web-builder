@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c67</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="39.3400002" height="39.4500008" rx="4"></rect>
+        <linearGradient x1="44.8198855%" y1="37.9500416%" x2="75.4321919%" y2="91.0404624%" id="linearGradient-3">
+            <stop stop-color="#FAAB11" offset="0%"></stop>
+            <stop stop-color="#FAC711" stop-opacity="0.774711277" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c157" transform="translate(-3.000000, -3.000000)">
+            <g id="c67" transform="translate(3.000000, 3.000000)">
+                <g id="c65">
+                    <g id="c59">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="c57" fill="#FAC711" xlink:href="#path-1"></use>
+                        <polygon id="c58" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="52.0311386 35.3069196 36.8813477 36.7089844 22.3891602 25.3388672 22.3891602 18 33.824767 18"></polygon>
+                    </g>
+                    <g id="c64" transform="translate(22.000000, 14.454545)" fill="#FFFFFF">
+                        <rect id="c60" x="0.121667415" y="0.0260327037" width="5.01802775" height="1.41236601"></rect>
+                        <rect id="c61" x="0.28229589" y="3.64093014" width="11.2905624" height="1.41236601"></rect>
+                        <rect id="c62" x="0.28229589" y="7.25582758" width="9.07252202" height="1.41236601"></rect>
+                        <rect id="c63" x="0.28229589" y="10.870725" width="11.2905624" height="1.41236601"></rect>
+                    </g>
+                </g>
+                <text id="c66" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="12" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="6" y="19">30</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

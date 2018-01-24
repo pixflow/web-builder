@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c33</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="44" height="44" rx="22"></rect>
+        <linearGradient x1="18.3636714%" y1="11.9838885%" x2="76.1926196%" y2="78.2669173%" id="linearGradient-3">
+            <stop stop-color="#9AAE29" offset="4.23309949%"></stop>
+            <stop stop-color="#ADC32F" stop-opacity="0.722175045" offset="99.4319994%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="0" y="0" width="27" height="27"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c153" transform="translate(-1.000000, -1.000000)">
+            <g id="c33" transform="translate(-3.000000, -4.000000)">
+                <rect id="c25" stroke="#FFFFFF" stroke-width="2" x="11" y="12" width="30" height="30" rx="15"></rect>
+                <g id="c29" transform="translate(4.000000, 5.000000)">
+                    <g id="c28">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="c26" fill="#ADC32F" transform="translate(22.000000, 22.000000) rotate(90.000000) translate(-22.000000, -22.000000) " xlink:href="#path-1"></use>
+                        <path d="M28.159668,20.9836426 L42.7745361,31.5159912 L32.5593882,43.7407309 L14.3591309,26.9482422 L21.4865723,26.9482422 L21.4865723,25.3536377 L22,24.1942139 L24.0211182,24.1942139 C24.1791686,25.4849131 24.4496357,26.0728037 24.8325195,25.9578857 C25.0829066,25.8827351 27.0164791,26.1737946 27.8424362,25.3536377 C28.133816,25.0643041 28.2395599,23.607639 28.159668,20.9836426 Z" id="c27" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+                <path d="M26,12.5 C17.9918711,12.5 11.5,18.9918711 11.5,27 C11.5,35.0081289 17.9918711,41.5 26,41.5 C34.0081289,41.5 40.5,35.0081289 40.5,27 C40.5,18.9918711 34.0081289,12.5 26,12.5 Z" id="c30" stroke="#FFFFFF" stroke-width="3"></path>
+                <text id="c31" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="18" y="32">25</tspan>
+                </text>
+                <g id="c32" transform="translate(13.500000, 13.500000) scale(-1, -1) translate(-13.500000, -13.500000) ">
+                    <mask id="mask-5" fill="white">
+                        <use xlink:href="#path-4"></use>
+                    </mask>
+                    <use id="Mask" fill-opacity="0" fill="#D8D8D8" xlink:href="#path-4"></use>
+                    <rect id="Rectangle-11-Copy" stroke="#C3D657" stroke-width="3" mask="url(#mask-5)" x="-13.5" y="-14.5" width="29" height="29" rx="14.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

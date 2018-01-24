@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="40px" viewBox="0 0 41 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c128</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="1" y="0" width="39.3400002" height="39.4500008" rx="4"></rect>
+        <linearGradient x1="32.4934085%" y1="21.3789062%" x2="65.4278791%" y2="59.5683594%" id="linearGradient-3">
+            <stop stop-color="#0219EE" offset="0%"></stop>
+            <stop stop-color="#2E43FF" stop-opacity="0.798771513" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c163" transform="translate(-3.000000, -4.000000)">
+            <g id="c128" transform="translate(3.000000, 3.000000)">
+                <g id="c120" transform="translate(0.000000, 1.000000)">
+                    <g id="c119">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="c117" fill="#2E43FF" transform="translate(20.670000, 19.725000) rotate(90.000000) translate(-20.670000, -19.725000) " xlink:href="#path-1"></use>
+                        <polygon id="c118" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="25.9908447 12 42 25.2241821 42 37 15 16 19 12 23.5 16"></polygon>
+                    </g>
+                </g>
+                <text id="c121" font-family="HelveticaNeue, Helvetica Neue" font-size="35" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="13" y="33">“</tspan>
+                </text>
+                <g id="c127" transform="translate(13.000000, 21.000000)">
+                    <g id="c123" fill="#FFFFFF">
+                        <rect id="c122" x="0" y="0.833333333" width="14.5813953" height="1.53333333"></rect>
+                    </g>
+                    <g id="c126" transform="translate(0.000000, 4.000000)">
+                        <rect id="c124" fill="#FFFFFF" x="0" y="0.833333333" width="14.5813953" height="1.53333333"></rect>
+                        <rect id="c125" fill="#5A6AFF" x="2" y="5.66666667" width="10.5813953" height="3.53333333" rx="1.76666667"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

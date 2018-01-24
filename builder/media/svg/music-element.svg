@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c84</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0.0577278034" y="-0.0577278034" width="39.3373746" height="39.4528302" rx="4"></rect>
+        <linearGradient x1="44.6039813%" y1="37.5756026%" x2="94.2693064%" y2="77.031672%" id="linearGradient-3">
+            <stop stop-color="#00B4E3" offset="0%"></stop>
+            <stop stop-color="#00CEED" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c159" transform="translate(-3.000000, -3.000000)">
+            <g id="c84" transform="translate(3.000000, 3.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="c73" fill="#00CEED" transform="translate(19.726415, 19.668687) rotate(90.000000) translate(-19.726415, -19.668687) " xlink:href="#path-1"></use>
+                <g id="c75" mask="url(#mask-2)" fill="url(#linearGradient-3)">
+                    <g transform="translate(11.000000, 10.000000)" id="c74">
+                        <polygon points="36.5473633 18.1572266 28.7768555 35.5239258 0.046875 15.1547852 16.6738281 0.360839844"></polygon>
+                    </g>
+                </g>
+                <path d="M33,10 L48,10 L48,10 C48.5522847,10 49,10.4477153 49,11 L49,24.2676411 L49,24.2676411 C49,24.8199259 48.5522847,25.2676411 48,25.2676411 L33,25.2676411 L33,25.2676411 C32.4477153,25.2676411 32,24.8199259 32,24.2676411 L32,11 L32,11 C32,10.4477153 32.4477153,10 33,10 Z" id="c76" fill="#75E1F2" mask="url(#mask-2)"></path>
+                <g id="c78" mask="url(#mask-2)" fill="#FFFFFF">
+                    <g transform="translate(11.000000, 10.000000)" id="c77">
+                        <path d="M1,0 L16,0 L16,0 C16.5522847,-1.01453063e-16 17,0.44771525 17,1 L17,14.2676411 L17,14.2676411 C17,14.8199259 16.5522847,15.2676411 16,15.2676411 L1,15.2676411 L1,15.2676411 C0.44771525,15.2676411 -1.18990181e-15,14.8199259 -3.21964677e-15,14.2676411 L0,1 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.21167609e-15 1,1.11022302e-15 Z"></path>
+                    </g>
+                </g>
+                <g id="c80" mask="url(#mask-2)" fill="#75E1F2">
+                    <g transform="translate(-10.000000, 10.000000)" id="c79">
+                        <path d="M1,0 L16,0 L16,0 C16.5522847,-1.01453063e-16 17,0.44771525 17,1 L17,14.2676411 L17,14.2676411 C17,14.8199259 16.5522847,15.2676411 16,15.2676411 L1,15.2676411 L1,15.2676411 C0.44771525,15.2676411 -1.18990181e-15,14.8199259 -3.21964677e-15,14.2676411 L0,1 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.21167609e-15 1,1.11022302e-15 Z"></path>
+                    </g>
+                </g>
+                <circle id="c81" fill="#75E1F2" mask="url(#mask-2)" cx="17" cy="34" r="1"></circle>
+                <circle id="c82" fill="#FFFFFF" mask="url(#mask-2)" cx="20" cy="34" r="1"></circle>
+                <circle id="c83" fill="#75E1F2" mask="url(#mask-2)" cx="23" cy="34" r="1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="40px" viewBox="0 0 41 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c138</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0.891304348" y="0" width="39.3373746" height="39.4528302" rx="4"></rect>
+        <linearGradient x1="32.5287136%" y1="21.4198447%" x2="60.9857575%" y2="59.3586218%" id="linearGradient-3">
+            <stop stop-color="#0480E0" offset="0%"></stop>
+            <stop stop-color="#2D9BF0" stop-opacity="0.434612772" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c164" transform="translate(-3.000000, -3.000000)">
+            <g id="c138" transform="translate(3.000000, 3.000000)">
+                <g id="c131">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="c129" fill="#2D9BF0" transform="translate(20.559992, 19.726415) rotate(90.000000) translate(-20.559992, -19.726415) " xlink:href="#path-1"></use>
+                    <polygon id="c130" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="33.0356445 8.09887695 53.0830078 27.307373 29.7670898 50.4423828 8.01733398 32.9592285 16.8415527 32.9592285 24.2399902 25.6687012 27.5327148 29.2426758 31.6455078 20 25.956543 14.9577637"></polygon>
+                </g>
+                <rect id="c132" fill="#FFFFFF" x="8" y="8" width="7" height="7"></rect>
+                <rect id="c133" fill="#FFFFFF" x="26" y="8" width="7" height="7"></rect>
+                <rect id="c134" fill="#FFFFFF" x="16.7505787" y="25.6554543" width="7.49884259" height="7.49884259"></rect>
+                <rect id="c135" fill="#FFFFFF" x="16.7505787" y="7.84570312" width="7.49884259" height="15.9350405"></rect>
+                <rect id="c136" fill="#FFFFFF" x="26" y="17" width="7" height="16"></rect>
+                <rect id="c137" fill="#FFFFFF" x="8" y="17" width="7" height="16"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

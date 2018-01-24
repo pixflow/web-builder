@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="40px" viewBox="0 0 41 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c72</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="1" y="0" width="39.3373746" height="39.4528302" rx="4"></rect>
+        <linearGradient x1="35.6645418%" y1="4.99429858%" x2="93.6787251%" y2="98.7032128%" id="linearGradient-3">
+            <stop stop-color="#F5309A" offset="0%"></stop>
+            <stop stop-color="#FF56B8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c158" transform="translate(-3.000000, -3.000000)">
+            <g id="c72" transform="translate(3.000000, 3.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="c68" fill="#FF56B8" transform="translate(20.668687, 19.726415) rotate(90.000000) translate(-20.668687, -19.726415) " xlink:href="#path-1"></use>
+                <polygon id="c69" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="29.8862305 15.3535156 40.3175616 25.5630528 40.3175616 40.3004496 29.8862305 40.3004496 9.99169922 22.8798828 12.6586914 15.3535156"></polygon>
+                <rect id="c70" fill="#FFFFFF" mask="url(#mask-2)" x="9" y="15" width="24" height="9" rx="4.5"></rect>
+                <rect id="c71" fill="#FF56B8" x="15" y="19" width="12" height="1.26188198"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

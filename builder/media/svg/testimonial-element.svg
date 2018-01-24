@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c92</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="39.3400002" height="39.4500008" rx="4"></rect>
+        <linearGradient x1="43.7561471%" y1="36.1052177%" x2="75.4321919%" y2="91.0404624%" id="linearGradient-3">
+            <stop stop-color="#990113" stop-opacity="0.425979393" offset="0%"></stop>
+            <stop stop-color="#D61A31" stop-opacity="0.519191576" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c160" transform="translate(-3.000000, -3.000000)">
+            <g id="c92" transform="translate(3.000000, 3.000000)">
+                <g id="c91">
+                    <g id="c87">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="c85" fill="#DA0263" xlink:href="#path-1"></use>
+                        <polygon id="c86" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="49.2143555 34.9667969 30.5 42 12.6445312 25.5405273 25.7050781 24.859375 27.1733398 12.269043"></polygon>
+                    </g>
+                    <path d="M27.3784566,24.5793651 L27.3784566,13.1349206 C27.3784566,12.2357143 26.634245,11.5 25.7246531,11.5 L14.1480286,11.5 C13.2384367,11.5 12.4942251,12.2357143 12.4942251,13.1349206 L12.4942251,24.5793651 C12.4942251,25.4785714 13.2384367,26.2142857 14.1480286,26.2142857 L25.7246531,26.2142857 C26.634245,26.2142857 27.3784566,25.4785714 27.3784566,24.5793651 Z M17.1455475,20.0066964 L19.1389713,22.3134673 L21.9297647,18.8571429 L25.5179276,23.4553571 L14.3547541,23.4553571 L17.1455475,20.0066964 Z" id="c88" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    <polyline id="c89" stroke="#FF91C2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="34 18 35.5436782 19.567752 34 21.135504"></polyline>
+                    <polyline id="c90" stroke="#FF91C2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(5.771839, 19.567752) scale(-1, 1) translate(-5.771839, -19.567752) " points="5 18 6.5436782 19.567752 5 21.135504"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

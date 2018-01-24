@@ -1,0 +1,59 @@
+.karma-section-type-tab{
+	@include flexbox( center, center, center );
+	padding: 20px 10px 0 14px;
+	ul {
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li:nth-child(3) {
+			Cursor: no-drop;;
+		}
+		li {
+			@include flexbox( center, center, center );
+			&:hover,
+			&.karma-active-background-tab{
+
+				.karma-section-type-icon{
+						background-color: $builder-accent-color-3;
+						transition: 0.2s;
+					svg{
+						path{
+							transition: 0.2s;
+							fill: $builder-accent-color;
+						}
+					}
+				}
+
+				.karma-section-type-text{
+						color: $builder-accent-color;
+						transition: 0.2s;
+				}
+
+			}
+
+			.karma-section-type-icon {
+				@include box( 32px, 32px );
+				@include flexbox( center, center, center );
+				background-color: $builder-main-color-4;
+				border-radius: 100%;
+				transition: 0.2s;
+				svg {
+					path {
+						transition: 0.2s;
+						fill: $builder-main-color;
+					}
+				}
+			}
+
+			.karma-section-type-text {
+				@extend .karma-builder-title-4;
+				color: $builder-main-color;
+				padding: 4px 15px 4px 3px;
+				transition: 0.2s;
+			}
+		}
+	}
+}

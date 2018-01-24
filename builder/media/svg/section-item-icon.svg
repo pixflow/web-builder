@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Laptop" transform="translate(-103.000000, -705.000000)" fill-rule="nonzero" fill="#747F8A">
+            <g id="ic_view_day_black_24px" transform="translate(103.000000, 705.000000)">
+                <path d="M0,11.1428571 L12,11.1428571 L12,9.28571429 L0,9.28571429 L0,11.1428571 Z M11.3684211,3.0952381 L0.631578947,3.0952381 C0.284210526,3.0952381 0,3.37380952 0,3.71428571 L0,7.42857143 C0,7.76904762 0.284210526,8.04761905 0.631578947,8.04761905 L11.3684211,8.04761905 C11.7157895,8.04761905 12,7.76904762 12,7.42857143 L12,3.71428571 C12,3.37380952 11.7157895,3.0952381 11.3684211,3.0952381 Z M0,0 L0,1.85714286 L12,1.85714286 L12,0 L0,0 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

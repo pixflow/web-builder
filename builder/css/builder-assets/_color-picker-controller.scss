@@ -1,0 +1,27 @@
+.karma-color-picker-controller {
+	padding: $builder-light-orange-space 20px 0;
+	position: relative;
+
+	.color-picker-controller-template {
+		@include flexbox( $align-item: center, $justify-content: space-between );
+		flex-direction: row;
+
+		.karma-color-picker-title {
+			@extend .karma-builder-title-3;
+			color: $builder-main-color;
+		}
+		.karma-color-picker-controller-container {
+			position: relative;
+		}
+		.karma-color-picker-controller-container {
+			.karma-color-picker-icon {
+				height: 32px;
+				width: 32px;
+			}
+		}
+
+	}
+
+}
+
+
