@@ -79,6 +79,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		settingPanelHtml: function () {
 
 			window.karmaElementPanel = new karmaBuilderActions.elementPanel();
+			this.bindTooltip();
 
 		},
 
@@ -101,6 +102,54 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			}
 
 		},
+
+		/**
+		 * @summary Bind jquery tooltip plugin
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
+		bindTooltip : function () {
+
+			var tooltip = $( '.karma-tooltip' );
+			tooltip.tooltip({
+				position: {
+					my: "center top",
+					at: "center bottom+5",
+					using: function( position, feedback ) {
+						$( this ).css( position );
+						$( "<div>" )
+								.addClass( "arrow" )
+								.addClass( feedback.vertical )
+								.addClass( feedback.horizontal )
+								.appendTo( this );
+					}
+				},
+				show : {
+					delay: 350,
+					duration: 100
+				},
+				hide: {
+					delay: 200,
+					duration: 100
+				},
+				open : function() {
+
+					var windowSize = window.innerWidth;
+					if( windowSize > 1440 ){
+						tooltip.tooltip( "close" );
+					}
+
+				},
+
+			});
+
+			$(document).on( 'click', '.ui-tooltip', function ( e ) {
+				e.stopPropagation();
+			});
+
+		},
+
 
 		/**
 		 * @summary Set display none for overlay

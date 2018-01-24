@@ -115,7 +115,6 @@ var karmaBuilder = karmaBuilder || {};
 				}
 			} );
 
-			this.bindTooltip();
 			this.bindDocumentEvent();
 
 		},
@@ -302,54 +301,6 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 			return this;
-
-		},
-
-		/**
-		 * @summary Bind jquery tooltip plugin
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
-		bindTooltip : function () {
-
-			var tooltip = $( '.karma-tooltip' );
-			tooltip.tooltip({
-				position: {
-					my: "center top",
-					at: "center bottom+5",
-					using: function( position, feedback ) {
-						$( this ).css( position );
-						$( "<div>" )
-							.addClass( "arrow" )
-							.addClass( feedback.vertical )
-							.addClass( feedback.horizontal )
-							.appendTo( this );
-					}
-				},
-				show : {
-					delay: 350,
-					duration: 100
-				},
-				hide: {
-					delay: 200,
-					duration: 100
-				},
-				open : function() {
-
-					var windowSize = window.innerWidth;
-					if( windowSize > 1440 ){
-						tooltip.tooltip( "close" );
-					}
-
-				},
-
-			});
-
-
-			$(document).on( 'click', '.ui-tooltip', function ( e ) {
-				e.stopPropagation();
-			});
 
 		},
 
@@ -1168,6 +1119,7 @@ var karmaBuilder = karmaBuilder || {};
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
+				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
 			}else if( 'section' != elementName && 'column' != elementName ){
 				placeholder.insertAdjacentHTML( 'afterend', this.createBuilderModel( newBackboneModel ) );
 				var newView = this.createNewElement( elementName, newBackboneModel, true );
@@ -1222,7 +1174,7 @@ var karmaBuilder = karmaBuilder || {};
 			//FF doesn't recognize mousewheel as of FF3.x
 			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) )? "DOMMouseScroll" : "mousewheel"
 			selector.on( mouseWheelEvent, function ( e ) {
-
+				
 				var event = e.originalEvent,
 					direction = event.wheelDelta || -event.detail;
 

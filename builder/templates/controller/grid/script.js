@@ -23,8 +23,9 @@ jQuery( document ).off( 'karma_finish_form_builder.add-column' ).on( 'karma_fini
 jQuery( document ).off( 'changeRowLayout/finished.changeViewColumn' ).on( 'changeRowLayout/finished.changeViewColumn', function( e, layout ){
 
 	var $ = jQuery,
-		addButton = $('.karma-add-column-view-add');
-	$( '.karma-add-column-view-length:not( .karma-add-column-view-add )' ).remove();
+		addButton = window.top.$('.karma-add-column-view-add');
+	
+	window.top.$( '.karma-add-column-view-length:not( .karma-add-column-view-add )' ).remove();
 	for( var i=0; i < layout.length; i++ ){
 		addButton.before('<div class="karma-add-column-view-length"></div>');
 	}

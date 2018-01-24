@@ -474,10 +474,6 @@ window.requestAnimFrame = ( function(){
 
 		if (
 			imageInput.value == url
-			&&
-			(   null == this.selector.querySelector( '.karma-unspalsh-selected' )
-				|| this.selector.querySelector( '.karma-unsplash-empty' ).classList.contains( 'karma-unspalsh-selected' )
-			)
 		) {
 			newChild.click();
 		}

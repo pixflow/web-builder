@@ -506,9 +506,25 @@
 					parentSection  = columnInstance.el.closest( '.karma-section' );
 
 				columnInstance.createPlaceHolders();
-				if ( 0 == parentSection.querySelectorAll( '.karma-column .karma-builder-element' ).length ){
-					$( parentSection ).find( '.karma-builder-element[data-name="karma_column"]' ).addClass( 'karma-empty-column' );
-				}
+				this.checkIfColumnsEmpty( parentSection );
+
+			}
+
+		},
+
+		/**
+		 * @summary If All columns are empty in section add Class Empty to them
+		 *
+		 * @param { object }  section       Element key of parent element
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
+		checkIfColumnsEmpty: function ( section ){
+
+			if ( 0 == section.querySelectorAll( '.karma-column .karma-builder-element' ).length ){
+				$( section ).find( '.karma-builder-element[data-name="karma_column"]' ).addClass( 'karma-empty-column' );
 			}
 
 		},
@@ -528,6 +544,7 @@
 				};
 
 			KarmaView.renderElementsChildes( duplicatedElementModel, this );
+
 
 		},
 
