@@ -90,7 +90,8 @@ karmaTabEditor.prototype.appendTabContainer = function () {
 karmaTabEditor.prototype.initTabEvent = function () {
 
 	'use strict';
-	var that = this;
+	var that = this,
+		$ = jQuery;
 
 	$( '.wp-switch-editor' ).on( 'click', function ( e ) {
 

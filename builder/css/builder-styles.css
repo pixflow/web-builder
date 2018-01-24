@@ -1376,8 +1376,7 @@ html {
     background-size: cover;
     left: 0px;
     position: absolute;
-    top: 0px;
-    z-index: -1; }
+    top: 0px; }
 
 .karma-container {
   margin-right: auto;
@@ -5639,7 +5638,8 @@ div.karma-element-content .karma-top-spacing {
     border: 1px solid #EBECEE;
     border-radius: 5px;
     padding: 82px 52px 0 52px;
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
   .karma-blank-page-container .karma-blank-page-title {
     color: #394959;
     font-family: "HelveticaNeue";
