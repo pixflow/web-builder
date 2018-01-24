@@ -291,6 +291,7 @@
 		removeSettingPanel : function() {
 
 			var settingPanel = document.querySelector( '#karma-element-setting-panel-container' );
+			$( document ).trigger( "click.hideColorPickerContainer" );
 
 			if( null != settingPanel ) {
 				settingPanel.parentNode.removeChild(settingPanel);
