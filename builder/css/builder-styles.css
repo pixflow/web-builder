@@ -1376,7 +1376,8 @@ html {
     background-size: cover;
     left: 0px;
     position: absolute;
-    top: 0px; }
+    top: 0px;
+    z-index: -1; }
 
 .karma-container {
   margin-right: auto;
