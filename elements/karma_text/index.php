@@ -95,9 +95,9 @@ class Karma_Text extends Karma_Shortcode_Base {
 	public function js_render() {
 
 
-		$js_template = '<# var content = ( "" === data.content.trim() ) ? "Click here to edit content..." : data.content; #>';
-		$js_template .= '<div class="karma-text karma-text-{{ data.element_key }}" >'
-			. '<{{{ data.tag }}} class="karma-text-content karma-text-tag karma-document-click karma-editable-content" ><# print( content ); #></{{{ data.tag }}}>'
+		$js_template = '<# var content = ( "" ===  data.attributes.shortcode_content.trim() ) ? "Click here to edit content..." : data.content; #>';
+		$js_template .= '<div class="karma-text karma-text-{{ data.attributes.element_key }}" >'
+			. '<{{{ data.attributes.shortcode_attributes.tag }}} class="karma-text-content karma-text-tag karma-document-click karma-editable-content" ><# print( content ); #></{{{  data.attributes.shortcode_attributes.tag }}}>'
 			. '</div>';
 		return $js_template;
 

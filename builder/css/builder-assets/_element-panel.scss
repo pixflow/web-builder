@@ -667,11 +667,7 @@
 			background-color: $builder-main-color-5;
 		}
 	}
-
-	.karma-editable-content {
-		display: inline-block;
-	}
-
+	
 	.element-panel-section-container.element-panel-image {
 		@extend .karma-unsplash-controller;
 		margin: 0 12px;

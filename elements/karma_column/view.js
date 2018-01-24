@@ -132,7 +132,7 @@
 				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px';
 
 			this.$el.trigger('karma/finish/modifyColumns');
-			this.renderCss( '.karma-no-gutters #' + elementId, 'padding-right', padding );
+			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-right', padding );
 
 		},
 
@@ -148,7 +148,7 @@
 				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px';
 
 			this.$el.trigger('karma/finish/modifyColumns');
-			this.renderCss( '.karma-no-gutters #' + elementId, 'padding-left', padding );
+			this.renderCss( '.karma-no-gutters > .karma-builder-element > .karma-column.' + elementId, 'padding-left', padding );
 
 		},
 

@@ -77,7 +77,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		$styles = array(
 			array(
-				'prefix' => '.karma-no-gutters ' ,
+				'prefix' => '.karma-no-gutters > ' ,
+				'postfix' => '> .karma-column',
 				'property'        => array(
 					'padding-left' => self::$element_attributes[ 'leftspace' ] . "px" ,
 					'padding-right' => self::$element_attributes[ 'rightspace' ] . "px",

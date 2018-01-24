@@ -29,9 +29,7 @@
 		 */
 		render : function () {
 
-			var model =  JSON.parse( JSON.stringify( this.model.get( 'shortcode_attributes' ) ) );
-			model['content'] = this.model.get( 'shortcode_content' ) ;
-			var source = this.template( model );
+			var source = this.template( this.model );
 			this.el.querySelector('.karma-element-content').innerHTML = source;
 
 		},

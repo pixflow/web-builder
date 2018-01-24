@@ -1,1038 +1,1038 @@
 /* _-_-_- modules/GIZMO -_-_-_ */
 
 label {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 img {
-  max-height: inherit;
-  max-width: inherit;
+	max-height: inherit;
+	max-width: inherit;
 }
 
 .karma-hide-shortcode-gizmo {
-  display: none !important;
+	display: none !important;
 }
 
 .karma-spacing {
-  height: 5px;
-  position: relative;
+	height: 5px;
+	position: relative;
 
-  &.karma-top-spacing-height {
-	height: 0
-  }
-
-  &.karma-top-spacing {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-
-	.spacing-dot:after {
-	  @include element_direction($top: 0, $left: -8px)
-	}
-  }
-
-  &.karma-left-spacing.ui-resizable.karma-left-spacing {
-
-	@include element_direction($top: 0, $left: 0 !important);
-	cursor: e-resize;
-	height: 100%;
-	position: absolute;
-
-	.karma-spacing-dot-container {
-	  cursor: e-resize;
-	  left: -1px !important;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  width: 11px;
+	&.karma-top-spacing-height {
+		height: 0
 	}
 
-	.spacing-dot:after {
-	  @include element_direction($top: -8px, $left: 0)
-	}
-  }
+	&.karma-top-spacing {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
 
-  &.karma-right-spacing.ui-resizable.karma-right-spacing {
-
-	@include element_direction($top: 0, $right: 0 !important, $left: initial !important);
-	cursor: e-resize;
-	height: 100%;
-	position: absolute;
-
-	.karma-spacing-dot-container {
-	  cursor: w-resize;
-	  left: calc(100% - 12px) !important;
-	  top: 50%;
-	  transform: translateY(-50%);
+		.spacing-dot:after {
+			@include element_direction($top: 0, $left: -8px)
+		}
 	}
 
-	.spacing-dot:after {
-	  @include element_direction($top: -8px, $right: 0)
-	}
-  }
+	&.karma-left-spacing.ui-resizable.karma-left-spacing {
 
-  &.karma-bottom-spacing {
-	bottom: 0 !important;
-	position: absolute;
-	top: initial !important;
-	left: 0;
-	width: 100%;
+		@include element_direction($top: 0, $left: 0 !important);
+		cursor: e-resize;
+		height: 100%;
+		position: absolute;
 
-	.karma-spacing-dot-container {
-	  bottom: -11px !important;
-	  cursor: s-resize;
-	  top: initial !important;
+		.karma-spacing-dot-container {
+			cursor: e-resize;
+			left: -1px !important;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 11px;
+		}
+
+		.spacing-dot:after {
+			@include element_direction($top: -8px, $left: 0)
+		}
 	}
 
-	.spacing-dot:after {
-	  @include element_direction($bottom: 0, $left: -8px)
+	&.karma-right-spacing.ui-resizable.karma-right-spacing {
+
+		@include element_direction($top: 0, $right: 0 !important, $left: initial !important);
+		cursor: e-resize;
+		height: 100%;
+		position: absolute;
+
+		.karma-spacing-dot-container {
+			cursor: w-resize;
+			left: calc(100% - 12px) !important;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.spacing-dot:after {
+			@include element_direction($top: -8px, $right: 0)
+		}
 	}
-  }
+
+	&.karma-bottom-spacing {
+		bottom: 0 !important;
+		position: absolute;
+		top: initial !important;
+		left: 0;
+		width: 100%;
+
+		.karma-spacing-dot-container {
+			bottom: -11px !important;
+			cursor: s-resize;
+			top: initial !important;
+		}
+
+		.spacing-dot:after {
+			@include element_direction($bottom: 0, $left: -8px)
+		}
+	}
 }
 
 .karma-spacing .resize-handler {
-  @include box(100%, 100%);
-  position: absolute;
+	@include box(100%, 100%);
+	position: absolute;
 }
 
 .tooltip-div {
-  @include box(39px, 16px);
-  align-items: center;
-  background-color: $builder-accent-color-1;
-  border-radius: 100px;
-  color: #fff;
-  display: none;
-  font-family: $builder-normal-font;
-  font-size: 9px;
-  justify-content: center;
-  line-height: 15px;
-  position: fixed;
-  text-align: center;
-  z-index: $level-20;
+	@include box(39px, 16px);
+	align-items: center;
+	background-color: $builder-accent-color-1;
+	border-radius: 100px;
+	color: #fff;
+	display: none;
+	font-family: $builder-normal-font;
+	font-size: 9px;
+	justify-content: center;
+	line-height: 15px;
+	position: fixed;
+	text-align: center;
+	z-index: $level-20;
 
 }
 
 .column-gizmo-group {
-  display: none;
+	display: none;
 }
 
 .karma-column .karma-builder-element:not(.karma-active-element) {
-  .karma-element-content:hover {
-	box-shadow: 0 0 0 1px $builder-accent-color;
-	cursor: pointer;
-	width: -moz-fit-content;
-	width: fit-content;
-	.karma-title-gizmo-template {
-	  display: inline-block;
+	.karma-element-content:hover {
+		box-shadow: 0 0 0 1px $builder-accent-color;
+		cursor: pointer;
+		width: -moz-fit-content;
+		width: fit-content;
+		.karma-title-gizmo-template {
+			display: inline-block;
+		}
 	}
-  }
 }
 
 .karma-title-gizmo-template {
-  background-color: $builder-accent-color;
-  color: #ffffff;
-  cursor: pointer;
-  display: none;
-  font-family: $builder-bold-font;
-  font-size: 10px;
-  height: 16px;
-  left: -1px;
-  padding: 0 7px;
-  position: absolute;
-  top: -16px;
-  * {
-	line-height: 15px;
-  }
+	background-color: $builder-accent-color;
+	color: #ffffff;
+	cursor: pointer;
+	display: none;
+	font-family: $builder-bold-font;
+	font-size: 10px;
+	height: 16px;
+	left: -1px;
+	padding: 0 7px;
+	position: absolute;
+	top: -16px;
+	* {
+		line-height: 15px;
+	}
 }
 
 /* _-_-_- Image Gizmo Styles -_-_-_ */
 .karma-active-element[data-name="karma_image"] {
 
-  .karma-hide-gizmo {
-	display: none;
-  }
-
-  .karma-image-resize {
-	outline: 1px solid $builder-accent-color;
-  }
-  .left-crop {
-	background-color: $builder-accent-color;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 1px;
-	.crop-dot {
-	  @extend .dot-gizmo;
-	  left: -4px;
-	  top: 50%;
-	}
-  }
-
-  .right-crop {
-	background-color: $builder-accent-color;
-	height: 100%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 1px;
-	.crop-dot {
-	  @extend .dot-gizmo;
-	  right: -4px;
-	  top: 50%;
+	.karma-hide-gizmo {
+		display: none;
 	}
 
-  }
-
-  .ui-resizable-w {
-	cursor: w-resize;
-	left: -4px;
-	top: 50%;
-	transform: translateY(-50%);
-  }
-
-  .ui-resizable-e {
-	cursor: e-resize;
-	right: -4px;
-	top: 50%;
-	transform: translateY(-50%);
-  }
-  .bottom-crop {
-	background-color: $builder-accent-color;
-	bottom: 0;
-	height: 1px;
-	position: absolute;
-	width: 100%;
-	.crop-dot {
-	  @extend .dot-gizmo;
-	  bottom: -4px;
-	  left: 50%;
+	.karma-image-resize {
+		outline: 1px solid $builder-accent-color;
 	}
-  }
-  .ui-resizable-s {
-	bottom: -4px;
-	cursor: s-resize;
-	left: 50%;
-	transform: translateX(-50%);
-  }
+	.left-crop {
+		background-color: $builder-accent-color;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 1px;
+		.crop-dot {
+			@extend .dot-gizmo;
+			left: -4px;
+			top: 50%;
+		}
+	}
 
-  .ui-resizable-ne {
-	cursor: nw-resize;
-	left: -3px;
-	top: -3px;
-  }
+	.right-crop {
+		background-color: $builder-accent-color;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 1px;
+		.crop-dot {
+			@extend .dot-gizmo;
+			right: -4px;
+			top: 50%;
+		}
 
-  .ui-resizable-se {
-	bottom: -3px;
-	cursor: ne-resize;
-	left: -3px;
-  }
+	}
 
-  .ui-resizable-nw {
-	cursor: sw-resize;
-	right: -3px;
-	top: -3px;
-  }
+	.ui-resizable-w {
+		cursor: w-resize;
+		left: -4px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 
-  .ui-resizable-sw {
-	bottom: -3px;
-	cursor: nw-resize;
-	right: -3px;
-  }
+	.ui-resizable-e {
+		cursor: e-resize;
+		right: -4px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.bottom-crop {
+		background-color: $builder-accent-color;
+		bottom: 0;
+		height: 1px;
+		position: absolute;
+		width: 100%;
+		.crop-dot {
+			@extend .dot-gizmo;
+			bottom: -4px;
+			left: 50%;
+		}
+	}
+	.ui-resizable-s {
+		bottom: -4px;
+		cursor: s-resize;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 
-  .ui-resizable-handle:not(.ui-resizable-n) {
-	@include box(7px, 7px);
-	background-color: #fff;
-	border: 1px solid $builder-accent-color;
-	box-sizing: border-box;
-	position: absolute;
-	// jquery ui have inline style z-index
-	z-index: $level-20 !important;
-  }
+	.ui-resizable-ne {
+		cursor: nw-resize;
+		left: -3px;
+		top: -3px;
+	}
+
+	.ui-resizable-se {
+		bottom: -3px;
+		cursor: ne-resize;
+		left: -3px;
+	}
+
+	.ui-resizable-nw {
+		cursor: sw-resize;
+		right: -3px;
+		top: -3px;
+	}
+
+	.ui-resizable-sw {
+		bottom: -3px;
+		cursor: nw-resize;
+		right: -3px;
+	}
+
+	.ui-resizable-handle:not(.ui-resizable-n) {
+		@include box(7px, 7px);
+		background-color: #fff;
+		border: 1px solid $builder-accent-color;
+		box-sizing: border-box;
+		position: absolute;
+		// jquery ui have inline style z-index
+		z-index: $level-20 !important;
+	}
 }
 
 /* _-_-_- New Section Styles -_-_-_ */
 .karma-new-section-icon {
-  @include box(32px, 32px);
-  @include flexbox(center, center, center);
-  background-color: $builder-accent-color;
-  border-radius: 50%;
-  bottom: 3px;
-  cursor: pointer;
-  left: 50%;
-  opacity: 0;
-  position: absolute;
-  transform: translateX(-50%);
-  transition: bottom .2s ease-In .4s, opacity .2s;
-  z-index: $level-20;
+	@include box(32px, 32px);
+	@include flexbox(center, center, center);
+	background-color: $builder-accent-color;
+	border-radius: 50%;
+	bottom: 3px;
+	cursor: pointer;
+	left: 50%;
+	opacity: 0;
+	position: absolute;
+	transform: translateX(-50%);
+	transition: bottom .2s ease-In .4s, opacity .2s;
+	z-index: $level-20;
 
-  svg {
-	* {
-	  cursor: pointer;
-	  fill: #fff;
+	svg {
+		* {
+			cursor: pointer;
+			fill: #fff;
+		}
 	}
-  }
 }
 
 .karma-new-section {
-  @include flexbox(center, center, center);
-  background-color: #F4F9FF;
-  height: 0;
-  overflow: hidden;
-  transition: all 0.5s;
+	@include flexbox(center, center, center);
+	background-color: #F4F9FF;
+	height: 0;
+	overflow: hidden;
+	transition: all 0.5s;
 
-  .karma-new-section-layout-items {
-	display: flex;
-	justify-content: space-between;
-	max-width: 1040px;
-	opacity: 0;
-	transform: translateY(50px);
-	transition: all 0.2s;
-	visibility: hidden;
-	width: 100%;
-  }
-  .karma-new-section-layout {
-	cursor: pointer;
-	font-size: 0em;
-	line-height: normal;
-	padding: 11px;
-	position: relative;
-	top: 0;
-	transition-delay: 0s;
-	transition-duration: 0.3s;
-
-	&:hover {
-	  background-color: #fff;
-	  border-radius: 2px;
-	  box-shadow: 0 6px 18px 4px rgba(65, 156, 248, 0.25);
-	  padding: 11px;
-	  top: -12px;
-	  transition-delay: 0s;
-	  transition-duration: 0.3s;
-
-	  svg {
-		* {
-		  transition-duration: 0.3s;
-		  fill: $builder-accent-color-2;
-		}
-	  }
-
+	.karma-new-section-layout-items {
+		display: flex;
+		justify-content: space-between;
+		max-width: 1040px;
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.2s;
+		visibility: hidden;
+		width: 100%;
 	}
-  }
+	.karma-new-section-layout {
+		cursor: pointer;
+		font-size: 0em;
+		line-height: normal;
+		padding: 11px;
+		position: relative;
+		top: 0;
+		transition-delay: 0s;
+		transition-duration: 0.3s;
+
+		&:hover {
+			background-color: #fff;
+			border-radius: 2px;
+			box-shadow: 0 6px 18px 4px rgba(65, 156, 248, 0.25);
+			padding: 11px;
+			top: -12px;
+			transition-delay: 0s;
+			transition-duration: 0.3s;
+
+			svg {
+				* {
+					transition-duration: 0.3s;
+					fill: $builder-accent-color-2;
+				}
+			}
+
+		}
+	}
 }
 
 .open-new-section {
-  height: 245px;
-  transition-duration: 0.5s;
+	height: 245px;
+	transition-duration: 0.5s;
 
-  .karma-new-section-layout-items {
-	opacity: 1;
-	transform: translateY(0px);
-	transition-delay: 0.2s;
-	transition-duration: .3s;
-	visibility: visible;
-  }
+	.karma-new-section-layout-items {
+		opacity: 1;
+		transform: translateY(0px);
+		transition-delay: 0.2s;
+		transition-duration: .3s;
+		visibility: visible;
+	}
 }
 
 .karma-new-section-icon {
-  box-shadow: 0 4px 15px 3px rgba(65, 156, 248, 0.19);
-  svg {
-	transform: rotate(0deg);
-	transition: 0.3s;
-  }
+	box-shadow: 0 4px 15px 3px rgba(65, 156, 248, 0.19);
+	svg {
+		transform: rotate(0deg);
+		transition: 0.3s;
+	}
 }
 
 .karma-new-section-icon.section-button-rotate {
-  bottom: -16px;
-  opacity: 1 !important;
-  transition: 0.3s;
-  svg {
-	transform: rotate(225deg);
-  }
+	bottom: -16px;
+	opacity: 1 !important;
+	transition: 0.3s;
+	svg {
+		transform: rotate(225deg);
+	}
 }
 
-body:not(.karma-builder-environment){
-	.karma-element-content{
-		&:hover{
+body:not(.karma-builder-environment) {
+	.karma-element-content {
+		&:hover {
 			box-shadow: none !important;
 		}
 	}
 }
 
 .karma-builder-environment {
-  .karma-builder-element {
-	position: relative;
-
-	.karma-element-content {
-	  position: relative;
-	  width: fit-content;
-	  width: -moz-fit-content;
-	  .karma-spacing-dot-container {
-		display: none;
-	  }
-	}
-
-	&.karma-active-element {
-	  .karma-spacing {
-
-		&.karma-top-spacing {
-		  cursor: n-resize;
-		  visibility: visible;
-		  z-index: $level-0;
-		}
-	  }
-
-	  .karma-gizmo-template {
-		display: flex;
-	  }
-	  .karma-spacing-dot-container {
-		display: inline-block;
-	  }
-	}
-
-	&[data-name *= "karma_image"] {
-	  max-width: 100%;
-
-	}
-
-	&.karma-active-element .karma-gizmo-template {
-	  display: flex;
-	}
-
-	.karma-gizmo-template {
-	  &.karma-outer-gizmo-template {
-		&.image-gizmo-group {
-		  &.karma-gizmo-container {
-			left: 0;
-			right: auto;
-		  }
-		}
-	  }
-	}
-
-	.karma-text {
-	  *:focus {
-		outline: $builder-accent-color solid 1px;
-	  }
-	}
-
-	.karma-inner-gizmo-template {
-	  @include element_direction($top: 17px, $right: 17px);
-	}
-
-	.karma-outer-gizmo-template {
-	  @include element_direction($top: -44px, $right: 0);
-	  &.text-gizmo-group {
-		left: 0;
-		right: auto;
-	  }
-	}
-
-	.karma-gizmo-template {
-	  @include box(auto, 35px);
-	  @include flexbox(center, center, flex-start);
-	  @extend .karma-builder-shadow-box-2;
-	  background-color: #fff;
-	  border-radius: 2px;
-	  direction: rtl;
-	  display: none;
-	  padding: 0 7px;
-	  position: absolute;
-	  z-index: $level-20;
-
-	  &.text-gizmo-group > div {
-
-		cursor: pointer;
+	.karma-builder-element {
 		position: relative;
-		white-space: nowrap;
 
-	  }
-
-	  .karma-drop-down-icon {
-		background-color: inherit;
-		border: none;
-		box-shadow: none;
-		margin: 0;
-		min-width: initial;
-		outline: none;
-		padding: 11px 7px;
-		transition: 0.1s;
-		&:hover {
-		  background-color: transparent;
-		  svg {
-			* {
-			  transition: 0.1s;
-			  fill: $builder-main-color-1;
+		.karma-element-content {
+			position: relative;
+			width: fit-content;
+			width: -moz-fit-content;
+			.karma-spacing-dot-container {
+				display: none;
 			}
-		  }
-		}
-		div {
-		  @include box(18px, 13px);
-		  background-position: center;
-		  background-repeat: no-repeat;
-		  background-size: contain;
-		}
-	  }
-	  .karma-drop-down-box {
-		@include element_direction($top: 45px, $left: -5px);
-		@extend .karma-builder-shadow-box-2;
-		background-color: #fff;
-		border-radius: 4px;
-		cursor: auto;
-		display: none;
-		flex-direction: column;
-		padding: 0 6px 6px 6px;
-		position: absolute;
-
-		&:after {
-		  @include element_direction($top: -6px, $left: 28%);
-		  @include box(0, 0);
-		  border-bottom: 8px solid #fff;
-		  border-left: 7px solid transparent;
-		  border-right: 7px solid transparent;
-		  content: '';
-		  position: absolute;
 		}
 
-		button {
-		  @include box(30px, auto);
-		  background-color: inherit;
-		  border: none;
-		  border-radius: 3px;
-		  height: auto;
-		  line-height: 0;
-		  margin-bottom: 0;
-		  margin-top: 6px;
-		  min-width: inherit;
-		  outline: none;
-		  padding: 8px;
-		  &:hover {
-			background-color: $builder-accent-color-3;
-		  }
+		&.karma-active-element {
+			.karma-spacing {
 
-		  &.karma-drop-down-active-item {
-			background-color: $builder-accent-color-3;
-		  }
-
-		  div {
-			@include box(18px, 13px);
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: contain;
-		  }
-
-		}
-		&.open-drop-down-gizmo {
-		  display: flex;
-		}
-
-	  }
-
-	  .karma-typography-drop-down {
-		flex-direction: column;
-		left: -12px;
-		padding: 0;
-
-		button {
-		  margin-left: 6px;
-		  padding: 11px 7px;
-		  width: 35px;
-		}
-
-		.karma-typography-drop-down-left {
-		  padding-bottom: 6px;
-		}
-		.karma-typography-drop-down-right {
-		  padding-right: 6px;
-		}
-
-		.karma-typography-drop-down-icons {
-		  flex-direction: row;
-		}
-
-		.karma-typography-link {
-
-		  border-top: 1px solid $builder-main-color-4;
-		  font-family: $builder-normal-font;
-
-		  a {
-			@extend .karma-builder-title-4;
-			border-bottom: none;
-			box-shadow: none;
-			color: $builder-accent-color;
-			font-family: $builder-medium-font;
-			padding: 5px 0;
-			Cursor: no-drop;
-		  }
-
-		}
-
-		div {
-		  display: flex;
-		  flex-direction: column;
-		}
-	  }
-
-	  .karma-builder-gizmo-icon {
-		@include flexbox($align-item: center);
-		cursor: pointer;
-		height: 100%;
-		padding: 11px 7px;
-		transition-duration: 0.1s;
-		div {
-		  display: flex;
-		}
-		&:hover {
-		  svg {
-			* {
-			  transition-duration: 0.1s;
-			  fill: $builder-accent-color;
+				&.karma-top-spacing {
+					cursor: n-resize;
+					visibility: visible;
+					z-index: $level-0;
+				}
 			}
-		  }
-		}
-	  }
 
-	  .karma-builder-gizmo-icon[data-form="animation-panel"] {
-		Cursor: no-drop
-	  }
-
-	  .karma-builder-gizmo-text {
-		@include flexbox(center, center, center);
-		@extend .karma-builder-title-4;
-		border-right: 1px solid $builder-main-color-3;
-		color: $builder-main-color;
-		cursor: pointer;
-		font-family: $builder-medium-font;
-		height: 18px;
-		margin-right: 7px;
-		padding: 0 12px 0 5px;
-		transition: all 0.3s ease;
-		white-space: nowrap;
-		/* Non-prefixed version, currently supported by Chrome and Opera */
-		-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none; /* Safari */
-		-khtml-user-select: none; /* Konqueror HTML */
-		-moz-user-select: none; /* Firefox */
-		-ms-user-select: none; /* Internet Explorer/Edge */
-		user-select: none;
-
-	  }
-
-	  .karma-builder-gizmo-text:hover {
-		color: $builder-accent-color;
-		transition: all 0.3s ease;
-	  }
-	  .karma-builder-gizmo-alignmentGizmo {
-		position: relative;
-
-	  }
-
-	  div[ data-form = "more-panel" ]:not( .karma-more-setting ):not( .karma-more-submenu ) {
-
-		@include box(0);
-		overflow: hidden;
-		padding: 0;
-		svg {
-		  display: none;
+			.karma-gizmo-template {
+				display: flex;
+			}
+			.karma-spacing-dot-container {
+				display: inline-block;
+			}
 		}
 
-	  }
-
-	}
-
-	.karma-spacing-dot-container {
-
-	  @include box(22px, 23px);
-	  cursor: n-resize;
-	  display: none;
-	  left: 48%;
-	  position: absolute;
-	  top: -12px;
-
-	  &:hover .spacing-dot-hover {
-		@include box(22px, 22px);
-		transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
-	  }
-
-	  .spacing-dot-hover {
-		@include box(0, 0);
-		background-color: rgba($builder-accent-color, .3);
-		border-radius: 100%;
-		transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
-	  }
-
-	  .karma-row {
-		box-shadow: inset 0 0 0 1px rgba($builder-main-color-4, 0.7);
-	  }
-
-	  .spacing-dot {
-		@extend .dot-gizmo;
-		@include center('both');
-	  }
-
-	  .spacing-top-hover {
-		@include element_direction($top: 0, $left: 0);
-		@include box(22px, 14px);
-		display: block;
-		margin-top: 10px;
-		overflow: hidden;
-		position: relative;
-
-		.spacing-dot-hover {
-		  @include center('both');
-		  top: 3px;
-		}
-	  }
-
-	  .spacing-bottom-hover {
-		@include element_direction($top: 0, $left: 0);
-		@include box(22px, 11px);
-		display: block;
-		margin-bottom: 10px;
-		overflow: hidden;
-		position: relative;
-
-		.spacing-dot-hover {
-		  @include center('both');
-		  top: 12px;
-		}
-	  }
-
-	  .spacing-left-hover {
-		@include element_direction($top: 0, $left: 0);
-		@include box(14px, 24px);
-		display: block;
-		overflow: hidden;
-		position: relative;
-
-		.spacing-dot-hover {
-		  @include center('vertical');
-		  left: -10px;
-		}
-	  }
-
-	  .resize-handler:before {
-		@include center('horizontal');
-		@include box(1px, 100%);
-		background-color: rgba($builder-main-color-4, 0.8);
-		content: " ";
-		cursor: col-resize;
-		top: 0;
-		transition: background-color .3s, width .2s;
-	  }
-
-	  .spacing-right-hover {
-		@include box(14px, 24px);
-		@include element_direction($top: 0, $left: -3px);
-		display: block;
-		margin-right: 0;
-		overflow: hidden;
-		position: relative;
-
-		.spacing-dot-hover {
-
-		  @include center('vertical');
-		  right: -10px;
+		&[data-name *= "karma_image"] {
+			max-width: 100%;
 
 		}
-	  }
 
-	}
-	.karma-element-content {
-	  .karma-spacing-dot-container {
-		.spacing-dot-hover {
-		  height: 22px;
-		  transform: scale(0);
-		  transition: width 0ms, height 0ms, transform 200ms;
-		  width: 22px;
+		&.karma-active-element .karma-gizmo-template {
+			display: flex;
 		}
 
-		&:hover {
-		  .spacing-dot-hover {
-			height: 22px;
-			transform: scale(1);
-			transform-origin: center center;
-			transition: width 0ms, height 0ms, transform 200ms;
-			width: 22px;
-
-		  }
-
+		.karma-gizmo-template {
+			&.karma-outer-gizmo-template {
+				&.image-gizmo-group {
+					&.karma-gizmo-container {
+						left: 0;
+						right: auto;
+					}
+				}
+			}
 		}
-		.spacing-dot {
-		  @include box(6px, 6px);
-		  background-color: $builder-accent-color;
+
+		.karma-text {
+			*:focus {
+				outline: $builder-accent-color solid 1px;
+			}
 		}
-	  }
-	}
 
-	.row-bottom-spacing-dot-container {
-	  align-items: center;
-	  bottom: -9px;
-	  cursor: n-resize;
-	  display: none;
-	  height: 18px;
-	  justify-content: center;
-	  left: 48%;
-	  position: absolute;
-	  width: 18px;
+		.karma-inner-gizmo-template {
+			@include element_direction($top: 17px, $right: 17px);
+		}
 
-	  &:hover .spacing-bottom-dot-hover {
-		display: block;
-	  }
+		.karma-outer-gizmo-template {
+			@include element_direction($top: -44px, $right: 0);
+			&.text-gizmo-group {
+				left: 0;
+				right: auto;
+			}
+		}
 
-	  .spacing-bottom-dot-hover {
-		align-items: center;
-		background-color: $builder-accent-color-3;
-		border-radius: 100%;
-		display: none;
-		height: 18px;
-		justify-content: center;
-		width: 18px;
-
-	  }
-	  .spacing-bottom-dot {
-		background-color: #fff;
-		border: 1px solid $builder-accent-color;
-		border-radius: 100%;
-		box-sizing: border-box;
-		height: 8px;
-		position: absolute;
-		width: 8px;
-
-	  }
-	}
-
-	.section-gizmo-group {
-	  display: none;
-	}
-
-	&.karma-active-section {
-
-	  .karma-row {
-		box-shadow: inset 0 0 0 1px $builder-main-color-4;
-
-		> .karma-builder-element:last-child {
-		  .resize-handler {
+		.karma-gizmo-template {
+			@include box(auto, 35px);
+			@include flexbox(center, center, flex-start);
+			@extend .karma-builder-shadow-box-2;
+			background-color: #fff;
+			border-radius: 2px;
+			direction: rtl;
 			display: none;
-		  }
+			padding: 0 7px;
+			position: absolute;
+			z-index: $level-20;
 
-		  .karma-right-spacing .karma-spacing-dot-container {
-			left: calc(100% - 11px) !important;
+			&.text-gizmo-group > div {
+
+				cursor: pointer;
+				position: relative;
+				white-space: nowrap;
+
+			}
+
+			.karma-drop-down-icon {
+				background-color: inherit;
+				border: none;
+				box-shadow: none;
+				margin: 0;
+				min-width: initial;
+				outline: none;
+				padding: 11px 7px;
+				transition: 0.1s;
+				&:hover {
+					background-color: transparent;
+					svg {
+						* {
+							transition: 0.1s;
+							fill: $builder-main-color-1;
+						}
+					}
+				}
+				div {
+					@include box(18px, 13px);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+			}
+			.karma-drop-down-box {
+				@include element_direction($top: 45px, $left: -5px);
+				@extend .karma-builder-shadow-box-2;
+				background-color: #fff;
+				border-radius: 4px;
+				cursor: auto;
+				display: none;
+				flex-direction: column;
+				padding: 0 6px 6px 6px;
+				position: absolute;
+
+				&:after {
+					@include element_direction($top: -6px, $left: 28%);
+					@include box(0, 0);
+					border-bottom: 8px solid #fff;
+					border-left: 7px solid transparent;
+					border-right: 7px solid transparent;
+					content: '';
+					position: absolute;
+				}
+
+				button {
+					@include box(30px, auto);
+					background-color: inherit;
+					border: none;
+					border-radius: 3px;
+					height: auto;
+					line-height: 0;
+					margin-bottom: 0;
+					margin-top: 6px;
+					min-width: inherit;
+					outline: none;
+					padding: 8px;
+					&:hover {
+						background-color: $builder-accent-color-3;
+					}
+
+					&.karma-drop-down-active-item {
+						background-color: $builder-accent-color-3;
+					}
+
+					div {
+						@include box(18px, 13px);
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: contain;
+					}
+
+				}
+				&.open-drop-down-gizmo {
+					display: flex;
+				}
+
+			}
+
+			.karma-typography-drop-down {
+				flex-direction: column;
+				left: -12px;
+				padding: 0;
+
+				button {
+					margin-left: 6px;
+					padding: 11px 7px;
+					width: 35px;
+				}
+
+				.karma-typography-drop-down-left {
+					padding-bottom: 6px;
+				}
+				.karma-typography-drop-down-right {
+					padding-right: 6px;
+				}
+
+				.karma-typography-drop-down-icons {
+					flex-direction: row;
+				}
+
+				.karma-typography-link {
+
+					border-top: 1px solid $builder-main-color-4;
+					font-family: $builder-normal-font;
+
+					a {
+						@extend .karma-builder-title-4;
+						border-bottom: none;
+						box-shadow: none;
+						color: $builder-accent-color;
+						font-family: $builder-medium-font;
+						padding: 5px 0;
+						Cursor: no-drop;
+					}
+
+				}
+
+				div {
+					display: flex;
+					flex-direction: column;
+				}
+			}
+
+			.karma-builder-gizmo-icon {
+				@include flexbox($align-item: center);
+				cursor: pointer;
+				height: 100%;
+				padding: 11px 7px;
+				transition-duration: 0.1s;
+				div {
+					display: flex;
+				}
+				&:hover {
+					svg {
+						* {
+							transition-duration: 0.1s;
+							fill: $builder-accent-color;
+						}
+					}
+				}
+			}
+
+			.karma-builder-gizmo-icon[data-form="animation-panel"] {
+				Cursor: no-drop
+			}
+
+			.karma-builder-gizmo-text {
+				@include flexbox(center, center, center);
+				@extend .karma-builder-title-4;
+				border-right: 1px solid $builder-main-color-3;
+				color: $builder-main-color;
+				cursor: pointer;
+				font-family: $builder-medium-font;
+				height: 18px;
+				margin-right: 7px;
+				padding: 0 12px 0 5px;
+				transition: all 0.3s ease;
+				white-space: nowrap;
+				/* Non-prefixed version, currently supported by Chrome and Opera */
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-khtml-user-select: none; /* Konqueror HTML */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none;
+
+			}
+
+			.karma-builder-gizmo-text:hover {
+				color: $builder-accent-color;
+				transition: all 0.3s ease;
+			}
+			.karma-builder-gizmo-alignmentGizmo {
+				position: relative;
+
+			}
+
+			div[ data-form = "more-panel" ]:not( .karma-more-setting ):not( .karma-more-submenu ) {
+
+				@include box(0);
+				overflow: hidden;
+				padding: 0;
+				svg {
+					display: none;
+				}
+
+			}
+
+		}
+
+		.karma-spacing-dot-container {
+
+			@include box(22px, 23px);
+			cursor: n-resize;
+			display: none;
+			left: 48%;
+			position: absolute;
+			top: -12px;
+
+			&:hover .spacing-dot-hover {
+				@include box(22px, 22px);
+				transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+
+			.spacing-dot-hover {
+				@include box(0, 0);
+				background-color: rgba($builder-accent-color, .3);
+				border-radius: 100%;
+				transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+
+			.karma-row {
+				box-shadow: inset 0 0 0 1px rgba($builder-main-color-4, 0.7);
+			}
+
 			.spacing-dot {
-			  border-radius: 100%;
-			  left: 13px;
+				@extend .dot-gizmo;
+				@include center('both');
 			}
-		  }
-		}
 
-		> .karma-builder-element:nth-of-type( 1 ) {
-		  .karma-left-spacing .karma-spacing-dot-container {
-			left: 1px !important;
-			.spacing-dot {
-			  border-radius: 100%;
-			  left: 1px;
+			.spacing-top-hover {
+				@include element_direction($top: 0, $left: 0);
+				@include box(22px, 14px);
+				display: block;
+				margin-top: 10px;
+				overflow: hidden;
+				position: relative;
+
+				.spacing-dot-hover {
+					@include center('both');
+					top: 3px;
+				}
 			}
-		  }
-		}
 
-		.resize-handler {
-		  @include box(12px, 100%);
-		  cursor: col-resize;
-		  position: absolute;
-		  right: -5px;
-		  top: 0;
-		  z-index: $level-15;
-		}
+			.spacing-bottom-hover {
+				@include element_direction($top: 0, $left: 0);
+				@include box(22px, 11px);
+				display: block;
+				margin-bottom: 10px;
+				overflow: hidden;
+				position: relative;
 
-		.resize-handler:before {
-		  @include center('horizontal');
-		  @include box(1px, 100%);
-		  background-color: $builder-main-color-4;
-		  content: " ";
-		  cursor: col-resize;
-		  top: 0;
-		  transition: background-color .3s, width .2s;
-		}
-
-		.resize-handler:hover:before {
-		  background-color: $builder-accent-color-3;
-		  width: 4px;
-		}
-
-		.resize-dragging {
-
-		  .resize-handler:before {
-			background-color: $builder-accent-color-3;
-			width: 4px;
-		  }
-
-		}
-	  }
-
-	  &.karma-resizable-active {
-		.karma-top-spacing {
-		  .spacing-dot {
-			background-color: $builder-accent-color;
-		  }
-		}
-	  }
-
-	  .section-both-spacing {
-
-		.karma-top-spacing {
-		  cursor: n-resize;
-		}
-		.karma-bottom-spacing {
-		  cursor: n-resize;
-		  &.ui-resizable-resizing {
-			.spacing-dot {
-			  background-color: $builder-accent-color;
+				.spacing-dot-hover {
+					@include center('both');
+					top: 12px;
+				}
 			}
-		  }
-		}
-	  }
 
-	}
+			.spacing-left-hover {
+				@include element_direction($top: 0, $left: 0);
+				@include box(14px, 24px);
+				display: block;
+				overflow: hidden;
+				position: relative;
 
-	&.karma-active-column {
-	  .column-gizmo-group {
-		background-color: $builder-main-color-2;
-		cursor: pointer;
-		display: block;
-		line-height: 16px;
-		padding: 0 7px 0 5px;
-		position: absolute;
-		right: 0;
-		top: -16px;
-		z-index: $level-10;
-
-		.column-setting {
-		  align-items: center;
-		  display: flex;
-		}
-
-		.karama-gizmo-icon {
-		  @include flexbox(center, center, center);
-		  svg {
-			@include box(10.31px, 10.31px);
-			* {
-			  fill: #fff;
+				.spacing-dot-hover {
+					@include center('vertical');
+					left: -10px;
+				}
 			}
-		  }
+
+			.resize-handler:before {
+				@include center('horizontal');
+				@include box(1px, 100%);
+				background-color: rgba($builder-main-color-4, 0.8);
+				content: " ";
+				cursor: col-resize;
+				top: 0;
+				transition: background-color .3s, width .2s;
+			}
+
+			.spacing-right-hover {
+				@include box(14px, 24px);
+				@include element_direction($top: 0, $left: -3px);
+				display: block;
+				margin-right: 0;
+				overflow: hidden;
+				position: relative;
+
+				.spacing-dot-hover {
+
+					@include center('vertical');
+					right: -10px;
+
+				}
+			}
+
+		}
+		.karma-element-content {
+			.karma-spacing-dot-container {
+				.spacing-dot-hover {
+					height: 22px;
+					transform: scale(0);
+					transition: width 0ms, height 0ms, transform 200ms;
+					width: 22px;
+				}
+
+				&:hover {
+					.spacing-dot-hover {
+						height: 22px;
+						transform: scale(1);
+						transform-origin: center center;
+						transition: width 0ms, height 0ms, transform 200ms;
+						width: 22px;
+
+					}
+
+				}
+				.spacing-dot {
+					@include box(6px, 6px);
+					background-color: $builder-accent-color;
+				}
+			}
 		}
 
-		.karma-gizmo-title {
-		  color: #fff;
-		  font-family: $builder-normal-font;
-		  font-size: 10px;
-		  padding-left: 2.69px;
-		  vertical-align: top;
+		.row-bottom-spacing-dot-container {
+			align-items: center;
+			bottom: -9px;
+			cursor: n-resize;
+			display: none;
+			height: 18px;
+			justify-content: center;
+			left: 48%;
+			position: absolute;
+			width: 18px;
+
+			&:hover .spacing-bottom-dot-hover {
+				display: block;
+			}
+
+			.spacing-bottom-dot-hover {
+				align-items: center;
+				background-color: $builder-accent-color-3;
+				border-radius: 100%;
+				display: none;
+				height: 18px;
+				justify-content: center;
+				width: 18px;
+
+			}
+			.spacing-bottom-dot {
+				background-color: #fff;
+				border: 1px solid $builder-accent-color;
+				border-radius: 100%;
+				box-sizing: border-box;
+				height: 8px;
+				position: absolute;
+				width: 8px;
+
+			}
 		}
-	  }
 
-	}
-
-	.karma-right-spacing.ui-resizable-resizing {
-	  div.spacing-dot {
-		background-color: $builder-accent-color;
-	  }
-	  &:after {
-		background-color: rgba($builder-accent-color, 0.3);
-		content: "";
-		height: 100%;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: calc(100% - 2px);
-	  }
-	}
-
-	.karma-left-spacing.ui-resizable-resizing {
-	  div.spacing-dot {
-		background-color: $builder-accent-color;
-	  }
-	  &:after {
-		background-color: rgba($builder-accent-color, 0.3);
-		content: "";
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: calc(100% - 2px);
-	  }
-	}
-
-	.karma-right-spacing {
-	  .karma-spacing-dot-container {
-		width: 11px;
-		z-index: $level-15;
-		.spacing-dot {
-		  background-color: #fff;
-		  border: 1px solid $builder-accent-color;
-		  border-bottom-left-radius: 90px;
-		  border-top-left-radius: 90px;
-		  box-sizing: border-box;
-		  height: 8px;
-		  left: 14px;
-		  position: absolute;
-		  right: 11px;
-		  width: 8px;
-		  z-index: 90;
+		.section-gizmo-group {
+			display: none;
 		}
-	  }
-	}
 
-	.karma-left-spacing {
-	  .karma-spacing-dot-container {
-		width: 11px;
-		z-index: $level-15;
-		.spacing-dot {
-		  background-color: #fff;
-		  border: 1px solid $builder-accent-color;
-		  border-bottom-right-radius: 90px;
-		  border-top-right-radius: 90px;
-		  box-sizing: border-box;
-		  height: 8px;
-		  left: 0;
-		  position: absolute;
-		  right: 11px;
-		  width: 8px;
-		  z-index: 90;
+		&.karma-active-section {
+
+			.karma-row {
+				box-shadow: inset 0 0 0 1px $builder-main-color-4;
+
+				> .karma-builder-element:last-child {
+					.resize-handler {
+						display: none;
+					}
+
+					.karma-right-spacing .karma-spacing-dot-container {
+						left: calc(100% - 11px) !important;
+						.spacing-dot {
+							border-radius: 100%;
+							left: 13px;
+						}
+					}
+				}
+
+				> .karma-builder-element:nth-of-type( 1 ) {
+					.karma-left-spacing .karma-spacing-dot-container {
+						left: 1px !important;
+						.spacing-dot {
+							border-radius: 100%;
+							left: 1px;
+						}
+					}
+				}
+
+				.resize-handler {
+					@include box(12px, 100%);
+					cursor: col-resize;
+					position: absolute;
+					right: -5px;
+					top: 0;
+					z-index: $level-15;
+				}
+
+				.resize-handler:before {
+					@include center('horizontal');
+					@include box(1px, 100%);
+					background-color: $builder-main-color-4;
+					content: " ";
+					cursor: col-resize;
+					top: 0;
+					transition: background-color .3s, width .2s;
+				}
+
+				.resize-handler:hover:before {
+					background-color: $builder-accent-color-3;
+					width: 4px;
+				}
+
+				.resize-dragging {
+
+					.resize-handler:before {
+						background-color: $builder-accent-color-3;
+						width: 4px;
+					}
+
+				}
+			}
+
+			&.karma-resizable-active {
+				.karma-top-spacing {
+					.spacing-dot {
+						background-color: $builder-accent-color;
+					}
+				}
+			}
+
+			.section-both-spacing {
+
+				.karma-top-spacing {
+					cursor: n-resize;
+				}
+				.karma-bottom-spacing {
+					cursor: n-resize;
+					&.ui-resizable-resizing {
+						.spacing-dot {
+							background-color: $builder-accent-color;
+						}
+					}
+				}
+			}
+
 		}
-	  }
-	}
 
-	.karma-bottom-spacing .karma-spacing-dot-container,
-	.karma-top-spacing .karma-spacing-dot-container {
-	  left: 50%;
-	  transform: translateX(-50%);
-	  z-index: $level-5;
-	}
+		&.karma-active-column {
+			.column-gizmo-group {
+				background-color: $builder-main-color-2;
+				cursor: pointer;
+				display: block;
+				line-height: 16px;
+				padding: 0 7px 0 5px;
+				position: absolute;
+				right: 0;
+				top: -16px;
+				z-index: $level-10;
 
-  }
+				.column-setting {
+					align-items: center;
+					display: flex;
+				}
+
+				.karama-gizmo-icon {
+					@include flexbox(center, center, center);
+					svg {
+						@include box(10.31px, 10.31px);
+						* {
+							fill: #fff;
+						}
+					}
+				}
+
+				.karma-gizmo-title {
+					color: #fff;
+					font-family: $builder-normal-font;
+					font-size: 10px;
+					padding-left: 2.69px;
+					vertical-align: top;
+				}
+			}
+
+		}
+
+		.karma-right-spacing.ui-resizable-resizing {
+			div.spacing-dot {
+				background-color: $builder-accent-color;
+			}
+			&:after {
+				background-color: rgba($builder-accent-color, 0.3);
+				box-shadow: inset 0 0 0 1px $builder-accent-color-3;
+				content: "";
+				height: 100%;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: calc(100% - 2px);
+			}
+		}
+
+		.karma-left-spacing.ui-resizable-resizing {
+			div.spacing-dot {
+				background-color: $builder-accent-color;
+			}
+			&:after {
+				background-color: rgba($builder-accent-color, 0.3);
+				box-shadow: inset 0 0 0 1px $builder-accent-color-3;
+				content: "";
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: calc(100% - 2px);
+			}
+		}
+		.karma-right-spacing {
+			.karma-spacing-dot-container {
+				width: 11px;
+				z-index: $level-15;
+				.spacing-dot {
+					background-color: #fff;
+					border: 1px solid $builder-accent-color;
+					border-bottom-left-radius: 90px;
+					border-top-left-radius: 90px;
+					box-sizing: border-box;
+					height: 8px;
+					left: 14px;
+					position: absolute;
+					right: 11px;
+					width: 8px;
+					z-index: 90;
+				}
+			}
+		}
+		.karma-left-spacing {
+			.karma-spacing-dot-container {
+				width: 11px;
+				z-index: $level-15;
+				.spacing-dot {
+					background-color: #fff;
+					border: 1px solid $builder-accent-color;
+					border-bottom-right-radius: 90px;
+					border-top-right-radius: 90px;
+					box-sizing: border-box;
+					height: 8px;
+					left: 0;
+					position: absolute;
+					right: 11px;
+					width: 8px;
+					z-index: 90;
+				}
+			}
+		}
+
+		.karma-bottom-spacing .karma-spacing-dot-container,
+		.karma-top-spacing .karma-spacing-dot-container {
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: $level-5;
+		}
+
+	}
 }
 
 div.karma-element-content {
 
-  .karma-top-spacing {
-	bottom: 100% !important;
-	//important for image shortcode
-	position: absolute;
-	top: auto;
-	visibility: hidden;
-	width: 100%;
-	z-index: -1;
-
-	&.ui-resizable-resizing {
-	  background-color: rgba($builder-accent-color, 0.3);
-	  border-bottom: 1px solid $builder-accent-color;
-	  cursor: ew-resize;
-	}
-
-	.karma-spacing-dot-container {
+	.karma-top-spacing {
+		bottom: 100% !important;
+		//important for image shortcode
 		position: absolute;
-		top: calc(100% - 12px);
+		top: auto;
+		visibility: hidden;
+		width: 100%;
+		z-index: -1;
+
+		&.ui-resizable-resizing {
+			background-color: rgba($builder-accent-color, 0.3);
+			border-bottom: 1px solid $builder-accent-color;
+			cursor: ew-resize;
+		}
+
+		.karma-spacing-dot-container {
+			position: absolute;
+			top: calc(100% - 12px);
+		}
 	}
-  }
 }

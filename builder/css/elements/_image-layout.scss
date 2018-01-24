@@ -71,8 +71,6 @@
 
 .karma-builder-element[data-name="karma_image"] {
 	&:not(.karma-active-element) {
-		.karma-image-link {
 			overflow: hidden;
-		}
 	}
 }

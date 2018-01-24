@@ -2633,6 +2633,9 @@ html {
     -ms-flex-item-align: stretch !important;
     align-self: stretch !important; } }
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
+.karma-editable-content {
+  display: inline-block; }
+
 .karma-element-placeholder {
   width: 100%;
   height: 0;
@@ -2910,7 +2913,7 @@ html {
   height: 100%;
   width: 100%; }
 
-.karma-builder-element[data-name="karma_image"]:not(.karma-active-element) .karma-image-link {
+.karma-builder-element[data-name="karma_image"]:not(.karma-active-element) {
   overflow: hidden; }
 
 /* _-_-_- layout/HEADER -_-_-_ */
@@ -4047,6 +4050,7 @@ body:not(.karma-builder-environment) .karma-element-content:hover {
     background-color: #419CF8; }
   .karma-builder-environment .karma-builder-element .karma-right-spacing.ui-resizable-resizing:after {
     background-color: rgba(65, 156, 248, 0.3);
+    box-shadow: inset 0 0 0 1px #D9EBFE;
     content: "";
     height: 100%;
     position: absolute;
@@ -4057,6 +4061,7 @@ body:not(.karma-builder-environment) .karma-element-content:hover {
     background-color: #419CF8; }
   .karma-builder-environment .karma-builder-element .karma-left-spacing.ui-resizable-resizing:after {
     background-color: rgba(65, 156, 248, 0.3);
+    box-shadow: inset 0 0 0 1px #D9EBFE;
     content: "";
     height: 100%;
     left: 0;
@@ -5278,8 +5283,6 @@ div.karma-element-content .karma-top-spacing {
     z-index: 0; }
     #karma-add-element input.karma-builder-search-text.open-search-panel:focus {
       background-color: #F7F8F9; }
-  #karma-add-element .karma-editable-content {
-    display: inline-block; }
   #karma-add-element .element-panel-section-container.element-panel-image {
     margin: 0 12px;
     padding: 16px 0 0; }
