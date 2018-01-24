@@ -351,13 +351,15 @@ img {
 	transform: rotate(225deg);
   }
 }
-body #karma-builder-layout :not(.karma-builder-environment){
+
+body:not(.karma-builder-environment){
 	.karma-element-content{
 		&:hover{
-			box-shadow: none;
+			box-shadow: none !important;
 		}
 	}
 }
+
 .karma-builder-environment {
   .karma-builder-element {
 	position: relative;

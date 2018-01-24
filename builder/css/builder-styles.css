@@ -3598,8 +3598,8 @@ img {
   .karma-new-section-icon.section-button-rotate svg {
     transform: rotate(225deg); }
 
-body #karma-builder-layout :not(.karma-builder-environment) .karma-element-content:hover {
-  box-shadow: none; }
+body:not(.karma-builder-environment) .karma-element-content:hover {
+  box-shadow: none !important; }
 
 .karma-builder-environment .karma-builder-element {
   position: relative; }
