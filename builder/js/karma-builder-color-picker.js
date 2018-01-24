@@ -403,20 +403,21 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 	$( document ).off( "click.hideColorPickerContainer" ).on( "click.hideColorPickerContainer", function () {
 
 		$( ".karma-color-picker-container" ).removeClass( 'karma-color-picker-opened' );
-		var $spectrum =$( "#" + that.id );
+		var $spectrum = $( "#" + that.id );
 		$spectrum.spectrum( "show" );
 		$spectrum.spectrum( "hide" );
 
 	} );
 
-	$( ".karma-color-picker-container" ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function () {
+	$( ".karma-color-picker-container" ).off( "click.hideColorPicker" ).on( "click.hideColorPicker", function ( e ) {
 
+		e.stopPropagation();
 		$( '.temp-pallet' ).remove();
 		var $spectrum =$( "#" + that.id );
 		$spectrum.spectrum( "show" );
 		$spectrum.spectrum( 'hide' );
 
-	} )
+	} );
 };
 
 /**

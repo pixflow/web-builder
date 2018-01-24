@@ -85,6 +85,8 @@
 		stopFromCallingParent : function ( e ) {
 
 			e.stopPropagation();
+			$( document ).trigger( "click.hideColorPickerContainer" );
+
 
 		},
 
