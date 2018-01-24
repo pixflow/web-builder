@@ -2912,7 +2912,7 @@ html {
   height: 100%;
   width: 100%; }
 
-.karma-builder-element[data-name="karma_image"]:not(.karma-active-element) {
+.karma-resizing-padding .karma-builder-element[data-name="karma_image"] {
   overflow: hidden; }
 
 /* _-_-_- layout/HEADER -_-_-_ */
@@ -3419,12 +3419,12 @@ img {
 .column-gizmo-group {
   display: none; }
 
-.karma-column .karma-builder-element:not(.karma-active-element) .karma-element-content:hover {
+.karma-builder-element[data-name="karma_column"]:not(.karma-resizing-padding) .karma-builder-element:not(.karma-active-element) .karma-element-content:hover {
   box-shadow: 0 0 0 1px #419CF8;
   cursor: pointer;
   width: -moz-fit-content;
   width: fit-content; }
-  .karma-column .karma-builder-element:not(.karma-active-element) .karma-element-content:hover .karma-title-gizmo-template {
+  .karma-builder-element[data-name="karma_column"]:not(.karma-resizing-padding) .karma-builder-element:not(.karma-active-element) .karma-element-content:hover .karma-title-gizmo-template {
     display: inline-block; }
 
 .karma-title-gizmo-template {

@@ -117,7 +117,7 @@ img {
 	display: none;
 }
 
-.karma-column .karma-builder-element:not(.karma-active-element) {
+.karma-builder-element[data-name="karma_column"]:not(.karma-resizing-padding) .karma-builder-element:not(.karma-active-element) {
 	.karma-element-content:hover {
 		box-shadow: 0 0 0 1px $builder-accent-color;
 		cursor: pointer;

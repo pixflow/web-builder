@@ -393,7 +393,8 @@
 
 						that.$el.find( '.karma-image-resize' ).css( {'width': ''});
 						that.showMouseToolTip( event );
-						//KarmaView.removeActiveElement();
+						that.el.classList.add( 'karma-resizing-padding' );
+						KarmaView.removeActiveElement();
 
 					},
 
@@ -406,6 +407,7 @@
 							that.setAttributes( { 'rightspace' : value }, true );
 						}
 						that.removeMouseToolTip( event );
+						that.el.classList.remove( 'karma-resizing-padding' );
 						that.$el.trigger('karma/finish/modifyColumns');
 
 					},

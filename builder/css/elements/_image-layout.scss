@@ -64,13 +64,11 @@
 			height: 100%;
 			width: 100%;
 		}
-
 	}
 
 }
-
-.karma-builder-element[data-name="karma_image"] {
-	&:not(.karma-active-element) {
-			overflow: hidden;
+.karma-resizing-padding {
+	.karma-builder-element[data-name="karma_image"]{
+		overflow: hidden;
 	}
 }
