@@ -801,7 +801,9 @@ var karmaBuilder = karmaBuilder || {};
 			overlay.style.display = 'none';
 			UI.helper.get( 0 ).style.display = 'none';
 			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
-			if( targetElement.classList.contains('karma-spacing') ){
+			if ( undefined ==  targetElement ){
+				return false;
+			}else if( targetElement.classList.contains('karma-spacing') ){
 				targetElement = document.elementFromPoint( event.clientX, event.clientY + 50 );
 			}else if( targetElement.classList.contains('karma-section') ){
 				targetElement = document.elementFromPoint( event.clientX - 50 , event.clientY);
