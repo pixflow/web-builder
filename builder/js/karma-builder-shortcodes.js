@@ -183,10 +183,16 @@
 
 		},
 
+		/**
+		 * @summary set padding top for element function
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		topspacepadding : function () {
 
-			
-
+			var that = this ;
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( ['topspacepadding'] ).topspacepadding + 'px' );
 		},
 
 		/**

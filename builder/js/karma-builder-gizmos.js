@@ -358,8 +358,10 @@
 
 					},
 					resize: function( event, ui ){
+
 						var currentSection = that.el;
 						currentSection.style.paddingTop = ui.size.height + 'px';
+
 					}
 				};
 
