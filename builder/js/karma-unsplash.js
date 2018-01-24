@@ -267,7 +267,7 @@ window.requestAnimFrame = ( function(){
 		var that = this ,
 			el = this.selector.querySelector('.karma-unsplash-images-result');
 
-		that.onFirstLoad( el );
+		that.onFirstLoad();
 		that.checkEmptyResult( el, images );
 		that.appendChildElements( el, images, size );
 		that.firstLoad = false;
@@ -318,12 +318,11 @@ window.requestAnimFrame = ( function(){
 	 * @since 1.0.0
 	 * @returns {void}
 	 */
-	karmaUnsplash.prototype.onFirstLoad = function ( el ) {
+	karmaUnsplash.prototype.onFirstLoad = function () {
 
 		if( true === this.firstLoad ){
 			// Create empty image to remove background
 			this.removeResults();
-			el.appendChild( this.createChild( '', '', '' ) );
 		}
 
 	}
