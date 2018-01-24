@@ -112,7 +112,6 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		bindTooltip : function () {
 
 			var tooltip = $( '.karma-tooltip' );
-			console.log(tooltip)
 			tooltip.tooltip({
 				position: {
 					my: "center top",
