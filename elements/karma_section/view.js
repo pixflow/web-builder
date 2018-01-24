@@ -4,7 +4,8 @@
 
 		events:{
 
-			'click'	: 'showBorder',
+			'click'	                   : 'showBorder',
+			'click.closeExtraPanel'    : 'closeExtraPanel'  ,
 
 		},
 		
@@ -55,13 +56,52 @@
 
 		},
 
+
+		/**
+		 * @summary Close element setting panel and Close element panel
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		closeExtraPanel : function(){
+
+			// Close element setting panel
+			if( 'undefined' != typeof elementSettingPanel ){
+				elementSettingPanel.removeSettingPanel();
+			}
+
+			// Close element panel
+			if( 'undefined' != typeof window.top.karmaElementPanel ){
+				window.top.karmaElementPanel.closeElementPanel();
+			}
+
+			var activeElement = document.querySelector('.karma-active-element')
+			if( null != activeElement ){
+				activeElement.classList.remove('karma-active-element');
+			}
+
+
+		},
+
 		/**
 		 * @summary Set the active row with specific class
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		showBorder: function () {
+		showBorder: function ( e ) {
+
+			e.stopPropagation();
+
+			// Close element setting panel
+			if( 'undefined' != typeof elementSettingPanel ){
+				elementSettingPanel.removeSettingPanel();
+			}
+
+			// Close element panel
+			if( 'undefined' != typeof window.top.karmaElementPanel ){
+				window.top.karmaElementPanel.closeElementPanel();
+			}
 
 			this.removeDropDownGizmo();
 			this.removeMoreSubmenu();

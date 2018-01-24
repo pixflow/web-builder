@@ -706,8 +706,7 @@
 				$( document ).trigger( "click.hideColorPickerContainer" );
 			}
 
-			KarmaView.callParent( this.el, [ 'activeColumn' ] , 1 );
-			KarmaView.callParent( this.el, [ 'showBorder' ] , 2 );
+			KarmaView.$el.trigger( 'karma/callParent', [ this.el, [ 'activeColumn' ] , 1  ] );
 			this.el.classList.add( 'karma-active-element' );
 			window.top.karmaElementPanel.closeElementPanel();
 

@@ -47,6 +47,7 @@ var karmaBuilder = karmaBuilder || {};
 			'karma/after/finishElementPanel'            			            : 'makeElementsDraggable',
 			'click .karma-blank-page-simple-layout .karma-new-section-layout'	: 'createNewSection',
 			'click .karma-blank-page-section-link'								: 'openSectionPanel',
+			'karma/callParent'                                                  : 'callParent'
 
 		},
 
@@ -132,14 +133,14 @@ var karmaBuilder = karmaBuilder || {};
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		callParent : function( element, functions, deep ) {
+		callParent : function( event, element, functions, deep ) {
 
 			var parentInstance = $( element ).closest('.karma-builder-element[data-name="'
 				+ ( ( deep == 1 ) ? 'karma_column' : 'karma_section' )
 				+ '"]').backboneView();
 
 			_.each( functions, function ( callback ) {
-				parentInstance[ callback ]();
+				parentInstance[ callback ]( event );
 			});
 
 		},
@@ -238,6 +239,16 @@ var karmaBuilder = karmaBuilder || {};
 			var activeElement = document.querySelector('.karma-active-element')
 			if( null != activeElement ){
 				activeElement.classList.remove('karma-active-element');
+			}
+
+			var activeElement = document.querySelector('.karma-active-section')
+			if( null != activeElement ){
+				activeElement.classList.remove('karma-active-section');
+			}
+
+			var activeElement = document.querySelector('.karma-active-column')
+			if( null != activeElement ){
+				activeElement.classList.remove('karma-active-column');
 			}
 
 		},

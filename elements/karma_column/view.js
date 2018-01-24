@@ -4,7 +4,8 @@
 
 		events : {
 
-			'click'	: 'activeColumn',
+			'click'                                          : 'activeColumn',
+			'click.closeExtraPanel'                          : 'closeExtraPanel'  ,
 			'karma/finish/modifyColumns.karmaImage'          : 'updateImageSize'
 
 		},
@@ -72,6 +73,32 @@
 
 		},
 
+		/**
+		 * @summary Close element setting panel and Close element panel
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
+		closeExtraPanel : function(){
+
+			// Close element setting panel
+			if( 'undefined' != typeof elementSettingPanel ){
+				elementSettingPanel.removeSettingPanel();
+			}
+
+			// Close element panel
+			if( 'undefined' != typeof window.top.karmaElementPanel ){
+				window.top.karmaElementPanel.closeElementPanel();
+			}
+
+			var activeElement = document.querySelector('.karma-active-element')
+			if( null != activeElement ){
+				activeElement.classList.remove('karma-active-element');
+			}
+
+
+		},
+
 
 		/**
 		 * @summary Set the active row with specific class
@@ -79,7 +106,9 @@
 		 * @since 1.0.0
 		 * @returns {void}
 		 */
-		activeColumn: function () {
+		activeColumn: function ( e ) {
+
+			e.stopPropagation();
 
 			if( this.$el.hasClass('karma-active-column') ){
 				return;
@@ -87,6 +116,7 @@
 
 			$('.karma-active-column').removeClass('karma-active-column');
 			this.$el.addClass('karma-active-column');
+			KarmaView.$el.trigger( 'karma/callParent', [ this.el, ['showBorder'], 2 ] );
 
 		},
 
