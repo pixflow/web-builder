@@ -1168,6 +1168,7 @@ var karmaBuilder = karmaBuilder || {};
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
+				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
 			}else if( 'section' != elementName && 'column' != elementName ){
 				placeholder.insertAdjacentHTML( 'afterend', this.createBuilderModel( newBackboneModel ) );
 				var newView = this.createNewElement( elementName, newBackboneModel, true );
