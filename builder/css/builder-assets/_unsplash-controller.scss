@@ -26,6 +26,7 @@
 		input {
 			@include input-text-type;
 			min-height: 36px;
+			-webkit-appearance:none;
 			width: 239px;
 			&::placeholder {
 				@extend .karma-builder-title-5;
