@@ -351,7 +351,13 @@ img {
 	transform: rotate(225deg);
   }
 }
-
+body #karma-builder-layout :not(.karma-builder-environment){
+	.karma-element-content{
+		&:hover{
+			box-shadow: none;
+		}
+	}
+}
 .karma-builder-environment {
   .karma-builder-element {
 	position: relative;
@@ -1025,8 +1031,8 @@ div.karma-element-content {
 	}
 
 	.karma-spacing-dot-container {
-	  position: absolute;
-	  top: calc(100% - 12px);
+		position: absolute;
+		top: calc(100% - 12px);
 	}
   }
 }
