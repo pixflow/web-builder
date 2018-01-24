@@ -7,7 +7,8 @@
 			'click .karma-editable-content'              : 'updateFontStyleGizmo',
 			'click.focusElement'						 : 'focusElement',
 			'keydown .karma-editable-content'	         : 'preventFromNewLine',
-			'paste [contenteditable]'					 : 'pasteAsPlainText'
+			'paste [contenteditable]'					 : 'pasteAsPlainText',
+			'drop .karma-editable-content'               : 'preventFromDrop'
 		},
 
 		initialize: function ( options ) {
@@ -32,6 +33,19 @@
 			model['content'] = this.model.get( 'shortcode_content' ) ;
 			var source = this.template( model );
 			this.el.querySelector('.karma-element-content').innerHTML = source;
+
+		},
+
+		/**
+		 * @summary Prevent from drop any HTML elements on editable content
+		 *
+		 * @since 1.0.0
+		 * @return {boolean}
+		 */
+		preventFromDrop : function ( e ) {
+
+			e.preventDefault();
+			return false;
 
 		},
 
