@@ -457,6 +457,9 @@ window.requestAnimFrame = ( function(){
 	karmaUnsplash.prototype.setClickEventOnchildes = function ( imageInput, newChild, url ) {
 
 		var that = this;
+		if( null == imageInput ){
+			return ;
+		}
 		newChild.onclick = function () {
 
 			var selected = that.selector.querySelector('.karma-unspalsh-selected');

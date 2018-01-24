@@ -395,7 +395,7 @@
 						that.showMouseToolTip( event );
 						that.el.classList.add( 'karma-resizing-padding' );
 						KarmaView.removeActiveElement();
-						
+
 					},
 
 					stop : function ( event, ui ) {

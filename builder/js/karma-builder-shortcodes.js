@@ -732,7 +732,7 @@
 			var form = $( e.currentTarget ).data('form'),
 				that = this;
 
-			KarmaView.closeElementPanel().removeActiveElement();
+			KarmaView.closeElementPanel().removeActiveElement().removeSettingPanel();
 			window.elementSettingPanel = new window.top.karmaBuilderActions.elementSettingPanel( { model : this.model, viewInstance : that  } );
 			var result = elementSettingPanel.openSettingPanel( form );
 			elementSettingPanel.delegateEvents();
