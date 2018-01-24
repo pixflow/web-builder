@@ -409,7 +409,7 @@
  * @output input number type
  */
 @mixin input-text-type {
-
+	@extend .karma-builder-title-4;
 	@include box( 245px, 36px );
 	padding: 7px 14px;
 	background: transparent;
@@ -418,13 +418,11 @@
 	box-sizing: border-box;
   	box-shadow: none;
 	color: $builder-main-color-1;
-	font-size: 12px;
 
 	&::placeholder {
 		@extend .karma-builder-title-4;
 		color: rgba( $builder-main-color, 0.6 );
 		font-family: $builder-normal-font;
-		font-size: 12px;
 
 	}
 

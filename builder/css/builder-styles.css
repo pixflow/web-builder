@@ -968,11 +968,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, .ui-tooltip, .karma-not-found, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder, .karma-unsplash-controller .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .karma-element-panel-list .karma-element-single-element span, #karma-add-element input.karma-builder-search-text, #karma-add-element input.karma-builder-search-text.open-search-panel, .karma-element-single-element-name span, .karma-section-type-tab ul li .karma-section-type-text {
+.karma-builder-title-4, .ui-tooltip, .karma-not-found, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input, .karma-unsplash-controller .karma-unsplash-search input, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder, .karma-unsplash-controller .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .karma-element-panel-list .karma-element-single-element span, #karma-add-element input.karma-builder-search-text, #karma-add-element input.karma-builder-search-text.open-search-panel, .karma-element-single-element-name span, .karma-section-type-tab ul li .karma-section-type-text {
   font-size: 12px;
   line-height: 22px; }
 
-.karma-builder-title-5 {
+.karma-builder-title-5, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder {
   font-size: 10px;
   line-height: 20px; }
 
@@ -4132,12 +4132,10 @@ div.karma-element-content .karma-top-spacing {
     border-radius: 4px;
     box-sizing: border-box;
     box-shadow: none;
-    color: #747F8A;
-    font-size: 12px; }
+    color: #747F8A; }
     #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder {
       color: rgba(57, 73, 89, 0.6);
-      font-family: "HelveticaNeue";
-      font-size: 12px; }
+      font-family: "HelveticaNeue"; }
 
 #karma-element-setting-panel-container .karma-title-with-background-controller {
   background-color: #ECF5FE;
@@ -4533,16 +4531,13 @@ div.karma-element-content .karma-top-spacing {
       box-sizing: border-box;
       box-shadow: none;
       color: #747F8A;
-      font-size: 12px;
       min-height: 36px;
       width: 239px; }
       .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder {
         color: rgba(57, 73, 89, 0.6);
-        font-family: "HelveticaNeue";
-        font-size: 12px; }
+        font-family: "HelveticaNeue"; }
       .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder {
         color: #9CA4AC;
-        font-size: 10px;
         text-align: center; }
   .karma-unsplash-controller .karma-unspalsh-icon, #karma-add-element .element-panel-section-container.element-panel-image .karma-unspalsh-icon {
     background-image: url(../media/svg/unsplash-icon.svg);
