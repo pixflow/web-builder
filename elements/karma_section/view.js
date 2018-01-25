@@ -22,7 +22,7 @@
 		/**
 		 * @summary Add specific class for empty columns
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		checkEmptyColumn : function () {
@@ -45,7 +45,7 @@
 		/**
 		 * @summary Add section to sortable sections
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		setSortable: function () {
@@ -58,7 +58,7 @@
 		/**
 		 * @summary Close element setting panel and Close element panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		closeExtraPanel : function(){
@@ -72,7 +72,7 @@
 		/**
 		 * @summary Set the active row with specific class
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		showBorder: function ( e ) {
@@ -94,7 +94,7 @@
 		/**
 		 * @summary Get the if of all row columns
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {Array}	Contain the ids
 		 */
 		getColumnsKey : function () {
@@ -110,7 +110,7 @@
 		/**
 		 * @summary return current layout grid
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {Array} - current layout of section
 		 */
@@ -130,7 +130,7 @@
 		/**
 		 * @summary Calculate new layout grid after append nw column
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {Array} - new layout of section after add new column
 		 */
@@ -156,7 +156,7 @@
 		 * @param {number}	columnKey		The column id
 		 * @param {number}	lastColumnKey	The last column in row id
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		deleteColumnModel : function ( columnKey, lastColumnKey ) {
@@ -173,7 +173,7 @@
 		 * @param {number}	total	The total number
 		 * @param {number}	num		The new number
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {number}	Sum of number given
 		 */
 		getSum : function ( total, num ) {
@@ -187,7 +187,7 @@
 		 *
 		 * @param {array}	grid	The grid layout
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {boolean}	true if layout is correct
 		 */
 		validateColumnLayout : function ( grid ) {
@@ -208,7 +208,7 @@
 		 * @param {number}	parentId		The row id
 		 * @param {number}	newWidth		The new width of column
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		updateColumnModel : function ( columnKey, parentId, newWidth ) {
@@ -225,7 +225,7 @@
 		 *
 		 * @param {array}	newLayout The grid layout
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {boolean}	true if layout is successfully changed
 		 */
 		changeRowLayout : function ( newLayout ) {
@@ -265,7 +265,7 @@
 		 * @param {array}	newLayout		New layout
 		 * @param {number}	columnKey		ID of last column updated
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		createNewColumn : function ( counter, newLayout, columnKey ) {
@@ -304,7 +304,7 @@
 		/**
 		 * @summary create html fot tooltip
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 */
 		toolTipHtml: function () {
@@ -320,7 +320,7 @@
 		/**
 		 * @summary structure field changes. Change Container of Section instead of render
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -337,7 +337,7 @@
 		/**
 		 * @summary space field changes. It updates the space of section
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -355,7 +355,7 @@
 		/**
 		 * @summary extra class field changes. Add class to the element instead of render
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -371,7 +371,7 @@
 		/**
 		 * @summary background type changes. change background type
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -392,7 +392,7 @@
 		/**
 		 * @summary background color changes. change background color
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -406,7 +406,7 @@
 		/**
 		 * @summary Change the grid layout
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -424,7 +424,7 @@
 		/**
 		 * @summary extra class field changes. Add class to the element instead of render
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -440,7 +440,7 @@
 		/**
 		 * @summary fire on change background image controller
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -463,7 +463,7 @@
 		/**
 		 * @summary change background size to cover and contain
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -480,7 +480,7 @@
 		/**
 		 * @summary change position of background image
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */

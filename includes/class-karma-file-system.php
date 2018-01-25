@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * or use directly PHP file system methods.
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -39,7 +39,7 @@ class File_System{
 	/**
 	 * A static variable that contains an instance of Karma_Builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 * @var      File_System    $instance    The reference to *Singleton* instance of this class.
 	 */
@@ -50,7 +50,7 @@ class File_System{
 	 * Init this class.
 	 *
 	 * @access   public
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function __construct(){
 
@@ -64,7 +64,7 @@ class File_System{
 	 *
 	 * @access   public
 	 * @return   File_System - The *Singleton* instance.
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public static function get_instance() {
 
@@ -80,7 +80,7 @@ class File_System{
 	 * Initialises and connects the WordPress Filesystem Abstraction classes.
 	 * This function will include attempt connecting.
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 */
 	public function get_wp_file_system(){
 

@@ -2,7 +2,7 @@
  * @summary karmaTabEditor manager
  * The resources that add karma tab to WordPress post editor
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns { void }
  */
 var karmaTabEditor;
@@ -26,7 +26,7 @@ karmaTabEditor = function () {
 /**
  * @summary init tab editor and events
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaTabEditor.prototype.init = function () {
@@ -44,7 +44,7 @@ karmaTabEditor.prototype.init = function () {
 /**
  * @summary append tab to editor tabs
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaTabEditor.prototype.appendTabTOEditor = function () {
@@ -64,7 +64,7 @@ karmaTabEditor.prototype.appendTabTOEditor = function () {
 /**
  * @summary append karma tab container
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaTabEditor.prototype.appendTabContainer = function () {
@@ -85,7 +85,7 @@ karmaTabEditor.prototype.appendTabContainer = function () {
 /**
  * @summary add event to karma tab
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaTabEditor.prototype.initTabEvent = function () {
@@ -110,7 +110,7 @@ karmaTabEditor.prototype.initTabEvent = function () {
 /**
  * @summary switch to WordPress content
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaTabEditor.prototype.switchToWordPress = function () {
@@ -129,7 +129,7 @@ karmaTabEditor.prototype.switchToWordPress = function () {
 /**
  * @summary switch to karma content
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaTabEditor.prototype.switchToKarma = function () {

@@ -4,7 +4,7 @@
  * Fired during plugin activation
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -27,7 +27,7 @@ class Karma_Builder_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public static function activate() {
 

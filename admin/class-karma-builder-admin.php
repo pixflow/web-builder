@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/admin
@@ -25,7 +25,7 @@ class Karma_Builder_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function __construct() {
 
@@ -35,7 +35,7 @@ class Karma_Builder_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function enqueue_styles() {
 
@@ -60,7 +60,7 @@ class Karma_Builder_Admin {
 	 *
 	 * @param string $hook hook name
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function enqueue_scripts( $hook ) {
 
@@ -88,7 +88,7 @@ class Karma_Builder_Admin {
 	/**
 	 * Register the JavaScript for the add karma builder tab.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function enqueue_tab_editor_script() {
 
@@ -111,7 +111,7 @@ class Karma_Builder_Admin {
 	/**
 	 * Publish the content of page and print the result
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function publish(){
@@ -134,7 +134,7 @@ class Karma_Builder_Admin {
 	/**
 	 * Save the content of page and print the result
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function save(){
@@ -156,7 +156,7 @@ class Karma_Builder_Admin {
 	/**
 	 * enqueue style for builder page
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 
@@ -173,7 +173,7 @@ class Karma_Builder_Admin {
 	 *
 	 * @param   integer $post_id    post ID
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @return  string      URL that open Karma to edit post
 	 */
 

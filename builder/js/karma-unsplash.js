@@ -29,7 +29,7 @@ window.requestAnimFrame = ( function(){
 	 * @summary KarmaUnsplash manager
 	 * The resources that make up the Unsplash JSON API
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 
 	window.karmaUnsplash = function ( view, selector, uploadImage ) {
@@ -67,7 +67,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {string}  type        Link relations
 	 * @param {object}  queryParmas Query Parameters
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {string} API URL
 	 */
 	karmaUnsplash.prototype.createUnsplashURL = function ( type, queryParmas ) {
@@ -83,7 +83,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Bind key behavior on Unsplash input
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.bindInputEvent = function(){
@@ -114,7 +114,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Remove Html Unsplash results
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.removeResults = function(){
@@ -129,7 +129,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Remove search mode and load photos
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.removeSearchMode = function(){
@@ -148,7 +148,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 * @param {object}  that    Karma Unsplash instance
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.searchAjax = function ( that ) {
@@ -179,7 +179,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Read the last page surf from history
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {number} Last page surfed
 	 */
 	karmaUnsplash.prototype.getPage = function(){
@@ -195,7 +195,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {number}  perPage     Number of items per page
 	 * @param {boolean} loadMore    Force retrieve new images
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.loadImages = function ( page, perPage, loadMore ) {
@@ -219,7 +219,7 @@ window.requestAnimFrame = ( function(){
 	 * @summary Check the data difference from last time that given images
 	 * This function prevent from send repetitious request
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @returns {boolean}
 	 */
 	karmaUnsplash.prototype.cacheTimeExpire = function () {
@@ -246,7 +246,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 * @param {number}  value  New images retrieved
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.storage = function( value ){
@@ -270,7 +270,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {object}  images  Images retrieved
 	 * @param {object}  size    Type of image to load ( ex : small , large )
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.showImages = function ( images, size ) {
@@ -293,7 +293,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {Object}  el      Parent Selector
 	 * @param {object}  images  Images retrieved
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.checkEmptyResult = function ( el, images ) {
@@ -327,7 +327,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 * @param {Object}  el      Parent Selector
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.onFirstLoad = function () {
@@ -346,7 +346,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {object}  images  Images retrieved
 	 * @param {object}  size    Type of image to load ( ex : small , large )
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.appendChildElements = function ( el, images, size ) {
@@ -368,7 +368,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Set infinity scroll for Unsplash image result element
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.detectScroll = function () {
@@ -403,7 +403,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {string}  size    Type of image to load ( ex : small , large )
 	 * @param {string}  type    determine image type is unsplash or not
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {Object}    HTML element
 	 */
 	karmaUnsplash.prototype.createChild = function ( img, size, type ) {
@@ -442,7 +442,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {object}  newChild    New unsplash image
 	 * @param {string}  fullUrl		Url of image in regular size
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.setDraggable = function ( newChild, fullUrl ) {
@@ -463,7 +463,7 @@ window.requestAnimFrame = ( function(){
 	 * @param {Object}  newChild    Unsplash item childes
 	 * @param {String}  url         Image url
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.setClickEventOnchildes = function ( imageInput, newChild, url ) {
@@ -497,7 +497,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 * @param {String}  response    response of XHR request
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.processResult = function( response ){
@@ -522,7 +522,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 * @param {string}  URL Request url
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.sendHTTPRequest = function( URL ){
@@ -559,7 +559,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 *  @param {object}  frame Wordpress media frame object
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.callback = function ( frame ) {
@@ -583,7 +583,7 @@ window.requestAnimFrame = ( function(){
 	 *
 	 *  @param {object} selector    Dom node
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.bindAvatarTooltip = function ( selector ) {
@@ -621,7 +621,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.openMediaLibrary = function () {
@@ -637,7 +637,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Scrolls to a particular set of coordinates in the document
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.scrollToY = function( scrollTargetY, speed, easing ) {
@@ -684,7 +684,7 @@ window.requestAnimFrame = ( function(){
 	/**
 	 * @summary Set event on scroll down arrow
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	karmaUnsplash.prototype.setEventsOnArrow = function () {

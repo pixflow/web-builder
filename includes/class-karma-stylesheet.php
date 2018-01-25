@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A class definition that for managing CSS attributes
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -32,7 +32,7 @@ class Karma_Stylesheet {
 	 * Create CSS blocks .
 	 *
 	 * @param    array  $element_attributes CSS attribute of elements
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return string CSS blocks
 	 */
@@ -62,7 +62,7 @@ class Karma_Stylesheet {
 	 * @param    string $postfix    Element postfix
 	 *
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return string Element selector
 	 */
@@ -77,7 +77,7 @@ class Karma_Stylesheet {
 	 * Create CSS property and value for each element .
 	 *
 	 * @param    array  $attributes CSS attribute of elements
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return string CSS properties
 	 */
@@ -95,7 +95,7 @@ class Karma_Stylesheet {
 	/**
 	 * Create default styles for elements
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return string CSS properties
 	 */

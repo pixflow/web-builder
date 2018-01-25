@@ -13,7 +13,7 @@
  * This includes base methods and variable that describe text element
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/elements/karma_text
  * @author     Pixflow <info@pixflow.net>
@@ -24,7 +24,7 @@ class Karma_Text_Describe extends Karma_Text {
 	/**
 	 * Adds different input fields to allow the user to change and customize the element settings.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 *
 	 * @return array Element panels
@@ -50,7 +50,7 @@ class Karma_Text_Describe extends Karma_Text {
 	 * Set the gizmo controller
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return    array    Gizmo controller of all elements
 	 */
@@ -163,7 +163,7 @@ class Karma_Text_Describe extends Karma_Text {
 	 * Get element info
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  array   The element info
 	 */

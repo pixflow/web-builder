@@ -23,7 +23,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * In creating this view calls render
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 */
 		initialize : function () {
@@ -34,7 +34,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 *@summary Add grab style for elements
 		 *
 		 * @param   {object}    UI  ui object of dragged element in jqueryUI
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		addGrabHandler: function ( e, UI ) {
@@ -51,7 +51,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 * @summary Remove grab style for elements
 		 *
 		 * @param   {object}    UI  ui object of dragged element in jqueryUI
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removeGrabHandler: function ( e, UI ) {
@@ -68,7 +68,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * @summary append template of setting panel to body
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns void
 		 */
 		settingPanelHtml: function () {
@@ -82,7 +82,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 * @summary Create overlay element to prevent from other mouse events while dragging
 		 * or blocking if exists
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createOverlay: function () {
@@ -101,7 +101,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * @summary Bind jquery tooltip plugin
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		bindTooltip : function () {
@@ -149,7 +149,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * @summary Set display none for overlay
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removeOverlay: function () {
@@ -164,7 +164,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 *
 		 * @param    {string}    selector    An element CSS selector to set draggable.
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		initDraggable: function ( selector ) {
@@ -215,7 +215,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 * @param {string}  name    The name of element
 		 * If the param dose not pass to the function, the function returns all element info
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {object} Element or elements info
 		 */
 		getElementInfo: function ( name ) {
@@ -239,7 +239,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 * @param {function}     callBack      callback function
 		 * @param {object}         view
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -286,7 +286,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * @summary Returns builder Iframe
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		getIframe : function () {
@@ -301,7 +301,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * @summary Publish content on click in publish button
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		karmaPublish : function () {
@@ -319,7 +319,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		/**
 		 * @summary Animate publish animation button
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		publishAnimation : function () {

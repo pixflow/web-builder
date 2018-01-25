@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A Class definition that includes instance of different classes
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Factory_Pattern
  * @subpackage Karma_Factory_Pattern/includes
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This includes base instance of different classes.
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Factory_Pattern
  * @subpackage Karma_Factory_Pattern/includes
  * @author     Pixflow <info@pixflow.net>
@@ -34,7 +34,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -44,7 +44,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder activator instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -53,7 +53,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder core instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -62,7 +62,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder deactivator instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -71,7 +71,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder i18n instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -80,7 +80,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder loader instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -89,7 +89,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder views instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -98,7 +98,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder controller instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -108,7 +108,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder admin instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -118,7 +118,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class builder public instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -127,7 +127,7 @@ class Karma_Factory_Pattern {
 	/**
 	 * Class karma stylesheet instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      object
 	 */
@@ -140,7 +140,7 @@ class Karma_Factory_Pattern {
 	 *
 	 * @access   private
 	 * @return   void
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __clone(){}
 
@@ -149,13 +149,13 @@ class Karma_Factory_Pattern {
 	 *
 	 * @access   private
 	 * @return   void
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __wakeup(){}
 
 	/**
 	 * Get builder instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function __construct(){
 
@@ -166,7 +166,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Ready for get classes instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function set_builder_class_instance(){
 
@@ -183,7 +183,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder core class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_core(){
 
@@ -194,7 +194,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder i18n class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_stylesheet(){
 
@@ -204,7 +204,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder i18n class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_i18n(){
 
@@ -214,7 +214,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder loader class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_loader(){
 
@@ -224,7 +224,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder views class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_views(){
 
@@ -234,7 +234,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder controller class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_controller(){
 
@@ -244,7 +244,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder admin class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_admin(){
 
@@ -254,7 +254,7 @@ class Karma_Factory_Pattern {
 
 	/**
 	 * Set builder public class instance
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	protected function load_builder_public(){
 

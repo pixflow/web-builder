@@ -26,7 +26,7 @@
 		/**
 		 * @summary Add specific class for empty columns
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		checkEmptyColumn : function () {
@@ -40,7 +40,7 @@
 		/**
 		 * @summary Render column element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		render : function () {
@@ -53,7 +53,7 @@
 		/**
 		 * @summery update images width  on their column resize
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @return {void}
 		 */
@@ -80,7 +80,7 @@
 		/**
 		 * @summary Close element setting panel and Close element panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		closeExtraPanel : function(){
@@ -95,7 +95,7 @@
 		/**
 		 * @summary Set the active row with specific class
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		activeColumn: function ( e ) {
@@ -115,7 +115,7 @@
 		/**
 		 * @summary spacing of column setting panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		rightspace: function () {
@@ -133,7 +133,7 @@
 		/**
 		 * @summary spacing of column setting panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		leftspace: function () {
@@ -150,7 +150,7 @@
 		/**
 		 *@summary extra class field changes. Add class to the column
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -165,7 +165,7 @@
 		/**
 		 *@summary apply live change grid on column
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -208,7 +208,7 @@
 		/**
 		 * @summary calculate new parent section grid and update grid
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @param   {object}    newGrid  new Width of current column and next column
 		 *
@@ -229,7 +229,7 @@
 		 * @param {string}  gridType    Grid type of column ( ex: lg || sm )
 		 * @param {number}  newCol      New column grid value
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		changeColumnClassName : function( gridType, newCol ){
@@ -246,7 +246,7 @@
 		/**
 		 * @summary Change column LG size
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		lg_size : function () {
@@ -259,7 +259,7 @@
 		/**
 		 * @summary Change column MD size
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		md_size : function () {
@@ -272,7 +272,7 @@
 		/**
 		 * @summary Change column XL size
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		xl_size : function () {
@@ -285,7 +285,7 @@
 		/**
 		 * @summary Change column SM size
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		sm_size : function () {
@@ -300,7 +300,7 @@
 		 *
 		 * @param {number}	value   New value
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		updateWidthColumn : function ( value ) {
@@ -322,7 +322,7 @@
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		deleteColumn : function( lastColumnKey ) {
@@ -354,7 +354,7 @@
 		 * @param {number}  lastColumnKey   Element key of before the last column
 		 * @param {object}  model           Element model
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		moveContent : function ( lastColumnKey, model ) {

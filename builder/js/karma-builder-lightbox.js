@@ -16,7 +16,7 @@
  *
  * @param {string}  selector image link selector
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 var karmaImageLightbox = function ( selector ) {
@@ -31,7 +31,7 @@ var karmaImageLightbox = function ( selector ) {
 /**
  * @summary init lightbox on images with selector class
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaImageLightbox.prototype.init = function () {
@@ -46,7 +46,7 @@ karmaImageLightbox.prototype.init = function () {
 /**
  * @summary create and load lightbox
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaImageLightbox.prototype.openLightbox = function ( e ) {
@@ -70,7 +70,7 @@ karmaImageLightbox.prototype.openLightbox = function ( e ) {
 /**
  * @summary close and delete lightbox HTML
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaImageLightbox.prototype.closeLightbox = function () {
@@ -91,7 +91,7 @@ karmaImageLightbox.prototype.closeLightbox = function () {
  *
  * @param {string}  url image URL
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaImageLightbox.prototype.createLightboxHtml = function ( url ) {

@@ -55,7 +55,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {string}  name    The name of param
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {mixed} value of specific param
 		 */
 		getBuilderParam : function ( name ) {
@@ -75,7 +75,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {string}  name    The name of element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {object} contains the gizmo options list
 		 */
 		getGizmoParam : function ( name ) {
@@ -118,7 +118,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @example if deep = 1 columns function class run and if deep = 2
 		 * section class are execute.
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		callParent : function( event, element, functions, deep ) {
@@ -138,7 +138,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {event}  event
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 *
 		 */
@@ -163,7 +163,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {event}  event
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 *
 		 */
@@ -195,7 +195,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary bind functions on document click
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		bindDocumentEvent: function () {
@@ -211,7 +211,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Remove all active elements
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		removeActiveElement : function () {
@@ -230,7 +230,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Remove active column
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		removeActiveColumn : function () {
@@ -247,7 +247,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Remove element setting panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		removeSettingPanel : function () {
@@ -263,7 +263,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Close element panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		closeElementPanel : function () {
@@ -279,7 +279,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Remove active section
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		removeActiveSection : function () {
@@ -299,7 +299,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param	{object} 	action	Action using in the wordpress backend to know the request.
 		 * @param	{object} 	data	The data which will be send to the backend.
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object} - jquery ajax object
 		 */
 		prepareAjax : function ( action, data ) {
@@ -316,7 +316,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Save element model and html
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		karmaPublish : function () {
@@ -341,7 +341,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Save element model and html
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		karmaSaved : function () {
@@ -364,7 +364,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Remove changed value in element attributes
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns { string }    Validated models
 		 */
 		prepareModels : function(){
@@ -382,7 +382,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Create unique id for each element of drop
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {String}	Random string
 		 */
@@ -401,7 +401,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param	{number}	length	The length of random string that need to be produce
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns String	Random string
 		 */
 		createRandomString : function ( length ) {
@@ -425,7 +425,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param	{model}     model           The model of new element
 		 * @param   {boolean}   shouldRender    Call render method or not
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		createNewElement : function ( elementName, model, shouldRender ) {
@@ -451,7 +451,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param	{object}    model   model of specific element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {string} Builder html
 		 */
@@ -498,7 +498,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {object}  atts    The attribute of element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {string}
 		 */
@@ -521,7 +521,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @example if deep = 1 ( get templates outside iframe )
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {string}    The HTML output of template
 		 */
 		getWpTemplate: function ( templateName, templateParams, deep ) {
@@ -544,7 +544,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param	{string}	templateName	A string that corresponds for template.
 		 * @param	{object}	params			Data value for template
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {string}    The HTML output of template
 		 */
 		getUnderscoreTemplate : function ( templateName, params ) {
@@ -563,7 +563,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param { string }  elementName 	Element name
 		 * @param { string }  type 			Element type
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {boolean}
 		 */
 		prepareBeforeDrop : function ( whereToDrop, elementName, type ) {
@@ -587,7 +587,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param { string }  elementName 	Element name
 		 * @param { string }  type 			Element type
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}
 		 */
 		getValidateElementModel : function ( whereToDrop, elementName, type ) {
@@ -618,7 +618,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param { DOM node }  element 		New element to make it backbone element
 		 * @param {object}  	modelAttributes Valid element model
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}  updated model attributes with real values;
 		 */
 		newModelAttributes : function ( element, modelAttributes) {
@@ -638,7 +638,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {string}  parentKey   Element key of parent element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		reorderElements : function ( e, parentKey ) {
@@ -658,7 +658,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {string}  parentKey   Element key of parent element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removeEmptyColumn : function ( e, parentKey ) {
@@ -673,7 +673,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {object} element  Jquery helper
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		scroll : function ( element, event ) {
@@ -691,7 +691,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {object}    element        Helper element
 		 * @param   {string}    direction      Scroll direction
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		keepElementPosition : function( element, direction ){
@@ -709,7 +709,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {object}    element        Helper element
 		 * @param   {number}    toolbarHeight  Height of builder toolbar
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		scrollToDown: function ( element, toolbarHeight, event ) {
@@ -738,7 +738,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param   {object}    element        Helper element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		scrollToTop : function ( element, event ) {
@@ -764,7 +764,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param {object}  element   Droppable elements
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {boolean | object}  Element info
 		 */
 		getParentElementInfo : function ( element ) {
@@ -789,7 +789,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param {object}  UI      Dragging element
 		 * UI is jquery helper object
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {boolean}
 		 */
 		overlayBehavior : function ( event, UI ) {
@@ -817,7 +817,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Remove drop area placeholders while dragging
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removePlaceHolders : function () {
@@ -836,7 +836,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param {object}  UI      Dragging element
 		 * UI is jquery helper object
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {boolean}
 		 */
 		detectDropAreas : function ( event, UI ) {
@@ -881,7 +881,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param {object}  target	DOM node
 		 * @param {object}  event	DOM events
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		setAlignment: function ( target, event ){
@@ -909,7 +909,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param {object}  helperOBJ       Dragging element
 		 * UI is jquery helper object
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {boolean}
 		 */
 		checkSelfPlaceholder : function ( targetElement, helperOBJ ) {
@@ -932,7 +932,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param {object}  event           DOM events
 		 * @param {object}  targetElement   Droppable element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		showElementsPlaceHolder : function ( event, targetElement ) {
@@ -956,7 +956,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @summary Create overlay element to prevent from other mouse events while dragging
 		 * or blocking if exists
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createOverlay : function () {
@@ -975,7 +975,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Set display none for overlay
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removeOverlay : function () {
@@ -988,7 +988,7 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Make sections sortable
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		makeSectionsSortable: function () {
@@ -1041,7 +1041,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {object}    elementsModel
 		 * @param   {object}    elementView
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		renderElementsChildes : function ( elementsModel, elementView ) {
@@ -1058,7 +1058,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param   {object}    elementView
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {object}    placeholder
 		 */
 		getPlaceholder : function ( elementView ) {
@@ -1085,7 +1085,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {object}    elementsModel
 		 * @param   {object}    elementView
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		renderElements : function( placeholder, elementModel, elementView ){
@@ -1119,7 +1119,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {Array}    models
 		 * @param   {object}    elementView
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		//@TODO it should be refactor and delete this function
@@ -1139,7 +1139,7 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param   {object}    children    Children models in column
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {array}
 		 */
 		sortChildren : function ( children ) {
@@ -1182,7 +1182,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {object}    columns List of all child section columns
 		 * @param   {object}    newView
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createColumnsChild : function ( columns, newView ) {
@@ -1227,7 +1227,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @summary Order sections after drop or sortable
 		 * This function call on makeSectionsSortable() function
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		reorderSections: function () {

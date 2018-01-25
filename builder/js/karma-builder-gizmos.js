@@ -164,7 +164,7 @@
 		 *
 		 * @param {object}  gizmoParams     gizmo params of view
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { void }
 		 */
@@ -189,7 +189,7 @@
 		 *
 		 * @param	{ object }	gizmoParams	Gizmo params
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { string }    The HTML output of template
 		 */
@@ -237,7 +237,7 @@
 		/**
 		 * @summary Build gizmo controller
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { void }
 		 */
@@ -260,7 +260,7 @@
 		 * @summary Build gizmo resizeable for top and bottom
 		 *
 		 * @param { object } $gizmo section gizmo
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -314,7 +314,7 @@
 		 * @summary show and hide element gizmo
 		 * @param	{string} mode of action
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -334,7 +334,7 @@
 		 * @summary Build gizmo resizeably for top
 		 * @param {object}  $gizmo     gizmo params of view
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		*/
@@ -376,7 +376,7 @@
 		 *@param	{string} spacingSelector left or right spacing gizmo of column
 		 *@param	{string} paddingDirection type of padding (paddingLeft or paddingRight)
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @return {object} return options for right and left spacing gizmo
 		 */
@@ -428,7 +428,7 @@
 		/**
 		 * @summery call resize and crop on image Element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { void }
 		 */
@@ -495,7 +495,7 @@
 		 * @summary Build gizmo resizeable for left
 		 *
 		 * @param {object} $gizmo left spacing gizmo of column
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -513,7 +513,7 @@
 		 * @summary Build gizmo resizeable for right
 		 *
 		 * @param {object} $gizmo  right spacing gizmo of column
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -531,7 +531,7 @@
 		 *@summery calculate maxWidth of left and  right spacing
 		 *
 		 * @param {string} spacingGizmo element which is resizing
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @return {number} returns value of maxWidth padding right
 		 */
@@ -549,7 +549,7 @@
 		/**
 		 * @summary show spacing tooltip on mouse down
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 *
 		 *  @returns {void}
 		 */
@@ -578,7 +578,7 @@
 		 * @param {object} that element view
 		 * @param {string} direction Spacing gizmo which is resizing
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 *
 		 *  @returns {boolean | void}
 		 */
@@ -603,7 +603,7 @@
 		 * @param	{object} 	tooltip    element
 		 * @param	{string} 	direction  direction of spacing
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @return void
 		 */
@@ -631,7 +631,7 @@
 		/**
 		 *@summary remove mouse tooltip in spacing
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -650,7 +650,7 @@
 		/**
 		 *@summary create html fot tooltip
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -669,7 +669,7 @@
 		 * @param   {string}    tempName      Name of gizmo
 		 * @param   {string}    gizmoParam    Gizmo options
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		gimzoAction : function ( e, tempName, gizmoParam ) {
@@ -697,7 +697,7 @@
 		/**
 		 * @summary Set the active shortcode gizmo
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		showElementGizmo: function ( e ) {
@@ -721,7 +721,7 @@
 		/**
 		 * @summary close more sub menu when click in document
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		removeMoreSubmenu: function () {
@@ -742,7 +742,7 @@
 		/**
 		 * @summary show and hide options under more in gizmo panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		showGizmoRelatedToMore : function ( e ) {
@@ -778,7 +778,7 @@
 		/**
 		 * @summary open dropDown in gizmo
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		openDropDownGizmo: function ( e ) {
@@ -798,7 +798,7 @@
 		/**
 		 * @summary Close dropDown in gizmo
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		removeDropDownGizmo : function () {
@@ -813,7 +813,7 @@
 		/**
 		 * @summary Add new section
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		newSectionButton: function () {
@@ -842,7 +842,7 @@
 		/**
 		 * @summary close new section Dropdown
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		closeNewSectionPanel : function () {
@@ -861,7 +861,7 @@
 		/**
 		 * @summary open and close new section Dropdown
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		newSectionDropDown : function( e ){
@@ -880,7 +880,7 @@
 		 * @summary close dropDown gizmo and add class to active item
 		 * @param {object}  event
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		closeDropDownBox: function ( e ) {

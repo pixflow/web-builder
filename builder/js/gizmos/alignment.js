@@ -28,7 +28,7 @@
 		/**
 		 * @summary initialize alignment
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -41,7 +41,7 @@
 		/**
 		 * @summary render alignment
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -63,7 +63,7 @@
 		/**
 		 * @summary align left for text shortcode
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -76,7 +76,7 @@
 		/**
 		 * @summary align center for text shortcode
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -89,7 +89,7 @@
 		/**
 		 * @summary align right for text shortcode
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */

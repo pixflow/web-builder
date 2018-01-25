@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A class definition that elements use in builder
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Shortcode_Base/includes
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This includes builder elements name and load their dependency.
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Shortcode_Base
  * @subpackage Karma_Shortcode_Base/includes
  * @author     Pixflow <info@pixflow.net>
@@ -57,7 +57,7 @@ class Karma_Shortcode_Base {
 	/**
 	 * The instance of all elements class
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      array
 	 */
@@ -67,7 +67,7 @@ class Karma_Shortcode_Base {
 	/**
 	 * Class builder admin instance
 	 *
-	 * @since	1.0.0
+	 * @since	0.1.0
 	 * @access	public
 	 * @return	object	Instance of current element class
 	 */
@@ -83,7 +83,7 @@ class Karma_Shortcode_Base {
 	/**
 	 * Defines hook and action for register and load JS templates of each elements
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 */
 	protected function __construct(){
@@ -110,7 +110,7 @@ class Karma_Shortcode_Base {
 
 	/**
 	 * Add element map to the builder maps array
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 * @param $maps
 	 *
@@ -126,7 +126,7 @@ class Karma_Shortcode_Base {
 
 	/**
 	 * Add element gizmo to the builder gizmos array
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 * @param $controllers
 	 *
@@ -142,7 +142,7 @@ class Karma_Shortcode_Base {
 
 	/**
 	 * Add element info to the builder element info array
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 * @param $element_info
 	 *
@@ -159,7 +159,7 @@ class Karma_Shortcode_Base {
 	/*
 	 * Load underscore templates of each elements in builder for using instance render
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @return	 void
 	 */
 	public function load_js_templates(){
@@ -185,7 +185,7 @@ class Karma_Shortcode_Base {
      *
      * @param	array	$attributes	contains element attribute
      *
-     * @since   1.0.0
+     * @since   0.1.0
      * @access  public
      * @return	object	Instance of current class
      */
@@ -204,7 +204,7 @@ class Karma_Shortcode_Base {
 	 *
 	 * @param array	$shortcode_info	The attributes of each element
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @return	void
 	 */
@@ -223,7 +223,7 @@ class Karma_Shortcode_Base {
 	 * Load CSS each element
 	 *
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @return	void
 	 */
@@ -253,7 +253,7 @@ class Karma_Shortcode_Base {
 	 * Load js each element
 	 *
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @return	void
 	 */

@@ -24,7 +24,7 @@
 		/**
 		 * @summary Render text element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		render : function () {
@@ -37,7 +37,7 @@
 		/**
 		 * @summary Prevent from drop any HTML elements on editable content
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {boolean}
 		 */
 		preventFromDrop : function ( e ) {
@@ -51,7 +51,7 @@
 		/**
 		 * @summary Save the content of the text element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		saveContent : function () {
@@ -74,7 +74,7 @@
 		/**
 		 * @summary get text typography and change innerHtml of text
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		tag: function(){
@@ -92,7 +92,7 @@
 		/**
 		 * @summary get text element alignment
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		align: function () {
@@ -108,7 +108,7 @@
 		/**
 		 * @summary Set color for text element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		color : function(){
@@ -123,7 +123,7 @@
 		/**
 		 * @summary Active on editable elements and check inner text
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {boolean}
 		 */
 		focusElement : function () {
@@ -148,7 +148,7 @@
 		/**
 		 * @summary Update font styles for text element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		updateFontStyleGizmo : function ( event ) {
@@ -170,7 +170,7 @@
 		 * @param   {Object}    computedObject  Selected DOM node.
 		 * @param   {tagName}   tagName         The tag name of Selected DOM node.
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		updateBoldStyle : function( computedObject, tagName ){
@@ -189,7 +189,7 @@
 		 * @param   {Object}    computedObject  Selected DOM node.
 		 * @param   {tagName}   tagName         The tag name of Selected DOM node.
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		updateUnderlineStyle : function( computedObject, tagName, getClickedElement ){
@@ -208,7 +208,7 @@
 		 * @param   {Object}    computedObject  Selected DOM node.
 		 * @param   {tagName}   tagName         The tag name of Selected DOM node.
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		updateItalicStyle : function ( computedObject, tagName  ) {
@@ -225,7 +225,7 @@
 		 * @summary Return HTML of selected text
 		 *
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {Object} html : return html of selected text , parent : parent element of selected text
 		 */
 		getSelectionHtml : function(){
@@ -263,7 +263,7 @@
 		 *
 		 * @param   {Object}    event
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		pasteAsPlainText : function ( e ) {

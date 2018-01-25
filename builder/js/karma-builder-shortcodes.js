@@ -58,7 +58,7 @@
 		 * jQuery stops the default functionality of the browser when sorting a list,
 		 * so the blur is never called
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -75,7 +75,7 @@
 		/**
 		 * @summary Init sortable on elements
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		initSortable: function (){
@@ -144,7 +144,7 @@
 		 * @param   {object}    dropArea        DOM node
 		 * @param 	{object}  	event	DOM events
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		alignmentPlaceholder :function ( originalElement, dropArea, event ){
@@ -162,7 +162,7 @@
 		/**
 		 * @summary set Element alignment to element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		elementalign : function (){
@@ -179,7 +179,7 @@
 		/**
 		 * @summary set padding top for element function
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		topspacepadding : function () {
@@ -191,7 +191,7 @@
 		/**
 		 * @summary Removes active elements
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removeActiveElement: function (){
@@ -209,7 +209,7 @@
 		 * @param   {object}    dropArea        DOM node
 		 * @param   {object}    originalElement Sortable element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		beforeSortElement: function ( dropArea, originalElement ){
@@ -248,7 +248,7 @@
 		 * @param   {object}    dropArea        DOM node
 		 * @param   {number}    newParentKey    Parent key of sortable element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		sortElement: function ( viewObject, dropArea, newParentKey ){
@@ -271,7 +271,7 @@
 		/**
 		 * @summary trigger document click on links which have karma-document-click class
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -288,7 +288,7 @@
 		/**
 		 * @summary Call necessary function after init any elements
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -305,7 +305,7 @@
 		 * @summary Create placeholders for each elements as drop area
 		 * The function skip column and section for creating placeholders
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -344,7 +344,7 @@
 		/**
 		 * @summary Create placeholders for each elements as alignment
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -365,7 +365,7 @@
 		 *
 		 * @param    {object}    model    updated element model.
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {boolean}
 		 */
@@ -385,7 +385,7 @@
 		/**
 		 * @summary Render elements
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		render: function (){
@@ -397,7 +397,7 @@
 		/**
 		 * @summary Delete elements model and html
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		destroy: function (){
@@ -431,7 +431,7 @@
 		/**
 		 * @summary load blank page when content is empty
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		loadBlankPage : function () {
@@ -448,7 +448,7 @@
 		/**
 		 * @summary Remove element placeholders after delete element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		beforeDeleteElements: function (){
@@ -467,7 +467,7 @@
 		 *
 		 * @param {string}  parentKey       Element key of parent element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		reorderAfterDelete: function ( parentKey ){
@@ -487,7 +487,7 @@
 		 * @param {string}  parentKey       Element key of parent element
 		 * @param {string}  elementName     Element name
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		afterDeleteElement: function ( parentKey, elementName ){
@@ -510,7 +510,7 @@
 		 *
 		 * @param { object }  section       Element key of parent element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -525,7 +525,7 @@
 		/**
 		 * @summary Duplicate elements
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		duplicateElement: function (){
@@ -545,7 +545,7 @@
 		 * @summary Returns child of elements which passed to the function
 		 *
 		 * @param {string} parentElementKey   Element key to return its child(ren)
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {Array}
 		 */
 		getChildElements: function ( parentElementKey ){
@@ -569,7 +569,7 @@
 		/**
 		 * @summary open box of delete element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		deleteElementBox: function (){
@@ -596,7 +596,7 @@
 		/**
 		 * @summary cancel delete element on click in cancel box
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		cancelDeleteElement: function (){
@@ -616,7 +616,7 @@
 		/**
 		 * @summary  delete element on click in delete box
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		DeleteElement : function (){
@@ -639,7 +639,7 @@
 		/**
 		 * @summary stop click in delete box container
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		deleteBoxStopPropagation: function ( e ){
@@ -653,7 +653,7 @@
 		 *
 		 * @param   {string}    elementID
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		removeExtraAssets: function ( elementID ){
@@ -677,7 +677,7 @@
 		 * @param    {Object}    newAttributes list of new attribute
 		 * @param    {boolean}    silent model in silent mode
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -703,7 +703,7 @@
 		 *
 		 * @param    {Array}    attributesNames List of name attribute
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {object}     The value of given attribute
 		 */
@@ -725,7 +725,7 @@
 		/**
 		 * @summary find children of model
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {Array} - children models id
 		 */
@@ -738,7 +738,7 @@
 		/**
 		 * @summary Open setting panel of each Element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns void
 		 */
@@ -764,7 +764,7 @@
 		 * @param    {object}    el        element to remove Class
 		 * @param    {string}    className   name of class to remove
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -781,7 +781,7 @@
 		/**
 		 * @summary returns the element name with its key
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { string }  Element name with its key
 		 */
@@ -798,7 +798,7 @@
 		 * @param    { string }    attribute    CSS attribute
 		 * @param    { string }    value        CSS value
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { void }
 		 */
@@ -815,7 +815,7 @@
 		 * @param    { string }    attribute    CSS attribute
 		 * @param    { string }    value        CSS value
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { string } new style of element to insert inside style tag
 		 */
@@ -870,7 +870,7 @@
 		 * @param    { string }    selector        CSS attribute
 		 * @param    { string }    oldStyle        Old css string
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { string } new style of element without old css block
 		 */
@@ -889,7 +889,7 @@
 		 * @param    { string }    selector        CSS attribute
 		 * @param    { object }    cssProperty     CSS value
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns { string } new style of element to insert inside style tag
 		 */

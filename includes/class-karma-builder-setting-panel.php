@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * A class definition that controllers use in elements panel
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Controller/includes
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This includes builder builder controllers and load their dependency.
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Controller
  * @subpackage Karma_Controller/includes
  * @author     Pixflow <info@pixflow.net>
@@ -55,7 +55,7 @@ class Karma_Builder_Setting_Panel {
 	/**
 	 * Load and register the controllers in builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 */
 	public function register_controllers(){
@@ -74,7 +74,7 @@ class Karma_Builder_Setting_Panel {
 	/**
 	 * Load and register extends in builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 */
 	public function register_extends(){

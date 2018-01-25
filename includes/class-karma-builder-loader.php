@@ -4,7 +4,7 @@
  * Register all actions and filters for the plugin
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -27,7 +27,7 @@ class Karma_Builder_Loader {
 	/**
 	 * The Core that's core of the builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      Karma_Builder_Core    $core    Core of the builder.
 	 */
@@ -37,7 +37,7 @@ class Karma_Builder_Loader {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      Karma_Builder_Loader    $plugin_name    The name of plugin
 	 */
@@ -46,7 +46,7 @@ class Karma_Builder_Loader {
 	/**
 	 * The list of elements name
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 */
 	public static $element_filename = array(
@@ -62,7 +62,7 @@ class Karma_Builder_Loader {
 	 * Set the plugin name that can be used throughout the plugin.
 	 * Load the dependencies, and set the hooks for builder.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function __construct() {
 
@@ -84,7 +84,7 @@ class Karma_Builder_Loader {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function load_core() {
@@ -97,7 +97,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Define the builder functionality and set hook and action for builder
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function load_builder(){
@@ -128,7 +128,7 @@ class Karma_Builder_Loader {
 	 *
 	 * @param string $content  Content of current page
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    string The content
 	 */
 	public function create_general_element( $content ) {
@@ -142,7 +142,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Call the functions needed in frontend
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function prepare_builder(){
@@ -158,7 +158,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Call the functions needed in builder
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function execute_head_functions(){
@@ -181,7 +181,7 @@ class Karma_Builder_Loader {
 	 *
 	 * @param array	$classes	List of body class.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    array	New list of body class
 	 */
 	function add_custom_body_classes( $classes ) {
@@ -196,7 +196,7 @@ class Karma_Builder_Loader {
 	 * @param int       $page_id    Page ID .
 	 * @param boolean   $is_karma   Created by Karma or not .
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function set_is_karma_page( $page_id, $is_karma = true ){
@@ -213,7 +213,7 @@ class Karma_Builder_Loader {
 	 * Load cache files for the current page
 	 *
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function load_cache_file(){
@@ -242,7 +242,7 @@ class Karma_Builder_Loader {
 	 *
 	 * @param string $content  Content of current page
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    string The content
 	 */
 	public function change_the_content( $content ){
@@ -263,7 +263,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Load builder JS templates
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function load_builder_js_templates(){
@@ -279,7 +279,7 @@ class Karma_Builder_Loader {
 	/*
 	 * Load elements files and create their instance
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @return	 void
 	 */
 	public function init_elements(){
@@ -307,7 +307,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Add custom meta tags in header 
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	public function add_custom_meta_tags(){
@@ -324,7 +324,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Generate element page models and localize it for builder
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	private function generate_page_model(){
@@ -338,7 +338,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Localize important params for builder
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  private
 	 * @return  void
 	 */
@@ -355,7 +355,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Localize each element info
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  private
 	 * @return  void
 	 */
@@ -369,7 +369,7 @@ class Karma_Builder_Loader {
 	/**
 	 * localize elements maps for builder
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	private function send_elements_map(){
@@ -382,7 +382,7 @@ class Karma_Builder_Loader {
 	/**
 	 * localize elements gizmo for builder
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    void
 	 */
 	private function send_elements_gizmo(){
@@ -395,7 +395,7 @@ class Karma_Builder_Loader {
 	/**
 	 * Send localize value in front end
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	public function send_localize_value(){
 
@@ -414,7 +414,7 @@ class Karma_Builder_Loader {
 	 * @param	string	$tag	The name of element
 	 * @param 	array	$attr	The attribute of element
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    string	the correct html source for builder
 	 */
 	public function create_builder_element_model( $output, $tag, $attr ){
@@ -460,7 +460,7 @@ class Karma_Builder_Loader {
 	 * @param	string	$tag	The name of element
 	 * @param 	array	$attr	The attribute of element
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    string	the correct html source for builder
 	 */
 	public function render_assets( $output, $tag, $attr ){
@@ -482,7 +482,7 @@ class Karma_Builder_Loader {
 	 * @param	string	$element_name		element name
 	 * @param	array	$element_attributes	element attributes
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array - The group of attributes of element
 	 */

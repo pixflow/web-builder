@@ -16,7 +16,7 @@
  *
  * @param {object}  options input css selector
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 
@@ -59,7 +59,7 @@ karmaColorPicker = function ( options ) {
 /**
  * @summary generate uniqueID for color picker
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.generateColorPickerID = function () {
@@ -79,7 +79,7 @@ karmaColorPicker.prototype.generateColorPickerID = function () {
 /**
  * @summary init color picker on input with passed selector
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.init = function () {
@@ -98,7 +98,7 @@ karmaColorPicker.prototype.init = function () {
 /**
  * @summary create color circle icon to open color picker popup
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.createColorPickerIcon = function () {
@@ -128,7 +128,7 @@ karmaColorPicker.prototype.createColorPickerIcon = function () {
 /**
  * @summary create color picker popup
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.createColorPickerPopup = function () {
@@ -192,7 +192,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
  *
  * @param  {object} el element that need event to change color
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.presetColorsEvent = function ( el ) {
@@ -215,7 +215,7 @@ karmaColorPicker.prototype.presetColorsEvent = function ( el ) {
 /**
  * @summary change color action
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.changeColorAction = function () {
@@ -239,7 +239,7 @@ karmaColorPicker.prototype.changeColorAction = function () {
 /**
  * @summary set main input value
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.setMainInputEvent = function () {
@@ -256,7 +256,7 @@ karmaColorPicker.prototype.setMainInputEvent = function () {
 /**
  * @summary set choose color event
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {boolean}
  */
 karmaColorPicker.prototype.chooseColorEvent = function () {
@@ -282,7 +282,7 @@ karmaColorPicker.prototype.chooseColorEvent = function () {
  * @param {string} color     color of new pallet
  * @param {bool}   addClass  Add extra class
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.addColorToPallet = function ( color, addClass ) {
@@ -304,7 +304,7 @@ karmaColorPicker.prototype.addColorToPallet = function ( color, addClass ) {
  *
  * @param {string} newColor main color new value
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
@@ -325,7 +325,7 @@ karmaColorPicker.prototype.updateMainColor = function ( newColor ) {
  *
  * @param {String} Color main color new value
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.saveColors = function ( color ) {
@@ -350,7 +350,7 @@ karmaColorPicker.prototype.saveColors = function ( color ) {
  *
  * @param {String}  color   Color selected in color picker
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.onChangeColor = function ( color ) {
@@ -371,7 +371,7 @@ karmaColorPicker.prototype.onChangeColor = function ( color ) {
 /**
  * @summary init spectrum color picker
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.initSpectrumColorPicker = function () {
@@ -427,7 +427,7 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 /**
  * @summary Open Color Picker
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.openColorPicker = function ( e ) {
@@ -469,7 +469,7 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 /**
  * @summary check if current color is not exist in pallets, add it
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {void}
  */
 karmaColorPicker.prototype.addCurrentColor = function () {
@@ -489,7 +489,7 @@ karmaColorPicker.prototype.addCurrentColor = function () {
 /**
  * @summary convert rgb color to hex color
  *
- * @since 1.0.0
+ * @since 0.1.0
  * @returns {string} return hex color or passed color if color is not rgb
  */
 karmaColorPicker.prototype.rgbToHex = function ( color ) {

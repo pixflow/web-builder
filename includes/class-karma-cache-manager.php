@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * with Karma builder .
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -72,7 +72,7 @@ class Cache_Manager{
 	 * Init class.
 	 *
 	 * @param int|string $post_ID Page ID.
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function __construct( $post_ID = '' ){
 
@@ -86,7 +86,7 @@ class Cache_Manager{
 	 * Set page id for working in class.
 	 *
 	 * @param int|string $post_ID Page ID .
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	protected function set_page_ID( $post_ID = '' ){
 
@@ -100,7 +100,7 @@ class Cache_Manager{
 	/**
 	 * Check the cache file is exist or not
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return bool
 	 */
 	public function is_cache_file_exists(){
@@ -119,7 +119,7 @@ class Cache_Manager{
 	/**
 	 * Starting create cache file
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function set_up_cache(){
 
@@ -131,7 +131,7 @@ class Cache_Manager{
 	/**
 	 * Enqueue cache file
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function enqueue_file(){
 
@@ -145,7 +145,7 @@ class Cache_Manager{
 	/**
 	 * Create cache directory
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	private function create_cache_directory() {
 
@@ -159,7 +159,7 @@ class Cache_Manager{
 	/**
 	 * Create cache file
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return bool
 	 */
 	private function create_cache_file(){
@@ -178,7 +178,7 @@ class Cache_Manager{
 	/**
 	 * Remove all caches created by Karma builder
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return bool
 	 */
 	public function empty_cache(){
@@ -198,7 +198,7 @@ class Cache_Manager{
 	 * @param string    $ext      File format
 	 * @param boolean   $url      Return url or path
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return string
 	 */
 	public static function get_cache_file_dir( $page_id, $ext, $url = false ){
@@ -214,7 +214,7 @@ class Cache_Manager{
 	 *
 	 * @param int    $page_id  Page id
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return bool
 	 */
 	public static function remove_cache_file( $page_id ){
@@ -231,7 +231,7 @@ class Cache_Manager{
 	/**
 	 * Load dependency files
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function load_dependency_files(){
 
@@ -267,7 +267,7 @@ class Cache_Manager{
 	 *
 	 * @param array $file_list
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	private function enqueue_style_files( $file_list ){
 
@@ -284,7 +284,7 @@ class Cache_Manager{
 	 *
 	 * @param array $file_list
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	private function enqueue_script_files( $file_list ){
 

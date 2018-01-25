@@ -39,7 +39,7 @@
 		/**
 		 * @summary Call draggable on elements in add new elements item;
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		makeElementsDraggable: function () {
@@ -51,7 +51,7 @@
 		/**
 		 * @summary close panel when click in panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		stopClickInPanel : function ( e ) {
@@ -72,7 +72,7 @@
 		/**
 		 * @summary functionality for element panel tab
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		elementPanelTab: function (e) {
@@ -92,7 +92,7 @@
 		 * @summary get the clicked element and show its related tab
 		 *
 		 * @param  { object } originalSelector active category filter
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		setActiveTab : function( originalSelector ){
@@ -117,7 +117,7 @@
 		/**
 		 *@summary create add element panel with import template
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createAddElementPanel: function(){
@@ -132,7 +132,7 @@
 		/**
 		 *@summary create Templates panel with import template
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createTemplatesPanel: function(){
@@ -145,7 +145,7 @@
 		/**
 		 *@summary create Unsplash with import template
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createUnsplashPanel: function(){
@@ -158,7 +158,7 @@
 		/**
 		 *@summary create Upgrade with import template
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		createUpgradePanel: function(){
@@ -171,7 +171,7 @@
 		/**
 		 *@summary close add element panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		closeElementPanel: function() {
@@ -196,7 +196,7 @@
 		/**
 		 * @summary use niceScroll for element panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		scrollElementPanel: function () {
@@ -216,7 +216,7 @@
 		/**
 		 * @summary check if premium load premium template
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		checkingPremium: function () {
@@ -236,7 +236,7 @@
 		/**
 		 * @summary Search in elements
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		searchInElements : function ( e ){
@@ -270,7 +270,7 @@
 		/**
 		 * @summary when active category filter get class
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		categoryFilterActive: function ( e ) {
@@ -296,7 +296,7 @@
 		/**
 		 * @summary after click in each category set the price filter on all items
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		setPriceFilterOnAll : function ( e ) {
@@ -322,7 +322,7 @@
 		 * @summary initialize quicksand on add element panel
 		 *
 		 * @param 	{ array } $elementToFilter set of elements to filter
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns { void }
 		 */
 		callIQuicksandOnElements: function ( $elementToFilter ) {
@@ -340,7 +340,7 @@
 		 *
 		 * @param   { string }    priceFilter     price category to filter
 		 * @param   { string }    categoryFilter  element category to filter
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns { array } array of selected objects
 		 */
 		callFiltering: function ( priceFilter, categoryFilter ) {
@@ -376,7 +376,7 @@
 		/**
 		 * @summary open category dropdown on click hamburger menu
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		openCategoryMenu: function ( e ) {
@@ -394,7 +394,7 @@
 		/**
 		 * @summary sorting elements with category filter
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		elementGatherMenuFiltering : function () {
@@ -416,7 +416,7 @@
 		/**
 		 * @summary filtering price filter
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		elementPanelPriceFilter:function ( e ) {
@@ -442,7 +442,7 @@
 		/**
 		 * @summary Close gather menu panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		removeGatherMenuPanel: function () {
@@ -457,7 +457,7 @@
 		 * @summary clear input of search when click close icon
 		 * @param {object}  event DOM Events
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		clearElementPanelSearchBar: function ( e ) {
@@ -477,7 +477,7 @@
 		 * @summary add class to show search bar in element panel
 		 * @param { object }  event DOM Events
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns { void }
 		 */
 		showElementPanelSearchBar: function ( e ) {
@@ -494,7 +494,7 @@
 		/**
 		 * @summary Close search bar when click document
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns { void }
 		 */
 		elementPanelCloseSearchBar: function ( e ) {
@@ -515,7 +515,7 @@
 		/**
 		 * @summary show and hide close icon in search box in element panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		showElementPanelSearchCloseIcon: function () {
@@ -529,7 +529,7 @@
 		 *@summary open element panel for each button
 		 * @param event
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns { void }
 		 */
 		openElementPanel: function ( e ) {

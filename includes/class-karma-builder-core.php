@@ -6,7 +6,7 @@
  * A class definition that includes base attributes and functions of a builder
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -18,7 +18,7 @@
  * This includes base attributes and functions of a builder.
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -28,7 +28,7 @@ class Karma_Builder_Core{
 	/**
 	 * A static variable that contains an instance of Karma_Builder_Core builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 * @var      Karma_Builder_Core    $instance    The reference to *Singleton* instance of this class.
 	 */
@@ -38,7 +38,7 @@ class Karma_Builder_Core{
 	/**
 	 * The element attributes regex.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      string    $shortcode_attr_pattern	The regex pattern for get the element attributes.
 	 */
@@ -48,7 +48,7 @@ class Karma_Builder_Core{
 	/**
 	 * It is an array that contains element models
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      array    $models    element models.
 	 */
@@ -57,7 +57,7 @@ class Karma_Builder_Core{
 	/**
 	 * It is an array that contains used elements in the content of post
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      array    $used_shortcodes    used shortcodes in content.
 	 */
@@ -66,7 +66,7 @@ class Karma_Builder_Core{
 	/**
 	 * It contains content of a shortcode like : [shortcode]*Content*[/shortcode]
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      string    $content    shortcodes content.
 	 */
@@ -77,7 +77,7 @@ class Karma_Builder_Core{
 	 *
 	 * @access   public
 	 * @return   Karma_Builder_Core - The *Singleton* instance.
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public static function get_instance() {
 
@@ -95,7 +95,7 @@ class Karma_Builder_Core{
 	 *
 	 * @access   private
 	 * @return   void
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __clone(){}
 
@@ -104,7 +104,7 @@ class Karma_Builder_Core{
 	 *
 	 * @access   private
 	 * @return   void
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __wakeup(){}
 
@@ -123,7 +123,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param string $shortcode_name The name of shortcode
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return string The shortcode search regular expression
 	 */
@@ -139,7 +139,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param string	$shortcode_content	Shortcode content
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return boolean	true if any childes found otherwise return false
 	 */
@@ -160,7 +160,7 @@ class Karma_Builder_Core{
 	 * @param string	$content	Element string
 	 * @param string	$parent_key	Contain the id of parent Element for any child ( default = 0 )
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array - model of Element
 	 */
@@ -199,7 +199,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param array 	$model 		Contain the model of current element
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array - new model of element given with order attribute
 	 */
@@ -222,7 +222,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param string	$element_attributes	Element string
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return mixed - model of element or false if element syntax is incorrect
 	 */
@@ -252,7 +252,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param array	$matches attributes of shortcodes
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array - that contains the attributes and values of element
 	 */
@@ -276,7 +276,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param string    $element_attributes element string
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array - The group of attributes of element
 	 */
@@ -297,7 +297,7 @@ class Karma_Builder_Core{
 	 * @param   string  $element_name       element name
 	 * @param   array   $element_attributes element attributes
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return  array    The group of attributes of element
 	 */
@@ -317,7 +317,7 @@ class Karma_Builder_Core{
 	 *
 	 * @param string	$element_attributes	element string
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return boolean - false if element format is incorrect and true if is correct
 	 */
@@ -343,7 +343,7 @@ class Karma_Builder_Core{
 	 * @param array $models - element models
 	 *
 	 * @return string - content of the page by element tags
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function generate_post_content( $models ) {
 
@@ -366,7 +366,7 @@ class Karma_Builder_Core{
 	 * @param	string  $parent_key - parent model key
 	 *
 	 * @return array - array of element models tree
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	protected function build_models_tree( array &$models, $parent_key = '' ) {
 
@@ -395,7 +395,7 @@ class Karma_Builder_Core{
 	 * @param array $models - element models
 	 *
 	 * @return void
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	protected function sort_models_by_order( &$models ) {
 
@@ -418,7 +418,7 @@ class Karma_Builder_Core{
 	 * @param array $second_model - element model
 	 *
 	 * @return integer
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	private function compare_orders( $first_model, $second_model ) {
 
@@ -436,7 +436,7 @@ class Karma_Builder_Core{
 	 * @param array $models - element models
 	 *
 	 * @return string - element string pattern of model
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	protected function convert_model_to_shortcode_pattern( $models ){
 
@@ -483,7 +483,7 @@ class Karma_Builder_Core{
 	 * @param   integer     $post_id - post/page ID
 	 *
 	 * @return boolean
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function save_post( $models, $post_id ) {
 
@@ -503,7 +503,7 @@ class Karma_Builder_Core{
 	 * @param   integer     $post_id - post/page ID
 	 *
 	 * @return boolean
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function publish_post( $models, $post_id ) {
 
@@ -522,7 +522,7 @@ class Karma_Builder_Core{
 	 * @param   integer $post_id - post/page ID
 	 *
 	 * @return boolean
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function switch_post_status( $new_status, $post_id ) {
 
@@ -555,7 +555,7 @@ class Karma_Builder_Core{
 	 * @param integer	$id - post/page ID
 	 *
 	 * @return boolean returns true on success and false on failure.
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function save_post_content( $models, $id ) {
 
@@ -574,7 +574,7 @@ class Karma_Builder_Core{
 	/**
 	 * Map element
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return array - array of elements map
 	 */
 	public function element_map() {
@@ -588,7 +588,7 @@ class Karma_Builder_Core{
 	/**
 	 * Gizmo element
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return array - array of elements gizmo
 	 */
 	public function element_gimzo() {
@@ -602,7 +602,7 @@ class Karma_Builder_Core{
 	/**
 	 * Element info
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @return array - array of elements gizmo
 	 */
 	public function element_info() {

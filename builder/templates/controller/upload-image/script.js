@@ -7,7 +7,7 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 	 * @summary When an image is selected in the media frame and change background
 	 * @param {object} give view of element
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	function callback( frame ) {
@@ -25,7 +25,7 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 	/**
 	 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @returns {void}
 	 */
 	function openMediaLibrary() {

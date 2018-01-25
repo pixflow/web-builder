@@ -13,7 +13,7 @@
  * This includes base methods and variable that describe image element
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/elements/karma_image
  * @author     Pixflow <info@pixflow.net>
@@ -23,7 +23,7 @@ class Karma_Image_Describe extends Karma_Image {
 	/**
 	 * Adds different input fields to allow the user to change and customize the element settings.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 *
 	 * @return array Element panels
@@ -135,7 +135,7 @@ class Karma_Image_Describe extends Karma_Image {
 	 * Set the gizmo controller
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return    array    Gizmo controller of all elements
 	 */
@@ -228,7 +228,7 @@ class Karma_Image_Describe extends Karma_Image {
 	 * Element Panel uses this method to know how to display the element
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  array   The element info
 	 */

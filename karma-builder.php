@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              http://pixflow.net
- * @since             1.0.0
+ * @since             0.1.0
  * @package           Karma_Builder
  *
  * @wordpress-plugin
  * Plugin Name:       Karma Builder
  * Plugin URI:        http://pixflow.net/products/karma-builder
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Visually create your website in fastest and easiest way with Fully Customized Karma Builder.
+ * Version:           0.1.0
  * Author:            Pixflow
  * Author URI:        http://pixflow.net
  * License:           GPL-2.0+
@@ -70,7 +70,7 @@ require_once plugin_dir_path( __FILE__ )  . 'includes/class-karma-factory-patter
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.1.0
  */
 function run_karma_builder() {
 

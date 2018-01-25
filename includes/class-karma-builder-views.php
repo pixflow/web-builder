@@ -5,7 +5,7 @@
  * A class definition that templates use in builder
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -17,7 +17,7 @@
  * This includes templates a builder.
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -28,7 +28,7 @@ class Karma_Views {
 	/**
 	 * The list of environment template names
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private $environment_templates = array(
@@ -40,7 +40,7 @@ class Karma_Views {
 	/**
 	 * The list of builder template names
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private $builder_templates = array(
@@ -64,7 +64,7 @@ class Karma_Views {
 	/**
 	 * The list of builder template names that need to load inside iframe
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private $builder_iframe_templates = array(

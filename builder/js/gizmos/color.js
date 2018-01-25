@@ -20,7 +20,7 @@
 		/**
 		 * @summary Set event on input text colors
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		updateColor : function () {
@@ -57,7 +57,7 @@
 		/**
 		 * @summary init karma color picker plugin on color picker gizmo
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */

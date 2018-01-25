@@ -22,7 +22,7 @@
 		/**
 		 * @summary Render image element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		render : function () {
@@ -38,7 +38,7 @@
 		/**
 		 * @summary set Image width and height attribute of image
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		setImageSize : function () {
@@ -67,7 +67,7 @@
 		/**
 		 * @summary stop image to call its parent
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -80,7 +80,7 @@
 		/**
 		 * @summary change image URL
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -95,7 +95,7 @@
 		/**
 		 * @summary set image to fill or real according to user selection
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -110,7 +110,7 @@
 		/**
 		 * @summary change position of image
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -125,7 +125,7 @@
 		/**
 		 * @summary change image alt attribute on change alt field in advanced option
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -139,7 +139,7 @@
 		/**
 		 * @summary set image url attribute on change url field
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -153,7 +153,7 @@
 		/**
 		 * @summary set image target attribute on change target field
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -167,7 +167,7 @@
 		/**
 		 * @summary open media library
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -184,7 +184,7 @@
 		/**
 		 * @summary change image url
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -199,7 +199,7 @@
 		/**
 		 * @summary change image click action
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */

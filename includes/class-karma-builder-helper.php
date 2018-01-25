@@ -5,7 +5,7 @@
  *
  * @param    String $url the url of svg file
  *
- * @since    1.0.0
+ * @since    0.1.0
  * @return   String html of svg file
  */
 function karma_load_svg( $url ){
@@ -21,7 +21,7 @@ function karma_load_svg( $url ){
 /**
  * check and set user have avatar and print it in header
  *
- * @since    1.0.0
+ * @since    0.1.0
  * @return avatar or first character of user that login in wordpress
  */
 function get_user_avatar(){
@@ -44,7 +44,7 @@ function get_user_avatar(){
  * check user have avatar or no
  * @param    String $email email of user
  *
- * @since    1.0.0
+ * @since    0.1.0
  * @return mixed for checking avatar exist
  *
  */
@@ -117,7 +117,7 @@ function karma_save_remote_images( $image_url, $type, $regenerate_thumbnails = f
  * @param   string $content - content
  *
  * @return array returns unsplash images
- * @since 1.0.0
+ * @since 0.1.0
  */
 function karma_find_unsplash_images( $content ) {
 
@@ -148,7 +148,7 @@ function karma_find_unsplash_images( $content ) {
  * @param   string $content - content
  *
  * @return string returns content with downloaded images URL
- * @since 1.0.0
+ * @since 0.1.0
  */
 function karma_save_unsplash_images( $content ) {
 

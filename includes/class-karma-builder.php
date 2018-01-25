@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       http://pixflow.net
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
@@ -33,7 +33,7 @@ class Karma_Builder {
 	/**
 	 * A static variable that contains an instance of Karma_Builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 * @var      Karma_Builder    $instance    The reference to *Singleton* instance of this class.
 	 */
@@ -43,7 +43,7 @@ class Karma_Builder {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   protected
 	 * @var      Karma_Builder_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -52,7 +52,7 @@ class Karma_Builder {
 	/**
 	 * The Core that's core of the builder
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      Karma_Builder_Core    $core    Core of the builder.
 	 */
@@ -62,7 +62,7 @@ class Karma_Builder {
 	/**
 	 * Builder status in frontend .
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      boolean
 	 */
@@ -71,7 +71,7 @@ class Karma_Builder {
 	/**
 	 * Builder status in builder .
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   public
 	 * @var      boolean
 	 */
@@ -82,7 +82,7 @@ class Karma_Builder {
 	 *
 	 * @access   public
 	 * @return   Karma_Builder - The *Singleton* instance.
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public static function get_instance( $factory = null ) {
 
@@ -100,7 +100,7 @@ class Karma_Builder {
 	 *
 	 * @access   private
 	 * @return   void
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __clone(){}
 
@@ -109,7 +109,7 @@ class Karma_Builder {
 	 *
 	 * @access   private
 	 * @return   void
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __wakeup(){}
 
@@ -120,7 +120,7 @@ class Karma_Builder {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private function __construct( $factory ) {
 
@@ -151,7 +151,7 @@ class Karma_Builder {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -230,13 +230,13 @@ class Karma_Builder {
 	 * Define the global constants for this plugin.
 	 *
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function constants() {
 
 		define( 'KARMA_BUILDER_NAME', 'karma-builder' );
-		define( 'KARMA_BUILDER_VERSION', '1.0.0' );
+		define( 'KARMA_BUILDER_VERSION', '0.1.0' );
 
 		define( 'KARMA_BUILDER_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
 		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );
@@ -253,7 +253,7 @@ class Karma_Builder {
 	 * Uses the Karma_Builder_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -268,7 +268,7 @@ class Karma_Builder {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -287,7 +287,7 @@ class Karma_Builder {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -313,7 +313,7 @@ class Karma_Builder {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function load_core() {
@@ -330,7 +330,7 @@ class Karma_Builder {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function run() {
 
@@ -347,7 +347,7 @@ class Karma_Builder {
 	/**
 	 * Check for loading script and styles for builder
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    boolean	true if should load otherwise false.
 	 */
 	private function is_builder_environment(){
@@ -363,7 +363,7 @@ class Karma_Builder {
 	/**
 	 * Set builder status in each different states.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	private function set_builder_status(){
 
@@ -381,7 +381,7 @@ class Karma_Builder {
 	/**
 	 * Prevent from load builder and load Karma views
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return void
 	 */
@@ -401,7 +401,7 @@ class Karma_Builder {
 	/**
 	 * Modify wordpress actions and hooks
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return void
 	 */
@@ -432,7 +432,7 @@ class Karma_Builder {
 	/**
 	 * Enqueue styles and scripts to top iFrame
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return void
 	 */
@@ -468,7 +468,7 @@ class Karma_Builder {
 	/**
 	 * Get the current page url
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return String	Permalink of current page
 	 */
@@ -483,7 +483,7 @@ class Karma_Builder {
 	/**
 	 * Check the user roles.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    boolean	true if user has access or not.
 	 */
 	public static function user_have_access_page(){
@@ -498,7 +498,7 @@ class Karma_Builder {
 	/**
 	 * Check the builder is load or not.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    boolean	true if builder is load otherwise false.
 	 */
 	public static function is_in_builder(){
@@ -524,7 +524,7 @@ class Karma_Builder {
 	/**
 	 * Check for the ajax request and customize mode
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    boolean	true if it is not ajax request and customizer preview
 	 */
 	public static function check_preview_mode(){
@@ -542,7 +542,7 @@ class Karma_Builder {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -552,7 +552,7 @@ class Karma_Builder {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    Karma_Builder_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -562,7 +562,7 @@ class Karma_Builder {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

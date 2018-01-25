@@ -34,7 +34,7 @@
 		 * @param	{String}	elementName	The name of element
 		 * @param	{String}	form	which form
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {Array}	The element params
 		 */
 		getElementMap: function ( elementName, form ) {
@@ -50,7 +50,7 @@
 		/**
 		 * @summary Element setting panel draggable event
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		bindDragEvents: function () {
@@ -83,7 +83,7 @@
 		/**
 		 * @summary Make element stop calling its parent
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		stopFromCallingParent : function ( e ) {
@@ -96,7 +96,7 @@
 		/**
 		 * @summary On click removes element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -114,7 +114,7 @@
 		 *
 		 * @param	{string}	form of element
 		 *
-		 * @since	1.0.0
+		 * @since	0.1.0
 		 *
 		 * @returns	{boolean}
 		 */
@@ -149,7 +149,7 @@
 		 * @param	{object} 	model			model of clicked element.
 		 * @param	{object} 	elementParam	default controllers value in define.
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {object}	updated param value
 		 */
@@ -174,7 +174,7 @@
 		 *
 		 * @param	{string}	form	of element
 		 *
-		 * @since	1.0.0
+		 * @since	0.1.0
 		 *
 		 * @returns	{object | void } form builder html and form title
 		 */
@@ -202,7 +202,7 @@
 		 *
 		 * @param	{string}    form	        The name of from
 		 *
-		 * @since	1.0.0
+		 * @since	0.1.0
 		 *
 		 * @returns	{object} form builder content html
 		 */
@@ -220,7 +220,7 @@
 		 *
 		 * @param	{object}	elementParams model attribute
 		 *
-		 * @since	1.0.0
+		 * @since	0.1.0
 		 *
 		 * @returns	{object} form builder content html
 		 */
@@ -267,7 +267,7 @@
 		 *
 		 * @param	{object}	all controller in group
 		 *
-		 * @since	1.0.0
+		 * @since	0.1.0
 		 *
 		 * @returns	{object} form builder group html
 		 */
@@ -285,7 +285,7 @@
 		/**
 		 * @summary remove setting panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -314,7 +314,7 @@
 		 * @param	{String}    source             get model attribute
 		 * @param   {Object}    dependencyParams    Dependency params
 		 *
-		 * @since	1.0.0
+		 * @since	0.1.0
 		 *
 		 * @returns	{string} Return controller with general container
 		 */
@@ -334,7 +334,7 @@
 		/**
 		 * @summary Apply dependencies to the element setting panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		applyDependency : function(){
@@ -361,7 +361,7 @@
 		 * @param {Object}  dependencyInfo      Dependent element info
 		 * @param {Object}  dependentElementOBJ Java script DOM node
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		applyDependencyOnLoad : function ( dependentElement, dependencyInfo, dependentElementOBJ ) {
@@ -377,7 +377,7 @@
 		 * @param {Object}  dependentElement    Dependent element
 		 * @param {String}  dependentValue      Value of input
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 * @return {void}
 		 */
 		doDependency : function ( dependentElement, dependentValue ) {
@@ -402,7 +402,7 @@
 		 * @param   {Object}  dependentElement    Dependent element
 		 * @param   {boolean} isHide              Should show or hide dependent on parent depend element
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @return  {void}
 		 */
 		findDependentElements : function ( dependentElement, isHide ) {
@@ -440,7 +440,7 @@
 		/**
 		 * @summary update model attribute from setting panel
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns void
 		 */
@@ -458,7 +458,7 @@
 		/**
 		 * @summary use niceScroll for setting panel
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		scrollSettingPanel: function () {
@@ -476,7 +476,7 @@
 		/**
 		 * @summary call niceScroll on content panel resize
 		 *
-		 * @since   1.0.0
+		 * @since   0.1.0
 		 * @returns {void}
 		 */
 		callScrollOnResize: function () {

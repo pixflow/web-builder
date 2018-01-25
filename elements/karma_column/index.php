@@ -7,7 +7,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	/**
 	 * Return default attributes
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 *
 	 * @return array
@@ -69,7 +69,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 * Note : postfix or prefix are the CSS selectors
 	 * @example if yor prefix is .karma-prefix so your CSS selector is .karma-prefix .karma-section-{element-key}
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  array The style property of element
 	 */
@@ -93,7 +93,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 * Load JS
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return    void
 	 */
@@ -108,7 +108,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 * List of dependencies
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  array
 	 */

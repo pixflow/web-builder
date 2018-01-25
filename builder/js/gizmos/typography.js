@@ -49,7 +49,7 @@
 		/**
 		 * @summary initialize typography
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -62,7 +62,7 @@
 		/**
 		 * @summary render typography
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -84,7 +84,7 @@
 		/**
 		 * @summary set  typography for text element
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */

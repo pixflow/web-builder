@@ -44,7 +44,7 @@
 		/**
 		 * @summary Set italic style
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -57,7 +57,7 @@
 		/**
 		 * @summary Set underline style
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
@@ -70,7 +70,7 @@
 		/**
 		 * @summary Set bold style
 		 *
-		 * @since 1.0.0
+		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */

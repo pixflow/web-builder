@@ -13,7 +13,7 @@
  * This includes base methods and variable that need for Text element
  *
  *
- * @since      1.0.0
+ * @since      0.1.0
  * @package    Karma_Builder
  * @subpackage Karma_Builder/elements/karma_text
  * @author     Pixflow <info@pixflow.net>
@@ -23,7 +23,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	/**
 	 * Element name
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 */
 	public static $element_name = 'karma_text';
@@ -31,7 +31,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	/**
 	 * Return default attributes
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 *
 	 * @return array
@@ -57,7 +57,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 * @param array $attributes Attribute of element
 	 * @param string $content Content of element
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 *
 	 * @return string Html output
@@ -87,7 +87,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 *
 	 * Written in JS and used to for underscore template.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 * @access public
 	 *
 	 * @return string Template output
@@ -110,7 +110,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 * Note : postfix or prefix are the CSS selectors
 	 * @example if yor prefix is .karma-prefix so your CSS selector is .karma-prefix .karma-section-{element-key}
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  array The style property of element
 	 */
@@ -139,7 +139,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 * Load JS
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  void
 	 */
@@ -157,7 +157,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 	 * List of dependencies
 	 *
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 * @access  public
 	 * @return  array
 	 */
