@@ -1,3 +1,15 @@
+/*
+ * KarmaUnsplash manager
+ * The resources that make up the Unsplash JSON API
+ *
+ *
+ * Copyright 2018 @Pixflow
+ * Licensed under the MIT license.
+ *
+ *
+ */
+
+
 
 /**
  * Perform an animation and requests that the browser call a specified function to

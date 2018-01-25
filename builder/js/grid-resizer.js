@@ -1,9 +1,14 @@
-/**
- * gridResizer is a column resize tool which support grids and flexbox
+/*
+ * GridResizer is a column resize tool which support grids and flexbox
  *
- * URL: http://pixflow.net
- * License: MIT
+ *
+ * Copyright 2018 @Pixflow
+ * Licensed under the MIT license.
+ *
+ *
  */
+
+
 (function () {
 
 	/**

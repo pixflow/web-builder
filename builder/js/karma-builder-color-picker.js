@@ -1,9 +1,14 @@
-/**
+/*
  * karmaColorPicker is a color picker plugin to load color popup and load spectrum color picker
  *
- * URL: http://pixflow.net
- * License: MIT
+ *
+ * Copyright 2018 @Pixflow
+ * Licensed under the MIT license.
+ *
+ *
  */
+
+
 
 /**
  * @summary karmaColorPicker manager

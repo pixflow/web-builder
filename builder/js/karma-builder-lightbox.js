@@ -1,9 +1,14 @@
-/**
+/*
  * karmaImageLightbox is a lightbox plugin to load images in popup mode
  *
- * URL: http://pixflow.net
- * License: MIT
+ *
+ * Copyright 2018 @Pixflow
+ * Licensed under the MIT license.
+ *
+ *
  */
+
+
 
 /**
  * @summary karmaImageLightbox manager
