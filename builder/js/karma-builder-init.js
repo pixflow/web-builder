@@ -1314,6 +1314,13 @@ var karmaBuilder = karmaBuilder || {};
 			})
 
 		},100);
+		
+		//deactive header link
+			$('.site-header a').click(function (e) {
+
+				e.preventDefault();
+
+			})
 
 
 	});
