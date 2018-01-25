@@ -3594,10 +3594,11 @@ img {
     transform: rotate(225deg); }
 
 body:not(.karma-builder-environment) .karma-element-content:hover {
-  box-shadow: none !important; }
+  box-shadow: none !important;
+  cursor: default !important; }
 body:not(.karma-builder-environment) .karma-element-content .karma-text,
 body:not(.karma-builder-environment) .karma-element-content .karma-image-both-resize {
-  cursor: default; }
+  cursor: default !important; }
 
 .karma-builder-environment .karma-builder-element {
   position: relative; }
