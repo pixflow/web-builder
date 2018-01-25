@@ -60,12 +60,16 @@
 		updateImageSize : function () {
 
 			var imageLinks =  this.el.querySelectorAll('.karma-builder-element[data-name="karma_image"]') ;
+
 			_.each( imageLinks, function( image ){
 
 				var trueWidth = image.offsetWidth;
 				if( trueWidth < image.querySelector('img').offsetWidth ){
 					image.querySelector('.karma-image-resize').style.width = trueWidth + 'px';
 					image.querySelector('.karma-image-resize-crop').style.width = trueWidth + 'px';
+					$( image ).backboneView().setAttributes( {
+						width : trueWidth,
+					}, true );
 				}
 
 			} );
@@ -168,7 +172,9 @@
 		liveChangeGrid: function () {
 
 			var that = this,
-				key = this.model.get( 'element_key' );
+				key = this.model.get( 'element_key' ),
+				allColumnInSection = $ ( this.el.closest('.karma-row') ).find('.karma-builder-element[data-name="karma_column"]');
+
 			var changeGridOptions = {
 				selector: '.karma-builder-element[data-element-key="' + key + '"]',
 				snapToGrid: true,
@@ -176,6 +182,7 @@
 				onStart : function () {
 
 					KarmaView.removeActiveElement();
+					allColumnInSection.addClass('karma-resizing-padding');
 
 				},
 				onStop: function ( result ) {
@@ -183,6 +190,7 @@
 					var newGrid = result.grid,
 						nextSibilingColumn = that.$el.next('.karma-builder-element[data-name="karma_column"]');
 
+					allColumnInSection.removeClass('karma-resizing-padding');
 					that.newGrid( newGrid );
 					that.$el.trigger('karma/finish/modifyColumns');
 					if( nextSibilingColumn.length ){
