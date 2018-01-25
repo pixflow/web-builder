@@ -17,16 +17,6 @@ html {
 	display: flex;
 	justify-content: center;
 	position: relative;
-
-	.karma-background-section{
-		@include box( 100% );
-		background-size: cover;
-		left: 0px;
-		position: absolute;
-		top: 0px;
-		z-index: -1;
-
-	}
 }
 
 .karma-container {

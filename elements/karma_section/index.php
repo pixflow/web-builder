@@ -39,13 +39,16 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$container_class = ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
 		ob_start();
 		?>
-		<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'
-		     style="padding-top:<?php echo esc_attr( $atts['space'] );?>px;padding-bottom:<?php echo esc_attr( $atts['space'] ); ?>px;">
-			<div class="karma-background-section <?php echo esc_attr( $this->background_classes( $atts ) ); ?>"></div>
-			<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
-				<?php echo do_shortcode( $content ); ?>
+
+		<section class="karma-section-container karma-background-section <?php echo esc_attr( $this->background_classes( $atts ) ); ?>">
+			<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'
+			     style="padding-top:<?php echo esc_attr( $atts['space'] );?>px;padding-bottom:<?php echo esc_attr( $atts['space'] ); ?>px;">
+				<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
+					<?php echo do_shortcode( $content ); ?>
+				</div>
 			</div>
-		</div>
+		</section>
+
 		<?php
 		return ob_get_clean();
 
@@ -54,14 +57,14 @@ class Karma_Section extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		return "<# var rowContainer = ('container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
+			. '<section class="karma-section-container karma-background-section {{ backgroundClasses }}">'
 			. "<div class='karma-section karma-section-{{ data.attributes.element_key }} {{ data.attributes.shortcode_attributes.extra_class }}' style='padding-bottom:{{ data.attributes.shortcode_attributes.space }}px;padding-top:{{ data.attributes.shortcode_attributes.space }}px;'>"
 			. "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
 			. "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-background-position-{{ data.attributes.shortcode_attributes.backgroundposition }}'; #>"
-			. "<div class='karma-background-section {{ backgroundClasses }}'>"
-			. "</div>"
 			. "<div class='{{ rowContainer }} karma-row karma-no-gutters'>"
 			. "</div>"
-			. "</div>";
+			. "</div>"
+			. '</section>' ;
 
 	}
 
