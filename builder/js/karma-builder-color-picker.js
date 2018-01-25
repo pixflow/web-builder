@@ -396,7 +396,6 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 			that.onChangeColor( color.toHexString() );
 
 		},
-
 		hide : function ( color ) {
 
 			that.saveColors( color.toHexString() );

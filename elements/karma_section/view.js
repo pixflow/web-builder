@@ -17,8 +17,6 @@
 				this.render();
 			}
 			this.setSortable();
-
-
 		},
 
 		/**
@@ -114,7 +112,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns Array - current layout of section
+		 * @returns {Array} - current layout of section
 		 */
 		currentGrid : function( ) {
 			//@TODO responsiveTool
@@ -134,7 +132,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns Array - new layout of section after add new column
+		 * @returns {Array} - new layout of section after add new column
 		 */
 		calculateNewGrid : function( ) {
 
@@ -155,8 +153,8 @@
 		/**
 		 * @summary Delete The column id
 		 *
-		 * @params {number}	columnKey			The column id
-		 * @params {number}	lastColumnKey		The last column in row id
+		 * @param {number}	columnKey		The column id
+		 * @param {number}	lastColumnKey	The last column in row id
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
@@ -172,8 +170,8 @@
 		/**
 		 * @summary Sum the numbers
 		 *
-		 * @params {number}	total	The total number
-		 * @params {number}	num		The new number
+		 * @param {number}	total	The total number
+		 * @param {number}	num		The new number
 		 *
 		 * @since 1.0.0
 		 * @returns {number}	Sum of number given
@@ -187,7 +185,7 @@
 		/**
 		 * @summary Check the grid given is equal 12
 		 *
-		 * @params {array}	grid	The grid layout
+		 * @param {array}	grid	The grid layout
 		 *
 		 * @since 1.0.0
 		 * @returns {boolean}	true if layout is correct
@@ -206,9 +204,9 @@
 		 * @summary Update the column model by id given.
 		 * Function just update size of column
 		 *
-		 * @params {number}	columnId		The column id
-		 * @params {number}	parentId		The row id
-		 * @params {number}	newWidth		The new width of column
+		 * @param {number}	columnKey		The column id
+		 * @param {number}	parentId		The row id
+		 * @param {number}	newWidth		The new width of column
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
@@ -225,7 +223,7 @@
 		/**
 		 * @summary Change the layout of row grid
 		 *
-		 * @params {array}	newLayout The grid layout
+		 * @param {array}	newLayout The grid layout
 		 *
 		 * @since 1.0.0
 		 * @returns {boolean}	true if layout is successfully changed
@@ -263,9 +261,9 @@
 		/**
 		 * @summary Create new column
 		 *
-		 * @params {number}	counter			Columns that should be created
-		 * @params {array}	newLayout		New layout
-		 * @params {number}	columnKey		ID of last column updated
+		 * @param {number}	counter			Columns that should be created
+		 * @param {array}	newLayout		New layout
+		 * @param {number}	columnKey		ID of last column updated
 		 *
 		 * @since 1.0.0
 		 * @returns {void}

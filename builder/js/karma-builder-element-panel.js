@@ -2,11 +2,6 @@
 
 	karmaBuilderActions.elementPanel = Backbone.View.extend({
 
-		/**
-		 *@summary Define elements event
-		 *
-		 * @since   1.0.0
-		 */
 		events : {
 
 			"click.stopClickInPanel" 										            : "stopClickInPanel",
@@ -24,13 +19,6 @@
 
 		},
 
-
-		/**
-		 * @summary Set defaults on initialize
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
 		initialize: function() {
 
 			this.setElement( $( '<div id="karma-add-element" class="karma-element-panel-container">' ) );
@@ -60,8 +48,6 @@
 
 		},
 
-
-
 		/**
 		 * @summary close panel when click in panel
 		 *
@@ -77,12 +63,6 @@
 
 		},
 
-		/**
-		 * @summary element-panel
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
 		render : function () {
 
 			document.body.appendChild( this.el );
@@ -111,14 +91,14 @@
 		/**
 		 * @summary get the clicked element and show its related tab
 		 *
-		 * @param object orginalSelector active category filter
+		 * @param  { object } originalSelector active category filter
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		setActiveTab : function( orginalSelector ){
+		setActiveTab : function( originalSelector ){
 
 			document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
-			var tabData = orginalSelector.getAttribute( 'data-tab' ),
+			var tabData = originalSelector.getAttribute( 'data-tab' ),
 				tabContent = document.querySelector(  '.' + tabData  );
 			if( null != tabContent){
 				tabContent.classList.add( "karma-active-tab" );
@@ -213,7 +193,6 @@
 
 		},
 
-
 		/**
 		 * @summary use niceScroll for element panel
 		 *
@@ -234,21 +213,20 @@
 
 		},
 
-
 		/**
-		 * @summary check if permium load permium template
+		 * @summary check if premium load premium template
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
 		 */
-		checkingPermium : function () {
+		checkingPremium: function () {
 
 			if( $( '.karma-active-tab .karma-isotope' ).length
 				&&  !$( '.karma-active-tab .karma-isotope .premium' ).length
 			){
-				var permiumTemplate = document.querySelector( '.element-panel-permium' ) ;
+				var premiumTemplate = document.querySelector( '.element-panel-permium' ) ;
 				document.querySelector( '.karma-active-tab' ) && document.querySelector( '.karma-active-tab' ).classList.remove( 'karma-active-tab' );
-				permiumTemplate.classList.add("karma-active-tab" );
+				premiumTemplate.classList.add("karma-active-tab" );
 			}
 
 		},
@@ -343,9 +321,9 @@
 		/**
 		 * @summary initialize quicksand on add element panel
 		 *
-		 * @param 	array $elementToFilter set of elements to filter
+		 * @param 	{ array } $elementToFilter set of elements to filter
 		 * @since   1.0.0
-		 * @returns {void}
+		 * @returns { void }
 		 */
 		callIQuicksandOnElements: function ( $elementToFilter ) {
 
@@ -358,10 +336,10 @@
 		},
 
 		/**
-		 * @summary filter elements
+		 * @summary filter elements an add element panel items
 		 *
-		 * @param   {string}    priceFilter     price category to filter
-		 * @param   {string}    categoryFilter  element category to filter
+		 * @param   { string }    priceFilter     price category to filter
+		 * @param   { string }    categoryFilter  element category to filter
 		 * @since   1.0.0
 		 * @returns { array } array of selected objects
 		 */
@@ -452,7 +430,7 @@
 			this.el.querySelector( '.active' ).classList.remove( 'active' );
 			target.classList.add( 'active' );
 			if( '.premium' == target.getAttribute( 'data-filter' ) ){
-				this.checkingPermium();
+				this.checkingPremium();
 			}else {
 				this.setActiveTab( this.el.querySelector( '.karma-addcontent-active' ) );
 			}
@@ -477,7 +455,7 @@
 
 		/**
 		 * @summary clear input of search when click close icon
-		 * @param {object}  event
+		 * @param {object}  event DOM Events
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -497,10 +475,10 @@
 
 		/**
 		 * @summary add class to show search bar in element panel
-		 * @param {object}  event
+		 * @param { object }  event DOM Events
 		 *
 		 * @since   1.0.0
-		 * @returns {void}
+		 * @returns { void }
 		 */
 		showElementPanelSearchBar: function ( e ) {
 
@@ -517,7 +495,7 @@
 		 * @summary Close search bar when click document
 		 *
 		 * @since   1.0.0
-		 * @returns {void}
+		 * @returns { void }
 		 */
 		elementPanelCloseSearchBar: function ( e ) {
 
@@ -552,7 +530,7 @@
 		 * @param event
 		 *
 		 * @since   1.0.0
-		 * @returns {void}
+		 * @returns { void }
 		 */
 		openElementPanel: function ( e ) {
 

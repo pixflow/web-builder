@@ -6,7 +6,7 @@
 		gizmos: {},
 
 		/**
-		 *  Build html for new section button
+		 * @summery Build html for new section button
 		 */
 		newSectionButtonTemplate : '<div class="karma-new-section-button">'
 		+'<div class="karma-new-section-icon">'
@@ -16,18 +16,18 @@
 
 
 		/**
-		 *  Build html for inner gizmo
+		 *@summery  Build html for inner gizmo
 		 */
 		innerGizmoTemplate : '<div class=" karma-gizmo-template karma-inner-gizmo-template {{ data.className }} karma-gizmo-container"></div>' ,
 
 		/**
-		 *  Build html for outer gizmo
+		 *@summery  Build html for outer gizmo
 		 */
 		outerGizmoTemplate : '<div class="karma-gizmo-template karma-outer-gizmo-template {{ data.className }} karma-gizmo-container"></div>' ,
 
 
 		/**
-		 *  Build html for text shortcode alignment
+		 *@summery  Build html for text shortcode alignment
 		 */
 		alignmentGizmoTemplate : ' <button class="karma-drop-down-icon karma-alignment-drop-down-gizmo"> {{{ data.defaultIcon }}} </button> '
 		+ '<div class="karma-drop-down-box karma-alignment-drop-down">'
@@ -140,7 +140,6 @@
 		 */
 		imageResizeGizmoTemplate : '',
 
-
 		resizeGizmoTemplate : '<div class="{{data.class}}" data-snap="{{data.param.snapGrid}}" ></div>',
 
 		topGizmoTemplate : '<div class="{{data.class}}">'
@@ -160,7 +159,6 @@
 
 		titleGizmoTemplate: '<div class="karma-title-gizmo-template karma-gizmo-container"></div>',
 
-
 		/**
 		 * @summary Set Gizmo Events
 		 *
@@ -168,7 +166,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns void
+		 * @returns { void }
 		 */
 		gizmoEvents: function ( gizmoParams ) {
 
@@ -189,11 +187,11 @@
 		/**
 		 * @summary Build gizmo controller of elements base on params given
 		 *
-		 * @param	{object}	gizmoParams	Gizmo params
+		 * @param	{ object }	gizmoParams	Gizmo params
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns {string}    The HTML output of template
+		 * @returns { string }    The HTML output of template
 		 */
 		gizmoBuilder: function ( gizmoParams ) {
 
@@ -241,7 +239,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns {void}
+		 * @returns { void }
 		 */
 		createGizmo: function () {
 
@@ -261,6 +259,7 @@
 		/**
 		 * @summary Build gizmo resizeable for top and bottom
 		 *
+		 * @param { object } $gizmo section gizmo
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
@@ -333,7 +332,7 @@
 
 		/**
 		 * @summary Build gizmo resizeably for top
-		 * @param {object}  gizmoParams     gizmo params of view
+		 * @param {object}  $gizmo     gizmo params of view
 		 *
 		 * @since 1.0.0
 		 *
@@ -372,9 +371,10 @@
 		},
 
 		/**
-		 * @summery create options for right and left spacing gizmo
+		 *@summery create options for right and left spacing gizmo
 		 *
-		 *@param	{string} paddingDirection type of padding (padddingleft or paddingRight)
+		 *@param	{string} spacingSelector left or right spacing gizmo of column
+		 *@param	{string} paddingDirection type of padding (paddingLeft or paddingRight)
 		 *
 		 * @since 1.0.0
 		 *
@@ -491,10 +491,10 @@
 
 		},
 
-
 		/**
-		 * @summary Build gizmo resizeably for left
+		 * @summary Build gizmo resizeable for left
 		 *
+		 * @param {object} $gizmo left spacing gizmo of column
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
@@ -512,6 +512,7 @@
 		/**
 		 * @summary Build gizmo resizeable for right
 		 *
+		 * @param {object} $gizmo  right spacing gizmo of column
 		 * @since 1.0.0
 		 *
 		 * @returns {void}
@@ -529,9 +530,10 @@
 		/**
 		 *@summery calculate maxWidth of left and  right spacing
 		 *
+		 * @param {string} spacingGizmo element which is resizing
 		 * @since 1.0.0
 		 *
-		 * @return {integer} returns value of maxwidth padding right
+		 * @return {number} returns value of maxWidth padding right
 		 */
 		calculateMaxWidthSpacing : function ( spacingGizmo ) {
 
@@ -573,9 +575,12 @@
 		/**
 		 * @summary move spacing tooltip on mouse move
 		 *
+		 * @param {object} that element view
+		 * @param {string} direction Spacing gizmo which is resizing
+		 *
 		 * @since   1.0.0
 		 *
-		 *  @returns {void}
+		 *  @returns {boolean | void}
 		 */
 		moveMouseToolTip : function( e, that, direction ) {
 
@@ -595,9 +600,8 @@
 		/**
 		 * check direction of spacing and set tooltip inner text
 		 *
-		 * @param	{object} 	tooltip element
-		 *
-		 * @param	{string} 	direction of spacing
+		 * @param	{object} 	tooltip    element
+		 * @param	{string} 	direction  direction of spacing
 		 *
 		 * @since 1.0.0
 		 *
@@ -625,7 +629,7 @@
 		},
 
 		/**
-		 * remove mouse tooltip in spacing
+		 *@summary remove mouse tooltip in spacing
 		 *
 		 * @since 1.0.0
 		 *
@@ -644,7 +648,7 @@
 		},
 
 		/**
-		 * create html fot tooltip
+		 *@summary create html fot tooltip
 		 *
 		 * @since 1.0.0
 		 *
@@ -713,7 +717,6 @@
 			KarmaView.closeElementPanel().removeSettingPanel();
 
 		},
-
 
 		/**
 		 * @summary close more sub menu when click in document

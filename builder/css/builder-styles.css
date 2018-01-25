@@ -2835,7 +2835,7 @@ html {
 .karma-background-section {
   background-repeat: no-repeat; }
   .karma-background-section.karma-background-image-contain {
-    background-size: contain; }
+    background-size: auto; }
   .karma-background-section.karma-background-image-cover {
     background-size: cover; }
   .karma-background-section.karma-background-position-top-left {

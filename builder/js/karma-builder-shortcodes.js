@@ -37,13 +37,6 @@
 		+ '</div>',
 
 
-		/**
-		 * @summary Set defaults in create
-		 *
-		 * @since 1.0.0
-		 *
-		 * @returns void
-		 */
 		initialize : function( options ) {
 
 			this.template = options.template;
@@ -67,7 +60,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns void
+		 * @returns {void}
 		 */
 		callBlur : function () {
 
@@ -196,7 +189,7 @@
 		},
 
 		/**
-		 * @summary Remove all active elements
+		 * @summary Removes active elements
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
@@ -358,10 +351,10 @@
 		createSelfPlaceholder: function (){
 
 			if ( undefined == this.el.querySelector( '.karma-alignment-placeholder' ) ){
-				var alingmentPlaceholder = KarmaView.getUnderscoreTemplate( this.alignmentPlaceholderTemplate ),
+				var alignmentPlaceholder = KarmaView.getUnderscoreTemplate( this.alignmentPlaceholderTemplate ),
 					div                  = document.createElement( "div" );
 				div.classList.add( 'karma-alignment-placeholder' );
-				div.innerHTML = alingmentPlaceholder;
+				div.innerHTML = alignmentPlaceholder;
 				this.el.appendChild( div );
 			}
 
@@ -393,7 +386,7 @@
 		 * @summary Render elements
 		 *
 		 * @since 1.0.0
-		 * @returns {boolean}
+		 * @returns {void}
 		 */
 		render: function (){
 
@@ -548,6 +541,13 @@
 
 		},
 
+		/**
+		 * @summary Returns child of elements which passed to the function
+		 *
+		 * @param {string} parentElementKey   Element key to return its child(ren)
+		 * @since 1.0.0
+		 * @returns {Array}
+		 */
 		getChildElements: function ( parentElementKey ){
 
 			var childElementsModel = karmaBuilder.karmaModels.where( { parent_key: parentElementKey } ),
@@ -575,7 +575,7 @@
 		deleteElementBox: function (){
 
 			var deleteBox       = this.el.querySelector( '.karma-delete-message-box' ),
-				deletecontainer = this.el.querySelector( '.karma-delete-message-container' );
+				deleteContainer = this.el.querySelector( '.karma-delete-message-container' );
 
 			if ( null == deleteBox ){
 				var template = KarmaView.getWpTemplate( 'karma-delete-message-box' );
@@ -585,8 +585,8 @@
 				if ( deleteBox.classList.contains( "karma-delete-box-animation" ) ){
 					deleteBox.classList.remove( "karma-delete-box-animation" );
 				}
-				if ( deletecontainer.classList.contains( "karma-delete-container-animation" ) ){
-					deletecontainer.classList.remove( "karma-delete-container-animation" );
+				if ( deleteContainer.classList.contains( "karma-delete-container-animation" ) ){
+					deleteContainer.classList.remove( "karma-delete-container-animation" );
 				}
 				deleteBox.style.display = "flex";
 			}
@@ -602,8 +602,8 @@
 		cancelDeleteElement: function (){
 
 			var deleteBox       = this.el.querySelector( '.karma-delete-message-box' ),
-				deletecontainer = this.el.querySelector( '.karma-delete-message-container' );
-			deletecontainer.classList.add( "karma-delete-container-animation" );
+				deleteContainer = this.el.querySelector( '.karma-delete-message-container' );
+			deleteContainer.classList.add( "karma-delete-container-animation" );
 			deleteBox.classList.add( "karma-delete-box-animation" );
 			setTimeout( function (){
 
@@ -623,9 +623,9 @@
 
 			var that = this;
 			var deleteBox       = this.el.querySelector( '.karma-delete-message-box' ),
-				deletecontainer = this.el.querySelector( '.karma-delete-message-container' ),
+				deleteContainer = this.el.querySelector( '.karma-delete-message-container' ),
 				selectAll       = this.$el.find( '.karma-builder-element div:not(.karma-delete-message-box)' );
-			deletecontainer.classList.add( "karma-delete-container-animation" );
+			deleteContainer.classList.add( "karma-delete-container-animation" );
 			deleteBox.classList.add( "karma-delete-box-animation" );
 			selectAll.css( "display", "none" );
 			setTimeout( function (){
@@ -675,7 +675,6 @@
 		 * @summary Update attribute(s) of element
 		 *
 		 * @param    {Object}    newAttributes list of new attribute
-		 *
 		 * @param    {boolean}    silent model in silent mode
 		 *
 		 * @since 1.0.0
@@ -685,15 +684,15 @@
 		setAttributes: function ( newAttributes, silent ){
 
 			var model               = this.model,
-				shortcodeAtrributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
+				shortcodeAttributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
 
-			shortcodeAtrributes.changed = {};
+			shortcodeAttributes.changed = {};
 			for ( var attr in newAttributes ){
-				shortcodeAtrributes[ attr ] = newAttributes[ attr ];
-				shortcodeAtrributes.changed[ attr ] = newAttributes[ attr ];
+				shortcodeAttributes[ attr ] = newAttributes[ attr ];
+				shortcodeAttributes.changed[ attr ] = newAttributes[ attr ];
 			}
 
-			model.set( { 'shortcode_attributes': shortcodeAtrributes }, { silent: silent } );
+			model.set( { 'shortcode_attributes': shortcodeAttributes }, { silent: silent } );
 
 		},
 
@@ -711,12 +710,12 @@
 		getAttributes: function ( attributesNames ){
 
 			var model               = this.model,
-				shortcodeAtrributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) ),
+				shortcodeAttributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) ),
 				attributeValue      = {};
 
 			for ( var attr in attributesNames ){
-				if ( 'undefined' != typeof shortcodeAtrributes[ attributesNames[ attr ] ] ){
-					attributeValue[ attributesNames[ attr ] ] = shortcodeAtrributes[ attributesNames[ attr ] ];
+				if ( 'undefined' != typeof shortcodeAttributes[ attributesNames[ attr ] ] ){
+					attributeValue[ attributesNames[ attr ] ] = shortcodeAttributes[ attributesNames[ attr ] ];
 				}
 			}
 			return attributeValue;
@@ -728,7 +727,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns array - children models id
+		 * @returns {Array} - children models id
 		 */
 		findChildren: function (){
 
@@ -795,7 +794,7 @@
 		/**
 		 * @summary renders the css of model inside style tag
 		 *
-		 * @param    { string }    selector    Css selector
+		 * @param    { string }    selector     Css selector
 		 * @param    { string }    attribute    CSS attribute
 		 * @param    { string }    value        CSS value
 		 *
@@ -888,7 +887,7 @@
 		 * @summary renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector        CSS attribute
-		 * @param    { object }    cssProperty        CSS value
+		 * @param    { object }    cssProperty     CSS value
 		 *
 		 * @since 1.0.0
 		 *

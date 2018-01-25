@@ -113,7 +113,7 @@
 		},
 
 		/**
-		 * @right spacing of column setting panel
+		 * @summary spacing of column setting panel
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
@@ -131,7 +131,7 @@
 		},
 
 		/**
-		 * @right spacing of column setting panel
+		 * @summary spacing of column setting panel
 		 *
 		 * @since 1.0.0
 		 * @returns {void}
@@ -148,7 +148,7 @@
 		},
 
 		/**
-		 * extra class field changes. Add class to the column
+		 *@summary extra class field changes. Add class to the column
 		 *
 		 * @since 1.0.0
 		 *
@@ -163,7 +163,7 @@
 		},
 
 		/**
-		 * apply live change grid on column
+		 *@summary apply live change grid on column
 		 *
 		 * @since 1.0.0
 		 *
@@ -352,7 +352,7 @@
 		 * @summary Move the content from column to another column
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
-		 * @param {object{  model           Element model
+		 * @param {object}  model           Element model
 		 *
 		 * @since 1.0.0
 		 * @return {void}
@@ -362,10 +362,14 @@
 			var viewObject = $('[data-element-key="' + model.get('element_key') + '"]').backboneView() ,
 				elementID = model.get('shortcode_name').replace( '_', '-' ) + '-' + model.get('element_key'),
 				moveToColumn = $( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column-margin'),
+				columnPlaceholder = moveToColumn.find( '.karma-column-placeholder' ),
 				script = $( '#script-' + elementID ).clone(),
 				style = $( '#style-' + elementID ).clone();
 
 			this.removeExtraAssets( elementID );
+			if ( columnPlaceholder.length ){
+				columnPlaceholder.remove();
+			}
 			moveToColumn.append( viewObject.$el );
 			moveToColumn.append( script );
 			moveToColumn.append( style );

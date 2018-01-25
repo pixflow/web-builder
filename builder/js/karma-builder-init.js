@@ -31,11 +31,6 @@ var karmaBuilder = karmaBuilder || {};
 			variable	: 'data'
 		},
 
-		/**
-		 * Defines events of Karma Builder
-		 *
-		 * @since 1.0.0
-		 */
 		events : {
 
 			'click.bindDocumentEvent'                      				        : 'bindDocumentEvent',
@@ -51,12 +46,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		/**
-		 * In creating this view calls render
-		 *
-		 * @since 1.0.0
-		 *
-		 */
 		initialize : function () {
 
 		},
@@ -324,8 +313,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
-
 		/**
 		 * @summary Save element model and html
 		 *
@@ -378,7 +365,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @summary Remove changed value in element attributes
 		 *
 		 * @since 1.0.0
-		 * @returns {string}    Validated models
+		 * @returns { string }    Validated models
 		 */
 		prepareModels : function(){
 
@@ -828,14 +815,10 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Detect and show drop area placeholders while dragging
-		 *
-		 * @param {object}  event   DOM events
-		 * @param {object}  UI      Dragging element
-		 * UI is jquery helper object
+		 * @summary Remove drop area placeholders while dragging
 		 *
 		 * @since   1.0.0
-		 * @returns {boolean}
+		 * @returns {void}
 		 */
 		removePlaceHolders : function () {
 
@@ -920,7 +903,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Detect and show drop area placeholders of self element dragging
+		 * @summary Check if current drop area is its element drop area or not
 		 *
 		 * @param {object}  targetElement   DOM node
 		 * @param {object}  helperOBJ       Dragging element
@@ -1096,7 +1079,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Render elements and their childes
+		 * @summary Render elements and their children
 		 *
 		 * @param   {object}    placeholder
 		 * @param   {object}    elementsModel
@@ -1130,9 +1113,17 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
+		/**
+		 * @summary create style tag for models of page
+		 *
+		 * @param   {Array}    models
+		 * @param   {object}    elementView
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		//@TODO it should be refactor and delete this function
 		createStyleSheetForElements : function( models, elementView ){
-
 
 			_.each( models, function ( value, model ) {
 				if( 'function' == typeof elementView[ model ] ){

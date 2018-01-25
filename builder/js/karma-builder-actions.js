@@ -6,11 +6,6 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 	karmaBuilderActions.view = Backbone.View.extend({
 
-		/**
-		 * Defines events of Karma Builder
-		 *
-		 * @since 1.0.0
-		 */
 		events : {
 
 			'click .builder-publish'                    : 'karmaPublish',
@@ -288,6 +283,12 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		},
 
+		/**
+		 * @summary Returns builder Iframe
+		 *
+		 * @since   1.0.0
+		 * @returns {object}
+		 */
 		getIframe : function () {
 
 			if( null == this.karmaIframe ){
@@ -297,6 +298,12 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			return this.karmaIframe;
 		},
 
+		/**
+		 * @summary Publish content on click in publish button
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		karmaPublish : function () {
 
 			var karmaIframeView = this.getIframe().KarmaView,
@@ -309,6 +316,12 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		},
 
+		/**
+		 * @summary Animate publish animation button
+		 *
+		 * @since   1.0.0
+		 * @returns {void}
+		 */
 		publishAnimation : function () {
 
 			var karmaPublishButton = document.querySelector( '.builder-publish' );

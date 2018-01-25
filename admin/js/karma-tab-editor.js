@@ -3,6 +3,7 @@
  * The resources that add karma tab to WordPress post editor
  *
  * @since 1.0.0
+ * @returns { void }
  */
 var karmaTabEditor;
 karmaTabEditor = function () {

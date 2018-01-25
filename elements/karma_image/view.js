@@ -19,7 +19,6 @@
 
 		},
 
-
 		/**
 		 * @summary Render image element
 		 *
@@ -65,12 +64,26 @@
 
 		},
 
+		/**
+		 * @summary stop image to call its parent
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		preventFromOpen : function ( e ) {
 
 			e.preventDefault();
 
 		},
 
+		/**
+		 * @summary change image URL
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		imgurl : function () {
 
 			var imageAddress = this.getAttributes( [ 'imgurl' ] );
@@ -79,6 +92,13 @@
 
 		},
 
+		/**
+		 * @summary set image to fill or real according to user selection
+		 *
+		 * @since 1.0.0
+		 *
+		 * @returns {void}
+		 */
 		scale: function () {
 
 			var imageScale = this.getAttributes( [ 'scale' ] ),
@@ -175,6 +195,7 @@
 			}, false );
 
 		},
+		
 		/**
 		 * @summary change image click action
 		 *

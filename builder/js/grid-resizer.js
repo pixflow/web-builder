@@ -12,7 +12,7 @@
 (function () {
 
 	/**
-	 * initial function of gridResizer
+	 *@summery initial function of gridResizer
 	 *
 	 * @param    {object}    option    initialize options
 	 * @returns  {Array | boolean}    DOM elements which are resizable or false if not exists
@@ -50,7 +50,7 @@
 	}
 
 	/**
-	 * find elements which should be resizable then add handler to them
+	 * @summery find elements which should be resizable then add handler to them
 	 *
 	 * @returns   {Array}    DOM elements which are resizable
 	 */
@@ -77,7 +77,7 @@
 	};
 
 	/**
-	 * Min width of columns shouldn't be lower that their padding
+	 * @summery Min width of columns shouldn't be lower that their padding
 	 *
 	 * @param {object}    el    DOM element
 	 * @returns {boolean}
@@ -102,7 +102,7 @@
 	};
 
 	/**
-	 * create a handler for a column
+	 *@summery create a handler for a column
 	 *
 	 * @param {object}    el    DOM element
 	 * @returns {boolean}
@@ -119,7 +119,7 @@
 	};
 
 	/**
-	 * returns true if a column is the last column in a row
+	 *@summery returns true if a column is the last column in a row
 	 *
 	 * @param 	{object}    el    DOM element
 	 * @returns	{boolean}
@@ -135,7 +135,7 @@
 	};
 
 	/**
-	 * Start Dragging
+	 *@summery Start Dragging
 	 *
 	 * @param {event}    e
 	 * @returns {boolean}
@@ -239,7 +239,7 @@
 	};
 
 	/**
-	 * find next sibling column
+	 *@summery find next sibling column
 	 *
 	 * @param {object}    el DOM element
 	 * @returns {object | null}
@@ -264,8 +264,6 @@
 		}
 		return nextElement;
 	};
-
-
 
 	/**
 	 * @summary Stop dragging after mouseup
@@ -311,7 +309,7 @@
 	};
 
 	/**
-	 * if snapToGrid was true, it finds the closest column width and set that class to the element
+	 *@summery if snapToGrid was true, it finds the closest column width and set that class to the element
 	 *
 	 * @param {object}    el    DOM element
 	 * @returns {object}

@@ -10,13 +10,6 @@
 
 		viewInstance : {},
 
-
-
-		/**
-		 * Define elements event
-		 *
-		 * @since   1.0.0
-		 */
 		events : {
 			"click.stopParent"                                                                  : "stopFromCallingParent",
 			"click .delete-karma-element"				                                        : "removeElement",
@@ -26,12 +19,6 @@
 			"change #karma-element-setting-panel-container input[type=checkbox]"				: "updateModel" ,
 		},
 
-		/**
-		 * Set defaults on initialize
-		 *
-		 * @since   1.0.0
-		 * @returns {void}
-		 */
 		initialize: function( options ) {
 
 			this.viewInstance = options.viewInstance ;
@@ -59,7 +46,6 @@
 			return this.shortcodeParams[ elementName ][form];
 
 		},
-
 
 		/**
 		 * @summary Element setting panel draggable event
@@ -94,11 +80,16 @@
 
 		},
 
+		/**
+		 * @summary Make element stop calling its parent
+		 *
+		 * @since 1.0.0
+		 * @returns {void}
+		 */
 		stopFromCallingParent : function ( e ) {
 
 			e.stopPropagation();
 			$( document ).trigger( "click.hideColorPickerContainer" );
-
 
 		},
 
@@ -107,7 +98,7 @@
 		 *
 		 * @since 1.0.0
 		 *
-		 * @returns void
+		 * @returns {void}
 		 */
 		removeElement: function () {
 
@@ -119,7 +110,7 @@
 		},
 
 		/**
-		 * @summary On click removes element
+		 * @summary On click open element setting panel
 		 *
 		 * @param	{string}	form of element
 		 *
@@ -178,32 +169,31 @@
 
 		},
 
-
 		/**
-		 * create form builder html
+		 *@summary create form builder html
 		 *
 		 * @param	{string}	form	of element
 		 *
 		 * @since	1.0.0
 		 *
-		 * @returns	{object} form builder html and form title
+		 * @returns	{object | void } form builder html and form title
 		 */
 		formBuilder : function( form ) {
 
-			var shortcodeModel = this.model.attributes ,
-				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form );
+			var elementModel = this.model.attributes ,
+				elementParams = this.getElementMap( elementModel.shortcode_name, form );
 
-			if( null == shortcodeParams ){
+			if( null == elementParams ){
 				return;
 			}
 			var popup = document.createElement('div'),
-				settingPanelHeight = shortcodeParams.height;
-			karmaformhtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
+				settingPanelHeight = elementParams.height,
+				karmaFormHtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
 				formBuilderContents = this.formBuilderContentHtml( form );
 
-			karmaformhtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
-			popup.innerHTML = karmaformhtml ;
-			return { content: popup.innerHTML, title: shortcodeParams.title };
+			karmaFormHtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
+			popup.innerHTML = karmaFormHtml ;
+			return { content: popup.innerHTML, title: elementParams.title };
 
 		},
 
@@ -218,53 +208,52 @@
 		 */
 		formBuilderContentHtml : function ( form ) {
 
-			var shortcodeModel = this.model.attributes ,
-				shortcodeParams = this.getElementMap( shortcodeModel.shortcode_name, form ),
-				shortcodeParams = this.updateElementParams( shortcodeModel, shortcodeParams );
-			return this.formBuilderContentAction( shortcodeParams );
+			var elementModel = this.model.attributes ,
+				elementParams = this.getElementMap( elementModel.shortcode_name, form ),
+				elementParams = this.updateElementParams( elementModel, elementParams );
+			return this.formBuilderContentAction( elementParams );
 
 		},
-
-
+		
 		/**
 		 * @summary form builder content action to create  html
 		 *
-		 * @param	{object}	get model attribute
+		 * @param	{object}	elementParams model attribute
 		 *
 		 * @since	1.0.0
 		 *
 		 * @returns	{object} form builder content html
 		 */
-		formBuilderContentAction : function ( shortcodeParams ) {
+		formBuilderContentAction : function ( elementParams ) {
 
 			var groupHtml = '',
 				controllerSource,
 				groupHtml_group = [];
-			for( var counter in shortcodeParams.params ){
-				if ( ! shortcodeParams.params[counter].group && "switch-panel" != shortcodeParams.params[counter].type ) {
-					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ], 1 );
-					groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] ) ;
-				}else if( "switch-panel" === shortcodeParams.params[counter].type ) {
-					if( "undefined" !== typeof shortcodeParams.params[counter].form ){
-						shortcodeParams.params[counter]['view'] = this;
-						shortcodeParams.params[counter]['formBuilder'] = true;
-						controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ], 1 );
-						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
+			for( var counter in elementParams.params ){
+				if ( ! elementParams.params[counter].group && "switch-panel" != elementParams.params[counter].type ) {
+					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + elementParams.params[counter].type + '-controller', elementParams.params[ counter ], 1 );
+					groupHtml += this.setGeneralContainer( controllerSource, elementParams.params[counter] ) ;
+				}else if( "switch-panel" === elementParams.params[counter].type ) {
+					if( "undefined" !== typeof elementParams.params[counter].form ){
+						elementParams.params[counter]['view'] = this;
+						elementParams.params[counter]['formBuilder'] = true;
+						controllerSource = this.KarmaView.getWpTemplate( 'karma-' + elementParams.params[counter].type + '-controller', elementParams.params[ counter ], 1 );
+						groupHtml += this.setGeneralContainer( controllerSource, elementParams.params[counter] );
 					}else{
-						shortcodeParams.params[counter]['formBuilder'] = false;
-						controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[ counter ], 1 );
-						groupHtml += this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
+						elementParams.params[counter]['formBuilder'] = false;
+						controllerSource = this.KarmaView.getWpTemplate( 'karma-' + elementParams.params[counter].type + '-controller', elementParams.params[ counter ], 1 );
+						groupHtml += this.setGeneralContainer( controllerSource, elementParams.params[counter] );
 					}
 				} else {
-					if( undefined === groupHtml_group[ shortcodeParams.params[counter].group] ){
-						groupHtml_group[ shortcodeParams.params[counter].group ] = {
+					if( undefined === groupHtml_group[ elementParams.params[counter].group] ){
+						groupHtml_group[ elementParams.params[counter].group ] = {
 							items: [],
-							title: shortcodeParams.params[counter].group
+							title: elementParams.params[counter].group
 						};
 					}
-					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + shortcodeParams.params[counter].type + '-controller', shortcodeParams.params[counter], 1 );
-					var html = this.setGeneralContainer( controllerSource, shortcodeParams.params[counter] );
-					groupHtml_group[ shortcodeParams.params[counter].group ]['items'].push( html );
+					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + elementParams.params[counter].type + '-controller', elementParams.params[counter], 1 );
+					var html = this.setGeneralContainer( controllerSource, elementParams.params[counter] );
+					groupHtml_group[ elementParams.params[counter].group ]['items'].push( html );
 				}
 				var formBuilderGroupHtml = this.formBuilderGroupHtml( groupHtml_group );
 			}
@@ -323,7 +312,7 @@
 		 * @summary form builder content action to create  html
 		 *
 		 * @param	{String}    source             get model attribute
-		 * @param   {Object}    dependencyParams    Dependecy params
+		 * @param   {Object}    dependencyParams    Dependency params
 		 *
 		 * @since	1.0.0
 		 *
@@ -466,7 +455,6 @@
 
 		},
 
-
 		/**
 		 * @summary use niceScroll for setting panel
 		 *
@@ -486,7 +474,7 @@
 		},
 
 		/**
-		 * @summary call nicescroll on content panel resize
+		 * @summary call niceScroll on content panel resize
 		 *
 		 * @since   1.0.0
 		 * @returns {void}
