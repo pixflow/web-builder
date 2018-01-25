@@ -23,9 +23,9 @@ img {
 	}
 
 	&.karma-top-spacing {
+		left: 0;
 		position: absolute;
 		top: 0;
-		left: 0;
 		width: 100%;
 
 		.spacing-dot:after {
@@ -74,9 +74,9 @@ img {
 
 	&.karma-bottom-spacing {
 		bottom: 0 !important;
+		left: 0;
 		position: absolute;
 		top: initial !important;
-		left: 0;
 		width: 100%;
 
 		.karma-spacing-dot-container {
@@ -356,6 +356,11 @@ body:not(.karma-builder-environment) {
 	.karma-element-content {
 		&:hover {
 			box-shadow: none !important;
+		}
+	.karma-text,
+	.karma-image-both-resize
+		{
+			cursor: default;
 		}
 	}
 }
