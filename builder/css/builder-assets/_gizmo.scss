@@ -288,7 +288,7 @@ img {
 		max-width: 1040px;
 		opacity: 0;
 		transform: translateY(50px);
-		transition: all 0.2s;
+		transition: opacity 0.2s , translate 0.2s;
 		visibility: hidden;
 		width: 100%;
 	}
