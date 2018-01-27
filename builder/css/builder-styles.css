@@ -3340,11 +3340,11 @@ img {
     right: auto;
     bottom: auto;
     left: 0 !important;
-    cursor: e-resize;
+    cursor: ew-resize;
     height: 100%;
     position: absolute; }
     .karma-spacing.karma-left-spacing.ui-resizable.karma-left-spacing .karma-spacing-dot-container {
-      cursor: e-resize;
+      cursor: ew-resize;
       left: -1px !important;
       top: 50%;
       transform: translateY(-50%);
@@ -3359,11 +3359,11 @@ img {
     right: 0 !important;
     bottom: auto;
     left: initial !important;
-    cursor: e-resize;
+    cursor: ew-resize;
     height: 100%;
     position: absolute; }
     .karma-spacing.karma-right-spacing.ui-resizable.karma-right-spacing .karma-spacing-dot-container {
-      cursor: w-resize;
+      cursor: ew-resize;
       left: calc(100% - 12px) !important;
       top: 50%;
       transform: translateY(-50%); }
@@ -3380,7 +3380,7 @@ img {
     width: 100%; }
     .karma-spacing.karma-bottom-spacing .karma-spacing-dot-container {
       bottom: -11px !important;
-      cursor: s-resize;
+      cursor: ns-resize;
       top: initial !important; }
     .karma-spacing.karma-bottom-spacing .spacing-dot:after {
       top: auto;
@@ -3461,12 +3461,12 @@ img {
     right: -4px;
     top: 50%; }
 .karma-active-element[data-name="karma_image"] .ui-resizable-w {
-  cursor: w-resize;
+  cursor: ew-resize;
   left: -4px;
   top: 50%;
   transform: translateY(-50%); }
 .karma-active-element[data-name="karma_image"] .ui-resizable-e {
-  cursor: e-resize;
+  cursor: ew-resize;
   right: -4px;
   top: 50%;
   transform: translateY(-50%); }
@@ -3481,7 +3481,7 @@ img {
     left: 50%; }
 .karma-active-element[data-name="karma_image"] .ui-resizable-s {
   bottom: -4px;
-  cursor: s-resize;
+  cursor: ns-resize;
   left: 50%;
   transform: translateX(-50%); }
 .karma-active-element[data-name="karma_image"] .ui-resizable-ne {
