@@ -3609,7 +3609,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
     .karma-builder-environment .karma-builder-element .karma-element-content .karma-spacing-dot-container {
       display: none; }
   .karma-builder-environment .karma-builder-element.karma-active-element .karma-spacing.karma-top-spacing {
-    cursor: n-resize;
+    cursor: ns-resize;
     visibility: visible;
     z-index: 0; }
   .karma-builder-environment .karma-builder-element.karma-active-element .karma-gizmo-template {
@@ -3809,7 +3809,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
   .karma-builder-environment .karma-builder-element .karma-spacing-dot-container {
     width: 22px;
     height: 23px;
-    cursor: n-resize;
+    cursor: ns-resize;
     display: none;
     left: 48%;
     position: absolute;
@@ -3937,7 +3937,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
   .karma-builder-environment .karma-builder-element .row-bottom-spacing-dot-container {
     align-items: center;
     bottom: -9px;
-    cursor: n-resize;
+    cursor: ns-resize;
     display: none;
     height: 18px;
     justify-content: center;
@@ -4008,9 +4008,9 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
   .karma-builder-environment .karma-builder-element.karma-active-section.karma-resizable-active .karma-top-spacing .spacing-dot {
     background-color: #419CF8; }
   .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-top-spacing {
-    cursor: n-resize; }
+    cursor: ns-resize; }
   .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-bottom-spacing {
-    cursor: n-resize; }
+    cursor: ns-resize; }
     .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-bottom-spacing.ui-resizable-resizing .spacing-dot {
       background-color: #419CF8; }
   .karma-builder-environment .karma-builder-element.karma-active-column .column-gizmo-group {

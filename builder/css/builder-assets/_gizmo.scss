@@ -383,7 +383,7 @@ body:not(.karma-builder-environment) {
 			.karma-spacing {
 
 				&.karma-top-spacing {
-					cursor: n-resize;
+					cursor: ns-resize;
 					visibility: visible;
 					z-index: $level-0;
 				}
@@ -650,7 +650,7 @@ body:not(.karma-builder-environment) {
 		.karma-spacing-dot-container {
 
 			@include box(22px, 23px);
-			cursor: n-resize;
+			cursor: ns-resize;
 			display: none;
 			left: 48%;
 			position: absolute;
@@ -775,7 +775,7 @@ body:not(.karma-builder-environment) {
 		.row-bottom-spacing-dot-container {
 			align-items: center;
 			bottom: -9px;
-			cursor: n-resize;
+			cursor: ns-resize;
 			display: none;
 			height: 18px;
 			justify-content: center;
@@ -887,10 +887,10 @@ body:not(.karma-builder-environment) {
 			.section-both-spacing {
 
 				.karma-top-spacing {
-					cursor: n-resize;
+					cursor: ns-resize;
 				}
 				.karma-bottom-spacing {
-					cursor: n-resize;
+					cursor: ns-resize;
 					&.ui-resizable-resizing {
 						.spacing-dot {
 							background-color: $builder-accent-color;
