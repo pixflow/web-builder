@@ -66,6 +66,3 @@ Karma Builder is a fully responsive plugin. Smartphone, tablet, laptop & desktop
 
 = 0.1.0 =
 * Initial Public Release
-
-
-
