@@ -63,7 +63,6 @@ class Tests_Core extends WP_UnitTestCase
 					'title' => 'this is a " title " ',
 					'sub_title' => 'this is a subtitle\'s test',
 					'elementalign' => 'left',
-					'topspacepadding' => '10'
 				),
 			'shortcode_content' => '',
 			'shortcode_name' => 'karma_text',
