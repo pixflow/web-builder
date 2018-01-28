@@ -63,6 +63,7 @@ class Tests_Core extends WP_UnitTestCase
 					'title' => 'this is a " title " ',
 					'sub_title' => 'this is a subtitle\'s test',
 					'elementalign' => 'left',
+					'topspacepadding' => '10'
 				),
 			'shortcode_content' => '',
 			'shortcode_name' => 'karma_text',
@@ -73,10 +74,11 @@ class Tests_Core extends WP_UnitTestCase
 		$this->assertEquals(array(
 			'element_key' => 'w4tfwe',
 			'shortcode_attributes' => array(
-				'align' => 'left',
-				'color' => '#000',
-				'tag' => 'p',
-				'elementalign' => 'left',
+				'align'           => 'left',
+				'color'           => '#000',
+				'tag'             => 'p',
+				'elementalign'    => 'left',
+				'topspacepadding' => '10'
 			),
 			'shortcode_content' => '',
 			'shortcode_name' => 'karma_text',
