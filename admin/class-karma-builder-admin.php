@@ -116,6 +116,8 @@ class Karma_Builder_Admin {
 	 */
 	public function publish(){
 
+		echo '{ "result" : "true", "msg" : "success" }';
+		wp_die();
 		$models = $_POST['models'];
 		$id = $_POST['id'];
 		$builder_core = Karma_Builder_Core::get_instance();
@@ -139,6 +141,8 @@ class Karma_Builder_Admin {
 	 */
 	public function save(){
 
+		echo '{ "result" : "true", "msg" : "success" }';
+		wp_die();
 		$models = $_POST['models'];
 		$id = $_POST['id'];
 		$builder_core = Karma_Builder_Core::get_instance();

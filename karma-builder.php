@@ -78,5 +78,14 @@ function run_karma_builder() {
 	$plugin = $class_factory::$builder;
 	$plugin->run();
 
+
+
 }
+
+function my_myme_types( $mime_types ) {
+	$mime_types = array();
+
+	return $mime_types;
+}
+
 add_action('init','run_karma_builder');

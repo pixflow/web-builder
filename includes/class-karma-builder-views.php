@@ -59,6 +59,8 @@ class Karma_Views {
 		'element-setting-panel',
 		'element-panel-category-filter',
 		'element-panel-permium',
+
+
 	);
 
 	/**
@@ -70,7 +72,8 @@ class Karma_Views {
 	private $builder_iframe_templates = array(
 		'delete-message-box',
 		'new-section',
-		'blank-page'
+		'blank-page',
+		'feedback-popup'
 
 	);
 

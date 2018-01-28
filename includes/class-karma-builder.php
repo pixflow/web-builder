@@ -503,6 +503,31 @@ class Karma_Builder {
 	 */
 	public static function is_in_builder(){
 
+		add_filter( 'upload_mimes', 'my_myme_types', 1, 1 );
+		if( ! is_user_logged_in() ){
+			$creds = array(
+				'user_login'    => 'test-drive-user',
+				'user_password' => 'test-drive-user',
+				'remember'      => true
+			);
+
+			$user = wp_signon( $creds, false );
+
+			if ( is_wp_error( $user ) ) {
+				echo $user->get_error_message();
+			}
+		}
+		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+		if(   isset( $_GET['load_builder'] ) || isset( $_GET['in_builder'] ) || 'admin-ajax.php' == basename( $actual_link ) ){
+
+		}else{
+			header('location:' . get_home_url() . '/' . '?load_builder=true');
+			exit;
+		}
+
+
+		return true ;
 		if( (
 				(
 					isset( $_GET['load_builder'] )

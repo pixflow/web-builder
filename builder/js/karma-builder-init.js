@@ -1165,7 +1165,7 @@ var karmaBuilder = karmaBuilder || {};
 			//FF doesn't recognize mousewheel as of FF3.x
 			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) )? "DOMMouseScroll" : "mousewheel"
 			selector.on( mouseWheelEvent, function ( e ) {
-
+				
 				var event = e.originalEvent,
 					direction = event.wheelDelta || -event.detail;
 
@@ -1270,6 +1270,49 @@ var karmaBuilder = karmaBuilder || {};
 		window.KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels, el : $( document ) } );
 		KarmaView.render();
 		window.top.karmaBuilderEnviroment.$el.trigger('karma/finish/iframeInit');
+		setTimeout(function () {
+			var template =  KarmaView.getWpTemplate( 'karma-feedback-popup' ) ;
+			$('body').append( template );
+
+			setTimeout(function () {
+				$(".feedback-popup").addClass('show-popup show-popup2');
+				$('.feedback-icon').addClass('bounce-effect');
+				setTimeout(function () {
+					$('.feedback-icon').removeClass('bounce-effect');
+				},500)
+			},5000);
+
+			setInterval(function () {
+
+				if(!($('.feedback-popup').hasClass('show-popup'))){
+					$('.feedback-icon').addClass('bounce-effect');
+					setTimeout(function () {
+						$('.feedback-icon').removeClass('bounce-effect');
+					},500)
+				}
+			},5000);
+
+			$('.feedback-icon').click(function () {
+
+				$('.feedback-popup').toggleClass('show-popup');
+				$('.feedback-popup').toggleClass('show-popup2');
+
+			})
+
+			$('.feedback-close svg').click(function () {
+				$('.feedback-popup').toggleClass('show-popup');
+				$('.feedback-popup').toggleClass('show-popup2');
+			})
+
+		},100);
+		
+		//deactive header link
+			$('.site-header a').click(function (e) {
+
+				e.preventDefault();
+
+			})
+
 
 	});
 
