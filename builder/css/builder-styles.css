@@ -4320,16 +4320,16 @@ div.karma-element-content .karma-top-spacing {
   height: 32px;
   min-width: 20px; }
 
-.karma-builder-environment .karma-active-section {
-  box-shadow: 0 0 0 1px #419CF8; }
-  .karma-builder-environment .karma-active-section .section-gizmo-group {
-    display: flex; }
-  .karma-builder-environment .karma-active-section div.karma-spacing-dot-container {
-    display: inline-block; }
-  .karma-builder-environment .karma-active-section .karma-new-section-icon {
-    display: none !important; }
-.karma-builder-environment .karma-builder-element[data-name="karma_section"]:not(.karma-active-section):hover {
-  box-shadow: 0 0 0 1px #A0CDFB; }
+.karma-builder-environment .karma-active-section section {
+  box-shadow: inset 0 0 0 1px #419CF8; }
+.karma-builder-environment .karma-active-section .section-gizmo-group {
+  display: flex; }
+.karma-builder-environment .karma-active-section div.karma-spacing-dot-container {
+  display: inline-block; }
+.karma-builder-environment .karma-active-section .karma-new-section-icon {
+  display: none !important; }
+.karma-builder-environment .karma-builder-element[data-name="karma_section"]:not(.karma-active-section):hover section {
+  box-shadow: inset 0 0 0 1px #A0CDFB; }
 .karma-builder-environment .karma-builder-element[data-name="karma_section"]:hover .karma-new-section-icon {
   bottom: -16px;
   opacity: 1;
