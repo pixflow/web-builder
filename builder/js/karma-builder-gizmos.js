@@ -821,7 +821,7 @@
 			var newSectionPanel = KarmaView.getWpTemplate('karma-new-section'),
 				that = this;
 			this.el.insertAdjacentHTML( 'afterend', newSectionPanel );
-			this.$el.next( '.karma-new-section' ).find( '.karma-new-section-layout' ).on( 'click', function () {
+			this.$el.next( '.karma-new-section' ).find( '.karma-new-section-layout' ).on( 'click', function ( e ) {
 				var domNode = $(this)[0],
 					newGrid = JSON.parse(domNode.getAttribute( 'data-value' ) ),
 					placeholder = document.querySelector('.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
@@ -834,7 +834,7 @@
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 				KarmaView.reorderSections();
 				that.closeNewSectionPanel();
-				newSection.$el.click();
+				newSection.showBorder( e );
 
 			});
 		},
