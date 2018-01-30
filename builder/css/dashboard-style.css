@@ -163,12 +163,17 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   100% {
     opacity: 0;
     transform: scale(0.7); } }
-.center-both-flex {
+/**
+ * mixin for publish button
+ * @group helpers
+ * @output publish button
+ */
+.center-both-flex, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-typography-setting {
   align-items: center;
   display: flex;
   justify-content: center; }
 
-.space-between {
+.space-between, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-header {
   display: flex;
   justify-content: space-between; }
 
@@ -186,19 +191,19 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   100% {
     transform: scale(1); } }
 /* Classes to extend for fonts */
-.karma-builder-title-1 {
+.karma-builder-title-1, .karma-second-header .karma-location-name {
   font-size: 20px;
   line-height: 32px; }
 
-.karma-builder-title-2 {
+.karma-builder-title-2, #karma-typography-setting #karma-typography-manager .karma-typography-box-title {
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3 {
+.karma-builder-title-3, .karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-font, #karma-typography-setting #karma-typography-manager .karma-typography-weight, #karma-typography-setting #karma-typography-manager .karma-typography-size, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit, .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager, .karma-range-slider-container .karma-range-slider-number label, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number label, .karma-slider-controller-title, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4 {
+.karma-builder-title-4, .karma-range-slider-container .karma-range-slider-number input, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number input {
   font-size: 12px;
   line-height: 22px; }
 
@@ -223,7 +228,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box {
   border-radius: 5px; }
 
-.karma-button-padding {
+.karma-button-padding, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
   padding: 0 20px; }
 
 .karma-hide {
@@ -238,23 +243,23 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-builder-shadow-box-3 {
   box-shadow: 0 4px 15px 4px rgba(57, 73, 89, 0.2); }
 
-.karma-dropdown-option {
+.karma-dropdown-option, .karma-dropdown-controller .karma-dropdown-option, #karma-typography-setting #karma-typography-manager .karma-dropdown-option {
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
   padding: 10px;
   transition: background-color .2s; }
-  .karma-dropdown-option .karma-dropdown-option-title {
+  .karma-dropdown-option .karma-dropdown-option-title, #karma-typography-setting #karma-typography-manager .karma-dropdown-option .karma-dropdown-option-title {
     transition: color .2s; }
-  .karma-dropdown-option.karma-selected-dropdown-option {
+  .karma-dropdown-option.karma-selected-dropdown-option, #karma-typography-setting #karma-typography-manager .karma-selected-dropdown-option.karma-dropdown-option {
     background-color: #ECF5FE; }
-    .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title {
+    .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title, #karma-typography-setting #karma-typography-manager .karma-selected-dropdown-option.karma-dropdown-option .karma-dropdown-option-title {
       color: #419CF8;
       font-family: HelveticaNeue_med; }
-  .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
+  .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title, #karma-typography-setting #karma-typography-manager .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
     color: #419CF8; }
-  .karma-dropdown-option .karma-dropdown-option-icon {
+  .karma-dropdown-option .karma-dropdown-option-icon, #karma-typography-setting #karma-typography-manager .karma-dropdown-option .karma-dropdown-option-icon {
     margin-right: 15px; }
 
 .dot-gizmo {
@@ -270,6 +275,15 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
     width: 22px;
     height: 22px;
     content: ""; }
+
+.karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-font, #karma-typography-setting #karma-typography-manager .karma-typography-weight, #karma-typography-setting #karma-typography-manager .karma-typography-size, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  color: #419CF8;
+  flex-basis: 35%;
+  font-family: HelveticaNeue_med; }
 
 @font-face {
   font-family: HelveticaNeue_bold;
@@ -1855,7 +1869,680 @@ html {
     -ms-flex-item-align: stretch !important;
     align-self: stretch !important; } }
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
-/* _-_-_- layout/NAVIGATION -_-_-_ */
+@font-face {
+  font-family: HelveticaNeue_bold;
+  src: url("../font/helvetiva_bold.ttf");
+  font-weight: 700;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue;
+  src: url("../font/helvetica.ttf");
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue_med;
+  src: url("../font/helvetica_med.ttf");
+  font-weight: 500;
+  font-style: normal; }
+@font-face {
+  font-family: HelveticaNeue_light;
+  src: url("../font/helvetica_light.ttf");
+  font-weight: 300;
+  font-style: normal; }
+/**
+ * Media queries
+ * @group helpers
+ * @param {String} $size - kind of size such as: small
+ * @param {string} $type - Max or Min for width
+ * @param {Number} $pixels - when use custom use this pixels
+ * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
+ * @output media query for responsive
+ */
+/**
+ * Centering elements
+ * @group helpers
+ * @param {String} $position - kind of center alignment such as: vertical
+ * @output top left and transform of element
+ */
+/**
+ * External fonts
+ * @group helpers
+ * @param {String} $font-name - name of font
+ * @param {string} $file-name - url of font sorce
+ * @param {Number} $weight - weight of font
+ * @param {string}  $style - style of font
+ * @output read font and give it font-weight and font-style
+ */
+/**
+ * Adding dimensions
+ * @group helpers
+ * @param {Number} $width - width of box(element) 
+ * @param {Number}  $height - height of box
+ * @output give width and height 
+ */
+/**
+ * Element Direction mixin
+ * @group helpers
+ * @param {Number} $top - set Element Direction top
+ * @param {Number} $right - set Element Direction right
+ * @param {Number} $bottom - set Element Direction bottom
+ * @param {Number} $left - set Element Direction left
+ * @output all side margin
+ */
+/**
+ * Centering a block
+ * @group helpers
+ * @output with display block and margin center element
+ */
+/**
+ * flexbox
+ * @group helpers
+ * @output with display flex and  center element
+ */
+/**
+ * Unselectable
+ * @group helpers
+ * @output make unselectable element
+ */
+/**
+ * check justify content and align item (use for image position)
+ * @group helpers
+ * @output justify content and align item
+ */
+/**
+ * Remove the unit of a length
+ * @group helpers
+ * @output responsive text
+ */
+/**
+ * text responsive to change font size
+ * @group helpers
+ * @output responsive text
+ */
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+/**
+ * mixin for oval button
+ * @group helpers
+ * @output oval button
+ */
+/**
+ * mixin for oval with icon button
+ * @group helpers
+ * @output oval with icon button
+ */
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+/**
+ * mixin for dropDown button
+ * @group helpers
+ * @output dropDown button
+ */
+/**
+ * mixin for radio button
+ * @group helpers
+ * @output radio button
+ */
+/**
+ * mixin for box color and border radius
+ * @group helpers
+ * @output box color
+ */
+@keyframes load_delete_overlay {
+  00% {
+    background-color: transparent; }
+  100% {
+    background-color: rgba(0, 0, 0, 0.3); } }
+@keyframes close_delete_overlay {
+  00% {
+    background-color: rgba(0, 0, 0, 0.3); }
+  100% {
+    background-color: transparent; } }
+@keyframes load_delete_box {
+  0% {
+    opacity: 0;
+    transform: scale(0.6); }
+  25% {
+    opacity: .3;
+    transform: scale(0.7); }
+  50% {
+    opacity: .6;
+    transform: scale(0.8); }
+  75% {
+    opacity: .8;
+    transform: scale(0.9); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+@keyframes close_delete_box {
+  00% {
+    opacity: 1;
+    transform: scale(1); }
+  25% {
+    opacity: .8;
+    transform: scale(1); }
+  50% {
+    opacity: .6;
+    transform: scale(0.9); }
+  75% {
+    opacity: .3;
+    transform: scale(0.8); }
+  100% {
+    opacity: 0;
+    transform: scale(0.7); } }
+/**
+ * mixin for publish button
+ * @group helpers
+ * @output publish button
+ */
+#karma-typography-setting .karma-panel {
+  z-index: 0;
+  display: none; }
+#karma-typography-setting .karma-panel.current, #karma-typography-setting .karma-panel.karma-element-exit {
+  z-index: 2;
+  display: flex; }
+#karma-typography-setting .karma-panel.karma-element-enter {
+  display: flex; }
+#karma-typography-setting .karma-element-animating .karma-element-exit,
+#karma-typography-setting .karma-element-animating .karma-element-enter {
+  -webkit-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
+#karma-typography-setting .karma-element-exit.slideup {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0); }
+#karma-typography-setting .karma-element-animating .karma-element-exit.slideup {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%); }
+#karma-typography-setting .karma-element-exit.slidedown {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0); }
+#karma-typography-setting .karma-element-animating .karma-element-exit.slidedown {
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%); }
+#karma-typography-setting .karma-element-enter.slidedown {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%); }
+#karma-typography-setting .karma-element-animating .karma-element-enter.slidedown {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0); }
+#karma-typography-setting .karma-element-enter.slideup {
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%); }
+#karma-typography-setting .karma-element-animating .karma-element-enter.slideup {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0); }
+#karma-typography-setting .karma-element-enter.fade {
+  opacity: 0; }
+#karma-typography-setting .karma-element-animating .karma-element-enter.fade {
+  opacity: 1; }
+#karma-typography-setting .karma-element-exit.fade {
+  opacity: 1; }
+#karma-typography-setting .karma-element-animating .karma-element-exit.fade {
+  opacity: 0; }
+#karma-typography-setting .karma-element-animating .karma-panel.karma-element-enter {
+  -webkit-transition-delay: .3s !important;
+  -ms-transition-delay: .3s !important;
+  transition-delay: .3s !important; }
+
+/* _-_-_- modules/DROPDOWN -_-_-_ */
+.karma-dropdown-controller, #karma-typography-setting #karma-typography-manager {
+  padding: 0 20px; }
+  .karma-dropdown-controller .karma-dropdown-label, #karma-typography-setting #karma-typography-manager .karma-dropdown-label {
+    color: #394959;
+    margin-top: 22px; }
+  .karma-dropdown-controller .karma-dropdown-body, #karma-typography-setting #karma-typography-manager .karma-dropdown-body {
+    cursor: pointer;
+    margin-bottom: 18px;
+    margin-top: 11px;
+    position: relative; }
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-header {
+      align-items: center; }
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 100px;
+        border: 1px solid #D7DBDE; }
+        .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon span, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon span {
+          margin-top: -1px; }
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-options {
+      width: 250px;
+      height: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
+      display: none;
+      flex-direction: column;
+      left: 0;
+      list-style: none;
+      overflow: hidden;
+      padding: 7px;
+      position: fixed;
+      top: 36px;
+      z-index: -70; }
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened, #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
+        display: flex;
+        height: auto;
+        z-index: 100; }
+
+.karma-range-slider-container, #karma-typography-setting #karma-typography-manager .karma-typography-size {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20px;
+  position: relative; }
+  .karma-range-slider-container .karma-range-slider-content, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
+    display: flex;
+    text-align: inherit;
+    align-items: center;
+    justify-content: inherit;
+    padding: 11px 0 18px;
+    width: 100%; }
+  .karma-range-slider-container .rangeslider--horizontal, #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider--horizontal {
+    width: 68%;
+    height: 3px;
+    background: #D9EBFE;
+    border-radius: 50px;
+    box-shadow: none; }
+    .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle, #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider--horizontal .rangeslider__handle {
+      width: 14px;
+      height: 14px;
+      background-color: #419CF8;
+      background-image: none;
+      border: 1px solid #419CF8;
+      box-shadow: 0 2px 4px 0 #A0CDFB;
+      top: -5px;
+      touch-action: pan-y;
+      -ms-touch-action: pan-y; }
+      .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after, #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider--horizontal .rangeslider__handle:after {
+        background-image: none; }
+    .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill, #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider--horizontal .rangeslider__fill {
+      background: #7AB9FA;
+      box-shadow: none; }
+  .karma-range-slider-container .karma-range-slider-number, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number {
+    width: 57px;
+    height: 32px;
+    border: 1px solid #D7DBDE;
+    border-radius: 40px;
+    display: inline-flex;
+    justify-content: center;
+    margin-left: 13px;
+    padding: 0 14px;
+    color: #394959; }
+    .karma-range-slider-container .karma-range-slider-number input, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number input {
+      display: flex;
+      text-align: right;
+      align-items: inherit;
+      justify-content: inherit;
+      color: #000;
+      background: transparent;
+      padding: 0; }
+      .karma-range-slider-container .karma-range-slider-number input:focus, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number input:focus {
+        border-color: #EBECEE;
+        outline: none; }
+    .karma-range-slider-container .karma-range-slider-number label, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number label {
+      font-weight: 400;
+      line-height: 28px;
+      margin-bottom: 0; }
+  .karma-range-slider-container input::-webkit-inner-spin-button, #karma-typography-setting #karma-typography-manager .karma-typography-size input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none; }
+  .karma-range-slider-container input::-webkit-outer-spin-button, #karma-typography-setting #karma-typography-manager .karma-typography-size input::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none; }
+  .karma-range-slider-container input[type=number], #karma-typography-setting #karma-typography-manager .karma-typography-size input[type=number] {
+    -moz-appearance: textfield; }
+
+.karma-slider-controller-title {
+  color: #394959;
+  padding-top: 22px;
+  text-align: left;
+  width: 100%; }
+
+.karma-range-slider-editable {
+  cursor: text;
+  display: inline-block;
+  height: 32px;
+  min-width: 20px; }
+
+.karma-builder-toolbar {
+  box-shadow: none; }
+  .karma-builder-toolbar .karma-builder-left {
+    padding-left: 0; }
+  .karma-builder-toolbar .karma-builder-right {
+    padding-right: 9px; }
+    .karma-builder-toolbar .karma-builder-right .karma-builder-controls ul .builder-publish {
+      display: none; }
+  .karma-builder-toolbar .karma-header-container {
+    width: 1200px; }
+
+#karma-typography-setting {
+  width: 100vw;
+  height: 90vh;
+  background-color: rgba(57, 73, 89, 0.1);
+  overflow-y: scroll; }
+  #karma-typography-setting .karma-panel.current {
+    display: flex; }
+  #karma-typography-setting > div {
+    min-height: 700px;
+    position: relative;
+    width: 1200px; }
+  #karma-typography-setting #karma-typography-manager,
+  #karma-typography-setting #karma-font-manager {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  #karma-typography-setting #karma-font-manager {
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #ecedef;
+    z-index: 0; }
+    #karma-typography-setting #karma-font-manager .karma-font-manger-box-style {
+      display: flex;
+      text-align: left;
+      align-items: center;
+      justify-content: center;
+      width: 275px;
+      height: 65px;
+      background-color: #fff;
+      box-shadow: 0 4px 15px 0 rgba(57, 73, 89, 0.2);
+      border-radius: 4px; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .google-icon {
+      flex-basis: 10%; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-google-title {
+      flex-basis: 70%;
+      color: #394959;
+      font-family: HelveticaNeue_med;
+      font-size: 14px; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #B3BAC1;
+      border-radius: 100px;
+      cursor: pointer; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon .bottom-arrow {
+        stroke: #bcc3ca; }
+    #karma-typography-setting #karma-font-manager .karma-fonts-list {
+      width: 100%;
+      height: 100%; }
+      #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list {
+        width: 100%;
+        height: auto;
+        margin-top: 13px;
+        font-family: HelveticaNeue_med;
+        flex-direction: column;
+        padding: 27px 0px; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part {
+          display: flex;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          width: 100%; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-weight-count {
+            color: #828B95;
+            cursor: pointer;
+            font-size: 12px;
+            flex-basis: 10%; }
+            #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-weight-count span {
+              margin-left: 8px; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .bottom-arrow {
+            stroke: #B3BAC1; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part #detele-element-icon {
+            fill: #39495957; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-name {
+            color: #394959;
+            flex-basis: 85%;
+            font-size: 20px;
+            text-align: left; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part {
+          display: none;
+          margin-top: 20px;
+          width: 100%; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul {
+            display: flex;
+            text-align: left;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%; }
+            #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul li {
+              list-style-image: url("../../builder/media/svg/blue-tik.svg");
+              color: #394959;
+              font-size: 12px;
+              width: 80px; }
+    #karma-typography-setting #karma-font-manager .karma-footer-info {
+      display: flex;
+      text-align: left;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px; }
+      #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+        color: #419CF8;
+        font-family: HelveticaNeue_med;
+        font-size: 14px;
+        line-height: 0;
+        flex-basis: 71%; }
+        #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font span {
+          margin-right: 7px; }
+      #karma-typography-setting #karma-font-manager .karma-footer-info .karma-pay-attention {
+        color: #828B95;
+        font-family: HelveticaNeue_med;
+        font-size: 12px; }
+  #karma-typography-setting #karma-typography-manager {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-box {
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px 4px #D7DBDE;
+      box-sizing: border-box;
+      flex-basis: 32%;
+      height: 350px;
+      margin-bottom: 25px;
+      padding: 23px; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-box:last-child {
+      margin-right: 34%; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-box-title {
+      color: #419CF8;
+      cursor: default;
+      font-family: HelveticaNeue_med;
+      padding-bottom: 20px; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-text {
+      border-bottom: 2px solid #D9EBFE;
+      color: #394959;
+      height: 215px;
+      line-height: 1.2em;
+      overflow: hidden;
+      word-break: break-all; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-styles {
+      display: flex;
+      margin-top: 15px; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-styles .karma-controller.karma-controller-action {
+        width: 100%; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-font {
+      border-right: 1px solid #D9EBFE; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager {
+        padding: 0; }
+        #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body {
+          margin: 0; }
+        #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-icon {
+          border: none; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-weight {
+      border-right: 1px solid #D9EBFE;
+      padding-left: 9px; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-weight .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager .karma-typography-weight #karma-typography-manager {
+        padding: 0; }
+        #karma-typography-setting #karma-typography-manager .karma-typography-weight .karma-dropdown-controller .karma-dropdown-body, #karma-typography-setting #karma-typography-manager .karma-typography-weight #karma-typography-manager .karma-dropdown-body {
+          margin: 0; }
+        #karma-typography-setting #karma-typography-manager .karma-typography-weight .karma-dropdown-controller .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-typography-weight #karma-typography-manager .karma-dropdown-icon {
+          border: none; }
+    #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-options {
+      width: 100px; }
+    #karma-typography-setting #karma-typography-manager .karma-typography-size {
+      padding: 0; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
+        width: 110px; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input {
+        border: none;
+        padding-right: 3px;
+        text-align: right;
+        width: 26px; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number {
+        border: none;
+        margin: 0;
+        padding: 0; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit {
+        padding-right: 15px; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-container, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-typography-size,
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .controller-separator,
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
+        padding: 0; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content > :nth-child(2) {
+        order: 1; }
+
+.karma-second-header {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #EBECEE;
+  box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.1);
+  height: 80px; }
+  .karma-second-header .karma-second-header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px; }
+  .karma-second-header .karma-location-name {
+    color: #394959;
+    padding-left: 0; }
+  .karma-second-header .karma-buttons-holder {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-right: 9px; }
+    .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      color: #419CF8;
+      background-color: #fff;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      height: 40px;
+      transition-duration: .2s;
+      border: 1px solid #419CF8;
+      border-radius: 2px;
+      font-family: HelveticaNeue_med;
+      margin-right: 8px;
+      text-decoration: none;
+      transition: 0.3s; }
+      .karma-second-header .karma-buttons-holder .karma-backto-previous-location:focus {
+        transition-duration: .2s; }
+      .karma-second-header .karma-buttons-holder .karma-backto-previous-location:hover {
+        transition-duration: 0.2s;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px 0 rgba(57, 73, 89, 0.2); }
+      .karma-second-header .karma-buttons-holder .karma-backto-previous-location:hover {
+        background-color: #419CF8;
+        box-shadow: none;
+        color: #fff;
+        transform: none;
+        transition: 0.3s; }
+    .karma-second-header .karma-buttons-holder .karma-save-setting {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+      background: linear-gradient(to right, #A0CDFB 50%, #ECF5FE 50%);
+      background-position: right bottom;
+      background-size: 200% 100%;
+      border-radius: 3px;
+      color: #419CF8;
+      font-size: 14px;
+      height: 32px;
+      overflow: hidden;
+      padding: 0 19px;
+      transition: all .5s ease-out;
+      transition-duration: .3s;
+      width: 82px;
+      height: 41px; }
+      .karma-second-header .karma-buttons-holder .karma-save-setting:before {
+        background-color: rgba(160, 205, 251, 0.6);
+        border-radius: 3px 0 0 3px;
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%); }
+      .karma-second-header .karma-buttons-holder .karma-save-setting div {
+        transition: opacity 0.3s;
+        z-index: 10; }
+      .karma-second-header .karma-buttons-holder .karma-save-setting.karma-publish-animation:before {
+        transform: translateX(-10%);
+        -webkit-transform: translateX(-10%);
+        transition: 1.5s ease-in-out; }
+      .karma-second-header .karma-buttons-holder .karma-save-setting.karma-publish-finish-animation:before {
+        animation: publish-remove-opacity 300ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards 320ms;
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transition: 0.5s ease-in-out; }
+      .karma-second-header .karma-buttons-holder .karma-save-setting.karma-publish-finish-animation:after {
+        animation: publish-animation 2000ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards 500ms;
+        background: url(../../builder/media/svg/publish-tik.svg) no-repeat center center transparent;
+        content: '';
+        height: 38px;
+        left: 32px;
+        opacity: 0;
+        position: absolute;
+        top: -4px;
+        width: 22px;
+        z-index: 1; }
+
 /* _-_-_- pages/Page manager -_-_-_ */
 /* _-_-_- pages/dashboard -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

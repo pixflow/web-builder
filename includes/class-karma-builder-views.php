@@ -38,6 +38,18 @@ class Karma_Views {
 	);
 
 	/**
+	 * The list of environment template names for typography page
+	 *
+	 * @since    0.1.0
+	 * @access   private
+	 */
+	private $typography_environment_templates = array(
+		'header',
+		'typography',
+		'footer',
+	);
+
+	/**
 	 * The list of builder template names
 	 *
 	 * @since    0.1.0
@@ -75,6 +87,8 @@ class Karma_Views {
 	);
 
 
+
+
 	/*
 	 * Print navbar html and create builder environment
 	 *
@@ -83,6 +97,19 @@ class Karma_Views {
 	public function load_builder_environment(){
 
 		foreach ( $this->environment_templates as $temp ){
+			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
+		}
+
+	}
+
+	/*
+	 * Print typography content
+	 *
+	 * @return	void
+	 */
+	public function load_typography_environment(){
+
+		foreach ( $this->typography_environment_templates as $temp ){
 			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
 		}
 

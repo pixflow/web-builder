@@ -13,10 +13,23 @@ body.karma-builder{
 .karma-builder-toolbar {
 	@extend .center-both-flex;
 	@include box( 100% , 46px );
-	@include flexbox( $justify-content:space-between );
+	@include flexbox( $justify-content:center );
 	background-color: #fff;
 	box-shadow: 0 2px 12px 0 rgba(57,73,89,0.1);
 	position: relative;
+
+	.karma-header-container{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+	.builder-Typography-label{
+		a{
+			text-decoration: none;
+			color:$builder-main-color-2;
+		}
+
+	}
 
 	.karma-builder-left {
 		@include box( auto, 100% );
@@ -147,8 +160,7 @@ body.karma-builder{
 				}
 			  
 				&.builder-publish{
-				  	backface-visibility: hidden;
-					background: linear-gradient(to right, #A0CDFB 50%, #ECF5FE 50%);
+				  	background: linear-gradient(to right, #A0CDFB 50%, #ECF5FE 50%);
 					background-position: right bottom;
 					background-size: 200% 100%;
 					border-radius: 3px;
@@ -160,8 +172,6 @@ body.karma-builder{
 					transition: all .5s ease-out;
 					transition-duration: .3s;
 					width: 82px;
-
-
 					&:before{
 						background-color: rgba( #A0CDFB , .6 );
 					  	border-radius: 3px 0 0 3px;
@@ -183,6 +193,7 @@ body.karma-builder{
 						z-index: 10;
 
 					}
+
 
 					&.karma-publish-animation{
 
@@ -216,6 +227,8 @@ body.karma-builder{
 						}
 
 					}
+
+					backface-visibility: hidden;
 				}
 
 				.builder-notification-number{
@@ -329,7 +342,6 @@ div.media-modal {
 .screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
@@ -337,4 +349,5 @@ div.media-modal {
 	position: absolute;
 	width: 1px;
 	word-wrap: normal !important;
+	clip-path: inset(50%);
 }

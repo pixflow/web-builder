@@ -20,29 +20,30 @@
 		font-style: normal; }
 </style>
 <div class="karma-builder-toolbar">
-	<div class="karma-builder-left">
-		<div class="karma-builder-menu">
-			<ul>
-				<li class="builder-brand">
-					<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/Karma-logo.svg' ); ?>
-				</li>
-				<li class="builder-pages">
-					<div class="builder-page-label"><?php  _e('Pages:', 'karma'); ?> </div>
-					<div class="builder-page-name">Home</div>
-				</li>
-				<li class="builder-sites-setting">
-					<div class="builder-setting-label"><?php  _e('Setting', 'karma'); ?></div>
-				</li>
-				<li class="builder-sites-setting">
-					<div class="builder-Typography-label"><?php  _e( 'Typography', 'karma' ); ?></div>
-				</li>
-				<li class="builder-upgrade">
-					<div class="builder-upgrade-text"><?php  _e( 'Upgrade', 'karma' ); ?></div>
-				</li>
-			</ul>
+	<div class="karma-header-container">
+		<div class="karma-builder-left">
+			<div class="karma-builder-menu">
+				<ul>
+					<li class="builder-brand">
+						<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/Karma-logo.svg' ); ?>
+					</li>
+					<li class="builder-pages">
+						<div class="builder-page-label"><?php  _e('Pages:', 'karma'); ?> </div>
+						<div class="builder-page-name">Home</div>
+					</li>
+					<li class="builder-sites-setting">
+						<div class="builder-setting-label"><?php  _e('Setting', 'karma'); ?></div>
+					</li>
+					<li class="builder-sites-setting">
+						<div class="builder-Typography-label"><a href="<?php echo get_home_url() . '/?builder-page=karma-typography-page' ?>"  > <?php  _e( 'Typography', 'karma' ); ?> </a></div>
+					</li>
+					<li class="builder-upgrade">
+						<div class="builder-upgrade-text"><?php  _e( 'Upgrade', 'karma' ); ?></div>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div>
-	<div class="karma-builder-right">
+		<div class="karma-builder-right">
 		<div class="karma-builder-controls">
 			<ul>
 
@@ -56,5 +57,6 @@
 				</li>
 			</ul>
 		</div>
+	</div>
 	</div>
 </div>

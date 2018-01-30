@@ -933,12 +933,17 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   100% {
     opacity: 0;
     transform: scale(0.7); } }
-.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+/**
+ * mixin for publish button
+ * @group helpers
+ * @output publish button
+ */
+.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
   align-items: center;
   display: flex;
   justify-content: center; }
 
-.space-between, #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
+.space-between, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
   display: flex;
   justify-content: space-between; }
 
@@ -964,11 +969,11 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, #karma-element-setting-panel-container .karma-dropdown-controller, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label, #karma-element-setting-panel-container .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-upload-image-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
+.karma-builder-title-3, .karma-typography-box-style, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-upload-image-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, .ui-tooltip, .karma-not-found, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input, .karma-unsplash-controller .karma-unsplash-search input, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder, .karma-unsplash-controller .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .karma-element-panel-list .karma-element-single-element span, #karma-add-element input.karma-builder-search-text, #karma-add-element input.karma-builder-search-text.open-search-panel, .karma-element-single-element-name span, .karma-section-type-tab ul li .karma-section-type-text {
+.karma-builder-title-4, .ui-tooltip, .karma-not-found, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, .karma-range-slider-container .karma-range-slider-number input, .karma-unsplash-controller .karma-unsplash-search input, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder, .karma-unsplash-controller .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .karma-element-panel-list .karma-element-single-element span, #karma-add-element input.karma-builder-search-text, #karma-add-element input.karma-builder-search-text.open-search-panel, .karma-element-single-element-name span, .karma-section-type-tab ul li .karma-section-type-text {
   font-size: 12px;
   line-height: 22px; }
 
@@ -1008,23 +1013,23 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-builder-shadow-box-3, .karma-delete-message-box .karma-delete-message-container, .sp-container.sp-light {
   box-shadow: 0 4px 15px 4px rgba(57, 73, 89, 0.2); }
 
-.karma-dropdown-option, #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-option, #karma-add-element .karma-builder-element-panel-gather-menu ul li {
+.karma-dropdown-option, .karma-dropdown-controller .karma-dropdown-option, #karma-add-element .karma-builder-element-panel-gather-menu ul li {
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
   padding: 10px;
   transition: background-color .2s; }
-  .karma-dropdown-option .karma-dropdown-option-title, #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li .karma-dropdown-option-title {
+  .karma-dropdown-option .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li .karma-dropdown-option-title {
     transition: color .2s; }
-  .karma-dropdown-option.karma-selected-dropdown-option, #karma-element-setting-panel-container .karma-dropdown-controller .karma-selected-dropdown-option.karma-dropdown-option, #karma-add-element .karma-builder-element-panel-gather-menu ul li.karma-selected-dropdown-option {
+  .karma-dropdown-option.karma-selected-dropdown-option, #karma-add-element .karma-builder-element-panel-gather-menu ul li.karma-selected-dropdown-option {
     background-color: #ECF5FE; }
-    .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title, #karma-element-setting-panel-container .karma-dropdown-controller .karma-selected-dropdown-option.karma-dropdown-option .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li.karma-selected-dropdown-option .karma-dropdown-option-title {
+    .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li.karma-selected-dropdown-option .karma-dropdown-option-title {
       color: #419CF8;
       font-family: HelveticaNeue_med; }
-  .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title, #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
+  .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
     color: #419CF8; }
-  .karma-dropdown-option .karma-dropdown-option-icon, #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-option .karma-dropdown-option-icon, #karma-add-element .karma-builder-element-panel-gather-menu ul li .karma-dropdown-option-icon {
+  .karma-dropdown-option .karma-dropdown-option-icon, #karma-add-element .karma-builder-element-panel-gather-menu ul li .karma-dropdown-option-icon {
     margin-right: 15px; }
 
 .dot-gizmo, .karma-active-element[data-name="karma_image"] .left-crop .crop-dot, .karma-active-element[data-name="karma_image"] .right-crop .crop-dot, .karma-active-element[data-name="karma_image"] .bottom-crop .crop-dot, .karma-builder-environment .karma-builder-element .karma-spacing-dot-container .spacing-dot {
@@ -1040,6 +1045,15 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
     width: 22px;
     height: 22px;
     content: ""; }
+
+.karma-typography-box-style {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  color: #419CF8;
+  flex-basis: 35%;
+  font-family: HelveticaNeue_med; }
 
 @font-face {
   font-family: HelveticaNeue_bold;
@@ -2924,11 +2938,18 @@ body.karma-builder {
   display: flex;
   text-align: inherit;
   align-items: inherit;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.1);
   position: relative;
   backface-visibility: hidden; }
+  .karma-builder-toolbar .karma-header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; }
+  .karma-builder-toolbar .builder-Typography-label a {
+    text-decoration: none;
+    color: #9CA4AC; }
   .karma-builder-toolbar .karma-builder-left {
     width: auto;
     height: 100%;
@@ -3037,7 +3058,6 @@ body.karma-builder {
             .karma-builder-toolbar .karma-builder-right ul li.builder-notification svg * {
               fill: #419CF8; }
         .karma-builder-toolbar .karma-builder-right ul li.builder-publish {
-          backface-visibility: hidden;
           background: linear-gradient(to right, #A0CDFB 50%, #ECF5FE 50%);
           background-position: right bottom;
           background-size: 200% 100%;
@@ -3049,7 +3069,8 @@ body.karma-builder {
           padding: 0 19px;
           transition: all .5s ease-out;
           transition-duration: .3s;
-          width: 82px; }
+          width: 82px;
+          backface-visibility: hidden; }
           .karma-builder-toolbar .karma-builder-right ul li.builder-publish:before {
             background-color: rgba(160, 205, 251, 0.6);
             border-radius: 3px 0 0 3px;
@@ -3173,14 +3194,14 @@ div.media-modal {
 .screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute;
   width: 1px;
-  word-wrap: normal !important; }
+  word-wrap: normal !important;
+  clip-path: inset(50%); }
 
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
@@ -3270,26 +3291,26 @@ div.media-modal {
 
 /* _-_-_- modules/BUTTONS -_-_-_ */
 /* _-_-_- modules/DROPDOWN -_-_-_ */
-#karma-element-setting-panel-container .karma-dropdown-controller {
+.karma-dropdown-controller {
   padding: 0 20px; }
-  #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-label {
+  .karma-dropdown-controller .karma-dropdown-label {
     color: #394959;
     margin-top: 22px; }
-  #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body {
+  .karma-dropdown-controller .karma-dropdown-body {
     cursor: pointer;
     margin-bottom: 18px;
     margin-top: 11px;
     position: relative; }
-    #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
       align-items: center; }
-      #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
         width: 32px;
         height: 32px;
         border-radius: 100px;
         border: 1px solid #D7DBDE; }
-        #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon span {
+        .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon span {
           margin-top: -1px; }
-    #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options {
+    .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options {
       width: 250px;
       height: 0;
       background-color: #fff;
@@ -3303,7 +3324,7 @@ div.media-modal {
       position: fixed;
       top: 36px;
       z-index: -70; }
-      #karma-element-setting-panel-container .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
+      .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
         display: flex;
         height: auto;
         z-index: 100; }
@@ -4240,7 +4261,7 @@ div.karma-element-content .karma-top-spacing {
     color: #394959;
     text-transform: capitalize; }
 
-#karma-element-setting-panel-container .karma-range-slider-container {
+.karma-range-slider-container {
   display: flex;
   text-align: center;
   align-items: center;
@@ -4248,20 +4269,20 @@ div.karma-element-content .karma-top-spacing {
   flex-direction: column;
   padding: 0 20px;
   position: relative; }
-  #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-content {
+  .karma-range-slider-container .karma-range-slider-content {
     display: flex;
     text-align: inherit;
     align-items: center;
     justify-content: inherit;
     padding: 11px 0 18px;
     width: 100%; }
-  #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal {
+  .karma-range-slider-container .rangeslider--horizontal {
     width: 68%;
     height: 3px;
     background: #D9EBFE;
     border-radius: 50px;
     box-shadow: none; }
-    #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle {
+    .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle {
       width: 14px;
       height: 14px;
       background-color: #419CF8;
@@ -4271,12 +4292,12 @@ div.karma-element-content .karma-top-spacing {
       top: -5px;
       touch-action: pan-y;
       -ms-touch-action: pan-y; }
-      #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
+      .karma-range-slider-container .rangeslider--horizontal .rangeslider__handle:after {
         background-image: none; }
-    #karma-element-setting-panel-container .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill {
+    .karma-range-slider-container .rangeslider--horizontal .rangeslider__fill {
       background: #7AB9FA;
       box-shadow: none; }
-  #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number {
+  .karma-range-slider-container .karma-range-slider-number {
     width: 57px;
     height: 32px;
     border: 1px solid #D7DBDE;
@@ -4286,7 +4307,7 @@ div.karma-element-content .karma-top-spacing {
     margin-left: 13px;
     padding: 0 14px;
     color: #394959; }
-    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input {
+    .karma-range-slider-container .karma-range-slider-number input {
       display: flex;
       text-align: right;
       align-items: inherit;
@@ -4294,27 +4315,29 @@ div.karma-element-content .karma-top-spacing {
       color: #000;
       background: transparent;
       padding: 0; }
-      #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number input:focus {
+      .karma-range-slider-container .karma-range-slider-number input:focus {
         border-color: #EBECEE;
         outline: none; }
-    #karma-element-setting-panel-container .karma-range-slider-container .karma-range-slider-number label {
+    .karma-range-slider-container .karma-range-slider-number label {
       font-weight: 400;
       line-height: 28px;
       margin-bottom: 0; }
-  #karma-element-setting-panel-container .karma-range-slider-container input::-webkit-inner-spin-button {
+  .karma-range-slider-container input::-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none; }
-  #karma-element-setting-panel-container .karma-range-slider-container input::-webkit-outer-spin-button {
+  .karma-range-slider-container input::-webkit-outer-spin-button {
     margin: 0;
     -webkit-appearance: none; }
-  #karma-element-setting-panel-container .karma-range-slider-container input[type=number] {
+  .karma-range-slider-container input[type=number] {
     -moz-appearance: textfield; }
-#karma-element-setting-panel-container .karma-slider-controller-title {
+
+.karma-slider-controller-title {
   color: #394959;
   padding-top: 22px;
   text-align: left;
   width: 100%; }
-#karma-element-setting-panel-container .karma-range-slider-editable {
+
+.karma-range-slider-editable {
   cursor: text;
   display: inline-block;
   height: 32px;

@@ -135,6 +135,16 @@ class Karma_Factory_Pattern {
 
 
 	/**
+	 * Class karma typography instance.
+	 *
+	 * @since    0.1.0
+	 * @access   public
+	 * @var      object
+	 */
+	public static $typography;
+
+
+	/**
 	 * Private clone method to prevent cloning of the instance of the
 	 * *Singleton* instance.
 	 *
@@ -170,6 +180,7 @@ class Karma_Factory_Pattern {
 	 */
 	public function set_builder_class_instance(){
 
+		$this->load_builder_typography();
 		$this->load_builder_core();
 		$this->load_builder_i18n();
 		$this->load_builder_loader();
@@ -259,6 +270,16 @@ class Karma_Factory_Pattern {
 	protected function load_builder_public(){
 
 		self::$builder_public = new Karma_Builder_Public( self::$builder->get_plugin_name(), self::$builder->get_version() );
+
+	}
+
+	/**
+	 * Set builder typography class instance
+	 * @since    0.1.0
+	 */
+	protected function load_builder_typography(){
+
+		self::$typography = new Karma_Typography();
 
 	}
 
