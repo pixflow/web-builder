@@ -660,7 +660,7 @@
 
 			var style  = $( '#style-' + elementID ),
 				script = $( '#script-' + elementID );
-			console.log( '#style-' + elementID )
+
 			if ( script.length ){
 				script.remove();
 			}

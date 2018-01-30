@@ -525,6 +525,16 @@ function getModelsAttributes(models) {
 
 	});
 
+	QUnit.done(function( details ) {
+
+		var text = details.failed,
+			resultNode = document.createElement( 'div' );
+
+		resultNode.innerText = text;
+		resultNode.setAttribute('class', 'karma-final-test-result');
+		window.top.document.body.appendChild( resultNode );
+
+	});
 } )( jQuery, karmaBuilder );
 
 window.onload = function () {
