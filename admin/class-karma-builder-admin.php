@@ -1,5 +1,12 @@
 <?php
 
+namespace KarmaBuilder\AdminArea\BuilderAdmin ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
+use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -27,10 +34,7 @@ class Karma_Builder_Admin {
 	 *
 	 * @since    0.1.0
 	 */
-	public function __construct() {
-
-
-	}
+	public function __construct() {}
 
 	/**
 	 * Register the stylesheets for the admin area.

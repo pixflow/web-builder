@@ -1,4 +1,8 @@
 <?php
+namespace KarmaBuilder\SettingPanel;
+
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	/** Exit if accessed directly. */
 	die('Silence is golden');
@@ -60,7 +64,7 @@ class Karma_Builder_Setting_Panel {
 	 */
 	public function register_controllers(){
 
-		$class_info = new ReflectionClass( __CLASS__ );
+		$class_info = new \ReflectionClass( __CLASS__ );
 		$available_controller = $class_info->getConstants();
 		$available_controller  = apply_filters( 'karma_controller', $available_controller  );
 		$karma_view = Karma_Factory_Pattern::$builder_views;

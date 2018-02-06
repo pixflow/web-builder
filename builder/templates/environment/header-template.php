@@ -1,3 +1,8 @@
+<?php
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +30,7 @@
 			<div class="karma-builder-menu">
 				<ul>
 					<li class="builder-brand">
-						<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/Karma-logo.svg' ); ?>
+						<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/Karma-logo.svg' ); ?>
 					</li>
 					<li class="builder-pages">
 						<div class="builder-page-label"><?php  _e('Pages:', 'karma'); ?> </div>
@@ -49,11 +54,11 @@
 
 				<li class="builder-publish"><div class="builder-publish-button"><div class="builder-publish-text"><?php  _e( 'Publish', 'karma' ); ?></div></div></li>
 				<li class="builder-notification">
-					<div class="builder-notification-icon"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/navigation.svg' ); ?></div>
+					<div class="builder-notification-icon"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/navigation.svg' ); ?></div>
 					<div class="builder-notification-number"><div class="builder-notification-red-circle"></div></div>
 				</li>
 				<li class="builder-user-profile">
-					<div><?php echo get_user_avatar(); ?> </div>
+					<div><?php echo Karma_Helper_Utility::get_user_avatar(); ?> </div>
 				</li>
 			</ul>
 		</div>

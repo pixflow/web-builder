@@ -1,5 +1,13 @@
 <?php
 
+namespace KarmaBuilder\BuilderActivator;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	/** Exit if accessed directly. */
+	die('Silence is golden');
+}
+
+
 /**
  * Fired during plugin activation
  *
@@ -20,6 +28,7 @@
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
+
 class Karma_Builder_Activator {
 
 	/**

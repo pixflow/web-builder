@@ -1,5 +1,6 @@
 <?php
 
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
 /**
  * The plugin bootstrap file
  *
@@ -34,22 +35,26 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-karma-builder-activator.php
  */
-function activate_karma_builder() {
+function karma_activate_builder() {
+
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-karma-builder-activator.php';
-	Karma_Builder_Activator::activate();
+	\KarmaBuilder\BuilderActivator\Karma_Builder_Activator::activate();
+
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-karma-builder-deactivator.php
  */
-function deactivate_karma_builder() {
+function karma_deactivate_builder() {
+
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-karma-builder-deactivator.php';
-	Karma_Builder_Deactivator::deactivate();
+	\KarmaBuilder\BuilderDeactivator\Karma_Builder_Deactivator::deactivate();
+
 }
 
-register_activation_hook( __FILE__, 'activate_Karma_builder' );
-register_deactivation_hook( __FILE__, 'deactivate_Karma_builder' );
+register_activation_hook( __FILE__, 'karma_activate_builder' );
+register_deactivation_hook( __FILE__, 'karma_deactivate_builder' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -72,11 +77,12 @@ require_once plugin_dir_path( __FILE__ )  . 'includes/class-karma-factory-patter
  *
  * @since    0.1.0
  */
-function run_karma_builder() {
+function karma_run_builder() {
 
 	$class_factory = new Karma_Factory_Pattern();
 	$plugin = $class_factory::$builder;
 	$plugin->run();
 
 }
-add_action('init','run_karma_builder');
+
+add_action('init','karma_run_builder');

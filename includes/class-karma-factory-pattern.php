@@ -1,4 +1,19 @@
 <?php
+namespace KarmaBuilder\FPD ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Karma_Builder as Karma_Builder ;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
+use KarmaBuilder\i18n\Karma_Builder_i18n as Karma_Builder_i18n ;
+use KarmaBuilder\BuilderLoader\Karma_Builder_Loader as Karma_Builder_Loader ;
+use KarmaBuilder\Views\Karma_Views as Karma_Views;
+use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
+use KarmaBuilder\AdminArea\BuilderAdmin\Karma_Builder_Admin as Karma_Builder_Admin;
+use KarmaBuilder\PublicArea\Karma_Builder_Public as Karma_Builder_Public;
+use KarmaBuilder\Stylesheet\Karma_Stylesheet as Karma_Stylesheet;
+
+
 if ( ! defined( 'ABSPATH' ) ) {
 	/** Exit if accessed directly. */
 	die('Silence is golden');
@@ -28,6 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Factory_Pattern/includes
  * @author     Pixflow <info@pixflow.net>
  */
+
 
 class Karma_Factory_Pattern {
 

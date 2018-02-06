@@ -1,4 +1,8 @@
 <?php
+namespace KarmaBuilder\Core ;
+
+
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 
 /**
  * The file that defines the builder core class
@@ -304,8 +308,9 @@ class Karma_Builder_Core{
 	public function add_default_attributes( $element_name, $element_attributes ) {
 
 		$element_name = explode( '_', $element_name );
-		$element_class_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
-		$default_attributes = $element_class_neme::get_element_default_attributes();
+		$element_class_name = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$element_class_name = '\\KarmaBuilder\Elements\\' . $element_class_name;
+		$default_attributes = $element_class_name::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
 		return $atributes;
 
@@ -560,7 +565,7 @@ class Karma_Builder_Core{
 	public function save_post_content( $models, $id ) {
 
 		$post_content = $this->generate_post_content( $models );
-		$post_content = karma_save_unsplash_images( $post_content );
+		$post_content = Karma_Helper_Utility::karma_save_unsplash_images( $post_content );
 		$post_content = str_replace( '\\', '\\\\', $post_content );
 		if ( update_post_meta( $id, 'karma_post_content', $post_content ) ){
 			return true;

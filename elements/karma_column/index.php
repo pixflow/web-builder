@@ -1,5 +1,8 @@
 <?php
 
+namespace KarmaBuilder\Elements;
+use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+
 class Karma_Column extends Karma_Shortcode_Base {
 
 	public static $element_name = 'karma_column';

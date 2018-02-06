@@ -1,4 +1,11 @@
 <?php
+namespace KarmaBuilder\BuilderLoader ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
+use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
+
 
 /**
  * Register all actions and filters for the plugin
@@ -21,6 +28,8 @@
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
+
+
 class Karma_Builder_Loader {
 
 
@@ -298,6 +307,7 @@ class Karma_Builder_Loader {
 
 			}
 
+			$class_name = '\\KarmaBuilder\Elements\DescribeElement\\' . $class_name ;
 			$class_name::get_instance() ;
 
 		}
@@ -489,8 +499,9 @@ class Karma_Builder_Loader {
 	private function add_default_attributes( $element_name, $element_attributes ) {
 
 		$element_name = explode( '_', $element_name );
-		$element_class_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
-		$default_attributes = $element_class_neme::get_element_default_attributes();
+		$element_class_name = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$element_class_name = '\\KarmaBuilder\Elements\\' . $element_class_name;
+		$default_attributes = $element_class_name::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
 		return $atributes;
 

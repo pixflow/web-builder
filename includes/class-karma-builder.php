@@ -1,4 +1,11 @@
 <?php
+namespace KarmaBuilder ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
+use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+
 
 /**
  * The file that defines the core plugin class

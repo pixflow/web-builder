@@ -1,4 +1,9 @@
 <?php
+namespace KarmaBuilder\Stylesheet ;
+
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -25,6 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
+
+
 class Karma_Stylesheet {
 
 

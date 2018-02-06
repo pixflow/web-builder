@@ -1,3 +1,7 @@
+<?php
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility ;
+?>
+
 <div class="karma-grid-controller">
 	<div class="grid-controller-template" data-current-grid="{{ data.value }}">
 		<div class="karma-add-column-view">
@@ -14,7 +18,7 @@
 		<div class="karma-add-column-button">
 			<button type="button" >
 				<div class="karma-oval-button-icon">
-					<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus.svg' ); ?>
+					<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus.svg' ); ?>
 				</div>
 				New Column
 			</button>

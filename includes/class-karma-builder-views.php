@@ -1,4 +1,5 @@
 <?php
+namespace KarmaBuilder\Views;
 /**
  * The file that defines the builder views core class
  *

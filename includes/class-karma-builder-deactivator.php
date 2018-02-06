@@ -1,5 +1,14 @@
 <?php
 
+namespace KarmaBuilder\BuilderDeactivator;
+
+
+if ( ! defined( 'ABSPATH' ) ) {
+	/** Exit if accessed directly. */
+	die('Silence is golden');
+}
+
+
 /**
  * Fired during plugin deactivation
  *
@@ -29,8 +38,6 @@ class Karma_Builder_Deactivator {
 	 *
 	 * @since    0.1.0
 	 */
-	public static function deactivate() {
-
-	}
+	public static function deactivate() {}
 
 }

@@ -1,4 +1,10 @@
 <?php
+namespace KarmaBuilder\CacheManager ;
+
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -26,7 +32,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Cache_Manager{
+
+
+
+class Karma_Cache_Manager{
 
 
 	/**

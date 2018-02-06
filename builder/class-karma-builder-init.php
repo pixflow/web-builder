@@ -1,5 +1,11 @@
 <?php
 
+namespace KarmaBuilder\PublicArea ;
+
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+
 /**
  * The public-facing functionality of the plugin.
  *

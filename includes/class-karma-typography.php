@@ -1,5 +1,6 @@
 <?php
 
+namespace KarmaBuilder\TypographyManager ;
 
 class Karma_Typography{
 
