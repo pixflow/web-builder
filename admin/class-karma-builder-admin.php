@@ -120,8 +120,8 @@ class Karma_Builder_Admin {
 	 */
 	public function publish(){
 
-		$models = $_POST['models'];
-		$id = $_POST['id'];
+		$models = sanitize_text_field( $_POST['models'] );
+		$id = sanitize_text_field( $_POST['id'] );
 		$builder_core = Karma_Builder_Core::get_instance();
 		$models = json_decode( stripslashes( $models ), true );
 		if ( $builder_core->publish_post( $models, $id ) ) {
@@ -143,8 +143,8 @@ class Karma_Builder_Admin {
 	 */
 	public function save(){
 
-		$models = $_POST['models'];
-		$id = $_POST['id'];
+		$models = sanitize_text_field( $_POST['models'] );
+		$id = sanitize_text_field( $_POST['id'] );
 		$builder_core = Karma_Builder_Core::get_instance();
 		$models = json_decode( stripslashes( $models ), true );
 		if ( $builder_core->save_post( $models, $id ) ) {

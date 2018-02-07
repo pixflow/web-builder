@@ -1,6 +1,7 @@
 <?php
 
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
+
 /**
  * The plugin bootstrap file
  *
