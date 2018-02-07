@@ -38,10 +38,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			'click .karma-backto-previous-location'				: 'animateKarmaPanels',
 			'click .karma-delete-font'							: 'deleteFontBox',
 			'input .karma-range-slider-input'					: 'updateRangeSlider',
-			'click .karma-font-weight-count'			    	: 'openFontsDetails',
+			'click .karma-font-list'			    			: 'openFontsDetails',
 			'click .karma-save-setting'                     	: 'saveFontsFormat',
 			'click .karma-add-to-library'						: 'addFontToLibrary',
-			'click .karma-dropdown-icon'						: 'openKarmaGoogleFonts',
+			'click .karma-google-fonts-title'					: 'openKarmaGoogleFonts',
 			'click .karma-delete-message-box-delete-button'     : 'DeleteElement',
 			'click .karma-delete-message-box-cancel-button'     : 'cancelDeleteElement',
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
@@ -52,7 +52,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			'touchmove  #karma-typography-setting'              : 'preventFromScroll',
 			'mousewheel #karma-typography-setting'              : 'preventFromScroll',
 			'click .karma-dropdown-add-font a'					: 'animateKarmaPanels',
-
 		},
 
 		/**
@@ -121,9 +120,9 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					+ '<svg width="10px" height="12px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="back-icon" stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"> <g id="back-icon-1" transform="translate(-753.000000, -461.000000)" stroke="#419CF8"> <polyline id="back-icon-2" transform="translate(756.000000, 466.000000) rotate(90.000000) translate(-756.000000, -466.000000) " points="751 464 756 468 761 464"></polyline> </g> </g></svg>'
 					+ '</li>';
 				$('.karma-google-fonts-list .right-side ul').append( karmaGoogleFont );
-				$('.karma-google-fonts-list .right-side, .karma-google-fonts-list .left-side ul').niceScroll({
+				$('.karma-google-fonts-list .karma-google-fonts-holder, .karma-google-fonts-list .left-side ul').niceScroll({
 					cursorcolor:"#A9A9A9",
-					cursorwidth:"2px",
+					cursorwidth:"4px",
 					cursoropacitymax:0.56,
 					cursorborder : "none",
 					horizrailenabled : false
@@ -136,6 +135,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				$('.karma-active-font').removeClass('karma-active-font');
 				$(this).addClass('karma-active-font');
 				$('.karma-google-fonts-list').addClass('show-google-font-weight');
+				$('.current-font-weight').removeClass('font-weight-selected')
 				$('.karma-google-fonts-list .left-side ul li').remove();
 				var fontWeightHtml = '';
 				fontVarient.forEach(function ( index ){
@@ -162,6 +162,11 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				});
 				$('.karma-google-fonts-list .left-side ul li').click(function(e){
 					$(this).toggleClass('active-font-weight');
+					if ( $('.active-font-weight').length ){
+						$('.current-font-weight').addClass('font-weight-selected');
+					}else{
+						$('.current-font-weight').removeClass('font-weight-selected');
+					}
 				});
 
 			});
@@ -194,15 +199,17 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				arr.push( obj );
 			});
 			var prevFont = $('.karma-font-name[ style *= "font-family:'+ fontFamily +'" ]');
-
 			if ( prevFont.length ){
 				prevFont.closest('.karma-font-list').remove();
 			}
-			this.updateTypographyModels( fontFamily, modelArr );
-			this.loadFont( fontFamily, modelArr );
-			this.addFontToHeadingDropdown( fontFamily, modelArr );
-			$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
-			this.closeKarmaGoogleFonts();
+			if ( $('.current-font-weight').hasClass('font-weight-selected') ) {
+				this.updateTypographyModels( fontFamily, modelArr );
+				this.loadFont( fontFamily, modelArr );
+				this.addFontToHeadingDropdown( fontFamily, modelArr );
+				$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
+				this.closeKarmaGoogleFonts();
+			}
+
 		},
 
 		addFontToHeadingDropdown : function ( font, weights ){
@@ -371,10 +378,12 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 			if ( 'none' == $('.karma-google-fonts-list').css('display') ){
 				$('.karma-google-fonts-list').addClass( 'show-font-dropdown' );
+				$('.karma-active-font').removeClass( 'karma-active-font' );
+				$('.show-google-font-weight').removeClass( 'show-google-font-weight' );
 				setTimeout( function (){
 					$('.karma-google-fonts-list').addClass( 'slide-down-font-drop-down' );
 				},100);
-				$('.karma-google-fonts-list .right-side').css({ 'overflow' : '' }).css({ 'overflow' : 'hidden' });
+				$('.karma-google-fonts-list .karma-google-fonts-holder').css({ 'overflow' : '' }).css({ 'overflow' : 'hidden' });
 			} else {
 				this.closeKarmaGoogleFonts();
 			}
@@ -460,7 +469,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				$( '.karma-dropdown-body > ul' ).removeClass( 'karma-doropdown-opened' );
 			}
 
-			if( $(e.target).hasClass('karma-dropdown-icon') || $(e.target).closest( '.karma-dropdown-icon' ).length ){
+			if( $(e.target).hasClass('karma-google-fonts-title') || $(e.target).closest( '.karma-google-fonts-title' ).length ){
 				return;
 			}else{
 				

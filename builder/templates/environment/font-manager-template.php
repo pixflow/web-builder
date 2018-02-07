@@ -32,7 +32,9 @@ $font_list = array_merge( $font_list, $custom_font_list );
 				<input type="text" id="karma-fonts-search-input" placeholder="<?php _e( ' Search in 848 font families', 'karma' ); ?>">
 				<i></i>
 			</div>
-			<ul></ul>
+			<div class="karma-google-fonts-holder">
+				<ul></ul>
+			</div>
 		</div>
 		<div class="left-side">
 			<div class="current-font-weight" >

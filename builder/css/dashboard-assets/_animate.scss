@@ -16,9 +16,9 @@
 
 	.karma-element-animating .karma-element-exit,
 	.karma-element-animating .karma-element-enter {
-		-webkit-transition: all .3s ease-in-out;
-		-ms-transition: all .3s ease-in-out;
-		transition: all .3s ease-in-out;
+		-webkit-transition: opacity .3s , transform .3s ease-in-out;
+		-ms-transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+		transition: opacity .3s , transform .3s ;
 	}
 
 	.karma-element-exit.slideup {
@@ -28,9 +28,9 @@
 	}
 
 	.karma-element-animating .karma-element-exit.slideup {
-		-webkit-transform: translateY(-10%);
-		-ms-transform: translateY(-10%);
-		transform: translateY(-10%);
+		-webkit-transform: translateY(-5%);
+		-ms-transform: translateY(-5%);
+		transform: translateY(-5%);
 	}
 
 	.karma-element-exit.slidedown {
@@ -40,15 +40,15 @@
 	}
 
 	.karma-element-animating .karma-element-exit.slidedown {
-		-webkit-transform: translateY(10%);
-		-ms-transform: translateY(10%);
-		transform: translateY(10%);
+		-webkit-transform: translateY(5%);
+		-ms-transform: translateY(5%);
+		transform: translateY(5%);
 	}
 
 	.karma-element-enter.slidedown {
-		-webkit-transform: translateY(-10%);
-		-ms-transform: translateY(-10%);
-		transform: translateY(-10%);
+		-webkit-transform: translateY(-5%);
+		-ms-transform: translateY(-5%);
+		transform: translateY(-5%);
 	}
 
 	.karma-element-animating .karma-element-enter.slidedown {
@@ -58,9 +58,9 @@
 	}
 
 	.karma-element-enter.slideup {
-		-webkit-transform: translateY(10%);
-		-ms-transform: translateY(10%);
-		transform: translateY(10%);
+		-webkit-transform: translateY(5%);
+		-ms-transform: translateY(5%);
+		transform: translateY(5%);
 	}
 
 	.karma-element-animating .karma-element-enter.slideup {

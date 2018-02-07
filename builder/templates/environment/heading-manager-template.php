@@ -9,31 +9,31 @@ $font_list = array_merge( $font_list, $custom_font_list );
 $heading_default_text = array(
 	'h1'    => array(
 		'title'  => 'Heading 1' ,
-		'text'   => 'The most advanced' ,
+		'text'   => 'What is typography' ,
 	),
 	'h2'    => array(
 		'title'  => 'Heading 2' ,
-		'text'   => 'Customize you layout section' ,
+		'text'   => 'Typography is the art and technique' ,
 	),
 	'h3'    => array(
 		'title'  => 'Heading 3' ,
-		'text'   => 'The most advanced frontend drag & drop page' ,
+		'text'   => 'Typography is the work of typesetters, typographers' ,
 	),
 	'h4'    => array(
 		'title'  => 'Heading 4' ,
-		'text'   => 'Create high-end,pixel perfect websites at record speeds.' ,
+		'text'   => 'Typically drawings by humans may be called typography.' ,
 	),
 	'h5'    => array(
 		'title'  => 'Heading 5' ,
-		'text'   => 'The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speed.' ,
+		'text'   => 'The design of typefaces has developed alongside the development of typesetting systems.' ,
 	),
 	'h6'    => array(
 		'title'  => 'Heading 6' ,
-		'text'   => 'Karma’s page sections make up the basic architecture of the page, and allow you to reach a level of design reserved until now for high budget custom designed websites.' ,
+		'text'   => 'Type may be combined with negative space and images, forming relationships and dialog between the words and images for special effects.' ,
 	),
 	'p'     => array(
 		'title'  => 'Paragraph' ,
-		'text'   => 'The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design. Allow you to easily create pages like a true professional without programming knowledge required.' ,
+		'text'   => 'Three fundamental aspects of typography are legibility, readability, and aesthetics. Though in a non-technical sense "legible" and "readable" are often used synonymously, typographically they are separate but related concepts.' ,
 	),
 
 );

@@ -199,7 +199,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit, .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager, .karma-range-slider-container .karma-range-slider-number label, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number label, .karma-slider-controller-title, #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
+.karma-builder-title-3, .karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit, .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager, .karma-range-slider-container .karma-range-slider-number label, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number label, .karma-slider-controller-title, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
   font-size: 14px;
   line-height: 16px; }
 
@@ -228,7 +228,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box {
   border-radius: 5px; }
 
-.karma-button-padding, #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
+.karma-button-padding, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
   padding: 0 20px; }
 
 .karma-hide {
@@ -1879,37 +1879,37 @@ html {
   display: flex; }
 #karma-typography-setting .karma-element-animating .karma-element-exit,
 #karma-typography-setting .karma-element-animating .karma-element-enter {
-  -webkit-transition: all .3s ease-in-out;
-  -ms-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out; }
+  -webkit-transition: opacity .3s , transform .3s ease-in-out;
+  -ms-transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+  transition: opacity 0.3s, transform 0.3s; }
 #karma-typography-setting .karma-element-exit.slideup {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0); }
 #karma-typography-setting .karma-element-animating .karma-element-exit.slideup {
-  -webkit-transform: translateY(-10%);
-  -ms-transform: translateY(-10%);
-  transform: translateY(-10%); }
+  -webkit-transform: translateY(-5%);
+  -ms-transform: translateY(-5%);
+  transform: translateY(-5%); }
 #karma-typography-setting .karma-element-exit.slidedown {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0); }
 #karma-typography-setting .karma-element-animating .karma-element-exit.slidedown {
-  -webkit-transform: translateY(10%);
-  -ms-transform: translateY(10%);
-  transform: translateY(10%); }
+  -webkit-transform: translateY(5%);
+  -ms-transform: translateY(5%);
+  transform: translateY(5%); }
 #karma-typography-setting .karma-element-enter.slidedown {
-  -webkit-transform: translateY(-10%);
-  -ms-transform: translateY(-10%);
-  transform: translateY(-10%); }
+  -webkit-transform: translateY(-5%);
+  -ms-transform: translateY(-5%);
+  transform: translateY(-5%); }
 #karma-typography-setting .karma-element-animating .karma-element-enter.slidedown {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0); }
 #karma-typography-setting .karma-element-enter.slideup {
-  -webkit-transform: translateY(10%);
-  -ms-transform: translateY(10%);
-  transform: translateY(10%); }
+  -webkit-transform: translateY(5%);
+  -ms-transform: translateY(5%);
+  transform: translateY(5%); }
 #karma-typography-setting .karma-element-animating .karma-element-enter.slideup {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -2271,6 +2271,9 @@ html {
       height: 100%;
       max-width: 252px;
       width: 100%; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list .right-side .karma-google-fonts-holder {
+        height: calc(100% - 50px);
+        overflow: hidden; }
     #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side {
       display: none;
       height: 100%;
@@ -2319,34 +2322,27 @@ html {
           text-align: center;
           align-items: center;
           justify-content: center;
-          color: #419CF8;
+          color: #9CA4AC;
+          cursor: no-drop;
           background-color: #fff;
           border-radius: 2px;
-          border: none;
-          cursor: pointer;
-          height: 40px;
           transition-duration: .2s;
-          border: 1px solid #419CF8;
-          border-radius: 2px;
+          border: 1px solid #9CA4AC;
           height: 40px;
           margin-bottom: 15px;
           margin-left: 23px;
           transition: 0.3s;
           width: 125px; }
-          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button:focus {
-            transition-duration: .2s; }
-          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button:hover {
-            transition-duration: 0.2s;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px 0 rgba(57, 73, 89, 0.2); }
-          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button:hover {
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight.font-weight-selected button {
+          color: #419CF8;
+          cursor: pointer;
+          border: 1px solid #419CF8; }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight.font-weight-selected button:hover {
             background-color: #419CF8;
-            box-shadow: none;
             color: #fff;
-            transform: none;
             transition: 0.3s; }
     #karma-typography-setting #karma-font-manager .karma-google-fonts-list .nicescroll-rails {
-      left: 272px !important; }
+      left: 5px !important; }
     #karma-typography-setting #karma-font-manager .karma-google-fonts-list.show-google-font-weight {
       width: 495px; }
       #karma-typography-setting #karma-font-manager .karma-google-fonts-list.show-google-font-weight .left-side {
@@ -2362,6 +2358,7 @@ html {
     height: 65px;
     background-color: #fff;
     border-radius: 4px;
+    cursor: pointer;
     box-shadow: 0 4px 15px 0 rgba(57, 73, 89, 0.2); }
   #karma-typography-setting #karma-font-manager .karma-google-fonts-title .google-icon {
     flex-basis: 10%; }
@@ -2454,7 +2451,7 @@ html {
     display: flex;
     text-align: left;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 30px;
     width: 100%; }
     #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font {
