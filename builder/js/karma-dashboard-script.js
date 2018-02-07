@@ -46,7 +46,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'mousedown .karma-google-fonts-list' 		  		: 'deleteBoxStopPropagation',
-			'input #karma-fonts-search-input'                   : 'searchInGoogleFonts'
+			'input #karma-fonts-search-input'                   : 'searchInGoogleFonts',
+			'scroll   #karma-typography-setting'                : 'preventFromScroll',
+			'touchmove  #karma-typography-setting'              : 'preventFromScroll',
+			'mousewheel #karma-typography-setting'              : 'preventFromScroll'
 		},
 
 		/**
@@ -61,6 +64,23 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			this.initRangeSlider();
 			this.uploadCustomFonts();
 			this.renderFonts();
+
+		},
+
+
+		/**
+		 * @summary Stop scrolling when dropdown open
+		 *
+		 * @since 0.1.1
+		 *
+		 */
+		preventFromScroll : function( e ){
+
+			if( null != document.querySelector('.karma-doropdown-opened') ){
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
 
 		},
 
@@ -435,7 +455,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				return;
 			}else{
 				$( '.karma-dropdown-body > ul' ).removeClass( 'karma-doropdown-opened' );
-				$('body').removeClass('disable-page-scroll');
 			}
 
 			if( $(e.target).hasClass('karma-dropdown-icon') || $(e.target).closest( '.karma-dropdown-icon' ).length ){
@@ -445,8 +464,18 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				this.closeKarmaGoogleFonts();
 			}
 
+
+
 		},
 
+		/**
+		 * @summary Update font list
+		 *
+		 * @param {object}  element
+		 *
+		 * @since 0.1.0
+		 *
+		 */
 		updateFontType : function ( element ) {
 
 			if( element.closest('.karma-dropdown-options').hasClass('karma-font-varients-list') ){
@@ -457,6 +486,14 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+		/**
+		 * @summary Update font varient and add it to fonts model
+		 *
+		 * @param {object}  element
+		 *
+		 * @since 0.1.0
+		 *
+		 */
 		updateFontVarient : function( element ){
 
 			var parent = element.closest('.karma-typography-box')[0],
@@ -475,6 +512,15 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+		/**
+		 * @summary Update font varient list in dropdown
+		 *
+		 * @param   {Object}    element
+		 * @param   {String}    fontName    Selected Font name
+		 *
+		 * @since 0.1.0
+		 *
+		 */
 		updateFontVarientList : function ( element, fontName ) {
 
 			fontName = ( 'HelveticaNeue' == fontName ) ? fontName : fontName.toLowerCase();
@@ -499,6 +545,14 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+		/**
+		 * @summary Update font name and add it to fonts model
+		 *
+		 * @param {object}  element
+		 *
+		 * @since 0.1.0
+		 *
+		 */
 		updateFontFamily : function ( element ) {
 
 			var parent = element.closest('.karma-typography-box')[0],
@@ -524,29 +578,29 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		openDropDown : function ( e ) {
 
-			var element = ( $( e.target ).hasClass('karma-dropdown-header') ) ? $( e.target ) : $( e.target ).closest('.karma-dropdown-header'),
-				optionsContainer =  element.next( 'ul' );
-			$( '.karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
-			optionsContainer.addClass( 'karma-doropdown-opened' );
-			if ( ! optionsContainer.find( '.karma-selected-dropdown-option' ).length ){
-				optionsContainer.find( '.karma-dropdown-option' ).first().addClass('karma-selected-dropdown-option');
+			var element = ($(e.target).hasClass('karma-dropdown-header')) ? $(e.target) : $(e.target).closest('.karma-dropdown-header'),
+				optionsContainer = element.next('ul');
+			$('.karma-doropdown-opened').removeClass('karma-doropdown-opened');
+			optionsContainer.addClass('karma-doropdown-opened');
+			if (!optionsContainer.find('.karma-selected-dropdown-option').length) {
+				optionsContainer.find('.karma-dropdown-option').first().addClass('karma-selected-dropdown-option');
 			}
 
-			var top =  optionsContainer.find( '.karma-selected-dropdown-option' ).position().top * -1 + element.offset().top - $( window ).scrollTop(),
+			var top = optionsContainer.find('.karma-selected-dropdown-option').position().top * -1 + element.offset().top - $(window).scrollTop(),
 				left = element.offset().left - 5;
-			optionsContainer.css( {
-				'top' 	: top,
-				'left' 	: left,
-				'opacity' : 0
-			} );
+			optionsContainer.css({
+				'top': top,
+				'left': left,
+				'opacity': 0
+			});
 
-			if ( this.isElementInViewport(optionsContainer) ){
-				optionsContainer.css( 'opacity','' );
-			}else{
-				top = $( window ).innerHeight() - optionsContainer.outerHeight(true);
-				optionsContainer.css( { 'opacity': '', 'top' : top });
+			if (this.isElementInViewport(optionsContainer)) {
+				optionsContainer.css('opacity', '');
+			} else {
+				top = $(window).innerHeight() - optionsContainer.outerHeight(true);
+				optionsContainer.css({'opacity': '', 'top': top});
 			}
-			$('body').addClass('disable-page-scroll');
+
 
 		},
 
@@ -558,7 +612,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @returns { boolean }
 		 */
 
-		isElementInViewport : function  (el) {
+		isElementInViewport : function  ( el ) {
 
 			if (typeof jQuery !== 'undefined' && el instanceof jQuery) el = el[0];
 
@@ -616,6 +670,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @param { object } $panelContainer panel witch contains sections
 		 * @param { Array } $panels  Panels of tab
 		 * @param { object } $panelToSlideIn  element to slide up
+		 * 
 		 * @since 0.1.1
 		 * @returns { void }
 		 */

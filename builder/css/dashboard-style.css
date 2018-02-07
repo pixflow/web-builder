@@ -2059,9 +2059,6 @@ html {
   .karma-builder-toolbar .karma-header-container {
     width: 1200px; }
 
-body.disable-page-scroll #karma-typography-setting {
-  overflow: visible; }
-
 #karma-typography-setting {
   width: 100vw;
   height: 90vh;
