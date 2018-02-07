@@ -2061,9 +2061,7 @@ html {
 
 #karma-typography-setting {
   width: 100vw;
-  height: 90vh;
-  background-color: rgba(57, 73, 89, 0.1);
-  overflow-y: scroll; }
+  height: 90vh; }
   #karma-typography-setting .karma-panel.current {
     display: flex; }
   #karma-typography-setting > div {
@@ -2109,7 +2107,7 @@ html {
       display: flex;
       margin-top: 15px; }
       #karma-typography-setting #karma-typography-manager .karma-typography-styles > div {
-        width: 100%; }
+        width: 33%; }
       #karma-typography-setting #karma-typography-manager .karma-typography-styles .karma-controller.karma-controller-action {
         width: 100%; }
     #karma-typography-setting #karma-typography-manager .karma-typography-font {
@@ -2118,6 +2116,24 @@ html {
         padding: 0; }
         #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body {
           margin: 0; }
+          #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-add-font, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body .karma-dropdown-add-font {
+            order: 10; }
+            #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-add-font a, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body .karma-dropdown-add-font a {
+              box-shadow: none;
+              color: #419CF8;
+              display: flex;
+              font-family: "HelveticaNeue";
+              justify-content: end;
+              padding: 5px 0 2px 0;
+              text-decoration: none; }
+              #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-add-font a:after, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body .karma-dropdown-add-font a:after {
+                background-color: #D9EBFE;
+                bottom: 30px;
+                content: '';
+                height: 1px;
+                left: 0;
+                position: absolute;
+                width: 100%; }
         #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-icon {
           border: none; }
     #karma-typography-setting #karma-typography-manager .karma-typography-weight {
@@ -2137,20 +2153,20 @@ html {
         text-transform: capitalize; }
     #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-selected-item {
       color: #419CF8;
-      text-transform: capitalize;
-      white-space: nowrap;
       max-width: 77px;
-      overflow: hidden; }
+      overflow: hidden;
+      text-transform: capitalize;
+      white-space: nowrap; }
     #karma-typography-setting #karma-typography-manager .karma-typography-size {
       padding: 0; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
         width: 110px; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input {
         border: none;
+        flex-basis: initial;
         padding-right: 3px;
         text-align: right;
-        width: 26px;
-        flex-basis: initial; }
+        width: 26px; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider {
         width: 52px; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number {

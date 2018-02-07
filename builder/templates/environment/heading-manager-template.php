@@ -85,6 +85,7 @@ $heading_default_text = array(
 											<?php
 										endforeach;
 									?>
+									<li class="karma-dropdown-add-font" ><a href="#karma-font-manager"> Add Font </a></li>
 								</ul>
 							</div>
 						</div>

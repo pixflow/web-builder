@@ -987,7 +987,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 
 .karma-coming-soon-typo, #karma-add-element .element-panel-section-container.element-panel-deactive-part .deactivate-title {
   color: #394959;
-  font-family: HelveticaNeue_med;
+  font-family: "HelveticaNeue_med";
   font-size: 12px;
   line-height: 15px;
   margin: 38px 38px 35px; }
@@ -1026,7 +1026,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
     background-color: #ECF5FE; }
     .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li.karma-selected-dropdown-option .karma-dropdown-option-title {
       color: #419CF8;
-      font-family: HelveticaNeue_med; }
+      font-family: "HelveticaNeue_med"; }
   .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title, #karma-add-element .karma-builder-element-panel-gather-menu ul li:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
     color: #419CF8; }
   .karma-dropdown-option .karma-dropdown-option-icon, #karma-add-element .karma-builder-element-panel-gather-menu ul li .karma-dropdown-option-icon {
@@ -1053,7 +1053,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   justify-content: space-between;
   color: #419CF8;
   flex-basis: 35%;
-  font-family: HelveticaNeue_med; }
+  font-family: "HelveticaNeue_med"; }
 
 @font-face {
   font-family: HelveticaNeue_bold;
@@ -3230,7 +3230,7 @@ div.media-modal {
       position: relative; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title {
         color: #fff;
-        font-family: HelveticaNeue_med;
+        font-family: "HelveticaNeue_med";
         padding: 16px 0 15px 20px;
         text-align: left;
         text-transform: capitalize; }
@@ -3767,7 +3767,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           border-bottom: none;
           box-shadow: none;
           color: #419CF8;
-          font-family: HelveticaNeue_med;
+          font-family: "HelveticaNeue_med";
           padding: 5px 0;
           Cursor: no-drop; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
@@ -3797,7 +3797,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
       border-right: 1px solid #D7DBDE;
       color: #394959;
       cursor: pointer;
-      font-family: HelveticaNeue_med;
+      font-family: "HelveticaNeue_med";
       height: 18px;
       margin-right: 7px;
       padding: 0 12px 0 5px;
@@ -4163,7 +4163,7 @@ div.karma-element-content .karma-top-spacing {
   width: 100%; }
   #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field {
     color: #419CF8;
-    font-family: HelveticaNeue_med; }
+    font-family: "HelveticaNeue_med"; }
 
 .karma-title-controller {
   padding: 22px 20px 18px;
@@ -4405,7 +4405,7 @@ div.karma-element-content .karma-top-spacing {
     cursor: pointer;
     height: 36px;
     padding: 0 20px 0 20px;
-    font-family: HelveticaNeue_med;
+    font-family: "HelveticaNeue_med";
     margin: 18px 0;
     text-transform: capitalize; }
     #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button .karma-oval-button-icon {
@@ -4695,7 +4695,7 @@ div.karma-element-content .karma-top-spacing {
   color: #394959;
   padding: 5px 8px; }
   .unsplash-avatar .ui-tooltip-content {
-    font-family: HelveticaNeue_med; }
+    font-family: "HelveticaNeue_med"; }
   .unsplash-avatar .arrow {
     height: 4px; }
     .unsplash-avatar .arrow.top {
@@ -5018,7 +5018,7 @@ div.karma-element-content .karma-top-spacing {
           width: 4.80vw; }
         #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
           color: #394959;
-          font-family: HelveticaNeue_med;
+          font-family: "HelveticaNeue_med";
           white-space: nowrap; }
           #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title {
             font-size: 12px; }
@@ -5214,7 +5214,7 @@ div.karma-element-content .karma-top-spacing {
     width: 100%; }
     #karma-add-element .element-panel-section-container .karma-builder-element-panel-header input::-webkit-input-placeholder {
       color: rgba(0, 0, 0, 0.3);
-      font-family: HelveticaNeue_med; }
+      font-family: "HelveticaNeue_med"; }
     #karma-add-element .element-panel-section-container .karma-builder-element-panel-header input::-webkit-search-cancel-button {
       display: none; }
     #karma-add-element .element-panel-section-container .karma-builder-element-panel-header .karma-search-close-icon {

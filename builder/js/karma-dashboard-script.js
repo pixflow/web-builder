@@ -31,6 +31,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 + '</li>',
 
 		events : {
+
 			'mousedown body:not( .karma-dropdown-body )' 		: 'closeDropDown',
 			'click .karma-dropdown-options > li'				: 'selectDropDownList',
 			'click .karma-dropdown-header'						: 'openDropDown',
@@ -49,7 +50,9 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			'input #karma-fonts-search-input'                   : 'searchInGoogleFonts',
 			'scroll   #karma-typography-setting'                : 'preventFromScroll',
 			'touchmove  #karma-typography-setting'              : 'preventFromScroll',
-			'mousewheel #karma-typography-setting'              : 'preventFromScroll'
+			'mousewheel #karma-typography-setting'              : 'preventFromScroll',
+			'click .karma-dropdown-add-font a'					: 'animateKarmaPanels',
+
 		},
 
 		/**

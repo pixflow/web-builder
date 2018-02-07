@@ -9,9 +9,6 @@
 		}
 	}
 
-	background-color: rgba($builder-main-color, .1);
-	overflow-y: scroll;
-
 	> div {
 		min-height: 700px;
 		position: relative;
@@ -67,7 +64,7 @@
 			display: flex;
 			margin-top: 15px;
 			> div {
-				width: 100%;
+				width: 33%;
 			}
 			.karma-controller.karma-controller-action {
 				width: 100%;
@@ -80,6 +77,30 @@
 				padding: 0;
 				.karma-dropdown-body {
 					margin: 0;
+
+					.karma-dropdown-add-font {
+
+						order: 10;
+						a {
+							box-shadow: none;
+							color: #419CF8;
+							display: flex;
+							font-family: $builder-normal-font;
+							justify-content: end;
+							padding: 5px 0 2px 0;
+							text-decoration: none;
+							&:after {
+								background-color: $builder-accent-color-3;
+								bottom: 30px;
+								content: '';
+								height: 1px;
+								left: 0;
+								position: absolute;
+								width: 100%;
+							}
+
+						}
+					}
 				}
 				.karma-dropdown-icon {
 					border: none;
@@ -116,10 +137,10 @@
 
 			.karma-dropdown-selected-item {
 				color: $builder-accent-color;
-				text-transform: capitalize;
-				white-space: nowrap;
 				max-width: 77px;
 				overflow: hidden;
+				text-transform: capitalize;
+				white-space: nowrap;
 			}
 		}
 
@@ -133,10 +154,10 @@
 			input.karma-range-slider-input.karma-input-number-type-input {
 				@extend .karma-typography-box-style;
 				border: none;
+				flex-basis: initial;
 				padding-right: 3px;
 				text-align: right;
 				width: 26px;
-				flex-basis: initial;
 			}
 			.rangeslider {
 				width: 52px;
