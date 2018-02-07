@@ -33,7 +33,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		events : {
 
 			'mousedown body:not( .karma-dropdown-body )' 		: 'closeDropDown',
-			'click .karma-dropdown-options > li'				: 'selectDropDownList',
+			'click .karma-dropdown-options > li:not(.karma-dropdown-add-font)'	: 'selectDropDownList',
 			'click .karma-dropdown-header'						: 'openDropDown',
 			'click .karma-backto-previous-location'				: 'animateKarmaPanels',
 			'click .karma-delete-font'							: 'deleteFontBox',
