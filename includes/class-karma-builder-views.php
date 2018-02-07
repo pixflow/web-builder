@@ -48,6 +48,7 @@ class Karma_Views {
 		'header',
 		'typography',
 		'footer',
+		'delete-message-box'
 	);
 
 	/**

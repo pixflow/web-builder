@@ -1,261 +1,172 @@
 #karma-typography-setting {
 
-  @include box(100vw, 90vh);
-  @extend .center-both-flex;
+	@include box(100vw, 90vh);
+	@extend .center-both-flex;
 
-  .karma-panel {
-	&.current {
-	  display: flex;
-	}
-  }
-
-  background-color: rgba($builder-main-color, .1);
-  overflow-y: scroll;
-
-  > div {
-	min-height: 700px;
-	position: relative;
-	width: 1200px;
-  }
-  #karma-typography-manager,
-  #karma-font-manager {
-	@include box(100%, 100%);
-	left: 0;
-	position: absolute;
-	top: 0;
-  }
-
-  #karma-font-manager {
-	text-align: left;
-	align-items: flex-start;
-	justify-content: flex-start;
-	flex-direction: column;
-	background-color: #ecedef;
-	z-index: 0;
-
-	.karma-font-manger-box-style {
-	  @include flexbox(left, center, center);
-	  @include box(275px, 65px);
-	  background-color: #fff;
-	  box-shadow: 0 4px 15px 0 rgba(57, 73, 89, 0.2);
-	  border-radius: 4px;
-	}
-
-	.karma-google-fonts-title {
-	  .google-icon {
-		flex-basis: 10%;
-	  }
-	  .karma-google-title {
-		flex-basis: 70%;
-		color: #394959;
-		font-family: HelveticaNeue_med;
-		font-size: 14px;
-	  }
-	  .karma-dropdown-icon {
-		@include box(25px, 25px);
-		@include flexbox(center, center, center);
-		border: 1px solid #B3BAC1;
-		border-radius: 100px;
-		cursor: pointer;
-		.bottom-arrow {
-		  stroke: #bcc3ca;
+	.karma-panel {
+		&.current {
+			display: flex;
 		}
-	  }
 	}
 
-	.karma-fonts-list {
-	  @include box(100%);
-	  .karma-font-list {
+	background-color: rgba($builder-main-color, .1);
+	overflow-y: scroll;
+
+	> div {
+		min-height: 700px;
+		position: relative;
+		width: 1200px;
+	}
+	#karma-typography-manager,
+	#karma-font-manager {
 		@include box(100%, auto);
-		margin-top: 13px;
-		font-family: HelveticaNeue_med;
-		flex-direction: column;
-		padding: 27px 0px;
-		.karma-font-name-part {
-		  @include flexbox(center, center, center);
-		  width: 100%;
-		  .karma-font-weight-count {
-			color: #828B95;
-			cursor: pointer;
-			font-size: 12px;
-			flex-basis: 10%;
-			span {
-			  margin-left: 8px;
+		left: 0;
+		margin-bottom: 85px;
+		position: absolute;
+		top: 0;
+	}
+
+	#karma-typography-manager {
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 0;
+
+		.karma-typography-box {
+			background-color: #fff;
+			border-radius: 4px;
+			box-shadow: 0 4px 15px 4px $builder-main-color-3;
+			box-sizing: border-box;
+			flex-basis: 32%;
+			height: 350px;
+			margin-bottom: 25px;
+			padding: 23px;
+		}
+
+		.karma-typography-box:last-child {
+			margin-right: 34%;
+		}
+
+		.karma-typography-box-title {
+			@extend .karma-builder-title-2;
+			color: $builder-accent-color;
+			cursor: default;
+			font-family: $builder-medium-font;
+			padding-bottom: 20px;
+		}
+
+		.karma-typography-text {
+			border-bottom: 1px solid $builder-accent-color-3;
+			color: $builder-main-color-1;
+			height: 215px;
+			line-height: 1.15em;
+			overflow: hidden;
+			word-break: break-all;
+		}
+
+		.karma-typography-styles {
+			display: flex;
+			margin-top: 15px;
+			> div {
+				width: 100%;
 			}
-		  }
-		  .bottom-arrow {
-			stroke: #B3BAC1;
-		  }
-		  #detele-element-icon {
-			fill: #39495957;
-		  }
-		  .karma-font-name {
-			color: #394959;
-			flex-basis: 85%;
-			font-size: 20px;
-			text-align: left;
-		  }
-		}
-
-		.karma-font-details-part {
-		  display: none;
-		  margin-top: 20px;
-		  width: 100%;
-		  ul {
-			@include flexbox(left, flex-start, flex-start);
-			width: 100%;
-			li {
-			  list-style-image: url('../../builder/media/svg/blue-tik.svg');
-			  color: #394959;
-			  font-size: 12px;
-			  width: 80px;
+			.karma-controller.karma-controller-action {
+				width: 100%;
 			}
-		  }
 		}
-	  }
-	}
 
-	.karma-footer-info {
-	  @include flexbox(left, center, center);
-	  margin-top: 40px;
-	  .karma-upload-custom-font {
-		@include flexbox(left, center, flex-start);
-		cursor: pointer;
-		color: #419CF8;
-		font-family: HelveticaNeue_med;
-		font-size: 14px;
-		line-height: 0;
-		flex-basis: 71%;
-		span {
-		  margin-right: 7px;
+		.karma-typography-font {
+			border-right: 1px solid $builder-accent-color-3;
+			.karma-dropdown-controller {
+				padding: 0;
+				.karma-dropdown-body {
+					margin: 0;
+				}
+				.karma-dropdown-icon {
+					border: none;
+				}
+			}
 		}
-	  }
 
-	  .karma-pay-attention {
-		color: #828B95;
-		font-family: HelveticaNeue_med;
-		font-size: 12px;
-	  }
+		@extend .karma-dropdown-controller;
+		.karma-typography-weight {
+			border-right: 1px solid $builder-accent-color-3;
+			padding-left: 9px;
+			.karma-dropdown-controller {
+				padding: 0;
+				.karma-dropdown-body {
+					margin: 0;
+				}
+				.karma-dropdown-icon {
+					border: none;
+				}
+				.karma-dropdown-selected-item {
+					max-width: 75px;
+				}
+			}
+		}
 
-	}
-  }
-
-  #karma-typography-manager {
-	flex-wrap: wrap;
-	justify-content: space-between;
-	padding: 0;
-
-	.karma-typography-box {
-	  background-color: #fff;
-	  border-radius: 4px;
-	  box-shadow: 0 4px 15px 4px $builder-main-color-3;
-	  box-sizing: border-box;
-	  flex-basis: 32%;
-	  height: 350px;
-	  margin-bottom: 25px;
-	  padding: 23px;
-	}
-
-	.karma-typography-box:last-child {
-	  margin-right: 34%;
-	}
-
-	.karma-typography-box-title {
-	  @extend .karma-builder-title-2;
-	  color: $builder-accent-color;
-	  cursor: default;
-	  font-family: $builder-medium-font;
-	  padding-bottom: 20px;
-	}
-
-	.karma-typography-text {
-	  border-bottom: 2px solid $builder-accent-color-3;
-	  color: $builder-main-color;
-	  height: 215px;
-	  line-height: 1.2em;
-	  overflow: hidden;
-	  word-break: break-all;
-	}
-
-	.karma-typography-styles {
-	  display: flex;
-	  margin-top: 15px;
-	  .karma-controller.karma-controller-action {
-		width: 100%;
-	  }
-	}
-
-	.karma-typography-font {
-	  @extend .karma-typography-box-style;
-	  border-right: 1px solid $builder-accent-color-3;
-	  .karma-dropdown-controller {
-		padding: 0;
 		.karma-dropdown-body {
-		  margin: 0;
+			.karma-dropdown-options {
+				width: 150px;
+
+				.karma-dropdown-option-title {
+					text-transform: capitalize;
+				}
+			}
+
+			.karma-dropdown-selected-item {
+				color: $builder-accent-color;
+				text-transform: capitalize;
+				white-space: nowrap;
+				max-width: 77px;
+				overflow: hidden;
+			}
 		}
-		.karma-dropdown-icon {
-		  border: none;
+
+		.karma-typography-size {
+			@extend .karma-range-slider-container;
+			padding: 0;
+			.karma-range-slider-content {
+				width: 110px;
+			}
+
+			input.karma-range-slider-input.karma-input-number-type-input {
+				@extend .karma-typography-box-style;
+				border: none;
+				padding-right: 3px;
+				text-align: right;
+				width: 26px;
+				flex-basis: initial;
+			}
+			.rangeslider {
+				width: 52px;
+			}
+
+			.karma-range-slider-number {
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			label.karma-unit.karma-input-number-type-unit {
+				@extend .karma-typography-box-style;
+				padding-right: 15px;
+			}
+
+			.karma-range-slider-container,
+			.controller-separator,
+			.karma-range-slider-content {
+				padding: 0;
+			}
+
+			.karma-range-slider-content > :nth-child(2) {
+				order: 1;
+			}
+
 		}
-	  }
 	}
-
-	@extend .karma-dropdown-controller;
-	.karma-typography-weight {
-	  @extend .karma-typography-box-style;
-	  border-right: 1px solid $builder-accent-color-3;
-	  padding-left: 9px;
-	  .karma-dropdown-controller {
-		padding: 0;
-		.karma-dropdown-body {
-		  margin: 0;
-		}
-		.karma-dropdown-icon {
-		  border: none;
-		}
-	  }
-	}
-	.karma-dropdown-body .karma-dropdown-options {
-	  width: 100px;
-	}
-
-	.karma-typography-size {
-	  @extend .karma-range-slider-container;
-	  @extend .karma-typography-box-style;
-	  padding: 0;
-	  .karma-range-slider-content {
-		width: 110px;
-	  }
-
-	  input.karma-range-slider-input.karma-input-number-type-input {
-		@extend .karma-typography-box-style;
-		border: none;
-		padding-right: 3px;
-		text-align: right;
-		width: 26px;
-	  }
-
-	  .karma-range-slider-number {
-		border: none;
-		margin: 0;
-		padding: 0;
-	  }
-
-	  label.karma-unit.karma-input-number-type-unit {
-		@extend .karma-typography-box-style;
-		padding-right: 15px;
-	  }
-
-	  .karma-range-slider-container,
-	  .controller-separator,
-	  .karma-range-slider-content {
-		padding: 0;
-	  }
-
-	  .karma-range-slider-content > :nth-child(2) {
-		order: 1;
-	  }
-
-	}
-  }
 }
 
+.karma-builder .karma-delete-message-box {
+	display: none;
+}

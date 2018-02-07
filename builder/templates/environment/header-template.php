@@ -9,6 +9,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title><?php echo __( 'KARMA BUILDER', 'karma' ) . ' | ' . get_the_title(); ?> </title>
+	<link rel="preconnect" href="https://fonts.typonine.com/" crossorigin>
 	<?php wp_head(); ?>
 </head>
 <body class="karma-builder">

@@ -142,6 +142,8 @@ class Karma_Builder {
 		$this->load_core();
 
 		$this->loader = Karma_Factory_Pattern::$builder_loader;
+		$typography = Karma_Typography::get_instance();
+		add_filter( 'upload_mimes', array( $typography, 'allow_upload_fonts' ), 1, 1 );
 
 	}
 
@@ -293,6 +295,7 @@ class Karma_Builder {
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ), 10 , 1 );
 		add_action( 'wp_ajax_publish', array( $plugin_admin, 'publish' ) );
 		add_action( 'wp_ajax_save', array( $plugin_admin, 'save' ) );
+		add_action( 'wp_ajax_save_fonts_format', array( $plugin_admin, 'save_fonts_format' ) );
 		add_action( 'karma_before_load_builder_window', array( $plugin_admin, 'load_builder_assets' ) );
 
 	}
@@ -348,7 +351,7 @@ class Karma_Builder {
 	 */
 	public function run() {
 
-		if ( ( self::is_in_builder() && isset( $_GET['load_builder'] ) || Karma_Typography::check_typography_page() ) && is_user_logged_in() ){
+		if ( ( self::is_in_builder() && isset( $_GET[ 'load_builder' ] ) || Karma_Typography::check_typography_page() ) && is_user_logged_in() ) {
 			$this->prevent_from_loading_wordpress();
 		}
 		$this->set_builder_status();
@@ -408,7 +411,8 @@ class Karma_Builder {
 		$this->modify_wordpress_action();
 		if( Karma_Typography::check_typography_page() ){
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_typography_assets' ], 999999 );
-			Karma_Factory_Pattern::$typography->load_page_templates();
+			$typography = Karma_Typography::get_instance();
+			$typography->load_page_templates();
 		}else{
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_builder_assets' ], 999999 );
 			$builder_views = Karma_Factory_Pattern::$builder_views;
@@ -460,14 +464,16 @@ class Karma_Builder {
 	 */
 	public function enqueue_typography_assets(){
 
-		wp_print_scripts( array( 'jquery','wp-util', 'backbone' ) );
-
-
-		wp_enqueue_script( 'karma-range-slider' , KARMA_BUILDER_URL . 'builder/js/rangeslider.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
-		$this->localize_google_fonts();
-		wp_enqueue_script( 'karma-dashboard' , KARMA_BUILDER_URL . 'builder/js/karma-dashboard-script.min.js', array( 'jquery', 'backbone' ), KARMA_BUILDER_VERSION, false );
+		wp_print_scripts( array( 'jquery', 'wp-util', 'backbone' ) );
+		wp_enqueue_script( 'karma-range-slider', KARMA_BUILDER_URL . 'builder/js/rangeslider.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-jquery.nicescroll', KARMA_BUILDER_URL . 'builder/js/jquery.nicescroll.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-dashboard', KARMA_BUILDER_URL . 'builder/js/karma-dashboard-script.min.js', array(
+			'jquery',
+			'backbone'
+		), KARMA_BUILDER_VERSION, false );
 		wp_enqueue_style( 'karma-builder-styles', KARMA_BUILDER_URL . 'builder/css/builder-styles.css', KARMA_BUILDER_VERSION, false );
 		wp_enqueue_style( 'karma-dashboard-styles', KARMA_BUILDER_URL . 'builder/css/dashboard-style.css', KARMA_BUILDER_VERSION, false );
+		$this->localize_google_fonts();
 		wp_enqueue_media();
 
 	}
@@ -477,25 +483,26 @@ class Karma_Builder {
 	 *
 	 * @since    0.1.0
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function localize_google_fonts() {
 
-		$url = KARMA_BUILDER_DIR . '/builder/font/google-fonts.json';
+		$url     = KARMA_BUILDER_URL . '/builder/font/google-fonts.json';
 		$request = wp_remote_get( $url );
 
-		if( is_wp_error( $request ) ) {
+		if ( is_wp_error( $request ) ) {
 			return false;
 		}
 
-		$content = wp_remote_retrieve_body( $request );
-		$content = json_decode( $content );
+		$content         = wp_remote_retrieve_body( $request );
+		$typography      = Karma_Typography::get_instance();
+		$typographyModel = $typography->typography_model;
 
-		wp_localize_script( 'karma-dashboard', 'googleFonts', array(
-				'network_url' => admin_url( 'admin-ajax.php' ),
-				'full_data' => $content
-			)
-		);
+		wp_localize_script( 'karma-dashboard', 'typographyParams', array(
+			'googleFonts'     => $content,
+			'typographyModel' => $typographyModel,
+			'ajaxUrl'         => admin_url( 'admin-ajax.php' )
+		) );
 
 	}
 

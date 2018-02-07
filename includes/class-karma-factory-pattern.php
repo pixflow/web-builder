@@ -1,12 +1,13 @@
 <?php
-namespace KarmaBuilder\FPD ;
+
+namespace KarmaBuilder\FPD;
 
 /** Importing, Aliases, and Name Resolution */
-use KarmaBuilder\Karma_Builder as Karma_Builder ;
+use KarmaBuilder\Karma_Builder as Karma_Builder;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
-use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
-use KarmaBuilder\i18n\Karma_Builder_i18n as Karma_Builder_i18n ;
-use KarmaBuilder\BuilderLoader\Karma_Builder_Loader as Karma_Builder_Loader ;
+use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core;
+use KarmaBuilder\i18n\Karma_Builder_i18n as Karma_Builder_i18n;
+use KarmaBuilder\BuilderLoader\Karma_Builder_Loader as Karma_Builder_Loader;
 use KarmaBuilder\Views\Karma_Views as Karma_Views;
 use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
 use KarmaBuilder\AdminArea\BuilderAdmin\Karma_Builder_Admin as Karma_Builder_Admin;
@@ -16,7 +17,7 @@ use KarmaBuilder\Stylesheet\Karma_Stylesheet as Karma_Stylesheet;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	/** Exit if accessed directly. */
-	die('Silence is golden');
+	die( 'Silence is golden' );
 }
 
 
@@ -43,8 +44,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Factory_Pattern/includes
  * @author     Pixflow <info@pixflow.net>
  */
-
-
 class Karma_Factory_Pattern {
 
 	/**
@@ -149,7 +148,6 @@ class Karma_Factory_Pattern {
 	 */
 	public static $stylesheet;
 
-
 	/**
 	 * Class karma typography instance.
 	 *
@@ -168,7 +166,8 @@ class Karma_Factory_Pattern {
 	 * @return   void
 	 * @since    0.1.0
 	 */
-	private function __clone(){}
+	private function __clone() {
+	}
 
 	/**
 	 * Private unserialize method to prevent unserializing of the *Singleton* instance.
@@ -177,13 +176,14 @@ class Karma_Factory_Pattern {
 	 * @return   void
 	 * @since    0.1.0
 	 */
-	private function __wakeup(){}
+	private function __wakeup() {
+	}
 
 	/**
 	 * Get builder instance
 	 * @since    0.1.0
 	 */
-	public function __construct(){
+	public function __construct() {
 
 		self::$builder = Karma_Builder::get_instance( $this );
 
@@ -194,7 +194,7 @@ class Karma_Factory_Pattern {
 	 * Ready for get classes instance
 	 * @since    0.1.0
 	 */
-	public function set_builder_class_instance(){
+	public function set_builder_class_instance() {
 
 		$this->load_builder_typography();
 		$this->load_builder_core();
@@ -212,7 +212,7 @@ class Karma_Factory_Pattern {
 	 * Set builder core class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_core(){
+	protected function load_builder_core() {
 
 		self::$builder_core = Karma_Builder_Core::get_instance();
 
@@ -223,7 +223,7 @@ class Karma_Factory_Pattern {
 	 * Set builder i18n class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_stylesheet(){
+	protected function load_builder_stylesheet() {
 
 		self::$stylesheet = new Karma_Stylesheet();
 
@@ -233,7 +233,7 @@ class Karma_Factory_Pattern {
 	 * Set builder i18n class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_i18n(){
+	protected function load_builder_i18n() {
 
 		self::$builder_i18n = new Karma_Builder_i18n();
 
@@ -243,7 +243,7 @@ class Karma_Factory_Pattern {
 	 * Set builder loader class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_loader(){
+	protected function load_builder_loader() {
 
 		self::$builder_loader = new Karma_Builder_Loader();
 
@@ -253,7 +253,7 @@ class Karma_Factory_Pattern {
 	 * Set builder views class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_views(){
+	protected function load_builder_views() {
 
 		self::$builder_views = new Karma_Views();
 
@@ -263,7 +263,7 @@ class Karma_Factory_Pattern {
 	 * Set builder controller class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_controller(){
+	protected function load_builder_controller() {
 
 		self::$builder_controller = new Karma_Builder_Setting_Panel();
 
@@ -273,7 +273,7 @@ class Karma_Factory_Pattern {
 	 * Set builder admin class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_admin(){
+	protected function load_builder_admin() {
 
 		self::$builder_admin = new Karma_Builder_Admin();
 
@@ -283,7 +283,7 @@ class Karma_Factory_Pattern {
 	 * Set builder public class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_public(){
+	protected function load_builder_public() {
 
 		self::$builder_public = new Karma_Builder_Public( self::$builder->get_plugin_name(), self::$builder->get_version() );
 
@@ -293,7 +293,7 @@ class Karma_Factory_Pattern {
 	 * Set builder typography class instance
 	 * @since    0.1.0
 	 */
-	protected function load_builder_typography(){
+	protected function load_builder_typography() {
 
 		self::$typography = new Karma_Typography();
 

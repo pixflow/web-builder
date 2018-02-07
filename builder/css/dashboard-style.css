@@ -195,15 +195,15 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 20px;
   line-height: 32px; }
 
-.karma-builder-title-2, #karma-typography-setting #karma-typography-manager .karma-typography-box-title {
+.karma-builder-title-2, #karma-typography-setting #karma-typography-manager .karma-typography-box-title, #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font {
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-font, #karma-typography-setting #karma-typography-manager .karma-typography-weight, #karma-typography-setting #karma-typography-manager .karma-typography-size, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit, .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager, .karma-range-slider-container .karma-range-slider-number label, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number label, .karma-slider-controller-title, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
+.karma-builder-title-3, .karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit, .karma-dropdown-controller, #karma-typography-setting #karma-typography-manager, .karma-range-slider-container .karma-range-slider-number label, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number label, .karma-slider-controller-title, #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, .karma-range-slider-container .karma-range-slider-number input, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number input {
+.karma-builder-title-4, .karma-range-slider-container .karma-range-slider-number input, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number input, #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li span {
   font-size: 12px;
   line-height: 22px; }
 
@@ -217,7 +217,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 
 .karma-coming-soon-typo {
   color: #394959;
-  font-family: HelveticaNeue_med;
+  font-family: "HelveticaNeue_med";
   font-size: 12px;
   line-height: 15px;
   margin: 38px 38px 35px; }
@@ -228,7 +228,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box {
   border-radius: 5px; }
 
-.karma-button-padding, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
+.karma-button-padding, #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button, .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
   padding: 0 20px; }
 
 .karma-hide {
@@ -240,7 +240,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-builder-shadow-box-2 {
   box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2); }
 
-.karma-builder-shadow-box-3 {
+.karma-builder-shadow-box-3, #karma-typography-setting #karma-font-manager .karma-google-fonts-list {
   box-shadow: 0 4px 15px 4px rgba(57, 73, 89, 0.2); }
 
 .karma-dropdown-option, .karma-dropdown-controller .karma-dropdown-option, #karma-typography-setting #karma-typography-manager .karma-dropdown-option {
@@ -256,7 +256,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
     background-color: #ECF5FE; }
     .karma-dropdown-option.karma-selected-dropdown-option .karma-dropdown-option-title, #karma-typography-setting #karma-typography-manager .karma-selected-dropdown-option.karma-dropdown-option .karma-dropdown-option-title {
       color: #419CF8;
-      font-family: HelveticaNeue_med; }
+      font-family: "HelveticaNeue_med"; }
   .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title, #karma-typography-setting #karma-typography-manager .karma-dropdown-option:not(.karma-selected-dropdown-option):hover .karma-dropdown-option-title {
     color: #419CF8; }
   .karma-dropdown-option .karma-dropdown-option-icon, #karma-typography-setting #karma-typography-manager .karma-dropdown-option .karma-dropdown-option-icon {
@@ -276,14 +276,14 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
     height: 22px;
     content: ""; }
 
-.karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-font, #karma-typography-setting #karma-typography-manager .karma-typography-weight, #karma-typography-setting #karma-typography-manager .karma-typography-size, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit {
+.karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit {
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: space-between;
   color: #419CF8;
   flex-basis: 35%;
-  font-family: HelveticaNeue_med; }
+  font-family: "HelveticaNeue_med"; }
 
 @font-face {
   font-family: HelveticaNeue_bold;
@@ -1869,188 +1869,6 @@ html {
     -ms-flex-item-align: stretch !important;
     align-self: stretch !important; } }
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
-@font-face {
-  font-family: HelveticaNeue_bold;
-  src: url("../font/helvetiva_bold.ttf");
-  font-weight: 700;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue;
-  src: url("../font/helvetica.ttf");
-  font-weight: 400;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_med;
-  src: url("../font/helvetica_med.ttf");
-  font-weight: 500;
-  font-style: normal; }
-@font-face {
-  font-family: HelveticaNeue_light;
-  src: url("../font/helvetica_light.ttf");
-  font-weight: 300;
-  font-style: normal; }
-/**
- * Media queries
- * @group helpers
- * @param {String} $size - kind of size such as: small
- * @param {string} $type - Max or Min for width
- * @param {Number} $pixels - when use custom use this pixels
- * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
- * @output media query for responsive
- */
-/**
- * Centering elements
- * @group helpers
- * @param {String} $position - kind of center alignment such as: vertical
- * @output top left and transform of element
- */
-/**
- * External fonts
- * @group helpers
- * @param {String} $font-name - name of font
- * @param {string} $file-name - url of font sorce
- * @param {Number} $weight - weight of font
- * @param {string}  $style - style of font
- * @output read font and give it font-weight and font-style
- */
-/**
- * Adding dimensions
- * @group helpers
- * @param {Number} $width - width of box(element) 
- * @param {Number}  $height - height of box
- * @output give width and height 
- */
-/**
- * Element Direction mixin
- * @group helpers
- * @param {Number} $top - set Element Direction top
- * @param {Number} $right - set Element Direction right
- * @param {Number} $bottom - set Element Direction bottom
- * @param {Number} $left - set Element Direction left
- * @output all side margin
- */
-/**
- * Centering a block
- * @group helpers
- * @output with display block and margin center element
- */
-/**
- * flexbox
- * @group helpers
- * @output with display flex and  center element
- */
-/**
- * Unselectable
- * @group helpers
- * @output make unselectable element
- */
-/**
- * check justify content and align item (use for image position)
- * @group helpers
- * @output justify content and align item
- */
-/**
- * Remove the unit of a length
- * @group helpers
- * @output responsive text
- */
-/**
- * text responsive to change font size
- * @group helpers
- * @output responsive text
- */
-/**
- * mixin for border button
- * @group helpers
- * @output border button
- */
-/**
- * mixin for border button
- * @group helpers
- * @output border button
- */
-/**
- * mixin for oval button
- * @group helpers
- * @output oval button
- */
-/**
- * mixin for oval with icon button
- * @group helpers
- * @output oval with icon button
- */
-/**
- * mixin for input number type
- * @group helpers
- * @output input number type
- */
-/**
- * mixin for input number type
- * @group helpers
- * @output input number type
- */
-/**
- * mixin for dropDown button
- * @group helpers
- * @output dropDown button
- */
-/**
- * mixin for radio button
- * @group helpers
- * @output radio button
- */
-/**
- * mixin for box color and border radius
- * @group helpers
- * @output box color
- */
-@keyframes load_delete_overlay {
-  00% {
-    background-color: transparent; }
-  100% {
-    background-color: rgba(0, 0, 0, 0.3); } }
-@keyframes close_delete_overlay {
-  00% {
-    background-color: rgba(0, 0, 0, 0.3); }
-  100% {
-    background-color: transparent; } }
-@keyframes load_delete_box {
-  0% {
-    opacity: 0;
-    transform: scale(0.6); }
-  25% {
-    opacity: .3;
-    transform: scale(0.7); }
-  50% {
-    opacity: .6;
-    transform: scale(0.8); }
-  75% {
-    opacity: .8;
-    transform: scale(0.9); }
-  100% {
-    opacity: 1;
-    transform: scale(1); } }
-@keyframes close_delete_box {
-  00% {
-    opacity: 1;
-    transform: scale(1); }
-  25% {
-    opacity: .8;
-    transform: scale(1); }
-  50% {
-    opacity: .6;
-    transform: scale(0.9); }
-  75% {
-    opacity: .3;
-    transform: scale(0.8); }
-  100% {
-    opacity: 0;
-    transform: scale(0.7); } }
-/**
- * mixin for publish button
- * @group helpers
- * @output publish button
- */
 #karma-typography-setting .karma-panel {
   z-index: 0;
   display: none; }
@@ -2069,29 +1887,29 @@ html {
   -ms-transform: translateY(0);
   transform: translateY(0); }
 #karma-typography-setting .karma-element-animating .karma-element-exit.slideup {
-  -webkit-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  transform: translateY(-100%); }
+  -webkit-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  transform: translateY(-10%); }
 #karma-typography-setting .karma-element-exit.slidedown {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0); }
 #karma-typography-setting .karma-element-animating .karma-element-exit.slidedown {
-  -webkit-transform: translateY(100%);
-  -ms-transform: translateY(100%);
-  transform: translateY(100%); }
+  -webkit-transform: translateY(10%);
+  -ms-transform: translateY(10%);
+  transform: translateY(10%); }
 #karma-typography-setting .karma-element-enter.slidedown {
-  -webkit-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  transform: translateY(-100%); }
+  -webkit-transform: translateY(-10%);
+  -ms-transform: translateY(-10%);
+  transform: translateY(-10%); }
 #karma-typography-setting .karma-element-animating .karma-element-enter.slidedown {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0); }
 #karma-typography-setting .karma-element-enter.slideup {
-  -webkit-transform: translateY(100%);
-  -ms-transform: translateY(100%);
-  transform: translateY(100%); }
+  -webkit-transform: translateY(10%);
+  -ms-transform: translateY(10%);
+  transform: translateY(10%); }
 #karma-typography-setting .karma-element-animating .karma-element-enter.slideup {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -2241,6 +2059,9 @@ html {
   .karma-builder-toolbar .karma-header-container {
     width: 1200px; }
 
+body.disable-page-scroll #karma-typography-setting {
+  overflow: visible; }
+
 #karma-typography-setting {
   width: 100vw;
   height: 90vh;
@@ -2255,116 +2076,11 @@ html {
   #karma-typography-setting #karma-typography-manager,
   #karma-typography-setting #karma-font-manager {
     width: 100%;
-    height: 100%;
+    height: auto;
     left: 0;
+    margin-bottom: 85px;
     position: absolute;
     top: 0; }
-  #karma-typography-setting #karma-font-manager {
-    text-align: left;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    background-color: #ecedef;
-    z-index: 0; }
-    #karma-typography-setting #karma-font-manager .karma-font-manger-box-style {
-      display: flex;
-      text-align: left;
-      align-items: center;
-      justify-content: center;
-      width: 275px;
-      height: 65px;
-      background-color: #fff;
-      box-shadow: 0 4px 15px 0 rgba(57, 73, 89, 0.2);
-      border-radius: 4px; }
-    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .google-icon {
-      flex-basis: 10%; }
-    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-google-title {
-      flex-basis: 70%;
-      color: #394959;
-      font-family: HelveticaNeue_med;
-      font-size: 14px; }
-    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon {
-      width: 25px;
-      height: 25px;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #B3BAC1;
-      border-radius: 100px;
-      cursor: pointer; }
-      #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon .bottom-arrow {
-        stroke: #bcc3ca; }
-    #karma-typography-setting #karma-font-manager .karma-fonts-list {
-      width: 100%;
-      height: 100%; }
-      #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list {
-        width: 100%;
-        height: auto;
-        margin-top: 13px;
-        font-family: HelveticaNeue_med;
-        flex-direction: column;
-        padding: 27px 0px; }
-        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part {
-          display: flex;
-          text-align: center;
-          align-items: center;
-          justify-content: center;
-          width: 100%; }
-          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-weight-count {
-            color: #828B95;
-            cursor: pointer;
-            font-size: 12px;
-            flex-basis: 10%; }
-            #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-weight-count span {
-              margin-left: 8px; }
-          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .bottom-arrow {
-            stroke: #B3BAC1; }
-          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part #detele-element-icon {
-            fill: #39495957; }
-          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-name {
-            color: #394959;
-            flex-basis: 85%;
-            font-size: 20px;
-            text-align: left; }
-        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part {
-          display: none;
-          margin-top: 20px;
-          width: 100%; }
-          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul {
-            display: flex;
-            text-align: left;
-            align-items: flex-start;
-            justify-content: flex-start;
-            width: 100%; }
-            #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul li {
-              list-style-image: url("../../builder/media/svg/blue-tik.svg");
-              color: #394959;
-              font-size: 12px;
-              width: 80px; }
-    #karma-typography-setting #karma-font-manager .karma-footer-info {
-      display: flex;
-      text-align: left;
-      align-items: center;
-      justify-content: center;
-      margin-top: 40px; }
-      #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font {
-        display: flex;
-        text-align: left;
-        align-items: center;
-        justify-content: flex-start;
-        cursor: pointer;
-        color: #419CF8;
-        font-family: HelveticaNeue_med;
-        font-size: 14px;
-        line-height: 0;
-        flex-basis: 71%; }
-        #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font span {
-          margin-right: 7px; }
-      #karma-typography-setting #karma-font-manager .karma-footer-info .karma-pay-attention {
-        color: #828B95;
-        font-family: HelveticaNeue_med;
-        font-size: 12px; }
   #karma-typography-setting #karma-typography-manager {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -2383,18 +2099,20 @@ html {
     #karma-typography-setting #karma-typography-manager .karma-typography-box-title {
       color: #419CF8;
       cursor: default;
-      font-family: HelveticaNeue_med;
+      font-family: "HelveticaNeue_med";
       padding-bottom: 20px; }
     #karma-typography-setting #karma-typography-manager .karma-typography-text {
-      border-bottom: 2px solid #D9EBFE;
-      color: #394959;
+      border-bottom: 1px solid #D9EBFE;
+      color: #747F8A;
       height: 215px;
-      line-height: 1.2em;
+      line-height: 1.15em;
       overflow: hidden;
       word-break: break-all; }
     #karma-typography-setting #karma-typography-manager .karma-typography-styles {
       display: flex;
       margin-top: 15px; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-styles > div {
+        width: 100%; }
       #karma-typography-setting #karma-typography-manager .karma-typography-styles .karma-controller.karma-controller-action {
         width: 100%; }
     #karma-typography-setting #karma-typography-manager .karma-typography-font {
@@ -2414,8 +2132,18 @@ html {
           margin: 0; }
         #karma-typography-setting #karma-typography-manager .karma-typography-weight .karma-dropdown-controller .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-typography-weight #karma-typography-manager .karma-dropdown-icon {
           border: none; }
+        #karma-typography-setting #karma-typography-manager .karma-typography-weight .karma-dropdown-controller .karma-dropdown-selected-item, #karma-typography-setting #karma-typography-manager .karma-typography-weight #karma-typography-manager .karma-dropdown-selected-item {
+          max-width: 75px; }
     #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-options {
-      width: 100px; }
+      width: 150px; }
+      #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-options .karma-dropdown-option-title {
+        text-transform: capitalize; }
+    #karma-typography-setting #karma-typography-manager .karma-dropdown-body .karma-dropdown-selected-item {
+      color: #419CF8;
+      text-transform: capitalize;
+      white-space: nowrap;
+      max-width: 77px;
+      overflow: hidden; }
     #karma-typography-setting #karma-typography-manager .karma-typography-size {
       padding: 0; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
@@ -2424,7 +2152,10 @@ html {
         border: none;
         padding-right: 3px;
         text-align: right;
-        width: 26px; }
+        width: 26px;
+        flex-basis: initial; }
+      #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider {
+        width: 52px; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number {
         border: none;
         margin: 0;
@@ -2437,6 +2168,299 @@ html {
         padding: 0; }
       #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content > :nth-child(2) {
         order: 1; }
+
+.karma-builder .karma-delete-message-box {
+  display: none; }
+
+#karma-typography-setting #karma-font-manager {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  z-index: 0; }
+  #karma-typography-setting #karma-font-manager .karma-google-fonts-list {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 3px;
+    display: none;
+    height: 500px;
+    left: 0;
+    padding: 9px 11px;
+    position: absolute;
+    top: 90px;
+    width: 280px; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list.show-font-dropdown {
+      opacity: 0;
+      display: flex;
+      transition: opacity 0.2s 0.1s, top 0.3s; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list.show-font-dropdown li {
+        opacity: 1; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list.slide-down-font-drop-down {
+      opacity: 1;
+      top: 77px;
+      transition: opacity 0.2s, top 0.3s; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list.slide-down-font-drop-down li {
+        opacity: 1; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list .karma-fonts-search {
+      position: relative; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list .karma-fonts-search i {
+        width: 13px;
+        height: 13px;
+        background: transparent url(../../builder/media/svg/search.svg) no-repeat center;
+        background-size: contain;
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 9px; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list .karma-fonts-search input {
+        border: none;
+        border-bottom: 1px solid #D9DDE0;
+        font-size: 12px;
+        height: 38px;
+        line-height: 14px;
+        padding: 0 5px;
+        width: 100%; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list .karma-fonts-search input::-webkit-input-placeholder {
+          color: #9CA4AC; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list .karma-fonts-search input:focus {
+          outline: none; }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .karma-fonts-search input:focus::-webkit-input-placeholder {
+            color: #fff; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul {
+      list-style: none;
+      margin-top: 10px;
+      padding: 0; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font {
+        align-items: center;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        height: 43px;
+        justify-content: space-between;
+        padding: 6px 10px;
+        transition: background-color .2s, opacity .1s; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font svg {
+          margin-right: 10px;
+          opacity: 0;
+          transform: rotate(180deg);
+          transition: margin .2s, opacity .1s; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font:hover, #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font.karma-active-font {
+          background-color: rgba(65, 156, 248, 0.1); }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font:hover svg, #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font.karma-active-font svg {
+            margin-right: 4px;
+            opacity: 1; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list ul .karma-google-font.open-font-weight {
+          background-color: rgba(65, 156, 248, 0.1); }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list .right-side {
+      height: 100%;
+      max-width: 252px;
+      width: 100%; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side {
+      display: none;
+      height: 100%;
+      width: 40%; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul {
+          display: block;
+          height: calc( 100% - 110px );
+          margin-top: 17px;
+          overflow: hidden; }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li {
+            margin-bottom: 21px; }
+            #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li .font-weight-check {
+              display: none; }
+            #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li .checkbox-style {
+              background-color: #fff;
+              border: 1px solid #9CA4AC;
+              border-radius: 2px;
+              cursor: pointer;
+              display: inline-block;
+              height: 13px;
+              margin: 0 5px 0 0;
+              position: relative;
+              width: 13px; }
+              #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li .checkbox-style svg {
+                left: 50%;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%); }
+            #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li.active-font-weight .checkbox-style {
+              background-color: #419CF8;
+              border-color: #419CF8; }
+            #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li.active-font-weight .checkbox-style svg {
+              opacity: 1; }
+            #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight ul li span {
+              color: #394959;
+              margin-left: 5px;
+              text-transform: capitalize; }
+        #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button {
+          display: flex;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          color: #419CF8;
+          background-color: #fff;
+          border-radius: 2px;
+          border: none;
+          cursor: pointer;
+          height: 40px;
+          transition-duration: .2s;
+          border: 1px solid #419CF8;
+          border-radius: 2px;
+          height: 40px;
+          margin-bottom: 15px;
+          margin-left: 23px;
+          transition: 0.3s;
+          width: 125px; }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button:focus {
+            transition-duration: .2s; }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button:hover {
+            transition-duration: 0.2s;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px 0 rgba(57, 73, 89, 0.2); }
+          #karma-typography-setting #karma-font-manager .karma-google-fonts-list .left-side .current-font-weight button:hover {
+            background-color: #419CF8;
+            box-shadow: none;
+            color: #fff;
+            transform: none;
+            transition: 0.3s; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list .nicescroll-rails {
+      left: 272px !important; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-list.show-google-font-weight {
+      width: 495px; }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-list.show-google-font-weight .left-side {
+        display: flex; }
+  #karma-typography-setting #karma-font-manager .karma-google-fonts {
+    position: relative; }
+  #karma-typography-setting #karma-font-manager .karma-font-manger-box-style {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    width: 275px;
+    height: 65px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px 0 rgba(57, 73, 89, 0.2); }
+  #karma-typography-setting #karma-font-manager .karma-google-fonts-title .google-icon {
+    flex-basis: 10%; }
+  #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-google-title {
+    color: #394959;
+    flex-basis: 70%;
+    font-family: "HelveticaNeue_med";
+    font-size: 14px; }
+  #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #9CA4AC;
+    border-radius: 100px;
+    cursor: pointer; }
+    #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon svg {
+      margin-left: 1px;
+      margin-top: 2px;
+      transform: scale(0.8); }
+      #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon svg .bottom-arrow {
+        stroke: #9CA4AC; }
+  #karma-typography-setting #karma-font-manager .karma-fonts-list {
+    width: 100%;
+    height: 100%; }
+    #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      margin-top: 13px;
+      padding: 18px 0px 17px; }
+      #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-weight-count {
+          color: #747F8A;
+          cursor: pointer;
+          flex-basis: 10%;
+          font-size: 12px; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-drop-down-icon {
+          margin: 0 5px;
+          transform: rotate(0deg); }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-drop-down-icon svg {
+            transform: scale(0.8); }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .bottom-arrow {
+          stroke: #D7DBDE; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-delete-font svg {
+          cursor: pointer; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-delete-font svg #delete-element-icon {
+            transition: fill .2s;
+            fill: #D7DBDE; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-delete-font svg:hover #delete-element-icon {
+            fill: #9CA4AC; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-name {
+          color: #394959;
+          flex-basis: 85%;
+          font-size: 20px;
+          text-align: left; }
+      #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part {
+        display: none;
+        margin-top: -10px;
+        padding-top: 23px;
+        width: 100%; }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul {
+          display: flex;
+          text-align: left;
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%; }
+          #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul li {
+            color: #394959;
+            font-family: inherit;
+            font-size: 12px;
+            list-style-image: url("../../builder/media/svg/blue-tik.svg");
+            margin-right: 32px;
+            text-transform: capitalize; }
+      #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list.karma-open-font-weight-list .karma-font-name-part .karma-drop-down-icon {
+        display: inline-block;
+        transform: rotate(180deg); }
+        #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list.karma-open-font-weight-list .karma-font-name-part .karma-drop-down-icon .bottom-arrow {
+          stroke: rgba(57, 73, 89, 0.5); }
+      #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list.karma-open-font-weight-list .karma-font-name-part .karma-delete-font #delete-element-icon {
+        fill: #394959; }
+  #karma-typography-setting #karma-font-manager .karma-footer-info {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%; }
+    #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font {
+      display: flex;
+      text-align: left;
+      align-items: center;
+      justify-content: flex-start;
+      color: #419CF8;
+      cursor: pointer;
+      flex-basis: 71%;
+      font-family: "HelveticaNeue_med";
+      font-size: 14px;
+      line-height: 0; }
+      #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font span {
+        margin-right: 7px; }
+    #karma-typography-setting #karma-font-manager .karma-footer-info .karma-pay-attention {
+      color: #9CA4AC;
+      font-family: "HelveticaNeue_med";
+      font-size: 12px; }
 
 .karma-second-header {
   display: flex;
@@ -2473,7 +2497,7 @@ html {
       transition-duration: .2s;
       border: 1px solid #419CF8;
       border-radius: 2px;
-      font-family: HelveticaNeue_med;
+      font-family: "HelveticaNeue_med";
       margin-right: 8px;
       text-decoration: none;
       transition: 0.3s; }
@@ -2507,7 +2531,9 @@ html {
       transition: all .5s ease-out;
       transition-duration: .3s;
       width: 82px;
-      height: 41px; }
+      cursor: pointer;
+      height: 41px;
+      position: relative; }
       .karma-second-header .karma-buttons-holder .karma-save-setting:before {
         background-color: rgba(160, 205, 251, 0.6);
         border-radius: 3px 0 0 3px;
@@ -2542,6 +2568,8 @@ html {
         top: -4px;
         width: 22px;
         z-index: 1; }
+  .karma-second-header .karma-publish-finish-animation:after {
+    top: 1px !important; }
 
 /* _-_-_- pages/Page manager -_-_-_ */
 /* _-_-_- pages/dashboard -_-_-_ */

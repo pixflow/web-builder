@@ -41,9 +41,17 @@
 		.karma-save-setting{
 			@include flexbox( center, center, center );
 			@include publish-buttons;
+			cursor: pointer;
 			height: 41px;
+			position: relative;
 		}
 
+	}
+	.karma-publish-finish-animation{
+
+		&:after{
+			top: 1px !important;
+		}
 	}
 
 }

@@ -28,9 +28,9 @@
 	}
 
 	.karma-element-animating .karma-element-exit.slideup {
-		-webkit-transform: translateY(-100%);
-		-ms-transform: translateY(-100%);
-		transform: translateY(-100%);
+		-webkit-transform: translateY(-10%);
+		-ms-transform: translateY(-10%);
+		transform: translateY(-10%);
 	}
 
 	.karma-element-exit.slidedown {
@@ -40,15 +40,15 @@
 	}
 
 	.karma-element-animating .karma-element-exit.slidedown {
-		-webkit-transform: translateY(100%);
-		-ms-transform: translateY(100%);
-		transform: translateY(100%);
+		-webkit-transform: translateY(10%);
+		-ms-transform: translateY(10%);
+		transform: translateY(10%);
 	}
 
 	.karma-element-enter.slidedown {
-		-webkit-transform: translateY(-100%);
-		-ms-transform: translateY(-100%);
-		transform: translateY(-100%);
+		-webkit-transform: translateY(-10%);
+		-ms-transform: translateY(-10%);
+		transform: translateY(-10%);
 	}
 
 	.karma-element-animating .karma-element-enter.slidedown {
@@ -58,9 +58,9 @@
 	}
 
 	.karma-element-enter.slideup {
-		-webkit-transform: translateY(100%);
-		-ms-transform: translateY(100%);
-		transform: translateY(100%);
+		-webkit-transform: translateY(10%);
+		-ms-transform: translateY(10%);
+		transform: translateY(10%);
 	}
 
 	.karma-element-animating .karma-element-enter.slideup {
