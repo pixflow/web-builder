@@ -74,12 +74,12 @@ class Karma_Text extends Karma_Shortcode_Base {
 		);
 
 		$content = ( '' === trim( $content ) ) ? 'Click here to edit content...': $content;
-		$content = '<' . $attributes['tag'] . ' class="karma-text-content karma-text-tag karma-document-click karma-editable-content ">' . $content . '</' . $attributes['tag'] . '>';
+		$content = '<' . $attributes['tag'] . ' class="karma-text-content karma-text-tag karma-document-click karma-editable-content ">' . wp_kses( $content, array('br') ) . '</' . $attributes['tag'] . '>';
 
 		ob_start();
 		?>
 		<div class='karma-text karma-text-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
-				<?php echo $content; ?>
+				<?php echo html_entity_decode( $content ); ?>
 		</div>
 		<?php
 		return ob_get_clean();
