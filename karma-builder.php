@@ -15,8 +15,8 @@ use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
  * @package           Karma_Builder
  *
  * @wordpress-plugin
- * Plugin Name:       Karma Builder
- * Plugin URI:        http://pixflow.net/products/karma-builder
+ * Plugin Name:       Karma Website Builder
+ * Plugin URI:        http://pixflow.net/products/karma/try-free
  * Description:       Visually create your website in fastest and easiest way with Fully Customized Karma Builder.
  * Version:           0.1.0
  * Author:            Pixflow
