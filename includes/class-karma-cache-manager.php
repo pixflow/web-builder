@@ -159,8 +159,8 @@ class Karma_Cache_Manager{
 	private function create_cache_directory() {
 
 		$file = File_System::get_instance();
-		if ( ! $file->file_exists( CACHE_DIRECTORY_PATH ) ) {
-			$file->make_dir( CACHE_DIRECTORY_PATH );
+		if ( ! $file->file_exists( KARMA_CACHE_DIRECTORY_PATH ) ) {
+			$file->make_dir( KARMA_CACHE_DIRECTORY_PATH );
 		}
 
 	}
@@ -193,7 +193,7 @@ class Karma_Cache_Manager{
 	public function empty_cache(){
 
 		$file = File_System::get_instance();
-		if( $file->remove_dir( CACHE_DIRECTORY_PATH ) ){
+		if( $file->remove_dir( KARMA_CACHE_DIRECTORY_PATH ) ){
 			return true;
 		}
 		return false;
@@ -212,7 +212,7 @@ class Karma_Cache_Manager{
 	 */
 	public static function get_cache_file_dir( $page_id, $ext, $url = false ){
 
-		$target = ( true === $url ) ? CACHE_DIRECTORY_URL : CACHE_DIRECTORY_PATH;
+		$target = ( true === $url ) ? KARMA_CACHE_DIRECTORY_URL : KARMA_CACHE_DIRECTORY_PATH;
 		$target .= '/' . ( ( 'css' == $ext ) ? self::KARMA_STYLE_PREFIX : self::KARMA_SCRIPT_PREFIX ) . $page_id . '.' . $ext;
 		return $target;
 

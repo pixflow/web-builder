@@ -256,8 +256,8 @@ class Karma_Builder {
 		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );
 
 		$wp_upload_directory = wp_upload_dir();
-		define( 'CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
-		define( 'CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
+		define( 'KARMA_CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
+		define( 'KARMA_CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
 
 	}
 
