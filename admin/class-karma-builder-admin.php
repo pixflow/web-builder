@@ -120,22 +120,17 @@ class Karma_Builder_Admin {
 	 */
 	public function publish(){
 
-		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
-			echo '{ "result" : "false", "msg" : "error" }';
+		$models = sanitize_text_field( $_POST['models'] );
+		$id = sanitize_text_field( $_POST['id'] );
+		$builder_core = Karma_Builder_Core::get_instance();
+		$models = json_decode( stripslashes( $models ), true );
+		if ( $builder_core->publish_post( $models, $id ) ) {
+			echo '{ "result" : "true", "msg" : "success" }';
 		} else {
-			$models = sanitize_textarea_field( str_replace( '<br>', '&lt;br&gt;', $_POST['models'] ) );
-			$id = sanitize_text_field( $_POST['id'] );
-			$builder_core = Karma_Builder_Core::get_instance();
-			$models = json_decode( stripslashes( $models ), true );
-			if ( $builder_core->publish_post( $models, $id ) ) {
-				echo '{ "result" : "true", "msg" : "success" }';
-			} else {
-				echo '{ "result" : "false", "msg" : "error" }';
-			}
-			Karma_Factory_Pattern::$builder_loader->set_is_karma_page( $id, true );
-			Cache_Manager::remove_cache_file( $id );
+			echo '{ "result" : "false", "msg" : "error" }';
 		}
-
+		Karma_Factory_Pattern::$builder_loader->set_is_karma_page( $id, true );
+		Cache_Manager::remove_cache_file( $id );
 		wp_die();
 
 	}
@@ -148,21 +143,16 @@ class Karma_Builder_Admin {
 	 */
 	public function save(){
 
-		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
-			echo '{ "result" : "false", "msg" : "error" }';
+		$models = sanitize_text_field( $_POST['models'] );
+		$id = sanitize_text_field( $_POST['id'] );
+		$builder_core = Karma_Builder_Core::get_instance();
+		$models = json_decode( stripslashes( $models ), true );
+		if ( $builder_core->save_post( $models, $id ) ) {
+			echo '{ "result" : "true", "msg" : "success" }';
 		} else {
-			$models = sanitize_textarea_field( $_POST['models'] );
-			$id = sanitize_text_field( $_POST['id'] );
-			$builder_core = Karma_Builder_Core::get_instance();
-			$models = json_decode( stripslashes( $models ), true );
-			if ( $builder_core->save_post( $models, $id ) ) {
-				echo '{ "result" : "true", "msg" : "success" }';
-			} else {
-				echo '{ "result" : "false", "msg" : "error" }';
-			}
-			Cache_Manager::remove_cache_file( $id );
+			echo '{ "result" : "false", "msg" : "error" }';
 		}
-
+		Cache_Manager::remove_cache_file( $id );
 		wp_die();
 
 	}
