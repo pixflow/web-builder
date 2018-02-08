@@ -121,19 +121,22 @@ class Karma_Builder_Admin {
 	 */
 	public function publish(){
 
-		$models = sanitize_text_field( $_POST['models'] );
-		$id = sanitize_text_field( $_POST['id'] );
-		$builder_core = Karma_Builder_Core::get_instance();
-		$models = json_decode( stripslashes( $models ), true );
-		if ( $builder_core->publish_post( $models, $id ) ) {
-			echo '{ "result" : "true", "msg" : "success" }';
-		} else {
+		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
 			echo '{ "result" : "false", "msg" : "error" }';
+		} else {
+			$models = sanitize_text_field( $_POST['models'] );
+			$id = sanitize_text_field( $_POST['id'] );
+			$builder_core = Karma_Builder_Core::get_instance();
+			$models = json_decode( stripslashes( $models ), true );
+			if ( $builder_core->publish_post( $models, $id ) ) {
+				echo '{ "result" : "true", "msg" : "success" }';
+			} else {
+				echo '{ "result" : "false", "msg" : "error" }';
+			}
+			Karma_Factory_Pattern::$builder_loader->set_is_karma_page( $id, true );
+			Cache_Manager::remove_cache_file( $id );
 		}
-		Karma_Factory_Pattern::$builder_loader->set_is_karma_page( $id, true );
-		Cache_Manager::remove_cache_file( $id );
 		wp_die();
-
 	}
 
 	/**
@@ -144,12 +147,13 @@ class Karma_Builder_Admin {
 	 */
 	public function save_fonts_format() {
 
-		$typography_manager = Karma_Typography::get_instance();
-		$fonts      = json_encode( $_POST[ 'fonts' ] );
-		$typography = json_encode( $_POST[ 'typography' ] );
-		$custom_fonts = json_encode( $_POST[ 'customFonts' ] );
-
-		$typography_manager->save_typography_font_formats( $typography )->save_fonts( $fonts )->save_custom_fonts( $custom_fonts );
+		if( isset( $_POST[ 'fonts' ] ) && isset( $_POST[ 'typography' ] ) ){
+			$typography_manager = Karma_Typography::get_instance();
+			$fonts      = sanitize_text_field ( json_encode( $_POST[ 'fonts' ] ) );
+			$typography = sanitize_text_field( json_encode( $_POST[ 'typography' ] ) );
+			$custom_fonts = isset( $_POST[ 'customFonts' ] ) ? sanitize_text_field( json_encode( $_POST[ 'customFonts' ] ) ) : '[]';
+			$typography_manager->save_typography_font_formats( $typography )->save_fonts( $fonts )->save_custom_fonts( $custom_fonts );
+		}
 
 		wp_die();
 
@@ -163,16 +167,20 @@ class Karma_Builder_Admin {
 	 */
 	public function save(){
 
-		$models = sanitize_text_field( $_POST['models'] );
-		$id = sanitize_text_field( $_POST['id'] );
-		$builder_core = Karma_Builder_Core::get_instance();
-		$models = json_decode( stripslashes( $models ), true );
-		if ( $builder_core->save_post( $models, $id ) ) {
-			echo '{ "result" : "true", "msg" : "success" }';
-		} else {
+		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
 			echo '{ "result" : "false", "msg" : "error" }';
+		} else {
+			$models = sanitize_text_field( $_POST['models'] );
+			$id = sanitize_text_field( $_POST['id'] );
+			$builder_core = Karma_Builder_Core::get_instance();
+			$models = json_decode( stripslashes( $models ), true );
+			if ( $builder_core->save_post( $models, $id ) ) {
+				echo '{ "result" : "true", "msg" : "success" }';
+			} else {
+				echo '{ "result" : "false", "msg" : "error" }';
+			}
+			Cache_Manager::remove_cache_file( $id );
 		}
-		Cache_Manager::remove_cache_file( $id );
 		wp_die();
 
 	}
