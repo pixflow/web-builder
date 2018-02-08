@@ -2187,6 +2187,10 @@ html {
 .karma-builder .karma-delete-message-box {
   display: none; }
 
+@media only screen and (max-width: 1280px) {
+  #karma-typography-setting #karma-typography-manager,
+  #karma-typography-setting #karma-font-manager {
+    margin-top: 85px; } }
 #karma-typography-setting #karma-font-manager {
   align-items: flex-start;
   flex-direction: column;

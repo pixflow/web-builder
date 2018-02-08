@@ -32,26 +32,26 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		events : {
 
-			'mousedown body:not( .karma-dropdown-body )' 		: 'closeDropDown',
+			'mousedown body:not( .karma-dropdown-body )' 						: 'closeDropDown',
 			'click .karma-dropdown-options > li:not(.karma-dropdown-add-font)'	: 'selectDropDownList',
-			'click .karma-dropdown-header'						: 'openDropDown',
-			'click .karma-backto-previous-location'				: 'animateKarmaPanels',
-			'click .karma-delete-font'							: 'deleteFontBox',
-			'input .karma-range-slider-input'					: 'updateRangeSlider',
-			'click .karma-font-list'			    			: 'openFontsDetails',
-			'click .karma-save-setting'                     	: 'saveFontsFormat',
-			'click .karma-add-to-library'						: 'addFontToLibrary',
-			'click .karma-google-fonts-title'					: 'openKarmaGoogleFonts',
-			'click .karma-delete-message-box-delete-button'     : 'DeleteElement',
-			'click .karma-delete-message-box-cancel-button'     : 'cancelDeleteElement',
-			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
-			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
-			'mousedown .karma-google-fonts-list' 		  		: 'deleteBoxStopPropagation',
-			'input #karma-fonts-search-input'                   : 'searchInGoogleFonts',
-			'scroll   #karma-typography-setting'                : 'preventFromScroll',
-			'touchmove  #karma-typography-setting'              : 'preventFromScroll',
-			'mousewheel #karma-typography-setting'              : 'preventFromScroll',
-			'click .karma-dropdown-add-font a'					: 'animateKarmaPanels',
+			'click .karma-dropdown-header'										: 'openDropDown',
+			'click .karma-backto-previous-location'								: 'animateKarmaPanels',
+			'click .karma-delete-font'											: 'deleteFontBox',
+			'input .karma-range-slider-input'									: 'updateRangeSlider',
+			'click .karma-font-list'			    							: 'openFontsDetails',
+			'click .karma-save-setting'                     					: 'saveFontsFormat',
+			'click .karma-add-to-library'										: 'addFontToLibrary',
+			'click .karma-google-fonts-title'									: 'openKarmaGoogleFonts',
+			'click .karma-delete-message-box-delete-button'     				: 'DeleteElement',
+			'click .karma-delete-message-box-cancel-button'     				: 'cancelDeleteElement',
+			'click .karma-delete-message-box'   			    				: 'cancelDeleteElement',
+			'click .karma-delete-message-container'   							: 'deleteBoxStopPropagation',
+			'mousedown .karma-google-fonts-list' 		  						: 'deleteBoxStopPropagation',
+			'input #karma-fonts-search-input'                 					: 'searchInGoogleFonts',
+			'scroll   #karma-typography-setting'                				: 'preventFromScroll',
+			'touchmove  #karma-typography-setting'              				: 'preventFromScroll',
+			'mousewheel #karma-typography-setting'              				: 'preventFromScroll',
+			'click .karma-dropdown-add-font a'									: 'animateKarmaPanels',
 		},
 
 		/**
@@ -584,7 +584,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			element.addClass( 'karma-selected-dropdown-option' );
 			element.closest( '.karma-dropdown-body' ).find( '.karma-dropdown-selected-item' ).html( element.find( '.karma-dropdown-option-title' ).text() );
 			this.updateFontType( element );
-			this.closeDropDown( e );
+			$( '.karma-dropdown-body > ul' ).removeClass( 'karma-doropdown-opened' );
 
 		},
 
