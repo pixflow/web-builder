@@ -389,11 +389,22 @@ body:not(.karma-builder-environment) {
 				}
 			}
 
-			.karma-gizmo-template {
+			.karma-element-content > .karma-gizmo-template {
 				display: flex;
 			}
+
 			.karma-spacing-dot-container {
 				display: inline-block;
+			}
+
+			.karma-have-child-gizmo{
+
+				&.karma-show-child-gizmo{
+
+					.karma-gizmo-template{
+						display: flex;
+					}
+				}
 			}
 		}
 
@@ -402,20 +413,7 @@ body:not(.karma-builder-environment) {
 
 		}
 
-		&.karma-active-element .karma-gizmo-template {
-			display: flex;
-		}
 
-		.karma-gizmo-template {
-			&.karma-outer-gizmo-template {
-				&.image-gizmo-group {
-					&.karma-gizmo-container {
-						left: 0;
-						right: auto;
-					}
-				}
-			}
-		}
 
 		.karma-text {
 			*:focus {
@@ -441,8 +439,8 @@ body:not(.karma-builder-environment) {
 			@extend .karma-builder-shadow-box-2;
 			background-color: #fff;
 			border-radius: 2px;
-			direction: rtl;
 			display: none;
+			flex-direction:row-reverse;
 			padding: 0 7px;
 			position: absolute;
 			z-index: $level-20;
@@ -481,7 +479,7 @@ body:not(.karma-builder-environment) {
 				}
 			}
 			.karma-drop-down-box {
-				@include element_direction($top: 45px, $left: -5px);
+				@include element_direction($top: 45px);
 				@extend .karma-builder-shadow-box-2;
 				background-color: #fff;
 				border-radius: 4px;
@@ -531,10 +529,66 @@ body:not(.karma-builder-environment) {
 				}
 				&.open-drop-down-gizmo {
 					display: flex;
+
+					.karma-image-position-content-box{
+						@include box( 75px, 83px );
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: space-between;
+					}
+				}
+
+				&.karma-link-drop-down{
+					@include box( 190px, 83px );
+					padding: 11px;
+					.karma-check-box-container {
+						@include check-box-button();
+						position: relative;
+
+						.check-box-circle{
+							@include flexbox( center, center, center );
+							@include box( 100%, 100% );
+
+						}
+					}
+					input.karma-text-link {
+						@include box( 168px, 28px );
+						@extend .karma-builder-title-4;
+						border-radius: 4px;
+						color: $builder-main-color-2;
+						margin-bottom: 10px;
+					}
+
+					.karma-check-box-container{
+						@include box( 17px, 17px );
+						margin-right: 7px;
+					}
+
+					.karma-check-box-contain{
+						align-items: center;
+						display: flex;
+					}
+
+					label.check-box-circle-fill{
+						@include box( 7px, 7px );
+					}
+
+					.karma-link-open-new-tab-text{
+						color: $builder-main-color;
+						@extend .karma-builder-title-4;
+					}
+
+					&:after{
+						left:10%;
+					}
 				}
 
 			}
 
+			.karma-image-position-content{
+				padding: 7px;
+				width:90px;
+			}
 			.karma-typography-drop-down {
 				flex-direction: column;
 				left: -12px;
@@ -554,7 +608,7 @@ body:not(.karma-builder-environment) {
 				}
 
 				.karma-typography-drop-down-icons {
-					flex-direction: row;
+					flex-direction: row-reverse;
 				}
 
 				.karma-typography-link {
@@ -577,6 +631,16 @@ body:not(.karma-builder-environment) {
 				div {
 					display: flex;
 					flex-direction: column;
+				}
+			}
+			.karma-position-drop-down-gizmo{
+				&:hover {
+					svg {
+						* {
+							transition-duration: 0.1s;
+							fill: $builder-accent-color;
+						}
+					}
 				}
 			}
 
@@ -910,6 +974,18 @@ body:not(.karma-builder-environment) {
 		}
 
 		&.karma-active-column {
+
+			.karma-gizmo-template {
+
+				&.karma-outer-gizmo-template {
+
+					&.karma-gizmo-container {
+						left: 0;
+						right: auto;
+					}
+				}
+			}
+
 			.column-gizmo-group {
 				background-color: $builder-main-color-2;
 				cursor: pointer;
@@ -1050,3 +1126,5 @@ div.karma-element-content {
 		}
 	}
 }
+
+

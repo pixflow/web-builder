@@ -27,8 +27,8 @@ karmaColorPicker = function ( options ) {
 	this.defaultOptions = {
 		selector            : ".karma-color-picker",
 		color               : "#000000",
-		opacity             : true,
-		multiColor          : true,
+		opacity             : false,
+		multiColor          : false,
 		firstColorTitle     : 'Main',
 		secondColorTitle    : 'Hover',
 		presetColors        : [ '#FFFFFF', '#FEF445', '#FAC711', '#F24726', '#E6E6E6', '#CEE741', '#8FD14F', '#DA0263', '#808080', '#13CDD4', '#0DA789', '#652CB3', '#141414', '#2D9BF0', '#404BB2' ]
@@ -42,6 +42,7 @@ karmaColorPicker = function ( options ) {
 		}
 	}
 
+	this.convertPresetColors();
 	this.mainInput = document.querySelector( this.options.selector + ' input.karma-colorpicker-main-color' );
 	this.hoverInput = document.querySelector( this.options.selector + ' input.karma-colorpicker-second-color' );
 
@@ -75,6 +76,20 @@ karmaColorPicker.prototype.generateColorPickerID = function () {
 
 };
 
+/**
+ * @summary convert all preset colors to rgb
+ *
+ * @since 0.1.0
+ * @returns {void}
+ */
+karmaColorPicker.prototype.convertPresetColors = function () {
+
+	for ( var i = 0; this.options.presetColors.length > i; i++ ) {
+		this.options.presetColors[ i ] = this.hexToRgb( this.options.presetColors[ i ] ).toLowerCase();
+	}
+
+};
+
 
 /**
  * @summary init color picker on input with passed selector
@@ -87,7 +102,7 @@ karmaColorPicker.prototype.init = function () {
 	var that = this;
 	this.createColorPickerIcon();
 	this.createColorPickerPopup();
-	this.setMainInputEvent();
+	this.setInputsEvent();
 	this.chooseColorEvent();
 	this.changeColorAction();
 	var handler = that.openColorPicker.bind( that );
@@ -180,7 +195,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 	for ( var i = 0; that.options.presetColors.length > i; i++ ) {
 		var presetColor = document.createElement( 'span' );
 		presetColor.setAttribute( 'class', 'karma-color-picker-preset-color' );
-		presetColor.setAttribute( 'data-color', that.options.presetColors[ i ].toLowerCase() );
+		presetColor.setAttribute( 'data-color', that.hexToRgb(that.options.presetColors[ i ]).toLowerCase() );
 		presetColor.style.backgroundColor = that.options.presetColors[ i ];
 		this.presetColorsEvent( presetColor );
 		presetColors.appendChild( presetColor );
@@ -240,7 +255,7 @@ karmaColorPicker.prototype.changeColorAction = function () {
 
 	var that = this,
 		$ = jQuery;
-	$( this.options.selector + " .karma-color-picker-mode span" ).off( "click.changeModes" ).on( "click.changeModes", function () {
+	$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .karma-color-picker-mode span' ).off( "click.changeModes" ).on( "click.changeModes", function () {
 
 		$( this ).siblings().removeClass( 'active' );
 		$( this ).addClass( 'active' );
@@ -251,6 +266,9 @@ karmaColorPicker.prototype.changeColorAction = function () {
 			that.activeInput = that.mainInput;
 		}
 
+		$( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .selected' ).removeClass( 'selected' );
+		document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + that.id + '"] .karma-color-picker-preset-color[data-color="' + that.hexToRgb( that.activeInput.value ) + '"]' ).classList.add( 'selected' );
+
 	} )
 };
 
@@ -260,13 +278,20 @@ karmaColorPicker.prototype.changeColorAction = function () {
  * @since 0.1.0
  * @returns {void}
  */
-karmaColorPicker.prototype.setMainInputEvent = function () {
+karmaColorPicker.prototype.setInputsEvent = function () {
 
 	var that = this,
 	$ = jQuery;
-	$( this.activeInput ).on( 'change', function () {
+
+	$( this.mainInput ).on( 'change', function () {
 		that.icon.style.background = this.value;
 	} );
+
+	if( this.options.multiColor ) {
+		$( this.hoverInput ).on( 'change', function () {
+			that.icon.style.background = this.value;
+		} );
+	}
 
 	
 };
@@ -350,7 +375,7 @@ karmaColorPicker.prototype.saveColors = function ( color ) {
 
 	if ( "undefined" !== typeof( Storage ) ) {
 		var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
-		if( true === savedColors.includes( color ) || true === this.options.presetColors.includes( color.toUpperCase() ) ){
+		if( true === savedColors.includes( color ) || true === this.options.presetColors.includes( color ) ){
 			return ;
 		}
 		if (  8 == savedColors.length ){
@@ -405,18 +430,18 @@ karmaColorPicker.prototype.initSpectrumColorPicker = function () {
 		replacerClassName: 'spectrum-color-preview',
 		move : function ( color ) {
 
-			that.onChangeColor( color.toHexString() );
+			that.onChangeColor( color.toRgbString() );
 
 		},
 
 		change: function( color ) {
 
-			that.onChangeColor( color.toHexString() );
+			that.onChangeColor( color.toRgbString() );
 
 		},
 		hide : function ( color ) {
 
-			that.saveColors( color.toHexString() );
+			that.saveColors( color.toRgbString() );
 
 		},
 
@@ -454,6 +479,7 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 	var colorPickerContainer = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
 		that = this,
 		$ = jQuery;
+
 	if ( $( colorPickerContainer ).hasClass( 'karma-color-picker-opened' ) ) {
 		$( colorPickerContainer ).removeClass( 'karma-color-picker-opened' );
 		var $spectrum =$( "#" + that.id );
@@ -464,7 +490,8 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 			$('.karma-color-picker-preset-color.user-pallet').remove();
 			var savedColors = ( null == localStorage.getItem( 'karmaColors' ) ) ? [] : JSON.parse( localStorage.getItem( 'karmaColors') );
 			_.each( savedColors, function ( color ) {
-				if ( !that.options.presetColors.includes( color.toUpperCase() ) ) {
+				color = color.replace( /\s/g, '' );
+				if ( !that.options.presetColors.includes( color ) ) {
 					that.addColorToPallet( color, true );
 				}
 			} );
@@ -479,55 +506,66 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 		colorPickerContainer.style.left = leftPosition + 'px';
 		colorPickerContainer.className += ' karma-color-picker-opened';
 		$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
+		this.addCurrentColor( this.mainInput.value, 'main' );
+		if ( this.options.multiColor ) {
+			this.addCurrentColor( this.hoverInput.value, 'second' );
+		}
+		if( this.options.multiColor ) {
+			$('.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"] .karma-color-picker-mode .first-color').click();
+		}
 	}
-	this.addCurrentColor();
 
 };
 
 /**
  * @summary check if current color is not exist in pallets, add it
  *
+ * @param {string} color
+ * @param {string} type main or second color
  * @since 0.1.0
  * @returns {void}
  */
-karmaColorPicker.prototype.addCurrentColor = function () {
+karmaColorPicker.prototype.addCurrentColor = function ( color, type ) {
 
-	var currentColorHex = this.rgbToHex( this.activeInput.value ).toLowerCase();
-	var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorHex + '"]' );
+	if ( this.activeInput.classList.contains( 'karma-colorpicker-main-color' ) ) {
+		var active = 'main';
+	} else {
+		var active = 'second';
+	}
+	color = color.replace( /\s/g, '' );
+	var currentColorRgb = this.hexToRgb( color ).toLowerCase();
+	var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorRgb + '"]' );
 	if ( null != currentPallet ) {
 		currentPallet.classList.add( 'selected' );
 	} else {
-		this.addColorToPallet( currentColorHex, true );
-		var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorHex + '"]' );
-		currentPallet.classList.add( 'selected' );
+		this.addColorToPallet( currentColorRgb, true );
+		var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorRgb + '"]' );
+		if ( type == active ) {
+			currentPallet.classList.add( 'selected' );
+		}
 	}
 
 };
 
 /**
- * @summary convert rgb color to hex color
+ * @summary convert hex color to rgb color
  *
+ * @param {string}	hex
  * @since 0.1.0
  * @returns {string} return hex color or passed color if color is not rgb
  */
-karmaColorPicker.prototype.rgbToHex = function ( color ) {
+karmaColorPicker.prototype.hexToRgb = function ( hex ) {
 
-	if ( '#' === color.substr( 0, 1 ) ) {
-		return color;
+	hex = hex.replace( /\s/g, '' );
+	if ( 'rgb' === hex.substr( 0, 3 ) ) {
+		return hex;
 	}
-	var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec( color );
-	if ( null != digits ) {
-		var red = parseInt( digits[ 2 ] );
-		var green = parseInt( digits[ 3 ] );
-		var blue = parseInt( digits[ 4 ] );
-		var rgb = blue | ( green << 8 ) | ( red << 16 );
-		if( 0 == rgb ){
-			return '#000000';
-		}else{
-			return digits[ 1 ] + '#' + rgb.toString( 16 );
-		}
-	} else {
-		return color;
-	}
+	// Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+	var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	hex = hex.replace( shorthandRegex, function ( m, r, g, b ) {
+		return r + r + g + g + b + b;
+	} );
 
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( hex );
+	return result ? 'rgb(' + parseInt( result[ 1 ], 16 ) + ',' + parseInt( result[ 2 ], 16 ) + ',' + parseInt( result[ 3 ], 16 ) + ')' : null;
 };

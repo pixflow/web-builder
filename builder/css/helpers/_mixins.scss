@@ -173,10 +173,9 @@
  * @output with display flex and  center element
  */
 @mixin flexbox( $text-align:inherit, $align-item:inherit, $justify-content:inherit ) {
+	@include justify-align( $align-item, $justify-content );
 	display: flex;
 	text-align: $text-align;
-	align-items: $align-item;
-	justify-content: $justify-content;
 }
 
 /**
@@ -198,7 +197,7 @@
  * @group helpers
  * @output justify content and align item
  */
-@mixin justify-align($align-item:inherit, $justify-content:inherit){
+@mixin justify-align( $align-item:inherit, $justify-content:inherit ){
 	align-items: $align-item;
 	justify-content: $justify-content;
 }
@@ -246,7 +245,7 @@
  * @group helpers
  * @output border button
  */
-@mixin border-button ($color:$builder-accent-color, $background-color:inherit, $border:$builder-accent-color) {
+@mixin border-button ( $color:$builder-accent-color, $background-color:inherit, $border:$builder-accent-color ) {
 
 	@include flexbox( center );
 	@include box-color( $color, $background-color, 2px );
@@ -277,7 +276,7 @@
  * @group helpers
  * @output border button
  */
-@mixin fill-button ($color:#fff, $background-color:$builder-accent-color) {
+@mixin fill-button ( $color:#fff, $background-color:$builder-accent-color ) {
 
 	@include flexbox( center, center, center );
 	@include box-color( $color, $background-color, 2px );

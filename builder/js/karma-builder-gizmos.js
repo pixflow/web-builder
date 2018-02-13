@@ -2,7 +2,6 @@
 
 	karmaBuilder.gizmos = Backbone.View.extend({
 
-
 		gizmos: {},
 
 		/**
@@ -210,13 +209,15 @@
 				if( 'undefined' == typeof gizmoParams.selector ){
 					this.$el.append( $gizmoPlaceHolder );
 				}else{
-					this.$el.find( gizmoParams.selector ).append( $gizmoPlaceHolder );
+					var targetSelector = this.$el.find( gizmoParams.selector );
+					targetSelector.append( $gizmoPlaceHolder );
+
+					if( ! targetSelector.hasClass( 'karma-element-content' ) ){
+						targetSelector.addClass( 'karma-have-child-gizmo' );
+					}
 				}
 
-
 				for( var i in gizmoParams.params ) {
-
-
 
 					if ( typeof karmaBuilder.gizmos[ gizmoParams.params[ i ].type ] !== "undefined" ) {
 
@@ -224,6 +225,7 @@
 						gizmo.data = gizmoParams.params[ i ];
 						gizmo.elementView = this;
 						gizmo.$gizmoContainer = $gizmoContainer;
+						gizmo.orginalSelector = gizmoParams.selector;
 						gizmo.render();
 					}
 				}
@@ -700,7 +702,7 @@
 		},
 
 		/**
-		 * @summary Set the active shortcode gizmo
+		 * @summary Set the active element gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -710,7 +712,9 @@
 			e.stopPropagation();
 
 			var lastActiveElement = document.querySelector( '.karma-active-element' );
+			this.removeElementChildGizmo();
 
+			// If selected elements, its current element
 			if ( null != lastActiveElement && false == this.el.classList.contains('karma-active-element') ) {
 				lastActiveElement.classList.remove( 'karma-active-element' );
 				this.removeDropDownGizmo();
@@ -720,6 +724,39 @@
 			KarmaView.$el.trigger( 'karma/callParent', [ this.el, [ 'activeColumn' ] , 1  ] );
 			this.el.classList.add( 'karma-active-element' );
 			KarmaView.closeElementPanel().removeSettingPanel();
+
+		},
+
+		/**
+		 * @summary Show element gizmo
+		 *
+		 * @since 0.1.0
+		 * @returns {void}
+		 */
+		showElementChildGizmo : function( e ){
+
+			e.stopPropagation();
+			this.showElementGizmo( e );
+			var childGizmo = ( e.target.classList.contains( 'karma-have-child-gizmo' ) ) ? e.target : e.target.closest( '.karma-have-child-gizmo' );
+
+			childGizmo.classList.add( 'karma-show-child-gizmo' );
+
+		},
+
+		removeElementChildGizmo : function () {
+
+			var childGizmo = document.querySelector( '.karma-show-child-gizmo' ),
+				childGizmoDropDown = document.querySelector('.open-drop-down-gizmo');
+
+			if( null != childGizmo ){
+				childGizmo.classList.remove( 'karma-show-child-gizmo' );
+			}
+
+			if( null != childGizmoDropDown ){
+				childGizmoDropDown.classList.remove('open-drop-down-gizmo');
+			}
+
+			$( document ).trigger( "click.hideColorPickerContainer" );
 
 		},
 
@@ -755,8 +792,9 @@
 			e.stopPropagation();
 			var selector =  this.model.get('shortcode_name');
 			selector = selector.replace( 'karma_', '' );
-			selector = '.' + selector + '-gizmo-group';
 
+			selector = selector.replace( /_/g , '-' );
+			selector = '.' + selector + '-gizmo-group';
 			var elementGizmoSetting = this.el.querySelector( selector ),
 				moreElements 		= elementGizmoSetting.querySelectorAll( 'div[data-form="more-panel"]:not(.karma-more-setting)' ),
 				moreButton			= elementGizmoSetting.querySelector( '.karma-more-setting' ),
@@ -882,14 +920,15 @@
 		},
 
 		/**
-		 * @summary close dropDown gizmo and add class to active item
+		 * @summary update dropDown gizmo and add class to active item
 		 * @param {object}  event
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
-		closeDropDownBox: function ( e ) {
+		updateDropDownBox: function ( e ) {
 
+			e.stopPropagation();
 			var dropDownItem = $( e.target ).closest( 'button' ),
 				dropDownBox  = $( e.target ).closest( '.karma-drop-down-box' ),
 				allDropDownItem = dropDownBox.find( 'button' );
@@ -913,7 +952,6 @@
 
 			}
 
-			$( '.karma-drop-down-box' ).removeClass( 'open-drop-down-gizmo' );
 
 		}
 

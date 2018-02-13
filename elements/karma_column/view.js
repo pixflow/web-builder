@@ -158,6 +158,7 @@
 
 			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.attributes.shortcode_attributes.element_key,
 				defaultClasses =  elementClass + " karma-column  "  + this.model.attributes.shortcode_attributes.extraclass;
+
 				this.el.firstElementChild.setAttribute( 'class', defaultClasses );
 
 		},

@@ -93,6 +93,7 @@ var karmaBuilder = karmaBuilder || {};
 			this.makeSectionsSortable();
 			that.collection.each( function ( element ) {
 				var elementName = element.attributes.shortcode_name.replace("karma_", "");
+				elementName = elementName.replace( /_/g, '' );
 				if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
 					var elementView = new karmaBuilder[ elementName ]({
 						model 			: element,
@@ -430,6 +431,7 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		createNewElement : function ( elementName, model, shouldRender ) {
 
+			elementName = elementName.replace( /_/g, '' );
 			if ( "undefined" !== typeof karmaBuilder[ elementName ] ) {
 				shouldRender = shouldRender ? shouldRender : true;
 				var elementView = new karmaBuilder[ elementName ]({
@@ -465,14 +467,14 @@ var karmaBuilder = karmaBuilder || {};
 				alignmentClass = '' ,
 				tags,
 				output = '',
-				id = elementName.replace( '_' , '-' ) + '-' + elementKey;
+				id = elementName.replace( /_/g , '-' ) + '-' + elementKey;
 
 			classes = ( classes )
-				? classes + ' ' +  elementName.replace( "_", "-" ) + '-' + elementKey
-				: elementName.replace( "_", "-" ) + '-' + elementKey;
+				? classes + ' ' +  elementName.replace( /_/g, "-" ) + '-' + elementKey
+				: elementName.replace( /_/g, "-" ) + '-' + elementKey;
 			
-			tags = '<style id="style-' + elementName.replace( "_", "-" ) + '-' + elementKey + '" >' + '</style>'
-				+ '<script  id="script-' + elementName.replace( "_", "-" ) + '-' + elementKey + '" ></script>';
+			tags = '<style id="style-' + elementName.replace( /_/g, "-" ) + '-' + elementKey + '" >' + '</style>'
+				+ '<script  id="script-' + elementName.replace( /_/g, "-" ) + '-' + elementKey + '" ></script>';
 
 			if( 'karma_column' != elementName && 'karma_section' != elementName ){
 				output = '<div class="karma-element-content"></div>';
@@ -575,7 +577,8 @@ var karmaBuilder = karmaBuilder || {};
 				model = karmaBuilder.karmaModels.add( validateModel );
 
 			whereToDrop.outerHTML = KarmaView.createBuilderModel( model );
-			KarmaView.createNewElement( elementName.replace( 'karma_', '' ), model, true );
+			elementName = elementName.replace( /_/g, '' );
+			KarmaView.createNewElement( elementName.replace( 'karma', '' ), model, true );
 			this.$el.trigger( 'karma/after/dropElement', [ validateModel['parent_key'] ] );
 
 		},

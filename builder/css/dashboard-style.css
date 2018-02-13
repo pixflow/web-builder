@@ -277,10 +277,10 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
     content: ""; }
 
 .karma-typography-box-style, #karma-typography-setting #karma-typography-manager .karma-typography-size input.karma-range-slider-input.karma-input-number-type-input, #karma-typography-setting #karma-typography-manager .karma-typography-size label.karma-unit.karma-input-number-type-unit {
-  display: flex;
-  text-align: center;
   align-items: center;
   justify-content: space-between;
+  display: flex;
+  text-align: center;
   color: #419CF8;
   flex-basis: 35%;
   font-family: "HelveticaNeue_med"; }
@@ -574,6 +574,7 @@ body {
     bottom: 0;
     left: 0;
     color: #D7DBDE;
+    position: absolute;
     margin: 20px 0 0; }
   body .karma-container-separator {
     width: calc( 100% - 40px );
@@ -1967,18 +1968,18 @@ html {
         z-index: 100; }
 
 .karma-range-slider-container, #karma-typography-setting #karma-typography-manager .karma-typography-size {
-  display: flex;
-  text-align: center;
   align-items: center;
   justify-content: center;
+  display: flex;
+  text-align: center;
   flex-direction: column;
   padding: 0 20px;
   position: relative; }
   .karma-range-slider-container .karma-range-slider-content, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
-    display: flex;
-    text-align: inherit;
     align-items: center;
     justify-content: inherit;
+    display: flex;
+    text-align: inherit;
     padding: 11px 0 18px;
     width: 100%; }
   .karma-range-slider-container .rangeslider--horizontal, #karma-typography-setting #karma-typography-manager .karma-typography-size .rangeslider--horizontal {
@@ -2013,10 +2014,10 @@ html {
     padding: 0 14px;
     color: #394959; }
     .karma-range-slider-container .karma-range-slider-number input, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-number input {
-      display: flex;
-      text-align: right;
       align-items: inherit;
       justify-content: inherit;
+      display: flex;
+      text-align: right;
       color: #000;
       background: transparent;
       padding: 0; }
@@ -2198,10 +2199,10 @@ html {
   text-align: left;
   z-index: 0; }
   #karma-typography-setting #karma-font-manager .karma-google-fonts-list {
-    display: flex;
-    text-align: left;
     align-items: flex-start;
     justify-content: space-between;
+    display: flex;
+    text-align: left;
     background-color: #fff;
     border-radius: 3px;
     display: none;
@@ -2356,10 +2357,10 @@ html {
   #karma-typography-setting #karma-font-manager .karma-google-fonts {
     position: relative; }
   #karma-typography-setting #karma-font-manager .karma-font-manger-box-style {
-    display: flex;
-    text-align: left;
     align-items: center;
     justify-content: center;
+    display: flex;
+    text-align: left;
     width: 275px;
     height: 65px;
     background-color: #fff;
@@ -2376,10 +2377,10 @@ html {
   #karma-typography-setting #karma-font-manager .karma-google-fonts-title .karma-dropdown-icon {
     width: 25px;
     height: 25px;
-    display: flex;
-    text-align: center;
     align-items: center;
     justify-content: center;
+    display: flex;
+    text-align: center;
     border: 1px solid #9CA4AC;
     border-radius: 100px;
     cursor: pointer; }
@@ -2399,10 +2400,10 @@ html {
       margin-top: 13px;
       padding: 18px 0px 17px; }
       #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part {
-        display: flex;
-        text-align: center;
         align-items: center;
         justify-content: center;
+        display: flex;
+        text-align: center;
         width: 100%; }
         #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-name-part .karma-font-weight-count {
           color: #747F8A;
@@ -2434,10 +2435,10 @@ html {
         padding-top: 23px;
         width: 100%; }
         #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul {
-          display: flex;
-          text-align: left;
           align-items: flex-start;
           justify-content: flex-start;
+          display: flex;
+          text-align: left;
           width: 100%; }
           #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list .karma-font-details-part ul li {
             color: #394959;
@@ -2454,17 +2455,17 @@ html {
       #karma-typography-setting #karma-font-manager .karma-fonts-list .karma-font-list.karma-open-font-weight-list .karma-font-name-part .karma-delete-font #delete-element-icon {
         fill: #394959; }
   #karma-typography-setting #karma-font-manager .karma-footer-info {
-    display: flex;
-    text-align: left;
     align-items: center;
     justify-content: space-between;
+    display: flex;
+    text-align: left;
     margin-top: 30px;
     width: 100%; }
     #karma-typography-setting #karma-font-manager .karma-footer-info .karma-upload-custom-font {
-      display: flex;
-      text-align: left;
       align-items: center;
       justify-content: flex-start;
+      display: flex;
+      text-align: left;
       color: #419CF8;
       cursor: pointer;
       flex-basis: 71%;
@@ -2479,10 +2480,10 @@ html {
       font-size: 12px; }
 
 .karma-second-header {
-  display: flex;
-  text-align: center;
   align-items: center;
   justify-content: center;
+  display: flex;
+  text-align: center;
   border-top: 1px solid #EBECEE;
   box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.1);
   height: 80px; }
@@ -2494,16 +2495,16 @@ html {
     color: #394959;
     padding-left: 0; }
   .karma-second-header .karma-buttons-holder {
-    display: flex;
-    text-align: center;
     align-items: center;
     justify-content: center;
+    display: flex;
+    text-align: center;
     padding-right: 9px; }
     .karma-second-header .karma-buttons-holder .karma-backto-previous-location {
-      display: flex;
-      text-align: center;
       align-items: center;
       justify-content: center;
+      display: flex;
+      text-align: center;
       color: #419CF8;
       background-color: #fff;
       border-radius: 2px;
@@ -2530,10 +2531,10 @@ html {
         transform: none;
         transition: 0.3s; }
     .karma-second-header .karma-buttons-holder .karma-save-setting {
-      display: flex;
-      text-align: center;
       align-items: center;
       justify-content: center;
+      display: flex;
+      text-align: center;
       backface-visibility: hidden;
       background: linear-gradient(to right, #A0CDFB 50%, #ECF5FE 50%);
       background-position: right bottom;

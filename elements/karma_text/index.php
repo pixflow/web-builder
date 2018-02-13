@@ -48,7 +48,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 			'color'				=> '#000',
 			'align'       		=> 'left',
 			'topspacepadding'	=> '10',
-			'elementalign'	=> 'left',
+			'elementalign'		=> 'left',
 		);
 
 	}

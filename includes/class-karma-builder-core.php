@@ -308,11 +308,28 @@ class Karma_Builder_Core{
 	public function add_default_attributes( $element_name, $element_attributes ) {
 
 		$element_name = explode( '_', $element_name );
-		$element_class_name = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
+		$element_class_name = array_map( array( $this, 'create_validate_element_name' ), $element_name );
+		$element_class_name = implode( '_', $element_class_name );
 		$element_class_name = '\\KarmaBuilder\Elements\\' . $element_class_name;
 		$default_attributes = $element_class_name::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
+
 		return $atributes;
+
+	}
+
+	/**
+	 * convert all part's of array to uppercase
+	 *
+	 * @param   string  $name       value of array
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string
+	 */
+	private function create_validate_element_name( $name ){
+
+		return ucfirst( $name );
 
 	}
 
