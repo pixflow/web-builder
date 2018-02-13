@@ -563,6 +563,9 @@ karmaColorPicker.prototype.hexToRgb = function ( hex ) {
 	if ( 'rgb' === hex.substr( 0, 3 ) ) {
 		return hex;
 	}
+	if ( '' === hex ) {
+		return 'rgb(0,0,0)';
+	}
 	// Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
 	var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
 	hex = hex.replace( shorthandRegex, function ( m, r, g, b ) {

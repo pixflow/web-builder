@@ -75,8 +75,8 @@
 					color               : this.data.colorValue,
 					opacity             : this.data.opacity,
 					multiColor          : this.data.multiColor,
-					firstColorTitle     : 'Main',
-					secondColorTitle    : 'Hover',
+					firstColorTitle     : this.data.firstColorTitle,
+					secondColorTitle    : this.data.secondColorTitle,
 					presetColors        : [
 						'#FFFFFF'
 						, '#FEF445'
