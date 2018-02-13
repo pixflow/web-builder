@@ -48,6 +48,21 @@ var karmaBuilder = karmaBuilder || {};
 
 		initialize : function () {
 
+			this.notifyDevelopers();
+
+		},
+
+		/**
+		 * @summary Notify developers or user that how to use Karma when they opening developer tools
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		notifyDevelopers : function(){
+
+			console.log( '%c      ', 'font-size:80px; background: url(' + this.getBuilderParam('alertIconUrl') + ') no-repeat;' );
+			console.log('%c Please dont modify Karmabuilder models and save it, it can destroy your content! ', 'background: #cc1526; color: #BFF8F8');
+
 		},
 
 		/**

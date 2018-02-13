@@ -358,7 +358,8 @@ class Karma_Builder_Loader {
 	private function localize_builder_param(){
 
 		$builder_value = array(
-				'ajaxUrl' => admin_url( 'admin-ajax.php' )
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'alertIconUrl'  => KARMA_BUILDER_URL . '/builder/media/alerticon.png'
 		);
 
 		wp_localize_script( $this->plugin_name, 'builderParams', json_encode( $builder_value ) );
