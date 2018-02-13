@@ -1,79 +1,78 @@
-#karma-element-setting-panel-container{
 
-	.karma-range-slider-container {
-		@include flexbox($text-align: center, $align-item: center, $justify-content: center);
-		flex-direction: column;
-		padding: 0 20px;
-		position: relative;
+.karma-range-slider-container {
+	@include flexbox($text-align: center, $align-item: center, $justify-content: center);
+	flex-direction: column;
+	padding: 0 20px;
+	position: relative;
 
-		.karma-range-slider-content {
+	.karma-range-slider-content {
 
-			@include flexbox($align-item: center);
-			padding: $builder-light-orange-space 0 $builder-orange-space;
-			width: 100%;
+		@include flexbox($align-item: center);
+		padding: $builder-light-orange-space 0 $builder-orange-space;
+		width: 100%;
 
+	}
+
+	.rangeslider--horizontal {
+		@include box(68%, 3px);
+		background: $builder-accent-color-3;
+		border-radius: 50px;
+		box-shadow: none;
+
+		.rangeslider__handle {
+			@include box(14px, 14px);
+			background-color: $builder-accent-color;
+			background-image: none;
+			border: 1px solid $builder-accent-color;
+			box-shadow: 0 2px 4px 0 $builder-accent-color-2;
+			top: -5px;
+			&:after {
+				background-image: none;
+			}
+			touch-action: pan-y;
+
+			-ms-touch-action: pan-y;
 		}
 
-		.rangeslider--horizontal {
-			@include box(68%, 3px);
-			background: $builder-accent-color-3;
-			border-radius: 50px;
+		.rangeslider__fill {
+			background: $builder-accent-color-1;
 			box-shadow: none;
 
-			.rangeslider__handle {
-				@include box(14px, 14px);
-				background-color: $builder-accent-color;
-				background-image: none;
-				border: 1px solid $builder-accent-color;
-				box-shadow: 0 2px 4px 0 $builder-accent-color-2;
-				top: -5px;
-				&:after {
-					background-image: none;
-				}
-				touch-action: pan-y;
-
-				-ms-touch-action: pan-y;
-			}
-
-			.rangeslider__fill {
-				background:$builder-accent-color-1;
-				box-shadow: none;
-
-			}
-		}
-
-		.karma-range-slider-number {
-		 @include input-number-type;
-		}
-
-		input::-webkit-inner-spin-button {
-			margin: 0;
-			-webkit-appearance: none;
-		}
-
-		input::-webkit-outer-spin-button {
-			margin: 0;
-			-webkit-appearance: none;
-		}
-
-		input[type=number] {
-			-moz-appearance:textfield;
 		}
 	}
 
-	.karma-slider-controller-title {
-		@extend .karma-builder-title-3;
-		color: $builder-main-color;
-		padding-top: $builder-red-space;
-		text-align: left;
-		width: 100%;
+	.karma-range-slider-number {
+		@include input-number-type;
 	}
 
-	.karma-range-slider-editable {
-		cursor : text;
-		display : inline-block;
-		height : 32px;
-		min-width : 20px;
+	input::-webkit-inner-spin-button {
+		margin: 0;
+		-webkit-appearance: none;
 	}
 
+	input::-webkit-outer-spin-button {
+		margin: 0;
+		-webkit-appearance: none;
+	}
+
+	input[type=number] {
+		-moz-appearance: textfield;
+	}
 }
+
+.karma-slider-controller-title {
+	@extend .karma-builder-title-3;
+	color: $builder-main-color;
+	padding-top: $builder-red-space;
+	text-align: left;
+	width: 100%;
+}
+
+.karma-range-slider-editable {
+	cursor: text;
+	display: inline-block;
+	height: 32px;
+	min-width: 20px;
+}
+
+

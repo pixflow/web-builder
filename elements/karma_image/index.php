@@ -1,4 +1,8 @@
 <?php
+
+namespace KarmaBuilder\Elements;
+use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+
 /**
  * The file that defines the Image element class
  *

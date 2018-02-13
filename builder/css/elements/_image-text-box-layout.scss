@@ -1,0 +1,258 @@
+.karma-builder-element {
+
+	&[ data-name="karma_image_box" ] {
+
+		&.karma-active-element {
+
+			.karma-image-text-box {
+				outline: 1px solid $builder-accent-color;
+			}
+		}
+
+		//use important for conflict with fit-content
+		div.karma-element-content {
+			width: 100% !important;
+		}
+
+		.karma-image-text-box {
+			background-repeat: no-repeat;
+			display: flex;
+			padding: 6vh;
+			position: relative;
+			width: 100%;
+
+			&.karma-image-text-box-background-size-real {
+				background-size: auto;
+			}
+
+			&.karma-image-text-box-background-size-fill {
+				background-size: cover;
+			}
+
+			&.karma-image-text-box-background-size-contain {
+				background-size: auto;
+			}
+
+			&.karma-image-text-box-background-size-cover {
+				background-size: cover;
+			}
+
+			&.karma-image-text-box-position-top-left {
+				background-position: top left;
+			}
+
+			&.karma-image-text-box-position-top-center {
+				background-position: top center;
+			}
+
+			&.karma-image-text-box-position-top-right {
+				background-position: top right;
+			}
+
+			&.karma-image-text-box-position-center-left {
+				background-position: center left;
+			}
+
+			&.karma-image-text-box-position-center-center {
+				background-position: center center;
+			}
+
+			&.karma-image-text-box-position-center-right {
+				background-position: center right;
+			}
+
+			&.karma-image-text-box-position-bottom-left {
+				background-position: bottom left;
+			}
+
+			&.karma-image-text-box-position-bottom-center {
+				background-position: bottom center;
+			}
+
+			&.karma-image-text-box-position-bottom-right {
+				background-position: bottom right;
+			}
+
+			&.karma-image-text-box-content-position-top-left {
+				@include justify-align( flex-start, flex-start );
+
+				.karma-image-text-box-text-container {
+					text-align: left;
+
+					.karma-image-text-box-link {
+						justify-content: flex-start;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-top-center {
+				@include justify-align( flex-start, center );
+
+				.karma-image-text-box-text-container {
+					text-align: center;
+
+					.karma-image-text-box-link {
+						justify-content: center;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-top-right {
+				@include justify-align( flex-start, flex-end );
+
+				.karma-image-text-box-text-container {
+					text-align: right;
+
+					.karma-image-text-box-link {
+						justify-content: flex-end;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-center-left {
+				@include justify-align( center, flex-start );
+
+				.karma-image-text-box-text-container {
+					text-align: left;
+
+					.karma-image-text-box-link {
+						justify-content: flex-start;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-center-center {
+				@include justify-align( center, center );
+
+				.karma-image-text-box-text-container {
+					text-align: center;
+
+					.karma-image-text-box-link {
+						justify-content: center;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-center-right {
+				@include justify-align( center, flex-end );
+
+				.karma-image-text-box-text-container {
+					text-align: right;
+
+					.karma-image-text-box-link {
+						justify-content: flex-end;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-bottom-left {
+				@include justify-align( flex-end, flex-start );
+
+				.karma-image-text-box-text-container {
+					text-align: left;
+
+					.karma-image-text-box-link {
+						justify-content: flex-start;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-bottom-center {
+				@include justify-align( flex-end, center );
+
+				.karma-image-text-box-text-container {
+					text-align: center;
+
+					.karma-image-text-box-link {
+						justify-content: center;
+					}
+				}
+			}
+
+			&.karma-image-text-box-content-position-bottom-right {
+				@include justify-align( flex-end, flex-end );
+
+				.karma-image-text-box-text-container {
+					text-align: right;
+
+					.karma-image-text-box-link {
+						justify-content: flex-end;
+					}
+				}
+			}
+
+			.karma-image-text-box-overlay {
+				@include box( 100%, 100% );
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+
+			.karma-image-text-box-text-container {
+				width: fit-content;
+
+				> div {
+					position: relative;
+
+					.karma-image-text-box-title-tag, .karma-image-text-box-description-tag, .karma-image-text-box-link-tag {
+						display: inline-block;
+						word-break: break-all;
+					}
+				}
+			}
+
+			.karma-image-text-box-link:not( .karma-show-child-gizmo ) {
+
+				.karma-image-text-box-link-shape {
+					height: 28px;
+					transition-duration: .3s;
+					width: 12px;
+					backface-visibility: hidden;
+				}
+
+				&:hover {
+
+					.karma-image-text-box-link-shape {
+						height: 28px;
+						transform: translate(3px) rotate(-90deg);
+						transition-duration: .2s;
+						width: 12px;
+						backface-visibility: hidden;
+					}
+				}
+			}
+			.karma-image-text-box-link {
+				display: flex;
+
+				.karma-image-text-box-link-shape {
+					transform: rotate(-90deg);
+
+					svg {
+						height: 4px;
+
+						* {
+							stroke: #fff;
+							stroke-width: 2px;
+						}
+
+						stroke: #fff;
+					}
+				}
+			}
+
+		}
+		.karma-image-position-content.karma-drop-down-box.open-drop-down-gizmo {
+			@include box( 110px, 110px );
+			left: 14px;
+			padding: 17px;
+		}
+
+		.karma-builder-gizmo-icon.karma-image-setting-layout {
+
+			svg {
+				@include box( 14px );
+			}
+		}
+	}
+
+}

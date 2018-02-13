@@ -1,0 +1,202 @@
+#karma-typography-setting {
+
+	@include box(100vw, 90vh);
+	@extend .center-both-flex;
+	background-color: rgba($builder-main-color, .1);
+	overflow-y: scroll;
+
+	.karma-panel {
+		&.current {
+			display: flex;
+		}
+	}
+
+	> div {
+		min-height: 700px;
+		position: relative;
+		width: 1200px;
+	}
+	#karma-typography-manager,
+	#karma-font-manager {
+		@include box(100%, auto);
+		left: 0;
+		margin-bottom: 85px;
+		position: absolute;
+		top: 0;
+	}
+
+	#karma-typography-manager {
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 0;
+
+		.karma-typography-box {
+			background-color: #fff;
+			border-radius: 4px;
+			box-shadow: 0 4px 15px 4px $builder-main-color-3;
+			box-sizing: border-box;
+			flex-basis: 32%;
+			height: 350px;
+			margin-bottom: 25px;
+			padding: 23px;
+		}
+
+		.karma-typography-box:last-child {
+			margin-right: 34%;
+		}
+
+		.karma-typography-box-title {
+			@extend .karma-builder-title-2;
+			color: $builder-accent-color;
+			cursor: default;
+			font-family: $builder-medium-font;
+			padding-bottom: 20px;
+		}
+
+		.karma-typography-text {
+			border-bottom: 1px solid $builder-accent-color-3;
+			color: $builder-main-color-1;
+			height: 215px;
+			line-height: 1.15em;
+			overflow: hidden;
+			word-break: break-all;
+		}
+
+		.karma-typography-styles {
+			display: flex;
+			margin-top: 15px;
+			> div {
+				width: 33%;
+			}
+			.karma-controller.karma-controller-action {
+				width: 100%;
+			}
+		}
+
+		.karma-typography-font {
+			border-right: 1px solid $builder-accent-color-3;
+			.karma-dropdown-controller {
+				padding: 0;
+				.karma-dropdown-body {
+					margin: 0;
+
+					.karma-dropdown-add-font {
+
+						order: 10;
+						a {
+							box-shadow: none;
+							color: #419CF8;
+							display: flex;
+							font-family: $builder-normal-font;
+							justify-content: end;
+							padding: 16px 10px 6px 10px;
+							text-decoration: none;
+							&:after {
+								background-color: $builder-accent-color-3;
+								bottom: 38px;
+								content: '';
+								height: 1px;
+								left: 0;
+								position: absolute;
+								width: 100%;
+							}
+
+						}
+					}
+				}
+				.karma-dropdown-icon {
+					border: none;
+				}
+			}
+		}
+
+		@extend .karma-dropdown-controller;
+		.karma-typography-weight {
+			border-right: 1px solid $builder-accent-color-3;
+			padding-left: 9px;
+			.karma-dropdown-controller {
+				padding: 0;
+				.karma-dropdown-body {
+					margin: 0;
+				}
+				.karma-dropdown-icon {
+					border: none;
+				}
+				.karma-dropdown-selected-item {
+					max-width: 75px;
+				}
+			}
+		}
+
+		.karma-dropdown-body {
+			.karma-dropdown-options {
+				width: 150px;
+
+				.karma-dropdown-option-title {
+					text-transform: capitalize;
+				}
+			}
+
+			.karma-dropdown-selected-item {
+				color: $builder-accent-color;
+				max-width: 77px;
+				overflow: hidden;
+				text-transform: capitalize;
+				white-space: nowrap;
+			}
+		}
+
+		.karma-typography-size {
+			@extend .karma-range-slider-container;
+			padding: 0;
+			.karma-range-slider-content {
+				width: 110px;
+			}
+
+			input.karma-range-slider-input.karma-input-number-type-input {
+				@extend .karma-typography-box-style;
+				border: none;
+				flex-basis: initial;
+				padding-right: 3px;
+				text-align: right;
+				width: 26px;
+			}
+			.rangeslider {
+				width: 52px;
+			}
+
+			.karma-range-slider-number {
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			label.karma-unit.karma-input-number-type-unit {
+				@extend .karma-typography-box-style;
+				padding-right: 15px;
+			}
+
+			.karma-range-slider-container,
+			.controller-separator,
+			.karma-range-slider-content {
+				padding: 0;
+			}
+
+			.karma-range-slider-content > :nth-child(2) {
+				order: 1;
+			}
+
+		}
+	}
+}
+
+.karma-builder .karma-delete-message-box {
+	display: none;
+}
+
+@media only screen and (max-width: 1280px) {
+	#karma-typography-setting #karma-typography-manager,
+	#karma-typography-setting #karma-font-manager{
+		margin-top: 85px;
+	}
+}

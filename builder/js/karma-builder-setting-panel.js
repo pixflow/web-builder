@@ -157,6 +157,12 @@
 
 			for ( var index in elementParam.params ){
 				var paramName = elementParam.params[ index ].name;
+				if ( 'color-picker' === elementParam.params[ index ].type
+					&& ( 'undefined' != typeof elementParam.params[ index ].params
+					&& 'undefined' != typeof elementParam.params[ index ].params.multiColor
+					&& true === elementParam.params[ index ].params.multiColor ) ) {
+					elementParam.params[ index ].secondValue = model.shortcode_attributes[ elementParam.params[ index ].params.secondName ];
+				}
 				if( 'gridlayout' === paramName ){
 					elementParam.params[ index ].value = this.viewInstance.currentGrid().length;
 				}

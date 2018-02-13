@@ -1,4 +1,5 @@
 <?php
+namespace KarmaBuilder\Views;
 /**
  * The file that defines the builder views core class
  *
@@ -35,6 +36,19 @@ class Karma_Views {
 		'header',
 		'main',
 		'footer',
+	);
+
+	/**
+	 * The list of environment template names for typography page
+	 *
+	 * @since    0.1.0
+	 * @access   private
+	 */
+	private $typography_environment_templates = array(
+		'header',
+		'typography',
+		'footer',
+		'delete-message-box'
 	);
 
 	/**
@@ -75,6 +89,8 @@ class Karma_Views {
 	);
 
 
+
+
 	/*
 	 * Print navbar html and create builder environment
 	 *
@@ -83,6 +99,19 @@ class Karma_Views {
 	public function load_builder_environment(){
 
 		foreach ( $this->environment_templates as $temp ){
+			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
+		}
+
+	}
+
+	/*
+	 * Print typography content
+	 *
+	 * @return	void
+	 */
+	public function load_typography_environment(){
+
+		foreach ( $this->typography_environment_templates as $temp ){
 			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
 		}
 

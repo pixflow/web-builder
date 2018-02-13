@@ -1,7 +1,10 @@
+<?php
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+?>
 <div>
 	<div class="karma-panel-templates-container">
 		<div class="element-panel-button" data-open-panel="karma-element-panel-unsplash-template">
-			<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/element-panel-3.svg' ); ?>
+			<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/element-panel-3.svg' ); ?>
 		</div>
 
 		<div class="karma-element-panel-view karma-element-panel-unsplash-template karma-deactive-element-panel"  >

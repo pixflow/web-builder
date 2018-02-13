@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard Copy 21</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="3" y="4" width="39.3373746" height="39.4528302" rx="4"></rect>
+        <linearGradient x1="28.1694059%" y1="19.9159453%" x2="62.6351013%" y2="66.5015293%" id="linearGradient-3">
+            <stop stop-color="#8F2DF3" offset="0%"></stop>
+            <stop stop-color="#A945FF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Add-panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-21">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#A945FF" transform="translate(22.668687, 23.726415) rotate(90.000000) translate(-22.668687, -23.726415) " xlink:href="#path-1"></use>
+            <polygon id="Path" fill="#F4E7FF" opacity="0.542912138" mask="url(#mask-2)" points="20 23.2307692 20 14 26 18.6153846"></polygon>
+            <polygon id="Path-4-Copy-4" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="51.5 51.5 29 53 13 37 13 31 32 31"></polygon>
+            <g id="Group-9" mask="url(#mask-2)" fill="#FFFFFF">
+                <g transform="translate(13.000000, 27.000000)">
+                    <rect id="Rectangle-13-Copy-5" x="3" y="0" width="13" height="1.79999995"></rect>
+                    <rect id="Rectangle-13-Copy-6" x="0" y="4" width="19" height="1.79999995"></rect>
+                    <rect id="Rectangle-13-Copy-9" x="0" y="8" width="19" height="1.79999995"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

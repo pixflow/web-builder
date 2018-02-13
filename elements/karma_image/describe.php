@@ -1,4 +1,11 @@
 <?php
+
+namespace KarmaBuilder\Elements\DescribeElement;
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Elements\Karma_Image;
+use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+
 /**
  * This file describes the Image element
  *
@@ -49,13 +56,13 @@ class Karma_Image_Describe extends Karma_Image {
 						"class"     => "radio-image-border-hover",
 						"field"     => array(
 							array(
-								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
+								'image' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
 								'style' => 'padding-left: 35px; padding-right: 18px;',
 								'title' => esc_attr__( "Real size", 'karma' ),
 								'value' => "real",
 							),
 							array(
-								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
+								'image' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ),
 								'style' => 'padding-left: 18px; padding-right: 34px; ',
 								'title' => esc_attr__( "Fill", 'karma' ),
 								'value' => "fill",
@@ -152,7 +159,7 @@ class Karma_Image_Describe extends Karma_Image {
 						'form'   => 'more-panel',
 						'className' => 'karma-more-setting',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
 						)
 					),
 					array(
@@ -160,7 +167,7 @@ class Karma_Image_Describe extends Karma_Image {
 						'form'   => 'more-panel',
 						'className' => 'karma-delete-element-setting ',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
 						)
 					),
 					array(
@@ -168,14 +175,14 @@ class Karma_Image_Describe extends Karma_Image {
 						'form'   => 'more-panel',
 						'className' => 'karma-duplicate-element-setting ',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
 						)
 					),
 					array(
 						'type'   => 'icon',
 						'form'   => 'animation-panel',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/animation.svg' ),
 						)
 					),
 					array(
@@ -183,7 +190,7 @@ class Karma_Image_Describe extends Karma_Image {
 						'className' => 'karma-image-setting-layout',
 						'form'      => 'setting-panel',
 						"params"    => array(
-							'icon' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
 						)
 					),
 					array(
