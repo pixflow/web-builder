@@ -464,7 +464,7 @@ class Karma_Builder {
 		wp_print_scripts( array( 'jquery', 'wp-util', 'backbone' ) );
 		wp_enqueue_script( 'karma-range-slider', KARMA_BUILDER_URL . 'builder/js/rangeslider.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
 		wp_enqueue_script( 'karma-jquery.nicescroll', KARMA_BUILDER_URL . 'builder/js/jquery.nicescroll.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
-		wp_enqueue_script( 'karma-dashboard', KARMA_BUILDER_URL . 'builder/js/karma-dashboard-script.min.js', array(
+		wp_enqueue_script( 'karma-dashboard', KARMA_BUILDER_URL . 'builder/js/karma-typography.min.js', array(
 			'jquery',
 			'backbone'
 		), KARMA_BUILDER_VERSION, false );
