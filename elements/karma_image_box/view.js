@@ -292,12 +292,12 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		textLinkAction: function () {
+		textlinkaction: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['textLinkAction'] );
+				linktarget  = this.getAttributes( ['textlinkaction'] );
 
-			elementId.find( '.karma-image-text-box-link-tag ' ).attr( "target", linktarget.textLinkAction );
+			elementId.find( '.karma-image-text-box-link-tag ' ).attr( "target", linktarget.textlinkaction );
 		},
 
 		/**

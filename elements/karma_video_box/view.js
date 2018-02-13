@@ -260,11 +260,11 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		textLinkAction: function () {
+		textlinkaction: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['textLinkAction'] );
-			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.textLinkAction );
+				linktarget  = this.getAttributes( ['textlinkaction'] );
+			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.textlinkaction );
 
 		},
 
