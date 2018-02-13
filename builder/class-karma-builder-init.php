@@ -78,7 +78,13 @@ class Karma_Builder_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		$stylesheet = Karma_Factory_Pattern::$stylesheet;
+		$stylesheet->create_global_css_file();
+
 		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
+
 
 	}
 

@@ -4,6 +4,8 @@ namespace KarmaBuilder\Stylesheet ;
 
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -130,6 +132,55 @@ class Karma_Stylesheet {
 			</style>
 		<?php
 		return ob_get_flush();
+
+	}
+
+
+	/**
+	 * Create global css file that need to load in builder in frontend
+	 *
+	 * @since    0.1.1
+	 * @return string CSS string
+	 *
+	 */
+	public function create_global_css_file(){
+
+		$typography = Karma_Typography::get_instance();
+		return $this->create_heading_css_file( $typography->typography_model->headings );
+
+	}
+
+
+
+	/**
+	 * Create heading css format that need to load in builder in frontend
+	 *
+	 * @param array $headings   Headings format
+	 *
+	 * @since    0.1.1
+	 * @return string CSS string
+	 *
+	 */
+	private function create_heading_css_file( $headings ){
+
+		$headings_style = '' ;
+		foreach ( $headings as $tag => $info ){
+			$headings_style .= $tag . '{' ;
+			foreach ( $info as $property => $value ){
+				if( 'font-varients' == $property  ){
+					$explode = explode( ' ', $value );
+					$headings_style .= 'font-weight:' . $explode[0] . ';' ;
+					if( isset( $explode[1] ) ){
+						$headings_style .= 'font-style:' . strtolower( $explode[1] ) . ';' ;
+					}
+				}else{
+					$headings_style .= $property . ':' . $value . ( ( 'font-size' == $property ) ? 'px;' : ';' );
+				}
+			}
+			$headings_style .= '}';
+		}
+
+		return $headings_style;
 
 	}
 

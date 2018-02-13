@@ -200,8 +200,6 @@ class Karma_Builder {
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-builder-core.php';
 
-
-
 		/**
 		 * The class responsible for manager stylesheet and script cache file in output
 		 */
@@ -227,8 +225,7 @@ class Karma_Builder {
 		 * The class responsible for define all elements controllers
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-shortcode-base.php';
-
-
+		
 		/**
 		 * The class responsible for Loading templates in frontend
 		 */

@@ -36,22 +36,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Karma_Builder_Setting_Panel {
 
 	const TITLE = 'title';
+
 	const TITLE_WITH_BACKGROUND = 'title-with-background';
+
 	const IMAGE = 'image';
+
 	const RANGE = 'range';
+
 	const TEXT = 'text';
+
 	const COLOR_PICKER = 'color-picker';
+
 	const RADIO_IMAGE = 'radio-image';
+
 	const RANGE_SLIDER = 'range-slider';
+
 	const GRID = 'grid';
+
 	const CHECK_BOX = 'check-box';
+
 	const IMAGE_POSITION = 'image-position';
+
 	const UNSPLASH = 'unsplash';
+
 	const SWITCH_PANEL = 'switch-panel';
+
 	const UPLOAD_IMAGE = 'upload-image';
+
 	const DROPDOWN = 'dropdown';
+
 	const TAB = 'tab';
 
+
+	/**
+	 * Load and register the sub templates in builder
+	 *
+	 * @since    0.1.0
+	 * @access   private
+	 */
 	private $extends = array(
 		'groups'	=>	'setting-panel-groups'
 	);

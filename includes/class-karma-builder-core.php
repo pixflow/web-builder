@@ -1,7 +1,7 @@
 <?php
 namespace KarmaBuilder\Core ;
 
-
+/** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 
 /**

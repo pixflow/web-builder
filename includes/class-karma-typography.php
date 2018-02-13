@@ -2,9 +2,35 @@
 
 namespace KarmaBuilder\TypographyManager ;
 
+/** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
+/**
+ * The file for management typography and default fonts
+ *
+ * A class definition that includes base attributes and functions of a typography manager
+ *
+ * @link       http://pixflow.net
+ * @since      0.1.1
+ *
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
+ */
+
+/**
+ * Typography class.
+ *
+ * This includes base attributes and functions of a Typography class.
+ *
+ *
+ * @since      0.1.1
+ * @package    Karma_Builder
+ * @subpackage Karma_Builder/includes
+ * @author     Pixflow <info@pixflow.net>
+ */
+
 class Karma_Typography{
+
 
 	CONST KARMA_FONT_OPTION = 'karma-builder-font-option' ;
 
@@ -19,14 +45,12 @@ class Karma_Typography{
 	CONST KARMA_HEADING_TRANSIENT = 'karma-builder-heading-transient' ;
 
 	/**
-	 * A static variable that contains an instance of Karma_Builder
+	 * It is an array that contains default fonts in builder
 	 *
-	 * @since    0.1.0
-	 * @access   private
-	 * @var      File_System    $instance    The reference to *Singleton* instance of this class.
+	 * @since    0.1.1
+	 * @access   protected
+	 * @var      array    $builder_default_fonts    Default fonts.
 	 */
-	private static $instance;
-
 	protected $builder_default_fonts = array(
 		'HelveticaNeue' => array( '400 Normal' ),
 		'arial'         => array( '400 Normal', '200 Normal' ),
@@ -35,8 +59,22 @@ class Karma_Typography{
 		'monospace'     => array( '400 Normal' ),
 	);
 
+	/**
+	 * It is an array that contains custom fonts with their url and name in builder
+	 *
+	 * @since    0.1.1
+	 * @access   protected
+	 * @var      array    $builder_default_custom_fonts    Custom fonts.
+	 */
 	protected $builder_default_custom_fonts = array();
 
+	/**
+	 * It is an array that contains Custom heading and paragraph format.
+	 *
+	 * @since    0.1.1
+	 * @access   protected
+	 * @var      array    $builder_default_heading_format    Custom heading and paragraph format.
+	 */
 	protected $builder_default_heading_format = array(
 		'h1'    => array(
 			'font-size'     => '70' ,
@@ -76,6 +114,15 @@ class Karma_Typography{
 
 	);
 
+
+	/**
+	 * It is an array that contains Custom heading and paragraph format and
+	 * Custom fonts and default fonts in builder.
+	 *
+	 * @since    0.1.1
+	 * @access   protected
+	 * @var      array    $typography_model
+	 */
 	public $typography_model = array(
 		'headings'      => array(),
 		'fonts'         => array(),
@@ -83,10 +130,19 @@ class Karma_Typography{
 	);
 
 	/**
+	 * A static variable that contains an instance of Karma_Builder
+	 *
+	 * @since    0.1.1
+	 * @access   private
+	 * @var      File_System    $instance    The reference to *Singleton* instance of this class.
+	 */
+	private static $instance;
+
+	/**
 	 * Init this class.
 	 *
 	 * @access   public
-	 * @since    0.1.0
+	 * @since    0.1.1
 	 */
 	public function __construct(){
 
@@ -99,7 +155,7 @@ class Karma_Typography{
 	 *
 	 * @access   public
 	 * @return   object The *Singleton* instance.
-	 * @since    0.1.0
+	 * @since    0.1.1
 	 */
 	public static function get_instance() {
 
@@ -112,10 +168,12 @@ class Karma_Typography{
 	}
 
 	/**
-	 * add font types to allowed file types for upload in media library
+	 * Add font types to allowed file types for upload in media library
+	 *
+	 * @param array $existing_mimes Allow upload fonts type
 	 *
 	 * @access   public
-	 * @return   array list of allowed files types to uploades
+	 * @return   array  list of allowed files types to upload
 	 * @since    0.1.1
 	 */
 	public function allow_upload_fonts( $existing_mimes = array() ) {
@@ -131,6 +189,13 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Check the current page is typography page or not
+	 *
+	 * @access   public
+	 * @since    0.1.1
+	 * @return   bool
+	 */
 	public static function check_typography_page(){
 
 		if( isset( $_GET['builder-page'] ) && 'karma-typography-page' === $_GET['builder-page'] ){
@@ -141,6 +206,13 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Load the basic templates of typography
+	 *
+	 * @access   public
+	 * @since    0.1.1
+	 * @return   void
+	 */
 	public function load_page_templates(){
 
 		$builder_views = Karma_Factory_Pattern::$builder_views;
@@ -148,6 +220,13 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Call and set the typography model in builder
+	 *
+	 * @access   public
+	 * @since    0.1.1
+	 * @return   void
+	 */
 	public function read_typography_font_formats(){
 
 		$this->get_default_fonts()->get_headings_format()->get_custom_fonts();
@@ -155,6 +234,13 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Get and set default fonts
+	 *
+	 * @access   protected
+	 * @since    0.1.1
+	 * @return   object The *Singleton* instance.
+	 */
 	protected function get_default_fonts(){
 
 		$font_list = get_transient( $this::KARMA_FONT_TRANSIENT );
@@ -169,6 +255,13 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Get and set headings formats
+	 *
+	 * @access   protected
+	 * @since    0.1.1
+	 * @return   object The *Singleton* instance.
+	 */
 	protected function get_headings_format(){
 
 		$heading_format = get_transient( $this::KARMA_HEADING_TRANSIENT );
@@ -184,11 +277,11 @@ class Karma_Typography{
 	}
 
 	/**
-	 * get list of custom fonts and add to typography model array
+	 * Get list of custom fonts and add to typography model array
 	 *
-	 * @access   public
-	 * @return   array typography model
+	 * @access   protected
 	 * @since    0.1.1
+	 * @return   object The *Singleton* instance
 	 */
 	protected function get_custom_fonts() {
 
@@ -205,6 +298,15 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Save typography font formats
+	 *
+	 * @param string    $typography Heading format
+	 *
+	 * @access   public
+	 * @since    0.1.1
+	 * @return   object The *Singleton* instance
+	 */
 	public function save_typography_font_formats( $typography ){
 
 		update_option( $this::KARMA_HEADING_OPTION, $typography );
@@ -213,6 +315,15 @@ class Karma_Typography{
 
 	}
 
+	/**
+	 * Save font formats
+	 *
+	 * @param string    $fonts Font format
+	 *
+	 * @access   public
+	 * @since    0.1.1
+	 * @return   object The *Singleton* instance
+	 */
 	public function save_fonts( $fonts ){
 
 		update_option( $this::KARMA_FONT_OPTION, $fonts );
@@ -224,8 +335,10 @@ class Karma_Typography{
 	/**
 	 * save custom fonts
 	 *
-	 * @since 0.1.0
-	 * @return array - array of elements gizmo
+	 * @param string    $custom_fonts Custom format
+	 *
+	 * @since 0.1.1
+	 * @return   object The *Singleton* instance
 	 */
 	public function save_custom_fonts( $custom_fonts ){
 

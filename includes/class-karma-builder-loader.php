@@ -157,7 +157,7 @@ class Karma_Builder_Loader {
 	public function prepare_builder(){
 
 		if( 'true' == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
-			remove_filter('the_content','wpautop');
+			remove_filter( 'the_content','wpautop' );
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
 		}
@@ -179,6 +179,7 @@ class Karma_Builder_Loader {
 		$builder_views->load_builder_iframe_templates();
 		$stylesheet = Karma_Factory_Pattern::$stylesheet;
 		$stylesheet->create_default_styles();
+
 		// Apply filter
 		add_filter('body_class', array( $this ,'add_custom_body_classes') );
 
