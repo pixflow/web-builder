@@ -402,7 +402,7 @@
 		destroy: function (){
 
 			var parentKey   = this.model.get( 'parent_key' ),
-				element_key = this.model.get( 'element_key' ),
+				elementKey = this.model.get( 'element_key' ),
 				elementName = this.model.get( 'shortcode_name' );
 
 			this.beforeDeleteElements();
@@ -419,7 +419,7 @@
 
 			// Remove view from DOM
 			this.remove();
-			this.removeExtraAssets( element_key );
+			this.removeExtraAssets( elementName.replace( /_/g, '-') + '-' + elementKey );
 			karmaBuilder.karmaModels.remove( this.model );
 			Backbone.View.prototype.remove.call( this );
 			this.afterDeleteElement( parentKey, elementName );
@@ -659,7 +659,7 @@
 
 			var style  = $( '#style-' + elementID ),
 				script = $( '#script-' + elementID );
-
+			console.log( '#style-' + elementID )
 			if ( script.length ){
 				script.remove();
 			}
