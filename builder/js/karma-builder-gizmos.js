@@ -49,16 +49,20 @@
 		 *  @summary Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
-		+ '<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s " data-direction="both" style="height:{{ data.space }}px" >'
-		+ '<div class="karma-spacing-dot-container karma-top-spacing-height">'
+		+ '<div class="karma-spacing karma-top-spacing   " data-direction="both" style="height:{{ data.space }}px" >'
+		+ '<div class="karma-both-spacing-handler karma-both-spacing-handler-top ui-resizable-handle ui-resizable-s">'
+		+ '<div class="karma-spacing-dot-container karma-top-spacing-height ">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-top-hover"><div class="spacing-dot-hover target-moving"></div></div>'
 		+ '</div>'
 		+ '</div>'
-		+ '<div class="karma-spacing karma-bottom-spacing ui-resizable-handle  ui-resizable-s " data-direction="both" style="height:{{ data.space }}px">'
+		+ '</div>'
+		+ '<div class="karma-spacing karma-bottom-spacing  " data-direction="both" style="height:{{ data.space }}px">'
+		+ '<div class="karma-both-spacing-handler karma-both-spacing-handler-bottom ui-resizable-handle  ui-resizable-s">'
 		+ '<div class="karma-spacing-dot-container">'
 		+ '<div class="spacing-dot"></div>'
 		+ '<div class="spacing-bottom-hover"><div class="spacing-dot-hover"></div></div>'
+		+ '</div>'
 		+ '</div>'
 		+ '</div>'
 		+ '</div>' ,
@@ -272,6 +276,7 @@
 					maxHeight 	: 700,
 					minHeight 	: 0,
 					handles 	: {},
+					cursor		: 's-resize',
 					scroll 		: true ,
 					start: function ( event ) {
 						karmaSection.addClass( "karma-resizable-active" );

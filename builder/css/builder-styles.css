@@ -2844,6 +2844,7 @@ html {
           transition-duration: 0.3s; }
 
 .karma-builder-element[data-name="karma_section"] {
+  cursor: all-scroll;
   position: relative; }
 
 .karma-background-section {
@@ -4026,12 +4027,15 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
       width: 4px; }
   .karma-builder-environment .karma-builder-element.karma-active-section.karma-resizable-active .karma-top-spacing .spacing-dot {
     background-color: #419CF8; }
-  .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-top-spacing {
+  .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-both-spacing-handler {
+    width: 100%;
+    height: 30px;
     cursor: ns-resize; }
-  .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-bottom-spacing {
-    cursor: ns-resize; }
-    .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-bottom-spacing.ui-resizable-resizing .spacing-dot {
-      background-color: #419CF8; }
+    .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-both-spacing-handler.karma-both-spacing-handler-bottom {
+      bottom: 0;
+      position: absolute; }
+  .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-bottom-spacing.ui-resizable-resizing .spacing-dot {
+    background-color: #419CF8; }
   .karma-builder-environment .karma-builder-element.karma-active-column .column-gizmo-group {
     background-color: #9CA4AC;
     cursor: pointer;
