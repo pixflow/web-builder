@@ -3206,9 +3206,9 @@ div.media-modal {
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
   display: flex;
+  left: 710px;
   max-width: 330px;
   position: fixed;
-  left: 710px;
   top: 90px;
   z-index: 100; }
   #karma-element-setting-panel-container .karma-hide-controller {
@@ -3224,12 +3224,14 @@ div.media-modal {
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header {
       width: 285px;
       height: 46px;
-      background: linear-gradient(270deg, #8876FC 0%, #419CF8 100%);
+      background: #fff;
       border-radius: 4px 4px 0 0;
+      box-shadow: 0 2px 4px 0 rgba(57, 73, 89, 0.1);
       cursor: all-scroll;
-      position: relative; }
+      position: relative;
+      z-index: 1; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title {
-        color: #fff;
+        color: #394959;
         font-family: "HelveticaNeue_med";
         padding: 16px 0 15px 20px;
         text-align: left;
@@ -3242,15 +3244,13 @@ div.media-modal {
         cursor: pointer;
         position: absolute; }
         #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg {
-          display: none;
           width: 24.49px;
           height: 24.49px;
           top: 9.51px;
           right: 7px;
           bottom: auto;
           left: auto;
-          background-color: rgba(255, 255, 255, 0.18);
-          border-radius: 19px;
+          display: none;
           margin-right: 10px; }
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg svg * {
             stroke: #fff !important; }
@@ -3261,11 +3261,9 @@ div.media-modal {
           right: 7px;
           bottom: auto;
           left: auto;
-          background-color: rgba(255, 255, 255, 0.18);
-          border-radius: 19px;
           margin-right: 5px; }
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
-            fill: #fff; }
+            stroke: #747F8A; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
       overflow: hidden; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {

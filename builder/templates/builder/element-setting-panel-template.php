@@ -20,15 +20,15 @@
 				</div>
 
 				<div class="karma-setting-panel-close-svg">
-					<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						<title>Close</title>
+					<svg width="11px" height="10px" viewBox="0 0 11 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<title>Group 15</title>
 						<desc>Created with Sketch.</desc>
 						<defs></defs>
-						<g id="SVG-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-							<g id="Close" fill="#394959">
-								<g id="Group" transform="translate(12.192388, 12.192388) rotate(-315.000000) translate(-12.192388, -12.192388) translate(5.692388, 5.692388)">
-									<rect id="Rectangle-4" transform="translate(6.500000, 6.500000) rotate(90.000000) translate(-6.500000, -6.500000) " x="6" y="0" width="1" height="13" rx="0.5"></rect>
-									<rect id="Rectangle" x="6" y="0" width="1" height="13" rx="0.5"></rect>
+						<g id="close-svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g id="close-icon" transform="translate(-555.000000, -190.000000)" stroke="#445363" stroke-width="0.7" fill="#445363">
+								<g id="close-svg-icon" transform="translate(556.000000, 190.000000)">
+									<rect id="close-1" transform="translate(4.666667, 5.000000) rotate(45.000000) translate(-4.666667, -5.000000) " x="4.16666667" y="-1" width="1" height="12" rx="0.5"></rect>
+									<rect id="close-2" transform="translate(4.636337, 5.030330) rotate(-45.000000) translate(-4.636337, -5.030330) " x="4.1792298" y="-0.969669914" width="1" height="12" rx="0.5"></rect>
 								</g>
 							</g>
 						</g>
