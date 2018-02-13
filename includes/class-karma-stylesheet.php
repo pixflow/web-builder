@@ -114,12 +114,13 @@ class Karma_Stylesheet {
 		$elements = apply_filters( 'karma_elements', $builder_instance::$element_filename );
 		$block = '';
 		foreach ( $elements as $element ){
-			$class_name = 'Karma_' . ucfirst( $element );
+			$class_name = Karma_Factory_Pattern::$builder->get_element_valid_name( $element );
+			$class_name = '\\KarmaBuilder\Elements\\Karma_' . $class_name;
 			if ( class_exists( $class_name ) ) {
 				$class_name::$element_attributes = $class_name::get_element_default_attributes();
 				$elements_style_attributes = array(
-					'selector' =>  '.karma-builder-element[data-name="' . strtolower( $class_name ) . '"]',
-					'css'      => $class_name::get_css_attributes()
+					'selector' =>  '.karma-builder-element[data-name="' . strtolower( $class_name::$element_name ) . '"]',
+					'css'      =>   $class_name::get_css_attributes()
 				);
 				$block .= $this->create_css_block( $elements_style_attributes );
 			}

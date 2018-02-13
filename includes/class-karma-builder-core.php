@@ -3,6 +3,7 @@ namespace KarmaBuilder\Core ;
 
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 /**
  * The file that defines the builder core class
@@ -307,9 +308,7 @@ class Karma_Builder_Core{
 	 */
 	public function add_default_attributes( $element_name, $element_attributes ) {
 
-		$element_name = explode( '_', $element_name );
-		$element_class_name = array_map( array( $this, 'create_validate_element_name' ), $element_name );
-		$element_class_name = implode( '_', $element_class_name );
+		$element_class_name = Karma_Factory_Pattern::$builder->get_element_valid_name( $element_name );
 		$element_class_name = '\\KarmaBuilder\Elements\\' . $element_class_name;
 		$default_attributes = $element_class_name::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );

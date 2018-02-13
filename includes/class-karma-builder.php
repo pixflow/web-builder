@@ -630,7 +630,9 @@ class Karma_Builder {
 	 * @return    Karma_Builder_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
+
 		return $this->loader;
+
 	}
 
 	/**
@@ -640,7 +642,42 @@ class Karma_Builder {
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
+
 		return KARMA_BUILDER_VERSION;
+
+	}
+
+	/**
+	 * Convert the element into their valid name
+	 *
+	 * @param   string  $element_name       Element name
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return  string    Element valid name
+	 */
+	public function get_element_valid_name( $element_name ){
+
+		$element_name = explode( '_', $element_name );
+		$element_class_name = array_map( array( $this, 'create_validate_element_name' ), $element_name );
+		$element_class_name = implode( '_', $element_class_name );
+		return $element_class_name;
+
+	}
+
+	/**
+	 * convert all part's of array to uppercase
+	 *
+	 * @param   string  $name       value of array
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string
+	 */
+	private function create_validate_element_name( $name ){
+
+		return ucfirst( $name );
+
 	}
 
 }

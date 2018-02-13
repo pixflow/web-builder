@@ -5,6 +5,7 @@ namespace KarmaBuilder\ElementsManager ;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
 
+
 if ( ! defined( 'ABSPATH' ) ) {
 	/** Exit if accessed directly. */
 	die('Silence is golden');
@@ -230,7 +231,7 @@ class Karma_Shortcode_Base {
 	 *
 	 * @since    0.1.0
 	 * @access   protected
-	 * @return	void
+	 * @return	object
 	 */
 	protected function render_style(){
 

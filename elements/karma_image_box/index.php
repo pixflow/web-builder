@@ -161,6 +161,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 					array(
 						'postfix'	=> ' .karma-image-text-box',
 						'property'	=> array(
+							'background-color'	=>  self::$element_attributes[ 'backgroundcolor' ]  ,
 							'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
 							'height'			=> self::$element_attributes[ 'imageheight' ] . 'px',
 							'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
@@ -171,14 +172,6 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 						'property'	=> array(
 							'background-color'		=>  self::$element_attributes[ 'overlaycolor' ],
 							'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
-						)
-					),
-					array(
-						'postfix'	=> ' .karma-image-text-box',
-						'property'	=> array(
-								'background-color'	=>  self::$element_attributes[ 'backgroundcolor' ]  ,
-								'background-image'	=> ( 'none' == self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
-								'height'			=> self::$element_attributes[ 'imageheight' ] . 'px'
 						)
 					),
 					array(
