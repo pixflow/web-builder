@@ -146,7 +146,7 @@
       .karma-color-picker-container .karma-color-picker-preset-colors .karma-color-picker-choose-color:before {
         content: '+';
         display: block;
-        background: non; }
+        background: none; }
       .karma-color-picker-container .karma-color-picker-preset-colors .karma-color-picker-choose-color .spectrum-color-preview {
         display: inline-block;
         height: 1px;
@@ -157,6 +157,7 @@
       line-height: 19px;
       text-align: center; }
       .karma-color-picker-container .karma-color-picker-preset-colors .karma-no-color:before {
+        background: none;
         content: 'x';
         display: block; }
       .karma-color-picker-container .karma-color-picker-preset-colors .karma-no-color.selected {

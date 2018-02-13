@@ -110,6 +110,7 @@
 			line-height: 19px;
 			text-align: center;
 			&:before {
+				background: none;
 				content: 'x';
 				display: block;
 			}

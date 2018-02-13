@@ -527,12 +527,15 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
  */
 karmaColorPicker.prototype.addCurrentColor = function ( color, type ) {
 
+	color = color.replace( /\s/g, '' );
+	if( 'rgba(0,0,0,0)' == color ) {
+		return;
+	}
 	if ( this.activeInput.classList.contains( 'karma-colorpicker-main-color' ) ) {
 		var active = 'main';
 	} else {
 		var active = 'second';
 	}
-	color = color.replace( /\s/g, '' );
 	var currentColorRgb = this.hexToRgb( color ).toLowerCase();
 	var currentPallet = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + this.id + '"] .karma-color-picker-preset-color[data-color="' + currentColorRgb + '"]' );
 	if ( null != currentPallet ) {
