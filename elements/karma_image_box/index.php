@@ -2,6 +2,7 @@
 
 namespace KarmaBuilder\Elements;
 use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 
 /**
  * Image and text box element class.
@@ -97,7 +98,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				</div>
 				<div class="karma-image-text-box-link">
 					<?php echo $link_content; ?>
-					<div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
+					<div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
 				</div>
 			</div>
 		</div>
@@ -130,7 +131,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				 . '</div>'
 				 . '<div  class="karma-image-text-box-link">'
 				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.textLinkAction }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
-				 . '<div class="karma-image-text-box-link-shape">' .  karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
+				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 				 . '</div>'
 				 . '</div>'
 

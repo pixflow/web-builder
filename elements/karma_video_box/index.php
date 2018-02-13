@@ -1,6 +1,7 @@
 <?php
 namespace KarmaBuilder\Elements;
 use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 
 /**
  * video box element class.
@@ -90,7 +91,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			<div class="karma-video-box-overlay"></div>
 			<div class="karma-video-box-container-player">
 				<div class="karma-video-box-player">
-					<?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/player.svg' ); ?>
+					<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/player.svg' ); ?>
 				</div>
 			</div>
 			<div class="karma-video-box-text-container">
@@ -102,7 +103,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 				</div>
 				<div class="karma-video-box-link">
 					<?php echo $link_content; ?>
-					<div class="karma-video-box-link-shape" style="display : <?php echo $display; ?>"><?php print karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
+					<div class="karma-video-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
 				</div>
 			</div>
 		</div>
@@ -127,7 +128,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'<div data-url="{{ data.attributes.shortcode_attributes.videourl}} " class="karma-video-box karma-video-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-video-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-video-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-video-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
 			. '<div class="karma-video-box-overlay"></div>'
 			. '<div class="karma-video-box-container-player">'
-			. '<div class="karma-video-box-player">'. karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/player.svg' ). '</div>'
+			. '<div class="karma-video-box-player">'. Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/player.svg' ). '</div>'
 			. '</div>'
 			. '<div class="karma-video-box-text-container">'
 			. '<div  class="karma-video-box-title">'
@@ -138,7 +139,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			. '</div>'
 			. '<div  class="karma-video-box-link">'
 			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.textLinkAction }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
-			. '<div class="karma-video-box-link-shape">' .  karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
+			. '<div class="karma-video-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 			. '</div>'
 			. '</div>'
 
