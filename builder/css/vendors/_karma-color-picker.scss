@@ -94,6 +94,18 @@
 				width: 1px;
 			}
 		}
+		.karma-no-color {
+			color: #B0B6BD;
+			line-height: 19px;
+			text-align: center;
+			&:before {
+				content: 'x';
+				display: block;
+			}
+			&.selected {
+				background: none;
+			}
+		}
 	}
 }
 

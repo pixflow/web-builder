@@ -126,6 +126,23 @@ karmaColorPicker.prototype.createColorPickerIcon = function () {
 };
 
 /**
+ * @summary create no color preset
+ *
+ * @since 0.1.1
+ * @returns {void}
+ */
+karmaColorPicker.prototype.createNoColor = function ( presetColors ) {
+
+	var noColor = document.createElement( 'span' );
+	noColor.setAttribute( 'class', 'karma-color-picker-preset-color karma-no-color' );
+	noColor.setAttribute( 'data-color', 'rgba(0,0,0,0)' );
+	noColor.style.backgroundColor = 'rgba(0,0,0,0)';
+	this.presetColorsEvent( noColor );
+	presetColors.appendChild( noColor );
+
+};
+
+/**
  * @summary create color picker popup
  *
  * @since 0.1.0
@@ -159,6 +176,7 @@ karmaColorPicker.prototype.createColorPickerPopup = function () {
 	// Create preset colors
 	var presetColors = document.createElement( 'div' );
 	presetColors.setAttribute( 'class', 'karma-color-picker-preset-colors' );
+	this.createNoColor( presetColors );
 	for ( var i = 0; that.options.presetColors.length > i; i++ ) {
 		var presetColor = document.createElement( 'span' );
 		presetColor.setAttribute( 'class', 'karma-color-picker-preset-color' );
