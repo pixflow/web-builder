@@ -664,9 +664,7 @@ var karmaBuilder = karmaBuilder || {};
 
 					that.scroll( UI, event );
 					helperKey = UI.helper.attr('data-element-key');
-					console.log(event)
 					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : 'hidden' });
-					//$( "#karma-builder-layout" ).sortable( "option", "cursorAt", { left: event.clientX } );
 
 				},
 				beforeStop: function () {
