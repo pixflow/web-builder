@@ -26,16 +26,22 @@
 		updateColor : function () {
 
 			var that = this;
-			$( this.selector + ' ' + this.orginalSelector ).on( 'change/updateColor', function ( event, color ) {
-				if( 'undefined' != typeof that.data.model ){
+			$( this.selector + ' ' + this.orginalSelector ).on( 'change/updateColor', function ( event, color, secondColor ) {
+				if ( secondColor && 'undefined' != typeof that.data.secondColorModel ) {
 					var modelNameChange = {};
-					modelNameChange[ that.data.model ] = color;
+					modelNameChange[ that.data.secondColorModel ] = color;
 					that.elementView.setAttributes( modelNameChange, false );
-				}else{
-					that.elementView.setAttributes( { 'color' : color }, false );
+				} else {
+					if ( 'undefined' != typeof that.data.model ) {
+						var modelNameChange = {};
+						modelNameChange[ that.data.model ] = color;
+						that.elementView.setAttributes( modelNameChange, false );
+					} else {
+						that.elementView.setAttributes( { 'color': color }, false );
+					}
 				}
 
-			});
+			} );
 
 		},
 
