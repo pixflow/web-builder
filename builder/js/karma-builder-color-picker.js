@@ -143,6 +143,7 @@ karmaColorPicker.prototype.createColorPickerIcon = function () {
 /**
  * @summary create no color preset
  *
+ * @param  {object} preset colors element
  * @since 0.1.1
  * @returns {void}
  */
