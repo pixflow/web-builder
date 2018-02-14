@@ -2775,7 +2775,7 @@ html {
   from {
     height: 1px; }
   to {
-    height: 81px; } }
+    height: 8px; } }
 .karma-builder-element[data-name="karma_section"].ui-sortable-helper {
   animation: scale  100ms linear;
   animation-fill-mode: forwards; }
