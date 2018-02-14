@@ -635,7 +635,8 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		makeSectionsSortable: function () {
 
-			var that = this;
+			var that = this,
+				helperKey;
 			// Add beforeStart event to jQuery ui sortable
 			var oldMouseStart = $.ui.sortable.prototype._mouseStart;
 			$.ui.sortable.prototype._mouseStart = function ( event, overrideHandle, noActivation ) {
@@ -646,6 +647,7 @@ var karmaBuilder = karmaBuilder || {};
 			$( "#karma-builder-layout" ).sortable( {
 				cursor: "move",
 				delay: 100,
+				helper : "clone",
 				cancel: ".karma-active-element",
 				items: ".karma-builder-element[data-name='karma_section']",
 				update: function () {
@@ -661,6 +663,10 @@ var karmaBuilder = karmaBuilder || {};
 				sort: function ( event, UI ) {
 
 					that.scroll( UI, event );
+					helperKey = UI.helper.attr('data-element-key');
+					console.log(event)
+					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : 'hidden' });
+					//$( "#karma-builder-layout" ).sortable( "option", "cursorAt", { left: event.clientX } );
 
 				},
 				beforeStop: function () {
@@ -671,6 +677,7 @@ var karmaBuilder = karmaBuilder || {};
 				stop: function () {
 
 					clearInterval( that.flyScroll );
+					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : '' });
 
 				}
 			} );
