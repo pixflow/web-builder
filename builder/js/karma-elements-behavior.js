@@ -51,11 +51,9 @@ var karmaBuilder = karmaBuilder || {};
 			var domNode = e.target.closest( ".karma-new-section-layout" ),
 				newGrid = JSON.parse( domNode.getAttribute( 'data-value' ) ),
 				placeholder = document.getElementById( 'karma-builder-layout' ) ,
-				elementName = 'karma_section',
-				validateModel = KarmaView.getValidateElementModel( placeholder, elementName ),
-				model = karmaBuilder.karmaModels.add( validateModel );
-			placeholder.innerHTML= KarmaView.createBuilderModel( model );
-			var newSection = KarmaView.createNewElement( elementName.replace( 'karma_', '' ), model, true );
+				elementName = 'karma_section';
+
+			var newSection = KarmaView.createKarmaElement( [ placeholder, 'in' ], elementName );
 			newSection.changeRowLayout( newGrid );
 			KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 			newSection.$el.click();
@@ -110,7 +108,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @param   {boolean}   shouldRender    Call render method or not
 		 *
 		 * @since 0.1.0
-		 * @returns {void}
+		 * @returns {object}
 		 */
 		createNewElement : function ( elementName, model, shouldRender ) {
 
@@ -200,9 +198,9 @@ var karmaBuilder = karmaBuilder || {};
 		/**
 		 * @summary Prepare elements before drop
 		 *
-		 * @param {object}  	whereToDrop DOM node
-		 * @param { string }  elementName 	Element name
-		 * @param { string }  type 			Element type
+		 * @param {object}  whereToDrop     DOM node
+		 * @param {string}  elementName 	Element name
+		 * @param {string}  type 			Element type
 		 *
 		 * @since   0.1.0
 		 * @returns {boolean}
@@ -212,66 +210,103 @@ var karmaBuilder = karmaBuilder || {};
 			if( null == whereToDrop ){
 				return false;
 			}
-			var validateModel = this.getValidateElementModel( whereToDrop, elementName, type ),
-				model = karmaBuilder.karmaModels.add( validateModel );
 
-			whereToDrop.outerHTML = KarmaView.createBuilderModel( model );
+			if (  "karma_unsplash_image" == type ){
+				var imageUrl = window.top.document.querySelector( '.ui-draggable-dragging' ).getAttribute('data-full-url');
+				var	modelAttributes = {
+					shortcode_attributes: {
+						imgurl: imageUrl
+					}
+				}
+			}
+
+			var viewObject = this.createKarmaElement( [ whereToDrop, 'in' ], elementName, modelAttributes );
+			this.$el.trigger( 'karma/after/dropElement', [ viewObject.model.get('parent_key') ] );
+
+		},
+
+
+		/**
+		 * @summary Create element
+		 *
+		 * @param   {object}  	placeholder
+		 * @param   {string}  	elementName
+		 * @param   {object}    elementModel
+		 *
+		 * @example You should pass the full the element name like karma_image or karma_image_text_box.
+		 * for elementModel you should pass the object that contains new model values if you want to change.
+		 *
+		 * for placeholder you should use karma valid placeholder like elements and section placeholders or empty
+		 * placeholder for column .
+		 * 
+		 * The second value of placeholders should be contains the position of new element and accept this values :
+		 * before, in , after
+		 *
+		 * @since   0.1.0
+		 * @returns {object|bool}    Instance of element view or false on failure
+		 */
+		createKarmaElement : function( placeholder, elementName, elementModel ){
+
+			if( ! _.isArray( placeholder ) ){
+				console.error('Placeholder should be array, ' + typeof placeholder + ' given.' );
+				return false;
+			}
+
+			elementModel = ( 'undefined' == typeof elementModel ) ? {} : elementModel;
+			var backboneModel = karmaBuilder.karmaModels.add( this.getValidateElementModel( placeholder[0], elementName, elementModel ) );
+
+			switch ( placeholder[1] ){
+				case 'before' :
+					placeholder[0].insertAdjacentHTML( 'beforebegin', this.createBuilderModel( backboneModel ) );
+					break;
+				case 'in' :
+					placeholder[0].outerHTML = this.createBuilderModel( backboneModel );
+					break;
+				case 'after' :
+					placeholder[0].insertAdjacentHTML( 'afterend', this.createBuilderModel( backboneModel ) );
+					break;
+				default :
+					console.error('Position of placeholder should be given' );
+					return false;
+					break;
+			}
+
 			elementName = elementName.replace( /_/g, '' );
-			KarmaView.createNewElement( elementName.replace( 'karma', '' ), model, true );
-			this.$el.trigger( 'karma/after/dropElement', [ validateModel['parent_key'] ] );
+			elementName = elementName.replace( 'karma', '' );
+			var viewObject = this.createNewElement( elementName, backboneModel, true );
+			return viewObject;
 
 		},
 
 		/**
 		 * @summary Return validate model for initialize new element
 		 *
-		 * @param {object}  whereToDrop DOM node
-		 * @param { string }  elementName 	Element name
-		 * @param { string }  type 			Element type
+		 * @param {object}  whereToDrop     DOM node
+		 * @param {string}  elementName 	Element name
+		 * @param {object}  elementModel
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
 		 */
-		getValidateElementModel : function ( whereToDrop, elementName, type ) {
+		getValidateElementModel : function ( whereToDrop, elementName, elementModel ) {
 
 			var parentKey = whereToDrop.closest('.karma-builder-element'),
-				modelAttributes = $( document ).triggerHandler( 'karma/before/createElement/' + elementName );
+				modelAttributes = $( document ).triggerHandler( 'karma/before/createElement/' + elementName ),
+				shortcodeAttributes = jQuery.extend( modelAttributes, elementModel.shortcode_attributes );
 
-			if (  "karma_unsplash_image" == type ){
-				var imageUrl = window.top.document.querySelector( '.ui-draggable-dragging' ).getAttribute('data-full-url');
-				modelAttributes.imgurl = imageUrl;
-			}
+			delete elementModel.shortcode_attributes;
+			delete elementModel.element_key ;
+			var defaultModel =  jQuery.extend( {
+					order 					: 1 ,
+					element_key				: KarmaView.createNewElementKey(),
+					shortcode_name 			: elementName,
+					shortcode_content		: '',
+					parent_key              : ( null == parentKey ) ? '' : parentKey.getAttribute('data-element-key')
+			} , elementModel );
 
+			defaultModel['shortcode_attributes'] = shortcodeAttributes;
+			return defaultModel;
 
-			return {
-				order 					: 1 ,
-				element_key				: KarmaView.createNewElementKey(),
-				shortcode_name 			: elementName,
-				shortcode_content		: '',
-				shortcode_attributes	: modelAttributes,
-				parent_key :  ( null == parentKey ) ? '' : parentKey.getAttribute('data-element-key')
-			}
-
-		},
-
-		/**
-		 * @summary Update model default value with real value in drop
-		 *
-		 * @param { DOM node }  element 		New element to make it backbone element
-		 * @param {object}  	modelAttributes Valid element model
-		 *
-		 * @since   0.1.0
-		 * @returns {object}  updated model attributes with real values;
-		 */
-		newModelAttributes : function ( element, modelAttributes) {
-
-			if (  "karma_unsplash_image" == element ){
-				var imageUrl = document.querySelector( '.ui-draggable-dragging' ).getAttribute('data-full-url');
-				modelAttributes.imgurl = imageUrl;
-				return modelAttributes;
-			}
-
-			return modelAttributes;
 
 		},
 
@@ -677,23 +712,7 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-		/**
-		 * @summary Render elements and their childes
-		 *
-		 * @param   {object}    elementsModel
-		 * @param   {object}    elementView
-		 *
-		 * @since   0.1.0
-		 * @returns {void}
-		 */
-		renderElementsChildes : function ( elementsModel, elementView ) {
 
-			var that = this,
-				placeholder = that.getPlaceholder( elementView );
-
-			this.renderElements( placeholder, elementsModel , elementView );
-
-		},
 
 		/**
 		 * @summary Get the correct placeholder
@@ -732,23 +751,23 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		renderElements : function( placeholder, elementModel, elementView ){
 
-			elementModel.parent.element_key = this.createNewElementKey();
-			elementModel.parent.order = 1;
-			var newBackboneModel = karmaBuilder.karmaModels.add( elementModel.parent ),
-				elementName = newBackboneModel.get('shortcode_name').replace( 'karma_', '' );
+			var elementName = elementModel.parent.shortcode_name;
 
-			if( 'section' == elementName ){
-				placeholder.insertAdjacentHTML( 'afterend', this.createBuilderModel( newBackboneModel ) );
-				var newView = this.createNewElement( elementName, newBackboneModel, true ),
+			if( 'karma_section' == elementName ){
+
+				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementView.currentGrid();
+
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
 				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
-			}else if( 'section' != elementName && 'column' != elementName ){
-				placeholder.insertAdjacentHTML( 'afterend', this.createBuilderModel( newBackboneModel ) );
-				var newView = this.createNewElement( elementName, newBackboneModel, true );
-				this.$el.trigger( 'karma/after/dropElement', [ newBackboneModel.get('parent_key') ] );
+
+			}else if( 'karma_section' != elementName && 'karma_column' != elementName ){
+
+				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent  );
+				this.$el.trigger( 'karma/after/dropElement', [ newView.model.get('parent_key') ] );
+
 			}
 
 			this.createStyleSheetForElements( newView.model.attributes.shortcode_attributes, newView );
@@ -757,22 +776,23 @@ var karmaBuilder = karmaBuilder || {};
 
 		/**
 		 * @summary create style tag for models of page
+		 * This function just call the specify model that need to call render_css model
 		 *
-		 * @param   {Array}    models
+		 * @param   {object}    models
 		 * @param   {object}    elementView
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
 		 */
-		//@TODO it should be refactor and delete this function
 		createStyleSheetForElements : function( models, elementView ){
 
 			_.each( models, function ( value, model ) {
 				if( 'function' == typeof elementView[ model ] ){
-					elementView[ model ]();
+					if( elementView[ model ].toString().match(/this.renderCss\(/i) ){
+						elementView[ model ]();
+					}
 				}
 			} );
-
 
 		},
 
@@ -792,29 +812,6 @@ var karmaBuilder = karmaBuilder || {};
 			} );
 			childes = _.sortBy( childes, 'order' )
 			return childes;
-
-		},
-
-		/**
-		 * @summary Prevent from scrolling parent element when scrolling on child element
-		 *
-		 * @param {Object}  selector    Javascript selector
-		 *
-		 * @returns {void}
-		 */
-		preventFromScrollingOnParent : function( selector ) {
-
-			//FF doesn't recognize mousewheel as of FF3.x
-			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) )? "DOMMouseScroll" : "mousewheel"
-			selector.on( mouseWheelEvent, function ( e ) {
-
-				var event = e.originalEvent,
-					direction = event.wheelDelta || -event.detail;
-
-				this.scrollTop += ( direction < 0 ? 1 : -1 ) * 30;
-				e.preventDefault();
-
-			});
 
 		},
 
@@ -849,11 +846,7 @@ var karmaBuilder = karmaBuilder || {};
 					element.order = 1;
 					element.parent_key = parentKey;
 
-					var newBackboneModel = karmaBuilder.karmaModels.add( element ),
-						elementName = newBackboneModel.get('shortcode_name').replace( 'karma_', '' );
-
-					placeholder.outerHTML = that.createBuilderModel( newBackboneModel );
-					var elementView = that.createNewElement( elementName, newBackboneModel, true );
+					var elementView = that.createKarmaElement( [ placeholder, 'in' ], element.shortcode_name, element  );
 					that.createStyleSheetForElements( elementView.model.attributes.shortcode_attributes, elementView );
 
 				} );
@@ -864,6 +857,31 @@ var karmaBuilder = karmaBuilder || {};
 			} );
 
 		},
+
+
+		/**
+		 * @summary Prevent from scrolling parent element when scrolling on child element
+		 *
+		 * @param {Object}  selector    Javascript selector
+		 *
+		 * @returns {void}
+		 */
+		preventFromScrollingOnParent : function( selector ) {
+
+			//FF doesn't recognize mousewheel as of FF3.x
+			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) )? "DOMMouseScroll" : "mousewheel"
+			selector.on( mouseWheelEvent, function ( e ) {
+
+				var event = e.originalEvent,
+					direction = event.wheelDelta || -event.detail;
+
+				this.scrollTop += ( direction < 0 ? 1 : -1 ) * 30;
+				e.preventDefault();
+
+			});
+
+		},
+
 
 		/**
 		 * @summary Order sections after drop or sortable

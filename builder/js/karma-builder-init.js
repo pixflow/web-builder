@@ -34,7 +34,7 @@
 			'karma/after/finishElementPanel'            			            : 'makeElementsDraggable',
 			'click .karma-blank-page-simple-layout .karma-new-section-layout'	: 'createNewSection',
 			'click .karma-blank-page-section-link'								: 'openSectionPanel',
-			'karma/callParent'                                                  : 'callParent'
+			'karma/callParent'                                                  : 'callParent',
 
 		},
 
@@ -57,6 +57,8 @@
 			console.log('%c Please dont modify Karmabuilder models and save it, it can destroy your content! ', 'background: #cc1526; color: #BFF8F8');
 
 		},
+
+
 
 		/**
 		 * @summary return builder params value

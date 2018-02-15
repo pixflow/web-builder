@@ -865,14 +865,13 @@
 				that = this;
 			this.el.insertAdjacentHTML( 'afterend', newSectionPanel );
 			this.$el.next( '.karma-new-section' ).find( '.karma-new-section-layout' ).on( 'click', function ( e ) {
-				var domNode = $(this)[0],
+				
+				var domNode = $( this )[0],
 					newGrid = JSON.parse(domNode.getAttribute( 'data-value' ) ),
 					placeholder = document.querySelector('.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
-					elementName = 'karma_section',
-					validateModel = KarmaView.getValidateElementModel( placeholder, elementName ),
-					model = karmaBuilder.karmaModels.add( validateModel );
-				placeholder.insertAdjacentHTML( 'afterend', KarmaView.createBuilderModel( model ) );
-				var newSection = KarmaView.createNewElement( elementName.replace('karma_', ''), model, true);
+					elementName = 'karma_section';
+
+				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName  );
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 				KarmaView.reorderSections();
