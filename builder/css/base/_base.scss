@@ -19,6 +19,7 @@ body {
 		@include box( 100%, 1px );
 		@include element_direction( $bottom: 0, $left: 0 );
 		color: $builder-main-color-3;
+		position: absolute;
 		margin : 20px 0 0;
 	}
 
@@ -29,6 +30,7 @@ body {
 		margin: 0;
 		position: absolute;
 	}
+
 }
 
 .karma-builder-element{

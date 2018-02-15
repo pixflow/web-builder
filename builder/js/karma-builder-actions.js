@@ -10,7 +10,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 			'click .builder-publish'                    : 'karmaPublish',
 			'karma/finish/animation'                    : 'publishAnimation',
-			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml'
+			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml',
 
 		},
 

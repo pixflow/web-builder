@@ -1,1 +1,17 @@
-/* _-_-_- layout/NAVIGATION -_-_-_ */
+.karma-builder-toolbar{
+	box-shadow: none;
+	.karma-builder-left{
+		padding-left: 0;
+	}
+	.karma-builder-right{
+		padding-right: 9px;
+		.karma-builder-controls{
+			ul .builder-publish{
+				display: none;
+			}
+		}
+	}
+	.karma-header-container{
+		width: 1200px;
+	}
+}

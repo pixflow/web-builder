@@ -1,4 +1,8 @@
 <?php
+
+namespace KarmaBuilder\Elements;
+use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+
 /**
  * The file that defines the Text element class
  *
@@ -44,7 +48,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 			'color'				=> '#000',
 			'align'       		=> 'left',
 			'topspacepadding'	=> '10',
-			'elementalign'	=> 'left',
+			'elementalign'		=> 'left',
 		);
 
 	}

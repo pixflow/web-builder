@@ -150,3 +150,11 @@
 		content: "";
 	}
 }
+
+.karma-typography-box-style{
+	@include flexbox( center, center, space-between );
+	@extend .karma-builder-title-3;
+	color: $builder-accent-color;
+	flex-basis: 35%;
+	font-family: $builder-medium-font;
+}

@@ -75,9 +75,165 @@
 
 		update: function(){
 
-			this.data.tag = this.elementView.getAttributes( ['tag'] ).tag;
-			this.data.params['defaultIcon'] = this.data.params[ this.data.tag + 'Typography' ];
+			if( 'undefined' != typeof this.data.params.model ){
+				var modelName = this.data.params.model;
+				this.data.tag = this.elementView.getAttributes( [ modelName ] )[ modelName ];
+			}else{
+				this.data.tag = this.elementView.getAttributes( ['tag'] ).tag;
+
+			}
+			this.data.params[ 'defaultIcon' ] = this.data.params[ this.data.tag + 'Typography' ];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
+
+
+		},
+
+		/**
+		 * @summary functionality of h1 typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		h1Typography: function () {
+
+			var that = this;
+
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'h1';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'h1' }, false );
+			}
+
+		},
+
+		/**
+		 * @summary functionality of h2 typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		h2Typography: function () {
+
+			var that = this;
+
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'h2';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'h2' }, false );
+			}
+
+		},
+
+		/**
+		 * @summary functionality of h3 typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		h3Typography: function () {
+
+			var that = this;
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'h3';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'h3' }, false );
+			}
+
+		},
+
+		/**
+		 * @summary functionality of h4 typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		h4Typography: function () {
+
+			var that = this;
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'h4';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'h4' }, false );
+			}
+
+		},
+
+		/**
+		 * @summary functionality of h5 typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		h5Typography: function () {
+
+			var that = this;
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'h5';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'h5' }, false );
+			}
+
+		},
+
+		/**
+		 * @summary functionality of h6 typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		h6Typography: function () {
+
+			var that = this;
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'h6';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'h6' }, false );
+			}
+
+		},
+
+		/**
+		 * @summary functionality of p typography
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		pTypography: function () {
+
+			var that = this;
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+
+				modelNameChange[ that.data.params.model ] = 'p';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				this.elementView.setAttributes( { 'tag' : 'p' }, false );
+			}
 
 		},
 
@@ -93,28 +249,29 @@
 			var typographySelector 	= $( e.target ).closest( 'button' ),
 				typographyAttr 		= typographySelector.attr( 'data-karma-value' );
 
+
 			switch ( typographyAttr )
 			{
 				case 'h1':
-					this.elementView.setAttributes( { 'tag' : 'h1' }, false );
+					this.h1Typography();
 					break;
 				case 'h2':
-					this.elementView.setAttributes( { 'tag' : 'h2' }, false );
+					this.h2Typography();
 					break;
 				case 'h3':
-					this.elementView.setAttributes( { 'tag' : 'h3' }, false );
+					this.h3Typography();
 					break;
 				case 'h4':
-					this.elementView.setAttributes( { 'tag' : 'h4' }, false );
+					this.h4Typography();
 					break;
 				case 'h5':
-					this.elementView.setAttributes( { 'tag' : 'h5' }, false );
+					this.h5Typography();
 					break;
 				case 'h6':
-					this.elementView.setAttributes( { 'tag' : 'h6' }, false );
+					this.h6Typography();
 					break;
 				case 'p':
-					this.elementView.setAttributes( { 'tag' : 'p' }, false );
+					this.pTypography();
 					break;
 				default:
 					break;

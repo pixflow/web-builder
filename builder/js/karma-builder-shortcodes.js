@@ -8,8 +8,9 @@
 			'karma/after/deleteElement'                        	: 'createPlaceholderOnDelete',
 			'click .karma-drop-down-icon'						: 'openDropDownGizmo' ,
 			'click'												: 'showElementGizmo',
+			'click.childGizmo .karma-have-child-gizmo'			: 'showElementChildGizmo',
 			'click.showGizmo .karma-more-setting'				: 'showGizmoRelatedToMore',
-			'click .karma-drop-down-box'						: 'closeDropDownBox' ,
+			'click .karma-drop-down-box'						: 'updateDropDownBox' ,
 			'click .karma-delete-element-setting'				: "deleteElementBox",
 			'click .karma-duplicate-element-setting'			: "duplicateElement",
 			'click.removeActiveElement'         			    : 'callBlur',
@@ -64,11 +65,9 @@
 		 */
 		callBlur : function () {
 
-			if ( 'karma_text' != this.model.get( 'shortcode_name' ) ){
+			if ( null == this.el.querySelector( 'div[contenteditable=true]' ) ){
 				document.activeElement.blur();
 			}
-
-			this.closeNewSectionPanel();
 
 		},
 
@@ -224,7 +223,7 @@
 				oldParentKey     = viewObject.model.get( 'element_key' ),
 				newParentKey     = dropArea.closest( '.karma-builder-element' ).getAttribute( 'data-element-key' ),
 				parentColumnView = viewObject.$el.parents( '.karma-builder-element' ).backboneView(),
-				elementID        = viewObject.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + viewObject.model.get( 'element_key' ),
+				elementID        = viewObject.model.get( 'shortcode_name' ).replace( /_/g, '-' ) + '-' + viewObject.model.get( 'element_key' ),
 				script           = $( '#script-' + elementID ).clone(),
 				style            = $( '#style-' + elementID ).clone();
 
@@ -314,7 +313,6 @@
 			var getName    = this.model.get( 'shortcode_name' ),
 				elementKey = this.model.get( 'element_key' ),
 				placeholderHTML;
-
 			if ( 'karma_column' != getName && 'karma_section' != getName ){
 				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate,
 					{
@@ -324,6 +322,7 @@
 				if ( 1 == this.model.get( 'order' ) ){
 					this.el.insertAdjacentHTML( 'beforebegin', placeholderHTML );
 				}
+
 				this.createSelfPlaceholder();
 			}else if ( 'karma_column' == getName && 0 == karmaBuilder.karmaModels.where( { parent_key: this.model.get( 'element_key' ) } ).length ){
 				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className: 'karma-column-placeholder' } );
@@ -536,7 +535,7 @@
 					childes: that.getChildElements( that.model.get( 'element_key' ) )
 				};
 
-			KarmaView.renderElementsChildes( duplicatedElementModel, this );
+			KarmaView.renderElements( KarmaView.getPlaceholder( this ), duplicatedElementModel , this );
 
 
 		},
@@ -745,6 +744,8 @@
 		showSettingPanel : function ( e ) {
 
 			e.stopPropagation();
+			this.removeElementChildGizmo();
+			$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
 			var form = $( e.currentTarget ).data('form'),
 				that = this;
 
@@ -787,7 +788,7 @@
 		 */
 		elementSelector: function (){
 
-			return this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
+			return this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
 		},
 
@@ -824,6 +825,7 @@
 			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
 				regex    = /(.*?){(.*?)}/g,
 				pattern  = new RegExp( regex ),
+				selector = selector.trim(),
 				content  = '',
 				result;
 
@@ -847,14 +849,16 @@
 					cssProperty  = {};
 
 				_.each( splitContent, function ( property ){
-					var cssString = property.split( ':' );
-					if ( "" != cssString[ 0 ] ){
-						cssProperty[ cssString[ 0 ] ] = cssString[ 1 ];
+					var cssString = property.split(/(.*?)(:([^\/]))/g);
+					if ( "" != cssString[ 1 ] &&  undefined != cssString[ 1 ] ){
+						cssProperty[ cssString[ 1 ] ] = cssString[ 3 ] + cssString[ 4 ] ;
 					}
 				} );
 
 				cssProperty[ attribute ] = value;
 				oldStyle = this.removeOldSelector( selector, oldStyle );
+
+
 				return oldStyle + this.generateStyleString( selector, cssProperty );
 			}else{
 				var cssProperty = {};
@@ -876,9 +880,9 @@
 		 */
 		removeOldSelector: function ( selector, oldStyle ){
 
-			var pattern = selector + '{(.*?)}',
+			var pattern = selector.replace( /\*/g , '\\*' ) + '{(.*?)}',
 				regex   = new RegExp( pattern, 'g' );
-
+			
 			return oldStyle.replace( regex, "" );
 
 		},

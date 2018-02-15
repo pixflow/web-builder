@@ -1,4 +1,9 @@
 <?php
+namespace KarmaBuilder\Core ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 /**
  * The file that defines the builder core class
@@ -303,11 +308,27 @@ class Karma_Builder_Core{
 	 */
 	public function add_default_attributes( $element_name, $element_attributes ) {
 
-		$element_name = explode( '_', $element_name );
-		$element_class_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
-		$default_attributes = $element_class_neme::get_element_default_attributes();
+		$element_class_name = Karma_Factory_Pattern::$builder->get_element_valid_name( $element_name );
+		$element_class_name = '\\KarmaBuilder\Elements\\' . $element_class_name;
+		$default_attributes = $element_class_name::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
+
 		return $atributes;
+
+	}
+
+	/**
+	 * convert all part's of array to uppercase
+	 *
+	 * @param   string  $name       value of array
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string
+	 */
+	private function create_validate_element_name( $name ){
+
+		return ucfirst( $name );
 
 	}
 
@@ -560,7 +581,7 @@ class Karma_Builder_Core{
 	public function save_post_content( $models, $id ) {
 
 		$post_content = $this->generate_post_content( $models );
-		$post_content = karma_save_unsplash_images( $post_content );
+		$post_content = Karma_Helper_Utility::karma_save_unsplash_images( $post_content );
 		$post_content = str_replace( '\\', '\\\\', $post_content );
 		if ( update_post_meta( $id, 'karma_post_content', $post_content ) ){
 			return true;

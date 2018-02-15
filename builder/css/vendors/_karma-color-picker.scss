@@ -35,9 +35,9 @@
 	}
 	.karma-color-picker-mode {
 		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		padding: 0 30px 15px 30px;
+		flex-direction: row;
+		justify-content: space-around;
+		padding-bottom: 15px;
 		span {
 			color: #415364;
 			cursor: pointer;
@@ -74,6 +74,16 @@
 			height: 23px;
 			margin: 4.5px;
 			width: 23px;
+			&:before {
+				background: url('../../builder/media/transparent.jpg') no-repeat center center transparent;
+				border-radius: 50%;
+				content: "";
+				display: inline-block;
+				height: 22px;
+				position: relative;
+				width: 22px;
+				z-index: -1;
+			}
 		}
 		.selected {
 			background: url('../../builder/media/svg/tik.svg') no-repeat center center transparent;
@@ -86,12 +96,26 @@
 			&:before {
 				content: '+';
 				display: block;
+				background: none;
 			}
 			.spectrum-color-preview {
 				display: inline-block;
 				height: 1px;
 				visibility: hidden;
 				width: 1px;
+			}
+		}
+		.karma-no-color {
+			color: #B0B6BD;
+			line-height: 19px;
+			text-align: center;
+			&:before {
+				background: none;
+				content: 'x';
+				display: block;
+			}
+			&.selected {
+				background: none;
 			}
 		}
 	}

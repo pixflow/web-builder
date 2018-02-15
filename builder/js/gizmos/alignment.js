@@ -54,14 +54,21 @@
 
 		update: function(){
 
-			this.data.align = this.elementView.getAttributes( ['align'] ).align;
+			if( 'undefined' != typeof this.data.params.model ){
+				var modelName = this.data.params.model;
+				this.data.align = this.elementView.getAttributes( [ modelName ] )[ modelName ];
+			}else{
+				this.data.align = this.elementView.getAttributes( ['align'] ).align;
+
+			}
 			this.data.params['defaultIcon'] = this.data.params[ this.data.align  + 'AlignIcon' ];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
+
 
 		},
 
 		/**
-		 * @summary align left for text shortcode
+		 * @summary align left for text element
 		 *
 		 * @since 0.1.0
 		 *
@@ -69,12 +76,20 @@
 		 */
 		karmaTextShortcodealignLeft: function () {
 
-			this.elementView.setAttributes( { 'align' : 'left' }, false );
+			var that = this;
+
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+				modelNameChange[ that.data.params.model ] = 'left';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				that.elementView.setAttributes( {'align': 'left'}, false );
+			}
 
 		},
 
 		/**
-		 * @summary align center for text shortcode
+		 * @summary align center for text element
 		 *
 		 * @since 0.1.0
 		 *
@@ -82,7 +97,15 @@
 		 */
 		karmaTextShortcodealignCenter: function () {
 
-			this.elementView.setAttributes( { 'align' : 'center' }, false );
+			var that = this;
+
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+				modelNameChange[ that.data.params.model ] = 'center';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				that.elementView.setAttributes( { 'align' : 'center' }, false );
+			}
 
 		},
 
@@ -95,7 +118,15 @@
 		 */
 		karmaTextShortcodealignRight: function () {
 
-			this.elementView.setAttributes( { 'align' : 'right' }, false );
+			var that = this;
+
+			if( 'undefined' != typeof that.data.params.model ){
+				var modelNameChange = {};
+				modelNameChange[ that.data.params.model ] = 'right';
+				that.elementView.setAttributes( modelNameChange, false );
+			}else {
+				that.elementView.setAttributes( { 'align' : 'right' }, false );
+			}
 
 		},
 

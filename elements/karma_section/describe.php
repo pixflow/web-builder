@@ -1,4 +1,11 @@
 <?php
+
+namespace KarmaBuilder\Elements\DescribeElement;
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Elements\Karma_Section;
+use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+
 /**
  * This file describes the Section element
  *
@@ -45,13 +52,13 @@ class Karma_Section_Describe extends Karma_Section {
 						"field"	=> array(
 
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_container.svg' ),
 								'style' => 'padding-left:29px; padding-right: 19px; ',
 								'title'	=> "Full screen",
 								'value'	=> "full",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
 								'style' => 'padding-left: 19px; padding-right: 38px; ',
 								'title'	=> "Container",
 								'value'	=> "container"
@@ -103,35 +110,35 @@ class Karma_Section_Describe extends Karma_Section {
 						"field"	=> array(
 
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-1.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-1.svg' ),
 								'value'	=> "[12]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-2.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-2.svg' ),
 								'value'	=> "[6,6]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-3.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-3.svg' ),
 								'value'	=> "[4,4,4]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-4.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-4.svg' ),
 								'value'	=> "[3,3,3,3]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-5.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-5.svg' ),
 								'value'	=> "[8,4]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-6.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-6.svg' ),
 								'value'	=> "[4,8]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-7.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-7.svg' ),
 								'value'	=> "[3,6,3]",
 							),
 							array(
-								'image'	=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-8.svg' ),
+								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/grid-8.svg' ),
 								'value'	=> "[2,2,2,2,2,2]",
 							),
 
@@ -170,17 +177,17 @@ class Karma_Section_Describe extends Karma_Section {
 						'params'	=> array(
 							array(
 								'name' 		=> 'image',
-								'icon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-tab.svg' ),
+								'icon' 		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-tab.svg' ),
 								'text' 		=> esc_attr__( "Image", 'karma' ),
 							),
 							array(
 								'name' 		=> 'color',
-								'icon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/color-tab.svg' ),
+								'icon' 		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/color-tab.svg' ),
 								'text' 		=> esc_attr__( "Color", 'karma' ),
 							),
 							array(
 								'name' 		=> 'video',
-								'icon' 		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/video-tab.svg' ),
+								'icon' 		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/video-tab.svg' ),
 								'text' 		=> esc_attr__( "Video", 'karma' ),
 							),
 						)
@@ -229,13 +236,13 @@ class Karma_Section_Describe extends Karma_Section {
 						"class"     => "radio-image-border-hover",
 						"field"     => array(
 							array(
-								'image' =>  karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ) ,
+								'image' =>  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/fill-image.svg' ) ,
 								'style' => 'padding-left: 35px; padding-right: 18px;',
 								'title' => esc_attr__( "Real size", 'karma' ),
 								'value' => "contain",
 							),
 							array(
-								'image' => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
+								'image' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/realsize-image.svg' ),
 								'style' => 'padding-left: 18px; padding-right: 34px; ',
 								'title' => esc_attr__( "Fill", 'karma' ),
 								'value' => "cover",
@@ -286,7 +293,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'form'   	=> 'more-panel',
 						'className' => 'karma-more-setting',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
 						)
 					),
 					array(
@@ -294,7 +301,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'form'   	=> 'more-panel',
 						'className' => 'karma-delete-element-setting ',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
 						)
 					),
 					array(
@@ -302,7 +309,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'form'   	=> 'more-panel',
 						'className' => 'karma-duplicate-element-setting ',
 						"params" => array(
-							'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
 						)
 					),
 					array(
@@ -310,7 +317,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'form'		=> 'setting-panel',
 						'className'	=> 'karma-element-setting',
 						'params'=> array(
-							'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+							'icon'		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
 
 						)
 					),
@@ -319,7 +326,7 @@ class Karma_Section_Describe extends Karma_Section {
 						'form'		=> 'layout-panel',
 						'className'	=> 'row-setting-layout',
 						'params'=> array(
-							'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' ),
+							'icon'		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/layout.svg' ),
 						)
 					),
 					array(
@@ -340,7 +347,7 @@ class Karma_Section_Describe extends Karma_Section {
 			),
 			array(
 				"type"		=> "newSectionButton",
-				'icon'		=> karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus-new.svg' ),
+				'icon'		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus-new.svg' ),
 			),
 
 		);

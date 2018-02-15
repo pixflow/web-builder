@@ -1,4 +1,11 @@
 <?php
+namespace KarmaBuilder\Elements\DescribeElement;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Elements\Karma_Text;
+use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+
 /**
  * This file describes the Text element
  *
@@ -68,7 +75,7 @@ class Karma_Text_Describe extends Karma_Text {
 							'form'   	=> 'more-panel',
 							'className' => 'karma-more-setting',
 							"params" => array(
-									'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
+									'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/more.svg' ),
 							)
 					),
 					array(
@@ -76,7 +83,7 @@ class Karma_Text_Describe extends Karma_Text {
 							'form'   	=> 'more-panel',
 							'className' => 'karma-delete-element-setting ',
 							"params" => array(
-									'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
+									'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/delete-element.svg' ),
 							)
 					),
 					array(
@@ -84,17 +91,17 @@ class Karma_Text_Describe extends Karma_Text {
 							'form'   	=> 'more-panel',
 							'className' => 'karma-duplicate-element-setting ',
 							"params" => array(
-									'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
+									'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/duplicate-element.svg' ),
 							)
 					),
 					array(
 
 						'type'   => 'fontStyle',
 						"params" => array(
-							'defaultIcon'    => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
-							'bold'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
-							'italic'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/italic.svg' ),
-							'underline'      => karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/underline.svg' ),
+							'defaultIcon'    => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
+							'bold'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bold.svg' ),
+							'italic'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/italic.svg' ),
+							'underline'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/underline.svg' ),
 						),
 
 					),

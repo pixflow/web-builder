@@ -1,5 +1,5 @@
 .karma-color-picker-controller {
-	padding: $builder-light-orange-space 20px 0;
+	padding: $builder-light-orange-space $builder-blue-space;
 	position: relative;
 
 	.color-picker-controller-template {
@@ -15,8 +15,7 @@
 		}
 		.karma-color-picker-controller-container {
 			.karma-color-picker-icon {
-				height: 32px;
-				width: 32px;
+				@include box( 32px,32px );
 			}
 		}
 

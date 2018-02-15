@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="6px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
-    <title>Path 2 Copy 8</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="back-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="back-icon-1" transform="translate(-753.000000, -461.000000)" stroke="#394959">
-            <polyline id="back-icon-2" transform="translate(756.000000, 466.000000) rotate(90.000000) translate(-756.000000, -466.000000) " points="751 464 756 468 761 464"></polyline>
+<svg width="6px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="
+    <g id="right-arrow-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="right-arrow-icon1" transform="translate(-753.000000, -461.000000)" stroke="#419CF8;">
+            <polyline id="right-arrow-icon2" transform="translate(756.000000, 466.000000) rotate(90.000000) translate(-756.000000, -466.000000) " points="751 464 756 468 761 464"></polyline>
         </g>
     </g>
 </svg>

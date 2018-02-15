@@ -1,0 +1,57 @@
+.karma-second-header{
+	@include flexbox( center, center, center );
+	border-top: 1px solid $builder-main-color-4;
+	box-shadow: 0 2px 12px 0 rgba( $builder-main-color, 0.1 );
+	height: 80px;
+
+	.karma-second-header-container{
+		display: flex;
+		justify-content: space-between;
+		width: 1200px;
+	}
+
+	.karma-location-name{
+		@extend .karma-builder-title-1;
+		color: $builder-main-color;
+		padding-left: 0;
+	}
+
+	.karma-buttons-holder{
+		@include flexbox( center, center, center );
+		padding-right: 9px;
+
+		.karma-backto-previous-location{
+			@include fill-button( $color:$builder-accent-color, $background-color:#fff );
+			@extend .karma-builder-title-3;
+			border: 1px solid $builder-accent-color;
+			border-radius: 2px;
+			font-family: $builder-medium-font;
+			margin-right: 8px;
+			text-decoration: none;
+			transition: 0.3s;
+			&:hover{
+				background-color: $builder-accent-color;
+				box-shadow: none;
+				color: #fff;
+				transform: none;
+				transition: 0.3s;
+			}
+		}
+
+		.karma-save-setting{
+			@include flexbox( center, center, center );
+			@include publish-buttons;
+			cursor: pointer;
+			height: 41px;
+			position: relative;
+		}
+
+	}
+	.karma-publish-finish-animation{
+
+		&:after{
+			top: 1px !important;
+		}
+	}
+
+}
