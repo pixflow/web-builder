@@ -180,7 +180,6 @@ class Karma_Stylesheet {
 			}
 			$headings_style .= '}';
 		}
-
 		return $headings_style;
 
 	}

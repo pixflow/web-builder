@@ -535,7 +535,7 @@
 					childes: that.getChildElements( that.model.get( 'element_key' ) )
 				};
 
-			KarmaView.renderElementsChildes( duplicatedElementModel, this );
+			KarmaView.renderElements( KarmaView.getPlaceholder( this ), duplicatedElementModel , this );
 
 
 		},
