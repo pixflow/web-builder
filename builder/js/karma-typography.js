@@ -25,34 +25,78 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 	    *
 		*/
 		fontVarientTemplate: '<li class="karma-dropdown-option"'
-		+ 'data-value="{{ data.fontVarient }}">'
-		+ '<span class="karma-dropdown-option-title">'
-		+ '{{ data.fontVarient }}'
-		+ '</span>'
-		+ '</li>',
+			+ 'data-value="{{ data.fontVarient }}">'
+			+ '<span class="karma-dropdown-option-title">'
+			+ '{{ data.fontVarient }}'
+			+ '</span>'
+			+ '</li>',
+
+		/*
+	    * Google font template
+	    *
+		*/
+		karmaGoogleFontTemplate : '<li class="karma-google-font" data-font-id="{{ data.font }}" data-font-family="{{ data.fonts[ data.font ] }}" >'
+			+ '<span class="google-font-title">{{ data.fonts[ data.font ] }}</span>'
+			+ '<svg width="10px" height="12px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="back-icon" stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"> <g id="back-icon-1" transform="translate(-753.000000, -461.000000)" stroke="#419CF8"> <polyline id="back-icon-2" transform="translate(756.000000, 466.000000) rotate(90.000000) translate(-756.000000, -466.000000) " points="751 464 756 468 761 464"></polyline> </g> </g></svg>'
+			+ '</li>',
+
+		/*
+	    * Google font varient template
+	    *
+		*/
+		fontWeightHtmlTemplate : '<li class="karma-font-weight" data-font-style="{{ data.fontStyle }}" data-font-weight="{{ data.fontWeight }}">'
+			+ '<label class="checkbox-style"><svg width="8px" height="6px" viewBox="0 0 10 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="tik-g" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <path d="M9.71548831,0.284402819 L9.71548831,0.284402819 L9.71548831,0.284402819 C10.0925929,0.668903139 10.0951418,1.28370977 9.72123818,1.6713236 L5.40686201,6.14389858 L4.46606048,7.1201828 L4.46606048,7.1201828 C4.08282991,7.51786707 3.44977335,7.5295841 3.05208909,7.14635353 C3.0428289,7.1374299 3.03374172,7.12832847 3.0248326,7.11905433 L2.0880593,6.14389858 L0.307769356,4.30043835 L0.307769356,4.30043835 C-0.0944545875,3.88394224 -0.1035336,3.22649442 0.287035967,2.79905024 L0.287035967,2.79905024 L0.287035967,2.79905024 C0.641822145,2.41076785 1.24419824,2.3836138 1.63248064,2.73839998 C1.65085187,2.75518636 1.66855808,2.77268638 1.68555849,2.79085974 L3.7448601,4.99224302 L8.36082195,0.284493479 L8.36082195,0.284493479 C8.7276333,-0.0896118577 9.32826495,-0.0955248032 9.70237028,0.271286546 C9.7067856,0.275615779 9.71115849,0.279988079 9.71548831,0.284402819 Z" id="tik-path" fill="#fff"></path> </g></svg></label>'
+			+ '<span>{{ data.index }}</span>'
+			+ '</li>',
+
+		/*
+	    * Google font list box template
+	    *
+		*/
+		fontListBoxTemplate :  '<div class="karma-font-list karma-font-manger-box-style">'
+			+ '<div class="karma-font-name-part">'
+			+ '<span class="karma-font-name" data-font-name="{{ data.fontFamily }}" style="font-family:{{ data.fontFamily }};">{{ data.fontFamily }}</span>'
+			+ '<span class="karma-font-weight-count"><# print( data.fontWeight.length ) #>  Styles'
+			+ '<span class="karma-drop-down-icon">'
+			+ '<svg width="12px" height="6px" viewBox="0 0 12 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="drop-down-all-Setting-pannel--style-guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g class="bottom-arrow" transform="translate(-2725.000000, -776.000000)" stroke-width="2" stroke="#419CF8"><g id="drop-down-Group-19" transform="translate(2715.000000, 762.000000)"><polyline id="drop-down-Path-2-Copy-9" points="11 15 16 19 21 15"></polyline></g></g></g></svg>'
+			+ '</span>'
+			+ '</span>'
+			+ '<span class="karma-delete-font">'
+			+ '<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="delete-element" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="delete-element-icon" transform="translate(-482.000000, -11.000000)" fill="#394959"> <path d="M485.714286,12.625 L482.8125,12.625 L482.8125,12.625 C482.363769,12.625 482,12.9887686 482,13.4375 C482,13.8862314 482.363769,14.25 482.8125,14.25 L494.1875,14.25 C494.636231,14.25 495,13.8862314 495,13.4375 C495,12.9887686 494.636231,12.625 494.1875,12.625 L491.285714,12.625 L491.285714,12 C491.285714,11.4477153 490.837999,11 490.285714,11 L486.714286,11 C486.162001,11 485.714286,11.4477153 485.714286,12 L485.714286,12 L485.714286,12.625 Z M484.166667,15.3333333 L492.833333,15.3333333 L492.833333,23 C492.833333,23.5522847 492.385618,24 491.833333,24 L485.166667,24 C484.614382,24 484.166667,23.5522847 484.166667,23 L484.166667,15.3333333 Z" id="A124"></path> </g> </g></svg>'
+			+ '</span>'
+			+ '</div>'
+			+ '<div class="karma-font-details-part">'
+			+ '<ul style="font-family:{{ data.fontFamily }};">'
+			+ '<# data.fontWeight.forEach( function ( fontName ) { #>'
+			+ '<li data-font-style="<# print( fontName.style ); #>" data-font-weight="<# print( fontName.weight ); #>" >'
+			+ '<# print( fontName.weight ); #> <# print( fontName.style ); #></li>'
+			+ '<# }); #>'
+			+' </ul></div></div>' ,
 
 		events: {
 
-			'mousedown body:not( .karma-dropdown-body )': 'closeDropDown',
-			'click .karma-dropdown-options > li:not(.karma-dropdown-add-font)': 'selectDropDownList',
-			'click .karma-dropdown-header': 'openDropDown',
-			'click .karma-backto-previous-location': 'animateKarmaPanels',
-			'click .karma-delete-font': 'deleteFontBox',
-			'input .karma-range-slider-input': 'updateRangeSlider',
-			'click .karma-font-list': 'openFontsDetails',
-			'click .karma-save-setting': 'saveFontsFormat',
-			'click .karma-add-to-library': 'addFontToLibrary',
-			'click .karma-google-fonts-title': 'openKarmaGoogleFonts',
-			'click .karma-delete-message-box-delete-button': 'DeleteElement',
-			'click .karma-delete-message-box-cancel-button': 'cancelDeleteElement',
-			'click .karma-delete-message-box': 'cancelDeleteElement',
-			'click .karma-delete-message-container': 'deleteBoxStopPropagation',
-			'mousedown .karma-google-fonts-list': 'deleteBoxStopPropagation',
-			'input #karma-fonts-search-input': 'searchInGoogleFonts',
-			'scroll   #karma-typography-setting': 'preventFromScroll',
-			'touchmove  #karma-typography-setting': 'preventFromScroll',
-			'mousewheel #karma-typography-setting': 'preventFromScroll',
-			'click .karma-dropdown-add-font a': 'animateKarmaPanels',
+			'mousedown body:not( .karma-dropdown-body )'                        : 'closeDropDown',
+			'click .karma-dropdown-options > li:not(.karma-dropdown-add-font)'  : 'selectDropDownList',
+			'click .karma-dropdown-header'                                      : 'openDropDown',
+			'click .karma-backto-previous-location'                             : 'animateKarmaPanels',
+			'click .karma-delete-font'                                          : 'deleteFontBox',
+			'input .karma-range-slider-input'                                   : 'updateRangeSlider',
+			'click .karma-font-list'                                            : 'openFontsDetails',
+			'click .karma-save-setting'                                         : 'saveFontsFormat',
+			'click .karma-add-to-library'                                       : 'addFontToLibrary',
+			'click .karma-google-fonts-title'                                   : 'openKarmaGoogleFonts',
+			'click .karma-delete-message-box-delete-button'                     : 'DeleteElement',
+			'click .karma-delete-message-box-cancel-button'                     : 'cancelDeleteElement',
+			'click .karma-delete-message-box'                                   : 'cancelDeleteElement',
+			'click .karma-delete-message-container'                             : 'deleteBoxStopPropagation',
+			'mousedown .karma-google-fonts-list'                                : 'deleteBoxStopPropagation',
+			'input #karma-fonts-search-input'                                   : 'searchInGoogleFonts',
+			'scroll   #karma-typography-setting'                                : 'preventFromScroll',
+			'touchmove  #karma-typography-setting'                              : 'preventFromScroll',
+			'mousewheel #karma-typography-setting'                              : 'preventFromScroll',
+			'click .karma-dropdown-add-font a'                                  : 'animateKarmaPanels',
+			'click .karma-google-fonts-list .right-side ul li'                  : 'openFontVarientList',
+			'click .karma-google-fonts-list .left-side ul li'                   : 'selectFontVarient',
 		},
 
 		/**
@@ -79,10 +123,81 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 */
 		preventFromScroll: function (e) {
 
-			if (null != document.querySelector('.karma-doropdown-opened')) {
+			if ( null != document.querySelector('.karma-doropdown-opened') ) {
 				e.preventDefault();
 				e.stopPropagation();
 				return false;
+			}
+
+		},
+
+		/**
+		 * @summary Create font varient list
+		 *
+		 * @since 0.1.1
+		 * @returns void
+		 */
+		openFontVarientList : function ( e ) {
+
+			var element = ( e.target.classList.contains('karma-google-font') ) ?  $( e.target ) : $( e.target ).closest('.karma-google-font'),
+				fontVarient = this.googleFontList.fontVariants[ element.attr('data-font-id') ];
+
+			$('.karma-active-font').removeClass('karma-active-font');
+			element.addClass('karma-active-font');
+			$('.karma-google-fonts-list').addClass('show-google-font-weight');
+			$('.current-font-weight').removeClass('font-weight-selected');
+			$('.karma-google-fonts-list .left-side ul li').remove();
+			this.createFontVarientListHtml( fontVarient );
+
+		},
+
+		/**
+		 * @summary Create font varient list html
+		 *
+		 * @param   {object}    fontVarient Font varient list
+		 *
+		 * @since 0.1.1
+		 * @returns void
+		 */
+		createFontVarientListHtml : function( fontVarient ){
+
+			var fontWeightHtml = _.template( this.fontWeightHtmlTemplate, this.templateSettings ) ;
+			fontVarient.forEach( function ( index ) {
+				//font style
+				var font = index,
+					fontStyle = ( font.indexOf('italic') >= 0 ) ? 'italic' : 'normal',
+					fontWeight;
+
+				if ( 'regular' == font || 'normal' == font ) {
+					fontWeight = 400;
+				} else if ( 'normal' != fontStyle ) {
+					font = font.replace( 'italic', '' );
+					font = ( '' == font ) ? 400 : font;
+					fontWeight = parseInt( font );
+				} else {
+					fontWeight = font;
+				}
+
+				$('.karma-google-fonts-list .left-side ul').append( fontWeightHtml( { index : index, fontWeight : fontWeight, fontStyle : fontStyle } ) );
+
+			});
+
+		},
+
+		/**
+		 * @summary Choose font varient
+		 *
+		 * @since 0.1.1
+		 * @returns void
+		 */
+		selectFontVarient : function ( e ) {
+
+			var element = ( e.target.classList.contains('karma-font-weight') ) ? $( e.target ) : $( e.target ).closest('.karma-font-weight');
+			element.toggleClass('active-font-weight');
+			if ( $('.active-font-weight').length ) {
+				$('.current-font-weight').addClass('font-weight-selected');
+			} else {
+				$('.current-font-weight').removeClass('font-weight-selected');
 			}
 
 		},
@@ -93,7 +208,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @since 0.1.0
 		 *
 		 */
-		updateRangeSlider: function (e) {
+		updateRangeSlider: function ( e ) {
 
 			var input = e.target,
 				value = input.value,
@@ -101,7 +216,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					.closest('.karma-range-slider-content')
 					.querySelector('.karma-range-slider-range');
 
-			$(rangeSliderInput).val(value).change();
+			$( rangeSliderInput ).val( value ).change();
 
 		},
 
@@ -117,11 +232,11 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				that = this;
 
 			for ( var font in fonts ) {
-				var karmaGoogleFont = '<li class="karma-google-font" data-font-id="' + font + '" data-font-family="' + fonts[font] + '" >'
-					+ '<span class="google-font-title">' + fonts[font] + '</span>'
-					+ '<svg width="10px" height="12px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="back-icon" stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"> <g id="back-icon-1" transform="translate(-753.000000, -461.000000)" stroke="#419CF8"> <polyline id="back-icon-2" transform="translate(756.000000, 466.000000) rotate(90.000000) translate(-756.000000, -466.000000) " points="751 464 756 468 761 464"></polyline> </g> </g></svg>'
-					+ '</li>';
-				$('.karma-google-fonts-list .right-side ul').append(karmaGoogleFont);
+
+				var template = _.template( that.karmaGoogleFontTemplate, that.templateSettings ),
+					karmaGoogleFont = template( { font : font, fonts : fonts } );
+
+				$('.karma-google-fonts-list .right-side ul').append( karmaGoogleFont );
 				$('.karma-google-fonts-list .karma-google-fonts-holder, .karma-google-fonts-list .left-side ul').niceScroll({
 					cursorcolor: "#A9A9A9",
 					cursorwidth: "4px",
@@ -131,48 +246,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				});
 			}
 
-			$('.karma-google-fonts-list .right-side ul li').click(function (e) {
-
-				var fontVarient = that.googleFontList.fontVariants[$(this).attr('data-font-id')];
-				$('.karma-active-font').removeClass('karma-active-font');
-				$(this).addClass('karma-active-font');
-				$('.karma-google-fonts-list').addClass('show-google-font-weight');
-				$('.current-font-weight').removeClass('font-weight-selected')
-				$('.karma-google-fonts-list .left-side ul li').remove();
-				var fontWeightHtml = '';
-				fontVarient.forEach(function (index) {
-					//font style
-					var font = index;
-					var fontStyle = (font.indexOf('italic') >= 0) ? 'italic' : 'normal';
-					var fontWeight;
-					if ('regular' == font || 'normal' == font) {
-						fontWeight = 400;
-					} else if ('normal' != fontStyle) {
-						font = font.replace('italic', '');
-						font = ('' == font) ? 400 : font;
-						fontWeight = parseInt( font );
-					} else {
-						fontWeight = font;
-					}
-
-					fontWeightHtml = '<li class="karma-font-weight" data-font-style="' + fontStyle + '" data-font-weight="' + fontWeight + '">'
-						+ '<label class="checkbox-style"><svg width="8px" height="6px" viewBox="0 0 10 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="tik-g" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <path d="M9.71548831,0.284402819 L9.71548831,0.284402819 L9.71548831,0.284402819 C10.0925929,0.668903139 10.0951418,1.28370977 9.72123818,1.6713236 L5.40686201,6.14389858 L4.46606048,7.1201828 L4.46606048,7.1201828 C4.08282991,7.51786707 3.44977335,7.5295841 3.05208909,7.14635353 C3.0428289,7.1374299 3.03374172,7.12832847 3.0248326,7.11905433 L2.0880593,6.14389858 L0.307769356,4.30043835 L0.307769356,4.30043835 C-0.0944545875,3.88394224 -0.1035336,3.22649442 0.287035967,2.79905024 L0.287035967,2.79905024 L0.287035967,2.79905024 C0.641822145,2.41076785 1.24419824,2.3836138 1.63248064,2.73839998 C1.65085187,2.75518636 1.66855808,2.77268638 1.68555849,2.79085974 L3.7448601,4.99224302 L8.36082195,0.284493479 L8.36082195,0.284493479 C8.7276333,-0.0896118577 9.32826495,-0.0955248032 9.70237028,0.271286546 C9.7067856,0.275615779 9.71115849,0.279988079 9.71548831,0.284402819 Z" id="tik-path" fill="#fff"></path> </g></svg></label>'
-						+ '<span>' + index + '</span>'
-						+ '</li>';
-					$('.karma-google-fonts-list .left-side ul').append(fontWeightHtml);
-
-				});
-				$('.karma-google-fonts-list .left-side ul li').click(function (e) {
-					$(this).toggleClass('active-font-weight');
-					if ($('.active-font-weight').length) {
-						$('.current-font-weight').addClass('font-weight-selected');
-					} else {
-						$('.current-font-weight').removeClass('font-weight-selected');
-					}
-				});
-
-			});
-
 
 		},
 
@@ -180,7 +253,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @summary After click on add to library button
 		 * font list added to fonts list panel
 		 *
-		 * @since 0.1.0
+		 * @since 0.1.1
 		 *
 		 */
 		addFontToLibrary: function ( e ) {
@@ -209,16 +282,26 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 			if ( $('.current-font-weight').hasClass('font-weight-selected') ) {
 
-				this.updateTypographyModels( fontFamily, modelArr );
-				this.loadFont( fontFamily, modelArr) ;
-				this.addFontToHeadingDropdown( fontFamily, modelArr );
-				$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
+				if( this.updateTypographyModels( fontFamily, modelArr ) ) {
+					this.loadFont( fontFamily, modelArr) ;
+					this.addFontToHeadingDropdown( fontFamily, modelArr );
+					$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
+				}
 				this.closeKarmaGoogleFonts();
 
 			}
 
 		},
 
+		/**
+		 * @summary Add added google font to heading drop down
+		 *
+		 * @param {string}  font    Font family name
+		 * @param {object}  weights Font varients list
+		 *
+		 * @since   0.1.1
+		 * @returns void
+		 */
 		addFontToHeadingDropdown: function ( font, weights ) {
 
 			$('.karma-typography-font .karma-font-family-list').append('<li class="karma-dropdown-option " data-value="' + font + '"><span class="karma-dropdown-option-title">' + font + '</span></li>');
@@ -228,6 +311,12 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+		/**
+		 * @summary Call font and load it.
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
 		loadFont: function ( font, weights ) {
 
 			WebFont.load({
@@ -241,27 +330,30 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		/**
 		 * @summary Update typography models
 		 *
-		 * @param fontFamily {string}
-		 * @param arr {Array} Array of object contains font-weight and font-style
+		 * @param {string}  fontFamily
+		 * @param {Array}   arr         Array of object contains font-weight and font-style
 		 *
 		 * @since 0.1.0
 		 *
-		 * @return {void}
+		 * @return {boolean}
 		 */
 		updateTypographyModels: function ( fontFamily, arr ) {
 
-			if ('undefined' == typeof this.model.fonts[fontFamily]) {
-				this.model.fonts[fontFamily.toLowerCase()] = arr;
+			var result = false;
+			if ( 'undefined' == typeof this.model.fonts[ fontFamily ] ) {
+				this.model.fonts[ fontFamily.toLowerCase() ] = arr;
+				result = true ;
 			} else {
 				var that = this;
-				arr.forEach(function (item) {
-
-					if (that.model.fonts[fontFamily].indexOf(item) == -1) {
-						that.model.fonts[fontFamily].push(item);
+				arr.forEach( function ( item ) {
+					if ( that.model.fonts[ fontFamily ].indexOf( item ) == -1) {
+						that.model.fonts[ fontFamily ].push( item );
+						result = true ;
 					}
-				})
-
+				});
 			}
+
+			return result;
 		},
 
 		/**
@@ -274,32 +366,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 *
 		 * @return {string}
 		 */
-		createFontListHtml: function (fontFamily, fontWeight) {
-			var html = '<div class="karma-font-list karma-font-manger-box-style">'
-				+ '<div class="karma-font-name-part">'
-				+ '<span class="karma-font-name" data-font-name="' + fontFamily + '" style="font-family:' + fontFamily + ';">' + fontFamily + '</span>'
-				+ '<span class="karma-font-weight-count">' + fontWeight.length + '  Styles'
-				+ '<span class="karma-drop-down-icon">'
-				+ '<svg width="12px" height="6px" viewBox="0 0 12 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="drop-down-all-Setting-pannel--style-guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g class="bottom-arrow" transform="translate(-2725.000000, -776.000000)" stroke-width="2" stroke="#419CF8"><g id="drop-down-Group-19" transform="translate(2715.000000, 762.000000)"><polyline id="drop-down-Path-2-Copy-9" points="11 15 16 19 21 15"></polyline></g></g></g></svg>'
-				+ '</span>'
-				+ '</span>'
-				+ '<span class="karma-delete-font">'
-				+ '<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="delete-element" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="delete-element-icon" transform="translate(-482.000000, -11.000000)" fill="#394959"> <path d="M485.714286,12.625 L482.8125,12.625 L482.8125,12.625 C482.363769,12.625 482,12.9887686 482,13.4375 C482,13.8862314 482.363769,14.25 482.8125,14.25 L494.1875,14.25 C494.636231,14.25 495,13.8862314 495,13.4375 C495,12.9887686 494.636231,12.625 494.1875,12.625 L491.285714,12.625 L491.285714,12 C491.285714,11.4477153 490.837999,11 490.285714,11 L486.714286,11 C486.162001,11 485.714286,11.4477153 485.714286,12 L485.714286,12 L485.714286,12.625 Z M484.166667,15.3333333 L492.833333,15.3333333 L492.833333,23 C492.833333,23.5522847 492.385618,24 491.833333,24 L485.166667,24 C484.614382,24 484.166667,23.5522847 484.166667,23 L484.166667,15.3333333 Z" id="A124"></path> </g> </g></svg>'
-				+ '</span>'
-				+ '</div>'
-				+ '<div class="karma-font-details-part">'
-				+ '<ul style="font-family:' + fontFamily + ';">';
+		createFontListHtml: function ( fontFamily, fontWeight ) {
 
-			fontWeight.forEach(function (font) {
-
-				html += '<li data-font-style="' + font.style + '" data-font-weight="' + font.weight + '" >'
-					+ font.weight + ' ' + font.style
-					+ '</li>';
-			});
-
-			html += '</ul>'
-				+ '</div>'
-				+ '</div>';
+			var template = _.template( this.fontListBoxTemplate, this.templateSettings ),
+				html = template( { fontFamily : fontFamily, fontWeight : fontWeight } );
 
 			return html;
 		},
@@ -313,7 +383,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @since 0.1.1
 		 * @returns {void}
 		 */
-		showAfterResult: function (searchResult, inputValue) {
+		showAfterResult: function ( searchResult, inputValue ) {
 
 			for (searchResult; searchResult <= 848; searchResult++) {
 				if (this.googleFontList.fontFamily[searchResult].substr(0, inputValue.length).toLowerCase() == inputValue) {
@@ -335,10 +405,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @since 0.1.1
 		 * @returns {void}
 		 */
-		showBeforeResult: function (beforeIndex, inputValue) {
+		showBeforeResult: function ( beforeIndex, inputValue ) {
 
 			for ( beforeIndex; beforeIndex >= 0; beforeIndex-- ) {
-				if (this.googleFontList.fontFamily[ beforeIndex ].substr( 0, inputValue.length ).toLowerCase() == inputValue) {
+				if ( this.googleFontList.fontFamily[ beforeIndex ].substr( 0, inputValue.length ).toLowerCase() == inputValue ) {
 					document.querySelector('.karma-google-font[data-font-id="' + beforeIndex + '"]').style.display = 'flex';
 				} else {
 					break;
@@ -364,13 +434,13 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			}
 
 			inputValue = inputValue.trim().toLowerCase();
-			var searchResult = parseInt(this.binaryIndexOf(inputValue)),
+			var searchResult = parseInt( this.binaryIndexOf( inputValue ) ),
 				beforeIndex = searchResult - 1;
 
-			if (-1 != searchResult) {
+			if ( -1 != searchResult ) {
 				$('.karma-google-font').css('display', 'none');
-				this.showAfterResult(searchResult, inputValue);
-				this.showBeforeResult(beforeIndex, inputValue);
+				this.showAfterResult( searchResult, inputValue );
+				this.showBeforeResult( beforeIndex, inputValue );
 			}
 
 
@@ -397,6 +467,12 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			}
 		},
 
+		/**
+		 * @summary Close karma google font
+		 *
+		 * @since 0.1.0
+		 * @returns {void}
+		 */
 		closeKarmaGoogleFonts: function () {
 
 			document.getElementById('karma-fonts-search-input').value = '';
@@ -408,6 +484,12 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+		/**
+		 * @summary Init range slider
+		 *
+		 * @since 0.1.0
+		 * @returns {void}
+		 */
 		initRangeSlider: function () {
 
 			var $rangeInputs = $('.karma-range-slider-range'),
@@ -419,17 +501,26 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 			}).on('input', function () {
 
-				$(this).next()
+				$( this ).next()
 					.next('.karma-range-slider-number')
 					.find('input')
-					.val(this.value);
+					.val( this.value );
 
-				that.updateFontSize(this, this.value);
+				that.updateFontSize( this, this.value );
 			});
 
 		},
 
-		updateFontSize: function (element, value) {
+		/**
+		 * @summary Update font size in range slider
+		 *
+		 * @param   {object}    element
+		 * @param   {number}    value
+		 *
+		 * @since 0.1.1
+		 * @returns {void}
+		 */
+		updateFontSize: function ( element, value ) {
 
 			var parent = element.closest('.karma-typography-box'),
 				target = parent.querySelector('.karma-typography-text');
@@ -584,6 +675,11 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+		/**
+		 * @summary Fire on click in drop down list
+		 *
+		 * @since 0.1.1
+		 */
 		selectDropDownList: function ( e ) {
 
 			var element = ( $( e.target ).hasClass('karma-dropdown-option') ) ? $( e.target ) : $( e.target ).closest('.karma-dropdown-option');
@@ -595,6 +691,12 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
+
+		/**
+		 * @summary Open dropdowm
+		 *
+		 * @since 0.1.1
+		 */
 		openDropDown: function (e) {
 
 			var element = ( $(e.target).hasClass('karma-dropdown-header') ) ? $( e.target ) : $( e.target) .closest('.karma-dropdown-header'),
