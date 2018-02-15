@@ -2764,6 +2764,9 @@ html {
     background-color: rgba(57, 73, 89, 0.1);
     border-radius: 2px; }
 
+.full-element-placeholder {
+  background-color: rgba(57, 73, 89, 0.1); }
+
 .ui-sortable-handle.ui-sortable-placeholder {
   visibility: visible !important;
   background-color: rgba(65, 156, 248, 0.3);

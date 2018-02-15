@@ -499,12 +499,18 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		removePlaceHolders : function () {
 
-			var activePlaceHolder = document.querySelector('.karma-show-placeholder');
+			var activePlaceHolder 	= document.querySelector('.karma-show-placeholder'),
+				fullPlaceholder 	= document.querySelector('.full-element-placeholder');
+
 			if( null != activePlaceHolder ){
 				activePlaceHolder.classList.remove('karma-show-placeholder');
 			}
+			if ( null != fullPlaceholder ){
+				fullPlaceholder.classList.remove('full-element-placeholder');
+			}
+		}
 
-		},
+		,
 
 		/**
 		 * @summary Detect and show drop area placeholders while dragging
@@ -528,16 +534,17 @@ var karmaBuilder = karmaBuilder || {};
 			}
 			targetElement = this.getParentElementInfo( targetElement );
 			this.removePlaceHolders();
+
 			if ( false == targetElement || 'karma_section' == targetElement.name ){
 				return false;
 			}else if ( true == this.checkSelfPlaceholder( targetElement, UI )  ){
 
 				if ( targetElement.node.clientWidth == targetElement.node.querySelector('.karma-element-content').clientWidth ){
+					 targetElement.node.classList.add( 'full-element-placeholder' );
 					return false;
 				}
 				this.setAlignment( targetElement, event );
-			}
-			else if ( 'karma_column' == targetElement.name ) {
+			}else if ( 'karma_column' == targetElement.name ) {
 				var placeHolder =  targetElement.node.querySelector('.karma-column-placeholder');
 				if ( null != placeHolder ) {
 					placeHolder.classList.add('karma-show-placeholder');

@@ -120,7 +120,6 @@
 						var dropArea        = document.querySelector( '.karma-show-placeholder' ),
 							originalElement = $( this )[ 0 ],
 							orginalContainer = originalElement.closest(".karma-builder-element");
-
 						if ( null != dropArea && dropArea.classList.contains('karma-element-placeholder-' + orginalContainer.getAttribute('data-element-key') ) ) {
 							orginalContainer.classList.remove( 'karma-self-placeholder' );
 						} else if ( null != dropArea && dropArea.classList.contains( 'karma-alignment-placeholder' ) ){

@@ -21,6 +21,12 @@
 	}
 }
 
+.full-element-placeholder{
+	background-color: rgba( $builder-main-color, 0.1 );
+}
+
+
+
 .ui-sortable-handle.ui-sortable-placeholder{
 	visibility: visible !important;
 	background-color: rgba($builder-accent-color,.3);
