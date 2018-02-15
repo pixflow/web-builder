@@ -8,7 +8,7 @@
 
 
 		template: '<input class="karma-color-gizmo karma-colorpicker-main-color"/>'
-		+'<input class="karma-color-gizmo-hover karma-colorpicker-second-color"/>',
+		+'<input value="{{ data.secondColorValue }}" class="karma-color-gizmo-hover karma-colorpicker-second-color"/>',
 
 
 		initialize :function(){
@@ -56,6 +56,10 @@
 				this.colorAttribute = this.elementView.getAttributes( [ 'color' ] );
 				this.data.colorValue = this.colorAttribute.color;
 			}
+			if ( 'undefined' != typeof this.data.secondColorModel ) {
+				this.seconColorAttribute = this.elementView.getAttributes( [ this.data.secondColorModel ] );
+				this.data.secondColorValue = this.seconColorAttribute[ this.data.secondColorModel ];
+			}
 			this.update();
 			this.$gizmoContainer.append( this.el );
 			this.initColorPicker();
@@ -64,7 +68,9 @@
 		},
 
 		update: function(){
+
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
+
 		},
 
 		/**
