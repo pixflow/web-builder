@@ -45,7 +45,6 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'linktext'			=> 'This is link',
 				'backgroundsize'	=> 'cover',
 				'backgroundposition'=> 'center-center',
-				'contentposition'	=> 'bottom-left',
 				'titlecolor'		=> '#fff',
 				'descriptioncolor'	=> '#fff',
 				'linkcolor'			=> '#fff',
@@ -87,7 +86,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 		$display			= ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
 		ob_start();
 		?>
-		<div class="karma-image-text-box karma-image-text-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-image-text-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-image-text-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-image-text-box-content-position-<?php echo esc_attr( $attributes['contentposition'] ); ?>";  >
+		<div class="karma-image-text-box karma-image-text-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-image-text-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-image-text-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-image-text-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
 			<div class="karma-image-text-box-overlay"></div>
 			<div class="karma-image-text-box-text-container">
 				<div class="karma-image-text-box-title">
@@ -120,7 +119,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		$js_template =
-				 '<div class="karma-image-text-box karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.contentposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
+				 '<div class="karma-image-text-box karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
 				 . '<div class="karma-image-text-box-overlay"></div>'
 				 . '<div class="karma-image-text-box-text-container">'
 				 . '<div  class="karma-image-text-box-title">'
