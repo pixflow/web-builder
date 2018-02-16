@@ -4270,8 +4270,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           box-shadow: none;
           color: #419CF8;
           font-family: "HelveticaNeue_med";
-          padding: 5px 0;
-          Cursor: no-drop; }
+          padding: 5px 0; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
         display: flex;
         flex-direction: column; }

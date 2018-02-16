@@ -52,12 +52,30 @@ class Karma_Typography{
 	 * @var      array    $builder_default_fonts    Default fonts.
 	 */
 	protected $builder_default_fonts = array(
-		'HelveticaNeue' => array( '400 Normal' ),
+
+        'poppins'       => array( '400 Normal', '500 Normal' ),
+        'HelveticaNeue' => array( '400 Normal' ),
 		'arial'         => array( '400 Normal', '200 Normal' ),
 		'courier'       => array( '100 Normal', '400 Normal', '300 Normal' ),
 		'sans-serif'    => array( '400 Normal' ),
 		'monospace'     => array( '400 Normal' ),
 	);
+
+    /**
+     * It is an array that contains default fonts in different OS and browser
+     *
+     * @since    0.1.1
+     * @access   protected
+     * @var      array    $web_default_fonts    Default fonts.
+     */
+    public $web_default_fonts = array(
+
+        'HelveticaNeue' => array( '400 Normal' ),
+        'arial'         => array( '400 Normal', '200 Normal' ),
+        'courier'       => array( '100 Normal', '400 Normal', '300 Normal' ),
+        'sans-serif'    => array( '400 Normal' ),
+        'monospace'     => array( '400 Normal' ),
+    );
 
 	/**
 	 * It is an array that contains custom fonts with their url and name in builder
@@ -77,38 +95,38 @@ class Karma_Typography{
 	 */
 	protected $builder_default_heading_format = array(
 		'h1'    => array(
-			'font-size'     => '70' ,
-			'font-family'   => 'HelveticaNeue' ,
-			'font-varients' => '400' ,
+			'font-size'     => '60' ,
+			'font-family'   => 'poppins' ,
+			'font-varients' => '500' ,
 		),
 		'h2'    => array(
-			'font-size'     => '60' ,
-			'font-family'   => 'HelveticaNeue' ,
+			'font-size'     => '46' ,
+			'font-family'   => 'poppins' ,
 			'font-varients' => '400' ,
 		),
 		'h3'    => array(
-			'font-size'     => '50' ,
-			'font-family'   => 'HelveticaNeue' ,
+			'font-size'     => '38' ,
+			'font-family'   => 'poppins' ,
 			'font-varients' => '400' ,
 		),
 		'h4'    => array(
-			'font-size'     => '40' ,
-			'font-family'   => 'HelveticaNeue' ,
+			'font-size'     => '28' ,
+			'font-family'   => 'poppins' ,
 			'font-varients' => '400' ,
 		),
 		'h5'    => array(
-			'font-size'     => '30' ,
-			'font-family'   => 'HelveticaNeue' ,
+			'font-size'     => '22' ,
+			'font-family'   => 'poppins' ,
 			'font-varients' => '400' ,
 		),
 		'h6'    => array(
-			'font-size'     => '20' ,
-			'font-family'   => 'HelveticaNeue' ,
+			'font-size'     => '18' ,
+			'font-family'   => 'poppins' ,
 			'font-varients' => '400' ,
 		),
 		'p'     => array(
-			'font-size'     => '18' ,
-			'font-family'   => 'HelveticaNeue' ,
+			'font-size'     => '15' ,
+			'font-family'   => 'poppins' ,
 			'font-varients' => '400' ,
 		),
 
@@ -265,6 +283,7 @@ class Karma_Typography{
 	protected function get_headings_format(){
 
 		$heading_format = get_transient( $this::KARMA_HEADING_TRANSIENT );
+
 		if ( false === $heading_format ) {
 			$heading_format = get_option( $this::KARMA_HEADING_OPTION, $this->builder_default_heading_format );
 		} else {

@@ -4,6 +4,7 @@ namespace KarmaBuilder\PublicArea ;
 
 
 /** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 /**
@@ -79,15 +80,66 @@ class Karma_Builder_Public {
 		 * class.
 		 */
 
-		$stylesheet = Karma_Factory_Pattern::$stylesheet;
-		$stylesheet->create_global_css_file();
 
-
+		$this->dynamic_styles();
 		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
-
 
 	}
+
+    /**
+     * Create dynamic css file and enqueue it
+     *
+     * @since    0.1.1
+     *
+     */
+	public function dynamic_styles(){
+
+        $stylesheet = Karma_Factory_Pattern::$stylesheet;
+
+        $file = File_System::get_instance();
+        if ( ! $file->file_exists( KARMA_DYNAMIC_DIRECTORY_PATH ) ) {
+            $file->make_dir( KARMA_DYNAMIC_DIRECTORY_PATH );
+        }
+        $this->create_dynamic_style_file( $stylesheet->create_global_css_file() );
+        $this->enqueue_dynamic_styles( $stylesheet->create_google_font_link() );
+
+    }
+
+    /**
+     * Enqueue google fonts link and dynamic css file
+     *
+     * @param string $link  google fonts link
+     *
+     * @since    0.1.1
+     *
+     */
+    public function enqueue_dynamic_styles ( $link ){
+
+        $builder = Karma_Factory_Pattern::$builder;
+        wp_enqueue_style( "google-font", $link , array(), $builder->get_version(), 'all' );
+        wp_enqueue_style( "karma-dynamic-style", KARMA_DYNAMIC_DIRECTORY_URL . '/global-style.css', array(), $builder->get_version(), 'all' );
+
+    }
+
+    /**
+     * Create dynamic style file if it is not exists
+     *
+     * @param string $content generated dynamic content
+     *
+     * @since    0.1.1
+     * @return boolean
+     *
+     */
+    private function create_dynamic_style_file( $content ){
+
+        $css_file_name = KARMA_DYNAMIC_DIRECTORY_PATH . '/global-style.css';
+        $file = File_System::get_instance();
+        if( $file->create_file( $css_file_name, $content ) ){
+            return true;
+        }
+        return false;
+
+    }
 
 	/**
 	 * Register the JavaScript for the public-facing side of the site.

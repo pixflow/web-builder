@@ -147,7 +147,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			$('.karma-google-fonts-list').addClass('show-google-font-weight');
 			$('.current-font-weight').removeClass('font-weight-selected');
 			$('.karma-google-fonts-list .left-side ul li').remove();
-			this.createFontVarientListHtml( fontVarient );
+			this.createFontVarientListHtml( element.attr('data-font-family'), fontVarient );
 
 		},
 
@@ -159,9 +159,9 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @since 0.1.1
 		 * @returns void
 		 */
-		createFontVarientListHtml : function( fontVarient ){
+		createFontVarientListHtml : function( fontName, fontVarient ){
 
-			var fontWeightHtml = _.template( this.fontWeightHtmlTemplate, this.templateSettings ) ;
+			var fontWeightHtml = _.template( this.fontWeightHtmlTemplate, this.templateSettings );
 			fontVarient.forEach( function ( index ) {
 				//font style
 				var font = index,
@@ -181,6 +181,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				$('.karma-google-fonts-list .left-side ul').append( fontWeightHtml( { index : index, fontWeight : fontWeight, fontStyle : fontStyle } ) );
 
 			});
+
+			this.selectActiveFontWeight( fontName );
 
 		},
 
@@ -245,7 +247,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					horizrailenabled: false
 				});
 			}
-
+			this.sortFontByPopular();
 
 		},
 
@@ -265,30 +267,26 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				modelArr = [];
 
 			fontWeight.each( function () {
+
 				var obj = {
-					'weight': $( this ).attr('data-font-weight'),
-					'style': $(this).attr('data-font-style')
+					'weight' : $( this ).attr('data-font-weight'),
+					'style'  : $( this ).attr('data-font-style')
 				};
-
 				modelArr.push( $( this ).attr('data-font-weight') + ' ' + $( this ).attr('data-font-style') );
-
 				arr.push( obj );
-			});
 
-			var prevFont = $('.karma-font-name[ style *= "font-family:' + fontFamily + '" ]');
+			});
+			var prevFont = $('.karma-font-name[ data-font-name ="' + fontFamily.toLowerCase() + '" ]');
 			if ( prevFont.length ) {
 				prevFont.closest('.karma-font-list').remove();
 			}
-
 			if ( $('.current-font-weight').hasClass('font-weight-selected') ) {
-
 				if( this.updateTypographyModels( fontFamily, modelArr ) ) {
 					this.loadFont( fontFamily, modelArr) ;
 					this.addFontToHeadingDropdown( fontFamily, modelArr );
 					$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
 				}
 				this.closeKarmaGoogleFonts();
-
 			}
 
 		},
@@ -375,6 +373,24 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
+		 * @summary Move 3 popular fonts to beginning
+		 *
+		 * @since 0.1.0
+		 *
+		 * @return {void}
+		 */
+		sortFontByPopular : function () {
+
+			var popularFonts = [ 'Quicksand', 'Oswald', 'Roboto', 'Open Sans', 'Montserrat', 'Poppins', 'Raleway', 'Playfair Display', 'Nunito', 'Dosis' ];
+
+			for ( var font in popularFonts ){
+				var fontItem = $('.karma-google-fonts-list .right-side ul li[ data-font-family = "' + popularFonts[ font ] + '"]');
+				$('.karma-google-fonts-list .right-side ul').prepend( fontItem );
+			}
+
+		},
+
+		/**
 		 * @summary Show list of google fonts
 		 *
 		 * @param {number}  searchResult
@@ -394,7 +410,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			}
 
 		},
-
 
 		/**
 		 * @summary Show list of google fonts
@@ -416,7 +431,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			}
 
 		},
-
 
 		/**
 		 * @summary Show list of google fonts
@@ -691,7 +705,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 		},
 
-
 		/**
 		 * @summary Open dropdowm
 		 *
@@ -953,7 +966,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					'style': 'Regular'
 				};
 				arr.push(obj);
-
 				$('.karma-fonts-list').append(view.createFontListHtml(fontFamily, arr));
 				$('.karma-google-fonts-list').slideUp(300);
 			}
@@ -1011,6 +1023,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 */
 		deleteFontBox: function ( event ) {
 
+			event.stopPropagation();
 			var deleteBox = this.el.querySelector('.karma-delete-message-box'),
 				deleteContainer = this.el.querySelector('.karma-delete-message-container');
 
@@ -1082,7 +1095,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 			var font = $('.deleted-font .karma-font-name').attr('data-font-name');
 			delete this.model.fonts[font];
-			if (undefined != document.querySelector('.deleted-font')) {
+			if ( undefined != document.querySelector('.deleted-font') ) {
 				$('.deleted-font').remove()
 			}
 		},
@@ -1097,6 +1110,53 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 			e.stopPropagation();
 
+		},
+
+		/**
+		 * @summary Separate Google fonts from fonts that user choose
+		 *
+		 * @since 0.1.0
+		 * @returns {object}
+		 */
+		getGoogleFonts : function () {
+
+			var defaultFonts = [ 'HelveticaNeue', 'arial', 'courier', 'monospace', 'sans-serif' ],
+				currentFonts = this.model.fonts,
+				googleFonts = {};
+
+			for ( var i in currentFonts ){
+				if ( defaultFonts.indexOf( i ) < 0 ){
+					googleFonts[ i ] = currentFonts[ i ];
+				}
+			}
+			return googleFonts;
+		},
+
+		/**
+		 * @summary Select font weight of fonts that user has chosen before on
+		 * opening dropdown
+		 *
+		 * @param { string } fontName
+		 *
+		 * @since 0.1.0
+		 * @returns {void}
+		 */
+		selectActiveFontWeight: function ( fontName ) {
+
+			var googleFonts =  this.getGoogleFonts(),
+				$fontVariant = $('.karma-google-fonts-list .left-side ul');
+
+			fontName = fontName.toLowerCase();
+			if ( undefined != googleFonts[ fontName ] ){
+				for( var index in googleFonts[ fontName ] ){
+
+					var fontStyles = googleFonts[ fontName ][ index ].split(' '),
+						$list = $fontVariant.find('li[data-font-weight = "' + fontStyles[ 0 ] + '"]');
+					$list = $list.filter( '[data-font-style="' + fontStyles[ 1 ].toLowerCase() + '"]' );
+					$list.addClass('active-font-weight');
+
+				}
+			}
 		},
 
 	});

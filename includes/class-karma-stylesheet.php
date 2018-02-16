@@ -151,9 +151,7 @@ class Karma_Stylesheet {
 
 	}
 
-
-
-	/**
+    /**
 	 * Create heading css format that need to load in builder in frontend
 	 *
 	 * @param array $headings   Headings format
@@ -166,7 +164,7 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		foreach ( $headings as $tag => $info ){
-			$headings_style .= $tag . '{' ;
+			$headings_style .= $tag . '[class *= "tag" ]{' ;
 			foreach ( $info as $property => $value ){
 				if( 'font-varients' == $property  ){
 					$explode = explode( ' ', $value );
@@ -183,5 +181,87 @@ class Karma_Stylesheet {
 		return $headings_style;
 
 	}
+
+    /**
+     * Create fonts link to enqueue
+     *
+     * @since    0.1.1
+     *
+     * @return string CSS string
+     *
+     */
+    public function create_google_font_link(){
+
+        $typography = Karma_Typography::get_instance();
+        $result = $this->check_diff_multi_dimensional_array( $typography->typography_model->fonts, $typography->web_default_fonts );
+        return $this->create_fonts_ink( $result );
+
+    }
+
+    /**
+     * Returns an array that contains difference between 2 arrays
+     *
+     * @param array $arr1
+     * @param array $arr2
+     *
+     * @since    0.1.1
+     * @return array
+     *
+     */
+    private function check_diff_multi_dimensional_array( $arr1, $arr2 ){
+
+        $check = ( is_array( $arr1 ) && count( $arr1 ) > 0 ) ? true : false;
+        $result = ( $check ) ? ( ( is_array( $arr2 ) && count( $arr2 ) > 0 ) ? $arr2 : array() ) : array();
+        $new_result = array();
+        if( $check ){
+            foreach( $arr1 as $key => $value ){
+                if( !isset( $result[ $key ] ) ){
+                    $new_result[ $key ] = $value;
+                }
+            }
+        }
+        return $new_result;
+    }
+
+    /**
+     * Create google font link
+     *
+     * @param array $fonts saved fonts
+     *
+     * @since    0.1.1
+     * @return string 
+     *
+     */
+	private function create_fonts_ink( $fonts ){
+
+	    $link = 'https://fonts.googleapis.com/css?family=';
+	    $temp_font = $fonts;
+	    end( $temp_font );
+
+        foreach( $fonts as $font => $variant ) {
+
+            $link_font = ucwords( $font );
+            $link_font = str_replace(' ', '+', $link_font);
+            $link  .= $link_font;
+            $variant_link = ':';
+            foreach( $variant as $indx => $key ){
+
+                $font_variant = explode(" ", $key );
+                $variant_link .= $font_variant[ 0 ];
+                if ( 'italic' == $font_variant[ 1 ] ){
+                    $variant_link .= 'i';
+                }
+                if( $key != $variant[ count( $variant ) - 1 ] ){
+                    $variant_link .= ',';
+                }
+            }
+            $link .= $variant_link;
+            if ($font != key( $temp_font ) ) {
+                $link .= '|';
+            }
+
+        }
+        return $link;
+    }
 
 }
