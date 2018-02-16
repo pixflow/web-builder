@@ -19,7 +19,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			variable: 'data'
 		},
 
-
 		/*
 	    * Font varient template
 	    *
@@ -113,7 +112,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			this.renderFonts();
 
 		},
-
 
 		/**
 		 * @summary Stop scrolling when dropdown open

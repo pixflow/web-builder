@@ -36,7 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Karma_Stylesheet {
 
-
 	/**
 	 * Create CSS blocks .
 	 *
@@ -81,7 +80,6 @@ class Karma_Stylesheet {
 
 	}
 
-
 	/**
 	 * Create CSS property and value for each element .
 	 *
@@ -99,7 +97,6 @@ class Karma_Stylesheet {
 		return $selector_content;
 
 	}
-
 
 	/**
 	 * Create default styles for elements
@@ -136,7 +133,6 @@ class Karma_Stylesheet {
 
 	}
 
-
 	/**
 	 * Create global css file that need to load in builder in frontend
 	 *
@@ -147,9 +143,45 @@ class Karma_Stylesheet {
 	public function create_global_css_file(){
 
 		$typography = Karma_Typography::get_instance();
-		return $this->create_heading_css_file( $typography->typography_model->headings );
+
+		$css_content  = $this->create_custom_font_link( $typography->typography_model->customFonts );
+		$css_content .= $this->create_heading_css_file( $typography->typography_model->headings );;
+		return $css_content;
 
 	}
+
+    /**
+     * Create global css file that need to load in builder in frontend
+     *
+     * @param array $custom_font uploaded user fonts
+     * @since    0.1.1
+     * @return string CSS string
+     *
+     */
+	private function create_custom_font_link( $custom_font ){
+
+	    $load_custom_font = '';
+	    foreach ( $custom_font as $key => $value ) {
+
+            $load_custom_font = '@font-face {';
+            $load_custom_font .= 'font-family:"' . $key . '";';
+            preg_match("/(.*)\/(.*)/", $value,$result );
+            $font = $result[ count( $result ) - 1 ] ;
+            $exploded_name = explode('.', $font );
+            switch ( $exploded_name[ 1 ] ) {
+                case 'ttf':
+                    $load_custom_font .= "src: url('". $font ."')  format('truetype')";
+                    break;
+                case 'eot':
+                    $load_custom_font .= "src: url('". $$font ."')  format('embedded-opentype')";
+                    break;
+                default:
+                    $load_custom_font .= "src: url('". $font ."')  format('". $font ."')";
+            }
+            $load_custom_font .= '}';
+        }
+        return $load_custom_font;
+    }
 
     /**
 	 * Create heading css format that need to load in builder in frontend
@@ -229,7 +261,7 @@ class Karma_Stylesheet {
      * @param array $fonts saved fonts
      *
      * @since    0.1.1
-     * @return string 
+     * @return string
      *
      */
 	private function create_fonts_ink( $fonts ){

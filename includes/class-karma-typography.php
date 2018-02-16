@@ -31,7 +31,6 @@ use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 class Karma_Typography{
 
-
 	CONST KARMA_FONT_OPTION = 'karma-builder-font-option' ;
 
 	CONST KARMA_FONT_TRANSIENT = 'karma-builder-font-transient' ;
@@ -131,7 +130,6 @@ class Karma_Typography{
 		),
 
 	);
-
 
 	/**
 	 * It is an array that contains Custom heading and paragraph format and

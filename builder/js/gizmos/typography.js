@@ -283,5 +283,4 @@
 
 	});
 
-
 } )( jQuery, karmaBuilder );
