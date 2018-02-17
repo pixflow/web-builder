@@ -765,7 +765,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			var elementName = elementModel.parent.shortcode_name;
 
-			if( 'karma_section' == elementName ){
+			if ( 'karma_section' == elementName ){
 
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementView.currentGrid();
@@ -775,7 +775,7 @@ var karmaBuilder = karmaBuilder || {};
 				this.createColumnsChild( elementModel.childes, newView );
 				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
 
-			}else if( 'karma_section' != elementName && 'karma_column' != elementName ){
+			} else if( 'karma_section' != elementName && 'karma_column' != elementName ){
 
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent  );
 				this.$el.trigger( 'karma/after/dropElement', [ newView.model.get('parent_key') ] );
@@ -797,6 +797,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns {void}
 		 */
 		createStyleSheetForElements : function( models, elementView ){
+
 
 			_.each( models, function ( value, model ) {
 				if( 'function' == typeof elementView[ model ] ){

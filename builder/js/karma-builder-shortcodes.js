@@ -856,8 +856,6 @@
 
 				cssProperty[ attribute ] = value;
 				oldStyle = this.removeOldSelector( selector, oldStyle );
-
-
 				return oldStyle + this.generateStyleString( selector, cssProperty );
 			}else{
 				var cssProperty = {};
