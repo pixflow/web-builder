@@ -41,7 +41,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 						<div class="builder-setting-label"><?php  _e('Setting', 'karma'); ?></div>
 					</li>
 					<li class="builder-sites-setting">
-						<div class="builder-Typography-label"><a href="<?php echo get_home_url() . '/?builder-page=karma-typography-page' ?>"  > <?php  _e( 'Typography', 'karma' ); ?> </a></div>
+						<div class="builder-Typography-label"><a href="<?php echo get_home_url() . '/?builder-page=karma-typography-page' ?>" target="_blank" > <?php  _e( 'Typography', 'karma' ); ?> </a></div>
 					</li>
 					<li class="builder-upgrade">
 						<div class="builder-upgrade-text"><?php  _e( 'Upgrade', 'karma' ); ?></div>
