@@ -7,7 +7,6 @@
 			'click .karma-editable-content'              : 'updateFontStyleGizmo',
 			'click.focusElement'						 : 'focusElement',
 			'keydown .karma-editable-content'	         : 'preventFromNewLine',
-			'paste [contenteditable]'					 : 'pasteAsPlainText',
 			'drop .karma-editable-content'               : 'preventFromDrop'
 		},
 
@@ -258,21 +257,7 @@
 
 		},
 
-		/**
-		 * @summary paste as plain text for pasting in text shortcode
-		 *
-		 * @param   {Object}    event
-		 *
-		 * @since 0.1.0
-		 * @return {void}
-		 */
-		pasteAsPlainText : function ( e ) {
 
-				e.preventDefault();
-				var text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
-				document.execCommand( 'insertText', false, text );
-
-		},
 
 	});
 
