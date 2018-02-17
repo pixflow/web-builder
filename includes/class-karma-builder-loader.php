@@ -159,7 +159,7 @@ class Karma_Builder_Loader {
 	public function prepare_builder(){
 
 		if( 'true' == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
-			remove_filter( 'the_content','wpautop' );
+			remove_filter( 'the_content', 'wpautop' );
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
 		}

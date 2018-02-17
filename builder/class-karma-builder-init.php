@@ -81,7 +81,7 @@ class Karma_Builder_Public {
 		 */
 
 
-		$this->dynamic_styles();
+		$this->create_dynamic_styles();
 		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
 
 	}
@@ -92,13 +92,13 @@ class Karma_Builder_Public {
      * @since    0.1.1
      *
      */
-	public function dynamic_styles(){
+	public function create_dynamic_styles() {
 
         $stylesheet = Karma_Factory_Pattern::$stylesheet;
 
         $file = File_System::get_instance();
-        if ( ! $file->file_exists( KARMA_DYNAMIC_DIRECTORY_PATH ) ) {
-            $file->make_dir( KARMA_DYNAMIC_DIRECTORY_PATH );
+        if ( ! $file->file_exists( KARMA_GLOBAL_STYLE_DIRECTORY_PATH ) ) {
+            $file->make_dir( KARMA_GLOBAL_STYLE_DIRECTORY_PATH );
         }
         $this->create_dynamic_style_file( $stylesheet->create_global_css_file() );
         $this->enqueue_dynamic_styles( $stylesheet->create_google_font_link() );
@@ -113,11 +113,12 @@ class Karma_Builder_Public {
      * @since    0.1.1
      *
      */
-    public function enqueue_dynamic_styles ( $link ){
+    public function enqueue_dynamic_styles ( $link ) {
 
-        $builder = Karma_Factory_Pattern::$builder;
-        wp_enqueue_style( "google-font", $link , array(), $builder->get_version(), 'all' );
-        wp_enqueue_style( "karma-dynamic-style", KARMA_DYNAMIC_DIRECTORY_URL . '/global-style.css', array(), $builder->get_version(), 'all' );
+    	if( '' != $link ){
+		    wp_enqueue_style( "karma-google-font-link", $link , array(), $this->version, 'all' );
+	    }
+        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_DIRECTORY_URL . '/global-style.css', array(), $this->version, 'all' );
 
     }
 
@@ -132,7 +133,7 @@ class Karma_Builder_Public {
      */
     private function create_dynamic_style_file( $content ){
 
-        $css_file_name = KARMA_DYNAMIC_DIRECTORY_PATH . '/global-style.css';
+        $css_file_name = KARMA_GLOBAL_STYLE_DIRECTORY_PATH . '/global-style.css';
         $file = File_System::get_instance();
         if( $file->create_file( $css_file_name, $content ) ){
             return true;

@@ -154,6 +154,7 @@ class Karma_Stylesheet {
      * Create global css file that need to load in builder in frontend
      *
      * @param array $custom_font uploaded user fonts
+     *
      * @since    0.1.1
      * @return string CSS string
      *
@@ -165,20 +166,9 @@ class Karma_Stylesheet {
 
             $load_custom_font = '@font-face {';
             $load_custom_font .= 'font-family:"' . $key . '";';
-            preg_match("/(.*)\/(.*)/", $value,$result );
-            $font = $result[ count( $result ) - 1 ] ;
-            $exploded_name = explode('.', $font );
-            switch ( $exploded_name[ 1 ] ) {
-                case 'ttf':
-                    $load_custom_font .= "src: url('". $font ."')  format('truetype')";
-                    break;
-                case 'eot':
-                    $load_custom_font .= "src: url('". $$font ."')  format('embedded-opentype')";
-                    break;
-                default:
-                    $load_custom_font .= "src: url('". $font ."')  format('". $font ."')";
-            }
+		    $load_custom_font .= "src: url('". $value ."') ";
             $load_custom_font .= '}';
+
         }
         return $load_custom_font;
     }
@@ -222,6 +212,7 @@ class Karma_Stylesheet {
      * @return string CSS string
      *
      */
+    //@TODO - refine ( Use built0in PHP function )
     public function create_google_font_link(){
 
         $typography = Karma_Typography::get_instance();
@@ -276,9 +267,9 @@ class Karma_Stylesheet {
             $link_font = str_replace(' ', '+', $link_font);
             $link  .= $link_font;
             $variant_link = ':';
-            foreach( $variant as $indx => $key ){
+            foreach( $variant as $index => $key ){
 
-                $font_variant = explode(" ", $key );
+                $font_variant = explode( " ", $key );
                 $variant_link .= $font_variant[ 0 ];
                 if ( 'italic' == $font_variant[ 1 ] ){
                     $variant_link .= 'i';
@@ -288,12 +279,12 @@ class Karma_Stylesheet {
                 }
             }
             $link .= $variant_link;
-            if ($font != key( $temp_font ) ) {
+            if ( $font != key( $temp_font ) ) {
                 $link .= '|';
             }
 
         }
-        return $link;
+        return ( 'https://fonts.googleapis.com/css?family=' == $link ) ? '' : $link;
     }
 
 }

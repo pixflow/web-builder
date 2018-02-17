@@ -116,12 +116,14 @@ $heading_default_text = array(
 								<ul class="karma-dropdown-options karma-font-varients-list" style="top: 629px; left: 742px;">
 									<?php
 									$font_name = ( 'HelveticaNeue' == $info['font-family'] ) ? $info['font-family'] : strtolower( $info['font-family'] );
+									if( ! isset( $font_list[ $font_name ] ) ){
+										$font_list[ $font_name ] = array( '400 Normal' );
+									}
 									foreach (  $font_list[ $font_name ] as $font_varients ):
 										if ( !is_array( $font_varients ) ) {
 											$font_varients = 'regular';
 										}
 										$selected_class = ( strtolower( $font_varients ) == strtolower( $info['font-varients'] ) ) ? 'karma-selected-dropdown-option' : '';
-
 										?>
 										<li class="karma-dropdown-option <?php echo $selected_class; ?>"
 										    data-value="<?php echo $font_varients; ?>">

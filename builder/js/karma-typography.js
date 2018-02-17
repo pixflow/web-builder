@@ -54,8 +54,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		*/
 		fontListBoxTemplate :  '<div class="karma-font-list karma-font-manger-box-style">'
 			+ '<div class="karma-font-name-part">'
-			+ '<span class="karma-font-name" data-font-name="{{ data.fontFamily }}" style="font-family:{{ data.fontFamily }};">{{ data.fontFamily }}</span>'
-			+ '<span class="karma-font-weight-count"><# print( data.fontWeight.length ) #>  Styles'
+			+ '<span class="karma-font-name" data-font-name="<# print( data.fontFamily.toLowerCase() ); #>" style="font-family: {{ data.fontFamily }};">{{ data.fontFamily }}</span>'
+			+ '<span class="karma-font-weight-count"><span><# print( data.fontWeight.length ) #>  Styles</span>'
 			+ '<span class="karma-drop-down-icon">'
 			+ '<svg width="12px" height="6px" viewBox="0 0 12 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="drop-down-all-Setting-pannel--style-guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g class="bottom-arrow" transform="translate(-2725.000000, -776.000000)" stroke-width="2" stroke="#419CF8"><g id="drop-down-Group-19" transform="translate(2715.000000, 762.000000)"><polyline id="drop-down-Path-2-Copy-9" points="11 15 16 19 21 15"></polyline></g></g></g></svg>'
 			+ '</span>'
@@ -65,12 +65,13 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			+ '</span>'
 			+ '</div>'
 			+ '<div class="karma-font-details-part">'
-			+ '<ul style="font-family:{{ data.fontFamily }};">'
+			+ '<ul style="font-family: {{ data.fontFamily }};">'
 			+ '<# data.fontWeight.forEach( function ( fontName ) { #>'
 			+ '<li data-font-style="<# print( fontName.style ); #>" data-font-weight="<# print( fontName.weight ); #>" >'
 			+ '<# print( fontName.weight ); #> <# print( fontName.style ); #></li>'
 			+ '<# }); #>'
 			+' </ul></div></div>' ,
+
 
 		events: {
 
@@ -84,7 +85,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			'click .karma-save-setting'                                         : 'saveFontsFormat',
 			'click .karma-add-to-library'                                       : 'addFontToLibrary',
 			'click .karma-google-fonts-title'                                   : 'openKarmaGoogleFonts',
-			'click .karma-delete-message-box-delete-button'                     : 'DeleteElement',
+			'click .karma-delete-message-box-delete-button'                     : 'deleteElement',
 			'click .karma-delete-message-box-cancel-button'                     : 'cancelDeleteElement',
 			'click .karma-delete-message-box'                                   : 'cancelDeleteElement',
 			'click .karma-delete-message-container'                             : 'deleteBoxStopPropagation',
@@ -274,15 +275,25 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				arr.push( obj );
 
 			});
-			var prevFont = $('.karma-font-name[ data-font-name ="' + fontFamily.toLowerCase() + '" ]');
-			if ( prevFont.length ) {
-				prevFont.closest('.karma-font-list').remove();
-			}
+
 			if ( $('.current-font-weight').hasClass('font-weight-selected') ) {
 				if( this.updateTypographyModels( fontFamily, modelArr ) ) {
-					this.loadFont( fontFamily, modelArr) ;
+					var prevFont = $('.karma-font-name[data-font-name="' + fontFamily.toLowerCase() + '"]'),
+						ul = prevFont.closest('.karma-font-list').find('ul');
+
+					if ( prevFont.length ) {
+						_.each( arr, function ( style  ) {
+							ul.append('<li>' + style.weight + ' ' + style.style + '</li>');
+						});
+						prevFont.closest('.karma-font-list').find('.karma-font-weight-count span:nth-child(1)').text( ul.find('li').length + ' Style' );
+					} else {
+
+						this.loadFont( fontFamily, modelArr) ;
+						$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
+					}
+
 					this.addFontToHeadingDropdown( fontFamily, modelArr );
-					$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
+
 				}
 				this.closeKarmaGoogleFonts();
 			}
@@ -300,7 +311,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 */
 		addFontToHeadingDropdown: function ( font, weights ) {
 
-			$('.karma-typography-font .karma-font-family-list').append('<li class="karma-dropdown-option " data-value="' + font + '"><span class="karma-dropdown-option-title">' + font + '</span></li>');
+			$('.karma-dropdown-option[data-value="' + font.toLowerCase() + '"]').remove();
+			$('.karma-typography-font .karma-font-family-list').append('<li class="karma-dropdown-option " data-value="' + font.toLowerCase() + '"><span class="karma-dropdown-option-title">' + font + '</span></li>');
 			weights.forEach(function ( weight ) {
 				$('.karma-typography-weight .karma-font-family-list').append('<li class="karma-dropdown-option" data-value="' + weight + '"><span class="karma-dropdown-option-title">' + weight + '</span></li>');
 			})
@@ -336,6 +348,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		updateTypographyModels: function ( fontFamily, arr ) {
 
 			var result = false;
+			fontFamily = fontFamily.toLowerCase();
 			if ( 'undefined' == typeof this.model.fonts[ fontFamily ] ) {
 				this.model.fonts[ fontFamily.toLowerCase() ] = arr;
 				result = true ;
@@ -399,8 +412,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 */
 		showAfterResult: function ( searchResult, inputValue ) {
 
-			for (searchResult; searchResult <= 848; searchResult++) {
-				if (this.googleFontList.fontFamily[searchResult].substr(0, inputValue.length).toLowerCase() == inputValue) {
+			for ( searchResult; searchResult <= 848; searchResult++ ) {
+				if ( this.googleFontList.fontFamily[ searchResult].substr( 0, inputValue.length ).toLowerCase() == inputValue ) {
 					document.querySelector('.karma-google-font[data-font-id="' + searchResult + '"]').style.display = 'flex';
 				} else {
 					break;
@@ -646,13 +659,14 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		updateFontVarientList: function ( element, fontName ) {
 
 			fontName = ('HelveticaNeue' == fontName) ? fontName : fontName.toLowerCase();
-			var fontVarientList = this.model.fonts[ fontName],
+
+			var fontVarientList = ( 'undefined' !== typeof this.model.fonts[ fontName ] ) ? this.model.fonts[ fontName ] : ['400 Normal'],
 				lists = '',
 				that = this,
-				fontVarientUpdate = this.model.fonts[ fontName ][0];
+				fontVarientUpdate = ( 'undefined' !== typeof this.model.fonts[ fontName ] ) ? this.model.fonts[ fontName ][0] : '400 Normal'  ;
 
-			_.each( fontVarientList, function (fontVarient ) {
-				var template = _.template(that.fontVarientTemplate, that.templateSettings),
+			_.each( fontVarientList, function ( fontVarient ) {
+				var template = _.template( that.fontVarientTemplate, that.templateSettings ),
 					source = template( { fontVarient: fontVarient } );
 
 				lists += source;
@@ -714,9 +728,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				optionsContainer = element.next('ul');
 			$('.karma-doropdown-opened').removeClass('karma-doropdown-opened');
 			optionsContainer.addClass('karma-doropdown-opened');
-			if (!optionsContainer.find('.karma-selected-dropdown-option').length) {
+			if ( ! optionsContainer.find('.karma-selected-dropdown-option').length ) {
 				optionsContainer.find('.karma-dropdown-option').first().addClass('karma-selected-dropdown-option');
 			}
+
 
 			var top = optionsContainer.find('.karma-selected-dropdown-option').position().top * -1 + element.offset().top - $(window).scrollTop(),
 				left = element.offset().left - 5;
@@ -1027,7 +1042,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 			if (null == deleteBox) {
 				var template = KarmaView.getWpTemplate('karma-delete-message-box');
-				this.$el.append(template);
+				this.$el.append( template );
 			} else {
 
 				if (deleteBox.classList.contains("karma-delete-box-animation")) {
@@ -1074,25 +1089,40 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
-		DeleteElement: function () {
+		deleteElement: function () {
 
 			var that = this;
 			var deleteBox = this.el.querySelector('.karma-delete-message-box'),
-				deleteContainer = this.el.querySelector('.karma-delete-message-container');
+				deleteContainer = this.el.querySelector('.karma-delete-message-container'),
+				font  = $('.deleted-font .karma-font-name').attr('data-font-name');
 
 			deleteContainer.classList.add("karma-delete-container-animation");
 			deleteBox.classList.add("karma-delete-box-animation");
-			setTimeout(function () {
-				that.deleteFont();
+
+			setTimeout( function () {
+				that.deleteFont( font );
 				deleteBox.style.display = 'none';
-			}, 100);
+			}, 100 );
 
 		},
 
-		deleteFont: function () {
+		/**
+		 * @summary  delete font from model
+		 *
+		 * @param {string} font Font name
+		 *
+		 * @since 0.1.1
+		 * @returns {void}
+		 */
+		deleteFont: function ( font ) {
 
-			var font = $('.deleted-font .karma-font-name').attr('data-font-name');
-			delete this.model.fonts[font];
+			$('.karma-font-family-list .karma-dropdown-option[data-value="' + font + '"]').remove();
+			delete this.model.fonts[ font ];
+			_.each( this.model.headings, function ( info ) {
+				if( info['font-family'].toLowerCase() == font.toLowerCase() ){
+					info['font-family'] = $('.karma-fonts-list .karma-font-name').eq(0).attr('data-font-name');
+				}
+			});
 			if ( undefined != document.querySelector('.deleted-font') ) {
 				$('.deleted-font').remove()
 			}

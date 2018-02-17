@@ -258,8 +258,8 @@ class Karma_Builder {
 		define( 'KARMA_CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
 		define( 'KARMA_CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
 
-		define( 'KARMA_DYNAMIC_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-dynamic-content'  );
-		define( 'KARMA_DYNAMIC_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-dynamic-content'  );
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-global-style'  );
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-global-style'  );
 
 	}
 
@@ -275,7 +275,6 @@ class Karma_Builder {
 	private function set_locale() {
 
 		$plugin_i18n = Karma_Factory_Pattern::$builder_i18n;
-
 		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
 	}
