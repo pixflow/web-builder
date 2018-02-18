@@ -124,7 +124,7 @@ class Karma_Builder_Admin {
 		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
 			echo '{ "result" : "false", "msg" : "error" }';
 		} else {
-			$models = sanitize_text_field( $_POST['models'] );
+			$models =  $_POST['models'];
 			$id = sanitize_text_field( $_POST['id'] );
 			$builder_core = Karma_Builder_Core::get_instance();
 			$models = json_decode( stripslashes( $models ), true );

@@ -35,6 +35,7 @@
 			'click .karma-blank-page-simple-layout .karma-new-section-layout'	: 'createNewSection',
 			'click .karma-blank-page-section-link'								: 'openSectionPanel',
 			'karma/callParent'                                                  : 'callParent',
+			'paste [contenteditable]'				       	                    : 'pasteAsPlainText',
 
 		},
 
@@ -116,6 +117,22 @@
 			} );
 
 			this.bindDocumentEvent();
+
+		},
+
+		/**
+		 * @summary paste as plain text for pasting in text shortcode
+		 *
+		 * @param   {Object}    event
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		pasteAsPlainText : function ( e ) {
+
+			e.preventDefault();
+			var text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
+			document.execCommand( 'insertText', false, text );
 
 		},
 

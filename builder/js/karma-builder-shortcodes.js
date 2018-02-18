@@ -19,7 +19,6 @@
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
-			'paste [contenteditable]'				       	    : 'pasteAsPlainText',
 
 		},
 
@@ -156,22 +155,6 @@
 
 			originalElement. closest( '.karma-builder-element').classList.remove( 'karma-self-placeholder' );
 			dropArea.classList.remove( 'karma-show-placeholder' );
-
-		},
-
-		/**
-		 * @summary paste as plain text for pasting in text shortcode
-		 *
-		 * @param   {Object}    event
-		 *
-		 * @since 0.1.0
-		 * @return {void}
-		 */
-		pasteAsPlainText : function ( e ) {
-
-			e.preventDefault();
-			var text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
-			document.execCommand( 'insertText', false, text );
 
 		},
 
