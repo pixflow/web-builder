@@ -217,6 +217,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					.closest('.karma-range-slider-content')
 					.querySelector('.karma-range-slider-range');
 
+
 			$( rangeSliderInput ).val( value ).change();
 
 		},
@@ -518,22 +519,22 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		initRangeSlider: function () {
 
 			var $rangeInputs = $('.karma-range-slider-range'),
-				that = this;
+				that = this,
+				timeout = null;
 
-			$rangeInputs.rangeslider({
+			$rangeInputs.rangeslider({ polyfill: false });
+			$rangeInputs.on('input', function (){
+				var input = this;
+				clearTimeout( timeout );
+				timeout = setTimeout( function (){
+					$( input ).next()
+						.next( '.karma-range-slider-number' )
+						.find( 'input' )
+						.val( input.value );
 
-				polyfill: false
-
-			}).on('input', function () {
-
-				$( this ).next()
-					.next('.karma-range-slider-number')
-					.find('input')
-					.val( this.value );
-
-				that.updateFontSize( this, this.value );
+					that.updateFontSize( input, input.value );
+				}, 400 );
 			});
-
 		},
 
 		/**

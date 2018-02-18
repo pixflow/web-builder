@@ -693,18 +693,17 @@ var karmaBuilder = karmaBuilder || {};
 				cancel: ".karma-active-element",
 				items: ".karma-builder-element[data-name='karma_section']",
 				update: function () {
-
 					that.reorderSections();
-
 				},
-				beforeStart: function () {
+				beforeStart: function ( e, UI ) {
 
+					if ( undefined != UI.item[0] ){
+						UI.item[0].classList.add( 'karma-show-border-section' );
+					}
 					document.body.style.overflowX = 'hidden';
-
 				},
 				sort: function ( event, UI ) {
 
-					that.scroll( UI, event );
 					helperKey = UI.helper.attr('data-element-key');
 					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : 'hidden' });
 
@@ -714,10 +713,13 @@ var karmaBuilder = karmaBuilder || {};
 					document.body.style.overflowX = '';
 
 				},
-				stop: function () {
+				stop: function ( e, UI ) {
 
 					clearInterval( that.flyScroll );
 					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : '' });
+					if ( undefined != UI.item[0] ){
+						UI.item[0].classList.remove( 'karma-show-border-section' );
+					}
 
 				}
 			} );

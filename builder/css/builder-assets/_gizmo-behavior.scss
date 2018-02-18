@@ -19,6 +19,12 @@
 
 	.karma-builder-element[data-name="karma_section"] {
 
+		&.karma-show-border-section{
+			section{
+				outline: 1px solid $builder-accent-color;
+			}
+		}
+
 		&:not(.karma-active-section):hover {
 		  section{
 			box-shadow: inset 0 0 0 1px $builder-accent-color-2;

@@ -480,7 +480,7 @@ karmaColorPicker.prototype.openColorPicker = function ( e ) {
 	var colorPickerContainer = document.querySelector( '.karma-color-picker-container[data-color-picker-id="' + e.target.dataset.colorPickerId + '"]' ),
 		that = this,
 		$ = jQuery;
-
+	$(document).trigger("click.hideColorPickerContainer")
 	if ( $( colorPickerContainer ).hasClass( 'karma-color-picker-opened' ) ) {
 		$( colorPickerContainer ).removeClass( 'karma-color-picker-opened' );
 		var $spectrum =$( "#" + that.id );
