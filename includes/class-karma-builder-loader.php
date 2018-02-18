@@ -63,6 +63,7 @@ class Karma_Builder_Loader {
 		'column',
 		'image',
 		'text',
+		'button',
 		'image_box',
 		'video_box'
 	);

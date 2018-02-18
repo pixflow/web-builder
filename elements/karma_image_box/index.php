@@ -52,10 +52,11 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'descriptiontag'	=>'h5',
 				'textposition'		=>'bottom-left',
 				'textlink'			=>'https://www.google.com/',
-				'textlinkaction'	=>'_self',
+				'opennewtab'		=>'_self',
 				'topspacepadding'	=> '10',
 				'radiusbox'			=>'0',
-				'imageheight'		=>'400'
+				'imageheight'		=>'400',
+				'elementalign'		=> 'left',
 		);
 
 	}
@@ -82,7 +83,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 
 		$title_content		= '<' . $attributes['titletag'] . ' class="karma-image-text-box-title-tag ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
 		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
-		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['textlinkaction']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
+		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display			= ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
 		ob_start();
 		?>
@@ -129,7 +130,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				 . '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-image-text-box-description-tag" > {{ data.attributes.shortcode_attributes.descriptiontext }} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
 				 . '</div>'
 				 . '<div  class="karma-image-text-box-link">'
-				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.textlinkaction }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
+				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 				 . '</div>'
 				 . '</div>'

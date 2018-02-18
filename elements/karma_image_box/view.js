@@ -292,12 +292,12 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		textlinkaction: function () {
+		opennewtab: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['textlinkaction'] );
+				linktarget  = this.getAttributes( ['opennewtab'] );
 
-			elementId.find( '.karma-image-text-box-link-tag ' ).attr( "target", linktarget.textlinkaction );
+			elementId.find( '.karma-image-text-box-link-tag ' ).attr( "target", linktarget.opennewtab );
 		},
 
 		/**

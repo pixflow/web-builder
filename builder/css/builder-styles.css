@@ -155,10 +155,12 @@
     .karma-color-picker-container .karma-color-picker-preset-colors .karma-no-color {
       color: #B0B6BD;
       line-height: 19px;
-      text-align: center; }
+      text-align: center;
+      overflow: hidden; }
       .karma-color-picker-container .karma-color-picker-preset-colors .karma-no-color:before {
         background: none;
-        content: 'x';
+        content: '/';
+        font-size: 25px;
         display: block; }
       .karma-color-picker-container .karma-color-picker-preset-colors .karma-no-color.selected {
         background: none; }
@@ -3362,6 +3364,58 @@ html {
   width: 14px;
   height: 14px; }
 
+.karma-builder-element .karma-button-container {
+  cursor: pointer;
+  width: fit-content; }
+  .karma-builder-element .karma-button-container.karma-button-fill {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    height: 42px;
+    padding: 9px 22px;
+    transition: 0.2s; }
+    .karma-builder-element .karma-button-container.karma-button-fill:hover {
+      box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
+      transition: 0.2s; }
+  .karma-builder-element .karma-button-container.karma-button-outline {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    height: 42px;
+    padding: 9px 22px;
+    transition: 0.2s; }
+    .karma-builder-element .karma-button-container.karma-button-outline:hover {
+      opacity: 0.7;
+      transition: 0.2s; }
+  .karma-builder-element .karma-button-container.karma-button-fill .karma-button-link {
+    color: #fff;
+    font-family: "HelveticaNeue_med";
+    font-size: 15px;
+    line-height: 25px; }
+    .karma-builder-element .karma-button-container.karma-button-fill .karma-button-link span {
+      display: inline-block;
+      min-width: 20px;
+      white-space: nowrap; }
+      .karma-builder-element .karma-button-container.karma-button-fill .karma-button-link span:focus {
+        outline: none; }
+  .karma-builder-element .karma-button-container.karma-button-outline .karma-button-link {
+    color: #419CF8;
+    font-family: "HelveticaNeue_med";
+    font-size: 15px;
+    line-height: 25px; }
+    .karma-builder-element .karma-button-container.karma-button-outline .karma-button-link span {
+      display: inline-block;
+      min-width: 20px; }
+      .karma-builder-element .karma-button-container.karma-button-outline .karma-button-link span:focus {
+        outline: none; }
+
 /* _-_-_- layout/HEADER -_-_-_ */
 #karma-builder-layout a {
   border: none; }
@@ -3890,7 +3944,8 @@ img {
   left: -1px;
   padding: 0 7px;
   position: absolute;
-  top: -16px; }
+  top: -16px;
+  white-space: nowrap; }
   .karma-title-gizmo-template * {
     line-height: 15px; }
 
@@ -4133,29 +4188,24 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
         background-repeat: no-repeat;
         background-size: contain; }
     .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
-      top: 45px;
-      right: auto;
-      bottom: auto;
-      left: auto;
       background-color: #fff;
       border-radius: 4px;
       cursor: auto;
       display: none;
       flex-direction: column;
       padding: 0 6px 6px 6px;
-      position: absolute; }
+      position: absolute;
+      top: 45px; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box:after {
-        top: -6px;
-        right: auto;
-        bottom: auto;
-        left: 28%;
         width: 0;
         height: 0;
         border-bottom: 8px solid #fff;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
         content: '';
-        position: absolute; }
+        left: 28%;
+        position: absolute;
+        top: -6px; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box button {
         width: 30px;
         height: auto;
@@ -4187,9 +4237,81 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down {
+        width: 190px;
+        height: 125px;
+        justify-content: inherit;
+        left: -147px;
+        padding: 0 15px;
+        position: absolute;
+        z-index: 80; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down:after {
+          left: 86%; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down .karma-range-slider-number input {
+          border: none;
+          max-width: 30px; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down .karma-check-box-contain {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between; }
+          .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down .karma-check-box-contain .karma-link-open-new-tab-text {
+            color: #394959;
+            font-size: 14px;
+            line-height: 28px; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-range-slider-number {
+          width: 40px;
+          height: 29px;
+          border: none;
+          margin: 0;
+          padding: 0; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-input-number-type-unit {
+          padding: 2px 0 0 2px; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-range-slider-content {
+          border-bottom: 1px solid rgba(57, 73, 89, 0.1);
+          padding: 7px 0px 9px 9px; }
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio {
+          padding: 10px 0;
+          text-align: left;
+          width: 100%; }
+          .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            text-align: inherit;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #D7DBDE;
+            border-radius: 100px;
+            height: 17px;
+            width: 17px; }
+            .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle label {
+              width: 10px;
+              height: 10px;
+              background-color: #419CF8;
+              border-radius: 100px;
+              transform: scale(0.01, 0.01);
+              transition-duration: .3s; }
+            .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle input {
+              cursor: pointer;
+              opacity: 0;
+              position: absolute;
+              width: 100%;
+              z-index: 100; }
+            .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle input:checked + label {
+              transform: scale(1, 1);
+              transition-duration: .3s; }
+            .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle .karma-slider-and-drop-down-radio {
+              width: 187px;
+              left: 0; }
+            .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle input {
+              width: auto; }
+          .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle label {
+            height: 7px;
+            width: 7px; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down {
         width: 190px;
         height: 83px;
+        left: 28px;
         padding: 11px; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down .karma-check-box-container {
           align-items: center;
@@ -4494,7 +4616,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
     .karma-builder-environment .karma-builder-element.karma-active-section .karma-row > .karma-builder-element:last-child .resize-handler {
       display: none; }
     .karma-builder-environment .karma-builder-element.karma-active-section .karma-row > .karma-builder-element:last-child .karma-right-spacing .karma-spacing-dot-container {
-      left: calc(100% - 11px) !important; }
+      left: calc( 100% - 11px ) !important; }
       .karma-builder-environment .karma-builder-element.karma-active-section .karma-row > .karma-builder-element:last-child .karma-right-spacing .karma-spacing-dot-container .spacing-dot {
         border-radius: 100%;
         left: 13px; }
@@ -4533,9 +4655,9 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
   .karma-builder-environment .karma-builder-element.karma-active-section.karma-resizable-active .karma-top-spacing .spacing-dot {
     background-color: #419CF8; }
   .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-both-spacing-handler {
-    cursor: ns-resize;
-    height: 30px;
-    width: 100%; }
+    width: 100%;
+    height: 15px;
+    cursor: ns-resize; }
     .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-both-spacing-handler.karma-both-spacing-handler-bottom {
       bottom: 0;
       position: absolute; }

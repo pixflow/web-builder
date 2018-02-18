@@ -50,13 +50,14 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'descriptiontag'	=>'h5',
 			'textposition'		=>'bottom-left',
 			'textlink'			=>'https://www.google.com/',
-			'textlinkaction'	=>'_self',
+			'opennewtab'		=>'_self',
 			'videourl'			=>'',
 			'coloroverlay'		=>'rgba(0, 0, 0, 0.2)',
 			'colorbackground'	=>'#000',
 			'radiusbox'			=>'0',
 			'videoheight'		=>'400',
 			'topspacepadding'	=> '10',
+			'elementalign'		=> 'left',
 		);
 
 	}
@@ -83,7 +84,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 
 		$title_content = 	'<' . $attributes['titletag'] . ' class="karma-video-box-title-tag ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
 		$description_content = 	'<' . $attributes['descriptiontag'] . ' class="karma-video-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
-		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['textlinkaction']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
+		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display = ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
 		ob_start();
 		?>
@@ -138,7 +139,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			. '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-video-box-description-tag" > {{ data.attributes.shortcode_attributes.descriptiontext }} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
 			. '</div>'
 			. '<div  class="karma-video-box-link">'
-			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.textlinkaction }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
+			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 			. '<div class="karma-video-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 			. '</div>'
 			. '</div>'
