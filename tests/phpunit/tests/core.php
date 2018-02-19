@@ -1,6 +1,7 @@
 <?php
 
 use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core;
+use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
 /**
  * test
  *
