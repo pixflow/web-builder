@@ -3175,7 +3175,51 @@ html {
     width: 12px;
     backface-visibility: hidden; }
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link {
-    display: flex; }
+    display: flex;
+    width: fit-content; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      text-align: center;
+      border-style: solid;
+      border-width: 2px;
+      height: 42px;
+      margin-top: 22px;
+      padding: 9px 22px;
+      transition: 0.2s;
+      justify-content: center !important; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill:hover {
+        box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
+        transition: 0.2s; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill .karma-image-text-box-link-shape {
+        display: none !important; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill.karma-show-child-gizmo:hover {
+        opacity: 1;
+        transition: 0s; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      text-align: center;
+      background-color: transparent;
+      border-style: solid;
+      border-width: 2px;
+      height: 42px;
+      margin-top: 22px;
+      padding: 9px 22px;
+      transition: 0.2s;
+      justify-content: center !important; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline:hover {
+        opacity: 0.7;
+        transition: 0.2s; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline .karma-image-text-box-link {
+        justify-content: center; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline .karma-image-text-box-link-shape {
+        display: none !important; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline.karma-show-child-gizmo:hover {
+        opacity: 1;
+        transition: 0s; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link .karma-image-text-box-link-shape {
       transform: rotate(-90deg); }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link .karma-image-text-box-link-shape svg {

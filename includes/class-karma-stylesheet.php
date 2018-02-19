@@ -195,6 +195,9 @@ class Karma_Stylesheet {
 			'p'     => '15',
 		);
 		foreach ( $headings as $tag => $info ){
+			if ( 'p' == $tag ){
+				$headings_style .= '#karma-builder-layout a,';
+			}
 			$headings_style .= $tag . '[class *= "tag" ]{' ;
 			foreach ( $info as $property => $value ){
 				if( 'font-varients' == $property  ){
