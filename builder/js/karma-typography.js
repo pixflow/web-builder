@@ -519,21 +519,17 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		initRangeSlider: function () {
 
 			var $rangeInputs = $('.karma-range-slider-range'),
-				that = this,
-				timeout = null;
+				that = this;
 
 			$rangeInputs.rangeslider({ polyfill: false });
-			$rangeInputs.on('input', function (){
+			$rangeInputs.on( 'input', function (){
 				var input = this;
-				clearTimeout( timeout );
-				timeout = setTimeout( function (){
-					$( input ).next()
+				$( input ).next()
 						.next( '.karma-range-slider-number' )
 						.find( 'input' )
 						.val( input.value );
 
-					that.updateFontSize( input, input.value );
-				}, 400 );
+				that.updateFontSize( input, input.value );
 			});
 		},
 
@@ -865,13 +861,13 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				currentElement;
 
 
-			while (minIndex <= maxIndex) {
-				currentIndex = (minIndex + maxIndex) / 2 | 0;
-				currentElement = that.googleFontList.fontFamily[currentIndex].substr(0, search.length).toLowerCase();
-				if (currentElement < search) {
+			while ( minIndex <= maxIndex ) {
+				currentIndex = ( minIndex + maxIndex ) / 2 | 0;
+				currentElement = that.googleFontList.fontFamily[ currentIndex ].substr( 0, search.length ).toLowerCase();
+				if ( currentElement < search ) {
 					minIndex = currentIndex + 1;
 				}
-				else if (currentElement > search) {
+				else if ( currentElement > search ) {
 					maxIndex = currentIndex - 1;
 				}
 				else {
