@@ -97,10 +97,13 @@ class Karma_Builder_Public {
         $stylesheet = Karma_Factory_Pattern::$stylesheet;
 
         $file = File_System::get_instance();
-        if ( ! $file->file_exists( KARMA_GLOBAL_STYLE_DIRECTORY_PATH ) ) {
-            $file->make_dir( KARMA_GLOBAL_STYLE_DIRECTORY_PATH );
+        if( ! $file->file_exists( KARMA_GLOBAL_STYLE_FILE_PATH ) ){
+	        if ( ! $file->file_exists( KARMA_GLOBAL_STYLE_DIRECTORY_PATH ) ) {
+		        $file->make_dir( KARMA_GLOBAL_STYLE_DIRECTORY_PATH );
+	        }
+	        $this->create_dynamic_style_file( $stylesheet->create_global_css_file() );
         }
-        $this->create_dynamic_style_file( $stylesheet->create_global_css_file() );
+
         $this->enqueue_dynamic_styles( $stylesheet->create_google_font_link() );
 
     }
@@ -118,7 +121,7 @@ class Karma_Builder_Public {
     	if( '' != $link ){
 		    wp_enqueue_style( "karma-google-font-link", $link , array(), $this->version, 'all' );
 	    }
-        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_DIRECTORY_URL . '/global-style.css', array(), $this->version, 'all' );
+        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_FILE_URL, array(), $this->version, 'all' );
 
     }
 
@@ -133,9 +136,8 @@ class Karma_Builder_Public {
      */
     private function create_dynamic_style_file( $content ){
 
-        $css_file_name = KARMA_GLOBAL_STYLE_DIRECTORY_PATH . '/global-style.css';
         $file = File_System::get_instance();
-        if( $file->create_file( $css_file_name, $content ) ){
+        if( $file->create_file( KARMA_GLOBAL_STYLE_FILE_PATH, $content ) ){
             return true;
         }
         return false;

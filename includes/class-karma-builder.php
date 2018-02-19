@@ -258,8 +258,11 @@ class Karma_Builder {
 		define( 'KARMA_CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
 		define( 'KARMA_CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
 
-		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-global-style'  );
-		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-global-style'  );
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_PATH', KARMA_CACHE_DIRECTORY_PATH . '/karma-global-style'  );
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_URL', KARMA_CACHE_DIRECTORY_URL . '/karma-global-style'  );
+
+		define( 'KARMA_GLOBAL_STYLE_FILE_URL', KARMA_GLOBAL_STYLE_DIRECTORY_URL . '/global-style.css'  );
+		define( 'KARMA_GLOBAL_STYLE_FILE_PATH', KARMA_GLOBAL_STYLE_DIRECTORY_PATH . '/global-style.css'  );
 
 	}
 

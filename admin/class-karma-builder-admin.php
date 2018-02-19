@@ -7,6 +7,7 @@ use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
 use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -153,6 +154,8 @@ class Karma_Builder_Admin {
 			$typography = sanitize_text_field( json_encode( $_POST[ 'typography' ] ) );
 			$custom_fonts = isset( $_POST[ 'customFonts' ] ) ? sanitize_text_field( json_encode( $_POST[ 'customFonts' ] ) ) : '[]';
 			$typography_manager->save_typography_font_formats( $typography )->save_fonts( $fonts )->save_custom_fonts( $custom_fonts );
+			$file = File_System::get_instance();
+			$file->delete_file( KARMA_GLOBAL_STYLE_FILE_PATH );
 		}
 
 		wp_die();
