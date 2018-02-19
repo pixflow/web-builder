@@ -971,7 +971,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			if (view.model.customFonts.length == 0) {
 				view.model.customFonts = {};
 			}
-			if ('undefined' == typeof view.model.customFonts[attachment.title]) {
+			if ( 'undefined' == typeof view.model.customFonts[ attachment.title ] ) {
 				view.model.customFonts[attachment.title] = attachment.url;
 				var fontFamily = attachment.title,
 					arr = [];
@@ -979,8 +979,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					'weight': '',
 					'style': 'Regular'
 				};
-				arr.push(obj);
-				$('.karma-fonts-list').append(view.createFontListHtml(fontFamily, arr));
+				arr.push( obj );
+				$('.karma-fonts-list').append( view.createFontListHtml( fontFamily, arr ) );
 				$('.karma-google-fonts-list').slideUp(300);
 			}
 
@@ -997,10 +997,9 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 *
 		 * @returns {void}
 		 */
-		openMediaLibrary: function (uploadCustomFont, callBack, view) {
+		openMediaLibrary: function ( uploadCustomFont, callBack, view ) {
 
 			var frame;
-
 			if ('undefined' == typeof view) {
 				view = {};
 			}

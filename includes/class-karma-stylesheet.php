@@ -185,7 +185,15 @@ class Karma_Stylesheet {
 	private function create_heading_css_file( $headings ){
 
 		$headings_style = '' ;
-		$headings_min_size_in_responsive =array( 'h1' => '35', 'h2'=>'30','h3'=>'25', 'h4'=>'23', 'h5'=>'21', 'h6'=>'17', 'p'=>'15' );
+		$headings_min_size_in_responsive = array(
+			'h1'    => '35',
+			'h2'    => '30',
+			'h3'    => '25',
+			'h4'    => '23',
+			'h5'    => '21',
+			'h6'    => '17',
+			'p'     => '15',
+		);
 		foreach ( $headings as $tag => $info ){
 			$headings_style .= $tag . '[class *= "tag" ]{' ;
 			foreach ( $info as $property => $value ){
@@ -197,7 +205,7 @@ class Karma_Stylesheet {
 					}
 				}else if ( 'font-size' == $property ) {
 					$headings_style .= $property . ':';
-					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[$tag] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[$tag] . ') * ((100vw - 300px) / (1920 - 300)));';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 300px) / (1920 - 300)));';
 				}else{
 					$headings_style .= $property . ':' . $value . ';' ;
 				}

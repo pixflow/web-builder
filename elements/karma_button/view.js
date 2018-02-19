@@ -40,10 +40,12 @@
 		 * @summary  Deactivate enter in link text
 		 *
 		 * @since 0.1.1
-		 * @return {void}
+		 * @return {number}
 		 */
 		deactiveEnter : function ( e ) {
+
 			return e.which != 13;
+
 		},
 
 		/**
@@ -63,6 +65,7 @@
 			}
 
 			this.setAttributes( { 'linkcontent' : contentData },  true );
+
 		},
 
 
@@ -142,6 +145,12 @@
 		},
 
 
+		/**
+		 * @summary Update range model
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
 		rangemodel : function () {
 
 			var elementId 	= this.elementSelector(),
@@ -195,6 +204,13 @@
 
 		},
 
+		/**
+		 * @summary Update type of element
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
 		type : function () {
 
 			if( 'outline' == this.getAttributes( ['type'] ).type ) {
@@ -205,7 +221,6 @@
 
 			}
 		}
-
 
 	});
 
