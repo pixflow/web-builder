@@ -101,7 +101,7 @@
 								+ originalElement.offsetWidth
 								+ 'px;height:'
 								+ originalElement.offsetHeight
-								+ 'px;transform:scale(.7);opacity:.7';
+								+ 'px;transform:scale(.9);opacity:.7;';
 						helperNode.setAttribute( 'style', newStyle );
 						originalElement.parentElement.classList.add( 'karma-self-placeholder' );
 

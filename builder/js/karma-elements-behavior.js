@@ -678,7 +678,8 @@ var karmaBuilder = karmaBuilder || {};
 		makeSectionsSortable: function () {
 
 			var that = this,
-				helperKey;
+				helperKey,
+				pickedElement, newSec, addNewSecClone;
 			// Add beforeStart event to jQuery ui sortable
 			var oldMouseStart = $.ui.sortable.prototype._mouseStart;
 			$.ui.sortable.prototype._mouseStart = function ( event, overrideHandle, noActivation ) {
@@ -698,13 +699,17 @@ var karmaBuilder = karmaBuilder || {};
 				beforeStart: function ( e, UI ) {
 
 					if ( undefined != UI.item[0] ){
-						UI.item[0].classList.add( 'karma-show-border-section' );
+						pickedElement = UI.item[0];
+						pickedElement.classList.add( 'karma-show-border-section' );
+						addNewSecClone = $( UI.item[ 0 ] ).next().clone( true );
+						newSec = $( UI.item[ 0 ] ).next();
 					}
 					document.body.style.overflowX = 'hidden';
 				},
 				sort: function ( event, UI ) {
 
 					helperKey = UI.helper.attr('data-element-key');
+					that.scroll( UI, event );
 					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : 'hidden' });
 
 				},
@@ -714,11 +719,14 @@ var karmaBuilder = karmaBuilder || {};
 
 				},
 				stop: function ( e, UI ) {
-
+					var section = UI.item[0];
 					clearInterval( that.flyScroll );
 					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : '' });
-					if ( undefined != UI.item[0] ){
-						UI.item[0].classList.remove( 'karma-show-border-section' );
+					if ( undefined != section ){
+						section.classList.remove( 'karma-show-border-section' );
+						 $( section ).after( addNewSecClone );
+						$( newSec ).remove();
+						 $( section ).next().after( $( '.karma-section-placeholder-' + $( section ).attr( 'data-element-key' ) ) );
 					}
 
 				}
