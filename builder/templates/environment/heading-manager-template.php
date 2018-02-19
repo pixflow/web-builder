@@ -120,9 +120,7 @@ $heading_default_text = array(
 										$font_list[ $font_name ] = array( '400 Normal' );
 									}
 									foreach (  $font_list[ $font_name ] as $font_varients ):
-										if ( !is_array( $font_varients ) ) {
-											$font_varients = 'regular';
-										}
+
 										$selected_class = ( strtolower( $font_varients ) == strtolower( $info['font-varients'] ) ) ? 'karma-selected-dropdown-option' : '';
 										?>
 										<li class="karma-dropdown-option <?php echo $selected_class; ?>"
