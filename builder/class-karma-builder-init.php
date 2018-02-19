@@ -4,6 +4,7 @@ namespace KarmaBuilder\PublicArea ;
 
 
 /** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 
 /**
@@ -79,15 +80,69 @@ class Karma_Builder_Public {
 		 * class.
 		 */
 
-		$stylesheet = Karma_Factory_Pattern::$stylesheet;
-		$stylesheet->create_global_css_file();
 
-
+		$this->create_dynamic_styles();
 		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
-
 
 	}
+
+    /**
+     * Create dynamic css file and enqueue it
+     *
+     * @since    0.1.1
+     *
+     */
+	public function create_dynamic_styles() {
+
+        $stylesheet = Karma_Factory_Pattern::$stylesheet;
+
+        $file = File_System::get_instance();
+        if( ! $file->file_exists( KARMA_GLOBAL_STYLE_FILE_PATH ) ){
+	        if ( ! $file->file_exists( KARMA_GLOBAL_STYLE_DIRECTORY_PATH ) ) {
+		        $file->make_dir( KARMA_GLOBAL_STYLE_DIRECTORY_PATH );
+	        }
+	        $this->create_dynamic_style_file( $stylesheet->create_global_css_file() );
+        }
+
+        $this->enqueue_dynamic_styles( $stylesheet->create_google_font_link() );
+
+    }
+
+    /**
+     * Enqueue google fonts link and dynamic css file
+     *
+     * @param string $link  google fonts link
+     *
+     * @since    0.1.1
+     *
+     */
+    public function enqueue_dynamic_styles ( $link ) {
+
+    	if( '' != $link ){
+		    wp_enqueue_style( "karma-google-font-link", $link , array(), $this->version, 'all' );
+	    }
+        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_FILE_URL, array(), $this->version, 'all' );
+
+    }
+
+    /**
+     * Create dynamic style file if it is not exists
+     *
+     * @param string $content generated dynamic content
+     *
+     * @since    0.1.1
+     * @return boolean
+     *
+     */
+    private function create_dynamic_style_file( $content ){
+
+        $file = File_System::get_instance();
+        if( $file->create_file( KARMA_GLOBAL_STYLE_FILE_PATH, $content ) ){
+            return true;
+        }
+        return false;
+
+    }
 
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
@@ -113,6 +168,7 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-jquery-ui' , KARMA_BUILDER_URL . 'builder/js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-grid-resizer' , KARMA_BUILDER_URL . 'builder/js/grid-resizer.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-spectrum' , KARMA_BUILDER_URL . 'builder/js/spectrum.min.js', array( ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-karma-range-slider', KARMA_BUILDER_URL . 'builder/js/rangeslider.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
 			wp_enqueue_script( $this->plugin_name . '-color-picker' , KARMA_BUILDER_URL . 'builder/js/karma-builder-color-picker.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-elements-behavior', KARMA_BUILDER_URL . 'builder/js/karma-elements-behavior.min.js', array( 'jquery', 'backbone', 'wp-util', $this->plugin_name . '-jquery-ui' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name, KARMA_BUILDER_URL . 'builder/js/karma-builder-init.min.js', array( $this->plugin_name .'-elements-behavior' ), $this->version, false );
@@ -124,6 +180,7 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-gizmos-text', KARMA_BUILDER_URL . 'builder/js/gizmos/text.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', KARMA_BUILDER_URL . 'builder/js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', KARMA_BUILDER_URL . 'builder/js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-slider-and-radio-button', KARMA_BUILDER_URL . 'builder/js/gizmos/slider-and-radio-button.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-color', KARMA_BUILDER_URL . 'builder/js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-shortcodes', KARMA_BUILDER_URL . 'builder/js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 

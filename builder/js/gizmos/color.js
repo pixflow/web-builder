@@ -8,7 +8,7 @@
 
 
 		template: '<input class="karma-color-gizmo karma-colorpicker-main-color"/>'
-		+'<input class="karma-color-gizmo-hover karma-colorpicker-second-color"/>',
+		+'<input value="{{ data.secondColorValue }}" class="karma-color-gizmo-hover karma-colorpicker-second-color"/>',
 
 
 		initialize :function(){
@@ -26,16 +26,22 @@
 		updateColor : function () {
 
 			var that = this;
-			$( this.selector + ' ' + this.orginalSelector ).on( 'change/updateColor', function ( event, color ) {
-				if( 'undefined' != typeof that.data.model ){
+			$( this.selector + ' ' + this.orginalSelector ).on( 'change/updateColor', function ( event, color, secondColor ) {
+				if ( secondColor && 'undefined' != typeof that.data.secondColorModel ) {
 					var modelNameChange = {};
-					modelNameChange[ that.data.model ] = color;
+					modelNameChange[ that.data.secondColorModel ] = color;
 					that.elementView.setAttributes( modelNameChange, false );
-				}else{
-					that.elementView.setAttributes( { 'color' : color }, false );
+				} else {
+					if ( 'undefined' != typeof that.data.model ) {
+						var modelNameChange = {};
+						modelNameChange[ that.data.model ] = color;
+						that.elementView.setAttributes( modelNameChange, false );
+					} else {
+						that.elementView.setAttributes( { 'color': color }, false );
+					}
 				}
 
-			});
+			} );
 
 		},
 
@@ -50,6 +56,10 @@
 				this.colorAttribute = this.elementView.getAttributes( [ 'color' ] );
 				this.data.colorValue = this.colorAttribute.color;
 			}
+			if ( 'undefined' != typeof this.data.secondColorModel ) {
+				this.seconColorAttribute = this.elementView.getAttributes( [ this.data.secondColorModel ] );
+				this.data.secondColorValue = this.seconColorAttribute[ this.data.secondColorModel ];
+			}
 			this.update();
 			this.$gizmoContainer.append( this.el );
 			this.initColorPicker();
@@ -58,7 +68,9 @@
 		},
 
 		update: function(){
+
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
+
 		},
 
 		/**

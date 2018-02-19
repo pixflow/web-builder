@@ -10,7 +10,8 @@
 		/**
 		 * Build html for typography gizmo
 		 */
-		template : ' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> <div class="karma-default-icon" style="background-image: url({{ data.params.defaultIcon }})" ></div> </button> '
+		template : '<# var link = window.top.document.querySelector(".builder-Typography-label a").getAttribute("href") #>' +
+		' <button class="karma-drop-down-icon karma-typography-drop-down-gizmo"> <div class="karma-default-icon" style="background-image: url({{ data.params.defaultIcon }})" ></div> </button> '
 			+ '<div class="karma-drop-down-box karma-typography-drop-down">'
 				+'<div class="karma-typography-drop-down-icons">'
 					+ '<div class="karma-typography-drop-down-right">'
@@ -40,7 +41,7 @@
 					+ '</div>'
 				+ '</div>'
 				+ '<div class="karma-typography-link">'
-					+ '<a>'
+					+ '<a href="{{link}}">'
 						+ '{{{ data.params.typographyLink }}}'
 					+ '</a>'
 				+ '</div>'
@@ -281,6 +282,5 @@
 		}
 
 	});
-
 
 } )( jQuery, karmaBuilder );

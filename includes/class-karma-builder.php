@@ -258,6 +258,12 @@ class Karma_Builder {
 		define( 'KARMA_CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
 		define( 'KARMA_CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
 
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_PATH', KARMA_CACHE_DIRECTORY_PATH . '/karma-global-style'  );
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_URL', KARMA_CACHE_DIRECTORY_URL . '/karma-global-style'  );
+
+		define( 'KARMA_GLOBAL_STYLE_FILE_URL', KARMA_GLOBAL_STYLE_DIRECTORY_URL . '/global-style.css'  );
+		define( 'KARMA_GLOBAL_STYLE_FILE_PATH', KARMA_GLOBAL_STYLE_DIRECTORY_PATH . '/global-style.css'  );
+
 	}
 
 	/**
@@ -272,7 +278,6 @@ class Karma_Builder {
 	private function set_locale() {
 
 		$plugin_i18n = Karma_Factory_Pattern::$builder_i18n;
-
 		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
 	}
@@ -468,8 +473,10 @@ class Karma_Builder {
 			'jquery',
 			'backbone'
 		), KARMA_BUILDER_VERSION, false );
-		wp_enqueue_style( 'karma-builder-styles', KARMA_BUILDER_URL . 'builder/css/builder-styles.css', KARMA_BUILDER_VERSION, false );
-		wp_enqueue_style( 'karma-dashboard-styles', KARMA_BUILDER_URL . 'builder/css/dashboard-style.css', KARMA_BUILDER_VERSION, false );
+        $stylesheet = Karma_Factory_Pattern::$stylesheet;
+        wp_enqueue_style( "google-font", $stylesheet->create_google_font_link(), array(), KARMA_BUILDER_VERSION, 'all' );
+		wp_enqueue_style( 'karma-builder-styles', KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_style( 'karma-dashboard-styles', KARMA_BUILDER_URL . 'builder/css/dashboard-style.css', array(), KARMA_BUILDER_VERSION, false );
 		$this->localize_google_fonts();
 		wp_enqueue_media();
 

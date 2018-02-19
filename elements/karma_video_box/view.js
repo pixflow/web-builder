@@ -260,11 +260,11 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		textlinkaction: function () {
+		opennewtab: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['textlinkaction'] );
-			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.textlinkaction );
+				linktarget  = this.getAttributes( ['opennewtab'] );
+			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.opennewtab );
 
 		},
 

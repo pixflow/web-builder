@@ -499,12 +499,18 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		removePlaceHolders : function () {
 
-			var activePlaceHolder = document.querySelector('.karma-show-placeholder');
+			var activePlaceHolder 	= document.querySelector('.karma-show-placeholder'),
+				fullPlaceholder 	= document.querySelector('.full-element-placeholder');
+
 			if( null != activePlaceHolder ){
 				activePlaceHolder.classList.remove('karma-show-placeholder');
 			}
+			if ( null != fullPlaceholder ){
+				fullPlaceholder.classList.remove('full-element-placeholder');
+			}
+		}
 
-		},
+		,
 
 		/**
 		 * @summary Detect and show drop area placeholders while dragging
@@ -528,16 +534,17 @@ var karmaBuilder = karmaBuilder || {};
 			}
 			targetElement = this.getParentElementInfo( targetElement );
 			this.removePlaceHolders();
+
 			if ( false == targetElement || 'karma_section' == targetElement.name ){
 				return false;
 			}else if ( true == this.checkSelfPlaceholder( targetElement, UI )  ){
 
 				if ( targetElement.node.clientWidth == targetElement.node.querySelector('.karma-element-content').clientWidth ){
+					 targetElement.node.classList.add( 'full-element-placeholder' );
 					return false;
 				}
 				this.setAlignment( targetElement, event );
-			}
-			else if ( 'karma_column' == targetElement.name ) {
+			}else if ( 'karma_column' == targetElement.name ) {
 				var placeHolder =  targetElement.node.querySelector('.karma-column-placeholder');
 				if ( null != placeHolder ) {
 					placeHolder.classList.add('karma-show-placeholder');
@@ -670,7 +677,8 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		makeSectionsSortable: function () {
 
-			var that = this;
+			var that = this,
+				helperKey;
 			// Add beforeStart event to jQuery ui sortable
 			var oldMouseStart = $.ui.sortable.prototype._mouseStart;
 			$.ui.sortable.prototype._mouseStart = function ( event, overrideHandle, noActivation ) {
@@ -681,21 +689,23 @@ var karmaBuilder = karmaBuilder || {};
 			$( "#karma-builder-layout" ).sortable( {
 				cursor: "move",
 				delay: 100,
+				helper : "clone",
 				cancel: ".karma-active-element",
 				items: ".karma-builder-element[data-name='karma_section']",
 				update: function () {
-
 					that.reorderSections();
-
 				},
-				beforeStart: function () {
+				beforeStart: function ( e, UI ) {
 
+					if ( undefined != UI.item[0] ){
+						UI.item[0].classList.add( 'karma-show-border-section' );
+					}
 					document.body.style.overflowX = 'hidden';
-
 				},
 				sort: function ( event, UI ) {
 
-					that.scroll( UI, event );
+					helperKey = UI.helper.attr('data-element-key');
+					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : 'hidden' });
 
 				},
 				beforeStop: function () {
@@ -703,9 +713,13 @@ var karmaBuilder = karmaBuilder || {};
 					document.body.style.overflowX = '';
 
 				},
-				stop: function () {
+				stop: function ( e, UI ) {
 
 					clearInterval( that.flyScroll );
+					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : '' });
+					if ( undefined != UI.item[0] ){
+						UI.item[0].classList.remove( 'karma-show-border-section' );
+					}
 
 				}
 			} );
@@ -752,22 +766,17 @@ var karmaBuilder = karmaBuilder || {};
 		renderElements : function( placeholder, elementModel, elementView ){
 
 			var elementName = elementModel.parent.shortcode_name;
-
 			if( 'karma_section' == elementName ){
-
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementView.currentGrid();
-
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
 				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
 
-			}else if( 'karma_section' != elementName && 'karma_column' != elementName ){
-
+			} else if( 'karma_section' != elementName && 'karma_column' != elementName ){
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent  );
 				this.$el.trigger( 'karma/after/dropElement', [ newView.model.get('parent_key') ] );
-
 			}
 
 			this.createStyleSheetForElements( newView.model.attributes.shortcode_attributes, newView );
@@ -785,6 +794,7 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns {void}
 		 */
 		createStyleSheetForElements : function( models, elementView ){
+
 
 			_.each( models, function ( value, model ) {
 				if( 'function' == typeof elementView[ model ] ){
@@ -836,7 +846,7 @@ var karmaBuilder = karmaBuilder || {};
 					columnChildren = that.sortChildren( column.childes );
 
 				_.each( columnChildren, function ( element ) {
-
+					
 					var placeholder = columnsInSection[ index ].querySelector('.karma-column-placeholder');
 					if( null == placeholder ){
 						var elementPlaceholders = columnsInSection[ index ].querySelectorAll('.karma-insert-between-elements-placeholder');

@@ -48,7 +48,7 @@
 		 *  @summary Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
-		+ '<div class="karma-spacing karma-top-spacing   " data-direction="both" style="height:{{ data.space }}px" >'
+		+ '<div class="karma-spacing karma-top-spacing   " data-direction="both"  >'
 		+ '<div class="karma-both-spacing-handler karma-both-spacing-handler-top ui-resizable-handle ui-resizable-s">'
 		+ '<div class="karma-spacing-dot-container karma-top-spacing-height ">'
 		+ '<div class="spacing-dot"></div>'
@@ -304,7 +304,6 @@
 						karmaSection.find('.karma-top-spacing').css( {
 							height 	: padding
 						});
-
 
 					}
 				};

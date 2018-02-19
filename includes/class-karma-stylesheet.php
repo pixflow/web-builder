@@ -36,7 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Karma_Stylesheet {
 
-
 	/**
 	 * Create CSS blocks .
 	 *
@@ -81,7 +80,6 @@ class Karma_Stylesheet {
 
 	}
 
-
 	/**
 	 * Create CSS property and value for each element .
 	 *
@@ -99,7 +97,6 @@ class Karma_Stylesheet {
 		return $selector_content;
 
 	}
-
 
 	/**
 	 * Create default styles for elements
@@ -136,7 +133,6 @@ class Karma_Stylesheet {
 
 	}
 
-
 	/**
 	 * Create global css file that need to load in builder in frontend
 	 *
@@ -147,13 +143,37 @@ class Karma_Stylesheet {
 	public function create_global_css_file(){
 
 		$typography = Karma_Typography::get_instance();
-		return $this->create_heading_css_file( $typography->typography_model->headings );
+
+		$css_content  = $this->create_custom_font_link( $typography->typography_model->customFonts );
+		$css_content .= $this->create_heading_css_file( $typography->typography_model->headings );;
+		return $css_content;
 
 	}
 
+    /**
+     * Create global css file that need to load in builder in frontend
+     *
+     * @param array $custom_font uploaded user fonts
+     *
+     * @since    0.1.1
+     * @return string CSS string
+     *
+     */
+	private function create_custom_font_link( $custom_font ){
 
+	    $load_custom_font = '';
+	    foreach ( $custom_font as $key => $value ) {
 
-	/**
+            $load_custom_font = '@font-face {';
+            $load_custom_font .= 'font-family:"' . $key . '";';
+		    $load_custom_font .= "src: url('". $value ."') ";
+            $load_custom_font .= '}';
+
+        }
+        return $load_custom_font;
+    }
+
+    /**
 	 * Create heading css format that need to load in builder in frontend
 	 *
 	 * @param array $headings   Headings format
@@ -165,8 +185,17 @@ class Karma_Stylesheet {
 	private function create_heading_css_file( $headings ){
 
 		$headings_style = '' ;
+		$headings_min_size_in_responsive = array(
+			'h1'    => '35',
+			'h2'    => '30',
+			'h3'    => '25',
+			'h4'    => '23',
+			'h5'    => '21',
+			'h6'    => '17',
+			'p'     => '15',
+		);
 		foreach ( $headings as $tag => $info ){
-			$headings_style .= $tag . '{' ;
+			$headings_style .= $tag . '[class *= "tag" ]{' ;
 			foreach ( $info as $property => $value ){
 				if( 'font-varients' == $property  ){
 					$explode = explode( ' ', $value );
@@ -174,8 +203,11 @@ class Karma_Stylesheet {
 					if( isset( $explode[1] ) ){
 						$headings_style .= 'font-style:' . strtolower( $explode[1] ) . ';' ;
 					}
+				}else if ( 'font-size' == $property ) {
+					$headings_style .= $property . ':';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 300px) / (1920 - 300)));';
 				}else{
-					$headings_style .= $property . ':' . $value . ( ( 'font-size' == $property ) ? 'px;' : ';' );
+					$headings_style .= $property . ':' . $value . ';' ;
 				}
 			}
 			$headings_style .= '}';
@@ -183,5 +215,88 @@ class Karma_Stylesheet {
 		return $headings_style;
 
 	}
+
+    /**
+     * Create fonts link to enqueue
+     *
+     * @since    0.1.1
+     *
+     * @return string CSS string
+     *
+     */
+    //@TODO - refine ( Use built0in PHP function )
+    public function create_google_font_link(){
+
+        $typography = Karma_Typography::get_instance();
+        $result = $this->check_diff_multi_dimensional_array( $typography->typography_model->fonts, $typography->web_default_fonts );
+        return $this->create_fonts_ink( $result );
+
+    }
+
+    /**
+     * Returns an array that contains difference between 2 arrays
+     *
+     * @param array $arr1
+     * @param array $arr2
+     *
+     * @since    0.1.1
+     * @return array
+     *
+     */
+    private function check_diff_multi_dimensional_array( $arr1, $arr2 ){
+
+        $check = ( is_array( $arr1 ) && count( $arr1 ) > 0 ) ? true : false;
+        $result = ( $check ) ? ( ( is_array( $arr2 ) && count( $arr2 ) > 0 ) ? $arr2 : array() ) : array();
+        $new_result = array();
+        if( $check ){
+            foreach( $arr1 as $key => $value ){
+                if( !isset( $result[ $key ] ) ){
+                    $new_result[ $key ] = $value;
+                }
+            }
+        }
+        return $new_result;
+    }
+
+    /**
+     * Create google font link
+     *
+     * @param array $fonts saved fonts
+     *
+     * @since    0.1.1
+     * @return string
+     *
+     */
+	private function create_fonts_ink( $fonts ){
+
+	    $link = 'https://fonts.googleapis.com/css?family=';
+	    $temp_font = $fonts;
+	    end( $temp_font );
+
+        foreach( $fonts as $font => $variant ) {
+
+            $link_font = ucwords( $font );
+            $link_font = str_replace(' ', '+', $link_font);
+            $link  .= $link_font;
+            $variant_link = ':';
+            foreach( $variant as $index => $key ){
+
+                $font_variant = explode( " ", $key );
+                $variant_link .= $font_variant[ 0 ];
+                if ( 'italic' == $font_variant[ 1 ] ){
+                    $variant_link .= 'i';
+                }
+                if( $key != $variant[ count( $variant ) - 1 ] ){
+                    $variant_link .= ',';
+                }
+            }
+            $link .= $variant_link;
+            if ( $font != key( $temp_font ) ) {
+                $link .= '|';
+            }
+
+        }
+        return ( 'https://fonts.googleapis.com/css?family=' == $link ) ? '' : $link;
+    }
 
 }

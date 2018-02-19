@@ -120,7 +120,6 @@
 						var dropArea        = document.querySelector( '.karma-show-placeholder' ),
 							originalElement = $( this )[ 0 ],
 							orginalContainer = originalElement.closest(".karma-builder-element");
-
 						if ( null != dropArea && dropArea.classList.contains('karma-element-placeholder-' + orginalContainer.getAttribute('data-element-key') ) ) {
 							orginalContainer.classList.remove( 'karma-self-placeholder' );
 						} else if ( null != dropArea && dropArea.classList.contains( 'karma-alignment-placeholder' ) ){
@@ -149,14 +148,15 @@
 		alignmentPlaceholder :function ( originalElement, dropArea, event ){
 
 			var alignPosition = document.elementFromPoint( event.clientX, event.clientY ).getAttribute( 'data-element-align');
-				if ( undefined != alignPosition ) {
-					this.setAttributes( {'elementalign' : alignPosition }, false );
-				}
-				originalElement. closest( '.karma-builder-element').classList.remove( 'karma-self-placeholder' );
-				dropArea.classList.remove( 'karma-show-placeholder' );
 
-			},
+			if ( undefined != alignPosition ) {
+				this.setAttributes( {'elementalign' : alignPosition }, false );
+			}
 
+			originalElement. closest( '.karma-builder-element').classList.remove( 'karma-self-placeholder' );
+			dropArea.classList.remove( 'karma-show-placeholder' );
+
+		},
 
 		/**
 		 * @summary set Element alignment to element
@@ -857,8 +857,6 @@
 
 				cssProperty[ attribute ] = value;
 				oldStyle = this.removeOldSelector( selector, oldStyle );
-
-
 				return oldStyle + this.generateStyleString( selector, cssProperty );
 			}else{
 				var cssProperty = {};

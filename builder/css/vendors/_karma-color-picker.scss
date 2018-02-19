@@ -109,9 +109,11 @@
 			color: #B0B6BD;
 			line-height: 19px;
 			text-align: center;
+			overflow: hidden;
 			&:before {
 				background: none;
-				content: 'x';
+				content: '/';
+				font-size: 25px;
 				display: block;
 			}
 			&.selected {

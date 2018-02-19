@@ -55,7 +55,8 @@ $font_list = array_merge( $font_list, $custom_font_list );
 				<div class="karma-font-list karma-font-manger-box-style">
 					<div class="karma-font-name-part" >
 						<span class="karma-font-name" data-font-name="<?php echo $font_name ; ?>" style="font-family: <?php echo $font_name ; ?>;"><?php echo ucfirst( $font_name ) ; ?></span>
-						<span class="karma-font-weight-count" > <?php echo count( $variants ); ?> Styles
+						<span class="karma-font-weight-count" >
+							<span><?php echo count( $variants ); ?> Styles</span>
 						<span class="karma-drop-down-icon">
 						<svg width="12px" height="6px" viewBox="0 0 12 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 						<g id="drop-down-all-Setting-pannel--style-guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
@@ -73,7 +74,7 @@ $font_list = array_merge( $font_list, $custom_font_list );
 				</span>
 					</div>
 					<div class="karma-font-details-part" >
-						<ul style="<?php echo $font_name ; ?>">
+						<ul style="font-family: <?php echo $font_name ; ?>">
 							<?php
 								foreach( $variants as $variant ):
 									?>

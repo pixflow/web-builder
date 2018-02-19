@@ -60,10 +60,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		return "<# var rowContainer = ('container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
+			. "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
+			. "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-' + data.attributes.shortcode_attributes.backgroundsize + ' karma-background-position-' + data.attributes.shortcode_attributes.backgroundposition ; #>"
 			. '<section class="karma-section-container karma-background-section {{ backgroundClasses }}">'
 			. "<div class='karma-section karma-section-{{ data.attributes.element_key }} {{ data.attributes.shortcode_attributes.extra_class }}' style='padding-bottom:{{ data.attributes.shortcode_attributes.space }}px;padding-top:{{ data.attributes.shortcode_attributes.space }}px;'>"
-			. "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
-			. "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-background-position-{{ data.attributes.shortcode_attributes.backgroundposition }}'; #>"
 			. "<div class='{{ rowContainer }} karma-row karma-no-gutters'>"
 			. "</div>"
 			. "</div>"

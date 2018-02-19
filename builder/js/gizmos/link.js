@@ -5,9 +5,9 @@
 
 		events: {
 
-			'input .karma-text-link'	:	'karmaTextLink',
-			'click .karma-text-link'	:	'karmaTextLinkstop',
-			'click .check-box-circle'	:	'karmaTextLinkAction'
+			'input .karma-text-link'	:	'karmatextlink',
+			'click .karma-text-link'	:	'karmatextlinkstop',
+			'click .check-box-circle'	:	'karmatextlinkaction'
 
 		},
 
@@ -69,7 +69,7 @@
 		 *
 		 * @returns {void}
 		 */
-		karmaTextLink: function() {
+		karmatextlink: function() {
 
 			var input = this.elementView.el.querySelector( '.karma-text-link' ).value;
 			
@@ -91,7 +91,7 @@
 		 *
 		 * @returns {void}
 		 */
-		karmaTextLinkstop: function( e ) {
+		karmatextlinkstop: function( e ) {
 
 			e.stopPropagation()
 
@@ -104,18 +104,13 @@
 		 *
 		 * @returns {void}
 		 */
-		karmaTextLinkAction: function() {
+		karmatextlinkaction: function() {
 
 			var input = this.elementView.el.querySelector( '#karma-input-checkbox-controller' ).checked,
 				target = ( true == input ) ? '_blank' : '_self' ;
 
-			if( 'undefined' != typeof this.data.params.model ){
-				var modelNameChange = {};
-				modelNameChange[ this.data.params.model ] = target;
-				this.elementView.setAttributes( modelNameChange, false );
-			}else {
-				this.elementView.setAttributes( { 'textLinkAction' : target }, false );
-			}
+				this.elementView.setAttributes( { 'opennewtab' : target }, false );
+
 
 		},
 		

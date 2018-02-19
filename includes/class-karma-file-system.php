@@ -127,7 +127,10 @@ class Karma_File_System{
 
 		if ( $this->file->mkdir( $path, 0777 ) ) {
 			return true;
+		}else if( mkdir( $path, 0777, true ) ) {
+			return true;
 		}
+
 		return false;
 
 	}

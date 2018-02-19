@@ -141,6 +141,7 @@ img {
 	padding: 0 7px;
 	position: absolute;
 	top: -16px;
+	white-space: nowrap;
 	* {
 		line-height: 15px;
 	}
@@ -434,8 +435,8 @@ body:not(.karma-builder-environment) {
 		}
 
 		.karma-gizmo-template {
-			@include box(auto, 35px);
-			@include flexbox(center, center, flex-start);
+			@include box( auto, 35px );
+			@include flexbox( center, center, flex-start );
 			@extend .karma-builder-shadow-box-2;
 			background-color: #fff;
 			border-radius: 2px;
@@ -472,14 +473,13 @@ body:not(.karma-builder-environment) {
 					}
 				}
 				div {
-					@include box(18px, 13px);
+					@include box( 18px, 13px );
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
 				}
 			}
 			.karma-drop-down-box {
-				@include element_direction($top: 45px);
 				@extend .karma-builder-shadow-box-2;
 				background-color: #fff;
 				border-radius: 4px;
@@ -488,19 +488,21 @@ body:not(.karma-builder-environment) {
 				flex-direction: column;
 				padding: 0 6px 6px 6px;
 				position: absolute;
+				top: 45px;
 
 				&:after {
-					@include element_direction($top: -6px, $left: 28%);
-					@include box(0, 0);
+					@include box( 0, 0 );
 					border-bottom: 8px solid #fff;
 					border-left: 7px solid transparent;
 					border-right: 7px solid transparent;
 					content: '';
+					left: 28%;
 					position: absolute;
+					top: -6px;
 				}
 
 				button {
-					@include box(30px, auto);
+					@include box( 30px, auto );
 					background-color: inherit;
 					border: none;
 					border-radius: 3px;
@@ -520,7 +522,7 @@ body:not(.karma-builder-environment) {
 					}
 
 					div {
-						@include box(18px, 13px);
+						@include box( 18px, 13px );
 						background-position: center;
 						background-repeat: no-repeat;
 						background-size: contain;
@@ -538,8 +540,78 @@ body:not(.karma-builder-environment) {
 					}
 				}
 
+				&.karma-slider-and-drop-down {
+					@include box( 190px, 125px );
+					justify-content: inherit;
+					left: -147px;
+					padding: 0 15px;
+					position: absolute;
+					z-index: $level-10;
+					&:after{
+						left: 86%;
+					}
+					.karma-range-slider-number input {
+						border: none;
+						max-width: 30px;
+					}
+					.karma-check-box-contain{
+
+						display: flex;
+						flex-direction: row-reverse;
+						justify-content: space-between;
+						.karma-link-open-new-tab-text{
+							color: $builder-main-color;
+							font-size: 14px;
+							line-height: 28px;
+						}
+					}
+					&.karma-range-slider-container {
+
+						.karma-range-slider-number {
+							@include box( 40px, 29px );
+							border: none;
+							margin: 0;
+							padding: 0;
+						}
+						.karma-input-number-type-unit{
+							padding: 2px 0 0 2px;
+						}
+
+						.karma-range-slider-content {
+							border-bottom: 1px solid rgba( 57,73,89,0.1 );
+							padding: 7px 0px 9px 9px;
+						}
+						.karma-drop-down-radio{
+							padding: 10px 0;
+							text-align: left;
+							width: 100%;
+
+							.check-box-circle{
+								@include check-box-button;
+								height: 17px;
+								width: 17px;
+
+								.karma-slider-and-drop-down-radio{
+									width: 187px;
+									left: 0;
+								}
+
+								input{
+									width: auto;
+								}
+							}
+							.check-box-circle label{
+								height: 7px;
+								width: 7px;
+							}
+
+						}
+					}
+				}
+
 				&.karma-link-drop-down{
 					@include box( 190px, 83px );
+					left: 28px;
 					padding: 11px;
 					.karma-check-box-container {
 						@include check-box-button();
@@ -623,7 +695,6 @@ body:not(.karma-builder-environment) {
 						color: $builder-accent-color;
 						font-family: $builder-medium-font;
 						padding: 5px 0;
-						Cursor: no-drop;
 					}
 
 				}
@@ -645,7 +716,7 @@ body:not(.karma-builder-environment) {
 			}
 
 			.karma-builder-gizmo-icon {
-				@include flexbox($align-item: center);
+				@include flexbox( $align-item: center );
 				cursor: pointer;
 				height: 100%;
 				padding: 11px 7px;
@@ -668,7 +739,7 @@ body:not(.karma-builder-environment) {
 			}
 
 			.karma-builder-gizmo-text {
-				@include flexbox(center, center, center);
+				@include flexbox( center, center, center );
 				@extend .karma-builder-title-4;
 				border-right: 1px solid $builder-main-color-3;
 				color: $builder-main-color;
@@ -714,7 +785,7 @@ body:not(.karma-builder-environment) {
 
 		.karma-spacing-dot-container {
 
-			@include box(22px, 23px);
+			@include box( 22px, 23px );
 			cursor: ns-resize;
 			display: none;
 			left: 48%;
@@ -722,43 +793,43 @@ body:not(.karma-builder-environment) {
 			top: -12px;
 
 			&:hover .spacing-dot-hover {
-				@include box(22px, 22px);
+				@include box( 22px, 22px );
 				transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
 			}
 
 			.spacing-dot-hover {
 				@include box(0, 0);
-				background-color: rgba($builder-accent-color, .3);
+				background-color: rgba( $builder-accent-color, .3 );
 				border-radius: 100%;
 				transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
 			}
 
 			.karma-row {
-				box-shadow: inset 0 0 0 1px rgba($builder-main-color-4, 0.7);
+				box-shadow: inset 0 0 0 1px rgba( $builder-main-color-4, 0.7 );
 			}
 
 			.spacing-dot {
 				@extend .dot-gizmo;
-				@include center('both');
+				@include center( 'both' );
 			}
 
 			.spacing-top-hover {
-				@include element_direction($top: 0, $left: 0);
-				@include box(22px, 14px);
+				@include element_direction( $top: 0, $left: 0 );
+				@include box( 22px, 14px );
 				display: block;
 				margin-top: 10px;
 				overflow: hidden;
 				position: relative;
 
 				.spacing-dot-hover {
-					@include center('both');
+					@include center( 'both' );
 					top: 3px;
 				}
 			}
 
 			.spacing-bottom-hover {
 				@include element_direction($top: 0, $left: 0);
-				@include box(22px, 11px);
+				@include box( 22px, 11px );
 				display: block;
 				margin-bottom: 10px;
 				overflow: hidden;
@@ -771,21 +842,21 @@ body:not(.karma-builder-environment) {
 			}
 
 			.spacing-left-hover {
-				@include element_direction($top: 0, $left: 0);
-				@include box(14px, 24px);
+				@include element_direction( $top: 0, $left: 0 );
+				@include box( 14px, 24px );
 				display: block;
 				overflow: hidden;
 				position: relative;
 
 				.spacing-dot-hover {
-					@include center('vertical');
+					@include center( 'vertical' );
 					left: -10px;
 				}
 			}
 
 			.resize-handler:before {
-				@include center('horizontal');
-				@include box(1px, 100%);
+				@include center( 'horizontal' );
+				@include box( 1px, 100% );
 				background-color: rgba($builder-main-color-4, 0.8);
 				content: " ";
 				cursor: col-resize;
@@ -794,8 +865,8 @@ body:not(.karma-builder-environment) {
 			}
 
 			.spacing-right-hover {
-				@include box(14px, 24px);
-				@include element_direction($top: 0, $left: -3px);
+				@include box( 14px, 24px );
+				@include element_direction( $top: 0, $left: -3px );
 				display: block;
 				margin-right: 0;
 				overflow: hidden;
@@ -803,7 +874,7 @@ body:not(.karma-builder-environment) {
 
 				.spacing-dot-hover {
 
-					@include center('vertical');
+					@include center( 'vertical' );
 					right: -10px;
 
 				}
@@ -831,7 +902,7 @@ body:not(.karma-builder-environment) {
 
 				}
 				.spacing-dot {
-					@include box(6px, 6px);
+					@include box( 6px, 6px );
 					background-color: $builder-accent-color;
 				}
 			}
@@ -881,7 +952,8 @@ body:not(.karma-builder-environment) {
 		&.karma-active-section {
 
 			.karma-row {
-				box-shadow: inset 0 0 0 1px rgba( $builder-main-color-4,  0.6 );
+				box-shadow: inset 0 0 0 1px rgba( $builder-main-color-4, 0.6 );
+				z-index: 1;
 
 				> .karma-builder-element:last-child {
 					.resize-handler {
@@ -889,7 +961,7 @@ body:not(.karma-builder-environment) {
 					}
 
 					.karma-right-spacing .karma-spacing-dot-container {
-						left: calc(100% - 11px) !important;
+						left: calc( 100% - 11px ) !important;
 						.spacing-dot {
 							border-radius: 100%;
 							left: 13px;
@@ -908,7 +980,7 @@ body:not(.karma-builder-environment) {
 				}
 
 				.resize-handler {
-					@include box(12px, 100%);
+					@include box( 12px, 100% );
 					cursor: col-resize;
 					position: absolute;
 					right: -5px;
@@ -917,8 +989,8 @@ body:not(.karma-builder-environment) {
 				}
 
 				.resize-handler:before {
-					@include center('horizontal');
-					@include box(1px, 100%);
+					@include center( 'horizontal' );
+					@include box( 1px, 100% );
 					background-color: rgba( $builder-main-color-4,  0.6 );
 					content: " ";
 					cursor: col-resize;
@@ -951,8 +1023,7 @@ body:not(.karma-builder-environment) {
 
 			.section-both-spacing {
 				.karma-both-spacing-handler{
-					width: 100%;
-					height:30px;
+					@include box( 100%, 15px );
 					cursor: ns-resize;
 
 					&.karma-both-spacing-handler-bottom{

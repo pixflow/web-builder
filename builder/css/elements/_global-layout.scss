@@ -20,6 +20,33 @@
 		border-radius    : 2px;
 	}
 }
+
+.full-element-placeholder{
+	background-color: rgba( $builder-main-color, 0.1 );
+}
+
+
+
+.ui-sortable-handle.ui-sortable-placeholder{
+	visibility: visible !important;
+	background-color: rgba($builder-accent-color,.3);
+	transition: opacity 150ms  50ms;
+	animation: grow 150ms cubic-bezier(0.47, 0, 0.745, 0.715);
+	animation-fill-mode : forwards;
+}
+@keyframes grow {
+	from {height: 1px;}
+	to {height: 8px;}
+}
+
+.karma-builder-element[data-name="karma_section"].ui-sortable-helper{
+	animation: scale  100ms linear;
+	animation-fill-mode : forwards;
+}
+@keyframes scale {
+	from {transform: scale(.8);}
+	to {transform: scale(.5);}
+}
 /*Alignment placeholder for elements*/
 .karma-alignment-placeholder{
 	@include box( 100%, 100% );
