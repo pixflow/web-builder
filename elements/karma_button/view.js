@@ -204,6 +204,7 @@
 
 		},
 
+
 		/**
 		 * @summary Update type of element
 		 *
@@ -221,7 +222,7 @@
 
 			}
 		}
-
+		
 	});
 
 })( jQuery, karmaBuilder );

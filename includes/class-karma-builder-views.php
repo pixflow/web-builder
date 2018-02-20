@@ -61,6 +61,7 @@ class Karma_Views {
 		'element-panel-add-element',
 		'element-panel-templates',
 		'element-panel-section',
+		'element-panel-blocks',
 		'element-panel-unsplash',
 		'element-panel-upgrade',
 		'element-panel-list',

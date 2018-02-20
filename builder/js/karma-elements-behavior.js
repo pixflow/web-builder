@@ -50,7 +50,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			var domNode = e.target.closest( ".karma-new-section-layout" ),
 				newGrid = JSON.parse( domNode.getAttribute( 'data-value' ) ),
-				placeholder = document.getElementById( 'karma-builder-layout' ) ,
+				placeholder = document.querySelector( '.karma-blank-page-container' ) ,
 				elementName = 'karma_section';
 
 			var newSection = KarmaView.createKarmaElement( [ placeholder, 'in' ], elementName );
@@ -159,7 +159,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			if( 'karma_column' != elementName && 'karma_section' != elementName ){
 				output = '<div class="karma-element-content"></div>';
-				alignmentClass = ' karma-element-alignment-left ' ;
+				alignmentClass = ' karma-element-alignment-' + model.attributes.shortcode_attributes.elementalign + ' ' ;
 			}
 
 			karmaBuilderOutput  = '<div id="'
@@ -734,8 +734,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
-
 		/**
 		 * @summary Get the correct placeholder
 		 *
@@ -766,19 +764,18 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param   {object}    placeholder
 		 * @param   {object}    elementsModel
-		 * @param   {object}    elementView
 		 *
 		 * @since   0.1.0
-		 * @returns {void}
+		 * @returns {object} view of rendered element
 		 */
-		renderElements : function( placeholder, elementModel, elementView ){
+		renderElements : function( placeholder, elementModel  ){
 
 			var elementName = elementModel.parent.shortcode_name;
 
 			if ( 'karma_section' == elementName ){
 
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
-					oldGrid = elementView.currentGrid();
+					oldGrid = elementModel.grid;
 
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
@@ -793,6 +790,7 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 			this.createStyleSheetForElements( newView.model.attributes.shortcode_attributes, newView );
+			return newView;
 
 		},
 
@@ -881,7 +879,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
 		/**
 		 * @summary Prevent from scrolling parent element when scrolling on child element
 		 *
@@ -905,7 +902,6 @@ var karmaBuilder = karmaBuilder || {};
 
 		},
 
-
 		/**
 		 * @summary Order sections after drop or sortable
 		 * This function call on makeSectionsSortable() function
@@ -923,9 +919,53 @@ var karmaBuilder = karmaBuilder || {};
 				order++;
 			} );
 
-		}
+		},
 
-	});
+		/**
+		 * @summary Detect and show blocks drop area placeholders while dragging
+		 *
+		 * @param {object}  event   DOM events
+		 * @param {object}  UI      Dragging element
+		 * UI is jquery helper object
+		 *
+		 * @since   0.1.1
+		 * @returns {boolean}
+		 */
+		detectBlocksDropAreas: function ( event, UI ) {
+
+			window.top.document.querySelector( '.karma-overlay-on-dragging' ).style.display = 'none';
+			UI.helper.get( 0 ).style.display = 'none';
+			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
+			window.top.document.querySelector( '.karma-overlay-on-dragging' ).style.display = 'block';
+			UI.helper.get( 0 ).style.display = 'flex';
+			var blankPage = document.querySelector('.karma-blank-page-container');
+			if ( null == targetElement ) {
+				return false;
+			} else if ( null != blankPage ) {
+				targetElement = blankPage;
+			} else {
+				targetElement = ( targetElement.classList.contains( 'ui-sortable-handle' ) ) ? targetElement : targetElement.closest( '.ui-sortable-handle' );
+			}
+			if ( null == targetElement ) {
+				return false;
+			}
+
+			var scrollTop = document.body.scrollTop,
+				topPosition = targetElement.getBoundingClientRect().top + scrollTop,
+				elementHeight = targetElement.offsetHeight,
+				elementHalf = topPosition + elementHeight / 2;
+			this.removePlaceHolders();
+			if ( ( event.clientY + scrollTop ) < elementHalf && null == blankPage ) {
+				/* Users drag at the top of element */
+				$( targetElement ).prev( '.karma-insert-between-sections-placeholder' ).addClass( 'karma-show-placeholder' );
+			} else {
+				/* Users drag at the bottom of element */
+				$( targetElement ).nextAll( '.karma-insert-between-sections-placeholder' ).first().addClass( 'karma-show-placeholder' );
+			}
+
+		},
+
+	} );
 
 
 } )( jQuery, karmaBuilder );

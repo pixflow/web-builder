@@ -87,6 +87,7 @@
 					zIndex  : 999999,
 					helper  : 'clone',
 					appendTo: '#karma-builder-layout',
+					delay   : 100,
 					cancel  : ".karma-active-element",
 					helper: function( event ) {
 						return $( event.target ).closest(".karma-builder-element").clone();
@@ -335,6 +336,9 @@
 					}
 				);
 				this.el.insertAdjacentHTML( 'afterend', placeholderHTML );
+				if ( 1 == this.model.get( 'order' ) ){
+					this.el.insertAdjacentHTML( 'beforebegin', placeholderHTML );
+				}
 
 			}
 
@@ -532,10 +536,11 @@
 			var that                   = this,
 				duplicatedElementModel = {
 					parent : JSON.parse( JSON.stringify( that.model ) ),
-					childes: that.getChildElements( that.model.get( 'element_key' ) )
+					childes: that.getChildElements( that.model.get( 'element_key' ) ),
+					grid: ( 'karma_section' == that.model.get('shortcode_name') ) ? that.currentGrid() : []
 				};
 
-			KarmaView.renderElements( KarmaView.getPlaceholder( this ), duplicatedElementModel , this );
+			KarmaView.renderElements( KarmaView.getPlaceholder( this ), duplicatedElementModel );
 
 
 		},

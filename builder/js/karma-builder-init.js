@@ -150,6 +150,7 @@
 			
 			e.stopPropagation();
 			var elementPanel = window.top.document.querySelector( '.karma-element-panel-add-element-view' );
+			window.top.karmaElementPanel.loadBlocks();
 			if( null != elementPanel ){
 				elementPanel.classList.add( 'element-panel-show' );
 			};

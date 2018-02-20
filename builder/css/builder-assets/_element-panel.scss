@@ -125,6 +125,7 @@
 
 					&.karma-active-tab {
 						display: flex;
+						position: relative;
 					}
 
 					.element-panel-part-img {
@@ -533,6 +534,21 @@
 			max-height: 580px;
 		}
 
+		.karma-blocks-container{
+			.karma-blocks-preloader{
+				background-image: url(../media/svg/loading.svg);
+				background-repeat: no-repeat;
+				background-size: 24px;
+				height: 24px;
+				left: 50%;
+				margin: 0 auto;
+				position: absolute;
+				top: 50%;
+				transform: translateX(-50%);
+				width: 24px;
+			}
+		}
+
 		.deactivate-title {
 			@extend .karma-coming-soon-typo;
 		}
@@ -541,6 +557,10 @@
 
 			background-color: $builder-main-color-5;
 			margin: 0 30px 15px 36px;
+
+			&.karma-start-blocks-dragging {
+				visibility: hidden;
+			}
 
 			img {
 				display: block;
@@ -750,7 +770,6 @@
 	}
 	&.karma-grab-element:not(.karma-deactive-element) {
 		box-shadow: 0 2px 15px 7px rgba($builder-main-color, 0.07);
-		z-index: $level-30;
 		&:hover {
 			border: none !important;
 			border-radius: 4px;
@@ -866,3 +885,12 @@
 
 }
 
+.karma-insert-between-sections-placeholder.karma-show-placeholder {
+	background-color : rgba( $builder-accent-color, 0.2 );
+	height: 8px;
+	width: 100%;
+}
+
+.karma-insert-between-sections-placeholder.karma-blank-page-placeholder {
+	opacity: 0;
+}

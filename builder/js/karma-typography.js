@@ -72,7 +72,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			+ '<# }); #>'
 			+' </ul></div></div>' ,
 
-
 		events: {
 
 			'mousedown body:not( .karma-dropdown-body )'                        : 'closeDropDown',
@@ -216,7 +215,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				rangeSliderInput = e.target
 					.closest('.karma-range-slider-content')
 					.querySelector('.karma-range-slider-range');
-
 
 			$( rangeSliderInput ).val( value ).change();
 
@@ -729,7 +727,6 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				optionsContainer.find('.karma-dropdown-option').first().addClass('karma-selected-dropdown-option');
 			}
 
-
 			var top = optionsContainer.find('.karma-selected-dropdown-option').position().top * -1 + element.offset().top - $(window).scrollTop(),
 				left = element.offset().left - 5;
 
@@ -976,8 +973,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					'style': 'Regular'
 				};
 				arr.push( obj );
-				$('.karma-fonts-list').append( view.createFontListHtml( fontFamily, arr ) );
-				$('.karma-google-fonts-list').slideUp(300);
+				$( '.karma-fonts-list' ).append( view.createFontListHtml( fontFamily, arr ) );
+				$( '.karma-google-fonts-list' ).slideUp( 300 );
 			}
 
 		},

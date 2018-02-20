@@ -227,7 +227,7 @@ class Karma_Stylesheet {
      * @return string CSS string
      *
      */
-    //@TODO - refine ( Use built0in PHP function )
+    //@TODO - refine ( Use built-in PHP function )
     public function create_google_font_link(){
 
         $typography = Karma_Typography::get_instance();
@@ -282,6 +282,7 @@ class Karma_Stylesheet {
             $link_font = str_replace(' ', '+', $link_font);
             $link  .= $link_font;
             $variant_link = ':';
+
             foreach( $variant as $index => $key ){
 
                 $font_variant = explode( " ", $key );

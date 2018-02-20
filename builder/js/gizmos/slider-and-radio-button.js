@@ -5,8 +5,7 @@
 		events: {
 			'input .karma-range-slider-input.karma-input-slider-and-drop-dow'	: 'changeNumberInputValue',
 			'input .karma-range-slider-slider-and-drop-down'					: 'changeSliderInputValue',
-			'click input[class="karma-slider-and-drop-down-radio"]'				: 'changeClasses',
-
+			'click input[class="karma-slider-and-drop-down-radio"]'				: 'changeClasses'
 		},
 
 		/**
@@ -37,8 +36,6 @@
 			+ '<# } #>'
 			+ '</div>'
 			+ '</div>' ,
-
-
 
 		/**
 		 * @summary initialize alignment
@@ -158,6 +155,7 @@
 			this.setModels( changedValue );
 			
 		},
+
 
 		/**
 		 * @summary Change slider value

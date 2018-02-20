@@ -2971,6 +2971,9 @@ html {
           color: #9CA4AC;
           transition-duration: 0.3s; }
 
+.karma-grab-element {
+  z-index: 120; }
+
 .karma-builder-element[data-name="karma_section"] {
   cursor: all-scroll;
   position: relative; }
@@ -5575,7 +5578,8 @@ div.karma-element-content .karma-top-spacing {
             display: flex;
             text-align: center; }
           #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container.karma-active-tab {
-            display: flex; }
+            display: flex;
+            position: relative; }
           #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img {
             width: 100%; }
             #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-img img {
@@ -5881,9 +5885,22 @@ div.karma-element-content .karma-top-spacing {
     align-items: flex-start !important; }
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-add-element-inactive-container {
       max-height: 580px; }
+    #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-blocks-container .karma-blocks-preloader {
+      background-image: url(../media/svg/loading.svg);
+      background-repeat: no-repeat;
+      background-size: 24px;
+      height: 24px;
+      left: 50%;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%);
+      width: 24px; }
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element {
       background-color: #F7F8F9;
       margin: 0 30px 15px 36px; }
+      #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element.karma-start-blocks-dragging {
+        visibility: hidden; }
       #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element img {
         display: block; }
   #karma-add-element .element-panel-section-container .karma-builder-element-panel-header {
@@ -6045,8 +6062,7 @@ div.karma-element-content .karma-top-spacing {
   .karma-element-single-element.karma-start-dragging {
     visibility: hidden; }
   .karma-element-single-element.karma-grab-element:not(.karma-deactive-element) {
-    box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07);
-    z-index: 120; }
+    box-shadow: 0 2px 15px 7px rgba(57, 73, 89, 0.07); }
     .karma-element-single-element.karma-grab-element:not(.karma-deactive-element):hover {
       border: none !important;
       border-radius: 4px; }
@@ -6129,6 +6145,14 @@ div.karma-element-content .karma-top-spacing {
     left: 90px; }
   #karma-add-element .element-panel-show {
     left: 96px; } }
+.karma-insert-between-sections-placeholder.karma-show-placeholder {
+  background-color: rgba(65, 156, 248, 0.2);
+  height: 8px;
+  width: 100%; }
+
+.karma-insert-between-sections-placeholder.karma-blank-page-placeholder {
+  opacity: 0; }
+
 /** customize color picker styles **/
 .sp-container {
   left: 657.69px;

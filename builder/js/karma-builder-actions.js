@@ -340,8 +340,85 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 			}, 2400 );
 
-		}
+		},
 
+		/**
+		 * @summary Enable draggable functionality on blocks
+		 *
+		 * @param    {string}    selector    blocks CSS selector to set draggable.
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		initBlocksDraggable: function ( selector ) {
+
+			var that = this;
+			$( selector ).draggable( {
+				appendTo: "body",
+				containment: 'document',
+				cursorAt: { top: 40, left: 40 },
+				helper: 'clone',
+				start: function ( event, UI ) {
+
+					$( ".karma-add-element-inactive-container" ).getNiceScroll().remove();
+					this.classList.add( 'karma-start-blocks-dragging' );
+					that.createOverlay();
+					that.addGrabHandler( event, UI );
+					if ( null != that.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {
+						var placeholder = that.getIframe().document.createElement( 'div' );
+						placeholder.setAttribute( 'class', 'karma-insert-between-sections-placeholder karma-blank-page-placeholder' );
+						that.getIframe().document.getElementById( 'karma-builder-layout' ).appendChild( placeholder );
+					}
+
+				},
+
+				drag: function ( event, UI ) {
+
+					that.getIframe().KarmaView.scroll( UI, event );
+					that.getIframe().KarmaView.detectBlocksDropAreas( event, UI );
+
+				},
+
+				stop: function ( event, UI ) {
+
+					this.classList.remove( 'karma-start-blocks-dragging' );
+					that.removeGrabHandler( event, UI );
+					clearInterval( that.flyScroll );
+					that.removeOverlay();
+					var dropArea = that.getIframe().document.querySelector( '.karma-show-placeholder' );
+					if ( null != dropArea ) {
+						that.renderBlock( UI.helper.data( "block-id" ), dropArea );
+					}
+					that.getIframe().KarmaView.removePlaceHolders();
+					window.karmaElementPanel.scrollElementPanel();
+
+				}
+
+			} );
+
+		},
+
+		/**
+		 * @summary render block
+		 *
+		 * @param    {int}      blockID     block id
+		 * @param    {object}   dropArea    drop area placeholder
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		renderBlock: function ( blockID, dropArea ) {
+
+			var blocks = karmaElementPanel.blocks[ blockID ].content;
+			for ( var block in blocks ) {
+				var newView = this.getIframe().KarmaView.renderElements( dropArea, JSON.parse( blocks[ block ] ) );
+				dropArea = newView.$el.nextAll( '.karma-insert-between-sections-placeholder' ).first()[ 0 ];
+			}
+			if ( null != this.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {
+				this.getIframe().$( '.karma-blank-page-container' ).remove();
+			}
+
+		}
 
 	});
 

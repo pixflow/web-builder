@@ -1,4 +1,4 @@
-<div class="element-panel-section-container karma-element-panel-list karma-active-tab" >
+<div class="element-panel-section-container karma-element-panel-list" >
 	<# print( karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( 'karma-element-panel-top-header', {}, 1 ) ); var i=0; #>
 		<div class="karma-elements karma-isotope" >
 			<# _.each( data.elementInfo, function( element ){
