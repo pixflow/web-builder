@@ -282,6 +282,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 					if ( prevFont.length ) {
 						_.each( arr, function ( style  ) {
+
+							if ( ul.find( 'li:contains( ' + style.weight + ' ' + style.style.charAt(0).toUpperCase() + style.style.slice(1).toLowerCase() + ' )' ).length ){
+								return;
+							}
 							ul.append('<li>' + style.weight + ' ' + style.style + '</li>');
 						});
 						prevFont.closest('.karma-font-list').find('.karma-font-weight-count span:nth-child(1)').text( ul.find('li').length + ' Style' );
