@@ -1206,6 +1206,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   height: 1px;
   background: #D7DBDE; }
 
+#karma-builder-layout div:before, #karma-builder-layout div:after, #karma-builder-layout ul:before, #karma-builder-layout ul:after, #karma-builder-layout article:before, #karma-builder-layout article:after, #karma-builder-layout aside:before, #karma-builder-layout aside:after, #karma-builder-layout details:before, #karma-builder-layout details:after, #karma-builder-layout figcaption:before, #karma-builder-layout figcaption:after, #karma-builder-layout figure:before, #karma-builder-layout figure:after, #karma-builder-layout section:before, #karma-builder-layout section:after, #karma-builder-layout input[class*="karma"]:before, #karma-builder-layout input[class*="karma"]:after {
+  content: unset; }
+
 #karma-add-element html, #karma-add-element body, #karma-add-element span, #karma-add-element object, #karma-add-element iframe,
 #karma-add-element h1, #karma-add-element h2, #karma-add-element h3, #karma-add-element h4, #karma-add-element h5, #karma-add-element h6, #karma-add-element p, #karma-add-element blockquote, #karma-add-element pre,
 #karma-add-element abbr, #karma-add-element address, #karma-add-element cite, #karma-add-element code,
@@ -3216,7 +3219,6 @@ html {
       border-style: solid;
       border-width: 2px;
       height: 42px;
-      margin-top: 15px;
       padding: 9px 22px;
       transition: 0.2s;
       justify-content: center !important; }
@@ -4481,6 +4483,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
             height: 24px;
             border: 1px solid #D7DBDE;
             border-radius: 100px;
+            position: relative;
             height: 17px;
             width: 17px; }
             .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle label {

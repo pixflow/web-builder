@@ -616,6 +616,7 @@ body:not(.karma-builder-environment) {
 
 							.check-box-circle{
 								@include check-box-button;
+								position: relative;
 								height: 17px;
 								width: 17px;
 
@@ -649,7 +650,6 @@ body:not(.karma-builder-environment) {
 						.check-box-circle{
 							@include flexbox( center, center, center );
 							@include box( 100%, 100% );
-
 						}
 					}
 					input.karma-text-link {
