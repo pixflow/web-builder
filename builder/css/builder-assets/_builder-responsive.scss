@@ -57,9 +57,17 @@
 						top: 5px;
 					}
 
-					.karma-builder-gizmo-hidden.karma-visibility-option {
-						padding: 0 3px;
+					.karma-builder-gizmo-hidden.karma-visibility-option{
+						@include box( 15px, 10px );
 						cursor: pointer;
+						background-size: contain;
+						margin: 0 2px;
+						&.visibility-line{
+							@include box( 15px, 14px );
+							cursor: pointer;
+							background-size: contain;
+							margin: 0 2px;
+						}
 					}
 
 					.karma-builder-gizmo-text {
@@ -68,6 +76,7 @@
 						margin: 0;
 						font-size: 10px;
 						cursor: default;
+						line-height: 17px;
 						&:hover {
 							color: $builder-main-color;
 						}

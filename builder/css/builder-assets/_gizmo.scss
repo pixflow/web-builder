@@ -446,13 +446,19 @@ body:not(.karma-builder-environment) {
 			z-index: $level-20;
 
 			.karma-visibility-option{
+				@include box( 18px, 12px );
 				background-image: url(../media/svg/visibility.svg);
 				background-repeat: no-repeat;
-				height:8px;
-				width:13px;
+				background-size: contain;
+				cursor: pointer;
+				margin: 0 7px;
 
 				&.visibility-line{
+					@include box( 18px, 17px );
 					background-image: url(../media/svg/visible-line.svg);
+					background-size: contain;
+					cursor: pointer;
+					margin: 0 7px;
 				}
 			}
 
