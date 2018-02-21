@@ -910,11 +910,14 @@
 
 	}
 }
+
 .karma-builder-environment{
 	&.karma-device-mode-mobile::-webkit-scrollbar{
-			display: none;
-		}
-
+		display: none;
+	}
+	&.karma-device-mode-tablet::-webkit-scrollbar{
+		display: none;
+	}
 }
 
 /** Separate these stylesheet for jquery UI */

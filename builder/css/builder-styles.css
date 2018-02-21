@@ -6306,6 +6306,8 @@ div.karma-element-content .karma-top-spacing {
 
 .karma-builder-environment.karma-device-mode-mobile::-webkit-scrollbar {
   display: none; }
+.karma-builder-environment.karma-device-mode-tablet::-webkit-scrollbar {
+  display: none; }
 
 /** Separate these stylesheet for jquery UI */
 .karma-element-single-element {
