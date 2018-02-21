@@ -2,7 +2,7 @@
 
 	&[ data-name="karma_video_box" ] {
 
-		.karma-deactive-on-desktop{
+		.karma-deactive-on-desktop:nth-child(1){
 			opacity:.2;
 		}
 
@@ -236,6 +236,7 @@
 			}
 			.karma-video-box-link-content{
 				display: flex;
+				margin-top: 22px;
 			}
 			.karma-video-box-link {
 				width:fit-content;
@@ -248,7 +249,6 @@
 					border-width: 2px;
 					height: 42px;
 					padding: 9px 22px;
-					margin-top: 22px;
 					transition: 0.2s;
 					//important for image position
 					justify-content: center !important;
@@ -284,7 +284,6 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					margin-top: 22px;
 					padding: 9px 22px;
 					transition:0.2s;
 					//important for image position

@@ -269,7 +269,7 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 			),
 			array(
 				"type"      => "outerGizmo",
-				"selector" 	=> '.karma-video-box-link',
+				"selector" 	=> '.karma-video-box-link-content',
 				"className" => "karma-video-box-link-gizmo",
 				"params"    => array(
                     array(

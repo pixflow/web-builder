@@ -227,6 +227,7 @@
 			}
 			.karma-image-text-box-link-content{
 				display: flex;
+				margin-top: 22px;
 			}
 			.karma-image-text-box-link {
 				display: flex;
@@ -238,7 +239,6 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					margin-top: 15px;
 					padding: 9px 22px;
 					transition: 0.2s;
 					//important for image position
@@ -277,7 +277,6 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					margin-top: 15px;
 					padding: 9px 22px;
 					transition:0.2s;
 					//important for image position

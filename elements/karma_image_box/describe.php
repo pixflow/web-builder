@@ -283,7 +283,7 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 			),
 			array(
 				"type"      => "outerGizmo",
-				"selector"  => '.karma-image-text-box-link',
+				"selector"  => '.karma-image-text-box-link-content',
 				"className" => "karma-image-text-box-link-gizmo",
 				"params"    => array(
 					array(
