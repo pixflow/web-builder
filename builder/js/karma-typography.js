@@ -283,14 +283,15 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 					if ( prevFont.length ) {
 						_.each( arr, function ( style  ) {
 
-							if ( ul.find( 'li:contains( ' + style.weight + ' ' + style.style.charAt(0).toUpperCase() + style.style.slice(1).toLowerCase() + ' )' ).length ){
+							var capitalText = style.style.charAt(0).toUpperCase() + style.style.slice(1).toLowerCase();
+							if ( ul.find( 'li:contains( ' + style.weight + ' ' + capitalText + ' )' ).length ){
 								return;
 							}
 							ul.append('<li>' + style.weight + ' ' + style.style + '</li>');
+
 						});
 						prevFont.closest('.karma-font-list').find('.karma-font-weight-count span:nth-child(1)').text( ul.find('li').length + ' Style' );
 					} else {
-
 						this.loadFont( fontFamily, modelArr) ;
 						$('.karma-fonts-list').append( this.createFontListHtml( fontFamily, arr ) );
 					}
@@ -302,6 +303,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			}
 
 		},
+
 
 		/**
 		 * @summary Add added google font to heading drop down
@@ -979,6 +981,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				arr.push( obj );
 				$( '.karma-fonts-list' ).append( view.createFontListHtml( fontFamily, arr ) );
 				$( '.karma-google-fonts-list' ).slideUp( 300 );
+				view.addFontToHeadingDropdown( fontFamily, [ 'Regular' ] );
 			}
 
 		},
@@ -1114,7 +1117,12 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		deleteFont: function ( font ) {
 
 			$('.karma-font-family-list .karma-dropdown-option[data-value="' + font + '"]').remove();
-			delete this.model.fonts[ font ];
+			if ( font in this.model.fonts ) {
+				delete this.model.fonts[ font ];
+			}else{
+				delete this.model.customFonts[ font ];
+			}
+
 			_.each( this.model.headings, function ( info ) {
 				if( info['font-family'].toLowerCase() == font.toLowerCase() ){
 					info['font-family'] = $('.karma-fonts-list .karma-font-name').eq(0).attr('data-font-name');
