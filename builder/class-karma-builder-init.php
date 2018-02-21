@@ -83,7 +83,6 @@ class Karma_Builder_Public {
 
 		$this->create_dynamic_styles();
 		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
-		wp_enqueue_script( 'wbfont', KARMA_BUILDER_URL . 'builder/js/webfont.js', array(), $this->version, 'all' );
 
 	}
 

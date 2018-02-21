@@ -196,7 +196,7 @@ class Karma_Stylesheet {
 		);
 		foreach ( $headings as $tag => $info ){
 			if ( 'p' == $tag ){
-				$headings_style .= '#karma-builder-layout a,';
+				$headings_style .= '.karma-builder-environment a,';
 			}
 			$headings_style .= $tag . '[class *= "tag" ]{' ;
 			foreach ( $info as $property => $value ){
