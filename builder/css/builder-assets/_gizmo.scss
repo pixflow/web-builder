@@ -441,11 +441,13 @@ body:not(.karma-builder-environment) {
 			border-radius: 2px;
 			display: none;
 			flex-direction:row-reverse;
-			left:0;
 			padding: 0 7px;
 			position: absolute;
-			right: auto;
 			z-index: $level-20;
+			&:not(.section-gizmo-group){
+				left:0;
+				right: auto;
+			}
 
 			.karma-visibility-option{
 				@include box( 18px, 12px );

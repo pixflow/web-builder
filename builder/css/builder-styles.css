@@ -3251,7 +3251,7 @@ html {
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline .karma-image-text-box-link {
         justify-content: center; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline div.karma-image-text-box-link-shape {
-        display: none; }
+        display: none !important; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline.karma-show-child-gizmo:hover {
         opacity: 1;
         transition: 0s; }
@@ -4341,11 +4341,12 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
     border-radius: 2px;
     display: none;
     flex-direction: row-reverse;
-    left: 0;
     padding: 0 7px;
     position: absolute;
-    right: auto;
     z-index: 100; }
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template:not(.section-gizmo-group) {
+      left: 0;
+      right: auto; }
     .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-visibility-option {
       width: 18px;
       height: 12px;
@@ -6071,7 +6072,8 @@ div.karma-element-content .karma-top-spacing {
       #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element.karma-start-blocks-dragging {
         visibility: hidden; }
       #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element img {
-        display: block; }
+        display: block;
+        cursor: -webkit-grab; }
   #karma-add-element .element-panel-section-container .karma-builder-element-panel-header {
     align-items: center;
     display: flex;
