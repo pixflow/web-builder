@@ -80,7 +80,7 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+				content.innerText = "this is description...";
 			}
 
 			this.setAttributes( { 'descriptiontext' : contentData },  true );
@@ -99,7 +99,7 @@
 				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+				content.innerText = "this is title... ";
 			}
 
 			this.setAttributes( { 'titletext' : contentData },  true );

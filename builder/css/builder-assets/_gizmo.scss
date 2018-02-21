@@ -448,6 +448,10 @@ body:not(.karma-builder-environment) {
 				left:0;
 				right: auto;
 			}
+			&.column-gizmo-group-responsive{
+				left:auto;
+				right: 0;
+			}
 
 			.karma-visibility-option{
 				@include box( 18px, 12px );

@@ -1,7 +1,7 @@
 .karma-builder-element {
 
 	&[ data-name="karma_video_box" ] {
-
+		cursor: auto;
 		.karma-deactive-on-desktop:nth-child(1){
 			opacity:.2;
 		}
@@ -226,7 +226,9 @@
 					position: relative;
 
 					.karma-video-box-title-tag, .karma-video-box-description-tag, .karma-video-box-link-tag {
+						cursor: text;
 						display: inline-block;
+						min-width: 30px;
 						word-break: break-all;
 					}
 					.karma-video-box-description-tag{

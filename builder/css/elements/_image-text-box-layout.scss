@@ -1,6 +1,7 @@
 .karma-builder-element {
 
 	&[ data-name="karma_image_box" ] {
+		cursor: auto;
 
 		&.karma-active-element {
 
@@ -196,7 +197,9 @@
 
 
 					.karma-image-text-box-title-tag, .karma-image-text-box-description-tag, .karma-image-text-box-link-tag {
+						cursor: text;
 						display: inline-block;
+						min-width: 30px;
 						word-break: break-all;
 					}
 					.karma-image-text-box-link-tag{
