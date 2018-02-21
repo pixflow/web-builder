@@ -250,7 +250,6 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				colorValue	= this.getAttributes( ['linkcolor'] );
 
-			this.renderCss( "#" + elementId + " .karma-image-text-box-link .karma-image-text-box-link-tag", 'color', colorValue.linkcolor  );
 			this.renderCss( "#" + elementId + " .karma-image-text-box-link .karma-image-text-box-link-shape svg * ", 'stroke', colorValue.linkcolor  );
 
 		},

@@ -587,6 +587,7 @@ body:not(.karma-builder-environment) {
 						align-items: center;
 						display: flex;
 						flex-direction: row-reverse;
+						position: relative;
 						justify-content: space-between;
 						.karma-link-open-new-tab-text{
 							color: $builder-main-color;
@@ -622,7 +623,6 @@ body:not(.karma-builder-environment) {
 
 							.check-box-circle{
 								@include check-box-button;
-								position: relative;
 								height: 17px;
 								width: 17px;
 
@@ -662,7 +662,7 @@ body:not(.karma-builder-environment) {
 						@include box( 168px, 28px );
 						@extend .karma-builder-title-4;
 						border-radius: 4px;
-						color: $builder-main-color-2;
+						color: #000;
 						margin-bottom: 10px;
 					}
 

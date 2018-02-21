@@ -3195,6 +3195,7 @@ html {
           cursor: text;
           display: inline-block;
           min-width: 30px;
+          text-decoration: none;
           word-break: break-all; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-link-tag {
           display: flex;
@@ -3331,7 +3332,7 @@ html {
   display: inherit !important; }
 
 .karma-builder-element[data-name="karma_video_box"] {
-  cursor: pointer; }
+  cursor: auto; }
   .karma-builder-element[data-name="karma_video_box"] .karma-deactive-on-desktop:nth-child(1) {
     opacity: .2; }
   .karma-builder-element[data-name="karma_video_box"] div.karma-video-box-text-container div.karma-video-box-link-content .desktop-display-none {
@@ -4491,6 +4492,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           align-items: center;
           display: flex;
           flex-direction: row-reverse;
+          position: relative;
           justify-content: space-between; }
           .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down .karma-check-box-contain .karma-link-open-new-tab-text {
             color: #394959;
@@ -4522,7 +4524,6 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
             height: 24px;
             border: 1px solid #D7DBDE;
             border-radius: 100px;
-            position: relative;
             height: 17px;
             width: 17px; }
             .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle label {
@@ -4591,7 +4592,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           width: 168px;
           height: 28px;
           border-radius: 4px;
-          color: #9CA4AC;
+          color: #000;
           margin-bottom: 10px; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down .karma-check-box-container {
           width: 17px;
