@@ -410,7 +410,8 @@
 		 */
 		visibleonmobile : function () {
 
-			var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+			//var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+			var mobileVisible = this.model.attributes.shortcode_attributes.visibleonmobile;
 
 			if( "on" == mobileVisible ){
 				this.el.querySelector( ".karma-column" ).classList.remove( "karma-deactive-on-mobile" );
