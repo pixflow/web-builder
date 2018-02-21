@@ -36,6 +36,7 @@
 
 		},
 
+
 		/**
 		 * @summary  Deactivate enter in link text
 		 *
@@ -47,6 +48,7 @@
 			return e.which != 13;
 
 		},
+
 
 		/**
 		 * @summary check empty link text
@@ -145,19 +147,12 @@
 		},
 
 
-		/**
-		 * @summary Update range model
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
 		rangemodel : function () {
 
 			var elementId 	= this.elementSelector(),
 				border		= this.getAttributes(['rangemodel']);
 
 			this.renderCss( "#" + elementId + " .karma-button-container", 'border-radius', border.rangemodel + "px"  );
-
 
 		} ,
 

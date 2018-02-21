@@ -2041,6 +2041,7 @@ html {
       justify-content: inherit;
       display: flex;
       text-align: right;
+      border: none;
       color: #000;
       background: transparent;
       padding: 0; }

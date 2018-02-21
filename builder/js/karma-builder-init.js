@@ -61,7 +61,6 @@
 		},
 
 
-
 		/**
 		 * @summary return builder params value
 		 *
@@ -79,7 +78,6 @@
 			return this.builderParams[ name ];
 
 		},
-
 
 
 		/**

@@ -78,7 +78,7 @@
 		showBorder: function ( e ) {
 
 			e.stopPropagation();
-
+			this.$el.trigger( 'karma/after/clickElement' );
 			this.removeDropDownGizmo();
 			this.removeMoreSubmenu();
 			if( this.$el.hasClass('karma-active-section') ){
@@ -88,6 +88,8 @@
 			$('.karma-active-section .karma-active-column').removeClass('karma-active-column');
 			$('.karma-active-section').removeClass('karma-active-section');
 			this.$el.addClass('karma-active-section');
+
+
 
 		},
 

@@ -9,7 +9,7 @@
 		/**
 		 * Build html for hidden gizmo
 		 */
-		template : '<div class="karma-builder-gizmo-hidden karma-visibility-option " data-form="{{ data.form }}"> {{{ data.params.icon }}} </div>',
+		template : '<div class="karma-builder-gizmo-hidden karma-visibility-option {{ data.defaultClass }}" data-form="{{ data.form }}" >  </div>',
 
 
 		initialize: function(){
@@ -19,6 +19,17 @@
 		},
 
 		render: function(){
+
+			var desktopVisible = this.elementView.getAttributes( [ 'visibleondesktop' ] ).visibleondesktop;
+
+			if( 'undefined' != typeof desktopVisible ){
+				if( 'off' == desktopVisible ){
+
+					this.data.defaultClass = 'visibility-line';
+				}
+			}else{
+				this.data.defaultClass = ' ';
+			}
 
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 			this.$gizmoContainer.append( this.el );
@@ -33,6 +44,7 @@
 		 */
 		visibleElement : function () {
 
+			this.$el.find( '.karma-visibility-option' ).toggleClass( "visibility-line" );
 			var body = document.body,
 				deviceMode =  body.getAttribute( 'karma-device-mode' ),
 				that = this;

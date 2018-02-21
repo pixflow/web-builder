@@ -377,6 +377,35 @@
 		},
 
 		/**
+		 *@summery update hidden gizmo status
+		 *
+		 * @since 0.1.1
+		 *
+		 * @return {void}
+		 */
+		updateHiddenGizmoStatus : function () {
+
+			var hiddenGizmo = this.$el.find( ' > .karma-gizmo-template .karma-visibility-option' ),
+				mode = document.body.getAttribute( 'karma-device-mode' );
+
+			if( null == hiddenGizmo ){
+				return ;
+			}
+			var visibilty = this.getAttributes( ['visibleon' + mode ] )['visibleon' + mode ] ;
+
+			if( 'undefined' == typeof visibilty ){
+				return ;
+			}
+
+			if( 'off' == visibilty ){
+				hiddenGizmo.addClass( 'visibility-line' );
+			}else{
+				hiddenGizmo.removeClass( 'visibility-line' );
+			}
+
+		},
+
+		/**
 		 *@summery create options for right and left spacing gizmo
 		 *
 		 *@param	{string} spacingSelector left or right spacing gizmo of column
@@ -709,7 +738,6 @@
 		showElementGizmo: function ( e ) {
 
 			e.stopPropagation();
-
 			var lastActiveElement = document.querySelector( '.karma-active-element' );
 			this.removeElementChildGizmo();
 
@@ -721,6 +749,7 @@
 			}
 
 			KarmaView.$el.trigger( 'karma/callParent', [ this.el, [ 'activeColumn' ] , 1  ] );
+			this.$el.trigger( 'karma/after/clickElement' );
 			this.el.classList.add( 'karma-active-element' );
 			KarmaView.closeElementPanel().removeSettingPanel();
 

@@ -44,6 +44,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 
 		return 	array(
 
+
 			'element_key'   			=> 'kb' ,
 			'type'						=> 'fill' ,
 			'linkurl'       			=> get_site_url(),
@@ -166,6 +167,15 @@ class Karma_Button extends Karma_Shortcode_Base {
 			),
 
 			array(
+
+				'postfix'	=> ' .karma-button-container',
+				'property'	=> array(
+					'border-radius'	=> self::$element_attributes[ 'rangemodel' ] . 'px',
+				)
+			),
+
+			array(
+
 				'postfix'  => ' .karma-button-outline .karma-button-link span ',
 				'property' => array(
 					'color' => self::$element_attributes[ 'generalcolor' ],

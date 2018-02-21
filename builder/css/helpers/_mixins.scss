@@ -376,6 +376,7 @@
 	input{
 		@include flexbox( $text-align: right );
 		@extend .karma-builder-title-4;
+		border:none;
 		color: #000;
 		background: transparent;
 		padding: 0;

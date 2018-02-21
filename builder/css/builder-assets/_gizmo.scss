@@ -445,6 +445,17 @@ body:not(.karma-builder-environment) {
 			position: absolute;
 			z-index: $level-20;
 
+			.karma-visibility-option{
+				background-image: url(../media/svg/visibility.svg);
+				background-repeat: no-repeat;
+				height:8px;
+				width:13px;
+
+				&.visibility-line{
+					background-image: url(../media/svg/visible-line.svg);
+				}
+			}
+
 			&.text-gizmo-group > div {
 
 				cursor: pointer;
@@ -540,21 +551,26 @@ body:not(.karma-builder-environment) {
 				}
 
 				&.karma-slider-and-drop-down {
-					@include box( 190px, 125px );
+
 					justify-content: inherit;
 					left: -147px;
 					padding: 0 15px;
 					position: absolute;
+					width: 190px;
 					z-index: $level-10;
 					&:after{
 						left: 86%;
 					}
+
 					.karma-range-slider-number input {
 						border: none;
+						margin-bottom: 0;
 						max-width: 30px;
+
 					}
 					.karma-check-box-contain{
 
+						align-items: center;
 						display: flex;
 						flex-direction: row-reverse;
 						justify-content: space-between;
@@ -573,12 +589,17 @@ body:not(.karma-builder-environment) {
 							padding: 0;
 						}
 						.karma-input-number-type-unit{
+
 							padding: 2px 0 0 2px;
 						}
 
 						.karma-range-slider-content {
+
 							border-bottom: 1px solid rgba( 57,73,89,0.1 );
-							padding: 7px 0px 9px 9px;
+							margin-bottom: -3px;
+							margin-top: 15px;
+							padding: 7px 0px 21px 9px;
+
 						}
 						.karma-drop-down-radio{
 							padding: 10px 0;
@@ -590,9 +611,10 @@ body:not(.karma-builder-environment) {
 								height: 17px;
 								width: 17px;
 
+
 								.karma-slider-and-drop-down-radio{
-									width: 187px;
 									left: 0;
+									width: 187px;
 								}
 
 								input{

@@ -109,6 +109,10 @@
 			$('.karma-active-column').removeClass('karma-active-column');
 			this.$el.addClass('karma-active-column');
 			KarmaView.$el.trigger( 'karma/callParent', [ this.el, ['showBorder'], 2 ] );
+			if( null == this.el.querySelector( '.karma-builder-element' ) ){
+				this.$el.trigger( 'karma/after/clickElement' );
+			}
+
 
 		},
 

@@ -287,22 +287,55 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 				"className" => "karma-image-text-box-link-gizmo",
 				"params"    => array(
 					array(
-						'type'      => 'color',
-						'className' => esc_attr( 'karma-color-picker-gizmo' ),
-						"params"    => array(
-							'opacity'          => false,
-							'multiColor'       => true,
-							'firstColorTitle'  => 'Overlay',
-							'secondColorTitle' => 'Background',
-							'model'            => 'linkcolor'
-						)
+						'type'   	=> 'hidden',
 					),
-					array(
+
+                    array(
+                        'type'      => 'color',
+                        'className' => esc_attr( 'karma-color-picker-gizmo' ),
+                        "params"    => array(
+                            'opacity'           => false,
+                            'multiColor'        => true,
+                            'firstColorTitle'   => 'General',
+                            'secondColorTitle'  => 'Text',
+                            'model'             => 'generalcolor',
+                            'secondColorModel'  => 'textcolor'
+                        )
+                    ),
+
+                    array(
 						'type'   => 'link',
 						"params" => array(
 							'defaultIcon' => KARMA_BUILDER_URL . 'builder/media/svg/gizmo-link.svg',
 						)
 					),
+					array(
+						'type'		=>'sliderAndRadioButton',
+						"params" 	=> array(
+							'defaultIcon'  		=> KARMA_BUILDER_URL . 'builder/media/svg/border-radius.svg',
+							'value'			=> '20',
+							'min'			=> '0',
+							'max'			=> '100',
+							'unit'			=>'px',
+							'rangeModel' 	=> 'rangemodel' ,
+							'type' 			=> 'type',
+							"field"			=> array(
+									array(
+											'text'	=> "Fill",
+											'value' => "fill",
+									),
+									array(
+											'text'	=> "Outline",
+											'value' => "outline",
+									),
+									array(
+											'text'	=> "Link",
+											'value' => "link",
+									),
+							),
+
+						)
+						),
 				)
 			),
 			array(

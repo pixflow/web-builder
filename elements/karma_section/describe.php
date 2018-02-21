@@ -354,7 +354,6 @@ class Karma_Section_Describe extends Karma_Section {
 				"type"		=> "innerGizmo",
 				"className"	=> "section-gizmo-group-responsive",
 				"params"	=> 	array(
-
 					array(
 						'type'   	=> 'icon',
 						'form'   	=> 'responsive-layout',

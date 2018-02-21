@@ -79,7 +79,7 @@
 				.karma-image-text-box-text-container {
 					text-align: left;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: flex-start;
 					}
 				}
@@ -91,7 +91,7 @@
 				.karma-image-text-box-text-container {
 					text-align: center;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: center;
 					}
 				}
@@ -103,7 +103,7 @@
 				.karma-image-text-box-text-container {
 					text-align: right;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: flex-end;
 					}
 				}
@@ -115,7 +115,7 @@
 				.karma-image-text-box-text-container {
 					text-align: left;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: flex-start;
 					}
 				}
@@ -127,7 +127,7 @@
 				.karma-image-text-box-text-container {
 					text-align: center;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: center;
 					}
 				}
@@ -139,7 +139,7 @@
 				.karma-image-text-box-text-container {
 					text-align: right;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: flex-end;
 					}
 				}
@@ -151,7 +151,7 @@
 				.karma-image-text-box-text-container {
 					text-align: left;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: flex-start;
 					}
 				}
@@ -163,7 +163,7 @@
 				.karma-image-text-box-text-container {
 					text-align: center;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: center;
 					}
 				}
@@ -175,7 +175,7 @@
 				.karma-image-text-box-text-container {
 					text-align: right;
 
-					.karma-image-text-box-link {
+					.karma-image-text-box-link-content {
 						justify-content: flex-end;
 					}
 				}
@@ -191,12 +191,16 @@
 			.karma-image-text-box-text-container {
 				width: fit-content;
 
-				> div {
-					position: relative;
+					> div {
+						position: relative;
+
 
 					.karma-image-text-box-title-tag, .karma-image-text-box-description-tag, .karma-image-text-box-link-tag {
 						display: inline-block;
 						word-break: break-all;
+					}
+					.karma-image-text-box-description-tag{
+						margin-top: 13px;
 					}
 				}
 			}
@@ -221,6 +225,9 @@
 					}
 				}
 			}
+			.karma-image-text-box-link-content{
+				display: flex;
+			}
 			.karma-image-text-box-link {
 				display: flex;
 				width: fit-content;
@@ -231,7 +238,7 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					margin-top: 22px;
+					margin-top: 15px;
 					padding: 9px 22px;
 					transition: 0.2s;
 					//important for image position
@@ -252,6 +259,16 @@
 							transition:0s;
 						}
 					}
+
+					&.karma-show-child-gizmo{
+						&.karma-deactive-on-desktop {
+							&:hover {
+								opacity: .2;
+								transition: 0s;
+							}
+						}
+					}
+
 				}
 
 				&.karma-button-outline{
@@ -260,7 +277,7 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					margin-top: 22px;
+					margin-top: 15px;
 					padding: 9px 22px;
 					transition:0.2s;
 					//important for image position
@@ -273,14 +290,55 @@
 					.karma-image-text-box-link {
 						justify-content: center;
 					}
-					.karma-image-text-box-link-shape{
+
+					div.karma-image-text-box-link-shape{
 						//conflict with inline js code
-						display: none !important;
+						display: none;
 					}
 					&.karma-show-child-gizmo{
 						&:hover{
 							opacity: 1;
 							transition:0s;
+						}
+						&.karma-deactive-on-desktop {
+							&:hover {
+								opacity: .2;
+								transition: 0s;
+							}
+						}
+					}
+
+
+				}
+
+
+				&.karma-button-fill{
+					.karma-button-link{
+						color: #fff;
+						font-family : $builder-medium-font ;
+						font-size: 15px;
+						line-height: 25px;
+
+						span{
+							display: inline-block;
+							&:focus{
+								outline: none;
+							}
+						}
+					}
+				}
+
+				&.karma-button-outline{
+					.karma-button-link{
+						color: $builder-accent-color;
+						font-family : $builder-medium-font ;
+						font-size: 15px;
+						line-height: 25px;
+						span{
+							display: inline-block;
+							&:focus{
+								outline: none;
+							}
 						}
 					}
 				}
@@ -292,7 +350,7 @@
 						height: 4px;
 
 						* {
-							stroke: #fff;
+
 							stroke-width: 2px;
 						}
 
@@ -314,6 +372,30 @@
 				@include box( 14px );
 			}
 		}
+
+		.karma-deactive-on-desktop{
+			opacity:.2;
+		}
+
+		div.karma-image-text-box-text-container{
+			div.karma-image-text-box-link-content{
+
+				.desktop-display-none{
+					display: none;
+				}
+
+			}
+		}
+
+
 	}
+
+}
+//when hide gizmo active want show element
+.karma-builder-environment{
+		//important: want in all element that have this class
+		.desktop-display-none {
+			display: inherit !important;
+		}
 
 }

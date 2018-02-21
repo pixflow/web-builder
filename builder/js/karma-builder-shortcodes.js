@@ -19,6 +19,8 @@
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
+			'karma/after/clickElement'							: 'updateHiddenGizmoStatus'
+
 
 
 		},

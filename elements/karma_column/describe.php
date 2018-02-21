@@ -132,11 +132,8 @@ class Karma_Column_Describe extends Karma_Column {
 				"params"	=> 	array(
 
 					array(
-						'type'   	=> 'hidden',
-						'form'   	=> 'visibility',
-						"params" => array(
-							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/visibility.svg' ),
-						)
+						'type' => 'hidden',
+						'form' => 'visibility',
 					),
 					array(
 						'type'		=> 'text',

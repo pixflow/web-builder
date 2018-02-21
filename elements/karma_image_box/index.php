@@ -47,7 +47,6 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'backgroundposition'=> 'center-center',
 				'titlecolor'		=> '#fff',
 				'descriptioncolor'	=> '#fff',
-				'linkcolor'			=> '#fff',
 				'titletag'			=>'h3',
 				'descriptiontag'	=>'h5',
 				'textposition'		=>'bottom-left',
@@ -56,7 +55,13 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'topspacepadding'	=> '10',
 				'radiusbox'			=>'0',
 				'imageheight'		=>'400',
+				'type'				=> 'fill' ,
+				'rangemodel'        =>'0',
+                'generalcolor'		=> '#fff',
+                'textcolor'			=> '#000',
 				'elementalign'		=> 'left',
+				'visibleondesktop'	=> 'on',
+
 		);
 
 	}
@@ -85,6 +90,9 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
 		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display			= ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
+		$visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
+
+
 		ob_start();
 		?>
 		<div class="karma-image-text-box karma-image-text-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-image-text-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-image-text-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-image-text-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
@@ -96,9 +104,11 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				<div class="karma-image-text-box-description">
 					<?php echo $description_content; ?>
 				</div>
-				<div class="karma-image-text-box-link">
-					<?php echo $link_content; ?>
-					<div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
+                <div class="karma-image-text-box-link-content">
+                    <div class="karma-image-text-box-link <?php echo $visible_desktop  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ] ?>">
+                        <?php echo $link_content; ?>
+                        <div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -120,7 +130,16 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		$js_template =
-				 '<div class="karma-image-text-box karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
+				"<# var visibleDesktop = ( 'on' == data.attributes.shortcode_attributes.visibleondesktop  ) ? '' : 'desktop-display-none karma-deactive-on-desktop';  #>"
+				.'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'
+				.'<# var className = \'karma-button-fill \' #>'
+				.'<#}else if( \'outline\'  ==  data.attributes.shortcode_attributes.type ) { #>'
+				.'<#  className = \'karma-button-outline \' #>'
+				.'<#} else { #>'
+				.'<# className = \'karma-button-link \'  #>'
+				.'<# }#>'
+
+				 . '<div class="karma-image-text-box karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
 				 . '<div class="karma-image-text-box-overlay"></div>'
 				 . '<div class="karma-image-text-box-text-container">'
 				 . '<div  class="karma-image-text-box-title">'
@@ -129,9 +148,11 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				 . '<div class="karma-image-text-box-description">'
 				 . '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-image-text-box-description-tag" > {{{ data.attributes.shortcode_attributes.descriptiontext }}} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
 				 . '</div>'
-				 . '<div  class="karma-image-text-box-link">'
+                 . '<div class="karma-image-text-box-link-content">'
+				 . '<div  class="karma-image-text-box-link {{className}} {{visibleDesktop}} "  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
 				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
+				 . '</div>'
 				 . '</div>'
 				 . '</div>'
 
@@ -187,9 +208,9 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 							)
 					),
 					array(
-							'postfix'	=> ' .karma-image-text-box-link .karma-image-text-box-link-tag',
+							'postfix'	=> ' .karma-image-text-box-link.karma-button-link .karma-image-text-box-link-tag',
 							'property'	=> array(
-									'color'		=> self::$element_attributes[ 'linkcolor' ],
+									'color'		=> self::$element_attributes[ 'generalcolor' ],
 
 							)
 					),
@@ -197,9 +218,42 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 					array(
 							'postfix'	=> ' .karma-image-text-box-link .karma-image-text-box-link-shape svg *',
 							'property'	=> array(
-									'stroke'	=> self::$element_attributes[ 'linkcolor' ],
+									'stroke'	=> self::$element_attributes[ 'generalcolor' ],
 							)
-					)
+					),
+					array(
+							'postfix'	=> ' .karma-image-text-box-link',
+							'property'	=> array(
+									'border-radius'	=> self::$element_attributes[ 'rangemodel' ] . 'px',
+							)
+					),
+                    array(
+                        'postfix'	=> ' .karma-image-text-box-link.karma-button-fill',
+                        'property'	=> array(
+                            'background-color'	=> self::$element_attributes[ 'generalcolor' ],
+                            'border-color'	=> self::$element_attributes[ 'generalcolor' ],
+                        )
+                    ),
+
+                    array(
+                        'postfix'	=> ' .karma-image-text-box-link.karma-button-outline',
+                        'property'	=> array(
+                            'border-color'	=> self::$element_attributes[ 'generalcolor' ],
+                        )
+                    ),
+
+                    array(
+                        'postfix'  => ' .karma-button-outline .karma-image-text-box-link-tag ',
+                        'property' => array(
+                            'color' => self::$element_attributes[ 'generalcolor' ],
+                        )
+                    ),
+                    array(
+                        'postfix'	=> ' .karma-button-fill .karma-image-text-box-link-tag  ',
+                        'property'	=> array(
+                            'color'		=> self::$element_attributes[ 'textcolor' ],
+                        )
+                    ),
 
 		);
 		return $styles;
@@ -234,6 +288,20 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 		);
 
 		return $dependencies ;
+
+	}
+
+	public function change_classes( $attributes ) {
+
+		if( 'fill' == $attributes['type'] ){
+			$class_name = 'karma-button-fill';
+		}elseif ( 'outline' == $attributes['type'] ){
+			$class_name = 'karma-button-outline';
+		}else{
+			$class_name = 'karma-button-link';
+		}
+
+		return $class_name;
 
 	}
 

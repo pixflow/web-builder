@@ -5,7 +5,6 @@ var karmaBuilder = karmaBuilder || {};
 
 	karmaBuilder.elementsBehavior = Backbone.View.extend({
 
-
 		/** Scroll used for dragging interval */
 		flyScroll : '' ,
 
@@ -677,11 +676,11 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		makeSectionsSortable: function () {
 
-			var that = this,
+			// Add beforeStart event to jQuery ui sortable
+			var oldMouseStart = $.ui.sortable.prototype._mouseStart,
+				that = this,
 				helperKey,
 				pickedElement, newSec, addNewSecClone;
-			// Add beforeStart event to jQuery ui sortable
-			var oldMouseStart = $.ui.sortable.prototype._mouseStart;
 			$.ui.sortable.prototype._mouseStart = function ( event, overrideHandle, noActivation ) {
 				this._trigger( "beforeStart", event, this._uiHash() );
 				oldMouseStart.apply( this, [ event, overrideHandle, noActivation ] );

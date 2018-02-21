@@ -224,23 +224,6 @@
 		},
 
 		/**
-		 * @summary Set color for link
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		linkcolor : function () {
-
-			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				colorValue = this.getAttributes( ['linkcolor'] );
-
-			this.renderCss( "#" + elementId + " .karma-video-box-link .karma-video-box-link-tag", 'color', colorValue.linkcolor  );
-			this.renderCss( "#" + elementId + " .karma-video-box-link .karma-video-box-link-shape svg * ", 'stroke', colorValue.linkcolor  );
-
-
-		},
-
-		/**
 		 * @summary set link for text
 		 *
 		 * @since 0.1.1
@@ -394,6 +377,82 @@
 				colorValue  = this.getAttributes( ['colorbackground'] );
 
 			this.renderCss( "#" + elementId + " .karma-video-box ", 'background-color', colorValue.colorbackground  );
+
+		},
+
+		type : function () {
+
+			var className = this.getAttributes(['type']).type;
+			if( 'outline' == className ) {
+				this.$el.find('.karma-video-box-link').removeClass('karma-button-fill karma-button-link').addClass('karma-button-outline');
+			}else if('fill' == className ){
+				this.$el.find('.karma-video-box-link').addClass('karma-button-fill').removeClass('karma-button-outline karma-button-link');
+			}else{
+				this.$el.find('.karma-video-box-link').addClass('karma-button-link').removeClass('karma-button-outline karma-button-fill');
+			}
+		},
+
+		rangemodel : function () {
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+					border		= this.getAttributes(['rangemodel']);
+
+			this.renderCss( "#" + elementId + " .karma-video-box-link", 'border-radius', border.rangemodel + "px"  );
+
+
+		} ,
+			
+		/**
+		 * @summary Set color for link
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		textcolor : function () {
+
+			var elementId 	= this.elementSelector(),
+				colorValue  = this.getAttributes( ['textcolor'] );
+
+			this.renderCss( "#" + elementId + " .karma-button-fill .karma-video-box-link-tag ", 'color', colorValue.textcolor  );
+
+		},
+
+		/**
+		 * @summary Set color for link
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		generalcolor : function () {
+
+			var elementId 	= this.elementSelector(),
+				colorValue  = this.getAttributes( ['generalcolor'] );
+
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-fill", 'background-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-button-outline .karma-video-box-link-tag", 'color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-outline", 'border-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-fill", 'border-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link .karma-video-box-link-shape svg *", 'stroke', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-link .karma-video-box-link-tag", 'color', colorValue.generalcolor  );
+
+
+		},
+		/**
+		 * @summary show and hide button with hide gizmo in desktop
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleondesktop : function () {
+
+			var desktopVisible = this.getAttributes( ['visibleondesktop'] ).visibleondesktop;
+
+			if( "on" == desktopVisible ){
+				this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-desktop" );
+			}else{
+				this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-desktop" );
+			}
 
 		},
 
