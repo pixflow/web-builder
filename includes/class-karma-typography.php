@@ -52,7 +52,7 @@ class Karma_Typography{
 	 */
 	protected $builder_default_fonts = array(
 
-        'poppins'       => array( '400 Normal', '500 Normal' ),
+        'poppins'       => array( '200 Normal', '300 Normal', '400 Normal' ),
         'HelveticaNeue' => array( '400 Normal' ),
 		'arial'         => array( '400 Normal', '200 Normal' ),
 		'courier'       => array( '100 Normal', '400 Normal', '300 Normal' ),
@@ -96,7 +96,7 @@ class Karma_Typography{
 		'h1'    => array(
 			'font-size'     => '60' ,
 			'font-family'   => 'poppins' ,
-			'font-varients' => '500' ,
+			'font-varients' => '400' ,
 		),
 		'h2'    => array(
 			'font-size'     => '46' ,
@@ -106,27 +106,27 @@ class Karma_Typography{
 		'h3'    => array(
 			'font-size'     => '38' ,
 			'font-family'   => 'poppins' ,
-			'font-varients' => '400' ,
+			'font-varients' => '300' ,
 		),
 		'h4'    => array(
 			'font-size'     => '28' ,
 			'font-family'   => 'poppins' ,
-			'font-varients' => '400' ,
+			'font-varients' => '300' ,
 		),
 		'h5'    => array(
 			'font-size'     => '22' ,
 			'font-family'   => 'poppins' ,
-			'font-varients' => '400' ,
+			'font-varients' => '300' ,
 		),
 		'h6'    => array(
 			'font-size'     => '18' ,
 			'font-family'   => 'poppins' ,
-			'font-varients' => '400' ,
+			'font-varients' => '200' ,
 		),
 		'p'     => array(
 			'font-size'     => '15' ,
 			'font-family'   => 'poppins' ,
-			'font-varients' => '400' ,
+			'font-varients' => '300' ,
 		),
 
 	);

@@ -79,7 +79,8 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 			'click .karma-dropdown-header'                                      : 'openDropDown',
 			'click .karma-backto-previous-location'                             : 'animateKarmaPanels',
 			'click .karma-delete-font'                                          : 'deleteFontBox',
-			'input .karma-range-slider-input'                                   : 'updateRangeSlider',
+			'input .karma-range-slider-range'                                   : 'updateRangeSlider',
+			'keydown .karma-range-slider-input'                                 : 'updateRangeSliderInput',
 			'click .karma-font-list'                                            : 'openFontsDetails',
 			'click .karma-save-setting'                                         : 'saveFontsFormat',
 			'click .karma-add-to-library'                                       : 'addFontToLibrary',
@@ -208,16 +209,34 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		 * @since 0.1.0
 		 *
 		 */
-		updateRangeSlider: function ( e ) {
+		updateRangeSlider: function ( e ){
 
-			var input = e.target,
-				value = input.value,
+			var input            = e.target,
+				value            = input.value,
 				rangeSliderInput = e.target
-					.closest('.karma-range-slider-content')
-					.querySelector('.karma-range-slider-range');
+					.closest( '.karma-range-slider-content' )
+					.querySelector( '.karma-range-slider-range' );
 
-			$( rangeSliderInput ).val( value ).change();
+			rangeSliderInput.value = value;
+			this.updateRangeSliderInput( e );
+		},
 
+		/**
+		 * @summary range slider in typography manager
+		 *
+		 * @since 0.1.0
+		 *
+		 */
+		updateRangeSliderInput: function ( e ) {
+			var element = e.target,
+				that = this,
+				changingSlider,
+				$karmaRangeSlider = $( element.closest( '.karma-range-slider-content' ) ).find( '.karma-range-slider-range' );
+
+			clearTimeout( changingSlider );
+			changingSlider = setTimeout( function () {
+				$( $karmaRangeSlider ).val( element.value ).change();
+			}, 300 );
 		},
 
 		/**
@@ -284,10 +303,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 						_.each( arr, function ( style  ) {
 
 							var capitalText = style.style.charAt(0).toUpperCase() + style.style.slice(1).toLowerCase();
-							if ( ul.find( 'li:contains( ' + style.weight + ' ' + capitalText + ' )' ).length ){
+							if ( ul.find( 'li[data-font="' + style.style+style.weight + '"]' ).length ){
 								return;
 							}
-							ul.append('<li>' + style.weight + ' ' + style.style + '</li>');
+							ul.append('<li data-font"' + style.style+style.weight + '">' + style.weight + ' ' + style.style + '</li>');
 
 						});
 						prevFont.closest('.karma-font-list').find('.karma-font-weight-count span:nth-child(1)').text( ul.find('li').length + ' Style' );
