@@ -934,9 +934,13 @@ var karmaBuilder = karmaBuilder || {};
 
 			window.top.document.querySelector( '.karma-overlay-on-dragging' ).style.display = 'none';
 			UI.helper.get( 0 ).style.display = 'none';
-			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
+			var targetElement = document.elementFromPoint( event.clientX, event.clientY ),
+				parentIframeTarget = window.top.document.elementFromPoint( event.clientX, event.clientY ).nodeName;
 			window.top.document.querySelector( '.karma-overlay-on-dragging' ).style.display = 'block';
 			UI.helper.get( 0 ).style.display = 'flex';
+			if ( 'IFRAME' != parentIframeTarget ) {
+				targetElement = null;
+			}
 			var blankPage = document.querySelector('.karma-blank-page-container');
 			if ( null == targetElement ) {
 				return false;
