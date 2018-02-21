@@ -10,7 +10,7 @@
 		/**
 		 * Build html for hidden gizmo
 		 */
-		template : '<div class="karma-builder-gizmo-hidden karma-visibility-option {{data.device}}"  data-form="{{ data.form }}" >  </div>',
+		template : '<div class="karma-builder-gizmo-hidden karma-visibility-option {{data.defaultClass}} {{data.device}}"  data-form="{{ data.form }}" >  </div>',
 
 
 		initialize: function(){
@@ -22,11 +22,13 @@
 		render: function(){
 
 			var desktopVisible = this.elementView.getAttributes( [ 'visibleondesktop' ] ).visibleondesktop;
-
+console.log(desktopVisible)
 			if( 'undefined' != typeof desktopVisible ){
 				if( 'off' == desktopVisible ){
 
 					this.data.defaultClass = 'visibility-line';
+				}else{
+					this.data.defaultClass = ' ';
 				}
 			}else{
 				this.data.defaultClass = ' ';
