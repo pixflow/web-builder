@@ -158,7 +158,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
             .'<div class="karma-video-box-link-content">'
 			. '<div  class="karma-video-box-link {{className}} {{visibleDesktop}} "  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
 			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
-			. '<div class="karma-video-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
+			. '<# var display = ( "" == data.attributes.shortcode_attributes.linktext ) ? "none" : "block"  #>'
+			. '<div class="karma-video-box-link-shape" style="display: {{ display }}">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 			. '</div>'
 			. '</div>'
 			. '</div>';

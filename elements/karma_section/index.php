@@ -42,8 +42,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 			$atts
 		);
 		$container_class 	= ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
-		$visible_mobile 	= ( 'on' == $atts['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
-		$visible_tablet 	= ( 'on' == $atts['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
+		$visible_mobile 	= '';//( 'on' == $atts['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
+		$visible_tablet 	= '';//( 'on' == $atts['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
 		ob_start();
 		?>
 
@@ -64,8 +64,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		return "<# var rowContainer = ('container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
-			. "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
-			. "<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibletablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
+			. "<# var visibleMobile = '';//( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
+			. "<# var visibleTablet = '';//( 'on' == data.attributes.shortcode_attributes.visibletablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
 			. "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
 			. "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-' + data.attributes.shortcode_attributes.backgroundsize + ' karma-background-position-' + data.attributes.shortcode_attributes.backgroundposition ; #>"
 			. '<section class="karma-section-container karma-background-section {{ backgroundClasses }} {{visibleMobile}}  {{ visibleTablet }}"  visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}" >'
