@@ -3,13 +3,14 @@
 	karmaBuilder.gizmos.hidden = Backbone.View.extend({
 
 		events: {
-			'click .karma-visibility-option'   			: 'visibleElement',
+			'click .karma-visibility-option.karma-responsive'   			: 'visibleElementResponsive',
+			'click .karma-visibility-option.karma-desktop'   				: 'visibleElementdesktop',
 		},
 
 		/**
 		 * Build html for hidden gizmo
 		 */
-		template : '<div class="karma-builder-gizmo-hidden karma-visibility-option {{ data.defaultClass }}" data-form="{{ data.form }}" >  </div>',
+		template : '<div class="karma-builder-gizmo-hidden karma-visibility-option {{data.device}}"  data-form="{{ data.form }}" >  </div>',
 
 
 		initialize: function(){
@@ -37,12 +38,12 @@
 		},
 
 		/**
-		 * @summary visibility of element
+		 * @summary visibility of element in responsive
 		 *
 		 * @since 0.1.1
 		 * @returns {void}
 		 */
-		visibleElement : function () {
+		visibleElementResponsive : function () {
 
 			this.$el.find( '.karma-visibility-option' ).toggleClass( "visibility-line" );
 			var body = document.body,
@@ -75,23 +76,35 @@
 					}
 					break;
 
-				case 'desktop':
-					if(this.elementView.getAttributes( [ 'visibleondesktop' ] ) ) {
-						var desktopVisible = that.elementView.getAttributes( [ 'visibleondesktop' ] ).visibleondesktop;
-
-						if( "on" == desktopVisible ){
-							that.elementView.setAttributes( { 'visibleondesktop' : "off" }, false );
-						}else{
-							that.elementView.setAttributes( { 'visibleondesktop' : "on" }, false );
-						}
-					}
-					break;
-
 				default:
 					return false;
 			}
 
 		},
+
+		/**
+		 * @summary visibility of element in responsive
+		 *
+		 * @since 0.1.1
+		 * @returns {void}
+		 */
+		visibleElementdesktop : function () {
+
+			this.$el.find( '.karma-visibility-option' ).toggleClass( "visibility-line" );
+			var that = this;
+
+			if(this.elementView.getAttributes( [ 'visibleondesktop' ] ) ) {
+				var desktopVisible = that.elementView.getAttributes( [ 'visibleondesktop' ] ).visibleondesktop;
+
+				if( "on" == desktopVisible ){
+					that.elementView.setAttributes( { 'visibleondesktop' : "off" }, false );
+				}else{
+					that.elementView.setAttributes( { 'visibleondesktop' : "on" }, false );
+				}
+			}
+
+		},
+
 
 
 

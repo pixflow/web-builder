@@ -3192,6 +3192,9 @@ html {
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag, .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag, .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-link-tag {
         display: inline-block;
         word-break: break-all; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-link-tag {
+        display: flex;
+        align-items: center; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag {
         margin-top: 13px; }
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link:not(.karma-show-child-gizmo) .karma-image-text-box-link-shape {
@@ -3233,6 +3236,12 @@ html {
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill.karma-show-child-gizmo.karma-deactive-on-desktop:hover {
         opacity: .2;
         transition: 0s; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill.karma-show-child-gizmo.karma-deactive-on-mobile:hover {
+        opacity: .2;
+        transition: 0s; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill.karma-show-child-gizmo.karma-deactive-on-tablet:hover {
+        opacity: .2;
+        transition: 0s; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline {
       align-items: center;
       justify-content: center;
@@ -3256,6 +3265,12 @@ html {
         opacity: 1;
         transition: 0s; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline.karma-show-child-gizmo.karma-deactive-on-desktop:hover {
+        opacity: .2;
+        transition: 0s; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline.karma-show-child-gizmo.karma-deactive-on-mobile:hover {
+        opacity: .2;
+        transition: 0s; }
+      .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-outline.karma-show-child-gizmo.karma-deactive-on-tablet:hover {
         opacity: .2;
         transition: 0s; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill .karma-button-link {
@@ -3293,10 +3308,22 @@ html {
   height: 14px; }
 .karma-builder-element[data-name="karma_image_box"] .karma-deactive-on-desktop {
   opacity: .2; }
+.karma-builder-element[data-name="karma_image_box"] .karma-deactive-on-mobile {
+  opacity: .2; }
+.karma-builder-element[data-name="karma_image_box"] .karma-deactive-on-tablet {
+  opacity: .2; }
 .karma-builder-element[data-name="karma_image_box"] div.karma-image-text-box-text-container div.karma-image-text-box-link-content .desktop-display-none {
+  display: none; }
+.karma-builder-element[data-name="karma_image_box"] div.karma-image-text-box-text-container div.karma-image-text-box-link-content .mobile-display-none {
+  display: none; }
+.karma-builder-element[data-name="karma_image_box"] div.karma-image-text-box-text-container div.karma-image-text-box-link-content .tablet-display-none {
   display: none; }
 
 .karma-builder-environment .desktop-display-none {
+  display: inherit !important; }
+.karma-builder-environment .mobile-display-none {
+  display: inherit !important; }
+.karma-builder-environment .tablet-display-none {
   display: inherit !important; }
 
 .karma-builder-element[data-name="karma_video_box"] .karma-deactive-on-desktop:nth-child(1) {

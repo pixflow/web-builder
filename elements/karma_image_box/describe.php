@@ -288,6 +288,9 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 				"params"    => array(
 					array(
 						'type'   	=> 'hidden',
+						'form' 		=> 'visibility',
+						'device' => 'karma-desktop'
+
 					),
 
                     array(

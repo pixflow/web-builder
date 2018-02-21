@@ -274,6 +274,7 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 				"params"    => array(
                     array(
                         'type'   	=> 'hidden',
+						'device' => 'karma-desktop'
                     ),
                     array(
                         'type'      => 'color',

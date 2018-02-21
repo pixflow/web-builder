@@ -57,6 +57,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'videoheight'		=>'400',
 			'topspacepadding'	=>'10',
             'visibleondesktop'	=> 'on',
+			'visibleonmobile'	=> 'on',
+			'visibleontablet'	=> 'on',
 			'type'				=>'fill',
 			'rangemodel'        => '0',
             'generalcolor'		=> '#fff',
@@ -92,6 +94,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display = ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
         $visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
+		$visible_mobile 	= ( 'on' == $attributes['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
+		$visible_tablet 	= ( 'on' == $attributes['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
 		ob_start();
 		?>
 		<div data-url="<?php echo esc_attr( $attributes['videourl'] ); ?>" class="karma-video-box karma-video-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-video-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-video-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-video-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
@@ -109,7 +113,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 					<?php echo $description_content; ?>
 				</div>
 				<div class="karma-video-box-link-content">
-                    <div class="karma-video-box-link <?php echo $visible_desktop  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>" visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ] ?>">
+                    <div class="karma-video-box-link <?php echo $visible_desktop  ?> <?php echo $visible_tablet  ?> <?php echo $visible_mobile  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ] ?>"   visibe-on-tablet="<?php echo $attributes[ 'visibleontablet' ] ?>"  visibe-on-mobile="<?php echo $attributes[ 'visibleonmobile' ] ?>">
 					    <?php echo $link_content; ?>
 					    <div class="karma-video-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
 				    </div>
@@ -136,6 +140,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 		$js_template =
 
 			 '<# var visibleDesktop = ( \'on\' == data.attributes.shortcode_attributes.visibleondesktop  ) ? \'\' : \'desktop-display-none karma-deactive-on-desktop\';  #>'
+			 . "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
+			 . "<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibleontablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
 			 .'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'
 			 .'<# var className = \'karma-button-fill \' #>'
 			 .'<#}else if( \'outline\'  ==  data.attributes.shortcode_attributes.type ) { #>'
@@ -156,7 +162,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			. '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-video-box-description-tag" > {{{ data.attributes.shortcode_attributes.descriptiontext }}} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
 			. '</div>'
             .'<div class="karma-video-box-link-content">'
-			. '<div  class="karma-video-box-link {{className}} {{visibleDesktop}} "  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
+			. '<div  class="karma-video-box-link {{className}} {{visibleDesktop}}  {{visibleMobile}}  {{ visibleTablet }}"  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}"  visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}">'
 			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 			. '<# var display = ( "" == data.attributes.shortcode_attributes.linktext ) ? "none" : "block"  #>'
 			. '<div class="karma-video-box-link-shape" style="display: {{ display }}">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'

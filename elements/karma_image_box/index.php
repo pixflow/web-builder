@@ -61,6 +61,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
                 'textcolor'			=> '#000',
 				'elementalign'		=> 'left',
 				'visibleondesktop'	=> 'on',
+				'visibleonmobile'	=> 'on',
+				'visibleontablet'	=> 'on',
 
 		);
 
@@ -91,6 +93,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display			= ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
 		$visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
+		$visible_mobile 	= ( 'on' == $attributes['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
+		$visible_tablet 	= ( 'on' == $attributes['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
 
 
 		ob_start();
@@ -105,7 +109,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 					<?php echo $description_content; ?>
 				</div>
                 <div class="karma-image-text-box-link-content">
-                    <div class="karma-image-text-box-link <?php echo $visible_desktop  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ] ?>">
+                    <div class="karma-image-text-box-link <?php echo $visible_tablet  ?> <?php echo $visible_mobile  ?> <?php echo $visible_desktop  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ] ?>" visibe-on-tablet="<?php echo $attributes[ 'visibleontablet' ] ?>"  visibe-on-mobile="<?php echo $attributes[ 'visibleonmobile' ] ?>">
                         <?php echo $link_content; ?>
                         <div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
                     </div>
@@ -131,6 +135,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 
 		$js_template =
 				"<# var visibleDesktop = ( 'on' == data.attributes.shortcode_attributes.visibleondesktop  ) ? '' : 'desktop-display-none karma-deactive-on-desktop';  #>"
+				. "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
+				. "<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibleontablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
 				.'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'
 				.'<# var className = \'karma-button-fill \' #>'
 				.'<#}else if( \'outline\'  ==  data.attributes.shortcode_attributes.type ) { #>'
@@ -149,7 +155,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				 . '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-image-text-box-description-tag" > {{{ data.attributes.shortcode_attributes.descriptiontext }}} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
 				 . '</div>'
                  . '<div class="karma-image-text-box-link-content">'
-				 . '<div  class="karma-image-text-box-link {{className}} {{visibleDesktop}} "  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
+				 . '<div  class="karma-image-text-box-link {{className}} {{visibleDesktop}} {{visibleMobile}}  {{ visibleTablet }}" visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}"  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
 				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 				 . '</div>'

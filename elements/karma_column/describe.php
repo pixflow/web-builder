@@ -134,6 +134,7 @@ class Karma_Column_Describe extends Karma_Column {
 					array(
 						'type' => 'hidden',
 						'form' => 'visibility',
+						'device' => 'karma-responsive'
 					),
 					array(
 						'type'		=> 'text',
