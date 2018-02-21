@@ -10,6 +10,7 @@
 			'click .karma-image-text-box-title'			: 'titleEditable',
 			'click .karma-image-text-box-description'	: 'titleDescription',
 			'click .karma-image-text-box-link'			: 'titleLink',
+			'keypress .karma-image-text-box-link'		: 'deactiveEnter'
 
 		},
 
@@ -53,6 +54,19 @@
 			}
 
 		},
+
+		/**
+		 * @summary  Deactivate enter in link text
+		 *
+		 * @since 0.1.1
+		 * @return {number}
+		 */
+		deactiveEnter : function ( e ) {
+
+			return e.which != 13;
+
+		},
+
 
 		/**
 		 * @summary Save the description of image text box

@@ -9,6 +9,7 @@
 			'click .karma-video-box-title'			: 'titleEditable',
 			'click .karma-video-box-description'	: 'titleDescription',
 			'click .karma-video-box-link'			: 'titleLink',
+			'keypress .karma-video-box-link'		: 'deactiveEnter'
 
 		},
 
@@ -41,7 +42,20 @@
 
 		},
 
-		/**
+			/**
+			 * @summary  Deactivate enter in link text
+			 *
+			 * @since 0.1.1
+			 * @return {number}
+			 */
+			deactiveEnter : function ( e ) {
+
+				return e.which != 13;
+
+			},
+
+
+			/**
 		 * @summary Save the title of video box
 		 *
 		 * @since 0.1.1

@@ -61,6 +61,21 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 						"params" => array(
 							'opacity'           => true,
 							'multiColor'        => false,
+							'presetColors'      => 'rgba(20, 20, 20, 0.1)-'
+													. 'rgba(45, 155, 240, 0.1)-'
+													. 'rgba(81, 96, 254, 0.1)-'
+													. 'rgba(251, 0, 83, 0.1)-'
+													. 'rgba(20, 20, 20, 0.2)-'
+													. 'rgba(45, 155, 240, 0.2)-'
+													. 'rgba(81, 96, 254, 0.2)-'
+													. 'rgba(251, 0, 83, 0.2)-'
+													. 'rgba(20, 20, 20, 0.5)-'
+													. 'rgba(45, 155, 240, 0.5)-'
+													. 'rgba(81, 96, 254, 0.5)-'
+													. 'rgba(251, 0, 83, 0.5)-'
+													. 'rgba(20, 20, 20, 0.8)-'
+													. 'rgba(45, 155, 240, 0.8)-'
+													. 'rgba(81, 96, 254, 0.8)'
 
 						)
 					),
