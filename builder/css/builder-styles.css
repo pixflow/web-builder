@@ -1430,6 +1430,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  will-change: contents;
   font-family: "HelveticaNeue"; }
   body button {
     margin: 0;
@@ -1438,7 +1441,9 @@ body {
   body iframe {
     height: calc( 100vh - 49px );
     width: 100%;
-    border: none; }
+    border: none;
+    transition: .4s;
+    will-change: contents; }
   body .karma-full-separator {
     width: 100%;
     height: 1px;
@@ -2278,6 +2283,24 @@ html {
   -ms-flex-item-align: stretch !important;
   align-self: stretch !important; }
 
+@media screen and (max-width: 768px) and (min-width: 420px) {
+  .tablet-display-none {
+    display: none; }
+
+  .karma-deactive-on-tablet {
+    opacity: .2; }
+
+  .karma-builder-environment .tablet-display-none {
+    display: inherit; } }
+@media screen and (max-width: 420px) {
+  .karma-deactive-on-mobile {
+    opacity: .2; }
+
+  .mobile-display-none {
+    display: none; }
+
+  .karma-builder-environment .mobile-display-none {
+    display: inherit; } }
 @media (min-width: 576px) {
   .flex-sm-row {
     -ms-flex-direction: row !important;
@@ -3869,7 +3892,7 @@ div.media-modal {
         z-index: 100; }
 
 /* _-_-_- modules/GIZMO -_-_-_ */
-abel {
+label {
   margin: 0;
   padding: 0; }
 
@@ -4710,9 +4733,11 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
       position: absolute; }
   .karma-builder-environment .karma-builder-element.karma-active-section .section-both-spacing .karma-bottom-spacing.ui-resizable-resizing .spacing-dot {
     background-color: #419CF8; }
-  .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-outer-gizmo-template.karma-gizmo-container {
-    left: 0;
-    right: auto; }
+  .karma-builder-environment .karma-builder-element.karma-active-column > .karma-gizmo-template:not(.column-gizmo-group-responsive) {
+    display: flex; }
+    .karma-builder-environment .karma-builder-element.karma-active-column > .karma-gizmo-template:not(.column-gizmo-group-responsive).karma-outer-gizmo-template.karma-gizmo-container {
+      left: 0;
+      right: auto; }
   .karma-builder-environment .karma-builder-element.karma-active-column .column-gizmo-group {
     background-color: #9CA4AC;
     cursor: pointer;
@@ -5511,7 +5536,9 @@ div.karma-element-content .karma-top-spacing {
         color: #394959; }
   #karma-add-element .karma-deactive-element:hover {
     border: none !important; }
-  #karma-add-element .element-panel-button {
+  #karma-add-element .element-panel-button, #karma-add-element .karma-responsive-tablet,
+  #karma-add-element .karma-responsive-mobile,
+  #karma-add-element .karma-responsive-desktop {
     width: 48px;
     height: 48px;
     align-items: center;
@@ -5523,9 +5550,18 @@ div.karma-element-content .karma-top-spacing {
     box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
     cursor: pointer;
     margin-bottom: 15px; }
-    #karma-add-element .element-panel-button.element-panel-add-element-button svg {
+    #karma-add-element .element-panel-button.element-panel-add-element-button svg, #karma-add-element .element-panel-add-element-button.karma-responsive-tablet svg,
+    #karma-add-element .element-panel-add-element-button.karma-responsive-mobile svg,
+    #karma-add-element .element-panel-add-element-button.karma-responsive-desktop svg {
       margin-left: 1px;
       margin-top: 1px; }
+    #karma-add-element .element-panel-button .icon, #karma-add-element .karma-responsive-tablet .icon,
+    #karma-add-element .karma-responsive-mobile .icon,
+    #karma-add-element .karma-responsive-desktop .icon {
+      width: 48px;
+      height: 48px;
+      background-repeat: no-repeat;
+      background-position: center; }
   #karma-add-element .karma-element-panel-view {
     top: 13vh;
     right: auto;
@@ -6035,6 +6071,110 @@ div.karma-element-content .karma-top-spacing {
       content: ''; }
     #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-list:hover:after {
       background-color: rgba(0, 0, 0, 0.6); }
+  #karma-add-element .element-panel-add-element-button,
+  #karma-add-element .element-panel-layout-element-button,
+  #karma-add-element .element-panel-upgrade-element-button {
+    position: relative;
+    top: 0;
+    transition: top 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  #karma-add-element .karma-responsive-tablet,
+  #karma-add-element .karma-responsive-mobile,
+  #karma-add-element .karma-responsive-desktop {
+    position: absolute;
+    top: 64px;
+    z-index: -10;
+    box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0);
+    transition: background 0.2s, top 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045), z-index 100ms 400ms; }
+    #karma-add-element .karma-responsive-tablet .icon,
+    #karma-add-element .karma-responsive-mobile .icon,
+    #karma-add-element .karma-responsive-desktop .icon {
+      width: 48px;
+      height: 48px;
+      background-repeat: no-repeat;
+      background-position: center; }
+  #karma-add-element.karma-show-responsive-buttons .element-panel-add-element-button,
+  #karma-add-element.karma-show-responsive-buttons .element-panel-layout-element-button,
+  #karma-add-element.karma-show-responsive-buttons .element-panel-upgrade-element-button {
+    position: relative;
+    transition: top 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0);
+    z-index: -1; }
+  #karma-add-element.karma-show-responsive-buttons .element-panel-add-element-button {
+    top: 64px; }
+  #karma-add-element.karma-show-responsive-buttons .element-panel-layout-element-button {
+    top: -64px; }
+  #karma-add-element.karma-show-responsive-buttons .element-panel-upgrade-element-button {
+    top: -128px; }
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-tablet,
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-mobile,
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-desktop {
+    position: absolute;
+    transition: background 0.2s, top 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
+    z-index: 2; }
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-tablet {
+    top: 126px; }
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-mobile {
+    top: 0; }
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-desktop {
+    z-index: 2; }
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-active-responsive-device {
+    background-color: #7B59FF; }
+    #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-active-responsive-device.karma-responsive-tablet .icon {
+      background-image: url("../media/svg/white-tablet.svg") !important; }
+    #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-active-responsive-device.karma-responsive-mobile .icon {
+      background-image: url("../media/svg/white-mobile.svg") !important; }
+
+.karma-builder .karma-builder-iframe-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame {
+    width: 100%;
+    height: 100%;
+    transition: all .5s ease-out 0s;
+    background-color: #f4f4f4;
+    box-shadow: 0px 11px 97px rgba(0, 0, 0, 0.2);
+    padding: 48px 22px 5px 22px;
+    margin-top: 63px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateZ(0) translate3d(0, 0, 0);
+    will-change: contents; }
+    .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame .karma-builder-responsive-frame-shape {
+      display: flex;
+      padding-bottom: 30px; }
+      .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame .karma-builder-responsive-frame-shape .karma-builder-responsive-frame-shape-circle {
+        border-radius: 50%;
+        height: 7px;
+        width: 7px;
+        background-color: #F9F9F9;
+        margin-right: 10px; }
+      .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame .karma-builder-responsive-frame-shape .karma-builder-responsive-frame-shape-line {
+        height: 7px;
+        width: 69px;
+        border-radius: 3.5px;
+        background-color: #F9F9F9; }
+.karma-builder.karma-device-mode-desktop .karma-builder-responsive-frame {
+  box-shadow: none;
+  padding: 0;
+  margin-top: 0;
+  border-radius: 0; }
+  .karma-builder.karma-device-mode-desktop .karma-builder-responsive-frame .karma-builder-responsive-frame-shape {
+    display: none; }
+.karma-builder.karma-device-mode-tablet .karma-builder-responsive-frame {
+  width: 768px; }
+.karma-builder.karma-device-mode-mobile .karma-builder-responsive-frame {
+  height: 954px;
+  box-sizing: content-box;
+  width: 420px; }
+
+.karma-builder-environment.karma-device-mode-mobile::-webkit-scrollbar {
+  display: none; }
 
 /** Separate these stylesheet for jquery UI */
 .karma-element-single-element {
@@ -6410,5 +6550,72 @@ div.karma-element-content .karma-top-spacing {
     left: 0;
     position: absolute;
     width: 100%; }
+
+@media (max-width: 768px) {
+  .karma-builder-environment {
+    /* _-_-_- Section Responsive Gizmo Style -_-_-_ */
+    	/*	.karma-builder-element.karma-active-section{
+    			.karma-gizmo-template.karma-inner-gizmo-template{
+    				&.section-gizmo-group-responsive{
+    					display: flex;
+    					&.karma-gizmo-container{
+    						@include box( 96px, 22px );
+    						background-color: $builder-accent-color;
+    						left: 0;
+    						top: 0;
+    						padding-right: 3px;
+    					}
+    					.karma-builder-gizmo-text {
+    						color:#fff;
+    						border: none;
+    						padding: 0 5px;
+    						margin: 0;
+    						font-size: 10px;
+    						&:hover {
+    							color: #fff;
+    						}
+    					}
+    					.karma-builder-gizmo-icon {
+    						padding: 11px 5px;
+    						svg{
+    							*{
+    								fill: #fff;
+    							}
+    						}
+    
+    						&:hover {
+    							svg {
+    								* {
+    									fill: #fff;
+    								}
+    							}
+    						}
+    					}
+    				}
+    			}
+    		}*/
+    /* _-_-_- column Responsive Gizmo Style -_-_-_ */ }
+    .karma-builder-environment .karma-active-section .section-gizmo-group {
+      display: none; }
+    .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive {
+      display: flex; }
+      .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive.karma-gizmo-container {
+        width: 88px;
+        height: 25px;
+        right: 5px;
+        top: 5px; }
+      .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive .karma-builder-gizmo-hidden.karma-visibility-option {
+        padding: 0 3px;
+        cursor: pointer; }
+      .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive .karma-builder-gizmo-text {
+        border: none;
+        padding: 0 5px;
+        margin: 0;
+        font-size: 10px;
+        cursor: default; }
+        .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive .karma-builder-gizmo-text:hover {
+          color: #394959; }
+    .karma-builder-environment .karma-builder-element.karma-active-column .column-gizmo-group {
+      display: none; } }
 
 /*# sourceMappingURL=builder-styles.css.map */

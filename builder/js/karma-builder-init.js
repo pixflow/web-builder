@@ -43,6 +43,7 @@
 
 			karmaBuilder.view.__super__.initialize.apply( this, arguments );
 			this.notifyDevelopers();
+			document.body.setAttribute("karma-device-mode","desktop");
 
 		},
 

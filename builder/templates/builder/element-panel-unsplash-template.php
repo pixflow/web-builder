@@ -3,7 +3,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 ?>
 <div>
 	<div class="karma-panel-templates-container">
-		<div class="element-panel-button" data-open-panel="karma-element-panel-unsplash-template">
+		<div class="element-panel-button element-panel-layout-element-button" data-open-panel="karma-element-panel-unsplash-template">
 			<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/element-panel-3.svg' ); ?>
 		</div>
 

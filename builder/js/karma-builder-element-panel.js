@@ -17,9 +17,12 @@
 			"click .karma-element-panel-price-filter ul li "                            : "elementPanelPriceFilter",
 			"click .karma-builder-element-panel-gather-menu"                            : "openCategoryMenu" ,
 			"click .karma-search-close-icon"                                            : "clearElementPanelSearchBar" ,
+			"click .karma-search-close-icon"                                            : "elementPanelCloseSearchBar",
 			"click .karma-builder-search-text"                                          : "showElementPanelSearchBar" ,
 			"click .element-panel-button"                                               : "openElementPanel",
-			"click .karma-search-close-icon"                                            : "elementPanelCloseSearchBar"
+			"click .element-panel-button:not(.karma-responsive-panel)"					: "openElementPanel",
+			"click .karma-responsive-panel"												: "openResponsiveMode",
+			"click .karma-responsive-button"											: "changeDevice"
 
 		},
 
@@ -607,8 +610,87 @@
 
 			karmaBuilderEnviroment.initBlocksDraggable( '#karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element' );
 
-		}
+		},
 
+		/**
+		 * @summary change builder mode to responsive or desktop
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		openResponsiveMode : function ( e ){
+
+			var elementPanel = $('#karma-add-element');
+			if ( ! elementPanel.hasClass( 'karma-show-responsive-buttons' ) ){
+				this.showResponsiveButtons( e );
+			}else{
+				this.hideResponsiveButtons( e );
+			}
+		},
+
+		/**
+		 *@summary show responsive buttons
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		showResponsiveButtons : function ( e ){
+	
+			var that = e.target,
+				elementPanel = $('#karma-add-element');
+
+			elementPanel.addClass('karma-show-responsive-buttons');
+			setTimeout(function (){
+				$( that ).closest('.karma-panel-templates-container ').addClass('animate-device-buttons');
+				$('.karma-responsive-mobile').click();
+			}, 500 );
+
+		},
+
+		/**
+		 * @summary hide responsive buttons
+		 *
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		hideResponsiveButtons : function ( e ){
+
+			var that = e.target,
+				elementPanel = $('#karma-add-element');
+
+			$(that).closest('.karma-panel-templates-container ').removeClass('animate-device-buttons');
+			setTimeout(function (){
+				elementPanel.removeClass('karma-show-responsive-buttons');
+			}, 500 );
+		},
+
+
+
+		/**
+		 * @summary set active responsive button
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		changeDevice : function ( e ){
+			
+			var button = e.target.closest('.karma-responsive-button'),
+			 	regex = new RegExp('(?:^|\\s)karma-device-mode-(.*?)(?!\\S)'),
+				builderEnvirmont = karmaBuilderEnviroment.getIframe().document.querySelector('.karma-builder-environment');
+
+			document.querySelector('body').className = document.querySelector('body').className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
+			builderEnvirmont.setAttribute( "karma-device-mode" , button.getAttribute('data-mode'));
+			$('.karma-active-responsive-device').removeClass('karma-active-responsive-device');
+			if ( ! button.classList.contains('karma-responsive-panel') ){
+				button.classList.add('karma-active-responsive-device');
+			}
+
+		},
 
 	});
 

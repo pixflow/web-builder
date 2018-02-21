@@ -199,7 +199,7 @@ class Karma_Builder_Loader {
 	 */
 	function add_custom_body_classes( $classes ) {
 
-		$classes[] = 'karma-builder-environment';
+		$classes[] = 'karma-builder-environment karma-device-mode-desktop';
 		return $classes;
 	}
 

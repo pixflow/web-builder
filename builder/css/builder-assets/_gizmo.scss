@@ -1045,8 +1045,8 @@ body:not(.karma-builder-environment) {
 
 		&.karma-active-column {
 
-			.karma-gizmo-template {
-
+			> .karma-gizmo-template:not(.column-gizmo-group-responsive) {
+				display: flex;
 				&.karma-outer-gizmo-template {
 
 					&.karma-gizmo-container {
@@ -1056,7 +1056,7 @@ body:not(.karma-builder-environment) {
 				}
 			}
 
-			.column-gizmo-group {
+			.column-gizmo-group{
 				background-color: $builder-main-color-2;
 				cursor: pointer;
 				display: block;

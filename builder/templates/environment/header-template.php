@@ -12,7 +12,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 	<link rel="preconnect" href="https://fonts.typonine.com/" crossorigin>
 	<?php wp_head(); ?>
 </head>
-<body class="karma-builder">
+<body class="karma-builder karma-device-mode-desktop">
 <style>
 	@font-face {
 		font-family: HelveticaNeue;

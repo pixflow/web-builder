@@ -724,9 +724,9 @@ var karmaBuilder = karmaBuilder || {};
 					$('#karma-section-' + helperKey + ':not(.ui-sortable-helper)').css( { 'display' : '', 'visibility' : '' });
 					if ( undefined != section ){
 						section.classList.remove( 'karma-show-border-section' );
-						 $( section ).after( addNewSecClone );
+						$( section ).after( addNewSecClone );
 						$( newSec ).remove();
-						 $( section ).next().after( $( '.karma-section-placeholder-' + $( section ).attr( 'data-element-key' ) ) );
+						$( section ).next().after( $( '.karma-section-placeholder-' + $( section ).attr( 'data-element-key' ) ) );
 					}
 
 				}

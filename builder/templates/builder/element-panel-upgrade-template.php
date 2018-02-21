@@ -4,7 +4,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 
 <div>
 	<div class="karma-panel-templates-container">
-		<div class="element-panel-button" data-open-panel="karma-element-panel-upgrade-template">
+		<div class="element-panel-button element-panel-upgrade-element-button" data-open-panel="karma-element-panel-upgrade-template">
 			<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/upgrade1.svg' ); ?>
 		</div>
 

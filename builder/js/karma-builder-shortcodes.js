@@ -20,6 +20,7 @@
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
 
+
 		},
 
 
@@ -596,6 +597,7 @@
 			}
 
 		},
+
 
 		/**
 		 * @summary cancel delete element on click in cancel box

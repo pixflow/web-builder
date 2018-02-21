@@ -194,9 +194,8 @@
 	display: none;
 }
 
-@media only screen and (max-width: 1280px) {
-	#karma-typography-setting #karma-typography-manager,
-	#karma-typography-setting #karma-font-manager{
-		margin-top: 85px;
+@media only screen and (max-width: 1366px) {
+	#karma-typography-setting .karma-typography-container{
+		margin-top: 200px;
 	}
 }

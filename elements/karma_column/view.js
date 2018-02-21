@@ -377,5 +377,44 @@
 
 		},
 
+		/**
+		 * @summary show and hide column white hide gizmo in tablet
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleontablet : function () {
+
+			var tabletVisible = this.getAttributes( ['visibleontablet'] ).visibleontablet;
+
+			if( "on" == tabletVisible ){
+				this.el.querySelector( ".karma-column" ).classList.remove( "karma-deactive-on-tablet" );
+			}else{
+				this.el.querySelector(".karma-column").classList.add( "karma-deactive-on-tablet" );
+			}
+
+		},
+
+
+		/**
+		 * @summary show and hide column white hide gizmo in mobile
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleonmobile : function () {
+
+			var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+
+			if( "on" == mobileVisible ){
+				this.el.querySelector( ".karma-column" ).classList.remove( "karma-deactive-on-mobile" );
+			}else{
+				this.el.querySelector( ".karma-column" ).classList.add( "karma-deactive-on-mobile" );
+			}
+
+		}
+
 	});
 })(jQuery,karmaBuilder);

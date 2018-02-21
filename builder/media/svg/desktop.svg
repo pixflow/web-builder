@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="responsive-desktop" x="0" y="0" width="22" height="15" rx="3"></rect>
+    </defs>
+    <g id="desktop-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-463.000000, -120.000000)">
+        <g id="desktop-c330" transform="translate(463.000000, 120.000000)">
+            <rect id="desktop-c325" fill="#7B59FF" transform="translate(11.000000, 19.000000) rotate(-270.000000) translate(-11.000000, -19.000000) " x="10" y="14" width="2" height="10" rx="1"></rect>
+            <rect id="desktop-c326" fill="#7B59FF" transform="translate(11.000000, 15.500000) rotate(-180.000000) translate(-11.000000, -15.500000) " x="10" y="12" width="2" height="7" rx="1"></rect>
+            <g id="desktop-c329">
+                <mask id="desktop-mask-2" fill="white">
+                    <use xlink:href="#responsive-desktop"></use>
+                </mask>
+                <use id="desktop" fill="#7B59FF" xlink:href="#responsive-desktop"></use>
+                <polygon id="c328" fill="#9294FF" mask="url(#desktop-mask-2)" points="-1 13 19 -2 23 -1 23 15 -0.0217288664 15"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

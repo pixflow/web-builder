@@ -284,6 +284,7 @@ class Karma_Section_Describe extends Karma_Section {
 	public function gimzo_controllers() {
 
 		$controllers = array(
+
 			array(
 				"type"		=> "innerGizmo",
 				"className"	=> "section-gizmo-group",
@@ -349,7 +350,37 @@ class Karma_Section_Describe extends Karma_Section {
 				"type"		=> "newSectionButton",
 				'icon'		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus-new.svg' ),
 			),
+			/*array(
+				"type"		=> "innerGizmo",
+				"className"	=> "section-gizmo-group-responsive",
+				"params"	=> 	array(
 
+					array(
+						'type'   	=> 'icon',
+						'form'   	=> 'responsive-layout',
+						'className' => 'karma-layout-option',
+						"params" => array(
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-layout.svg' ),
+						)
+					),
+					array(
+						'type'   	=> 'icon',
+						'form'   	=> 'visibility',
+						'className' => 'karma-visibility-option',
+						"params" => array(
+							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/visibility.svg' ),
+						)
+					),
+					array(
+						'type'		=> 'text',
+						'form'		=> 'row-responsive-panel',
+						'className'	=> 'row-responsive-setting',
+						'params'=> array(
+							'value'		=> esc_attr( 'Section', 'karma' ),
+						)
+					),
+				),
+			),*/
 		);
 
 		return $controllers;
