@@ -441,8 +441,10 @@ body:not(.karma-builder-environment) {
 			border-radius: 2px;
 			display: none;
 			flex-direction:row-reverse;
+			left:0;
 			padding: 0 7px;
 			position: absolute;
+			right: auto;
 			z-index: $level-20;
 
 			.karma-visibility-option{
