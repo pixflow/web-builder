@@ -543,16 +543,15 @@
 
 		.karma-blocks-container{
 			.karma-blocks-preloader{
+				@include box(24px, 24px);
 				background-image: url(../media/svg/loading.svg);
 				background-repeat: no-repeat;
 				background-size: 24px;
-				height: 24px;
 				left: 50%;
 				margin: 0 auto;
 				position: absolute;
 				top: 50%;
-				transform: translateX(-50%);
-				width: 24px;
+				transform: translate(-50%);
 			}
 		}
 

@@ -579,7 +579,7 @@
 		loadBlocks:function () {
 
 			var that = this;
-			if ( this.blocks != '' ) {
+			if ( '' != this.blocks ) {
 				return;
 			}
 			$.ajax( {

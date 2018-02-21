@@ -6045,16 +6045,16 @@ div.karma-element-content .karma-top-spacing {
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-add-element-inactive-container {
       max-height: 580px; }
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-blocks-container .karma-blocks-preloader {
+      width: 24px;
+      height: 24px;
       background-image: url(../media/svg/loading.svg);
       background-repeat: no-repeat;
       background-size: 24px;
-      height: 24px;
       left: 50%;
       margin: 0 auto;
       position: absolute;
       top: 50%;
-      transform: translateX(-50%);
-      width: 24px; }
+      transform: translate(-50%); }
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element {
       background-color: #F7F8F9;
       margin: 0 30px 15px 36px; }
