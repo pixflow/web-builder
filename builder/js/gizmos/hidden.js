@@ -22,7 +22,7 @@
 		render: function(){
 
 			var desktopVisible = this.elementView.getAttributes( [ 'visibleondesktop' ] ).visibleondesktop;
-console.log(desktopVisible)
+
 			if( 'undefined' != typeof desktopVisible ){
 				if( 'off' == desktopVisible ){
 
