@@ -242,8 +242,10 @@
 				margin-top: 22px;
 			}
 			.karma-video-box-link {
-				width:fit-content;
 				display: flex;
+				white-space: nowrap;
+				width:fit-content;
+
 
 				&.karma-button-fill {
 

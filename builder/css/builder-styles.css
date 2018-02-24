@@ -3218,7 +3218,8 @@ html {
       margin-top: 22px; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link {
       display: flex;
-      width: fit-content; }
+      width: fit-content;
+      white-space: nowrap; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link.karma-button-fill {
         align-items: center;
         justify-content: center;
@@ -3466,8 +3467,9 @@ html {
       display: flex;
       margin-top: 22px; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link {
-      width: fit-content;
-      display: flex; }
+      display: flex;
+      white-space: nowrap;
+      width: fit-content; }
       .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link.karma-button-fill {
         align-items: center;
         justify-content: center;

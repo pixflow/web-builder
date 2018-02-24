@@ -240,7 +240,8 @@
 			.karma-image-text-box-link {
 				display: flex;
 				width: fit-content;
-
+				white-space: nowrap;
+				
 				&.karma-button-fill {
 
 					@include flexbox(center, center, center);
