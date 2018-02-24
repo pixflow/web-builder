@@ -663,6 +663,7 @@
 		openResponsiveMode : function ( e ){
 
 			var elementPanel = $('#karma-add-element');
+			this.closeElementPanel();
 			if ( ! elementPanel.hasClass( 'karma-show-responsive-buttons' ) ){
 				this.showResponsiveButtons( e );
 			}else{

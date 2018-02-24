@@ -79,7 +79,7 @@ $font_list = array_merge( $font_list, $custom_font_list );
 								foreach( $variants as $variant ):
 									$result = explode( " ", $variant );
 									?>
-										<li data-font-style="<?php echo strtolower( $result[1] ); ?>" data-font-weight="<?php echo $result[0]; ?>"> <?php echo $variant; ?> </li>
+										<li data-font-style="<?php echo strtolower( $result[1] ); ?>" data-font-weight="<?php echo $result[0]; ?>"> <?php echo $variant; ?> </li>e
 									<?php
 								endforeach;;
 							?>

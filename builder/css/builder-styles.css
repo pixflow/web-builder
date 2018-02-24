@@ -3458,6 +3458,7 @@ html {
           cursor: text;
           display: inline-block;
           min-width: 30px;
+          text-decoration: none;
           word-break: break-all; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-description-tag {
           margin-top: 13px; }
@@ -6286,9 +6287,9 @@ div.karma-element-content .karma-top-spacing {
     transition: background 0.2s, top 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 7px 15px 3px rgba(57, 73, 89, 0.2);
     z-index: 2; }
-  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-tablet {
-    top: 126px; }
   #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-mobile {
+    top: 126px; }
+  #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-tablet {
     top: 0; }
   #karma-add-element.karma-show-responsive-buttons .animate-device-buttons .karma-responsive-desktop {
     z-index: 2; }
