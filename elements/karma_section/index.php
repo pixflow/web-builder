@@ -63,7 +63,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 
 	public function js_render() {
 
-		return "<# var rowContainer = ('container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
+		return "<# var rowContainer = ('container' == data.attributes.shortcode_attributes.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
 			. "<# var visibleMobile = '';//( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
 			. "<# var visibleTablet = '';//( 'on' == data.attributes.shortcode_attributes.visibletablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
 			. "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
