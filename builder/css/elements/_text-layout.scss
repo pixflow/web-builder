@@ -1,3 +1,9 @@
 .karma-editable-content {
 	display: inline-block;
 }
+.karma-builder-element[data-name="karma_text"] {
+	cursor: pointer;
+	.karma-element-content{
+		cursor: text;
+	}
+}
