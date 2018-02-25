@@ -2923,7 +2923,7 @@ html {
 
 .karma-builder-element.ui-draggable-dragging {
   cursor: grab;
-  cursor: -webkit-grab;
+  cursor: -webkit-g;
   z-index: 120; }
 .karma-builder-element.karma-self-placeholder .karma-element-content {
   background-color: rgba(57, 73, 89, 0.1);
@@ -3003,7 +3003,8 @@ html {
           transition-duration: 0.3s; }
 
 .karma-grab-element {
-  z-index: 120; }
+  z-index: 120;
+  cursor: -webkit-grab; }
 
 .karma-builder-element[data-name="karma_section"] {
   position: relative; }
@@ -5599,7 +5600,11 @@ div.karma-element-content .karma-top-spacing {
 .element-panel-image .karma-unsplash-images-list {
   width: 75px;
   height: 65px;
-  margin: 3.2px; }
+  margin: 3.2px;
+  cursor: grab;
+  cursor: -webkit-grab; }
+  .element-panel-image .karma-unsplash-images-list.karma-start-dragging {
+    cursor: -webkit-grabbing; }
 
 .unsplash-avatar {
   background: #fff;

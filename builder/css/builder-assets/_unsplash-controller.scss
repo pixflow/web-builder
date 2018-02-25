@@ -186,6 +186,12 @@
 .element-panel-image .karma-unsplash-images-list {
 	@include box(75px, 65px);
 	margin: 3.2px;
+	cursor: grab;
+	cursor: -webkit-grab;
+
+	&.karma-start-dragging{
+		cursor: -webkit-grabbing;
+	}
 }
 
 .unsplash-avatar {
