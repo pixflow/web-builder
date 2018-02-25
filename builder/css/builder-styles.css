@@ -5637,6 +5637,8 @@ div.karma-element-content .karma-top-spacing {
       margin-right: 9px;
       transform: rotate(45deg);
       transition-duration: .3s; }
+    #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button.karma-switch-panel-button svg * {
+      stroke: #394959; }
 
 .karma-upload-image-content {
   align-items: center;
