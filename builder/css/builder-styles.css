@@ -3667,8 +3667,8 @@ body.karma-builder {
     justify-content: space-between;
     width: 100%; }
   .karma-builder-toolbar .builder-Typography-label a {
-    text-decoration: none;
-    color: #9CA4AC; }
+    color: #9CA4AC;
+    text-decoration: none; }
   .karma-builder-toolbar .karma-builder-left {
     width: auto;
     height: 100%;
@@ -3771,7 +3771,8 @@ body.karma-builder {
           width: 28px;
           height: 28px;
           border: 1px solid #D9EBFE;
-          border-radius: 100px; }
+          border-radius: 100px;
+          display: none; }
           .karma-builder-toolbar .karma-builder-right ul li.builder-notification svg {
             height: 14px; }
             .karma-builder-toolbar .karma-builder-right ul li.builder-notification svg * {
@@ -4518,7 +4519,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           border-bottom: 1px solid rgba(57, 73, 89, 0.1);
           margin-bottom: -3px;
           margin-top: 15px;
-          padding: 7px 0px 21px 9px; }
+          padding: 7px 0 21px 9px; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio {
           padding: 10px 0;
           text-align: left;
@@ -4532,8 +4533,8 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
             height: 24px;
             border: 1px solid #D7DBDE;
             border-radius: 100px;
-            height: 17px;
-            width: 17px; }
+            width: 17px;
+            height: 17px; }
             .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle label {
               width: 10px;
               height: 10px;
@@ -4556,8 +4557,8 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
             .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle input {
               width: auto; }
           .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-drop-down-radio .check-box-circle label {
-            height: 7px;
-            width: 7px; }
+            width: 7px;
+            height: 7px; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down {
         width: 190px;
         height: 83px;

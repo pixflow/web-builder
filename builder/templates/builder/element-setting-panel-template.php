@@ -5,8 +5,6 @@
 			<div class="karma-element-setting-panel-header-svg">
 				<div class="revert-svg">
 					<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-						<title>Revert</title>
-						<desc>Created with Sketch.</desc>
 						<defs></defs>
 						<g id="SVG-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							<g id="Revert" stroke="#394959">

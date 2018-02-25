@@ -610,10 +610,10 @@ body:not(.karma-builder-environment) {
 
 						.karma-range-slider-content {
 
-							border-bottom: 1px solid rgba( 57,73,89,0.1 );
+							border-bottom: 1px solid rgba( $builder-main-color, 0.1 );
 							margin-bottom: -3px;
 							margin-top: 15px;
-							padding: 7px 0px 21px 9px;
+							padding: 7px 0 21px 9px;
 
 						}
 						.karma-drop-down-radio{
@@ -623,9 +623,7 @@ body:not(.karma-builder-environment) {
 
 							.check-box-circle{
 								@include check-box-button;
-								height: 17px;
-								width: 17px;
-
+								@include box( 17px, 17px );
 
 								.karma-slider-and-drop-down-radio{
 									left: 0;
@@ -637,8 +635,7 @@ body:not(.karma-builder-environment) {
 								}
 							}
 							.check-box-circle label{
-								height: 7px;
-								width: 7px;
+								@include box( 7px, 7px );
 							}
 
 						}

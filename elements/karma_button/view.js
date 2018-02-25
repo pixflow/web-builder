@@ -147,6 +147,12 @@
 		},
 
 
+		/**
+		 * @summary Set border radius for button
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
 		rangemodel : function () {
 
 			var elementId 	= this.elementSelector(),

@@ -25,8 +25,8 @@ body.karma-builder{
 	}
 	.builder-Typography-label{
 		a{
-			text-decoration: none;
 			color:$builder-main-color-2;
+			text-decoration: none;
 		}
 
 	}
@@ -142,15 +142,12 @@ body.karma-builder{
 				}
 				}
 
-
 				&.builder-notification{
 					@include flexbox( center, center, center );
 					@include box( 28px );
 					border: 1px solid #D9EBFE;
 					border-radius: 100px;
-
-
-
+					display: none;
 					svg{
 						height: 14px;
 						*{
