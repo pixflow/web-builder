@@ -3006,8 +3006,10 @@ html {
   z-index: 120; }
 
 .karma-builder-element[data-name="karma_section"] {
-  cursor: all-scroll;
   position: relative; }
+
+.karma-builder-environment .karma-builder-element[data-name="karma_section"] {
+  cursor: all-scroll; }
 
 .karma-background-section {
   background-repeat: no-repeat; }
@@ -3197,7 +3199,6 @@ html {
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag, .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag, .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-link-tag {
-          cursor: text;
           display: inline-block;
           min-width: 30px;
           text-decoration: none;
@@ -3337,6 +3338,9 @@ html {
 .karma-builder-environment .tablet-display-none {
   display: inherit !important; }
 
+.karma-builder-environment .karma-image-text-box-title-tag, .karma-builder-environment .karma-image-text-box-description-tag, .karma-builder-environment .karma-image-text-box-link-tag {
+  cursor: text; }
+
 .karma-builder-element[data-name="karma_video_box"] {
   cursor: auto; }
   .karma-builder-element[data-name="karma_video_box"] .karma-deactive-on-desktop:nth-child(1) {
@@ -3461,7 +3465,6 @@ html {
       .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-title-tag, .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-description-tag, .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-link-tag {
-          cursor: text;
           display: inline-block;
           min-width: 30px;
           text-decoration: none;
@@ -3588,6 +3591,9 @@ html {
     height: 14px; }
   .karma-builder-element[data-name="karma_video_box"] .karma-builder-environment .desktop-display-none {
     display: inherit; }
+
+.karma-builder-environment .karma-video-box-title-tag, .karma-builder-environment .karma-video-box-description-tag, .karma-builder-environment .karma-video-box-link-tag {
+  cursor: text; }
 
 .karma-builder-element .karma-button-container {
   cursor: pointer;

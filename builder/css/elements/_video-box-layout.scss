@@ -226,7 +226,6 @@
 					position: relative;
 
 					.karma-video-box-title-tag, .karma-video-box-description-tag, .karma-video-box-link-tag {
-						cursor: text;
 						display: inline-block;
 						min-width: 30px;
 						text-decoration: none;
@@ -432,4 +431,12 @@
 
 	}
 
+}
+
+.karma-builder-environment {
+	
+	.karma-video-box-title-tag, .karma-video-box-description-tag, .karma-video-box-link-tag {
+		cursor: text;
+	}
+	
 }
