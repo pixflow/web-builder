@@ -480,10 +480,14 @@ var karmaBuilder = karmaBuilder || {};
 			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
 			if ( undefined ==  targetElement ){
 				return false;
-			}else if( targetElement.classList.contains('karma-spacing') ){
-				targetElement = document.elementFromPoint( event.clientX, event.clientY + 50 );
-			}else if( targetElement.classList.contains('karma-section') ){
-				targetElement = document.elementFromPoint( event.clientX - 50 , event.clientY);
+			} else if ( targetElement.classList.contains( 'karma-spacing' ) ) {
+				if ( targetElement.classList.contains( 'karma-top-spacing' ) ) {
+					targetElement = document.elementFromPoint( event.clientX, event.clientY + 40 );
+				} else {
+					targetElement = document.elementFromPoint( event.clientX, event.clientY - 40 );
+				}
+			} else if ( targetElement.classList.contains( 'karma-section' ) ) {
+				targetElement = document.elementFromPoint( event.clientX, event.clientY - 40 );
 			}
 			overlay.style.display = 'block';
 			UI.helper.get( 0 ).style.display = 'flex' ;
@@ -625,7 +629,7 @@ var karmaBuilder = karmaBuilder || {};
 				elementHeight = targetElement.node.offsetHeight,
 				elementHalf = topPosition + elementHeight / 2;
 
-			if ( ( event.clientY + scrollTop ) < elementHalf ) {
+			if ( ( event.clientY - 40 + scrollTop ) < elementHalf ) {
 				/** Users drag at the top of element */
 				targetElement.node.previousElementSibling.classList.add( 'karma-show-placeholder' );
 			} else {
@@ -934,8 +938,10 @@ var karmaBuilder = karmaBuilder || {};
 
 			window.top.document.querySelector( '.karma-overlay-on-dragging' ).style.display = 'none';
 			UI.helper.get( 0 ).style.display = 'none';
-			var targetElement = document.elementFromPoint( event.clientX, event.clientY ),
-				parentIframeTarget = window.top.document.elementFromPoint( event.clientX, event.clientY ).nodeName;
+			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
+			if( null !=  window.top.document.elementFromPoint( event.clientX, event.clientY )){
+				var parentIframeTarget = window.top.document.elementFromPoint( event.clientX, event.clientY ).nodeName;	
+			}
 			window.top.document.querySelector( '.karma-overlay-on-dragging' ).style.display = 'block';
 			UI.helper.get( 0 ).style.display = 'flex';
 			if ( 'IFRAME' != parentIframeTarget ) {
