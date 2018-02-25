@@ -577,15 +577,23 @@
 			.karma-section-hover{
 				@include box( 100%, 100% );
 				@include flexbox( center, center, center );
-				background: url(../../builder/media/svg/drag-it.svg) no-repeat center;
-				cursor: -webkit-grab;
+				cursor:-webkit-grab;
 				opacity: 0;
 				position: absolute;
 				transition-duration: .3s;
 				z-index: 2;
 
-				&:after {
-					content: '';
+				.karma-section-hover-icon{
+					@include box( 40px, 15px );
+					background: url(../../builder/media/svg/drag-icon.svg) no-repeat center;
+					display:block;
+				}
+				.karma-section-hover-text{
+					color: #fff;
+					display: inline-block;
+					font-size: 13px;
+					position: relative;
+					text-align: center;
 				}
 			}
 			&:hover .karma-section-hover{
@@ -829,7 +837,7 @@
 				z-index: 2;
 
 			}
-			.karma-responsive-mobile {
+			.karma-responsive-mobile{
 				top: 126px;
 			}
 
@@ -988,6 +996,13 @@
 		@extend .karma-builder-title-4;
 	}
 
+}
+
+.karma-section-element.ui-draggable-dragging,
+.karma-section-element.karma-start-blocks-dragging{
+	.karma-section-hover{
+		display: none;
+	}
 }
 
 @media (max-width: 1440px) {

@@ -6140,14 +6140,22 @@ div.karma-element-content .karma-top-spacing {
         justify-content: center;
         display: flex;
         text-align: center;
-        background: url(../../builder/media/svg/drag-it.svg) no-repeat center;
         cursor: -webkit-grab;
         opacity: 0;
         position: absolute;
         transition-duration: .3s;
         z-index: 2; }
-        #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element .karma-section-hover:after {
-          content: ''; }
+        #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element .karma-section-hover .karma-section-hover-icon {
+          width: 40px;
+          height: 15px;
+          background: url(../../builder/media/svg/drag-icon.svg) no-repeat center;
+          display: block; }
+        #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element .karma-section-hover .karma-section-hover-text {
+          color: #fff;
+          display: inline-block;
+          font-size: 13px;
+          position: relative;
+          text-align: center; }
       #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element:hover .karma-section-hover {
         background-color: rgba(0, 0, 0, 0.6);
         opacity: 1;
@@ -6433,6 +6441,10 @@ div.karma-element-content .karma-top-spacing {
   text-transform: capitalize; }
   .karma-element-single-element-name span {
     color: #394959; }
+
+.karma-section-element.ui-draggable-dragging .karma-section-hover,
+.karma-section-element.karma-start-blocks-dragging .karma-section-hover {
+  display: none; }
 
 @media (max-width: 1440px) {
   #karma-add-element .karma-addcontent-name,
