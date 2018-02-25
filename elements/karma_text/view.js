@@ -61,7 +61,7 @@
 				contentValue = content.innerText ;
 
 			if ( "" == contentValue.trim() ) {
-				content.innerText = "Click here to edit content...";
+				content.innerText = "Write down something cool";
 			}
 
 			focusElement.classList.remove('karma-text-element-focus');
@@ -131,7 +131,7 @@
 				contentValue = content.innerText ,
 				focusElement = this.el.querySelector( '.karma-editable-content' );
 
-			if ( "Click here to edit content..." == contentValue.trim() ) {
+			if ( "Write down something cool" == contentValue.trim() ) {
 				content.innerText = "";
 			}
 			if( false == focusElement.classList.contains( 'focus' ) ){

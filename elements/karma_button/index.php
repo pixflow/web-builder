@@ -56,7 +56,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 			'fillbuttonborderradius'	=> '3px',
 			'outlinebuttonborderradius'	=> '3px',
 			'rangemodel'           		=>'3',
-			'elementalign'				=> 'left',
+			'elementalign'				=> 'center',
 
 		);
 
