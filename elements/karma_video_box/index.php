@@ -36,17 +36,17 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 
 		return 	array(
 			'element_key'   	=> 'kb' ,
-			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-			'titletext'			=> 'This is title',
-			'descriptiontext'	=> 'This is description',
-			'linktext'			=> 'This is link',
+			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-video-text.jpg',
+			'titletext'			=> 'MAKE WEBSITE',
+			'descriptiontext'	=> 'With good Karma',
+			'linktext'			=> 'Explore more ',
 			'backgroundsize'	=> 'cover',
 			'backgroundposition'=> 'center-center',
 			'contentposition'	=> 'bottom-left',
 			'titlecolor'		=> '#fff',
 			'descriptioncolor'	=> '#fff',
-			'titletag'			=>'h3',
-			'descriptiontag'	=>'h5',
+			'titletag'			=>'p',
+			'descriptiontag'	=>'h4',
 			'textposition'		=>'bottom-left',
 			'textlink'			=>'https://www.google.com/',
 			'opennewtab'		=>'_self',
@@ -137,9 +137,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 	 */
 	public function js_render() {
 
-		$js_template =
-
-			 '<# var visibleDesktop = ( \'on\' == data.attributes.shortcode_attributes.visibleondesktop  ) ? \'\' : \'desktop-display-none karma-deactive-on-desktop\';  #>'
+		$js_template = '<# var visibleDesktop = ( \'on\' == data.attributes.shortcode_attributes.visibleondesktop  ) ? \'\' : \'desktop-display-none karma-deactive-on-desktop\';  #>'
 			 . "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
 			 . "<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibleontablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
 			 .'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'

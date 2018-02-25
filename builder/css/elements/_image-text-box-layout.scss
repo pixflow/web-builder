@@ -191,23 +191,27 @@
 
 			.karma-image-text-box-text-container {
 				width: fit-content;
-
-					> div {
-						position: relative;
-
-
-					.karma-image-text-box-title-tag, .karma-image-text-box-description-tag, .karma-image-text-box-link-tag {
+				> div {
+					position: relative;
+					.karma-image-text-box-title-tag,
+					.karma-image-text-box-description-tag,
+					.karma-image-text-box-link-tag {
 						display: inline-block;
+						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
 						word-break: break-all;
 					}
+
 					.karma-image-text-box-link-tag{
-						display: flex;
 						align-items: center;
+						display: flex;
 					}
-					.karma-image-text-box-description-tag{
-						margin-top: 13px;
+					&.karma-image-text-box-link-content{
+						margin-top: 20px;
+					}
+					&.karma-image-text-box-description{
+						margin-top: 8px;
 					}
 				}
 			}
@@ -451,7 +455,9 @@
 
 .karma-builder-environment {
 
-	.karma-image-text-box-title-tag, .karma-image-text-box-description-tag, .karma-image-text-box-link-tag{
+	.karma-image-text-box-title-tag,
+	.karma-image-text-box-description-tag,
+	.karma-image-text-box-link-tag{
 		cursor: text;
 	}
 }

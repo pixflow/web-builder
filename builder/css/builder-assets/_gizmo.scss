@@ -381,7 +381,7 @@ body:not(.karma-builder-environment) {
 
 		&.karma-first-section{
 			.karma-inner-gizmo-template{
-				top: 150px;
+				top: 110px;
 			}
 		}
 
@@ -571,7 +571,6 @@ body:not(.karma-builder-environment) {
 				}
 
 				&.karma-slider-and-drop-down {
-
 					justify-content: inherit;
 					left: -147px;
 					padding: 0 15px;
@@ -586,7 +585,7 @@ body:not(.karma-builder-environment) {
 						border: none;
 						margin-bottom: 0;
 						max-width: 30px;
-
+						margin-bottom: 0;
 					}
 					.karma-check-box-contain{
 
@@ -611,16 +610,15 @@ body:not(.karma-builder-environment) {
 						}
 						.karma-input-number-type-unit{
 
-							padding: 2px 0 0 2px;
+							padding: 0 0 0 2px;
 						}
 
 						.karma-range-slider-content {
 
 							border-bottom: 1px solid rgba( $builder-main-color, 0.1 );
 							margin-bottom: -3px;
-							margin-top: 15px;
-							padding: 7px 0 21px 9px;
-
+							margin-top: 12px;
+							padding: 0 0 7px 9px;
 						}
 						.karma-drop-down-radio{
 							padding: 10px 0;

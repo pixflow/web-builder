@@ -225,20 +225,23 @@
 				> div {
 					position: relative;
 
-					.karma-video-box-title-tag, .karma-video-box-description-tag, .karma-video-box-link-tag {
+					.karma-video-box-title-tag,
+					.karma-video-box-description-tag,
+					.karma-video-box-link-tag {
 						display: inline-block;
+						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
 						word-break: break-all;
 					}
-					.karma-video-box-description-tag{
-						margin-top: 13px;
+					&.karma-video-box-description{
+						margin-top: 8px;
 					}
 				}
 			}
 			.karma-video-box-link-content{
 				display: flex;
-				margin-top: 22px;
+				margin-top: 18px;
 			}
 			.karma-video-box-link {
 				display: flex;
@@ -435,7 +438,9 @@
 
 .karma-builder-environment {
 	
-	.karma-video-box-title-tag, .karma-video-box-description-tag, .karma-video-box-link-tag {
+	.karma-video-box-title-tag,
+	.karma-video-box-description-tag,
+	.karma-video-box-link-tag {
 		cursor: text;
 	}
 	
