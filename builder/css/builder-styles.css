@@ -4348,6 +4348,8 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
     width: -moz-fit-content; }
     .karma-builder-environment .karma-builder-element .karma-element-content .karma-spacing-dot-container {
       display: none; }
+  .karma-builder-environment .karma-builder-element.karma-first-section .karma-inner-gizmo-template {
+    top: 150px; }
   .karma-builder-environment .karma-builder-element.karma-active-element .karma-spacing.karma-top-spacing {
     cursor: ns-resize;
     visibility: visible;

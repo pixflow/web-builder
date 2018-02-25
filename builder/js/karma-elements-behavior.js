@@ -727,7 +727,7 @@ var karmaBuilder = karmaBuilder || {};
 						$( newSec ).remove();
 						$( section ).next().after( $( '.karma-section-placeholder-' + $( section ).attr( 'data-element-key' ) ) );
 					}
-
+					KarmaView.$el.trigger('karma/after/sortSections');
 				}
 			} );
 

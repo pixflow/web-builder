@@ -480,6 +480,7 @@
 
 			if ( '' == parentKey ){
 				KarmaView.reorderSections();
+				KarmaView.$el.trigger('karma/after/sortSections');
 			}else{
 				KarmaView.$el.trigger( 'karma/after/dropElement/', [ parentKey ] );
 			}

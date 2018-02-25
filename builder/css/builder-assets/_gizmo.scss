@@ -379,6 +379,12 @@ body:not(.karma-builder-environment) {
 			}
 		}
 
+		&.karma-first-section{
+			.karma-inner-gizmo-template{
+				top: 150px;
+			}
+		}
+
 		&.karma-active-element {
 			.karma-spacing {
 

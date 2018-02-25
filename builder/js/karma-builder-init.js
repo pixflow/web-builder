@@ -32,6 +32,7 @@
 			'karma/after/dropElement.reorderElements'   			            : "reorderElements" ,
 			'karma/after/dropElement.emptyColumn'       			            : "removeEmptyColumn" ,
 			'karma/after/finishElementPanel'            			            : 'makeElementsDraggable',
+			'karma/after/sortSections'            			            		: 'defineFirstSection',
 			'click .karma-blank-page-simple-layout .karma-new-section-layout'	: 'createNewSection',
 			'click .karma-blank-page-section-link'								: 'openSectionPanel',
 			'karma/callParent'                                                  : 'callParent',
@@ -43,7 +44,8 @@
 
 			karmaBuilder.view.__super__.initialize.apply( this, arguments );
 			this.notifyDevelopers();
-			document.body.setAttribute("karma-device-mode","desktop");
+			document.body.setAttribute( "karma-device-mode", "desktop" );
+			this.defineFirstSection();
 
 		},
 
@@ -400,6 +402,19 @@
 					that = this ;
 			compiled =  _.template( templateName, that.templateSettings );
 			return compiled( params );
+
+		},
+
+		/**
+		 * @summary set the first section of builder 
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		defineFirstSection : function (){
+
+			$('.karma-first-section').removeClass('karma-first-section');
+			$('#karma-builder-layout div[data-name="karma_section"]').first().addClass('karma-first-section');
 
 		},
 

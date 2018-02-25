@@ -903,6 +903,7 @@
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 				KarmaView.reorderSections();
+				KarmaView.$el.trigger('karma/after/sortSections');
 				that.closeNewSectionPanel();
 				newSection.showBorder( e );
 
