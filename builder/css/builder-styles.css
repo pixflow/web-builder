@@ -2923,7 +2923,7 @@ html {
 
 .karma-builder-element.ui-draggable-dragging {
   cursor: grab;
-  cursor: -webkit-g;
+  cursor: -webkit-grab;
   z-index: 120; }
 .karma-builder-element.karma-self-placeholder .karma-element-content {
   background-color: rgba(57, 73, 89, 0.1);
@@ -3481,7 +3481,7 @@ html {
           text-decoration: none;
           word-break: break-all; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div.karma-video-box-description {
-          margin-top: 5px; }
+          margin-top: 8px; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link-content {
       display: flex;
       margin-top: 18px; }
@@ -4443,7 +4443,8 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
       min-width: initial;
       outline: none;
       padding: 11px 7px;
-      transition: 0.1s; }
+      transition: 0.1s;
+      display: flex; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-icon:hover {
         background-color: transparent; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-icon:hover svg * {
@@ -5768,10 +5769,10 @@ div.karma-element-content .karma-top-spacing {
     #karma-add-element .element-panel-button .icon, #karma-add-element .karma-responsive-tablet .icon,
     #karma-add-element .karma-responsive-mobile .icon,
     #karma-add-element .karma-responsive-desktop .icon {
-      background-position: center;
-      background-repeat: no-repeat;
+      width: 48px;
       height: 48px;
-      width: 48px; }
+      background-position: center;
+      background-repeat: no-repeat; }
   #karma-add-element .karma-element-panel-view {
     top: 13vh;
     right: auto;

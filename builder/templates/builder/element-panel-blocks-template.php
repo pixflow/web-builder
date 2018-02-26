@@ -3,7 +3,7 @@
 	<div class="karma-section-hover">
 		<div class="karma-hover-container">
 			<span class="karma-section-hover-icon"></span>
-			<span class="karma-section-hover-text">Drag it</span>
+			<span class="karma-section-hover-text"><?php echo esc_attr__("Drag it", 'karma');?></span>
 		</div>
 	</div>
 		<img class="karma-section-image" src="{{ block.image }}" width="240" height="{{ block.height }}">

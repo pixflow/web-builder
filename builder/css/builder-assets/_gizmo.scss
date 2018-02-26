@@ -493,6 +493,7 @@ body:not(.karma-builder-environment) {
 				outline: none;
 				padding: 11px 7px;
 				transition: 0.1s;
+				display: flex;
 				&:hover {
 					background-color: transparent;
 					svg {
