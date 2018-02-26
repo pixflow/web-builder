@@ -11,6 +11,10 @@ var karmaBuilder = karmaBuilder || {};
 		/** All element info */
 		elementInfo: {},
 
+		initialize : function (){
+			this.windowResize();
+		},
+
 		/**
 		 * @summary Call specific function on parent element
 		 *
@@ -973,6 +977,48 @@ var karmaBuilder = karmaBuilder || {};
 			}
 
 		},
+
+		/**
+		 * @summary initialize window resize and call function after window has resize
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		windowResize : function (){
+
+			var resizeId,
+			that = this;
+			$( window ).resize( function() {
+				clearTimeout( resizeId );
+				resizeId = setTimeout( that.doneResizing(), 500 );
+			});
+		},
+
+		/**
+		 * @summary Call functions after window resizing
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		doneResizing : function (){
+			this.updateImageAfterWindowResize();
+		},
+
+		/**
+		 * @summary Update image size in window update
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		updateImageAfterWindowResize : function (){
+
+			var columnInstance = $('.karma-builder-element[data-name="karma_column"]');
+			columnInstance.each( function (){
+				var columnView = $(this).backboneView();
+				columnView.$el.trigger('karma/finish/modifyColumns');
+			});
+
+		}
 
 	} );
 
