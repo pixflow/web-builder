@@ -85,13 +85,13 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is description";
+				content.innerText = "With good Karma";
 				content.classList.add('karma-image-box-description-opacity');
 			}
 
 
 			if( '' == contentData ){
-				this.setAttributes( { 'descriptiontext' : "this is description" },  true );
+				this.setAttributes( { 'descriptiontext' : "With good Karma" },  true );
 			}else{
 				this.setAttributes( { 'descriptiontext' : contentData },  true );
 			}
@@ -112,7 +112,7 @@
 					contentData = content.innerHTML;
 
 
-			if ( "this is description" == contentData.trim() ) {
+			if ( "With good Karma" == contentData.trim() ) {
 				content.innerText = "";
 				content.contentEditable = true ;
 			}
@@ -147,12 +147,12 @@
 				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is title";
+				content.innerText = "MAKE WEBSITE";
 				content.classList.add('karma-image-box-title-opacity');
 			}
 
 			if( '' == contentData ){
-				this.setAttributes( { 'titletext' : "this is title" },  true );
+				this.setAttributes( { 'titletext' : "MAKE WEBSITE" },  true );
 			}else{
 				this.setAttributes( { 'titletext' : contentData },  true );
 			}
@@ -170,7 +170,7 @@
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' ),
 				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
 
-			if ( "this is title" == contentData.trim() ) {
+			if ( "MAKE WEBSITE" == contentData.trim() ) {
 				content.innerText = "";
 				content.contentEditable = true ;
 			}

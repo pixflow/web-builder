@@ -275,7 +275,7 @@
 
 					.karma-video-box-link-shape{
 						//conflict with inline js code
-						display: none;
+						display: none !important;
 					}
 					&.karma-show-child-gizmo{
 						&:hover{

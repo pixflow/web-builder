@@ -212,6 +212,7 @@
 					.karma-image-text-box-link-tag{
 						align-items: center;
 						display: flex;
+						justify-content: center;
 					}
 					&.karma-image-text-box-link-content{
 						margin-top: 20px;
@@ -248,8 +249,8 @@
 			}
 			.karma-image-text-box-link {
 				display: flex;
-				width: fit-content;
 				white-space: nowrap;
+				width: fit-content;
 				
 				&.karma-button-fill {
 
@@ -257,10 +258,10 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					padding: 9px 22px;
-					transition: 0.2s;
-					//important for image position
 					justify-content: center !important;
+					padding: 9px 22px;
+					//important for image position
+					transition: 0.2s;
 
 					&:hover {
 						box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
@@ -307,10 +308,10 @@
 					border-style: solid;
 					border-width: 2px;
 					height: 42px;
-					padding: 9px 22px;
-					transition:0.2s;
-					//important for image position
 					justify-content: center !important;
+					padding: 9px 22px;
+					//important for image position
+					transition:0.2s;
 
 					&:hover{
 						opacity: 0.7;

@@ -40,8 +40,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-img-text.jpg',
 				'overlaycolor'      => 'rgba(0, 0, 0, 0.2)',
 				'backgroundcolor'	=> '#000',
-				'titletext'			=> 'this is title',
-				'descriptiontext'	=> 'this is description',
+				'titletext'			=> 'MAKE WEBSITE',
+				'descriptiontext'	=> 'With good Karma',
 				'linktext'			=> 'Explore more',
 				'backgroundsize'	=> 'cover',
 				'backgroundposition'=> 'center-center',
@@ -87,8 +87,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				$this->get_element_default_attributes(),
 				$attributes
 		);
-		$title_class 		= ( '' == $attributes['titletext'] || 'this is title' == $attributes['titletext'] ) ? 'karma-image-box-title-opacity' : '';
-		$description_class  = ( '' == $attributes['descriptiontext'] || 'this is description' == $attributes['descriptiontext'] ) ? 'karma-image-box-description-opacity' : '';
+		$title_class 		= ( '' == $attributes['titletext'] || 'MAKE WEBSITE' == $attributes['titletext'] ) ? 'karma-image-box-title-opacity' : '';
+		$description_class  = ( '' == $attributes['descriptiontext'] || 'With good Karma' == $attributes['descriptiontext'] ) ? 'karma-image-box-description-opacity' : '';
 		$title_content		= '<' . $attributes['titletag'] . ' class="karma-image-text-box-title-tag ' .  $title_class .'">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
 		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag '.$description_class.' ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
 		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
