@@ -48,7 +48,7 @@
 		 *  @summary Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
-		+ '<div class="karma-spacing karma-top-spacing   " data-direction="both"  >'
+		+ '<div class="karma-spacing karma-both-top-spacing karma-top-spacing  " data-direction="both"  >'
 		+ '<div class="karma-both-spacing-handler karma-both-spacing-handler-top ui-resizable-handle ui-resizable-s">'
 		+ '<div class="karma-spacing-dot-container karma-top-spacing-height ">'
 		+ '<div class="spacing-dot"></div>'
@@ -290,20 +290,25 @@
 						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
-						that.el.querySelector( '.karma-top-spacing').style.height = ui.element.height() +"px";
+						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
 
 					},
 					resize: function( event, ui ){
 
 						var padding = ui.size.height + 'px';
-						karmaSection.find('.karma-section').css( {
-							paddingTop 		: padding,
-							paddingBottom	: padding
-						});
+						if( ui.size.height >= 0){
+							karmaSection.find('.karma-section').css( {
+								paddingTop 		: padding,
+								paddingBottom	: padding
+							});
+						}else{
+							karmaSection.find('.karma-section').css( {
+								paddingTop 		: "0",
+								paddingBottom	: "0"
+							});
+						}
 
-						karmaSection.find('.karma-top-spacing').css( {
-							height 	: padding
-						});
+
 
 					}
 				};
