@@ -51,7 +51,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'descriptiontag'	=>'h4',
 				'textposition'		=>'bottom-left',
 				'textlink'			=>'https://www.google.com/',
-				'opennewtab'		=>'_self',
+				'target'			=>'_self',
 				'topspacepadding'	=> '10',
 				'radiusbox'			=>'0',
 				'imageheight'		=>'400',
@@ -90,7 +90,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 
 		$title_content		= '<' . $attributes['titletag'] . ' class="karma-image-text-box-title-tag ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
 		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
-		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
+		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display			= ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
 		$visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
 		$visible_mobile 	= ( 'on' == $attributes['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
@@ -156,7 +156,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				 . '</div>'
                  . '<div class="karma-image-text-box-link-content">'
 				 . '<div  class="karma-image-text-box-link {{className}} {{visibleDesktop}} {{visibleMobile}}  {{ visibleTablet }}" visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}"  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
-				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
+				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.target }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 				 . '</div>'
 				 . '</div>'

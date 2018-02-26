@@ -109,7 +109,7 @@
 			var input = this.elementView.el.querySelector( '#karma-input-checkbox-controller' ).checked,
 				target = ( true == input ) ? '_blank' : '_self' ;
 
-				this.elementView.setAttributes( { 'opennewtab' : target }, false );
+				this.elementView.setAttributes( { 'target' : target }, false );
 
 
 		},

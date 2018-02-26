@@ -257,11 +257,11 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		opennewtab: function () {
+		target: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['opennewtab'] );
-			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.opennewtab );
+				linktarget  = this.getAttributes( ['target'] );
+			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.target );
 
 		},
 

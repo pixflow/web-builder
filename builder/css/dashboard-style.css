@@ -2157,13 +2157,13 @@ html {
               padding: 16px 10px 6px 10px;
               text-decoration: none; }
               #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-add-font a:after, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body .karma-dropdown-add-font a:after {
+                width: 100%;
+                height: 1px;
                 background-color: #D9EBFE;
                 bottom: 38px;
                 content: '';
-                height: 1px;
                 left: 0;
-                position: absolute;
-                width: 100%; }
+                position: absolute; }
         #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-icon {
           border: none; }
     #karma-typography-setting #karma-typography-manager .karma-typography-weight {

@@ -48,7 +48,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 			'element_key'   			=> 'kb' ,
 			'type'						=> 'fill' ,
 			'linkurl'       			=> get_site_url(),
-			'opennewtab'    			=> '_blank' ,
+			'target'	    			=> '_blank' ,
 			'linkcontent'				=> esc_attr__( "Explore more", 'karma' ),
 			'topspacepadding'			=> '10',
 			'generalcolor'				=> '#419CF8',
@@ -88,7 +88,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 		<div class='karma-button karma-button-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
 			<div class="karma-button-container <?php echo $class; ?> ">
 				<a class="karma-button-link karma-document-click" href="<?php echo $attributes['linkurl']; ?>"
-				   target="<?php echo $attributes['opennewtab']; ?>">
+				   target="<?php echo $attributes['target']; ?>">
 					<span class="karma-button-editable" ><?php echo  $attributes['linkcontent'] ; ?></span>
 				</a>
 			</div>
@@ -114,7 +114,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 			. '<# var newClass = ( "fill" == data.attributes.shortcode_attributes.type ) ? "karma-button-fill" : "karma-button-outline"; #>'
 			. '<div class="karma-button karma-button-{{ data.attributes.element_key }} " >'
 			. '<div class="karma-button-container {{ newClass }}">'
-			. '<a class="karma-button-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.opennewtab }}" >'
+			. '<a class="karma-button-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.target }}" >'
 			. '<span class="karma-button-editable" > {{ data.attributes.shortcode_attributes.linkcontent }}'
 			. '</span>'
 			. '</a>'
