@@ -896,9 +896,15 @@
 				
 				var domNode = $( this )[0],
 					newGrid = JSON.parse(domNode.getAttribute( 'data-value' ) ),
-					placeholder = document.querySelector('.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
+					placeholder = document.querySelectorAll( '.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
 					elementName = 'karma_section';
-
+				if ( 1 === that.model.get( 'order' ) ) {
+					if ( placeholder.length > 1 ) {
+						placeholder = placeholder[ 1 ];
+					}
+				} else {
+					placeholder = placeholder[ 0 ];
+				}
 				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName  );
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
