@@ -39,7 +39,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-video-text.jpg',
 			'titletext'			=> 'MAKE WEBSITE',
 			'descriptiontext'	=> 'With good Karma',
-			'linktext'			=> 'Explore more ',
+			'linktext'			=> 'Explore more',
 			'backgroundsize'	=> 'cover',
 			'backgroundposition'=> 'center-center',
 			'contentposition'	=> 'bottom-left',
@@ -89,8 +89,10 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			$attributes
 		);
 
-		$title_content = 	'<' . $attributes['titletag'] . ' class="karma-video-box-title-tag ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
-		$description_content = 	'<' . $attributes['descriptiontag'] . ' class="karma-video-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
+		$title_class 		= ( '' == $attributes['titletext'] || 'MAKE WEBSITE' == $attributes['titletext'] ) ? 'karma-video-box-title-opacity' : '';
+		$description_class  = ( '' == $attributes['descriptiontext'] || 'With good Karma' == $attributes['descriptiontext'] ) ? 'karma-video-box-description-opacity' : '';
+		$title_content = 	'<' . $attributes['titletag'] . ' class="karma-video-box-title-tag ' .  $title_class .' ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
+		$description_content = 	'<' . $attributes['descriptiontag'] . ' class="karma-video-box-description-tag '.$description_class.'">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
 		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display = ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
         $visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';

@@ -234,6 +234,14 @@
 						text-decoration: none;
 						word-break: break-all;
 					}
+					.karma-video-box-description-tag.karma-video-box-description-opacity{
+						display: none;
+					}
+					
+					.karma-video-box-title-tag.karma-video-box-title-opacity{
+						display: none;
+					}
+
 					&.karma-video-box-description{
 						margin-top: 8px;
 					}
@@ -442,6 +450,17 @@
 	.karma-video-box-description-tag,
 	.karma-video-box-link-tag {
 		cursor: text;
+	}
+
+	#karma-builder-layout {
+		.karma-video-box-description-opacity{
+			display: block;
+			opacity: .5;
+		}
+		.karma-video-box-title-opacity{
+			display: block;
+			opacity: .5;
+		}
 	}
 	
 }

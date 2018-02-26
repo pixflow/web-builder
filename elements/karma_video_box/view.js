@@ -3,13 +3,18 @@
 		karmaBuilder.videobox = karmaBuilder.shortcodes.extend({
 
 		events: {
-			'blur .karma-video-box-title-tag '      : 'saveVideoTitle',
-			'blur .karma-video-box-description-tag' : 'saveVideoDescription',
-			'keyup .karma-video-box-link-tag'		: 'saveVideoLink',
-			'click .karma-video-box-title'			: 'titleEditable',
-			'click .karma-video-box-description'	: 'titleDescription',
-			'click .karma-video-box-link'			: 'titleLink',
-			'keypress .karma-video-box-link'		: 'deactiveEnter'
+			'blur .karma-video-box-title-tag '      		: 'saveVideoTitle',
+			'mousedown .karma-video-box-title-tag '			: 'changeVideoTitle',
+			'keypress .karma-video-box-title-tag ' 			: 'changeClassVideoTitle',
+			'blur .karma-video-box-description-tag' 		: 'saveVideoDescription',
+			'mousedown .karma-video-box-description-tag'	: 'changeVideoDescription',
+			'keypress .karma-video-box-description-tag'		: 'changeClassVideoDescription',
+			'keyup .karma-video-box-link-tag'				: 'saveVideoLink',
+			'mousedown .karma-video-box-link-tag'			: 'changeTextLink',
+			'click .karma-video-box-title'					: 'titleEditable',
+			'click .karma-video-box-description'			: 'titleDescription',
+			'click .karma-video-box-link'					: 'titleLink',
+			'keypress .karma-video-box-link'				: 'deactiveEnter'
 
 		},
 
@@ -35,10 +40,50 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is description...";
+				content.innerText = "With good Karma";
+				content.classList.add('karma-video-box-description-opacity');
 			}
 
-			this.setAttributes( { 'descriptiontext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'descriptiontext' : "With good Karma" },  true );
+			}else{
+				this.setAttributes( { 'descriptiontext' : contentData },  true );
+			}
+
+		},
+
+		/**
+		 * @summary change the description of video  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeVideoDescription : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-description-tag' ),
+				contentData = content.innerHTML;
+
+
+			if ( "With good Karma" == contentData.trim() ) {
+				content.innerText = "";
+				content.contentEditable = true ;
+			}
+
+		},
+
+		/**
+		 * @summary change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassVideoDescription : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-description-tag' );
+
+			if( content.classList.contains( 'karma-video-box-description-opacity' ) ) {
+				content.className = content.className.replace( "karma-video-box-description-opacity", "" );
+			}
 
 		},
 
@@ -67,10 +112,49 @@
 				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is title...";
+				content.innerText = "MAKE WEBSITE";
+				content.classList.add('karma-video-box-title-opacity');
 			}
 
-			this.setAttributes( { 'titletext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'titletext' : "MAKE WEBSITE" },  true );
+			}else{
+				this.setAttributes( { 'titletext' : contentData },  true );
+			}
+
+		},
+
+		/**
+		 * @summary change the title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeVideoTitle : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
+				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
+
+			if ( "MAKE WEBSITE" == contentData.trim() ) {
+				content.innerText = "";
+				content.contentEditable = true ;
+			}
+
+		},
+
+		/**
+		 * @summary change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassVideoTitle : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-title-tag' );
+
+			if( content.classList.contains( 'karma-video-box-title-opacity' ) ) {
+				content.className = content.className.replace( "karma-video-box-title-opacity", "" );
+			}
 
 		},
 
@@ -93,6 +177,22 @@
 			}
 			this.setAttributes( { 'linktext' : contentData },  true );
 
+		},
+
+		/**
+		 * @summary change link text
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeTextLink : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
+				contentData = content.innerHTML;
+
+			if( "Explore more" == contentData.trim() ){
+				content.innerText = "";
+			}
 		},
 
 		 /**

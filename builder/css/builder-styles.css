@@ -3207,6 +3207,10 @@ html {
           min-width: 30px;
           text-decoration: none;
           word-break: break-all; }
+        .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag.karma-image-box-description-opacity {
+          display: none; }
+        .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag.karma-image-box-title-opacity {
+          display: none; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-link-tag {
           align-items: center;
           display: flex; }
@@ -3348,6 +3352,12 @@ html {
 .karma-builder-environment .karma-image-text-box-description-tag,
 .karma-builder-environment .karma-image-text-box-link-tag {
   cursor: text; }
+.karma-builder-environment #karma-builder-layout .karma-image-box-description-opacity {
+  display: block;
+  opacity: .5; }
+.karma-builder-environment #karma-builder-layout .karma-image-box-title-opacity {
+  display: block;
+  opacity: .5; }
 
 .karma-builder-element[data-name="karma_video_box"] {
   cursor: auto; }
@@ -3480,6 +3490,10 @@ html {
           min-width: 30px;
           text-decoration: none;
           word-break: break-all; }
+        .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-description-tag.karma-video-box-description-opacity {
+          display: none; }
+        .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-title-tag.karma-video-box-title-opacity {
+          display: none; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div.karma-video-box-description {
           margin-top: 8px; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link-content {
@@ -3607,6 +3621,12 @@ html {
 .karma-builder-environment .karma-video-box-description-tag,
 .karma-builder-environment .karma-video-box-link-tag {
   cursor: text; }
+.karma-builder-environment #karma-builder-layout .karma-video-box-description-opacity {
+  display: block;
+  opacity: .5; }
+.karma-builder-environment #karma-builder-layout .karma-video-box-title-opacity {
+  display: block;
+  opacity: .5; }
 
 .karma-builder-element .karma-button-container {
   cursor: pointer;

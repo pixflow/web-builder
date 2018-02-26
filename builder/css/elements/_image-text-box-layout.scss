@@ -202,6 +202,12 @@
 						text-decoration: none;
 						word-break: break-all;
 					}
+					.karma-image-text-box-description-tag.karma-image-box-description-opacity{
+						display: none;
+					}
+					.karma-image-text-box-title-tag.karma-image-box-title-opacity{
+						display: none;
+					}
 
 					.karma-image-text-box-link-tag{
 						align-items: center;
@@ -460,4 +466,17 @@
 	.karma-image-text-box-link-tag{
 		cursor: text;
 	}
+	#karma-builder-layout {
+		.karma-image-box-description-opacity{
+			display: block;
+			opacity: .5;
+		}
+		.karma-image-box-title-opacity{
+			display: block;
+			opacity: .5;
+		}
+	}
+
 }
+
+
