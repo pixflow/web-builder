@@ -6161,7 +6161,9 @@ div.karma-element-content .karma-top-spacing {
   #karma-add-element .element-panel-section-container.element-panel-deactive-part {
     align-items: flex-start !important; }
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-add-element-inactive-container {
-      max-height: 580px; }
+      max-height: 630px; }
+      #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-add-element-inactive-container.karma-blocks-container {
+        margin-top: 38px; }
     #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-blocks-container .karma-blocks-preloader {
       width: 24px;
       height: 24px;
