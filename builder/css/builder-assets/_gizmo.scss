@@ -588,6 +588,7 @@ body:not(.karma-builder-environment) {
 						border: none;
 						margin-bottom: 0;
 						max-width: 30px;
+						max-height: 30px;
 						margin-bottom: 0;
 					}
 					.karma-check-box-contain{
@@ -596,11 +597,13 @@ body:not(.karma-builder-environment) {
 						display: flex;
 						flex-direction: row-reverse;
 						position: relative;
-						justify-content: space-between;
+						padding: 4px 0;
 						.karma-link-open-new-tab-text{
 							color: $builder-main-color;
 							font-size: 14px;
 							line-height: 28px;
+							position: absolute;
+							left: 0;
 						}
 					}
 					&.karma-range-slider-container {

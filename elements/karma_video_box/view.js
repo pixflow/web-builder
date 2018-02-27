@@ -65,8 +65,10 @@
 
 
 			if ( "With good Karma" == contentData.trim() ) {
-				content.innerText = "";
-				content.contentEditable = true ;
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
 			}
 
 		},
@@ -136,8 +138,10 @@
 				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
 
 			if ( "MAKE WEBSITE" == contentData.trim() ) {
-				content.innerText = "";
-				content.contentEditable = true ;
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
 			}
 
 		},
@@ -189,9 +193,10 @@
 
 			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
 				contentData = content.innerHTML;
-
-			if( "Explore more" == contentData.trim() ){
-				content.innerText = "";
+			if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+				if ("Explore more" == contentData.trim()) {
+					content.innerText = "";
+				}
 			}
 		},
 
@@ -250,8 +255,11 @@
 			var content = this.el.querySelector( '.karma-video-box-title-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				};
+
 			}
 		},
 			
@@ -266,8 +274,12 @@
 			var content = this.el.querySelector( '.karma-video-box-description-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -284,8 +296,12 @@
 			var content = this.el.querySelector( '.karma-video-box-link-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 		},
 

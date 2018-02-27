@@ -1206,9 +1206,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   height: 1px;
   background: #D7DBDE; }
 
-#karma-builder-layout div:before, #karma-builder-layout div:after, #karma-builder-layout ul:before, #karma-builder-layout ul:after, #karma-builder-layout article:before, #karma-builder-layout article:after, #karma-builder-layout aside:before, #karma-builder-layout aside:after, #karma-builder-layout details:before, #karma-builder-layout details:after, #karma-builder-layout figcaption:before, #karma-builder-layout figcaption:after, #karma-builder-layout figure:before, #karma-builder-layout figure:after, #karma-builder-layout section:before, #karma-builder-layout section:after, #karma-builder-layout input[class*="karma"]:before, #karma-builder-layout input[class*="karma"]:after {
-  content: unset; }
-
 #karma-add-element html, #karma-add-element body, #karma-add-element span, #karma-add-element object, #karma-add-element iframe,
 #karma-add-element h1, #karma-add-element h2, #karma-add-element h3, #karma-add-element h4, #karma-add-element h5, #karma-add-element h6, #karma-add-element p, #karma-add-element blockquote, #karma-add-element pre,
 #karma-add-element abbr, #karma-add-element address, #karma-add-element cite, #karma-add-element code,
@@ -1442,9 +1439,9 @@ body {
     padding: 0;
     line-height: .8em; }
   body iframe {
+    border: 2px solid rgba(68, 83, 99, 0.22);
     height: calc( 100vh - 49px );
     width: 100%;
-    border: none;
     transition: .4s;
     will-change: contents; }
   body .karma-full-separator {
@@ -2289,7 +2286,7 @@ html {
   -ms-flex-item-align: stretch !important;
   align-self: stretch !important; }
 
-@media screen and (max-width: 768px) and (min-width: 420px) {
+@media screen and (max-width: 768px) and (min-width: 576px) {
   .tablet-display-none {
     display: none; }
 
@@ -2298,7 +2295,7 @@ html {
 
   .karma-builder-environment .tablet-display-none {
     display: inherit; } }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 575px) {
   .karma-deactive-on-mobile {
     opacity: .2; }
 
@@ -4551,17 +4548,20 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           border: none;
           margin-bottom: 0;
           max-width: 30px;
+          max-height: 30px;
           margin-bottom: 0; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down .karma-check-box-contain {
           align-items: center;
           display: flex;
           flex-direction: row-reverse;
           position: relative;
-          justify-content: space-between; }
+          padding: 4px 0; }
           .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down .karma-check-box-contain .karma-link-open-new-tab-text {
             color: #394959;
             font-size: 14px;
-            line-height: 28px; }
+            line-height: 28px;
+            position: absolute;
+            left: 0; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-slider-and-drop-down.karma-range-slider-container .karma-range-slider-number {
           width: 40px;
           height: 29px;
@@ -5212,7 +5212,7 @@ div.karma-element-content .karma-top-spacing {
   position: relative; }
   .karma-range-slider-container .karma-range-slider-content {
     align-items: center;
-    justify-content: inherit;
+    justify-content: space-between;
     display: flex;
     text-align: inherit;
     padding: 11px 0 18px;
@@ -6399,15 +6399,16 @@ div.karma-element-content .karma-top-spacing {
 
 .karma-builder .karma-builder-iframe-container {
   align-items: center;
+  background-color: #f6f6f6;
   display: flex;
   height: 100%;
   justify-content: center;
   width: 100%; }
   .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame {
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: #fff;
     border-radius: 50px;
-    box-shadow: 0px 11px 97px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 13px 83px rgba(68, 83, 99, 0.12);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -6442,7 +6443,6 @@ div.karma-element-content .karma-top-spacing {
   width: 768px; }
 .karma-builder.karma-device-mode-mobile .karma-builder-responsive-frame {
   box-sizing: content-box;
-  height: 954px;
   width: 419px; }
 
 .karma-builder-environment.karma-device-mode-mobile::-webkit-scrollbar {
@@ -6829,6 +6829,37 @@ div.karma-element-content .karma-top-spacing {
     position: absolute;
     width: 100%; }
 
+body.karma-device-mode-desktop iframe {
+  border: none; }
+body.karma-device-mode-tablet .text-gizmo-group,
+body.karma-device-mode-tablet .image-gizmo-group,
+body.karma-device-mode-tablet .image-box-gizmo-group,
+body.karma-device-mode-tablet .video-box-gizmo-group,
+body.karma-device-mode-tablet .image-text-gizmo-group,
+body.karma-device-mode-tablet .karma-image-text-box-description-gizmo,
+body.karma-device-mode-tablet .karma-image-text-box-link-gizmo,
+body.karma-device-mode-tablet .video-text-gizmo-group,
+body.karma-device-mode-tablet .karma-video-box-description-gizmo,
+body.karma-device-mode-tablet .karma-video-box-link-gizmo,
+body.karma-device-mode-tablet .element-name-text-gizmo,
+body.karma-device-mode-tablet .karma-title-gizmo-template, body.karma-device-mode-mobile .text-gizmo-group,
+body.karma-device-mode-mobile .image-gizmo-group,
+body.karma-device-mode-mobile .image-box-gizmo-group,
+body.karma-device-mode-mobile .video-box-gizmo-group,
+body.karma-device-mode-mobile .image-text-gizmo-group,
+body.karma-device-mode-mobile .karma-image-text-box-description-gizmo,
+body.karma-device-mode-mobile .karma-image-text-box-link-gizmo,
+body.karma-device-mode-mobile .video-text-gizmo-group,
+body.karma-device-mode-mobile .karma-video-box-description-gizmo,
+body.karma-device-mode-mobile .karma-video-box-link-gizmo,
+body.karma-device-mode-mobile .element-name-text-gizmo,
+body.karma-device-mode-mobile .karma-title-gizmo-template {
+  display: none !important; }
+body.karma-device-mode-tablet .resize-handler, body.karma-device-mode-mobile .resize-handler {
+  pointer-events: none !important; }
+body.karma-device-mode-tablet .karma-image-resize .ui-resizable-handle, body.karma-device-mode-mobile .karma-image-resize .ui-resizable-handle {
+  display: none; }
+
 @media (max-width: 768px) {
   .karma-builder-environment {
     /* _-_-_- Section Responsive Gizmo Style -_-_-_ */
@@ -6881,7 +6912,7 @@ div.karma-element-content .karma-top-spacing {
         width: 88px;
         height: 25px;
         right: 5px;
-        top: 5px; }
+        top: -30px; }
       .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive .karma-builder-gizmo-hidden.karma-visibility-option {
         width: 15px;
         height: 10px;

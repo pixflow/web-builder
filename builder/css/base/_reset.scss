@@ -38,13 +38,13 @@
 
 }
 
-#karma-builder-layout{
-	div,ul,article,aside,details,figcaption,figure,section,input[class *="karma"]{
-		&:before,&:after{
-			content: unset;
-		}
-	}
-}
+//#karma-builder-layout{
+//	div,ul,article,aside,details,figcaption,figure,section,input[class *="karma"]{
+//		&:before,&:after{
+//			content: unset;
+//		}
+//	}
+//}
 
 #karma-add-element{
 	html, body, span, object, iframe,

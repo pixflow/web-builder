@@ -874,6 +874,7 @@
 .karma-builder {
 	.karma-builder-iframe-container {
 		align-items: center;
+		background-color: #f6f6f6;
 		display: flex;
 		height: 100%;
 		justify-content: center;
@@ -881,9 +882,9 @@
 
 		.karma-builder-responsive-frame {
 			align-items: center;
-			background-color: #f4f4f4;
+			background-color: #fff;
 			border-radius: 50px;
-			box-shadow: 0px 11px 97px rgba(0, 0, 0, 0.2);
+			box-shadow: 0px 13px 83px rgba(68, 83, 99, 0.12);
 			
 			display: flex;
 			flex-direction: column;
@@ -937,7 +938,6 @@
 
 		.karma-builder-responsive-frame {
 			box-sizing: content-box;
-			height: 954px;
 			width: 419px;
 		}
 

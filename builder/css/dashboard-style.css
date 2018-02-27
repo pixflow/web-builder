@@ -333,9 +333,6 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   height: 1px;
   background: #D7DBDE; }
 
-#karma-builder-layout div:before, #karma-builder-layout div:after, #karma-builder-layout ul:before, #karma-builder-layout ul:after, #karma-builder-layout article:before, #karma-builder-layout article:after, #karma-builder-layout aside:before, #karma-builder-layout aside:after, #karma-builder-layout details:before, #karma-builder-layout details:after, #karma-builder-layout figcaption:before, #karma-builder-layout figcaption:after, #karma-builder-layout figure:before, #karma-builder-layout figure:after, #karma-builder-layout section:before, #karma-builder-layout section:after, #karma-builder-layout input[class*="karma"]:before, #karma-builder-layout input[class*="karma"]:after {
-  content: unset; }
-
 #karma-add-element html, #karma-add-element body, #karma-add-element span, #karma-add-element object, #karma-add-element iframe,
 #karma-add-element h1, #karma-add-element h2, #karma-add-element h3, #karma-add-element h4, #karma-add-element h5, #karma-add-element h6, #karma-add-element p, #karma-add-element blockquote, #karma-add-element pre,
 #karma-add-element abbr, #karma-add-element address, #karma-add-element cite, #karma-add-element code,
@@ -569,9 +566,9 @@ body {
     padding: 0;
     line-height: .8em; }
   body iframe {
+    border: 2px solid rgba(68, 83, 99, 0.22);
     height: calc( 100vh - 49px );
     width: 100%;
-    border: none;
     transition: .4s;
     will-change: contents; }
   body .karma-full-separator {
@@ -1416,7 +1413,7 @@ html {
   -ms-flex-item-align: stretch !important;
   align-self: stretch !important; }
 
-@media screen and (max-width: 768px) and (min-width: 420px) {
+@media screen and (max-width: 768px) and (min-width: 576px) {
   .tablet-display-none {
     display: none; }
 
@@ -1425,7 +1422,7 @@ html {
 
   .karma-builder-environment .tablet-display-none {
     display: inherit; } }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 575px) {
   .karma-deactive-on-mobile {
     opacity: .2; }
 
@@ -2006,7 +2003,7 @@ html {
   position: relative; }
   .karma-range-slider-container .karma-range-slider-content, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
     align-items: center;
-    justify-content: inherit;
+    justify-content: space-between;
     display: flex;
     text-align: inherit;
     padding: 11px 0 18px;

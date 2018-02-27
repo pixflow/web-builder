@@ -54,8 +54,11 @@
 			var content = this.el.querySelector( '.karma-image-text-box-title-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -113,8 +116,10 @@
 
 
 			if ( "With good Karma" == contentData.trim() ) {
-				content.innerText = "";
-				content.contentEditable = true ;
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
 			}
 
 		},
@@ -171,8 +176,10 @@
 				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
 
 			if ( "MAKE WEBSITE" == contentData.trim() ) {
-				content.innerText = "";
-				content.contentEditable = true ;
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
 			}
 
 		},
@@ -227,7 +234,9 @@
 				contentData = content.innerHTML;
 
 			if( "Explore more" == contentData.trim() ){
-				content.innerText = "";
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.innerText = "";
+				}
 			}
 		},
 
@@ -242,8 +251,11 @@
 			var content = this.el.querySelector( '.karma-image-text-box-description-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -259,8 +271,11 @@
 			var content = this.el.querySelector( '.karma-image-text-box-link-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},

@@ -1,3 +1,40 @@
+body{
+
+	&.karma-device-mode-desktop{
+
+		iframe{
+			border:none;
+		}
+	}
+
+	&.karma-device-mode-tablet,
+	&.karma-device-mode-mobile{
+
+		.text-gizmo-group,
+		.image-gizmo-group,
+		.image-box-gizmo-group,
+		.video-box-gizmo-group,
+		.image-text-gizmo-group,
+		.karma-image-text-box-description-gizmo,
+		.karma-image-text-box-link-gizmo,
+		.video-text-gizmo-group,
+		.karma-video-box-description-gizmo,
+		.karma-video-box-link-gizmo,
+		.element-name-text-gizmo,
+		.karma-title-gizmo-template{
+			display: none !important;
+		}
+		.resize-handler{
+			pointer-events: none !important;
+		}
+		.karma-image-resize{
+
+			.ui-resizable-handle{
+				display: none;
+			}
+		}
+	}
+}
 @media (max-width: 768px){
 	.karma-builder-environment {
 		.karma-active-section .section-gizmo-group{
@@ -54,7 +91,7 @@
 					&.karma-gizmo-container {
 						@include box( 88px, 25px );
 						right: 5px;
-						top: 5px;
+						top: -30px;
 					}
 
 					.karma-builder-gizmo-hidden.karma-visibility-option{

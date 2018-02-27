@@ -4,18 +4,17 @@ body {
 	display: flex;
 	flex-direction: column;
 	will-change : contents;
-
-
+	
 	button{
 		margin: 0;
 		padding: 0;
 		line-height: .8em;
 	}
-	
+
 	iframe {
+		border: 2px solid rgba(68, 83, 99, 0.22);
 		height: calc( 100vh - 49px );
 		width: 100%;
-		border:none;
 		transition: .4s;
 		will-change : contents;
 	}
