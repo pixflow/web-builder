@@ -1,4 +1,11 @@
 <?php
+namespace KarmaBuilder\Stylesheet ;
+
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -25,8 +32,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class Karma_Stylesheet {
 
+
+class Karma_Stylesheet {
 
 	/**
 	 * Create CSS blocks .
@@ -72,7 +80,6 @@ class Karma_Stylesheet {
 
 	}
 
-
 	/**
 	 * Create CSS property and value for each element .
 	 *
@@ -91,7 +98,6 @@ class Karma_Stylesheet {
 
 	}
 
-
 	/**
 	 * Create default styles for elements
 	 *
@@ -105,12 +111,13 @@ class Karma_Stylesheet {
 		$elements = apply_filters( 'karma_elements', $builder_instance::$element_filename );
 		$block = '';
 		foreach ( $elements as $element ){
-			$class_name = 'Karma_' . ucfirst( $element );
+			$class_name = Karma_Factory_Pattern::$builder->get_element_valid_name( $element );
+			$class_name = '\\KarmaBuilder\Elements\\Karma_' . $class_name;
 			if ( class_exists( $class_name ) ) {
 				$class_name::$element_attributes = $class_name::get_element_default_attributes();
 				$elements_style_attributes = array(
-					'selector' =>  '.karma-builder-element[data-name="' . strtolower( $class_name ) . '"]',
-					'css'      => $class_name::get_css_attributes()
+					'selector' =>  '.karma-builder-element[data-name="' . strtolower( $class_name::$element_name ) . '"]',
+					'css'      =>   $class_name::get_css_attributes()
 				);
 				$block .= $this->create_css_block( $elements_style_attributes );
 			}
@@ -125,5 +132,175 @@ class Karma_Stylesheet {
 		return ob_get_flush();
 
 	}
+
+	/**
+	 * Create global css file that need to load in builder in frontend
+	 *
+	 * @since    0.1.1
+	 * @return string CSS string
+	 *
+	 */
+	public function create_global_css_file(){
+
+		$typography = Karma_Typography::get_instance();
+
+		$css_content  = $this->create_custom_font_link( $typography->typography_model->customFonts );
+		$css_content .= $this->create_heading_css_file( $typography->typography_model->headings );;
+		return $css_content;
+
+	}
+
+    /**
+     * Create global css file that need to load in builder in frontend
+     *
+     * @param array $custom_font uploaded user fonts
+     *
+     * @since    0.1.1
+     * @return string CSS string
+     *
+     */
+	private function create_custom_font_link( $custom_font ){
+
+	    $load_custom_font = '';
+	    foreach ( $custom_font as $key => $value ) {
+
+            $load_custom_font = '@font-face {';
+            $load_custom_font .= 'font-family:"' . $key . '";';
+		    $load_custom_font .= "src: url('". $value ."') ";
+            $load_custom_font .= '}';
+
+        }
+        return $load_custom_font;
+    }
+
+    /**
+	 * Create heading css format that need to load in builder in frontend
+	 *
+	 * @param array $headings   Headings format
+	 *
+	 * @since    0.1.1
+	 * @return string CSS string
+	 *
+	 */
+	private function create_heading_css_file( $headings ){
+
+		$headings_style = '' ;
+		$headings_min_size_in_responsive = array(
+			'h1'    => '35',
+			'h2'    => '30',
+			'h3'    => '25',
+			'h4'    => '23',
+			'h5'    => '21',
+			'h6'    => '17',
+			'p'     => '15',
+		);
+		foreach ( $headings as $tag => $info ){
+			if ( 'p' == $tag ){
+				$headings_style .= '.karma-builder-environment a,';
+			}
+			$headings_style .= $tag . '[class *= "tag" ]{' ;
+			foreach ( $info as $property => $value ){
+				if( 'font-varients' == $property  ){
+					$explode = explode( ' ', $value );
+					$headings_style .= 'font-weight:' . $explode[0] . ';' ;
+					if( isset( $explode[1] ) ){
+						$headings_style .= 'font-style:' . strtolower( $explode[1] ) . ';' ;
+					}
+				}else if ( 'font-size' == $property ) {
+					$headings_style .= $property . ':';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 300px) / (1920 - 300)));';
+				}else{
+					$headings_style .= $property . ':' . $value . ';' ;
+				}
+			}
+			$headings_style .= '}';
+		}
+		return $headings_style;
+
+	}
+
+    /**
+     * Create fonts link to enqueue
+     *
+     * @since    0.1.1
+     *
+     * @return string CSS string
+     *
+     */
+    //@TODO - refine ( Use built-in PHP function )
+    public function create_google_font_link(){
+
+        $typography = Karma_Typography::get_instance();
+        $result = $this->check_diff_multi_dimensional_array( $typography->typography_model->fonts, $typography->web_default_fonts );
+        return $this->create_fonts_ink( $result );
+
+    }
+
+    /**
+     * Returns an array that contains difference between 2 arrays
+     *
+     * @param array $arr1
+     * @param array $arr2
+     *
+     * @since    0.1.1
+     * @return array
+     *
+     */
+    private function check_diff_multi_dimensional_array( $arr1, $arr2 ){
+
+        $check = ( is_array( $arr1 ) && count( $arr1 ) > 0 ) ? true : false;
+        $result = ( $check ) ? ( ( is_array( $arr2 ) && count( $arr2 ) > 0 ) ? $arr2 : array() ) : array();
+        $new_result = array();
+        if( $check ){
+            foreach( $arr1 as $key => $value ){
+                if( !isset( $result[ $key ] ) ){
+                    $new_result[ $key ] = $value;
+                }
+            }
+        }
+        return $new_result;
+    }
+
+    /**
+     * Create google font link
+     *
+     * @param array $fonts saved fonts
+     *
+     * @since    0.1.1
+     * @return string
+     *
+     */
+	private function create_fonts_ink( $fonts ){
+
+	    $link = 'https://fonts.googleapis.com/css?family=';
+	    $temp_font = $fonts;
+	    end( $temp_font );
+
+        foreach( $fonts as $font => $variant ) {
+
+            $link_font = ucwords( $font );
+            $link_font = str_replace(' ', '+', $link_font);
+            $link  .= $link_font;
+            $variant_link = ':';
+
+            foreach( $variant as $index => $key ){
+
+                $font_variant = explode( " ", $key );
+                $variant_link .= $font_variant[ 0 ];
+                if ( 'italic' == $font_variant[ 1 ] ){
+                    $variant_link .= 'i';
+                }
+                if( $key != $variant[ count( $variant ) - 1 ] ){
+                    $variant_link .= ',';
+                }
+            }
+            $link .= $variant_link;
+            if ( $font != key( $temp_font ) ) {
+                $link .= '|';
+            }
+
+        }
+        return ( 'https://fonts.googleapis.com/css?family=' == $link ) ? '' : $link;
+    }
 
 }

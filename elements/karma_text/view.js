@@ -7,7 +7,6 @@
 			'click .karma-editable-content'              : 'updateFontStyleGizmo',
 			'click.focusElement'						 : 'focusElement',
 			'keydown .karma-editable-content'	         : 'preventFromNewLine',
-			'paste [contenteditable]'					 : 'pasteAsPlainText',
 			'drop .karma-editable-content'               : 'preventFromDrop'
 		},
 
@@ -62,7 +61,7 @@
 				contentValue = content.innerText ;
 
 			if ( "" == contentValue.trim() ) {
-				content.innerText = "Click here to edit content...";
+				content.innerText = "Write down something cool";
 			}
 
 			focusElement.classList.remove('karma-text-element-focus');
@@ -132,7 +131,7 @@
 				contentValue = content.innerText ,
 				focusElement = this.el.querySelector( '.karma-editable-content' );
 
-			if ( "Click here to edit content..." == contentValue.trim() ) {
+			if ( "Write down something cool" == contentValue.trim() ) {
 				content.innerText = "";
 			}
 			if( false == focusElement.classList.contains( 'focus' ) ){
@@ -258,21 +257,7 @@
 
 		},
 
-		/**
-		 * @summary paste as plain text for pasting in text shortcode
-		 *
-		 * @param   {Object}    event
-		 *
-		 * @since 0.1.0
-		 * @return {void}
-		 */
-		pasteAsPlainText : function ( e ) {
 
-				e.preventDefault();
-				var text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
-				document.execCommand( 'insertText', false, text );
-
-		},
 
 	});
 

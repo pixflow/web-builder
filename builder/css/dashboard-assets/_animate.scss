@@ -1,0 +1,94 @@
+#karma-typography-setting {
+
+	.karma-panel {
+		z-index: 0;
+		display: none;
+	}
+
+	.karma-panel.current, .karma-panel.karma-element-exit {
+		z-index: 2;
+		display: flex;
+	}
+
+	.karma-panel.karma-element-enter {
+		display: flex;
+	}
+
+	.karma-element-animating .karma-element-exit,
+	.karma-element-animating .karma-element-enter {
+		-webkit-transition: opacity .3s , transform .3s ease-in-out;
+		-ms-transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+		transition: opacity .3s , transform .3s ;
+	}
+
+	.karma-element-exit.slideup {
+		-webkit-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	.karma-element-animating .karma-element-exit.slideup {
+		-webkit-transform: translateY(-5%);
+		-ms-transform: translateY(-5%);
+		transform: translateY(-5%);
+	}
+
+	.karma-element-exit.slidedown {
+		-webkit-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	.karma-element-animating .karma-element-exit.slidedown {
+		-webkit-transform: translateY(5%);
+		-ms-transform: translateY(5%);
+		transform: translateY(5%);
+	}
+
+	.karma-element-enter.slidedown {
+		-webkit-transform: translateY(-5%);
+		-ms-transform: translateY(-5%);
+		transform: translateY(-5%);
+	}
+
+	.karma-element-animating .karma-element-enter.slidedown {
+		-webkit-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	.karma-element-enter.slideup {
+		-webkit-transform: translateY(5%);
+		-ms-transform: translateY(5%);
+		transform: translateY(5%);
+	}
+
+	.karma-element-animating .karma-element-enter.slideup {
+		-webkit-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	.karma-element-enter.fade {
+		opacity: 0;
+	}
+
+	.karma-element-animating .karma-element-enter.fade {
+		opacity: 1;
+	}
+
+	.karma-element-exit.fade {
+		opacity: 1;
+	}
+
+	.karma-element-animating .karma-element-exit.fade {
+		opacity: 0;
+	}
+
+	.karma-element-animating .karma-panel.karma-element-enter {
+		-webkit-transition-delay: .3s !important;
+		-ms-transition-delay: .3s !important;
+		transition-delay: .3s !important;
+	}
+
+}

@@ -78,7 +78,7 @@
 		showBorder: function ( e ) {
 
 			e.stopPropagation();
-
+			this.$el.trigger( 'karma/after/clickElement' );
 			this.removeDropDownGizmo();
 			this.removeMoreSubmenu();
 			if( this.$el.hasClass('karma-active-section') ){
@@ -88,6 +88,8 @@
 			$('.karma-active-section .karma-active-column').removeClass('karma-active-column');
 			$('.karma-active-section').removeClass('karma-active-section');
 			this.$el.addClass('karma-active-section');
+
+
 
 		},
 
@@ -492,6 +494,44 @@
 			this.el.querySelector( '.karma-background-section' ).className = this.el.querySelector( '.karma-background-section' ).className.replace( regex, " karma-background-position-" + imagePosition.backgroundposition );
 
 		},
+
+		/**
+		 * @summary show and hide section white hide gizmo in tablet
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleontablet : function () {
+
+			var tabletVisible = this.getAttributes( ['visibleontablet'] ).visibleontablet;
+
+			if( "on" == tabletVisible ){
+				this.el.querySelector( 'section' ).classList.remove( "karma-deactive-on-tablet" );
+			}else{
+				this.el.querySelector( 'section' ).classList.add( "karma-deactive-on-tablet" );
+			}
+
+		},
+
+		/**
+		 * @summary show and hide section white hide gizmo in mobile
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleonmobile : function () {
+
+			var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+
+			if( "on" == mobileVisible ){
+				this.el.querySelector( 'section' ).classList.remove( "karma-deactive-on-mobile" );
+			}else{
+				this.el.querySelector( 'section' ).classList.add( "karma-deactive-on-mobile" );
+			}
+
+		}
 
 	} );
 

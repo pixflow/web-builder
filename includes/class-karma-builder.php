@@ -1,4 +1,11 @@
 <?php
+namespace KarmaBuilder ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
+use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+
 
 /**
  * The file that defines the core plugin class
@@ -135,6 +142,8 @@ class Karma_Builder {
 		$this->load_core();
 
 		$this->loader = Karma_Factory_Pattern::$builder_loader;
+		$typography = Karma_Typography::get_instance();
+		add_filter( 'upload_mimes', array( $typography, 'allow_upload_fonts' ), 1, 1 );
 
 	}
 
@@ -197,7 +206,12 @@ class Karma_Builder {
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-cache-manager.php';
 
 		/**
-		 * The class responsible for working with
+		 * The class responsible for working with font and typography manager
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-typography.php';
+
+		/**
+		 * The class responsible for working with stylesheets
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-stylesheet.php';
 
@@ -211,8 +225,7 @@ class Karma_Builder {
 		 * The class responsible for define all elements controllers
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-shortcode-base.php';
-
-
+		
 		/**
 		 * The class responsible for Loading templates in frontend
 		 */
@@ -242,8 +255,14 @@ class Karma_Builder {
 		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );
 
 		$wp_upload_directory = wp_upload_dir();
-		define( 'CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
-		define( 'CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
+		define( 'KARMA_CACHE_DIRECTORY_PATH', $wp_upload_directory['basedir'] . '/karma-cache'  );
+		define( 'KARMA_CACHE_DIRECTORY_URL', $wp_upload_directory['baseurl'] . '/karma-cache'  );
+
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_PATH', KARMA_CACHE_DIRECTORY_PATH . '/karma-global-style'  );
+		define( 'KARMA_GLOBAL_STYLE_DIRECTORY_URL', KARMA_CACHE_DIRECTORY_URL . '/karma-global-style'  );
+
+		define( 'KARMA_GLOBAL_STYLE_FILE_URL', KARMA_GLOBAL_STYLE_DIRECTORY_URL . '/global-style.css'  );
+		define( 'KARMA_GLOBAL_STYLE_FILE_PATH', KARMA_GLOBAL_STYLE_DIRECTORY_PATH . '/global-style.css'  );
 
 	}
 
@@ -259,7 +278,6 @@ class Karma_Builder {
 	private function set_locale() {
 
 		$plugin_i18n = Karma_Factory_Pattern::$builder_i18n;
-
 		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
 	}
@@ -279,6 +297,7 @@ class Karma_Builder {
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ), 10 , 1 );
 		add_action( 'wp_ajax_publish', array( $plugin_admin, 'publish' ) );
 		add_action( 'wp_ajax_save', array( $plugin_admin, 'save' ) );
+		add_action( 'wp_ajax_save_fonts_format', array( $plugin_admin, 'save_fonts_format' ) );
 		add_action( 'karma_before_load_builder_window', array( $plugin_admin, 'load_builder_assets' ) );
 
 	}
@@ -334,7 +353,7 @@ class Karma_Builder {
 	 */
 	public function run() {
 
-		if ( self::is_in_builder() && isset( $_GET['load_builder'] ) ){
+		if ( ( self::is_in_builder() && isset( $_GET[ 'load_builder' ] ) || Karma_Typography::check_typography_page() ) && is_user_logged_in() ) {
 			$this->prevent_from_loading_wordpress();
 		}
 		$this->set_builder_status();
@@ -392,11 +411,21 @@ class Karma_Builder {
 		do_action( 'karma_before_load_builder_window' );
 
 		$this->modify_wordpress_action();
-		$builder_views = Karma_Factory_Pattern::$builder_views;
-		$builder_views->load_builder_environment();
+		if( Karma_Typography::check_typography_page() ){
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_typography_assets' ], 999999 );
+			$typography = Karma_Typography::get_instance();
+			$typography->load_page_templates();
+		}else{
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_builder_assets' ], 999999 );
+			$builder_views = Karma_Factory_Pattern::$builder_views;
+			$builder_views->load_builder_environment();
+		}
+
 		die();
 
 	}
+
+
 
 	/**
 	 * Modify wordpress actions and hooks
@@ -425,7 +454,60 @@ class Karma_Builder {
 		// Handle wp_enqueue_scripts
 		remove_all_actions( 'wp_enqueue_scripts' );
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_builder_assets' ], 999999 );
+
+	}
+
+	/**
+	 * Enqueue styles and scripts for typography
+	 *
+	 * @since    0.1.0
+	 *
+	 * @return void
+	 */
+	public function enqueue_typography_assets(){
+
+		wp_print_scripts( array( 'jquery', 'wp-util', 'backbone' ) );
+		wp_enqueue_script( 'karma-range-slider', KARMA_BUILDER_URL . 'builder/js/rangeslider.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-jquery.nicescroll', KARMA_BUILDER_URL . 'builder/js/jquery.nicescroll.min.js', array( 'jquery' ), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'wbfont', KARMA_BUILDER_URL . 'builder/js/webfont.js', array(), KARMA_BUILDER_VERSION, 'all' );
+		wp_enqueue_script( 'karma-dashboard', KARMA_BUILDER_URL . 'builder/js/karma-typography.min.js', array(
+			'jquery',
+			'backbone'
+		), KARMA_BUILDER_VERSION, false );
+        $stylesheet = Karma_Factory_Pattern::$stylesheet;
+        wp_enqueue_style( "google-font", $stylesheet->create_google_font_link(), array(), KARMA_BUILDER_VERSION, 'all' );
+		wp_enqueue_style( 'karma-builder-styles', KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), KARMA_BUILDER_VERSION, false );
+		wp_enqueue_style( 'karma-dashboard-styles', KARMA_BUILDER_URL . 'builder/css/dashboard-style.css', array(), KARMA_BUILDER_VERSION, false );
+		$this->localize_google_fonts();
+		wp_enqueue_media();
+
+	}
+
+	/**
+	 * Localize google fonts for typography
+	 *
+	 * @since    0.1.0
+	 *
+	 * @return bool
+	 */
+	public function localize_google_fonts() {
+
+		$url     = KARMA_BUILDER_URL . '/builder/font/google-fonts.json';
+		$request = wp_remote_get( $url );
+
+		if ( is_wp_error( $request ) ) {
+			return false;
+		}
+
+		$content         = wp_remote_retrieve_body( $request );
+		$typography      = Karma_Typography::get_instance();
+		$typographyModel = $typography->typography_model;
+
+		wp_localize_script( 'karma-dashboard', 'typographyParams', array(
+			'googleFonts'     => $content,
+			'typographyModel' => $typographyModel,
+			'ajaxUrl'         => admin_url( 'admin-ajax.php' )
+		) );
 
 	}
 
@@ -581,7 +663,9 @@ class Karma_Builder {
 	 * @return    Karma_Builder_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
+
 		return $this->loader;
+
 	}
 
 	/**
@@ -591,7 +675,42 @@ class Karma_Builder {
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
+
 		return KARMA_BUILDER_VERSION;
+
+	}
+
+	/**
+	 * Convert the element into their valid name
+	 *
+	 * @param   string  $element_name       Element name
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return  string    Element valid name
+	 */
+	public function get_element_valid_name( $element_name ){
+
+		$element_name = explode( '_', $element_name );
+		$element_class_name = array_map( array( $this, 'create_validate_element_name' ), $element_name );
+		$element_class_name = implode( '_', $element_class_name );
+		return $element_class_name;
+
+	}
+
+	/**
+	 * convert all part's of array to uppercase
+	 *
+	 * @param   string  $name       value of array
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string
+	 */
+	private function create_validate_element_name( $name ){
+
+		return ucfirst( $name );
+
 	}
 
 }

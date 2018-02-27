@@ -1,4 +1,11 @@
 <?php
+
+namespace KarmaBuilder\Elements\DescribeElement;
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Elements\Karma_Column;
+use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
+
 /**
  * This file describes the Column element
  *
@@ -103,7 +110,7 @@ class Karma_Column_Describe extends Karma_Column {
 				"params"    => array(
 					array(
 						'type'      => 'icon-text',
-						'icon'      => karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+						'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
 						'text'      => 'Column',
 						'showIndex' => 'true',
 						'form'      => 'setting-panel',
@@ -118,6 +125,27 @@ class Karma_Column_Describe extends Karma_Column {
 			array(
 				"type"		=> "leftSpacingGizmo",
 				"className"	=> "section-left-spacing",
+			),
+			array(
+				"type"		=> "innerGizmo",
+				"className"	=> "column-gizmo-group-responsive",
+				"params"	=> 	array(
+
+					array(
+						'type' => 'hidden',
+						'form' => 'visibility',
+						'device' => 'karma-responsive'
+					),
+					array(
+						'type'		=> 'text',
+						'form'		=> 'column-responsive-panel',
+						'className'	=> 'column-responsive-setting',
+						'params'=> array(
+							'value'		=> esc_attr( 'Column', 'karma' ),
+							'mode'		=> 'count',
+						)
+					),
+				),
 			),
 		);
 

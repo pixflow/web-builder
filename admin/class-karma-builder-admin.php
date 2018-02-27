@@ -1,5 +1,14 @@
 <?php
 
+namespace KarmaBuilder\AdminArea\BuilderAdmin ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
+use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -27,10 +36,7 @@ class Karma_Builder_Admin {
 	 *
 	 * @since    0.1.0
 	 */
-	public function __construct() {
-
-
-	}
+	public function __construct() {}
 
 	/**
 	 * Register the stylesheets for the admin area.
@@ -116,19 +122,46 @@ class Karma_Builder_Admin {
 	 */
 	public function publish(){
 
+
 		echo '{ "result" : "true", "msg" : "success" }';
 		wp_die();
-		$models = $_POST['models'];
-		$id = $_POST['id'];
-		$builder_core = Karma_Builder_Core::get_instance();
-		$models = json_decode( stripslashes( $models ), true );
-		if ( $builder_core->publish_post( $models, $id ) ) {
-			echo '{ "result" : "true", "msg" : "success" }';
-		} else {
+		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
 			echo '{ "result" : "false", "msg" : "error" }';
+		} else {
+			$models =  $_POST['models'];
+			$id = sanitize_text_field( $_POST['id'] );
+			$builder_core = Karma_Builder_Core::get_instance();
+			$models = json_decode( stripslashes( $models ), true );
+			if ( $builder_core->publish_post( $models, $id ) ) {
+				echo '{ "result" : "true", "msg" : "success" }';
+			} else {
+				echo '{ "result" : "false", "msg" : "error" }';
+			}
+			Karma_Factory_Pattern::$builder_loader->set_is_karma_page( $id, true );
+			Cache_Manager::remove_cache_file( $id );
 		}
-		Karma_Factory_Pattern::$builder_loader->set_is_karma_page( $id, true );
-		Cache_Manager::remove_cache_file( $id );
+		wp_die();
+	}
+
+	/**
+	 * Save the typography and fonts
+	 *
+	 * @since     0.1.1
+	 * @return    void
+	 */
+	public function save_fonts_format() {
+
+		wp_die();
+		if( isset( $_POST[ 'fonts' ] ) && isset( $_POST[ 'typography' ] ) ){
+			$typography_manager = Karma_Typography::get_instance();
+			$fonts      = sanitize_text_field ( json_encode( $_POST[ 'fonts' ] ) );
+			$typography = sanitize_text_field( json_encode( $_POST[ 'typography' ] ) );
+			$custom_fonts = isset( $_POST[ 'customFonts' ] ) ? sanitize_text_field( json_encode( $_POST[ 'customFonts' ] ) ) : '[]';
+			$typography_manager->save_typography_font_formats( $typography )->save_fonts( $fonts )->save_custom_fonts( $custom_fonts );
+			$file = File_System::get_instance();
+			$file->delete_file( KARMA_GLOBAL_STYLE_FILE_PATH );
+		}
+
 		wp_die();
 
 	}
@@ -143,16 +176,20 @@ class Karma_Builder_Admin {
 
 		echo '{ "result" : "true", "msg" : "success" }';
 		wp_die();
-		$models = $_POST['models'];
-		$id = $_POST['id'];
-		$builder_core = Karma_Builder_Core::get_instance();
-		$models = json_decode( stripslashes( $models ), true );
-		if ( $builder_core->save_post( $models, $id ) ) {
-			echo '{ "result" : "true", "msg" : "success" }';
-		} else {
+		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){
 			echo '{ "result" : "false", "msg" : "error" }';
+		} else {
+			$models = sanitize_text_field( $_POST['models'] );
+			$id = sanitize_text_field( $_POST['id'] );
+			$builder_core = Karma_Builder_Core::get_instance();
+			$models = json_decode( stripslashes( $models ), true );
+			if ( $builder_core->save_post( $models, $id ) ) {
+				echo '{ "result" : "true", "msg" : "success" }';
+			} else {
+				echo '{ "result" : "false", "msg" : "error" }';
+			}
+			Cache_Manager::remove_cache_file( $id );
 		}
-		Cache_Manager::remove_cache_file( $id );
 		wp_die();
 
 	}

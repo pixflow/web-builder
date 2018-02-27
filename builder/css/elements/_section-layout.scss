@@ -1,9 +1,21 @@
 .karma-builder-element {
-	&[data-name="karma_section"] {
+
+	&[ data-name="karma_section" ] {
 		position: relative;
 	}
 
 }
+.karma-builder-environment{
+
+	.karma-builder-element {
+
+		&[ data-name="karma_section" ] {
+			cursor: all-scroll;
+		}
+
+	}
+}
+
 .karma-background-section{
 	background-repeat: no-repeat;
 

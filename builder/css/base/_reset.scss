@@ -38,6 +38,14 @@
 
 }
 
+#karma-builder-layout{
+	div,ul,article,aside,details,figcaption,figure,section,input[class *="karma"]{
+		&:before,&:after{
+			content: unset;
+		}
+	}
+}
+
 #karma-add-element{
 	html, body, span, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,

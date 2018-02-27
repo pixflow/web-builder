@@ -1,0 +1,383 @@
+#karma-typography-setting{
+	#karma-font-manager {
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: flex-start;
+		text-align: left;
+		z-index: 0;
+
+		.karma-google-fonts-list{
+
+			@include flexbox( left, flex-start, space-between );
+			@extend .karma-builder-shadow-box-3;
+			background-color: #fff;
+			border-radius: 3px;
+			display: none;
+			height: 500px;
+			left: 0;
+			padding: 9px 11px;
+			position: absolute;
+			top: 90px;
+			width: 280px;
+
+			&.show-font-dropdown{
+				li{
+					opacity: 1;
+				}
+				opacity: 0;
+				display: flex;
+				transition: opacity .2s .1s, top .3s ;
+			}
+			&.slide-down-font-drop-down{
+				li{
+					opacity: 1;
+				}
+				opacity: 1;
+				top: 77px;
+				transition: opacity .2s , top .3s ;
+			}
+
+			.karma-fonts-search{
+				position: relative;
+				i{
+					@include box( 13px );
+					background: transparent url(../../builder/media/svg/search.svg) no-repeat center;
+					background-size: contain;
+					display: block;
+					position: absolute;
+					right: 10px;
+					top: 9px;
+				}
+
+				input{
+					border: none;
+					border-bottom: 1px solid #D9DDE0;
+					font-size: 12px;
+					height: 38px;
+					line-height: 14px;
+					padding: 0 5px;
+					width: 100%;
+					&::-webkit-input-placeholder{
+						color: #9CA4AC;;
+					}
+					&:focus{
+						outline: none;
+						&::-webkit-input-placeholder{
+							color: #fff;
+						}
+					}
+				}
+
+			}
+
+			ul{
+				list-style: none;
+				margin-top: 10px;
+				padding: 0;
+				.karma-google-font{
+					@extend .karma-builder-title-2;
+					align-items: center;
+					border-radius: 4px;
+					cursor: pointer;
+					display: flex;
+					height: 43px;
+					justify-content: space-between;
+					padding: 6px 10px;
+					transition: background-color .2s, opacity .1s;
+
+					svg{
+						margin-right: 10px;
+						opacity: 0;
+						transform: rotate( 180deg );
+						transition: margin .2s, opacity .1s;
+					}
+
+					&:hover,
+					&.karma-active-font{
+						background-color: rgba( $builder-accent-color, .1 );
+
+						svg{
+							margin-right: 4px;
+							opacity: 1;
+						}
+					}
+
+					&.open-font-weight{
+						background-color: rgba($builder-accent-color,0.1);
+					}
+				}
+			}
+
+			.right-side{
+				height: 100%;
+				max-width: 252px;
+				width: 100%;
+
+				.karma-google-fonts-holder{
+					height: calc(100% - 50px);
+					overflow: hidden;
+				}
+
+			}
+
+			.left-side{
+				display: none;
+				height: 100%;
+				width: 40%;
+				.current-font-weight{
+					display: flex;
+					flex-direction: column;
+					height: 100%;
+					justify-content: space-between;
+					ul{
+						display: block;
+						height: calc( 100% - 110px );
+						margin-top: 17px;
+						overflow: hidden;
+
+						li{
+							margin-bottom: 21px;
+							.font-weight-check{
+								display: none;
+							}
+							 .checkbox-style {
+								background-color: #fff;
+								border: 1px solid #9CA4AC;
+								border-radius: 2px;
+								cursor: pointer;
+								display: inline-block;
+								height: 13px;
+								margin: 0 5px 0 0;
+								position: relative;
+								 width: 13px;
+
+								svg{
+									left: 50%;
+									opacity: 0;
+									position: absolute;
+									top: 50%;
+									transform: translate(-50%, -50%);
+								}
+							}
+							&.active-font-weight  .checkbox-style{
+								background-color: $builder-accent-color;
+								border-color: $builder-accent-color;
+							}
+							&.active-font-weight .checkbox-style svg {
+								opacity: 1;
+							}
+							span{
+								@extend .karma-builder-title-4;
+								color: $builder-main-color;
+								margin-left: 5px;
+								text-transform: capitalize;
+							}
+						}
+					}
+					button{
+						display: flex;
+						text-align: center;
+						align-items: center;
+						justify-content: center;
+						color: $builder-main-color-2;
+						cursor: no-drop;
+						background-color: #fff;
+						border-radius: 2px;
+						transition-duration: .2s;
+						border: 1px solid $builder-main-color-2;
+						height: 40px;
+						margin-bottom: 15px;
+						margin-left: 23px;
+						transition: 0.3s;
+						width: 125px;
+					}
+
+					&.font-weight-selected{
+						button{
+							color: $builder-accent-color;
+							cursor: pointer;
+							border: 1px solid $builder-accent-color;
+							&:hover{
+								background-color: $builder-accent-color;
+								color: #fff;
+								transition: 0.3s;
+							}
+						}
+
+					}
+				}
+			}
+
+			.nicescroll-rails{
+				left: 5px !important;
+			}
+
+			&.show-google-font-weight{
+				width: 495px;
+				.left-side{
+					display: flex;
+				}
+			}
+		}
+
+		.karma-google-fonts{
+			position: relative;
+		}
+
+		.karma-font-manger-box-style {
+			@include flexbox(left, center, center);
+			@include box(275px, 65px);
+			background-color: #fff;
+			border-radius: 4px;
+			cursor: pointer;
+			box-shadow: 0 4px 15px 0 rgba(57, 73, 89, 0.2);
+		}
+
+		.karma-google-fonts-title {
+			.google-icon {
+				flex-basis: 10%;
+			}
+			.karma-google-title {
+				color: $builder-main-color;
+				flex-basis: 70%;
+				font-family: $builder-medium-font;
+				font-size: 14px;
+			}
+			.karma-dropdown-icon {
+				@include box(25px, 25px);
+				@include flexbox(center, center, center);
+				border: 1px solid $builder-main-color-2;
+				border-radius: 100px;
+				cursor: pointer;
+				svg{
+					margin-left: 1px;
+					margin-top: 2px;
+					transform: scale(0.8);
+					.bottom-arrow {
+						stroke: $builder-main-color-2;
+					}
+				}
+
+			}
+		}
+
+		.karma-fonts-list {
+			@include box(100%);
+			.karma-font-list {
+				@include box(100%, auto);
+				flex-direction: column;
+				margin-top: 13px;
+				padding: 18px 0px 17px;
+				.karma-font-name-part {
+					@include flexbox(center, center, center);
+					width: 100%;
+					.karma-font-weight-count {
+						color: $builder-main-color-1;
+						cursor: pointer;
+						flex-basis: 10%;
+						font-size: 12px;
+					}
+					.karma-drop-down-icon{
+						margin: 0 5px;
+						transform: rotate( 0deg );
+						svg {
+							transform: scale(.8);
+						}
+					}
+
+					.bottom-arrow {
+						stroke: $builder-main-color-3;
+					}
+
+					.karma-delete-font{
+
+						svg{
+							cursor: pointer;
+							#delete-element-icon {
+								transition: fill .2s;
+								fill: $builder-main-color-3;
+							}
+							&:hover #delete-element-icon{
+								fill: $builder-main-color-2;
+							}
+						}
+
+					}
+
+
+
+					.karma-font-name {
+						color: $builder-main-color;
+						flex-basis: 85%;
+						font-size: 20px;
+						text-align: left;
+					}
+				}
+
+				.karma-font-details-part {
+					display: none;
+					margin-top: -10px;
+					padding-top: 23px;
+					width: 100%;
+
+					ul {
+						@include flexbox(left, flex-start, flex-start);
+						width: 100%;
+						li {
+							color: $builder-main-color;
+							font-family: inherit;
+							font-size: 12px;
+							list-style-image: url('../../builder/media/svg/blue-tik.svg');
+							margin-right: 32px;
+							text-transform: capitalize;
+						}
+					}
+				}
+
+				&.karma-open-font-weight-list{
+					.karma-font-name-part{
+						.karma-drop-down-icon{
+							display: inline-block;
+							transform: rotate(180deg);
+
+							.bottom-arrow{
+								stroke: rgba( $builder-main-color, .5 );
+							}
+						}
+						.karma-delete-font{
+
+							#delete-element-icon{
+								fill: $builder-main-color;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.karma-footer-info {
+			@include flexbox(left, center, space-between);
+			margin-top: 30px;
+			width: 100%;
+			.karma-upload-custom-font {
+				@include flexbox(left, center, flex-start);
+				color: $builder-accent-color;
+				cursor: pointer;
+				flex-basis: 71%;
+				font-family: $builder-medium-font;
+				font-size: 14px;
+				line-height: 0;
+				span {
+					margin-right: 7px;
+				}
+			}
+
+			.karma-pay-attention {
+				color: $builder-main-color-2;
+				font-family: $builder-medium-font;
+				font-size: 12px;
+			}
+
+		}
+	}
+}

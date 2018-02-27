@@ -1,4 +1,11 @@
 <?php
+namespace KarmaBuilder\BuilderLoader ;
+
+/** Importing, Aliases, and Name Resolution */
+use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
+use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
+
 
 /**
  * Register all actions and filters for the plugin
@@ -21,6 +28,8 @@
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
+
+
 class Karma_Builder_Loader {
 
 
@@ -54,6 +63,9 @@ class Karma_Builder_Loader {
 		'column',
 		'image',
 		'text',
+		'button',
+		'image_box',
+		'video_box'
 	);
 
 	/**
@@ -148,7 +160,7 @@ class Karma_Builder_Loader {
 	public function prepare_builder(){
 
 		if( 'true' == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
-			remove_filter('the_content','wpautop');
+			remove_filter( 'the_content', 'wpautop' );
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
 		}
@@ -170,6 +182,7 @@ class Karma_Builder_Loader {
 		$builder_views->load_builder_iframe_templates();
 		$stylesheet = Karma_Factory_Pattern::$stylesheet;
 		$stylesheet->create_default_styles();
+
 		// Apply filter
 		add_filter('body_class', array( $this ,'add_custom_body_classes') );
 
@@ -186,7 +199,7 @@ class Karma_Builder_Loader {
 	 */
 	function add_custom_body_classes( $classes ) {
 
-		$classes[] = 'karma-builder-environment';
+		$classes[] = 'karma-builder-environment karma-device-mode-desktop';
 		return $classes;
 	}
 
@@ -298,6 +311,7 @@ class Karma_Builder_Loader {
 
 			}
 
+			$class_name = '\\KarmaBuilder\Elements\DescribeElement\\' . $class_name ;
 			$class_name::get_instance() ;
 
 		}
@@ -345,7 +359,8 @@ class Karma_Builder_Loader {
 	private function localize_builder_param(){
 
 		$builder_value = array(
-				'ajaxUrl' => admin_url( 'admin-ajax.php' )
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'alertIconUrl'  => KARMA_BUILDER_URL . '/builder/media/alerticon.png'
 		);
 
 		wp_localize_script( $this->plugin_name, 'builderParams', json_encode( $builder_value ) );
@@ -488,12 +503,15 @@ class Karma_Builder_Loader {
 	 */
 	private function add_default_attributes( $element_name, $element_attributes ) {
 
-		$element_name = explode( '_', $element_name );
-		$element_class_neme = ucfirst( $element_name[ 0 ] ) . '_' . ucfirst( $element_name[ 1 ] );
-		$default_attributes = $element_class_neme::get_element_default_attributes();
+		$element_class_name = Karma_Factory_Pattern::$builder->get_element_valid_name( $element_name );
+		$element_class_name = '\\KarmaBuilder\Elements\\' . $element_class_name;
+		$default_attributes = $element_class_name::get_element_default_attributes();
 		$atributes = array_merge( $default_attributes, $element_attributes );
+
 		return $atributes;
 
 	}
+
+
 
 }

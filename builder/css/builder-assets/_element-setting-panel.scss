@@ -1,9 +1,9 @@
 /*** Style of setting panel container ***/
 #karma-element-setting-panel-container {
 	display: flex;
+	left: 710px;
 	max-width: 330px;
 	position: fixed;
-	left: 710px;
 	top: 90px;
 	z-index: $level-20;
 
@@ -22,14 +22,16 @@
 
 		.karma-element-setting-panel-header {
 			@include box( 285px, 46px );
-			background: linear-gradient( 270deg, #8876FC 0%, $builder-accent-color 100% );
+			background: #fff;
 			border-radius: 4px 4px 0 0;
+			box-shadow: 0 2px 4px 0 rgba( $builder-main-color, 0.1 );
 			cursor: all-scroll;
 			position: relative;
+			z-index: 1;
 
 			.karma-element-setting-panel-header-title {
 				@extend .karma-builder-title-3;
-				color: #fff;
+				color: $builder-main-color;
 				font-family: $builder-medium-font;
 				padding: 16px 0 15px 20px;
 				text-align: left;
@@ -43,12 +45,10 @@
 				position: absolute;
 
 				.revert-svg {
-					display: none;
 					@extend .center-both-flex;
 					@include box( 24.49px, 24.49px );
 					@include element_direction( 9.51px, 7px );
-					background-color: rgba( 255, 255, 255, 0.18 );
-					border-radius: 19px;
+					display: none;
 					margin-right: 10px;
 					svg {
 						* {
@@ -61,12 +61,10 @@
 					@extend .center-both-flex;
 					@include box( 24.49px, 24.49px );
 					@include element_direction( 9.51px, 7px );
-					background-color: rgba( 255, 255, 255, 0.18 );
-					border-radius: 19px;
 					margin-right: 5px;
 					svg {
 						* {
-							fill: #fff;
+							stroke: $builder-main-color-1;
 						}
 					}
 				}

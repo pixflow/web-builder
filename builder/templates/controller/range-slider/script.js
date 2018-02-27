@@ -17,7 +17,7 @@ jQuery( document ).off( 'karma_finish_form_builder.range' ).on('karma_finish_for
 			polyfill: false
 
 		})
-		.on( 'input', function () {
+		$karmaRangeSlider.on( 'input', function () {
 
 			$karmaRangeInput[0].value = this.value;
 			clearTimeout( changingSlider );

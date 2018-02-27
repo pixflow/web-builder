@@ -8,8 +8,9 @@
 			'karma/after/deleteElement'                        	: 'createPlaceholderOnDelete',
 			'click .karma-drop-down-icon'						: 'openDropDownGizmo' ,
 			'click'												: 'showElementGizmo',
+			'click.childGizmo .karma-have-child-gizmo'			: 'showElementChildGizmo',
 			'click.showGizmo .karma-more-setting'				: 'showGizmoRelatedToMore',
-			'click .karma-drop-down-box'						: 'closeDropDownBox' ,
+			'click .karma-drop-down-box'						: 'updateDropDownBox' ,
 			'click .karma-delete-element-setting'				: "deleteElementBox",
 			'click .karma-duplicate-element-setting'			: "duplicateElement",
 			'click.removeActiveElement'         			    : 'callBlur',
@@ -18,6 +19,9 @@
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
+			'karma/after/clickElement'							: 'updateHiddenGizmoStatus'
+
+
 
 		},
 
@@ -64,11 +68,9 @@
 		 */
 		callBlur : function () {
 
-			if ( 'karma_text' != this.model.get( 'shortcode_name' ) ){
+			if ( null == this.el.querySelector( 'div[contenteditable=true]' ) ){
 				document.activeElement.blur();
 			}
-
-			this.closeNewSectionPanel();
 
 		},
 
@@ -88,6 +90,7 @@
 					zIndex  : 999999,
 					helper  : 'clone',
 					appendTo: '#karma-builder-layout',
+					delay   : 100,
 					cancel  : ".karma-active-element",
 					helper: function( event ) {
 						return $( event.target ).closest(".karma-builder-element").clone();
@@ -102,7 +105,7 @@
 								+ originalElement.offsetWidth
 								+ 'px;height:'
 								+ originalElement.offsetHeight
-								+ 'px;transform:scale(.7);opacity:.7';
+								+ 'px;transform:scale(.9);opacity:.7;';
 						helperNode.setAttribute( 'style', newStyle );
 						originalElement.parentElement.classList.add( 'karma-self-placeholder' );
 
@@ -121,7 +124,6 @@
 						var dropArea        = document.querySelector( '.karma-show-placeholder' ),
 							originalElement = $( this )[ 0 ],
 							orginalContainer = originalElement.closest(".karma-builder-element");
-
 						if ( null != dropArea && dropArea.classList.contains('karma-element-placeholder-' + orginalContainer.getAttribute('data-element-key') ) ) {
 							orginalContainer.classList.remove( 'karma-self-placeholder' );
 						} else if ( null != dropArea && dropArea.classList.contains( 'karma-alignment-placeholder' ) ){
@@ -150,14 +152,15 @@
 		alignmentPlaceholder :function ( originalElement, dropArea, event ){
 
 			var alignPosition = document.elementFromPoint( event.clientX, event.clientY ).getAttribute( 'data-element-align');
-				if ( undefined != alignPosition ) {
-					this.setAttributes( {'elementalign' : alignPosition }, false );
-				}
-				originalElement. closest( '.karma-builder-element').classList.remove( 'karma-self-placeholder' );
-				dropArea.classList.remove( 'karma-show-placeholder' );
 
-			},
+			if ( undefined != alignPosition ) {
+				this.setAttributes( {'elementalign' : alignPosition }, false );
+			}
 
+			originalElement. closest( '.karma-builder-element').classList.remove( 'karma-self-placeholder' );
+			dropArea.classList.remove( 'karma-show-placeholder' );
+
+		},
 
 		/**
 		 * @summary set Element alignment to element
@@ -224,7 +227,7 @@
 				oldParentKey     = viewObject.model.get( 'element_key' ),
 				newParentKey     = dropArea.closest( '.karma-builder-element' ).getAttribute( 'data-element-key' ),
 				parentColumnView = viewObject.$el.parents( '.karma-builder-element' ).backboneView(),
-				elementID        = viewObject.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + viewObject.model.get( 'element_key' ),
+				elementID        = viewObject.model.get( 'shortcode_name' ).replace( /_/g, '-' ) + '-' + viewObject.model.get( 'element_key' ),
 				script           = $( '#script-' + elementID ).clone(),
 				style            = $( '#style-' + elementID ).clone();
 
@@ -314,7 +317,6 @@
 			var getName    = this.model.get( 'shortcode_name' ),
 				elementKey = this.model.get( 'element_key' ),
 				placeholderHTML;
-
 			if ( 'karma_column' != getName && 'karma_section' != getName ){
 				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate,
 					{
@@ -324,6 +326,7 @@
 				if ( 1 == this.model.get( 'order' ) ){
 					this.el.insertAdjacentHTML( 'beforebegin', placeholderHTML );
 				}
+
 				this.createSelfPlaceholder();
 			}else if ( 'karma_column' == getName && 0 == karmaBuilder.karmaModels.where( { parent_key: this.model.get( 'element_key' ) } ).length ){
 				placeholderHTML = KarmaView.getUnderscoreTemplate( this.placeholderTemplate, { className: 'karma-column-placeholder' } );
@@ -336,6 +339,9 @@
 					}
 				);
 				this.el.insertAdjacentHTML( 'afterend', placeholderHTML );
+				if ( 1 == this.model.get( 'order' ) ){
+					this.el.insertAdjacentHTML( 'beforebegin', placeholderHTML );
+				}
 
 			}
 
@@ -403,7 +409,7 @@
 		destroy: function (){
 
 			var parentKey   = this.model.get( 'parent_key' ),
-				element_key = this.model.get( 'element_key' ),
+				elementKey = this.model.get( 'element_key' ),
 				elementName = this.model.get( 'shortcode_name' );
 
 			this.beforeDeleteElements();
@@ -420,7 +426,7 @@
 
 			// Remove view from DOM
 			this.remove();
-			this.removeExtraAssets( element_key );
+			this.removeExtraAssets( elementName.replace( /_/g, '-') + '-' + elementKey );
 			karmaBuilder.karmaModels.remove( this.model );
 			Backbone.View.prototype.remove.call( this );
 			this.afterDeleteElement( parentKey, elementName );
@@ -474,6 +480,7 @@
 
 			if ( '' == parentKey ){
 				KarmaView.reorderSections();
+				KarmaView.$el.trigger('karma/after/sortSections');
 			}else{
 				KarmaView.$el.trigger( 'karma/after/dropElement/', [ parentKey ] );
 			}
@@ -533,10 +540,11 @@
 			var that                   = this,
 				duplicatedElementModel = {
 					parent : JSON.parse( JSON.stringify( that.model ) ),
-					childes: that.getChildElements( that.model.get( 'element_key' ) )
+					childes: that.getChildElements( that.model.get( 'element_key' ) ),
+					grid: ( 'karma_section' == that.model.get('shortcode_name') ) ? that.currentGrid() : []
 				};
 
-			KarmaView.renderElementsChildes( duplicatedElementModel, this );
+			KarmaView.renderElements( KarmaView.getPlaceholder( this ), duplicatedElementModel );
 
 
 		},
@@ -592,6 +600,7 @@
 			}
 
 		},
+
 
 		/**
 		 * @summary cancel delete element on click in cancel box
@@ -745,6 +754,8 @@
 		showSettingPanel : function ( e ) {
 
 			e.stopPropagation();
+			this.removeElementChildGizmo();
+			$( ".open-drop-down-gizmo" ).removeClass( 'open-drop-down-gizmo' );
 			var form = $( e.currentTarget ).data('form'),
 				that = this;
 
@@ -787,7 +798,7 @@
 		 */
 		elementSelector: function (){
 
-			return this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
+			return this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
 		},
 
@@ -824,6 +835,7 @@
 			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
 				regex    = /(.*?){(.*?)}/g,
 				pattern  = new RegExp( regex ),
+				selector = selector.trim(),
 				content  = '',
 				result;
 
@@ -847,9 +859,9 @@
 					cssProperty  = {};
 
 				_.each( splitContent, function ( property ){
-					var cssString = property.split( ':' );
-					if ( "" != cssString[ 0 ] ){
-						cssProperty[ cssString[ 0 ] ] = cssString[ 1 ];
+					var cssString = property.split(/(.*?)(:([^\/]))/g);
+					if ( "" != cssString[ 1 ] &&  undefined != cssString[ 1 ] ){
+						cssProperty[ cssString[ 1 ] ] = cssString[ 3 ] + cssString[ 4 ] ;
 					}
 				} );
 
@@ -876,9 +888,9 @@
 		 */
 		removeOldSelector: function ( selector, oldStyle ){
 
-			var pattern = selector + '{(.*?)}',
+			var pattern = selector.replace( /\*/g , '\\*' ) + '{(.*?)}',
 				regex   = new RegExp( pattern, 'g' );
-
+			
 			return oldStyle.replace( regex, "" );
 
 		},

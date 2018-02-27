@@ -1,4 +1,4 @@
-<div class="element-panel-section-container karma-element-panel-list karma-active-tab" >
+<div class="element-panel-section-container karma-element-panel-list" >
 	<# print( karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( 'karma-element-panel-top-header', {}, 1 ) ); var i=0; #>
 		<div class="karma-elements karma-isotope" >
 			<# _.each( data.elementInfo, function( element ){
@@ -9,21 +9,15 @@
 							<div class="karma-element-single-element-icon" style="background-image: url( <# print( element.icon ); #> );"></div>
 							<div class="karma-element-single-element-name" >
 							<span>
-								<# print( element.elementName.replace( 'karma_', '', element.elementName ) ); #>
+								<#   var elementName = element.elementName.replace( 'karma_', '', element.elementName ) ;
+										print( elementName.replace( /_/g,' ' ) ) #>
 							</span>
 							</div>
 						</div>
 
 					<# } #>
 			<# }); #>
-				<div class="karma-element-single-element karma-deactive-element" data-id="creative60 premium60" data-category="video" data-element-name="Video" >
-					<div class="karma-element-single-element-icon" style="background-image: url( <?php echo KARMA_BUILDER_URL . 'builder/media/svg/video-element.svg' ?> );"></div>
-					<div class="karma-element-single-element-name" >
-							<span>
-								Video
-							</span>
-					</div>
-				</div>
+
 				<div class="karma-element-single-element karma-deactive-element" data-id="shop32 premium30" data-category="icon" data-element-name="Icon" >
 					<div class="karma-element-single-element-icon" style="background-image: url( <?php echo KARMA_BUILDER_URL . 'builder/media/svg/icon-element.svg' ?> );"></div>
 					<div class="karma-element-single-element-name" >

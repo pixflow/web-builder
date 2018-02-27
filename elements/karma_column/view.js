@@ -109,6 +109,10 @@
 			$('.karma-active-column').removeClass('karma-active-column');
 			this.$el.addClass('karma-active-column');
 			KarmaView.$el.trigger( 'karma/callParent', [ this.el, ['showBorder'], 2 ] );
+			if( null == this.el.querySelector( '.karma-builder-element' ) ){
+				this.$el.trigger( 'karma/after/clickElement' );
+			}
+
 
 		},
 
@@ -158,6 +162,7 @@
 
 			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.attributes.shortcode_attributes.element_key,
 				defaultClasses =  elementClass + " karma-column  "  + this.model.attributes.shortcode_attributes.extraclass;
+
 				this.el.firstElementChild.setAttribute( 'class', defaultClasses );
 
 		},
@@ -375,6 +380,46 @@
 			moveToColumn.append( style );
 
 		},
+
+		/**
+		 * @summary show and hide column white hide gizmo in tablet
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleontablet : function () {
+
+			var tabletVisible = this.getAttributes( ['visibleontablet'] ).visibleontablet;
+
+			if( "on" == tabletVisible ){
+				this.el.querySelector( ".karma-column" ).classList.remove( "karma-deactive-on-tablet" );
+			}else{
+				this.el.querySelector(".karma-column").classList.add( "karma-deactive-on-tablet" );
+			}
+
+		},
+
+
+		/**
+		 * @summary show and hide column white hide gizmo in mobile
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleonmobile : function () {
+
+			//var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+			var mobileVisible = this.model.attributes.shortcode_attributes.visibleonmobile;
+
+			if( "on" == mobileVisible ){
+				this.el.querySelector( ".karma-column" ).classList.remove( "karma-deactive-on-mobile" );
+			}else{
+				this.el.querySelector( ".karma-column" ).classList.add( "karma-deactive-on-mobile" );
+			}
+
+		}
 
 	});
 })(jQuery,karmaBuilder);

@@ -1,0 +1,74 @@
+.karma-builder-element {
+
+	.karma-button-container {
+		cursor: pointer;
+		width: fit-content;
+		&.karma-button-fill {
+
+			@include flexbox( center, center, center );
+			border-style: solid;
+			border-width: 2px;
+			height: 42px;
+			padding: 9px 22px;
+			transition: 0.2s;
+			&:hover {
+				box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
+				transition: 0.2s;
+			}
+		}
+		
+		&.karma-button-outline{
+			@include flexbox( center, center, center );
+			background-color: transparent;
+			border-style: solid;
+			border-width: 2px;
+			height: 42px;
+			padding: 9px 22px;
+			transition:0.2s;
+				&:hover{
+					opacity: 0.7;
+					transition:0.2s;
+				}
+		}
+
+
+		&.karma-button-fill{
+			.karma-button-link{
+				color: #fff;
+				font-family : $builder-medium-font ;
+				font-size: 15px;
+				line-height: 25px;
+
+				span{
+					display: inline-block;
+					min-width: 20px;
+					white-space: nowrap;
+					&:focus{
+						outline: none;
+					}
+				}
+			}
+		}
+
+		&.karma-button-outline{
+			.karma-button-link{
+				color: $builder-accent-color;
+				font-family : $builder-medium-font ;
+				font-size: 15px;
+				line-height: 25px;
+				span{
+					display: inline-block;
+					min-width: 20px;
+					&:focus{
+						outline: none;
+					}
+				}
+			}
+		}
+
+	}
+
+}
+
+
+

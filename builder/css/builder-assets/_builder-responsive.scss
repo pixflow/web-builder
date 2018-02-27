@@ -1,0 +1,92 @@
+@media (max-width: 768px){
+	.karma-builder-environment {
+		.karma-active-section .section-gizmo-group{
+			display: none;
+		}
+
+		/* _-_-_- Section Responsive Gizmo Style -_-_-_ */
+	/*	.karma-builder-element.karma-active-section{
+			.karma-gizmo-template.karma-inner-gizmo-template{
+				&.section-gizmo-group-responsive{
+					display: flex;
+					&.karma-gizmo-container{
+						@include box( 96px, 22px );
+						background-color: $builder-accent-color;
+						left: 0;
+						top: 0;
+						padding-right: 3px;
+					}
+					.karma-builder-gizmo-text {
+						color:#fff;
+						border: none;
+						padding: 0 5px;
+						margin: 0;
+						font-size: 10px;
+						&:hover {
+							color: #fff;
+						}
+					}
+					.karma-builder-gizmo-icon {
+						padding: 11px 5px;
+						svg{
+							*{
+								fill: #fff;
+							}
+						}
+
+						&:hover {
+							svg {
+								* {
+									fill: #fff;
+								}
+							}
+						}
+					}
+				}
+			}
+		}*/
+
+		/* _-_-_- column Responsive Gizmo Style -_-_-_ */
+		.karma-builder-element.karma-active-column {
+			.karma-gizmo-template.karma-inner-gizmo-template {
+				&.column-gizmo-group-responsive {
+					display: flex;
+					&.karma-gizmo-container {
+						@include box( 88px, 25px );
+						right: 5px;
+						top: 5px;
+					}
+
+					.karma-builder-gizmo-hidden.karma-visibility-option{
+						@include box( 15px, 10px );
+						cursor: pointer;
+						background-size: contain;
+						margin: 0 2px;
+						&.visibility-line{
+							@include box( 15px, 14px );
+							cursor: pointer;
+							background-size: contain;
+							margin: 0 2px;
+						}
+					}
+
+					.karma-builder-gizmo-text {
+						border: none;
+						padding: 0 5px;
+						margin: 0;
+						font-size: 10px;
+						cursor: default;
+						line-height: 17px;
+						&:hover {
+							color: $builder-main-color;
+						}
+					}
+				}
+			}
+
+			.column-gizmo-group{
+				display: none;
+			}
+		}
+	}
+}

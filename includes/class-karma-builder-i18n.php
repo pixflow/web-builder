@@ -1,5 +1,5 @@
 <?php
-
+namespace KarmaBuilder\i18n ;
 /**
  * Define the internationalization functionality
  *
@@ -24,6 +24,9 @@
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
+
+
+
 class Karma_Builder_i18n {
 
 

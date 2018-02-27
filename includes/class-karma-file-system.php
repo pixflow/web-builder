@@ -1,4 +1,5 @@
 <?php
+namespace KarmaBuilder\FileSystem ;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -26,7 +27,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Karma_Builder/includes
  * @author     Pixflow <info@pixflow.net>
  */
-class File_System{
+
+
+class Karma_File_System{
 
 	/**
 	 * the WordPress Filesystem
@@ -68,11 +71,11 @@ class File_System{
 	 */
 	public static function get_instance() {
 
-		if ( null === File_System::$instance ) {
-			File_System::$instance = new File_System();
+		if ( null === Karma_File_System::$instance ) {
+			Karma_File_System::$instance = new Karma_File_System();
 		}
 
-		return File_System::$instance;
+		return Karma_File_System::$instance;
 
 	}
 
@@ -124,7 +127,10 @@ class File_System{
 
 		if ( $this->file->mkdir( $path, 0777 ) ) {
 			return true;
+		}else if( mkdir( $path, 0777, true ) ) {
+			return true;
 		}
+
 		return false;
 
 	}

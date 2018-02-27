@@ -1,6 +1,10 @@
 /* _-_-_- base/BASE -_-_-_ */
 body {
 	margin: 0;
+	display: flex;
+	flex-direction: column;
+	will-change : contents;
+
 
 	button{
 		margin: 0;
@@ -12,6 +16,8 @@ body {
 		height: calc( 100vh - 49px );
 		width: 100%;
 		border:none;
+		transition: .4s;
+		will-change : contents;
 	}
 
 	font-family: $builder-normal-font;
@@ -19,6 +25,7 @@ body {
 		@include box( 100%, 1px );
 		@include element_direction( $bottom: 0, $left: 0 );
 		color: $builder-main-color-3;
+		position: absolute;
 		margin : 20px 0 0;
 	}
 
@@ -29,6 +36,7 @@ body {
 		margin: 0;
 		position: absolute;
 	}
+
 }
 
 .karma-builder-element{
