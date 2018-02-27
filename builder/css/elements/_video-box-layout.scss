@@ -232,7 +232,7 @@
 						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
-						word-break: break-all;
+						word-break: keep-all;
 					}
 					.karma-video-box-description-tag.karma-video-box-description-opacity{
 						display: none;
@@ -249,7 +249,11 @@
 			}
 			.karma-video-box-link-content{
 				display: flex;
-				margin-top: 18px;
+				margin-top: 10px;
+				.karma-button-fill,
+				.karma-button-outline{
+					margin-top: 8px;
+				}
 			}
 			.karma-video-box-link {
 				display: flex;

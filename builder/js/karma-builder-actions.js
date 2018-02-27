@@ -388,6 +388,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 					var dropArea = that.getIframe().document.querySelector( '.karma-show-placeholder' );
 					if ( null != dropArea && 'IFRAME' == document.elementFromPoint( event.clientX, event.clientY ).nodeName ) {
 						that.renderBlock( UI.helper.data( "block-id" ), dropArea );
+						 that.getIframe().KarmaView.$el.trigger('karma/after/sortSections');
 					}
 					that.getIframe().KarmaView.removePlaceHolders();
 					window.karmaElementPanel.scrollElementPanel();

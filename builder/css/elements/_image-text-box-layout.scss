@@ -200,7 +200,7 @@
 						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
-						word-break: break-all;
+						word-break: keep-all;
 					}
 					.karma-image-text-box-description-tag.karma-image-box-description-opacity{
 						display: none;
@@ -215,7 +215,11 @@
 						justify-content: center;
 					}
 					&.karma-image-text-box-link-content{
-						margin-top: 20px;
+						margin-top: 8px;
+						.karma-button-fill,
+						.karma-button-outline{
+							margin-top: 12px;
+						}
 					}
 					&.karma-image-text-box-description{
 						margin-top: 8px;

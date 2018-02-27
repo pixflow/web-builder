@@ -60,6 +60,7 @@ var karmaBuilder = karmaBuilder || {};
 			newSection.changeRowLayout( newGrid );
 			KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 			newSection.$el.click();
+			newSection.$el.trigger('karma/after/sortSections');
 
 		},
 

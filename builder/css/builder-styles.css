@@ -3209,7 +3209,7 @@ html {
           margin: 0;
           min-width: 30px;
           text-decoration: none;
-          word-break: break-all; }
+          word-break: keep-all; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag.karma-image-box-description-opacity {
           display: none; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag.karma-image-box-title-opacity {
@@ -3219,7 +3219,10 @@ html {
           display: flex;
           justify-content: center; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div.karma-image-text-box-link-content {
-          margin-top: 20px; }
+          margin-top: 8px; }
+          .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div.karma-image-text-box-link-content .karma-button-fill,
+          .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div.karma-image-text-box-link-content .karma-button-outline {
+            margin-top: 12px; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div.karma-image-text-box-description {
           margin-top: 8px; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link:not(.karma-show-child-gizmo) .karma-image-text-box-link-shape {
@@ -3493,7 +3496,7 @@ html {
           margin: 0;
           min-width: 30px;
           text-decoration: none;
-          word-break: break-all; }
+          word-break: keep-all; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-description-tag.karma-video-box-description-opacity {
           display: none; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-title-tag.karma-video-box-title-opacity {
@@ -3502,7 +3505,10 @@ html {
           margin-top: 8px; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link-content {
       display: flex;
-      margin-top: 18px; }
+      margin-top: 10px; }
+      .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link-content .karma-button-fill,
+      .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link-content .karma-button-outline {
+        margin-top: 8px; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link {
       display: flex;
       white-space: nowrap;
