@@ -40,14 +40,14 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-img-text.jpg',
 				'overlaycolor'      => 'rgba(0, 0, 0, 0)',
 				'backgroundcolor'	=> 'rgba(0, 0, 0, 0)',
-				'titletext'			=> 'MAKE WEBSITE',
-				'descriptiontext'	=> 'With good Karma',
+				'titletext'			=> 'Great idea',
+				'descriptiontext'	=> 'Live Text Editor',
 				'linktext'			=> 'Explore more',
 				'backgroundsize'	=> 'cover',
 				'backgroundposition'=> 'center-center',
-				'titlecolor'		=> '#fff',
-				'descriptioncolor'	=> '#fff',
-				'titletag'			=>'p',
+				'titlecolor'		=> '#000',
+				'descriptioncolor'	=> '#000',
+				'titletag'			=>'h6',
 				'descriptiontag'	=>'h4',
 				'textposition'		=>'bottom-left',
 				'textlink'			=>'https://www.google.com/',
@@ -57,8 +57,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'imageheight'		=>'500',
 				'type'				=> 'fill' ,
 				'rangemodel'        =>'0',
-                'generalcolor'		=> '#fff',
-                'textcolor'			=> '#000',
+                'generalcolor'		=> '#8FB440',
+                'textcolor'			=> '#fff',
 				'elementalign'		=> 'left',
 				'visibleondesktop'	=> 'on',
 				'visibleonmobile'	=> 'on',
@@ -87,8 +87,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				$this->get_element_default_attributes(),
 				$attributes
 		);
-		$title_class 		= ( '' == $attributes['titletext'] || 'MAKE WEBSITE' == $attributes['titletext'] ) ? 'karma-image-box-title-opacity' : '';
-		$description_class  = ( '' == $attributes['descriptiontext'] || 'With good Karma' == $attributes['descriptiontext'] ) ? 'karma-image-box-description-opacity' : '';
+		$title_class 		= ( '' == $attributes['titletext'] || 'Great idea' == $attributes['titletext'] ) ? 'karma-image-box-title-opacity' : '';
+		$description_class  = ( '' == $attributes['descriptiontext'] || 'Live Text Editor' == $attributes['descriptiontext'] ) ? 'karma-image-box-description-opacity' : '';
 		$title_content		= '<' . $attributes['titletag'] . ' class="karma-image-text-box-title-tag ' .  $title_class .'">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
 		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag '.$description_class.' ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
 		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';

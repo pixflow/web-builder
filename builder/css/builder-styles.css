@@ -3221,7 +3221,7 @@ html {
           .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div.karma-image-text-box-link-content .karma-button-outline {
             margin-top: 12px; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div.karma-image-text-box-description {
-          margin-top: 8px; }
+          margin-top: 10px; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-link:not(.karma-show-child-gizmo) .karma-image-text-box-link-shape {
       height: 28px;
       transition-duration: .3s;
