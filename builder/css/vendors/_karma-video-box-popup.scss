@@ -61,11 +61,11 @@
 	iframe{
 		animation: open-video-popup-animation .5s cubic-bezier(.55,-0.04,.91,.94) .4s forwards;
 		background-color: #fff;
-		height: 309px;
+		min-height: 309px;
 		max-height: 70vh;
-		max-width: 70vw;
+		max-width: 60vw;
 		opacity: 0;
-		width: 550px;
+		min-width: 550px;
 	}
 	&.karma-close-video-popup{
 		animation: close-video-popup-animation .4s cubic-bezier(0.39, 0.35, 0.54, 0.92)  forwards;

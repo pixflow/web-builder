@@ -267,6 +267,7 @@ img {
 	transform: translateX(-50%);
 	transition: bottom .2s ease-In .4s, opacity .2s;
 	z-index: $level-20;
+	margin-left: 30px;
 
 	svg {
 		* {
@@ -424,6 +425,7 @@ body:not(.karma-builder-environment) {
 		.karma-text {
 			*:focus {
 				outline: $builder-accent-color solid 1px;
+				min-width: 20px;
 			}
 		}
 

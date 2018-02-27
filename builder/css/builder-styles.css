@@ -848,11 +848,11 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   #karma-video-popup-opened iframe {
     animation: open-video-popup-animation 0.5s cubic-bezier(0.55, -0.04, 0.91, 0.94) 0.4s forwards;
     background-color: #fff;
-    height: 309px;
+    min-height: 309px;
     max-height: 70vh;
-    max-width: 70vw;
+    max-width: 60vw;
     opacity: 0;
-    width: 550px; }
+    min-width: 550px; }
   #karma-video-popup-opened.karma-close-video-popup {
     animation: close-video-popup-animation 0.4s cubic-bezier(0.39, 0.35, 0.54, 0.92) forwards; }
     #karma-video-popup-opened.karma-close-video-popup iframe {
@@ -4315,7 +4315,8 @@ img {
   position: absolute;
   transform: translateX(-50%);
   transition: bottom .2s ease-In .4s, opacity .2s;
-  z-index: 100; }
+  z-index: 100;
+  margin-left: 30px; }
   .karma-new-section-icon svg * {
     cursor: pointer;
     fill: #fff; }
@@ -4412,7 +4413,8 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
   .karma-builder-environment .karma-builder-element[data-name*="karma_image"] {
     max-width: 100%; }
   .karma-builder-environment .karma-builder-element .karma-text *:focus {
-    outline: #419CF8 solid 1px; }
+    outline: #419CF8 solid 1px;
+    min-width: 20px; }
   .karma-builder-environment .karma-builder-element .karma-inner-gizmo-template {
     top: 17px;
     right: 17px;
@@ -5289,8 +5291,6 @@ div.karma-element-content .karma-top-spacing {
   display: flex; }
 .karma-builder-environment .karma-active-section div.karma-spacing-dot-container {
   display: inline-block; }
-.karma-builder-environment .karma-active-section .karma-new-section-icon {
-  display: none !important; }
 .karma-builder-environment .karma-builder-element[data-name="karma_section"].karma-show-border-section section {
   outline: 1px solid #419CF8; }
 .karma-builder-environment .karma-builder-element[data-name="karma_section"]:not(.karma-active-section):hover section {
