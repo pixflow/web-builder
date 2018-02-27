@@ -601,7 +601,7 @@ class Karma_Builder {
 		}
 		$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-		if(   isset( $_GET['load_builder'] ) || isset( $_GET['in_builder'] ) || 'admin-ajax.php' == basename( $actual_link ) ){
+		if(   isset( $_GET['builder-page'] ) || isset( $_GET['load_builder'] ) || isset( $_GET['in_builder'] ) || 'admin-ajax.php' == basename( $actual_link ) ){
 
 		}else{
 			header('location:' . get_home_url() . '/' . '?load_builder=true');
