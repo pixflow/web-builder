@@ -772,11 +772,12 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param   {object}    placeholder
 		 * @param   {object}    elementsModel
+		 * @param   {boolean}   dropBlock
 		 *
 		 * @since   0.1.0
 		 * @returns {object} view of rendered element
 		 */
-		renderElements : function( placeholder, elementModel  ){
+		renderElements : function( placeholder, elementModel, dropBlock  ){
 
 			var elementName = elementModel.parent.shortcode_name;
 
@@ -785,6 +786,9 @@ var karmaBuilder = karmaBuilder || {};
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementModel.grid;
 
+				if( dropBlock ){
+					newView.block = elementModel;
+				}
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );

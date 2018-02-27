@@ -412,7 +412,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 			var blocks = karmaElementPanel.blocks[ blockID ].content;
 			for ( var block in blocks ) {
-				var newView = this.getIframe().KarmaView.renderElements( dropArea, JSON.parse( blocks[ block ] ) );
+				var newView = this.getIframe().KarmaView.renderElements( dropArea, JSON.parse( blocks[ block ] ), true );
 				dropArea = newView.$el.nextAll( '.karma-insert-between-sections-placeholder' ).first()[ 0 ];
 			}
 			if ( null != this.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {

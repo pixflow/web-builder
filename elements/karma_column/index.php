@@ -28,7 +28,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 			'leftspace'			=> '10',
 			'visibleonmobile'	=> 'on',
 			'visibleontablet'	=> 'on',
-			'leftspace'			=> '10',
 
 		);
 
