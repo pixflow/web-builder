@@ -67,7 +67,7 @@
 
 			this.update();
 			this.$gizmoContainer.append( this.el );
-			
+
 		},
 
 		/**

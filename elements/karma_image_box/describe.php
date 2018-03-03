@@ -316,9 +316,9 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 						'type'		=>'sliderAndRadioButton',
 						"params" 	=> array(
 							'defaultIcon'  		=> KARMA_BUILDER_URL . 'builder/media/svg/border-radius.svg',
-							'value'			=> '20',
+							'value'			=> '0',
 							'min'			=> '0',
-							'max'			=> '100',
+							'max'			=> '20',
 							'unit'			=>'px',
 							'rangeModel' 	=> 'rangemodel' ,
 							'type' 			=> 'type',
