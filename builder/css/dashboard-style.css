@@ -608,6 +608,21 @@ body {
 #karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6.p {
   margin: 0; }
 
+@media screen and (max-width: 768px) {
+  #karma-builder-layout h1 {
+    font-size: 38px; }
+  #karma-builder-layout h2 {
+    font-size: 32px; }
+  #karma-builder-layout h3 {
+    font-size: 26px; }
+  #karma-builder-layout h4 {
+    font-size: 22px; }
+  #karma-builder-layout h5 {
+    font-size: 20px; }
+  #karma-builder-layout h6 {
+    font-size: 16px; }
+  #karma-builder-layout p {
+    font-size: 14px; } }
 @-ms-viewport {
   width: device-width; }
 html {

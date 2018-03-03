@@ -185,13 +185,13 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		$headings_min_size_in_responsive = array(
-			'h1'    => '35',
-			'h2'    => '30',
-			'h3'    => '25',
-			'h4'    => '23',
-			'h5'    => '21',
-			'h6'    => '17',
-			'p'     => '15',
+			'h1'    => '36',
+			'h2'    => '32',
+			'h3'    => '26',
+			'h4'    => '22',
+			'h5'    => '20',
+			'h6'    => '16',
+			'p'     => '14',
 		);
 		foreach ( $headings as $tag => $info ){
 			if ( 'p' == $tag ){
@@ -207,7 +207,7 @@ class Karma_Stylesheet {
 					}
 				}else if ( 'font-size' == $property ) {
 					$headings_style .= $property . ':';
-					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 300px) / (1920 - 300)));';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 1024px) / (1920 - 1024)));';
 				}else{
 					$headings_style .= $property . ':' . $value . ';' ;
 				}
