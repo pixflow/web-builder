@@ -67,11 +67,7 @@
 
 			this.update();
 			this.$gizmoContainer.append( this.el );
-
-			selected = this.$el.find( '.karma-image-position-box[data-value="' + inputAttr + '"]' );
-
-			selected.classList.add( 'karma-image-position-selected-item' );
-
+			
 		},
 
 		/**
