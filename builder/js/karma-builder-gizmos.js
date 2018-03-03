@@ -906,12 +906,16 @@
 					placeholder = document.querySelectorAll( '.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
 					elementName = 'karma_section';
 				if ( 1 === that.model.get( 'order' ) ) {
+
 					if ( placeholder.length > 1 ) {
 						placeholder = placeholder[ 1 ];
+					}else if ( !( placeholder instanceof HTMLElement ) ){
+						placeholder = placeholder[ 0 ];
 					}
 				} else {
 					placeholder = placeholder[ 0 ];
 				}
+
 				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName  );
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
