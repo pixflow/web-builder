@@ -83,7 +83,6 @@ class Karma_Builder_Public {
 
 		$this->create_dynamic_styles();
 		wp_enqueue_style( $this->plugin_name, KARMA_BUILDER_URL . 'builder/css/builder-styles.css', array(), $this->version, 'all' );
-		wp_enqueue_script( $this->plugin_name, KARMA_BUILDER_URL . 'builder/js/karma-general-script.js', array(), $this->version, false );
 
 	}
 
@@ -166,6 +165,7 @@ class Karma_Builder_Public {
 
 		$builder = Karma_Factory_Pattern::$builder;
 		if( $builder::is_in_builder() ) {
+			
 			wp_enqueue_script( $this->plugin_name . '-jquery-ui' , KARMA_BUILDER_URL . 'builder/js/jquery-ui.min.js', array( 'jquery' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-grid-resizer' , KARMA_BUILDER_URL . 'builder/js/grid-resizer.min.js', array( ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-spectrum' , KARMA_BUILDER_URL . 'builder/js/spectrum.min.js', array( ), $this->version, false );
@@ -185,6 +185,10 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-gizmos-hidden', KARMA_BUILDER_URL . 'builder/js/gizmos/hidden.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-color', KARMA_BUILDER_URL . 'builder/js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-shortcodes', KARMA_BUILDER_URL . 'builder/js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+
+		}else{
+
+			wp_enqueue_script( $this->plugin_name, KARMA_BUILDER_URL . 'builder/js/karma-general-script.js', array(), $this->version, false );
 
 		}
 	}
