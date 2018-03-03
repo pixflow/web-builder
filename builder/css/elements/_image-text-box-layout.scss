@@ -194,13 +194,15 @@
 				> div {
 					position: relative;
 					.karma-image-text-box-title-tag,
-					.karma-image-text-box-description-tag,
 					.karma-image-text-box-link-tag {
 						display: inline-block;
 						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
 						word-break: keep-all;
+					}
+					.karma-image-text-box-description-tag{
+						min-width: 200px;
 					}
 					.karma-image-text-box-description-tag.karma-image-box-description-opacity{
 						display: none;

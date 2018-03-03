@@ -226,13 +226,15 @@
 					position: relative;
 
 					.karma-video-box-title-tag,
-					.karma-video-box-description-tag,
 					.karma-video-box-link-tag {
 						display: inline-block;
 						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
 						word-break: keep-all;
+					}
+					.karma-video-box-description-tag{
+						min-width: 200px;
 					}
 					.karma-video-box-description-tag.karma-video-box-description-opacity{
 						display: none;
