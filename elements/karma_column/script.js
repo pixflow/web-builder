@@ -1,7 +1,10 @@
 var resizeId;
+
 window.addEventListener( 'resize', function (){
+
 	clearTimeout( resizeId );
 	resizeId = setTimeout( doneResizing, 200 );
+
 } );
 
 /**
@@ -26,7 +29,8 @@ function updateImageAfterWindowResize(){
 
 	[].forEach.call( columnInstance, function ( column ){
 
-		var imageLinks = column.querySelectorAll( '.karma-builder-element[data-name="karma_image"]' );
+		var imageLinks = column.querySelectorAll( '.karma-builder-element[data-name="karma_image"]' ),
+			bodyClasses = document.querySelector('body').classList;
 		[].forEach.call( imageLinks, function ( image ){
 
 			var columnWidth = image.closest( '.karma-column-margin' ).offsetWidth,
@@ -35,7 +39,10 @@ function updateImageAfterWindowResize(){
 			if ( '100%' == imageWidth ){
 				imageWidth = image.querySelector( 'img' ).offsetWidth;
 			}
-			if ( columnWidth < imageWidth || !document.querySelector('body').classList.contains('karma-device-mode-desktop') ){
+			if ( columnWidth < imageWidth
+				|| !bodyClasses.contains('karma-device-mode-desktop')
+				|| bodyClasses.contains('karma-responsive-mode')
+			){
 				image.querySelector( '.karma-image-resize' ).style.width = columnWidth + 'px';
 				image.querySelector( '.karma-image-resize-crop' ).style.width = columnWidth + 'px';
 			}else{
