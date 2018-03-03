@@ -3499,7 +3499,7 @@ html {
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-title-tag.karma-video-box-title-opacity {
           display: none; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div.karma-video-box-description {
-          margin-top: 8px; }
+          margin-top: 10px; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-link-content {
       display: flex;
       margin-top: 10px; }

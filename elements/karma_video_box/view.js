@@ -40,12 +40,12 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "With good Karma";
+				content.innerText = "Live Text Editor";
 				content.classList.add('karma-video-box-description-opacity');
 			}
 
 			if( '' == contentData ){
-				this.setAttributes( { 'descriptiontext' : "With good Karma" },  true );
+				this.setAttributes( { 'descriptiontext' : "Live Text Editor" },  true );
 			}else{
 				this.setAttributes( { 'descriptiontext' : contentData },  true );
 			}
@@ -64,7 +64,7 @@
 				contentData = content.innerHTML;
 
 
-			if ( "With good Karma" == contentData.trim() ) {
+			if ( "Live Text Editor" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
 					content.innerText = "";
 					content.contentEditable = true;
@@ -114,12 +114,12 @@
 				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "MAKE WEBSITE";
+				content.innerText = "Great idea";
 				content.classList.add('karma-video-box-title-opacity');
 			}
 
 			if( '' == contentData ){
-				this.setAttributes( { 'titletext' : "MAKE WEBSITE" },  true );
+				this.setAttributes( { 'titletext' : "Great idea" },  true );
 			}else{
 				this.setAttributes( { 'titletext' : contentData },  true );
 			}
@@ -137,7 +137,7 @@
 			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
 				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
 
-			if ( "MAKE WEBSITE" == contentData.trim() ) {
+			if ( "Great idea" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
 					content.innerText = "";
 					content.contentEditable = true;

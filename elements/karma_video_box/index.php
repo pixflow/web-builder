@@ -37,15 +37,15 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 		return 	array(
 			'element_key'   	=> 'kb' ,
 			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-video-text.jpg',
-			'titletext'			=> 'MAKE WEBSITE',
-			'descriptiontext'	=> 'With good Karma',
+			'titletext'			=> 'Great idea',
+			'descriptiontext'	=> 'Live Text Editor',
 			'linktext'			=> 'Explore more',
 			'backgroundsize'	=> 'cover',
 			'backgroundposition'=> 'center-center',
 			'contentposition'	=> 'bottom-left',
 			'titlecolor'		=> '#fff',
 			'descriptioncolor'	=> '#fff',
-			'titletag'			=>'p',
+			'titletag'			=>'h6',
 			'descriptiontag'	=>'h4',
 			'textposition'		=>'bottom-left',
 			'textlink'			=>'https://www.google.com/',
@@ -89,8 +89,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			$attributes
 		);
 
-		$title_class 		= ( '' == $attributes['titletext'] || 'MAKE WEBSITE' == $attributes['titletext'] ) ? 'karma-video-box-title-opacity' : '';
-		$description_class  = ( '' == $attributes['descriptiontext'] || 'With good Karma' == $attributes['descriptiontext'] ) ? 'karma-video-box-description-opacity' : '';
+		$title_class 		= ( '' == $attributes['titletext'] || 'Great idea' == $attributes['titletext'] ) ? 'karma-video-box-title-opacity' : '';
+		$description_class  = ( '' == $attributes['descriptiontext'] || 'Live Text Editor' == $attributes['descriptiontext'] ) ? 'karma-video-box-description-opacity' : '';
 		$title_content = 	'<' . $attributes['titletag'] . ' class="karma-video-box-title-tag ' .  $title_class .' ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
 		$description_content = 	'<' . $attributes['descriptiontag'] . ' class="karma-video-box-description-tag '.$description_class.'">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
 		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
