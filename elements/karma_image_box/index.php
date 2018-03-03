@@ -43,7 +43,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'titletext'			=> 'Great idea',
 				'descriptiontext'	=> 'Live Text Editor',
 				'linktext'			=> 'Explore more',
-				'backgroundsize'	=> 'cover',
+				'backgroundsize'	=> 'fill',
 				'backgroundposition'=> 'center-center',
 				'titlecolor'		=> '#000',
 				'descriptioncolor'	=> '#000',

@@ -68,6 +68,10 @@
 			this.update();
 			this.$gizmoContainer.append( this.el );
 
+			selected = this.$el.find( '.karma-image-position-box[data-value="' + inputAttr + '"]' );
+
+			selected.classList.add( 'karma-image-position-selected-item' );
+
 		},
 
 		/**
@@ -92,8 +96,9 @@
 		 * @returns {void}
 		 */
 		karmaPosition: function ( e ) {
-
+			this.$el.find( '.karma-image-position-box' ).removeClass('karma-image-position-selected-item');
 			var element =( e.target.classList.contains( 'karma-image-position-box' ) ) ? e.target : e.target.closest( '.karma-image-position-box' );
+			element.classList.add( 'karma-image-position-selected-item' );
 			var dataValue = element.getAttribute( 'data-value' );
 			if( 'undefined' != typeof this.data.params.model ){
 				var modelNameChange = {};
