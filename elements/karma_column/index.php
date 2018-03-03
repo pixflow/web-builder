@@ -2,6 +2,7 @@
 
 namespace KarmaBuilder\Elements;
 use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 class Karma_Column extends Karma_Shortcode_Base {
 
@@ -113,7 +114,9 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
-		$block = '' ;
+	//	$block = File_System::file_get_content();
+		$instance = File_System::get_instance();
+		$block = $instance->file_get_content( KARMA_BUILDER_URL . 'elements/karma_column/script.js' );
 		return $block;
 
 	}

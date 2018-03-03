@@ -267,6 +267,7 @@
 				var elementWidth = viewObject.el.closest( '.karma-column-margin' ).offsetWidth + 'px';
 				viewObject.el.querySelector( '.karma-image-resize' ).style.width = elementWidth;
 				viewObject.el.querySelector( '.karma-image-resize-crop' ).style.width = elementWidth;
+				viewObject.el.querySelector( '.karma-image' ).setAttribute( 'width', elementWidth );
 			}
 
 		},

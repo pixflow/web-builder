@@ -67,6 +67,7 @@
 				if( trueWidth < image.querySelector('img').offsetWidth ){
 					image.querySelector('.karma-image-resize').style.width = trueWidth + 'px';
 					image.querySelector('.karma-image-resize-crop').style.width = trueWidth + 'px';
+					image.querySelector( '.karma-image' ).setAttribute( 'width' , trueWidth );
 					$( image ).backboneView().setAttributes( {
 						width : trueWidth,
 					}, true );

@@ -5,7 +5,6 @@ namespace KarmaBuilder\Stylesheet ;
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
-use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

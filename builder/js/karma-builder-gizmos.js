@@ -496,6 +496,7 @@
 							'height'		: UI.size.height,
 							'resizing'	: that.el.querySelector( 'img' ).classList.contains( 'karma-image-both-resize' )
 						}, true );
+						that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width);
 
 					},
 					
@@ -524,6 +525,7 @@
 
 				UI.element.resizable( "option", "maxWidth", that.el.closest( '.karma-column-margin' ).clientWidth );
 				$(this).parent().css( 'width' , UI.size.width + 'px' );
+				that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width );
 				$(this).parent().css( 'height' , 'auto' );
 
 			}
