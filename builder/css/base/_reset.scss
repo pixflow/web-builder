@@ -38,13 +38,12 @@
 
 }
 
-//#karma-builder-layout{
-//	div,ul,article,aside,details,figcaption,figure,section,input[class *="karma"]{
-//		&:before,&:after{
-//			content: unset;
-//		}
-//	}
-//}
+div#karma-builder-layout{
+	
+	img{
+		visibility: inherit;
+	}
+}
 
 #karma-add-element{
 	html, body, span, object, iframe,

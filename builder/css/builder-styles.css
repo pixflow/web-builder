@@ -1207,6 +1207,9 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   height: 1px;
   background: #D7DBDE; }
 
+div#karma-builder-layout img {
+  visibility: inherit; }
+
 #karma-add-element html, #karma-add-element body, #karma-add-element span, #karma-add-element object, #karma-add-element iframe,
 #karma-add-element h1, #karma-add-element h2, #karma-add-element h3, #karma-add-element h4, #karma-add-element h5, #karma-add-element h6, #karma-add-element p, #karma-add-element blockquote, #karma-add-element pre,
 #karma-add-element abbr, #karma-add-element address, #karma-add-element cite, #karma-add-element code,
@@ -4527,6 +4530,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
         background-color: inherit;
         border: none;
         border-radius: 3px;
+        box-shadow: none;
         height: auto;
         line-height: 0;
         margin-bottom: 0;
@@ -4762,6 +4766,7 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
       left: -12px;
       padding: 0; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down button {
+        box-shadow: none;
         margin-left: 6px;
         padding: 11px 7px;
         width: 35px; }

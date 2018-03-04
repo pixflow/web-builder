@@ -538,6 +538,7 @@ body:not(.karma-builder-environment) {
 					background-color: inherit;
 					border: none;
 					border-radius: 3px;
+					box-shadow: none;
 					height: auto;
 					line-height: 0;
 					margin-bottom: 0;
@@ -804,6 +805,7 @@ body:not(.karma-builder-environment) {
 				padding: 0;
 
 				button {
+					box-shadow: none;
 					margin-left: 6px;
 					padding: 11px 7px;
 					width: 35px;
