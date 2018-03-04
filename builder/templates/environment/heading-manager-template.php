@@ -22,27 +22,27 @@ $heading_default_text = array(
 	),
 	'h2'    => array(
 		'title'  => 'Heading 2' ,
-		'text'   => 'Typography is the art and technique' ,
+		'text'   => esc_attr__( 'Typography is the art and technique', 'karma' ),
 	),
 	'h3'    => array(
 		'title'  => 'Heading 3' ,
-		'text'   => 'Typography is the work of typesetters, typographers' ,
+		'text'   => esc_attr__( 'Typography is the work of typesetters, typographers', 'karma' ) ,
 	),
 	'h4'    => array(
 		'title'  => 'Heading 4' ,
-		'text'   => 'Typically drawings by humans may be called typography.' ,
+		'text'   => esc_attr__( 'Typically drawings by humans may be called typography.', 'karma' ) ,
 	),
 	'h5'    => array(
 		'title'  => 'Heading 5' ,
-		'text'   => 'The design of typefaces has developed alongside the development of typesetting systems.' ,
+		'text'   => esc_attr__( 'The design of typefaces has developed alongside the development of typesetting systems.', 'karma' ),
 	),
 	'h6'    => array(
 		'title'  => 'Heading 6' ,
-		'text'   => 'Type may be combined with negative space and images, forming relationships and dialog between the words and images for special effects.' ,
+		'text'   => esc_attr__( 'Type may be combined with negative space and images, forming relationships and dialog between the words and images for special effects.', 'karma' ),
 	),
 	'p'     => array(
 		'title'  => 'Paragraph' ,
-		'text'   => 'Three fundamental aspects of typography are legibility, readability, and aesthetics. Though in a non-technical sense "legible" and "readable" are often used synonymously, typographically they are separate but related concepts.' ,
+		'text'   => esc_attr__('Three fundamental aspects of typography are legibility, readability, and aesthetics. Though in a non-technical sense "legible" and "readable" are often used synonymously, typographically they are separate but related concepts.', 'karma' ),
 	),
 
 );
