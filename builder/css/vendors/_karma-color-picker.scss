@@ -97,6 +97,7 @@
 				content: '+';
 				display: block;
 				background: none;
+				top: -1px;
 			}
 			.spectrum-color-preview {
 				display: inline-block;
@@ -113,7 +114,7 @@
 			&:before {
 				background: none;
 				content: '/';
-				font-size: 25px;
+				font-size: 30px;
 				display: block;
 			}
 			&.selected {
