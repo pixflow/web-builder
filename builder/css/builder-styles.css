@@ -1072,7 +1072,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-typography-box-style, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-upload-image-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
+.karma-builder-title-3, .karma-typography-box-style, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-upload-image-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
   font-size: 14px;
   line-height: 16px; }
 
@@ -4546,9 +4546,9 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           background-size: contain; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
         display: flex; }
-        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo .karma-image-position-content-box {
-          width: 75px;
-          height: 83px;
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo .karma-gizmo-position-content-box {
+          width: 72px;
+          height: 75px;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between; }
@@ -4689,9 +4689,74 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           color: #394959; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down:after {
           left: 10%; }
-    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-image-position-content {
-      padding: 7px;
-      width: 90px; }
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container {
+      align-items: center;
+      justify-content: center;
+      position: relative; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container .karma-all-controller-title {
+        color: #394959;
+        padding: 22px 20px 7px; }
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .hidden-input {
+      display: none; }
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box {
+      width: 22px;
+      height: 22px;
+      background-color: #D9EBFE;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 3px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box:hover {
+        background-color: #A0CDFB; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-top-left-dot {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 4px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-top-right-dot {
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 4px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-top-center-dot {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 4px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-bottom-left-dot {
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 4px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-bottom-right-dot {
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 4px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-bottom-center-dot {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 4px; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-center-left-dot {
+        align-items: center;
+        justify-content: flex-start;
+        padding: 4px;
+        text-align: center; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-center-right-dot {
+        align-items: center;
+        justify-content: flex-end;
+        padding: 4px;
+        text-align: center; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box.karma-gizmo-position-center-center-dot {
+        align-items: center;
+        justify-content: center;
+        text-align: center; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content .karma-gizmo-position-box .karma-gizmo-position-dot {
+        width: 5px;
+        height: 5px;
+        background-color: #F7F8F9;
+        border-radius: 19px;
+        opacity: 0.76; }
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-selected-item {
+      background-color: #7AB9FA !important; }
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content {
+      padding: 7px 7px 5px 7px;
+      left: 21px; }
     .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {
       flex-direction: column;
       left: -12px;

@@ -493,12 +493,12 @@
 		 * @since 0.1.0
 		 * @return {void}
 		 */
-		textposition: function () {
+		gizmoposition: function () {
 
-			var dataValue	= this.getAttributes( [ 'textposition' ] ),
+			var dataValue	= this.getAttributes( [ 'gizmoposition' ] ),
 				regex		= new RegExp( '(?:^|\\s)karma-image-text-box-content-position-(.*?)(?!\\S)' );
 
-			this.el.querySelector( '.karma-image-text-box' ).className = this.el.querySelector( '.karma-image-text-box' ).className.replace( regex, " karma-image-text-box-content-position-" + dataValue.textposition );
+			this.el.querySelector( '.karma-image-text-box' ).className = this.el.querySelector( '.karma-image-text-box' ).className.replace( regex, " karma-image-text-box-content-position-" + dataValue.gizmoposition );
 
 		},
 
