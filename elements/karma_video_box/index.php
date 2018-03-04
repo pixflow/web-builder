@@ -39,7 +39,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-video-text.jpg',
 			'titletext'			=> esc_attr__( 'Great idea', 'karma' ),
 			'descriptiontext'	=> esc_attr__( 'Live Text Editor', 'karma' ),
-			'linktext'			=> esc_attr__( 'Explore more', 'karma' ),
+			'linktext'			=> esc_attr__( 'Watch', 'karma' ),
 			'backgroundsize'	=> 'cover',
 			'backgroundposition'=> 'center-center',
 			'contentposition'	=> 'bottom-left',
