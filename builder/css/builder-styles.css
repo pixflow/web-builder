@@ -6790,7 +6790,8 @@ div.karma-element-content .karma-top-spacing {
   display: flex;
   text-align: center;
   flex-direction: row;
-  font-family: "HelveticaNeue"; }
+  font-family: "HelveticaNeue";
+  min-height: 100vh; }
   .karma-blank-page-container > div {
     width: 487px;
     height: 643px;
