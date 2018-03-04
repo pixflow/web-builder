@@ -4,6 +4,9 @@ window.addEventListener("DOMContentLoaded", function (){
 	if ( bodyElem.offsetWidth < 1200 ){
 		bodyElem.classList.add('karma-responsive-mode');
 	}
-	updateImageAfterWindowResize();
+
+	if ( 'function' == typeof updateImageAfterWindowResize ){
+		updateImageAfterWindowResize();
+	}
 
 }, false );
