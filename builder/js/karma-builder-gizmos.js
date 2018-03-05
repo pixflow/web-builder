@@ -456,7 +456,7 @@
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
 						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
-						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px');
+						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px', this.currentDevice());
 
 					}
 				};
@@ -566,6 +566,25 @@
 			that.$el.attr( 'data-direction', 'left' );
 			options.handles.w = $gizmo.find(  '.ui-resizable-w' );
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
+
+		},
+
+		/**
+		 * @summary return device mode
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {string} name of device
+		 */
+		currentDevice : function () {
+
+			if( document.body.classList.contains( 'karma-device-mode-desktop' ) ){
+				return	'desktop';
+			}else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
+				return	'tablet';
+			}else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
+				return	'mobile';
+			}
 
 		},
 
