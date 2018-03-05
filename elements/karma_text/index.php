@@ -43,14 +43,14 @@ class Karma_Text extends Karma_Shortcode_Base {
 	static function get_element_default_attributes(){
 
 		return array(
-			'element_key'  		=> 'kb',
-			'tag'           	=> 'h5',
-			'color'				=> '#394959',
-			'align'       		=> 'center',
-			'topspacepadding'	=> '10',
-			'tabletspace'		=> '10',
-			'mobilespace'		=> '10',
-			'elementalign'		=> 'center',
+			'element_key'  				=> 'kb',
+			'tag'           			=> 'h5',
+			'color'						=> '#394959',
+			'align'       				=> 'center',
+			'topspacepadding'			=> '10',
+			'tablettopspacepadding'		=> '10',
+			'mobiletopspacepadding'		=> '10',
+			'elementalign'				=> 'center',
 		);
 
 	}
@@ -135,10 +135,10 @@ class Karma_Text extends Karma_Shortcode_Base {
 					'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px"	,
 				),
 				'tablet_property' => array(
-					'padding-top'  => self::$element_attributes[ 'tabletspace' ] . 'px',
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
 				),
 				'mobile_property' => array(
-					'padding-top'  => self::$element_attributes[ 'mobilespace' ] . 'px',
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 				)
 		  	)
 
