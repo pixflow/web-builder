@@ -847,8 +847,14 @@
 				} else if ( 'mobile' == device ) {
 					var deviceRegex = /\/\*mobile-start\*\/(.*?)\/\*mobile-finish\*\//ig;
 				}
-				var result = deviceRegex.exec( oldStyle );
-				oldStyle = result[ 1 ];
+				var result = deviceRegex.exec( oldStyle ),
+					addMediaQuery = false;
+				if ( null == result ) {
+					oldStyle = '';
+					addMediaQuery = true;
+				} else {
+					oldStyle = result[ 1 ];
+				}
 			} else {
 				var deviceRegex = /@media.*?-finish\*\/}/ig,
 					responsiveStyle = '';
@@ -901,7 +907,20 @@
 			}
 
 			if ( 'tablet' == device || 'mobile' == device ) {
-				newStyle = originalStyle.replace( deviceRegex, '/*' + device + '-start*/' + newStyle + '/*' + device + '-finish*/' )
+				if ( addMediaQuery ) {
+					var deviceMediaQueryPrefix = '',
+						deviceMediaQueryPostfix = '';
+					if ( 'tablet' == device ) {
+						deviceMediaQueryPrefix = '@media screen and (max-width: 768px) { /*tablet-start*/';
+						deviceMediaQueryPostfix = '/*tablet-finish*/}';
+					} else if ( 'mobile' == device ) {
+						deviceMediaQueryPrefix = '@media screen and (max-width: 430px) { /*mobile-start*/';
+						deviceMediaQueryPostfix = '/*mobile-finish*/}';
+					}
+					newStyle = originalStyle + deviceMediaQueryPrefix + newStyle + deviceMediaQueryPostfix;
+				} else {
+					newStyle = originalStyle.replace( deviceRegex, '/*' + device + '-start*/' + newStyle + '/*' + device + '-finish*/' )
+				}
 			} else {
 				newStyle = newStyle + responsiveStyle;
 			}
