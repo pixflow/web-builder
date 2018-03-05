@@ -355,9 +355,8 @@
 
 			var padding	= this.getAttributes( ['space'] ).space + 'px';
 			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
-			var elementId = this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
-			this.renderCss( '#' + elementId + ' .karma-section', 'padding-top', this.getAttributes( [ 'space' ] ).space + 'px' );
-			this.renderCss( '#' + elementId + ' .karma-section', 'padding-bottom', this.getAttributes( [ 'space' ] ).space + 'px' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', this.getAttributes( [ 'space' ] ).space + 'px' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', this.getAttributes( [ 'space' ] ).space + 'px' );
 
 		},
 
@@ -407,8 +406,7 @@
 		 */
 		backgroundcolor: function () {
 
-			var elementId = this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
-			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
 
 		},
 
@@ -439,10 +437,9 @@
 		 */
 		columnspace : function () {
 
-			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
-			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-left', margin );
-			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-right', margin );
+			var margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-column-margin', 'margin-left', margin );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-column-margin', 'margin-right', margin );
 
 		},
 
@@ -456,7 +453,6 @@
 		backgroundimage : function () {
 
 			var imageAddress = this.getAttributes( [ 'backgroundimage' ] ),
-				elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				imageUrl = '' ;
 
 			if( 'none' == imageAddress.backgroundimage ){
@@ -464,7 +460,7 @@
 			}else{
 				imageUrl = 'url('+ imageAddress.backgroundimage  +')';
 			}
-			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
 
 
 		},

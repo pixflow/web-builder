@@ -280,44 +280,48 @@
 					handles 	: {},
 					cursor		: 's-resize',
 					scroll 		: true ,
-					start: function ( event ) {
+					start: function ( event, UI ) {
+
 						karmaSection.addClass( "karma-resizable-active" );
 						that.showMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "200px";
+						var section = that.el.querySelector('.karma-section'),
+						newSize =  window.getComputedStyle( section ).getPropertyValue('padding-top');
+						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
+						UI.originalSize.height = parseInt(newSize);
+						UI.helper[0].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+
 					},
 					stop : function ( event, ui ) {
+
+						var currentDevice = that.currentDevice();
+						if ( 'tablet' == currentDevice ){
+							that.setAttributes( { tabletspace: parseInt( ui.element.height() ) }, true );
+						}else if ( 'mobile' == currentDevice ){
+							that.setAttributes( { mobilespace: parseInt( ui.element.height() ) }, true );
+						}else{
+							that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
+						}
 						karmaSection.removeClass( "karma-resizable-active" );
-						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
 						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
 
 					},
-					resize: function( event, ui ){
+					resize: function( event, UI ){
 
-						var padding = ui.size.height + 'px';
-						if( ui.size.height >= 0){
-							karmaSection.find('.karma-section').css( {
-								paddingTop 		: padding,
-								paddingBottom	: padding
-							});
-						}else{
-							karmaSection.find('.karma-section').css( {
-								paddingTop 		: "0",
-								paddingBottom	: "0"
-							});
-						}
-
-
+						var padding = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
+						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-top', padding, that.currentDevice() );
+						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-bottom', padding, that.currentDevice() );
 
 					}
+
 				};
 
 			// Apply JQuery Ui resizable on bottom spacing
 			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
 			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
 			this.$el.find( '.karma-bottom-spacing' ).resizable( options );
-
 
 		},
 
