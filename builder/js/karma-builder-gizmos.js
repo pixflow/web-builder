@@ -285,6 +285,7 @@
 						karmaSection.addClass( "karma-resizable-active" );
 						that.showMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "200px";
+
 						var section = that.el.querySelector('.karma-section'),
 						newSize =  window.getComputedStyle( section ).getPropertyValue('padding-top');
 						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
@@ -443,12 +444,23 @@
 					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
-					start : function( event ){
+					start : function( event , ui ){
 
 						that.$el.find( '.karma-image-resize' ).css( {'width': ''});
+						var column = that.el.querySelector('.karma-column');
+
+						if ('padding-left' == paddingDirection) {
+							var newSize = window.getComputedStyle(column).getPropertyValue('padding-left');
+						}else{
+							var newSize = window.getComputedStyle(column).getPropertyValue('padding-right');
+						}
+						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace('px', '') : newSize;
+						ui.originalSize.width = parseInt(newSize);
+						ui.helper[0].setAttribute('style', 'width: ' + ui.size.width + 'px');
 						that.showMouseToolTip( event );
 						that.el.classList.add( 'karma-resizing-padding' );
 						KarmaView.removeActiveElement();
+
 
 					},
 
