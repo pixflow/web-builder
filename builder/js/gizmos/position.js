@@ -89,7 +89,7 @@
 				modelNameChange[ this.data.params.model ] = dataValue;
 				this.elementView.setAttributes( modelNameChange, false );
 			}else{
-				this.elementView.setAttributes( { 'gizmoposition' : dataValue }, false );
+				this.elementView.setAttributes( { 'textposition' : dataValue }, false );
 			}
 
 		},

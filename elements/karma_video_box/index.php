@@ -47,7 +47,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'descriptioncolor'	=> '#fff',
 			'titletag'			=>'h6',
 			'descriptiontag'	=>'h4',
-			'gizmoposition'		=>'bottom-left',
+			'textposition'		=>'bottom-left',
 			'textlink'			=>'https://www.google.com/',
 			'target'			=>'_self',
 			'videourl'			=>'https://www.youtube.com/watch?v=GnQ9eDyjri4',
@@ -100,7 +100,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 		$visible_tablet 	= ( 'on' == $attributes['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
 		ob_start();
 		?>
-		<div data-url="<?php echo esc_attr( $attributes['videourl'] ); ?>" class="karma-video-box karma-video-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-video-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-video-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-video-box-content-position-<?php echo esc_attr( $attributes['gizmoposition'] ); ?>";  >
+		<div data-url="<?php echo esc_attr( $attributes['videourl'] ); ?>" class="karma-video-box karma-video-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-video-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-video-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-video-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
 			<div class="karma-video-box-overlay"></div>
 			<div class="karma-video-box-container-player">
 				<div class="karma-video-box-player">
@@ -149,7 +149,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			 .'<#} else { #>'
 			 .'<# className = \'karma-button-link \'  #>'
 			 .'<# }#>'
-			. '<div data-url="{{ data.attributes.shortcode_attributes.videourl}} " class="karma-video-box karma-video-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-video-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-video-box-content-position-{{ data.attributes.shortcode_attributes.gizmoposition }} karma-video-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
+			. '<div data-url="{{ data.attributes.shortcode_attributes.videourl}} " class="karma-video-box karma-video-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-video-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-video-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-video-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
 			. '<div class="karma-video-box-overlay"></div>'
 			. '<div class="karma-video-box-container-player">'
 			. '<div class="karma-video-box-player">'. Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/player.svg' ). '</div>'

@@ -436,12 +436,12 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		gizmoposition: function () {
+		textposition: function () {
 
-			var dataValue = this.getAttributes( [ 'gizmoposition' ] ),
+			var dataValue = this.getAttributes( [ 'textposition' ] ),
 				regex = new RegExp( '(?:^|\\s)karma-video-box-content-position-(.*?)(?!\\S)' );
 
-			this.el.querySelector( '.karma-video-box' ).className = this.el.querySelector( '.karma-video-box' ).className.replace( regex, " karma-video-box-content-position-" + dataValue.gizmoposition );
+			this.el.querySelector( '.karma-video-box' ).className = this.el.querySelector( '.karma-video-box' ).className.replace( regex, " karma-video-box-content-position-" + dataValue.textposition );
 		},
 
 
