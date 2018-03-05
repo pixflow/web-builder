@@ -355,10 +355,9 @@
 
 			var padding	= this.getAttributes( ['space'] ).space + 'px';
 			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
-			this.$el.find('.karma-section').css({
-				'padding-top'      : padding,
-				'padding-bottom'   : padding
-			});
+			var elementId = this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
+			this.renderCss( '#' + elementId + ' .karma-section', 'padding-top', this.getAttributes( [ 'space' ] ).space + 'px' );
+			this.renderCss( '#' + elementId + ' .karma-section', 'padding-bottom', this.getAttributes( [ 'space' ] ).space + 'px' );
 
 		},
 

@@ -814,9 +814,9 @@
 		 *
 		 * @returns { void }
 		 */
-		renderCss: function ( selector, attribute, value ){
+		renderCss: function ( selector, attribute, value, device ){
 
-			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
+			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value, device );
 
 		},
 
@@ -831,7 +831,7 @@
 		 *
 		 * @returns { string } new style of element to insert inside style tag
 		 */
-		generateNewStyle: function ( selector, attribute, value ){
+		generateNewStyle: function ( selector, attribute, value, device ){
 
 			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
 				regex    = /(.*?){(.*?)}/g,
@@ -839,6 +839,31 @@
 				selector = selector.trim(),
 				content  = '',
 				result;
+
+			if ( 'tablet' == device || 'mobile' == device ) {
+				var originalStyle = oldStyle;
+				if ( 'tablet' == device ) {
+					var deviceRegex = /\/\*tablet-start\*\/(.*?)\/\*tablet-finish\*\//ig;
+				} else if ( 'mobile' == device ) {
+					var deviceRegex = /\/\*mobile-start\*\/(.*?)\/\*mobile-finish\*\//ig;
+				}
+				var result = deviceRegex.exec( oldStyle );
+				oldStyle = result[ 1 ];
+			} else {
+				var deviceRegex = /@media.*?-finish\*\/}/ig,
+					responsiveStyle = '';
+				while ( (result = deviceRegex.exec( oldStyle )) !== null ) {
+					// This is necessary to avoid infinite loops with zero-width matches
+					if ( result.index === deviceRegex.lastIndex ) {
+						deviceRegex.lastIndex++;
+					}
+
+					// The result can be accessed through the `m`-variable.
+					responsiveStyle = responsiveStyle + result[ 0 ];
+				}
+
+				oldStyle = oldStyle.replace( deviceRegex, '' )
+			}
 
 			if ( '' != oldStyle ){
 				while ( ( result = pattern.exec( oldStyle ) ) !== null ){
@@ -868,12 +893,19 @@
 
 				cssProperty[ attribute ] = value;
 				oldStyle = this.removeOldSelector( selector, oldStyle );
-				return oldStyle + this.generateStyleString( selector, cssProperty );
+				var newStyle = oldStyle + this.generateStyleString( selector, cssProperty );
 			}else{
 				var cssProperty = {};
 				cssProperty[ attribute ] = value;
-				return oldStyle + this.generateStyleString( selector, cssProperty );
+				var newStyle = oldStyle + this.generateStyleString( selector, cssProperty );
 			}
+
+			if ( 'tablet' == device || 'mobile' == device ) {
+				newStyle = originalStyle.replace( deviceRegex, '/*' + device + '-start*/' + newStyle + '/*' + device + '-finish*/' )
+			} else {
+				newStyle = newStyle + responsiveStyle;
+			}
+			return newStyle;
 
 		},
 
