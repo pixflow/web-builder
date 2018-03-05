@@ -441,11 +441,33 @@
 					stop : function ( event, ui ) {
 
 						var value = ( parseInt( ui.element.width() ) < 0 ) ? 0 : parseInt( ui.element.width() );
-						if ( 'padding-left' == paddingDirection ){
-							that.setAttributes( { 'leftspace' : value }, true );
-						}else {
-							that.setAttributes( { 'rightspace' : value }, true );
+
+						if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+
+								if ('padding-left' == paddingDirection) {
+									that.setAttributes({'leftspace': value}, true);
+								} else {
+									that.setAttributes({'rightspace': value}, true);
+								}
+
+						}else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
+
+							if ('padding-left' == paddingDirection) {
+								that.setAttributes({'tabletleftspace': value}, true);
+							} else {
+								that.setAttributes({'tablerightspace': value}, true);
+							}
+
+						}else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
+
+							if ('padding-left' == paddingDirection) {
+								that.setAttributes({'mobileleftspace': value}, true);
+							} else {
+								that.setAttributes({'mobilerightspace': value}, true);
+							}
+
 						}
+
 						that.removeMouseToolTip( event );
 						that.el.classList.remove( 'karma-resizing-padding' );
 						that.$el.trigger('karma/finish/modifyColumns');
@@ -456,7 +478,7 @@
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
 						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
-						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px', this.currentDevice());
+						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px', that.currentDevice() );
 
 					}
 				};
