@@ -363,21 +363,31 @@
 					stop : function ( event, ui ) {
 
 						that.removeMouseToolTip( event );
-						that.setAttributes( { topspacepadding : parseInt( ui.element.height() ) }, false );
+						if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+							that.setAttributes( { topspacepadding : parseInt( ui.element.height() ) }, true );
+						}
+
+						else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
+							that.setAttributes( { tabletspace : parseInt( ui.element.height() ) }, true );
+						}
+
+						else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
+							that.setAttributes( { mobilespace : parseInt( ui.element.height() ) }, true );
+						}
+
 						that.toggleShortcodeGizmo( "remove" );
 
 					},
 					resize: function( event, ui ){
-
-						var currentSection = that.el;
-						currentSection.style.paddingTop = ui.size.height + 'px';
+						var elementId 	= that.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + that.el.getAttribute( 'data-element-key' );
+						that.renderCss( "#" + elementId + "" , 'padding-top', ui.size.height + 'px' , that.currentDevice());
 
 					}
 				};
 
-			options.handles.s = $gizmo.find( '.ui-resizable-s' );
-			this.$el.find( '.karma-top-spacing' ).css( "height", this.getAttributes(['topspacepadding']).topspacepadding + "px" );
-			this.$el.find( '.karma-top-spacing' ).resizable( options );
+				options.handles.s = $gizmo.find( '.ui-resizable-s' );
+				this.$el.find( '.karma-top-spacing' ).css( "height", this.getAttributes(['topspacepadding']).topspacepadding + "px" );
+				this.$el.find( '.karma-top-spacing' ).resizable( options );
 
 		},
 

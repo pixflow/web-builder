@@ -56,6 +56,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'radiusbox'			=>'0',
 			'videoheight'		=>'500',
 			'topspacepadding'	=>'10',
+			'tabletspace'		=> '10',
+			'mobilespace'		=> '10',
             'visibleondesktop'	=> 'on',
 			'visibleonmobile'	=> 'on',
 			'visibleontablet'	=> 'on',
@@ -191,6 +193,12 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			array(
 				'property'		=> array(
 						'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tabletspace' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobilespace' ] . 'px',
 				)
 			),
 			array(

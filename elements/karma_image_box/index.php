@@ -53,6 +53,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'textlink'			=>'https://www.google.com/',
 				'target'			=>'_self',
 				'topspacepadding'	=> '10',
+				'tabletspace'		=> '10',
+				'mobilespace'		=> '10',
 				'radiusbox'			=>'0',
 				'imageheight'		=>'500',
 				'type'				=> 'fill' ,
@@ -183,6 +185,12 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 					array(
 						'property'		=> array(
 								'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+						),
+						'tablet_property' => array(
+							'padding-top'  => self::$element_attributes[ 'tabletspace' ] . 'px',
+						),
+						'mobile_property' => array(
+							'padding-top'  => self::$element_attributes[ 'mobilespace' ] . 'px',
 						)
 					),
 					array(
