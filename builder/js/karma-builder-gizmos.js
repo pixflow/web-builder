@@ -361,9 +361,15 @@
 					maxHeight   : 700,
 					minHeight   : 0,
 					handles : {},
-					start: function ( event ) {
+					start: function ( event, UI ) {
 						that.showMouseToolTip( event );
 						that.toggleShortcodeGizmo( "add" );
+						var element = that.el;
+						newSize =  window.getComputedStyle( element ).getPropertyValue('padding-top');
+						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
+						UI.originalSize.height = parseInt(newSize);
+						UI.helper[0].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+
 					},
 					stop : function ( event, ui ) {
 
