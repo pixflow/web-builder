@@ -125,9 +125,9 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 					array(
-						"name"  => "alt",
+						"name"  => "Alternative text",
 						"type"  => Karma_Builder_Setting_Panel::TEXT,
-						"label" => __( "Alt", 'karma' ),
+						"label" => __( "Alternative text", 'karma' ),
 						"group" => "Advance option"
 					),
 				),
@@ -190,7 +190,7 @@ class Karma_Image_Describe extends Karma_Image {
 						'className' => 'karma-image-setting-layout',
 						'form'      => 'setting-panel',
 						"params"    => array(
-							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/setting-panel.svg' ),
+							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/image-setting.svg' ),
 						)
 					),
 					array(

@@ -5,7 +5,6 @@ namespace KarmaBuilder\Stylesheet ;
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
-use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -186,13 +185,13 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		$headings_min_size_in_responsive = array(
-			'h1'    => '35',
-			'h2'    => '30',
-			'h3'    => '25',
-			'h4'    => '23',
-			'h5'    => '21',
-			'h6'    => '17',
-			'p'     => '15',
+			'h1'    => '42',
+			'h2'    => '35',
+			'h3'    => '28',
+			'h4'    => '24',
+			'h5'    => '20',
+			'h6'    => '16',
+			'p'     => '14',
 		);
 		foreach ( $headings as $tag => $info ){
 			if ( 'p' == $tag ){
@@ -208,7 +207,7 @@ class Karma_Stylesheet {
 					}
 				}else if ( 'font-size' == $property ) {
 					$headings_style .= $property . ':';
-					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 300px) / (1920 - 300)));';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 768px) / (1920 - 768)));';
 				}else{
 					$headings_style .= $property . ':' . $value . ';' ;
 				}

@@ -2,6 +2,7 @@
 
 namespace KarmaBuilder\Elements;
 use KarmaBuilder\ElementsManager\Karma_Shortcode_Base as Karma_Shortcode_Base;
+use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 class Karma_Column extends Karma_Shortcode_Base {
 
@@ -28,7 +29,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 			'leftspace'			=> '10',
 			'visibleonmobile'	=> 'on',
 			'visibleontablet'	=> 'on',
-			'leftspace'			=> '10',
 
 		);
 
@@ -61,6 +61,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 			. " karma-col-xl-" . $atts[ 'xl_size' ]
 			. ' ' . $visible_mobile
 			. ' ' . $visible_tablet
+			. ' ' . $atts[ 'extraclass' ]
 			. "'visibe-on-tablet='"
 			. $atts[ 'visibleontablet' ]
 			."'visibe-on-mobile='"
@@ -73,7 +74,7 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 		return "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>
 				<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibleontablet  ) ? '' : 'tablet-display-none karma-deactive-on-mobile';  #>
-				<div visibe-on-tablet='{{ data.attributes.shortcode_attributes.visibleontablet }} '  visibe-on-mobile='{{ data.attributes.shortcode_attributes.visibleonmobile }} ' class='karma-column karma-column-{{ data.attributes.element_key }}  karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}  <# print( visibleMobile ); #>  <# print( visibleTablet ); #>'> 
+				<div visibe-on-tablet='{{ data.attributes.shortcode_attributes.visibleontablet }} '  visibe-on-mobile='{{ data.attributes.shortcode_attributes.visibleonmobile }} ' class='karma-column karma-column-{{ data.attributes.element_key }}  karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extraclass }}  <# print( visibleMobile ); #>  <# print( visibleTablet ); #>'> 
 				<div class='karma-column-margin' >{{ data.attributes.shortcode_attributes.shortcode_content }} </div>
 				</div>";
 
@@ -114,7 +115,9 @@ class Karma_Column extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
-		$block = '' ;
+	//	$block = File_System::file_get_content();
+		$instance = File_System::get_instance();
+		$block = $instance->file_get_content( KARMA_BUILDER_URL . 'elements/karma_column/script.js' );
 		return $block;
 
 	}

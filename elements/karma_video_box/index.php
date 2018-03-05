@@ -37,24 +37,24 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 		return 	array(
 			'element_key'   	=> 'kb' ,
 			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-video-text.jpg',
-			'titletext'			=> 'MAKE WEBSITE',
-			'descriptiontext'	=> 'With good Karma',
-			'linktext'			=> 'Explore more ',
+			'titletext'			=> esc_attr__( 'Great idea', 'karma' ),
+			'descriptiontext'	=> esc_attr__( 'Live Text Editor', 'karma' ),
+			'linktext'			=> esc_attr__( 'Watch', 'karma' ),
 			'backgroundsize'	=> 'cover',
 			'backgroundposition'=> 'center-center',
 			'contentposition'	=> 'bottom-left',
 			'titlecolor'		=> '#fff',
 			'descriptioncolor'	=> '#fff',
-			'titletag'			=>'p',
+			'titletag'			=>'h6',
 			'descriptiontag'	=>'h4',
 			'textposition'		=>'bottom-left',
 			'textlink'			=>'https://www.google.com/',
-			'opennewtab'		=>'_self',
-			'videourl'			=>'',
-			'coloroverlay'		=>'rgba(0, 0, 0, 0.2)',
-			'colorbackground'	=>'#000',
+			'target'			=>'_self',
+			'videourl'			=>'https://www.youtube.com/watch?v=GnQ9eDyjri4',
+			'coloroverlay'		=>'rgba(0, 0, 0, 0)',
+			'colorbackground'	=>'rgba(0, 0, 0, 0)',
 			'radiusbox'			=>'0',
-			'videoheight'		=>'400',
+			'videoheight'		=>'500',
 			'topspacepadding'	=>'10',
             'visibleondesktop'	=> 'on',
 			'visibleonmobile'	=> 'on',
@@ -89,9 +89,11 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			$attributes
 		);
 
-		$title_content = 	'<' . $attributes['titletag'] . ' class="karma-video-box-title-tag ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
-		$description_content = 	'<' . $attributes['descriptiontag'] . ' class="karma-video-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
-		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
+		$title_class 		= ( '' == $attributes['titletext'] || 'Great idea' == $attributes['titletext'] ) ? 'karma-video-box-title-opacity' : '';
+		$description_class  = ( '' == $attributes['descriptiontext'] || 'Live Text Editor' == $attributes['descriptiontext'] ) ? 'karma-video-box-description-opacity' : '';
+		$title_content = 	'<' . $attributes['titletag'] . ' class="karma-video-box-title-tag ' .  $title_class .' ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
+		$description_content = 	'<' . $attributes['descriptiontag'] . ' class="karma-video-box-description-tag '.$description_class.'">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
+		$link_content = 	'<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-video-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display = ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
         $visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
 		$visible_mobile 	= ( 'on' == $attributes['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
@@ -161,7 +163,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			. '</div>'
             .'<div class="karma-video-box-link-content">'
 			. '<div  class="karma-video-box-link {{className}} {{visibleDesktop}}  {{visibleMobile}}  {{ visibleTablet }}"  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}"  visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}">'
-			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
+			. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.target }}}" class="karma-video-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
 			. '<# var display = ( "" == data.attributes.shortcode_attributes.linktext ) ? "none" : "block"  #>'
 			. '<div class="karma-video-box-link-shape" style="display: {{ display }}">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 			. '</div>'

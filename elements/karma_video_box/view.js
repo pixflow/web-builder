@@ -1,15 +1,20 @@
 ( function( $, karmaBuilder ){
 
-		karmaBuilder.videobox = karmaBuilder.shortcodes.extend({
+	karmaBuilder.videobox = karmaBuilder.shortcodes.extend({
 
 		events: {
-			'blur .karma-video-box-title-tag '      : 'saveVideoTitle',
-			'blur .karma-video-box-description-tag' : 'saveVideoDescription',
-			'keyup .karma-video-box-link-tag'		: 'saveVideoLink',
-			'click .karma-video-box-title'			: 'titleEditable',
-			'click .karma-video-box-description'	: 'titleDescription',
-			'click .karma-video-box-link'			: 'titleLink',
-			'keypress .karma-video-box-link'		: 'deactiveEnter'
+			'blur .karma-video-box-title-tag '      		: 'saveVideoTitle',
+			'mousedown .karma-video-box-title-tag '			: 'changeVideoTitle',
+			'keypress .karma-video-box-title-tag ' 			: 'changeClassVideoTitle',
+			'blur .karma-video-box-description-tag' 		: 'saveVideoDescription',
+			'mousedown .karma-video-box-description-tag'	: 'changeVideoDescription',
+			'keypress .karma-video-box-description-tag'		: 'changeClassVideoDescription',
+			'keyup .karma-video-box-link-tag'				: 'saveVideoLink',
+			'mousedown .karma-video-box-link-tag'			: 'changeTextLink',
+			'click .karma-video-box-title'					: 'titleEditable',
+			'click .karma-video-box-description'			: 'titleDescription',
+			'click .karma-video-box-link'					: 'titleLink',
+			'keypress .karma-video-box-link'				: 'deactiveEnter'
 
 		},
 
@@ -35,27 +40,69 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is description...";
+				content.innerText = "Live Text Editor";
+				content.classList.add('karma-video-box-description-opacity');
 			}
 
-			this.setAttributes( { 'descriptiontext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'descriptiontext' : "Live Text Editor" },  true );
+			}else{
+				this.setAttributes( { 'descriptiontext' : contentData },  true );
+			}
 
 		},
 
-			/**
-			 * @summary  Deactivate enter in link text
-			 *
-			 * @since 0.1.1
-			 * @return {number}
-			 */
-			deactiveEnter : function ( e ) {
+		/**
+		 * @summary change the description of video  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeVideoDescription : function () {
 
-				return e.which != 13;
+			var content = this.el.querySelector( '.karma-video-box-description-tag' ),
+				contentData = content.innerHTML;
 
-			},
+
+			if ( "Live Text Editor" == contentData.trim() ) {
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
+			}
+
+		},
+
+		/**
+		 * @summary change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassVideoDescription : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-description-tag' );
+
+			if( content.classList.contains( 'karma-video-box-description-opacity' ) ) {
+				content.className = content.className.replace( "karma-video-box-description-opacity", "" );
+			}
+
+		},
+
+		/**
+		 * @summary  Deactivate enter in link text
+		 *
+		 * @since 0.1.1
+		 * @return {number}
+		 */
+		deactiveEnter : function ( e ) {
+
+			return e.which != 13;
+
+		},
 
 
-			/**
+		/**
 		 * @summary Save the title of video box
 		 *
 		 * @since 0.1.1
@@ -67,10 +114,51 @@
 				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is title...";
+				content.innerText = "Great idea";
+				content.classList.add('karma-video-box-title-opacity');
 			}
 
-			this.setAttributes( { 'titletext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'titletext' : "Great idea" },  true );
+			}else{
+				this.setAttributes( { 'titletext' : contentData },  true );
+			}
+
+		},
+
+		/**
+		 * @summary change the title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeVideoTitle : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
+				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
+
+			if ( "Great idea" == contentData.trim() ) {
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
+			}
+
+		},
+
+		/**
+		 * @summary change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassVideoTitle : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-title-tag' );
+
+			if( content.classList.contains( 'karma-video-box-title-opacity' ) ) {
+				content.className = content.className.replace( "karma-video-box-title-opacity", "" );
+			}
 
 		},
 
@@ -95,7 +183,19 @@
 
 		},
 
-		 /**
+		/**
+		 * @summary change link text
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeTextLink : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
+				contentData = content.innerHTML;
+		},
+
+		/**
 		 * @summary Render video element
 		 *
 		 * @since 0.1.1
@@ -150,11 +250,14 @@
 			var content = this.el.querySelector( '.karma-video-box-title-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				};
+
 			}
 		},
-			
+
 		/**
 		 * @summary Active editable description
 		 *
@@ -166,8 +269,12 @@
 			var content = this.el.querySelector( '.karma-video-box-description-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -184,8 +291,12 @@
 			var content = this.el.querySelector( '.karma-video-box-link-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 		},
 
@@ -257,11 +368,11 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		opennewtab: function () {
+		target: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['opennewtab'] );
-			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.opennewtab );
+				linktarget  = this.getAttributes( ['target'] );
+			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.target );
 
 		},
 
@@ -409,13 +520,13 @@
 		rangemodel : function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-					border		= this.getAttributes(['rangemodel']);
+				border		= this.getAttributes(['rangemodel']);
 
 			this.renderCss( "#" + elementId + " .karma-video-box-link", 'border-radius', border.rangemodel + "px"  );
 
 
 		} ,
-			
+
 		/**
 		 * @summary Set color for link
 		 *
@@ -469,43 +580,43 @@
 			}
 
 		},
-			/**
-			 * @summary  show and hide button with hide gizmo in tablet
-			 *
-			 *
-			 * @since 0.1.0
-			 * @return {void}
-			 */
-			visibleontablet : function () {
+		/**
+		 * @summary  show and hide button with hide gizmo in tablet
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleontablet : function () {
 
-				var tabletVisible = this.getAttributes( ['visibleontablet'] ).visibleontablet;
+			var tabletVisible = this.getAttributes( ['visibleontablet'] ).visibleontablet;
 
-				if( "on" == tabletVisible ){
-					this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-tablet" );
-				}else{
-					this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-tablet" );
-				}
-
-			},
-
-			/**
-			 * @summary  show and hide button with hide gizmo in mobile
-			 *
-			 *
-			 * @since 0.1.0
-			 * @return {void}
-			 */
-			visibleonmobile : function () {
-
-				var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
-
-				if( "on" == mobileVisible ){
-					this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-mobile" );
-				}else{
-					this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-mobile" );
-				}
-
+			if( "on" == tabletVisible ){
+				this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-tablet" );
+			}else{
+				this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-tablet" );
 			}
+
+		},
+
+		/**
+		 * @summary  show and hide button with hide gizmo in mobile
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleonmobile : function () {
+
+			var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+
+			if( "on" == mobileVisible ){
+				this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-mobile" );
+			}else{
+				this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-mobile" );
+			}
+
+		}
 
 	});
 

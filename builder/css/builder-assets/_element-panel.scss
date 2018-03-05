@@ -69,10 +69,9 @@
 		}
 
 		.icon{
+			@include box( 48px );
 			background-position: center;
 			background-repeat: no-repeat;
-			height: 48px;
-			width: 48px;
 		}
 
 	}
@@ -538,7 +537,24 @@
 		align-items: flex-start !important;
 
 		.karma-add-element-inactive-container {
-			max-height: 580px;
+			max-height: 630px;
+			&.karma-blocks-container{
+					margin-top: 38px;
+			}
+		}
+
+		.karma-blocks-container{
+			.karma-blocks-preloader{
+				@include box( 24px, 24px );
+				background-image: url(../media/svg/loading.svg);
+				background-repeat: no-repeat;
+				background-size: 24px;
+				left: 50%;
+				margin: 0 auto;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%);
+			}
 		}
 
 		.karma-blocks-container{
@@ -872,6 +888,7 @@
 .karma-builder {
 	.karma-builder-iframe-container {
 		align-items: center;
+		background-color: #f6f6f6;
 		display: flex;
 		height: 100%;
 		justify-content: center;
@@ -879,10 +896,9 @@
 
 		.karma-builder-responsive-frame {
 			align-items: center;
-			background-color: #f4f4f4;
+			background-color: #fff;
 			border-radius: 50px;
-			box-shadow: 0px 11px 97px rgba(0, 0, 0, 0.2);
-			
+			box-shadow: 0px 13px 83px rgba(68, 83, 99, 0.12);
 			display: flex;
 			flex-direction: column;
 			height: 100%;
@@ -935,7 +951,6 @@
 
 		.karma-builder-responsive-frame {
 			box-sizing: content-box;
-			height: 954px;
 			width: 419px;
 		}
 

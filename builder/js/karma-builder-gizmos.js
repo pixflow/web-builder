@@ -48,7 +48,7 @@
 		 *  @summary Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
-		+ '<div class="karma-spacing karma-top-spacing   " data-direction="both"  >'
+		+ '<div class="karma-spacing karma-both-top-spacing karma-top-spacing  " data-direction="both"  >'
 		+ '<div class="karma-both-spacing-handler karma-both-spacing-handler-top ui-resizable-handle ui-resizable-s">'
 		+ '<div class="karma-spacing-dot-container karma-top-spacing-height ">'
 		+ '<div class="spacing-dot"></div>'
@@ -290,20 +290,25 @@
 						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
-						that.el.querySelector( '.karma-top-spacing').style.height = ui.element.height() +"px";
+						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
 
 					},
 					resize: function( event, ui ){
 
 						var padding = ui.size.height + 'px';
-						karmaSection.find('.karma-section').css( {
-							paddingTop 		: padding,
-							paddingBottom	: padding
-						});
+						if( ui.size.height >= 0){
+							karmaSection.find('.karma-section').css( {
+								paddingTop 		: padding,
+								paddingBottom	: padding
+							});
+						}else{
+							karmaSection.find('.karma-section').css( {
+								paddingTop 		: "0",
+								paddingBottom	: "0"
+							});
+						}
 
-						karmaSection.find('.karma-top-spacing').css( {
-							height 	: padding
-						});
+
 
 					}
 				};
@@ -343,7 +348,7 @@
 		 * @since 0.1.0
 		 *
 		 * @returns {void}
-		*/
+		 */
 		topSpacingGizmo : function ( $gizmo ) {
 
 			var that = this,
@@ -491,9 +496,10 @@
 							'height'		: UI.size.height,
 							'resizing'	: that.el.querySelector( 'img' ).classList.contains( 'karma-image-both-resize' )
 						}, true );
+						that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width);
 
 					},
-					
+
 					resize: function( event, UI ){
 
 						var IMG			= that.el.querySelector( 'img' ),
@@ -519,6 +525,7 @@
 
 				UI.element.resizable( "option", "maxWidth", that.el.closest( '.karma-column-margin' ).clientWidth );
 				$(this).parent().css( 'width' , UI.size.width + 'px' );
+				that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width );
 				$(this).parent().css( 'height' , 'auto' );
 
 			}
@@ -856,7 +863,7 @@
 
 			e.stopPropagation();
 			var dropDownIcon = (  e.target.classList.contains( 'karma-drop-down-icon' ) ) ? e.target : e.target.closest( 'button' ),
-					dropDownBox = dropDownIcon.nextElementSibling;
+				dropDownBox = dropDownIcon.nextElementSibling;
 
 			if( null != dropDownBox ){
 				this.removeDropDownGizmo();
@@ -893,18 +900,22 @@
 				that = this;
 			this.el.insertAdjacentHTML( 'afterend', newSectionPanel );
 			this.$el.next( '.karma-new-section' ).find( '.karma-new-section-layout' ).on( 'click', function ( e ) {
-				
+
 				var domNode = $( this )[0],
 					newGrid = JSON.parse(domNode.getAttribute( 'data-value' ) ),
 					placeholder = document.querySelectorAll( '.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
 					elementName = 'karma_section';
 				if ( 1 === that.model.get( 'order' ) ) {
+
 					if ( placeholder.length > 1 ) {
 						placeholder = placeholder[ 1 ];
+					}else if ( !( placeholder instanceof HTMLElement ) ){
+						placeholder = placeholder[ 0 ];
 					}
 				} else {
 					placeholder = placeholder[ 0 ];
 				}
+
 				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName  );
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );

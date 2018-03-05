@@ -45,7 +45,7 @@ class Karma_Text extends Karma_Shortcode_Base {
 		return array(
 			'element_key'  		=> 'kb',
 			'tag'           	=> 'h5',
-			'color'				=> '$builder-main-color',
+			'color'				=> '#394959',
 			'align'       		=> 'center',
 			'topspacepadding'	=> '10',
 			'elementalign'		=> 'center',

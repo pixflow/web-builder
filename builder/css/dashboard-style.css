@@ -333,8 +333,8 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   height: 1px;
   background: #D7DBDE; }
 
-#karma-builder-layout div:before, #karma-builder-layout div:after, #karma-builder-layout ul:before, #karma-builder-layout ul:after, #karma-builder-layout article:before, #karma-builder-layout article:after, #karma-builder-layout aside:before, #karma-builder-layout aside:after, #karma-builder-layout details:before, #karma-builder-layout details:after, #karma-builder-layout figcaption:before, #karma-builder-layout figcaption:after, #karma-builder-layout figure:before, #karma-builder-layout figure:after, #karma-builder-layout section:before, #karma-builder-layout section:after, #karma-builder-layout input[class*="karma"]:before, #karma-builder-layout input[class*="karma"]:after {
-  content: unset; }
+div#karma-builder-layout img {
+  visibility: inherit; }
 
 #karma-add-element html, #karma-add-element body, #karma-add-element span, #karma-add-element object, #karma-add-element iframe,
 #karma-add-element h1, #karma-add-element h2, #karma-add-element h3, #karma-add-element h4, #karma-add-element h5, #karma-add-element h6, #karma-add-element p, #karma-add-element blockquote, #karma-add-element pre,
@@ -569,9 +569,9 @@ body {
     padding: 0;
     line-height: .8em; }
   body iframe {
+    border: 2px solid rgba(68, 83, 99, 0.22);
     height: calc( 100vh - 49px );
     width: 100%;
-    border: none;
     transition: .4s;
     will-change: contents; }
   body .karma-full-separator {
@@ -608,6 +608,59 @@ body {
 .ui-draggable-dragging {
   pointer-events: none !important; }
 
+#karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6.p {
+  margin: 0; }
+
+@media screen and (max-width: 768px) {
+  .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
+    padding: 4vh !important; }
+
+  .karma-builder-element[data-name="karma_video_box"] .karma-image-text-box {
+    padding: 4vh !important; }
+
+  #karma-builder-layout h1 {
+    font-size: 42px;
+    line-height: 54px; }
+  #karma-builder-layout h2 {
+    font-size: 35px;
+    line-height: 45px; }
+  #karma-builder-layout h3 {
+    font-size: 28px;
+    line-height: 38px; }
+  #karma-builder-layout h4 {
+    font-size: 24px;
+    line-height: 34px; }
+  #karma-builder-layout h5 {
+    font-size: 20px;
+    line-height: 30px; }
+  #karma-builder-layout h6 {
+    font-size: 16px;
+    line-height: 26px; }
+  #karma-builder-layout p {
+    font-size: 14px;
+    line-height: 24px; } }
+@media screen and (max-width: 575px) {
+  #karma-builder-layout h1 {
+    font-size: 34px;
+    line-height: 44px; }
+  #karma-builder-layout h2 {
+    font-size: 30px;
+    line-height: 40px; }
+  #karma-builder-layout h3 {
+    font-size: 25px;
+    line-height: 35px; }
+  #karma-builder-layout h4 {
+    font-size: 22px;
+    line-height: 32px; }
+  #karma-builder-layout h5 {
+    font-size: 18px;
+    line-height: 28px; }
+  #karma-builder-layout h6 {
+    font-size: 15px;
+    line-height: 25px; }
+  #karma-builder-layout p {
+    font-size: 14px;
+    line-height: 24px; } }
 @-ms-viewport {
   width: device-width; }
 html {
@@ -631,16 +684,16 @@ html {
   padding-left: 15px;
   width: 100%; }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .karma-container {
     max-width: 540px; } }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .karma-container {
     max-width: 720px; } }
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .karma-container {
     max-width: 960px; } }
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   .karma-container {
     max-width: 1140px; } }
 .karma-builder-element .karma-column[class*="col-"] {
@@ -1413,7 +1466,7 @@ html {
   -ms-flex-item-align: stretch !important;
   align-self: stretch !important; }
 
-@media screen and (max-width: 768px) and (min-width: 420px) {
+@media screen and (max-width: 768px) and (min-width: 576px) {
   .tablet-display-none {
     display: none; }
 
@@ -1422,7 +1475,7 @@ html {
 
   .karma-builder-environment .tablet-display-none {
     display: inherit; } }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 575px) {
   .karma-deactive-on-mobile {
     opacity: .2; }
 
@@ -2003,7 +2056,7 @@ html {
   position: relative; }
   .karma-range-slider-container .karma-range-slider-content, #karma-typography-setting #karma-typography-manager .karma-typography-size .karma-range-slider-content {
     align-items: center;
-    justify-content: inherit;
+    justify-content: space-between;
     display: flex;
     text-align: inherit;
     padding: 11px 0 18px;
@@ -2157,13 +2210,13 @@ html {
               padding: 16px 10px 6px 10px;
               text-decoration: none; }
               #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-add-font a:after, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body .karma-dropdown-add-font a:after {
+                width: 100%;
+                height: 1px;
                 background-color: #D9EBFE;
                 bottom: 38px;
                 content: '';
-                height: 1px;
                 left: 0;
-                position: absolute;
-                width: 100%; }
+                position: absolute; }
         #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-icon, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-icon {
           border: none; }
     #karma-typography-setting #karma-typography-manager .karma-typography-weight {

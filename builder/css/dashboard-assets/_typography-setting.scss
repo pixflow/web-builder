@@ -81,7 +81,6 @@
 					margin: 0;
 
 					.karma-dropdown-add-font {
-
 						order: 10;
 						a {
 							box-shadow: none;
@@ -92,13 +91,13 @@
 							padding: 16px 10px 6px 10px;
 							text-decoration: none;
 							&:after {
+
+								@include box( 100%, 1px );
 								background-color: $builder-accent-color-3;
 								bottom: 38px;
 								content: '';
-								height: 1px;
 								left: 0;
 								position: absolute;
-								width: 100%;
 							}
 
 						}

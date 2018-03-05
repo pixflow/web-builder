@@ -83,7 +83,9 @@
 				newTag = document.createElement( tagAttr.tag );
 			newTag.innerHTML = element.innerHTML;
 			newTag.classList.add( 'karma-text-tag', 'karma-document-click', 'karma-editable-content' );
-			newTag.contentEditable = true ;
+			if(document.body.classList.contains('karma-device-mode-desktop')) {
+				newTag.contentEditable = true;
+			}
 			element.parentNode.replaceChild( newTag, element );
 
 		},
@@ -135,7 +137,10 @@
 				content.innerText = "";
 			}
 			if( false == focusElement.classList.contains( 'focus' ) ){
-				focusElement.contentEditable = true ;
+
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					focusElement.contentEditable = true;
+				}
 				focusElement.classList.add( 'karma-text-element-focus' );
 				focusElement.focus();
 			}

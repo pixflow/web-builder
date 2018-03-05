@@ -57,7 +57,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 			'naturalwidth'		=> '514',
 			'naturalheight' 	=> '386',
 			'topspacepadding'	=> '10',
-			'elementalign'		=> 'left',
+			'elementalign'		=> 'center',
 		);
 
 	}
@@ -90,7 +90,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 		ob_start();
 		?>
-		<div class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
+		<div data-width="<?php echo esc_attr( $elem_width  ); ?>" data-height="<?php echo esc_attr( $elem_height  ); ?>" class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
 				<a class="karma-image-link karma-document-click" href="<?php echo $image_extra['link']; ?>"
 				   target="<?php echo $attributes['linktarget']; ?>">
@@ -125,7 +125,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		   	. '<# var elemWidth =  data.attributes.shortcode_attributes.width + "px"; #>'
 		   	. '<# var elemHeight =  data.attributes.shortcode_attributes.height + "px"; #>'
 		    . '<# var elemStyle = " width:" + elemWidth +";height:" + elemHeight +";" #>'
-			. '<div class="karma-image karma-image-{{ data.attributes.element_key }} " >'
+			. '<div data-width="{{data.attributes.shortcode_attributes.width}}" data-height="{{data.attributes.shortcode_attributes.height}}" class="karma-image karma-image-{{ data.attributes.element_key }} " >'
 			. '<div class="karma-image-container {{ data.attributes.shortcode_attributes.extraclass }}">'
 			. '<a class="karma-image-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.linktarget }}" >'
 		    . '<div class="karma-image-resize karma-position-{{ data.attributes.shortcode_attributes.position }}" style="{{ elemStyle }}" >'

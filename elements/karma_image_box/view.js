@@ -4,13 +4,18 @@
 
 		events: {
 
-			'blur .karma-image-text-box-title-tag '     : 'saveImageTitle',
-			'blur .karma-image-text-box-description-tag': 'saveImageDescription',
-			'keyup .karma-image-text-box-link-tag'		: 'checkEmptyLink',
-			'click .karma-image-text-box-title'			: 'titleEditable',
-			'click .karma-image-text-box-description'	: 'titleDescription',
-			'click .karma-image-text-box-link'			: 'titleLink',
-			'keypress .karma-image-text-box-link'		: 'deactiveEnter'
+			'blur .karma-image-text-box-title-tag '    			: 'saveImageTitle',
+			'mousedown .karma-image-text-box-title-tag '		: 'changeImageTitle',
+			'keypress .karma-image-text-box-title-tag ' 		: 'changeClassImageTitle',
+			'blur .karma-image-text-box-description-tag'		: 'saveImageDescription',
+			'mousedown .karma-image-text-box-description-tag '	: 'changeImageDescription',
+			'keypress .karma-image-text-box-description-tag'	: 'changeClassImageDescription',
+			'keyup .karma-image-text-box-link-tag'				: 'checkEmptyLink',
+			'mousedown .karma-image-text-box-link-tag'			: 'changeTextLink',
+			'click .karma-image-text-box-title'					: 'titleEditable',
+			'click .karma-image-text-box-description'			: 'titleDescription',
+			'click .karma-image-text-box-link'					: 'titleLink',
+			'keypress .karma-image-text-box-link'				: 'deactiveEnter'
 
 		},
 
@@ -49,8 +54,11 @@
 			var content = this.el.querySelector( '.karma-image-text-box-title-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -80,10 +88,55 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is description...";
+				content.innerText = "Live Text Editor";
+				content.classList.add('karma-image-box-description-opacity');
 			}
 
-			this.setAttributes( { 'descriptiontext' : contentData },  true );
+
+			if( '' == contentData ){
+				this.setAttributes( { 'descriptiontext' : "Live Text Editor" },  true );
+			}else{
+				this.setAttributes( { 'descriptiontext' : contentData },  true );
+			}
+
+
+
+		},
+
+		/**
+		 * @summary change the description of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeImageDescription : function () {
+
+			var content 	= this.el.querySelector( '.karma-image-text-box-description-tag' ),
+				contentData = content.innerHTML;
+
+
+			if ( "Live Text Editor" == contentData.trim() ) {
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
+			}
+
+		},
+
+		/**
+		 * @summary change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassImageDescription : function () {
+
+			var content 	= this.el.querySelector( '.karma-image-text-box-description-tag' );
+
+			if( content.classList.contains( 'karma-image-box-description-opacity' ) ) {
+				content.className = content.className.replace( "karma-image-box-description-opacity", "" );
+			}
 
 		},
 
@@ -99,12 +152,54 @@
 				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "this is title... ";
+				content.innerText = "Great idea";
+				content.classList.add('karma-image-box-title-opacity');
 			}
 
-			this.setAttributes( { 'titletext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'titletext' : "Great idea" },  true );
+			}else{
+				this.setAttributes( { 'titletext' : contentData },  true );
+			}
 
 		},
+
+		/**
+		 * @summary change the title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeImageTitle : function () {
+
+			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' ),
+				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
+
+			if ( "Great idea" == contentData.trim() ) {
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.innerText = "";
+					content.contentEditable = true;
+				}
+			}
+
+		},
+
+		/**
+		 * @summary change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassImageTitle : function () {
+
+			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' );
+
+			if( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
+				content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+			}
+
+		},
+
 
 		/**
 		 * @summary check empty link text
@@ -123,7 +218,20 @@
 				this.el.querySelector( '.karma-image-text-box-link-shape' ).style.display = 'block';
 			}
 
+
 			this.setAttributes( { 'linktext' : contentData },  true );
+		},
+
+		/**
+		 * @summary change link text
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeTextLink : function () {
+
+			var content 	= this.el.querySelector( '.karma-image-text-box-link-tag' ),
+				contentData = content.innerHTML;
 		},
 
 		/**
@@ -137,8 +245,11 @@
 			var content = this.el.querySelector( '.karma-image-text-box-description-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -154,8 +265,11 @@
 			var content = this.el.querySelector( '.karma-image-text-box-link-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.contentEditable = true;
+					content.focus();
+				}
+
 			}
 
 		},
@@ -305,12 +419,12 @@
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		opennewtab: function () {
+		target: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['opennewtab'] );
+				linktarget  = this.getAttributes( ['target'] );
 
-			elementId.find( '.karma-image-text-box-link-tag ' ).attr( "target", linktarget.opennewtab );
+			elementId.find( '.karma-image-text-box-link-tag ' ).attr( "target", linktarget.target );
 		},
 
 		/**
@@ -425,46 +539,46 @@
 		rangemodel : function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-					border		= this.getAttributes(['rangemodel']);
+				border		= this.getAttributes(['rangemodel']);
 
 			this.renderCss( "#" + elementId + " .karma-image-text-box-link", 'border-radius', border.rangemodel + "px"  );
 
 
 		} ,
-        /**
-         * @summary Set color for link
-         *
-         * @since 0.1.1
-         * @return {void}
-         */
-        textcolor : function () {
+		/**
+		 * @summary Set color for link
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		textcolor : function () {
 
-            var elementId 	= this.elementSelector(),
-                colorValue  = this.getAttributes( ['textcolor'] );
+			var elementId 	= this.elementSelector(),
+				colorValue  = this.getAttributes( ['textcolor'] );
 
-            this.renderCss( "#" + elementId + " .karma-button-fill .karma-image-text-box-link-tag ", 'color', colorValue.textcolor  );
+			this.renderCss( "#" + elementId + " .karma-button-fill .karma-image-text-box-link-tag ", 'color', colorValue.textcolor  );
 
-        },
+		},
 
-        /**
-         * @summary Set color for link
-         *
-         * @since 0.1.1
-         * @return {void}
-         */
-        generalcolor : function () {
+		/**
+		 * @summary Set color for link
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		generalcolor : function () {
 
-            var elementId 	= this.elementSelector(),
-                colorValue  = this.getAttributes( ['generalcolor'] );
+			var elementId 	= this.elementSelector(),
+				colorValue  = this.getAttributes( ['generalcolor'] );
 
-            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'background-color', colorValue.generalcolor  );
-            this.renderCss( "#" + elementId + " .karma-button-outline .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
-            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-outline", 'border-color', colorValue.generalcolor  );
-            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'border-color', colorValue.generalcolor  );
-            this.renderCss( "#" + elementId + " .karma-image-text-box-link .karma-image-text-box-link-shape svg *", 'stroke', colorValue.generalcolor  );
-            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-link .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'background-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-button-outline .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-outline", 'border-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'border-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box-link .karma-image-text-box-link-shape svg *", 'stroke', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-link .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
 
-        },
+		},
 		/**
 		 * @summary show and hide button with hide gizmo in desktop
 		 *
@@ -525,6 +639,6 @@
 
 
 
-    });
+	});
 
 })( jQuery, karmaBuilder );

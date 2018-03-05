@@ -388,6 +388,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 					var dropArea = that.getIframe().document.querySelector( '.karma-show-placeholder' );
 					if ( null != dropArea && 'IFRAME' == document.elementFromPoint( event.clientX, event.clientY ).nodeName ) {
 						that.renderBlock( UI.helper.data( "block-id" ), dropArea );
+						 that.getIframe().KarmaView.$el.trigger('karma/after/sortSections');
 					}
 					that.getIframe().KarmaView.removePlaceHolders();
 					window.karmaElementPanel.scrollElementPanel();
@@ -411,7 +412,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 			var blocks = karmaElementPanel.blocks[ blockID ].content;
 			for ( var block in blocks ) {
-				var newView = this.getIframe().KarmaView.renderElements( dropArea, JSON.parse( blocks[ block ] ) );
+				var newView = this.getIframe().KarmaView.renderElements( dropArea, JSON.parse( blocks[ block ] ), true );
 				dropArea = newView.$el.nextAll( '.karma-insert-between-sections-placeholder' ).first()[ 0 ];
 			}
 			if ( null != this.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {

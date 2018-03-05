@@ -226,22 +226,36 @@
 					position: relative;
 
 					.karma-video-box-title-tag,
-					.karma-video-box-description-tag,
 					.karma-video-box-link-tag {
 						display: inline-block;
 						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
-						word-break: break-all;
+						word-break: keep-all;
 					}
+					.karma-video-box-description-tag{
+						min-width: 200px;
+					}
+					.karma-video-box-description-tag.karma-video-box-description-opacity{
+						display: none;
+					}
+					
+					.karma-video-box-title-tag.karma-video-box-title-opacity{
+						display: none;
+					}
+
 					&.karma-video-box-description{
-						margin-top: 8px;
+						margin-top: 10px;
 					}
 				}
 			}
 			.karma-video-box-link-content{
 				display: flex;
-				margin-top: 18px;
+				margin-top: 10px;
+				.karma-button-fill,
+				.karma-button-outline{
+					margin-top: 8px;
+				}
 			}
 			.karma-video-box-link {
 				display: flex;
@@ -267,7 +281,7 @@
 
 					.karma-video-box-link-shape{
 						//conflict with inline js code
-						display: none;
+						display: none !important;
 					}
 					&.karma-show-child-gizmo{
 						&:hover{
@@ -443,5 +457,16 @@
 	.karma-video-box-link-tag {
 		cursor: text;
 	}
-	
+
+	#karma-builder-layout {
+		.karma-video-box-description-opacity{
+			display: block;
+			opacity: .5;
+		}
+		.karma-video-box-title-opacity{
+			display: block;
+			opacity: .5;
+		}
+	}
+
 }

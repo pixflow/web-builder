@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Iframe model</title>
+	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
+	<script src="../../../../../wp-includes/js/jquery/jquery.js"></script>
+	<script type="text/javascript">
+		var builderParams = '{"ajaxUrl":"test.txt"}';
+		var builderModels = '[{"shortcode_name":"karma_section","shortcode_attributes":{"space":"20"},"element_key":"firtstrow_12312","order":1,"parent_key":""},{"shortcode_name":"karma_column","shortcode_attributes":{"sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4"},"shortcode_content":"test","element_key":"12a12","order":1,"parent_key":"firtstrow_12312"},{"shortcode_name":"karma_column","shortcode_attributes":{"sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4"},"shortcode_content":"test","element_key":"1r312","order":2,"parent_key":"firtstrow_12312"},{"shortcode_name":"karma_column","shortcode_attributes":{"sm_size":"4","md_size":"4","lg_size":"4","xl_size":"4"},"shortcode_content":"test","element_key":"ssssscolumn_12g12","order":3,"parent_key":"firtstrow_12312"},{"shortcode_name":"karma_text","shortcode_attributes":{"tag":"p","color":"rgb(242, 71, 38)","align":"left"},"shortcode_content":"heloooo","element_key":"kbovyroe","parent_key":"ssssscolumn_12g12","order":1}]';
+		var builderGizmo = '{"karma_row":[{"type":"inner-gizmo","className":"section-gizmo-group","params":[{"type":"icon","icon":"","action":"open","className":"karma-element-setting"},{"type":"icon","icon":"","action":"open","className":"row-setting-layout"},{"type":"text","action":"open","className":"row-setting-setting","value":"background"}]}],"karma_column":[{"type":"inner-gizmo","position":"top right","class":"","params":[{"icon":"setting.svg","action":"open","class":""},{"icon":"setting.svg","action":"open","class":""},{"icon":"setting.svg","action":"open","class":""}]}]}';
+		var builderElementInfo = '{"karma_section":{"elementName":"karma_section","icon":"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>\\n<svg width=\\"70px\\" height=\\"50px\\" viewBox=\\"0 0 70 50\\" version=\\"1.1\\" xmlns=\\"http:\\/\\/www.w3.org\\/2000\\/svg\\" xmlns:xlink=\\"http:\\/\\/www.w3.org\\/1999\\/xlink\\">\\n    <!-- Generator: Sketch 46 (44423) - http:\\/\\/www.bohemiancoding.com\\/sketch -->\\n    <title>Group 2 Copy 6<\\/title>\\n    <desc>Created with Sketch.<\\/desc>\\n    <defs>\\n        <rect id=\\"section_container-path-1\\" x=\\"0\\" y=\\"0\\" width=\\"60\\" height=\\"27\\" rx=\\"3\\"><\\/rect>\\n        <linearGradient x1=\\"0.25781251%\\" y1=\\"49.7500002%\\" x2=\\"101.257813%\\" y2=\\"49.7500002%\\" id=\\"section_container-linearGradient-3\\">\\n            <stop stop-color=\\"#FFFFFF\\" offset=\\"0%\\"><\\/stop>\\n            <stop stop-color=\\"#53A0FD\\" offset=\\"100%\\"><\\/stop>\\n        <\\/linearGradient>\\n    <\\/defs>\\n    <g id=\\"section_container-Setting-pannel\\" stroke=\\"none\\" stroke-width=\\"1\\" fill=\\"none\\" fill-rule=\\"evenodd\\">\\n        <g id=\\"section_container-Group-2-Copy-6\\">\\n            <rect id=\\"section_container-Rectangle-14-Copy-25\\" fill=\\"#C6E1FC\\" x=\\"0\\" y=\\"0\\" width=\\"70\\" height=\\"50\\" rx=\\"3\\"><\\/rect>\\n            <rect id=\\"section_container-Rectangle-14-Copy-27\\" fill=\\"#7AB9FA\\" x=\\"1\\" y=\\"8\\" width=\\"68\\" height=\\"34\\"><\\/rect>\\n            <g id=\\"section_container-Group-Copy-15\\" opacity=\\"0.5\\" transform=\\"translate(6.000000, 15.000000)\\">\\n                <g id=\\"section_container-Path-3-+-Path-3-Copy-Mask\\">\\n                    <mask id=\\"section_container-mask-2\\" fill=\\"white\\">\\n                        <use xlink:href=\\"#section_container-path-1\\"><\\/use>\\n                    <\\/mask>\\n                    <use id=\\"section_container-Mask\\" fill-opacity=\\"0\\" fill=\\"#FFFFFF\\" xlink:href=\\"#section_container-path-1\\"><\\/use>\\n                    <path d=\\"M-3,32.0628284 L22.2631579,11 L29,18.1613617 C19.8169136,26.7765814 12.7993697,32.5337545 7.94736842,35.432881 C3.09536714,38.3320075 -0.553755666,37.2086566 -3,32.0628284 Z\\" id=\\"section_container-Path-3-Copy\\" stroke=\\"#FFFFFF\\" fill=\\"url(#section_container-linearGradient-3)\\" mask=\\"url(#section_container-mask-2)\\"><\\/path>\\n                    <polygon id=\\"section_container-Path-3\\" stroke=\\"#FFFFFF\\" fill=\\"url(#section_container-linearGradient-3)\\" mask=\\"url(#section_container-mask-2)\\" points=\\"11 32 38.6774194 9 63 32\\"><\\/polygon>\\n                <\\/g>\\n                <ellipse id=\\"section_container-Oval\\" stroke=\\"#FFFFFF\\" cx=\\"13.2989663\\" cy=\\"6.56633008\\" rx=\\"3.61148371\\" ry=\\"3.49589087\\"><\\/ellipse>\\n            <\\/g>\\n            <path d=\\"M57.5,2.38095238 L57.5,49.6752198\\" id=\\"section_container-Line-3-Copy-13\\" stroke=\\"#ECF5FE\\" stroke-linecap=\\"square\\" stroke-dasharray=\\"3\\"><\\/path>\\n            <path d=\\"M12.5,2.38095238 L12.5,49.6752198\\" id=\\"section_container-Line-3-Copy-15\\" stroke=\\"#ECF5FE\\" stroke-linecap=\\"square\\" stroke-dasharray=\\"3\\"><\\/path>\\n        <\\/g>\\n    <\\/g>\\n<\\/svg>","category":["basic","section"],"showInList":false},"karma_column":{"elementName":"karma_column","icon":"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>\\n<svg width=\\"70px\\" height=\\"50px\\" viewBox=\\"0 0 70 50\\" version=\\"1.1\\" xmlns=\\"http:\\/\\/www.w3.org\\/2000\\/svg\\" xmlns:xlink=\\"http:\\/\\/www.w3.org\\/1999\\/xlink\\">\\n    <!-- Generator: Sketch 46 (44423) - http:\\/\\/www.bohemiancoding.com\\/sketch -->\\n    <title>Group 2 Copy 6<\\/title>\\n    <desc>Created with Sketch.<\\/desc>\\n    <defs>\\n        <rect id=\\"section_container-path-1\\" x=\\"0\\" y=\\"0\\" width=\\"60\\" height=\\"27\\" rx=\\"3\\"><\\/rect>\\n        <linearGradient x1=\\"0.25781251%\\" y1=\\"49.7500002%\\" x2=\\"101.257813%\\" y2=\\"49.7500002%\\" id=\\"section_container-linearGradient-3\\">\\n            <stop stop-color=\\"#FFFFFF\\" offset=\\"0%\\"><\\/stop>\\n            <stop stop-color=\\"#53A0FD\\" offset=\\"100%\\"><\\/stop>\\n        <\\/linearGradient>\\n    <\\/defs>\\n    <g id=\\"section_container-Setting-pannel\\" stroke=\\"none\\" stroke-width=\\"1\\" fill=\\"none\\" fill-rule=\\"evenodd\\">\\n        <g id=\\"section_container-Group-2-Copy-6\\">\\n            <rect id=\\"section_container-Rectangle-14-Copy-25\\" fill=\\"#C6E1FC\\" x=\\"0\\" y=\\"0\\" width=\\"70\\" height=\\"50\\" rx=\\"3\\"><\\/rect>\\n            <rect id=\\"section_container-Rectangle-14-Copy-27\\" fill=\\"#7AB9FA\\" x=\\"1\\" y=\\"8\\" width=\\"68\\" height=\\"34\\"><\\/rect>\\n            <g id=\\"section_container-Group-Copy-15\\" opacity=\\"0.5\\" transform=\\"translate(6.000000, 15.000000)\\">\\n                <g id=\\"section_container-Path-3-+-Path-3-Copy-Mask\\">\\n                    <mask id=\\"section_container-mask-2\\" fill=\\"white\\">\\n                        <use xlink:href=\\"#section_container-path-1\\"><\\/use>\\n                    <\\/mask>\\n                    <use id=\\"section_container-Mask\\" fill-opacity=\\"0\\" fill=\\"#FFFFFF\\" xlink:href=\\"#section_container-path-1\\"><\\/use>\\n                    <path d=\\"M-3,32.0628284 L22.2631579,11 L29,18.1613617 C19.8169136,26.7765814 12.7993697,32.5337545 7.94736842,35.432881 C3.09536714,38.3320075 -0.553755666,37.2086566 -3,32.0628284 Z\\" id=\\"section_container-Path-3-Copy\\" stroke=\\"#FFFFFF\\" fill=\\"url(#section_container-linearGradient-3)\\" mask=\\"url(#section_container-mask-2)\\"><\\/path>\\n                    <polygon id=\\"section_container-Path-3\\" stroke=\\"#FFFFFF\\" fill=\\"url(#section_container-linearGradient-3)\\" mask=\\"url(#section_container-mask-2)\\" points=\\"11 32 38.6774194 9 63 32\\"><\\/polygon>\\n                <\\/g>\\n                <ellipse id=\\"section_container-Oval\\" stroke=\\"#FFFFFF\\" cx=\\"13.2989663\\" cy=\\"6.56633008\\" rx=\\"3.61148371\\" ry=\\"3.49589087\\"><\\/ellipse>\\n            <\\/g>\\n            <path d=\\"M57.5,2.38095238 L57.5,49.6752198\\" id=\\"section_container-Line-3-Copy-13\\" stroke=\\"#ECF5FE\\" stroke-linecap=\\"square\\" stroke-dasharray=\\"3\\"><\\/path>\\n            <path d=\\"M12.5,2.38095238 L12.5,49.6752198\\" id=\\"section_container-Line-3-Copy-15\\" stroke=\\"#ECF5FE\\" stroke-linecap=\\"square\\" stroke-dasharray=\\"3\\"><\\/path>\\n        <\\/g>\\n    <\\/g>\\n<\\/svg>","category":["basic","column"],"showInList":false},"karma_image":{"elementName":"karma_image","icon":"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>\\n<svg width=\\"44px\\" height=\\"32px\\" viewBox=\\"0 0 44 32\\" version=\\"1.1\\" xmlns=\\"http:\\/\\/www.w3.org\\/2000\\/svg\\" xmlns:xlink=\\"http:\\/\\/www.w3.org\\/1999\\/xlink\\">\\n    <!-- Generator: Sketch 46 (44423) - http:\\/\\/www.bohemiancoding.com\\/sketch -->\\n    <title>Group 3<\\/title>\\n    <desc>Created with Sketch.<\\/desc>\\n    <defs>\\n        <linearGradient x1=\\"41.9054334%\\" y1=\\"32.8955552%\\" x2=\\"78.0614578%\\" y2=\\"95.600355%\\" id=\\"linearGradient-1\\">\\n            <stop stop-color=\\"#AC7314\\" stop-opacity=\\"0.2\\" offset=\\"2.69451531%\\"><\\/stop>\\n            <stop stop-color=\\"#D39531\\" stop-opacity=\\"0.238790761\\" offset=\\"96.7115753%\\"><\\/stop>\\n        <\\/linearGradient>\\n        <polygon id=\\"path-2\\" points=\\"-2.84217094e-14 12.1550388 7.14689266 3.03875969 12.251816 9.13653747 19.3987086 -2.27373675e-13 28.5875706 12.1550388\\"><\\/polygon>\\n        <filter x=\\"-5.2%\\" y=\\"-12.3%\\" width=\\"110.5%\\" height=\\"124.7%\\" filterUnits=\\"objectBoundingBox\\" id=\\"filter-3\\">\\n            <feOffset dx=\\"0\\" dy=\\"0\\" in=\\"SourceAlpha\\" result=\\"shadowOffsetOuter1\\"><\\/feOffset>\\n            <feGaussianBlur stdDeviation=\\"0.5\\" in=\\"shadowOffsetOuter1\\" result=\\"shadowBlurOuter1\\"><\\/feGaussianBlur>\\n            <feColorMatrix values=\\"0 0 0 0 0.851589073   0 0 0 0 0.596293531   0 0 0 0 0.186940333  0 0 0 1 0\\" type=\\"matrix\\" in=\\"shadowBlurOuter1\\"><\\/feColorMatrix>\\n        <\\/filter>\\n    <\\/defs>\\n    <g id=\\"Add-panel\\" stroke=\\"none\\" stroke-width=\\"1\\" fill=\\"none\\" fill-rule=\\"evenodd\\">\\n        <g id=\\"Element-panel\\" transform=\\"translate(-524.000000, -233.000000)\\">\\n            <g id=\\"Group-3\\" transform=\\"translate(524.000000, 233.000000)\\">\\n                <rect id=\\"Rectangle-13-Copy-7\\" fill=\\"#FFC15D\\" x=\\"0\\" y=\\"0\\" width=\\"43.7514124\\" height=\\"31.751938\\" rx=\\"4\\"><\\/rect>\\n                <polygon id=\\"Path-4-Copy\\" fill=\\"url(#linearGradient-1)\\" points=\\"27.0873058 10.1705426 43.8456038 31.8333333 25.0350018 31.8333333 17.6497175 22.2063953\\"><\\/polygon>\\n                <g id=\\"Group\\" transform=\\"translate(7.706215, 9.922481)\\" fill-rule=\\"nonzero\\">\\n                    <g id=\\"Shape\\">\\n                        <use fill=\\"black\\" fill-opacity=\\"1\\" filter=\\"url(#filter-3)\\" xlink:href=\\"#path-2\\"><\\/use>\\n                        <use fill=\\"#FFFFFF\\" fill-rule=\\"evenodd\\" xlink:href=\\"#path-2\\"><\\/use>\\n                    <\\/g>\\n                <\\/g>\\n            <\\/g>\\n        <\\/g>\\n    <\\/g>\\n<\\/svg>","category":["basic","media","image"],"showInList":true}}';
+	</script>
+	<script type="text/html" id="tmpl-karma-element-karma_image">
+		<# var scaleClass = ( 'fill' == data.attributes.shortcode_attributes.scale ) ? 'karma-image-fill' : 'karma-image-real'; #> <# scaleClass += ( data.attributes.shortcode_attributes.resizing ) ? " karma-image-both-resize" : "" #><# var elemWidth = ( "100%" == data.attributes.shortcode_attributes.width) ? "100%" : data.attributes.shortcode_attributes.width + "px"; #><# var elemHeight = ( "auto" == data.attributes.shortcode_attributes.height) ? "auto" : data.attributes.shortcode_attributes.height + "px"; #><# var elemStyle = " width:" + elemWidth +";height:" + elemHeight +";" #>
+		<div class="karma-image karma-image-{{ data.attributes.element_key }} ">
+			<div class="karma-image-container {{ data.attributes.shortcode_attributes.extraclass }}"><a
+					class="karma-image-link karma-document-click"
+					href="{{{ data.attributes.shortcode_attributes.linkurl }}}"
+					target="{{ data.attributes.shortcode_attributes.linktarget }}">
+				<div class="karma-image-resize karma-position-{{ data.attributes.shortcode_attributes.position }}"
+				     style="{{ elemStyle }}">
+					<div class="karma-image-resize-crop karma-position-{{ data.attributes.shortcode_attributes.position }}"
+					     style="{{ elemStyle }};"><img class="<# print( scaleClass ); #>"
+					                                   src="{{ data.attributes.shortcode_attributes.imgurl }}"
+					                                   alt="{{ data.attributes.shortcode_attributes.alt }}"/></div>
+				</div>
+			</a></div>
+		</div>
+	</script>
+	<script type="text/html" id="tmpl-karma-element-karma_section">
+		<# var rowContainer = ('container' == data.changed.structure ) ? 'karma-container' : 'karma-container-fluid'; #>
+		<div class='karma-section karma-section-{{ data.attributes.element_key }} {{ data.changed.extra_class }}'
+		     style='padding-bottom:{{ data.attributes.shortcode_attributes.space }}px;padding-top:{{ data.attributes.shortcode_attributes.space }}px;'>
+			<div class='{{ rowContainer }} karma-row karma-no-gutters'></div>
+		</div>
+	</script>
+	<script type="text/html" id="tmpl-karma-element-karma_column">
+		<div class='karma-column karma-column-{{ data.attributes.element_key }}  karma-col-sm-{{ data.attributes.shortcode_attributes.sm_size }} karma-col-md-{{ data.attributes.shortcode_attributes.md_size }} karma-col-lg-{{ data.attributes.shortcode_attributes.lg_size }} karma-col-xl-{{ data.attributes.shortcode_attributes.xl_size }}  {{ data.attributes.extra_class }}'>
+			<div class='karma-column-margin'>{{ data.attributes.shortcode_attributes.shortcode_content }}</div>
+		</div>
+	</script>
+	<script type="text/javascript" id="karma-element-karma_image-model">
+		jQuery(document).on("karma/before/createElement/karma_image", function () {
+			return {
+				"imgurl": "../../builder/media/defult-img.png",
+				"action": "none",
+				"linkurl": "http:\/\/localhost\/karma",
+				"linktarget": "_blank",
+				"alt": "karma",
+				"scale": "fill",
+				"position": "center-center",
+				"width": "100%",
+				"height": "auto",
+				"resizing": false
+			};
+		});
+		jQuery(document).on("karma/before/createElement/karma_column", function () {
+			return {
+				extraclass: "",
+				leftspace: "10",
+				lg_size: "12",
+				md_size: "12",
+				rightspace: "10",
+				sm_size: "12",
+				xl_size: "12",
+			};
+		});
+	</script>
+
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<div id="karma-tests" style="display: none;">
+	<div class="karma-builder-element " data-element-key="firtstrow_12312" data-name="karma_row" data-element-id="4">
+		<div class="karma-section karma_row_firtstrow_12312 ">
+			<div class="karma-container karma-row karma-no-gutters">
+				<div class="karma-builder-element karma-column_12a12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+				     data-element-key="12a12" data-name="karma_column" data-element-id="1">
+					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+						<div class="karma-column-margin">
+							test
+						</div>
+					</div>
+				</div>
+				<div class="karma-builder-element karma-column_1r312 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+				     data-element-key="1r312" data-name="karma_column" data-element-id="2">
+					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+						<div class="karma-column-margin">
+							test
+						</div>
+					</div>
+				</div>
+				<div class="karma-builder-element karma-column_ssssscolumn_12g12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+				     data-element-key="ssssscolumn_12g12" data-name="karma_column" data-element-id="3">
+					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+						<div class="karma-column-margin">
+							<div id="karma-text-kbovyroe" class="karma-builder-element karma-builder-child-elements"
+							     data-element-key="kbovyroe" data-name="karma_text">
+								<div class="karma-text karma-text-kbovyroe">
+									<p class="karma-text-content karma-text-tag karma-document-click karma-editable-content ">
+										Write down something cool</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="../../../../../wp-includes/js/jquery/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="../../../../../wp-includes/js/underscore.min.js" type="text/javascript"></script>
+<script src="../../../../../wp-includes/js/backbone.min.js" type="text/javascript"></script>
+<script src="../../../../../wp-includes/js/wp-util.js" type="text/javascript"></script>
+<script src="../../builder/js/jquery-ui.min.js"></script>
+<script src="../../builder/js/grid-resizer.js"></script>
+<script src="../../builder/js/jquery-ui.min.js"></script>
+<script src="../../builder/js/karma-elements-behavior.js"></script>
+<script src="../../builder/js/karma-builder-init.js"></script>
+<script src="../../builder/js/karma-builder-gizmos.js"></script>
+<script src="../../builder/js/karma-builder-shortcodes.js"></script>
+<script src="../../elements/karma_section/view.js"></script>
+<script src="../../elements/karma_column/view.js"></script>
+<script src="../../elements/karma_image/view.js"></script>
+<script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
+<script src="tests.js"></script>
+</body>
+</html>

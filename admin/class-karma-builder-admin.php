@@ -122,7 +122,6 @@ class Karma_Builder_Admin {
 	 */
 	public function publish(){
 
-
 		echo '{ "result" : "true", "msg" : "success" }';
 		wp_die();
 		if( ! isset( $_POST['models'] ) || ! isset( $_POST['id'] ) ){

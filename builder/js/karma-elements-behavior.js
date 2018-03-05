@@ -11,6 +11,10 @@ var karmaBuilder = karmaBuilder || {};
 		/** All element info */
 		elementInfo: {},
 
+
+		initialize : function (){
+		},
+
 		/**
 		 * @summary Call specific function on parent element
 		 *
@@ -56,6 +60,7 @@ var karmaBuilder = karmaBuilder || {};
 			newSection.changeRowLayout( newGrid );
 			KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 			newSection.$el.click();
+			newSection.$el.trigger('karma/after/sortSections');
 
 		},
 
@@ -767,11 +772,12 @@ var karmaBuilder = karmaBuilder || {};
 		 *
 		 * @param   {object}    placeholder
 		 * @param   {object}    elementsModel
+		 * @param   {boolean}   dropBlock
 		 *
 		 * @since   0.1.0
 		 * @returns {object} view of rendered element
 		 */
-		renderElements : function( placeholder, elementModel  ){
+		renderElements : function( placeholder, elementModel, dropBlock  ){
 
 			var elementName = elementModel.parent.shortcode_name;
 
@@ -780,6 +786,9 @@ var karmaBuilder = karmaBuilder || {};
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementModel.grid;
 
+				if( dropBlock ){
+					newView.block = elementModel;
+				}
 				newView.changeRowLayout( oldGrid );
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
