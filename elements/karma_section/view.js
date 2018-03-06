@@ -354,9 +354,28 @@
 		space: function () {
 
 			var padding	= this.getAttributes( ['space'] ).space + 'px';
-			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
-			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', this.getAttributes( [ 'space' ] ).space + 'px' );
-			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', this.getAttributes( [ 'space' ] ).space + 'px' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', padding );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', padding );
+
+		},
+
+		/**
+		 * @summary create default responsive space
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace: function () {
+
+			// Tablet
+			var tabletPadding = this.getAttributes( [ 'tabletspace' ] ).tabletspace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', tabletPadding, 'tablet' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', tabletPadding, 'tablet' );
+
+			// Mobile
+			var mobilePadding = this.getAttributes( [ 'mobilespace' ] ).mobilespace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', mobilePadding, 'mobile' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', mobilePadding, 'mobile' );
 
 		},
 

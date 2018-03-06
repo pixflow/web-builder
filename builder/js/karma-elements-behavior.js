@@ -277,6 +277,7 @@ var karmaBuilder = karmaBuilder || {};
 			elementName = elementName.replace( /_/g, '' );
 			elementName = elementName.replace( 'karma', '' );
 			var viewObject = this.createNewElement( elementName, backboneModel, true );
+			viewObject.$el.trigger('karma/finish/dropElement');
 			return viewObject;
 
 		},

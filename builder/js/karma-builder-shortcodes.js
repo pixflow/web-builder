@@ -19,7 +19,8 @@
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
-			'karma/after/clickElement'							: 'updateHiddenGizmoStatus'
+			'karma/after/clickElement'							: 'updateHiddenGizmoStatus',
+			'karma/finish/dropElement'							: 'createDefaultResponsiveSpace'
 
 
 
@@ -189,6 +190,23 @@
 
 			var that = this ;
 			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( ['topspacepadding'] ).topspacepadding + 'px' );
+
+
+		},
+
+		/**
+		 * @summary set padding top for element function
+		 *
+		 * @since   0.1.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace : function () {
+
+			var that = this;
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'topspacepadding' ] ).topspacepadding + 'px' );
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'tablettopspacepadding' ] ).tablettopspacepadding + 'px', 'tablet' );
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'mobiletopspacepadding' ] ).mobiletopspacepadding + 'px', 'mobile' );
+
 		},
 
 		/**
