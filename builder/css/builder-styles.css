@@ -6863,7 +6863,8 @@ body.karma-device-mode-tablet .video-text-gizmo-group,
 body.karma-device-mode-tablet .karma-video-box-description-gizmo,
 body.karma-device-mode-tablet .karma-video-box-link-gizmo,
 body.karma-device-mode-tablet .element-name-text-gizmo,
-body.karma-device-mode-tablet .karma-title-gizmo-template, body.karma-device-mode-mobile .text-gizmo-group,
+body.karma-device-mode-tablet .karma-title-gizmo-template,
+body.karma-device-mode-tablet .karma-new-section-icon, body.karma-device-mode-mobile .text-gizmo-group,
 body.karma-device-mode-mobile .image-gizmo-group,
 body.karma-device-mode-mobile .image-box-gizmo-group,
 body.karma-device-mode-mobile .video-box-gizmo-group,
@@ -6874,7 +6875,8 @@ body.karma-device-mode-mobile .video-text-gizmo-group,
 body.karma-device-mode-mobile .karma-video-box-description-gizmo,
 body.karma-device-mode-mobile .karma-video-box-link-gizmo,
 body.karma-device-mode-mobile .element-name-text-gizmo,
-body.karma-device-mode-mobile .karma-title-gizmo-template {
+body.karma-device-mode-mobile .karma-title-gizmo-template,
+body.karma-device-mode-mobile .karma-new-section-icon {
   display: none !important; }
 body.karma-device-mode-tablet .resize-handler, body.karma-device-mode-mobile .resize-handler {
   pointer-events: none !important; }
