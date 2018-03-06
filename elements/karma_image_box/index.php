@@ -203,10 +203,10 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 							'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
 						),
 						'tablet_property' => array(
-							'height'			=> ( ( self::$element_attributes[ 'imageheight' ] * 70 ) / 100 ). 'px',
+							'min-height'		=> ( ( self::$element_attributes[ 'imageheight' ] * 70 ) / 100 ). 'px',
 						),
 						'mobile_property' => array(
-							'height'			=> ( ( self::$element_attributes[ 'imageheight' ]* 70 ) / 100 ). 'px',
+							'min-height'		=> ( ( self::$element_attributes[ 'imageheight' ]* 70 ) / 100 ). 'px',
 						)
 					),
 					array(

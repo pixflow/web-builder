@@ -67,7 +67,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
             'generalcolor'				=> '#fff',
             'textcolor'					=> '#000',
 			'elementalign'				=> 'left',
-			
+
 		);
 
 	}
@@ -209,6 +209,12 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 					'height'			=> 	 self::$element_attributes[ 'videoheight' ] . 'px',
 					'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
 					'background-color'	=>  self::$element_attributes[ 'colorbackground' ],
+				),
+				'tablet_property' => array(
+						'min-height'		=> ( ( self::$element_attributes[ 'videoheight' ] * 70 ) / 100 ). 'px',
+				),
+				'mobile_property' => array(
+						'min-height'		=> ( ( self::$element_attributes[ 'videoheight' ]* 70 ) / 100 ). 'px',
 				)
 			),
 			array(

@@ -21,6 +21,7 @@
 			padding: 6vh;
 			position: relative;
 			width: 100%;
+			box-sizing: border-box;
 
 			&.karma-image-text-box-background-size-real {
 				background-size: auto;
@@ -191,6 +192,7 @@
 
 			.karma-image-text-box-text-container {
 				width: fit-content;
+				max-width: 70% ;
 				> div {
 					position: relative;
 					.karma-image-text-box-title-tag,

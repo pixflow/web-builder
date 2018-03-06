@@ -472,6 +472,8 @@
 				videoHeight  = this.getAttributes( ['videoheight'] );
 
 			this.renderCss( "#" + elementId + " .karma-video-box ", 'height', videoHeight.videoheight + "px"  );
+			this.renderCss( "#" + elementId + " .karma-video-box ", 'min-height', ( ( videoHeight.videoheight*70 )/100 ) + "px" , 'tablet' );
+			this.renderCss( "#" + elementId + " .karma-video-box ", 'min-height', ( ( videoHeight.videoheight*70 )/100 )  + "px" , 'mobile' );
 
 		},
 

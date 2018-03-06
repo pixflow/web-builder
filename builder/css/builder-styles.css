@@ -1077,7 +1077,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 14px;
   line-height: 16px; }
 
-.karma-builder-title-4, .ui-tooltip, .karma-not-found, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down input.karma-text-link, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down .karma-link-open-new-tab-text, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down .karma-typography-link a, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, .karma-range-slider-container .karma-range-slider-number input, .karma-unsplash-controller .karma-unsplash-search input, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder, .karma-unsplash-controller .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .karma-element-panel-list .karma-element-single-element span, #karma-add-element input.karma-builder-search-text, #karma-add-element input.karma-builder-search-text.open-search-panel, .karma-element-single-element-name span, .karma-section-type-tab ul li .karma-section-type-text {
+.karma-builder-title-4, .ui-tooltip, .karma-not-found, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down input.karma-text-link, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-link-drop-down .karma-link-open-new-tab-text, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-builder-gizmo-text, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field, #karma-element-setting-panel-container .karma-text-input-controller input.karma-text-input-field::placeholder, .karma-radio-image-controller .radio-image-controller-template .radio-image-controller-title, .karma-range-slider-container .karma-range-slider-number input, .karma-unsplash-controller .karma-unsplash-search input, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input, .karma-unsplash-controller .karma-unsplash-search input::placeholder, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-search input::placeholder, .karma-unsplash-controller .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .element-panel-section-container.element-panel-image .karma-unsplash-images-result.unsplash-empty-result, #karma-add-element .karma-element-panel-list .karma-element-single-element span, #karma-add-element input.karma-builder-search-text, #karma-add-element input.karma-builder-search-text.open-search-panel, .karma-element-single-element-name span, .karma-section-type-tab ul li .karma-section-type-text {
   font-size: 12px;
   line-height: 22px; }
 
@@ -1487,10 +1487,12 @@ body {
 
 @media screen and (max-width: 768px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
-    padding: 4vh !important; }
+    padding: 35px !important; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
+      min-width: 80%; }
 
   .karma-builder-element[data-name="karma_video_box"] .karma-image-text-box {
-    padding: 4vh !important; }
+    padding: 35px !important; }
 
   #karma-builder-layout h1 {
     font-size: 42px;
@@ -1514,6 +1516,14 @@ body {
     font-size: 14px;
     line-height: 24px; } }
 @media screen and (max-width: 575px) {
+  .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
+    padding: 29px !important; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
+      min-width: 80%; }
+
+  .karma-builder-element[data-name="karma_video_box"] .karma-image-text-box {
+    padding: 29px !important; }
+
   #karma-builder-layout h1 {
     font-size: 30px;
     line-height: 40px; }
@@ -1563,7 +1573,10 @@ html {
     max-width: 95%; } }
 @media (max-width: 768px) {
   .karma-container {
-    max-width: 720px; } }
+    max-width: 720px; }
+
+  .container {
+    width: 100%; } }
 @media (max-width: 992px) {
   .karma-container {
     max-width: 960px; } }
@@ -3153,7 +3166,8 @@ html {
     display: flex;
     padding: 6vh;
     position: relative;
-    width: 100%; }
+    width: 100%;
+    box-sizing: border-box; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-real {
       background-size: auto; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-fill {
@@ -3250,7 +3264,8 @@ html {
       position: absolute;
       top: 0; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
-      width: fit-content; }
+      width: fit-content;
+      max-width: 70%; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag,
@@ -3430,6 +3445,7 @@ html {
     width: 100% !important; }
   .karma-builder-element[data-name="karma_video_box"] .karma-video-box {
     background-repeat: no-repeat;
+    box-sizing: border-box;
     display: flex;
     padding: 6vh;
     position: relative;
@@ -4798,31 +4814,31 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
     .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-content {
       padding: 7px 7px 5px 7px;
       left: 21px; }
-    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down {
+    .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down {
       flex-direction: column;
       left: -12px;
       padding: 0; }
-      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down button {
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down button {
         box-shadow: none;
         margin-left: 6px;
         padding: 11px 7px;
         width: 35px; }
-      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down .karma-typography-drop-down-left {
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-left {
         padding-bottom: 6px; }
-      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down .karma-typography-drop-down-right {
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-right {
         padding-right: 6px; }
-      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down .karma-typography-drop-down-icons {
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-drop-down-icons {
         flex-direction: row-reverse; }
-      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down .karma-typography-link {
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link {
         border-top: 1px solid #EBECEE;
         font-family: "HelveticaNeue"; }
-        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down .karma-typography-link a {
+        .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down .karma-typography-link a {
           border-bottom: none;
           box-shadow: none;
           color: #419CF8;
           font-family: "HelveticaNeue_med";
           padding: 5px 0; }
-      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karmatypography-drop-down div {
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-typography-drop-down div {
         display: flex;
         flex-direction: column; }
     .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-position-drop-down-gizmo:hover svg * {
@@ -6958,38 +6974,42 @@ div.karma-element-content .karma-top-spacing {
 
 body.karma-device-mode-desktop iframe {
   border: none; }
-body.karma-device-mode-tablet .text-gizmo-group,
-body.karma-device-mode-tablet .image-gizmo-group,
-body.karma-device-mode-tablet .image-box-gizmo-group,
-body.karma-device-mode-tablet .video-box-gizmo-group,
-body.karma-device-mode-tablet .image-text-gizmo-group,
-body.karma-device-mode-tablet .karma-image-text-box-description-gizmo,
-body.karma-device-mode-tablet .karma-image-text-box-link-gizmo,
-body.karma-device-mode-tablet .video-text-gizmo-group,
-body.karma-device-mode-tablet .karma-video-box-description-gizmo,
-body.karma-device-mode-tablet .karma-video-box-link-gizmo,
-body.karma-device-mode-tablet .element-name-text-gizmo,
-body.karma-device-mode-tablet .karma-title-gizmo-template,
-body.karma-device-mode-tablet .karma-new-section-icon,
-body.karma-device-mode-tablet .button-gizmo-group, body.karma-device-mode-mobile .text-gizmo-group,
-body.karma-device-mode-mobile .image-gizmo-group,
-body.karma-device-mode-mobile .image-box-gizmo-group,
-body.karma-device-mode-mobile .video-box-gizmo-group,
-body.karma-device-mode-mobile .image-text-gizmo-group,
-body.karma-device-mode-mobile .karma-image-text-box-description-gizmo,
-body.karma-device-mode-mobile .karma-image-text-box-link-gizmo,
-body.karma-device-mode-mobile .video-text-gizmo-group,
-body.karma-device-mode-mobile .karma-video-box-description-gizmo,
-body.karma-device-mode-mobile .karma-video-box-link-gizmo,
-body.karma-device-mode-mobile .element-name-text-gizmo,
-body.karma-device-mode-mobile .karma-title-gizmo-template,
-body.karma-device-mode-mobile .karma-new-section-icon,
-body.karma-device-mode-mobile .button-gizmo-group {
+body.karma-device-mode-tablet #karma-builder-layout .text-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .image-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .image-box-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .video-box-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .image-text-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-text-box-description-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-text-box-link-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .video-text-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .karma-video-box-description-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .karma-video-box-link-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .element-name-text-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .karma-title-gizmo-template,
+body.karma-device-mode-tablet #karma-builder-layout .karma-new-section-icon,
+body.karma-device-mode-tablet #karma-builder-layout .button-gizmo-group, body.karma-device-mode-mobile #karma-builder-layout .text-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .image-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .image-box-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .video-box-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .image-text-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .karma-image-text-box-description-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .karma-image-text-box-link-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .video-text-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .karma-video-box-description-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .karma-video-box-link-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .element-name-text-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .karma-title-gizmo-template,
+body.karma-device-mode-mobile #karma-builder-layout .karma-new-section-icon,
+body.karma-device-mode-mobile #karma-builder-layout .button-gizmo-group {
   display: none !important; }
-body.karma-device-mode-tablet .resize-handler, body.karma-device-mode-mobile .resize-handler {
+body.karma-device-mode-tablet #karma-builder-layout .resize-handler, body.karma-device-mode-mobile #karma-builder-layout .resize-handler {
   pointer-events: none !important; }
-body.karma-device-mode-tablet .karma-image-resize .ui-resizable-handle, body.karma-device-mode-mobile .karma-image-resize .ui-resizable-handle {
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-resize .ui-resizable-handle, body.karma-device-mode-mobile #karma-builder-layout .karma-image-resize .ui-resizable-handle {
   display: none; }
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-text-box, body.karma-device-mode-mobile #karma-builder-layout .karma-image-text-box {
+  height: auto; }
+body.karma-device-mode-tablet #karma-builder-layout .karma-video-box, body.karma-device-mode-mobile #karma-builder-layout .karma-video-box {
+  height: auto; }
 
 @media (max-width: 768px) {
   .karma-builder-environment {
