@@ -290,11 +290,12 @@
 					},
 					stop : function ( event, ui ) {
 
-						that.updateElementModel( 'space' );
+						that.updateElementModel( 'space', ui.element.height() );
 						karmaSection.removeClass( "karma-resizable-active" );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
 						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
+
 					},
 					resize: function( event, UI ){
 						var padding = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
@@ -325,8 +326,13 @@
 
 			var newSize =  window.getComputedStyle( element ).getPropertyValue( property );
 			newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
-			UI.originalSize.height = parseInt( newSize );
-			UI.helper[0].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+			if ( 'padding-left' == property || 'padding-right' == property ){
+				UI.originalSize.width = parseInt( newSize );
+				UI.helper[ 0 ].setAttribute( 'style', 'width: ' + UI.size.width + 'px' );
+			} else if ( 'padding-top' == property || 'padding-bottom' == property ){
+				UI.originalSize.height = parseInt( newSize );
+				UI.helper[ 0 ].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+			}
 
 		},
 
@@ -335,16 +341,18 @@
 		 * based on device to call set attributes function
 		 *
 		 * @param	{string} property CSS property
+		 * @param	{string} value new value of CSS
 		 *
 		 * @since 0.1.0
 		 *
 		 * @returns {void}
 		 */
-		updateElementModel : function ( property ){
+		updateElementModel : function ( property, value ){
 
 			var newAttr = {};
-			newAttr[ that.currentDevice() + property ] = parseInt( ui.element.height() );
-			that.setAttributes( newAttr, true );
+			newAttr[ this.currentDevice() + property ] = parseInt( value );
+			console.log(newAttr);
+			this.setAttributes( newAttr, true );
 
 		},
 
@@ -386,28 +394,13 @@
 					start: function ( event, UI ) {
 						that.showMouseToolTip( event );
 						that.toggleShortcodeGizmo( "add" );
-						var element = that.el;
-						newSize =  window.getComputedStyle( element ).getPropertyValue('padding-top');
-						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
-						UI.originalSize.height = parseInt(newSize);
-						UI.helper[0].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+						that.updateGizmoValue( UI, that.el, 'padding-top' );
 
 					},
-					stop : function ( event, ui ) {
+					stop : function ( event, UI ) {
 
 						that.removeMouseToolTip( event );
-						if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-							that.setAttributes( { topspacepadding : parseInt( ui.element.height() ) }, true );
-						}
-
-						else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
-							that.setAttributes( { tabletspace : parseInt( ui.element.height() ) }, true );
-						}
-
-						else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
-							that.setAttributes( { mobilespace : parseInt( ui.element.height() ) }, true );
-						}
-
+						that.updateElementModel( 'topspacepadding', UI.element.height());
 						that.toggleShortcodeGizmo( "remove" );
 
 					},
@@ -472,19 +465,14 @@
 					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
-					start : function( event , ui ){
+					start : function( event , UI ){
 
 						that.$el.find( '.karma-image-resize' ).css( {'width': ''});
-						var column = that.el.querySelector('.karma-column');
-
 						if ('padding-left' == paddingDirection) {
-							var newSize = window.getComputedStyle(column).getPropertyValue('padding-left');
+							that.updateGizmoValue( UI, that.el.querySelector('.karma-column'), 'padding-left' );
 						}else{
-							var newSize = window.getComputedStyle(column).getPropertyValue('padding-right');
+							that.updateGizmoValue( UI, that.el.querySelector('.karma-column'), 'padding-right' );
 						}
-						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace('px', '') : newSize;
-						ui.originalSize.width = parseInt(newSize);
-						ui.helper[0].setAttribute('style', 'width: ' + ui.size.width + 'px');
 						that.showMouseToolTip( event );
 						that.el.classList.add( 'karma-resizing-padding' );
 						KarmaView.removeActiveElement();
@@ -495,33 +483,11 @@
 					stop : function ( event, ui ) {
 
 						var value = ( parseInt( ui.element.width() ) < 0 ) ? 0 : parseInt( ui.element.width() );
-
-						if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-
-								if ('padding-left' == paddingDirection) {
-									that.setAttributes({'leftspace': value}, true);
-								} else {
-									that.setAttributes({'rightspace': value}, true);
-								}
-
-						}else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
-
-							if ('padding-left' == paddingDirection) {
-								that.setAttributes({'tabletleftspace': value}, true);
-							} else {
-								that.setAttributes({'tablerightspace': value}, true);
-							}
-
-						}else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
-
-							if ('padding-left' == paddingDirection) {
-								that.setAttributes({'mobileleftspace': value}, true);
-							} else {
-								that.setAttributes({'mobilerightspace': value}, true);
-							}
-
+						if ('padding-left' == paddingDirection) {
+							that.updateElementModel( 'leftspace', value );
+						} else {
+							that.updateElementModel( 'rightspace', value );
 						}
-
 						that.removeMouseToolTip( event );
 						that.el.classList.remove( 'karma-resizing-padding' );
 						that.$el.trigger('karma/finish/modifyColumns');
