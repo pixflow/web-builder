@@ -1,5 +1,5 @@
 <# var i = 0; _.each( data.blocks, function( block ){;#>
-<div data-block-id="{{ i++ }}" class="karma-section-element" >
+<div data-block-id="{{ i++ }}" class="karma-section-element" style="height:{{ block.height }}px"  >
 	<div class="karma-section-hover">
 		<div class="karma-hover-container">
 			<span class="karma-section-hover-icon"></span>

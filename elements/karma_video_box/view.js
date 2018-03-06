@@ -193,12 +193,7 @@
 
 			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
 				contentData = content.innerHTML;
-			if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-				if ("Explore more" == contentData.trim()) {
-					content.innerText = "";
-				}
-			}
-		},
+			},
 
 		 /**
 		 * @summary Render video element

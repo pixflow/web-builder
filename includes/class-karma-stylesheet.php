@@ -193,11 +193,11 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		$headings_min_size_in_responsive = array(
-			'h1'    => '36',
-			'h2'    => '32',
-			'h3'    => '26',
-			'h4'    => '22',
-			'h5'    => '20',
+			'h1'    => '40',
+			'h2'    => '33',
+			'h3'    => '23',
+			'h4'    => '21',
+			'h5'    => '19',
 			'h6'    => '16',
 			'p'     => '14',
 		);
@@ -215,7 +215,7 @@ class Karma_Stylesheet {
 					}
 				}else if ( 'font-size' == $property ) {
 					$headings_style .= $property . ':';
-					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 1024px) / (1920 - 1024)));';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 768px) / (1920 - 768)));';
 				}else{
 					$headings_style .= $property . ':' . $value . ';' ;
 				}

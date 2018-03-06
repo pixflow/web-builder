@@ -194,8 +194,10 @@
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' );
 
-			if( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
-				content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+			if( null != content ) {
+				if ( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
+					content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+				}
 			}
 
 		},

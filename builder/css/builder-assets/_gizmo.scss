@@ -289,7 +289,6 @@ img {
 		justify-content: space-between;
 		max-width: 1040px;
 		opacity: 0;
-		transform: translateY(50px);
 		transition: opacity 0.2s , translate 0.2s;
 		visibility: hidden;
 		width: 100%;
@@ -488,6 +487,7 @@ body:not(.karma-builder-environment) {
 
 			.karma-drop-down-icon {
 				background-color: inherit;
+				background-image: none;
 				border: none;
 				box-shadow: none;
 				margin: 0;
@@ -539,6 +539,7 @@ body:not(.karma-builder-environment) {
 					background-color: inherit;
 					border: none;
 					border-radius: 3px;
+					box-shadow: none;
 					height: auto;
 					line-height: 0;
 					margin-bottom: 0;
@@ -565,8 +566,8 @@ body:not(.karma-builder-environment) {
 				&.open-drop-down-gizmo {
 					display: flex;
 
-					.karma-image-position-content-box{
-						@include box( 75px, 83px );
+					.karma-gizmo-position-content-box{
+						@include box( 72px, 75px );
 						display: flex;
 						flex-wrap: wrap;
 						justify-content: space-between;
@@ -699,9 +700,105 @@ body:not(.karma-builder-environment) {
 
 			}
 
-			.karma-image-position-content{
-				padding: 7px;
-				width:90px;
+			//position gizmo
+			.karma-gizmo-position-container{
+				align-items: center;
+				justify-content: center;
+				position: relative;
+
+				.karma-all-controller-title{
+					@extend .karma-builder-title-3;
+					color: $builder-main-color;
+					padding: $builder-red-space $builder-blue-space 7px;
+				}
+
+			}
+
+			.karma-gizmo-position-content{
+
+				.hidden-input{
+					display: none;
+				}
+
+				.karma-gizmo-position-box {
+					@include box( 22px,22px );
+					background-color: $builder-accent-color-3;
+					border-radius: 2px;
+					cursor: pointer;
+					display: flex;
+					margin-bottom: 3px;
+
+					&:hover{
+						background-color: $builder-accent-color-2;
+					}
+
+					&.karma-gizmo-position-top-left-dot{
+						align-items: flex-start;
+						justify-content: flex-start;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-top-right-dot{
+						align-items: flex-start;
+						justify-content: flex-end;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-top-center-dot{
+						align-items: flex-start;
+						justify-content: center;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-left-dot{
+						align-items: flex-end;
+						justify-content: flex-start;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-right-dot{
+						align-items: flex-end;
+						justify-content: flex-end;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-center-dot{
+						align-items: flex-end;
+						justify-content: center;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-center-left-dot{
+						align-items:center;
+						justify-content: flex-start;
+						padding: 4px;
+						text-align: center;
+					}
+
+					&.karma-gizmo-position-center-right-dot{
+						align-items:center;
+						justify-content: flex-end;
+						padding: 4px;
+						text-align: center;
+					}
+
+					&.karma-gizmo-position-center-center-dot{
+						align-items:center;
+						justify-content: center;
+						text-align: center;
+					}
+
+					.karma-gizmo-position-dot{
+						@include box( 5px, 5px );
+						background-color: $builder-main-color-5;
+						border-radius: 19px;
+						opacity: 0.76;
+					}
+				}
+
+			}
+
+			.karma-gizmo-position-selected-item{
+				background-color: $builder-accent-color-1 !important;
+			}
+			
+			.karma-gizmo-position-content{
+				padding: 7px 7px 5px 7px;
+				left: 21px;
 			}
 			.karma-typography-drop-down {
 				flex-direction: column;
@@ -709,6 +806,7 @@ body:not(.karma-builder-environment) {
 				padding: 0;
 
 				button {
+					box-shadow: none;
 					margin-left: 6px;
 					padding: 11px 7px;
 					width: 35px;

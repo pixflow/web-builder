@@ -173,7 +173,8 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 					array(
 						'type'   => 'position',
 						"params" => array(
-							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/position.svg' )
+							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/position.svg' ),
+							'model' => 'textposition'
 						)
 					),
 
