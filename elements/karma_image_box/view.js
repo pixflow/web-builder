@@ -194,8 +194,10 @@
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' );
 
-			if( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
-				content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+			if( null != content ) {
+				if ( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
+					content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+				}
 			}
 
 		},
@@ -232,7 +234,13 @@
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-link-tag' ),
 				contentData = content.innerHTML;
-			},
+
+			if( "Explore more" == contentData.trim() ){
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.innerText = "";
+				}
+			}
+		},
 
 		/**
 		 * @summary Active editable description
