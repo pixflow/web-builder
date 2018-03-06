@@ -41,6 +41,7 @@
 		+ '<div class="karma-right-alignment-placeholder" data-element-align="right" >'
 		+ '</div>',
 
+		resizeId : 0 ,
 
 		initialize : function( options ) {
 
@@ -52,12 +53,30 @@
 				this.model.bind( 'destroy', this.destroy );
 			}
 			this.gizmoParams = options.gizmoParams;
+			this.callFunctionsOnResize();
 			this.toolTipHtml();
 			this.karmaLinksDocumentClick();
 			this.initSortable();
 
 		},
 
+		callFunctionsOnResize: function (){
+
+			var that = this;
+			window.addEventListener( 'resize', function (){
+				
+				clearTimeout( that.resizeId );
+				that.resizeId = setTimeout( function (){
+					$('.karma-builder-element[data-name="karma_column"]').each(function (){
+						var column = $(this).find('.karma-column');
+						$(this).find('.ui-resizable.karma-right-spacing').css({ width : column.css('padding-right') });
+						$(this).find('.ui-resizable.karma-left-spacing').css({ width : column.css('padding-left') })
+					});
+				}, 200 );
+
+			} );
+
+		},
 		/**
 		 * @summary Call blur inside sortable elements
 		 * jQuery stops the default functionality of the browser when sorting a list,
