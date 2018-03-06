@@ -18,6 +18,7 @@
 			'keypress .karma-image-text-box-link'				: 'deactiveEnter'
 
 		},
+		
 
 		initialize: function ( options ) {
 
@@ -27,6 +28,8 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+
+			this.el.querySelector('.karma-image-text-box-link-tag').contentEditable = true ;
 
 		},
 
