@@ -695,7 +695,6 @@
 
 			var model               = this.model,
 				shortcodeAttributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
-
 			shortcodeAttributes.changed = {};
 			for ( var attr in newAttributes ){
 				shortcodeAttributes[ attr ] = newAttributes[ attr ];

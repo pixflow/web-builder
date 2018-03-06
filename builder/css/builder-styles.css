@@ -1521,7 +1521,7 @@ html {
 
 @media (min-width: 576px) {
   .karma-container {
-    max-width: 540px; } }
+    max-width: 95%; } }
 @media (min-width: 768px) {
   .karma-container {
     max-width: 720px; } }

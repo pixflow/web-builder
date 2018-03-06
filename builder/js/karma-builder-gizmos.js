@@ -285,44 +285,66 @@
 						karmaSection.addClass( "karma-resizable-active" );
 						that.showMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "200px";
-
-						var section = that.el.querySelector('.karma-section'),
-						newSize =  window.getComputedStyle( section ).getPropertyValue('padding-top');
-						newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
-						UI.originalSize.height = parseInt(newSize);
-						UI.helper[0].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+						that.updateGizmoValue( UI, that.el.querySelector('.karma-section'), 'padding-top' );
 
 					},
 					stop : function ( event, ui ) {
 
-						var currentDevice = that.currentDevice();
-						if ( 'tablet' == currentDevice ){
-							that.setAttributes( { tabletspace: parseInt( ui.element.height() ) }, true );
-						}else if ( 'mobile' == currentDevice ){
-							that.setAttributes( { mobilespace: parseInt( ui.element.height() ) }, true );
-						}else{
-							that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
-						}
+						that.updateElementModel( 'space' );
 						karmaSection.removeClass( "karma-resizable-active" );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
 						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
-
 					},
 					resize: function( event, UI ){
-
 						var padding = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
 						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-top', padding, that.currentDevice() );
 						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-bottom', padding, that.currentDevice() );
-
 					}
-
 				};
 
 			// Apply JQuery Ui resizable on bottom spacing
 			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
 			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
 			this.$el.find( '.karma-bottom-spacing' ).resizable( options );
+		},
+
+		/**
+		 * @summary Update live gizmo value with
+		 * its value of the current device
+		 *
+		 * @param	{object} UI
+		 * @param	{object} element javascript element
+		 * @param	{string} property css property
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		updateGizmoValue : function ( UI, element, property ){
+
+			var newSize =  window.getComputedStyle( element ).getPropertyValue( property );
+			newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
+			UI.originalSize.height = parseInt( newSize );
+			UI.helper[0].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+
+		},
+
+		/**
+		 * @summary Create object containing list of shortcode property
+		 * based on device to call set attributes function
+		 *
+		 * @param	{string} property CSS property
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		updateElementModel : function ( property ){
+
+			var newAttr = {};
+			newAttr[ that.currentDevice() + property ] = parseInt( ui.element.height() );
+			that.setAttributes( newAttr, true );
 
 		},
 
@@ -633,7 +655,7 @@
 		currentDevice : function () {
 
 			if( document.body.classList.contains( 'karma-device-mode-desktop' ) ){
-				return	'desktop';
+				return	'';
 			}else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
 				return	'tablet';
 			}else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
