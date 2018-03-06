@@ -351,7 +351,6 @@
 
 			var newAttr = {};
 			newAttr[ this.currentDevice() + property ] = parseInt( value );
-			console.log(newAttr);
 			this.setAttributes( newAttr, true );
 
 		},

@@ -3724,6 +3724,7 @@ body.karma-builder {
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.1);
   position: relative;
+  z-index: 1;
   backface-visibility: hidden; }
   .karma-builder-toolbar .karma-header-container {
     display: flex;
@@ -6420,7 +6421,9 @@ div.karma-element-content .karma-top-spacing {
   display: flex;
   height: 100%;
   justify-content: center;
-  width: 100%; }
+  position: relative;
+  width: 100%;
+  z-index: 0; }
   .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame {
     align-items: center;
     background-color: #fff;
