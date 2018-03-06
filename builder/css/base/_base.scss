@@ -87,12 +87,12 @@ body {
 			line-height: 45px;
 		}
 		h3 {
-			font-size: 28px;
-			line-height: 38px;
-		}
-		h4 {
 			font-size: 24px;
 			line-height: 34px;
+		}
+		h4 {
+			font-size: 22px;
+			line-height: 32px;
 		}
 		h5 {
 			font-size: 20px;
@@ -113,20 +113,20 @@ body {
 @media screen and (max-width: 575px) {
 	#karma-builder-layout {
 		h1 {
-			font-size: 34px;
-			line-height: 44px;
-		}
-		h2 {
 			font-size: 30px;
 			line-height: 40px;
 		}
+		h2 {
+			font-size: 28px;
+			line-height: 38px;
+		}
 		h3 {
-			font-size: 25px;
-			line-height: 35px;
+			font-size: 24px;
+			line-height: 34px;
 		}
 		h4 {
-			font-size: 22px;
-			line-height: 32px;
+			font-size: 21px;
+			line-height: 31px;
 		}
 		h5 {
 			font-size: 18px;

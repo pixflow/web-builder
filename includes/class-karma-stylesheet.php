@@ -185,11 +185,11 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		$headings_min_size_in_responsive = array(
-			'h1'    => '42',
-			'h2'    => '35',
-			'h3'    => '28',
-			'h4'    => '24',
-			'h5'    => '20',
+			'h1'    => '40',
+			'h2'    => '33',
+			'h3'    => '23',
+			'h4'    => '21',
+			'h5'    => '19',
 			'h6'    => '16',
 			'p'     => '14',
 		);
