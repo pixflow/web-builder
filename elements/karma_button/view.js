@@ -84,8 +84,10 @@
 			var content = this.el.querySelector( '.karma-button-link span' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.contentEditable = true;
+					content.focus();
+				}
 			}
 
 			this.showElementGizmo( e );
