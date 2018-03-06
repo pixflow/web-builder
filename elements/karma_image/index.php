@@ -57,8 +57,8 @@ class Karma_Image extends Karma_Shortcode_Base {
 			'naturalwidth'				=> '514',
 			'naturalheight' 			=> '386',
 			'topspacepadding'			=> '10',
-			'tablettopspacepadding'		=> '10',
-			'mobiletopspacepadding'		=> '10',
+			'tablettopspacepadding'		=> '5',
+			'mobiletopspacepadding'		=> '5',
 			'elementalign'				=> 'center',
 		);
 

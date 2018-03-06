@@ -48,8 +48,8 @@ class Karma_Text extends Karma_Shortcode_Base {
 			'color'						=> '#394959',
 			'align'       				=> 'center',
 			'topspacepadding'			=> '10',
-			'tablettopspacepadding'		=> '10',
-			'mobiletopspacepadding'		=> '10',
+			'tablettopspacepadding'		=> '15',
+			'mobiletopspacepadding'		=> '15',
 			'elementalign'				=> 'center',
 		);
 

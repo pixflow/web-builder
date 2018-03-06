@@ -20,8 +20,8 @@ class Karma_Section extends Karma_Shortcode_Base {
 		return 	array(
 			'structure'				=> 'container',
 			'space'					=> '70',
-			'tabletspace'			=> '0',
-			'mobilespace'			=> '0',
+			'tabletspace'			=> '50',
+			'mobilespace'			=> '35',
 			'element_key'			=> '',
 			'extraclass'			=> '',
 			'columnspace'  			=> '0',
