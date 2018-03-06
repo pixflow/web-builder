@@ -403,9 +403,11 @@
 						that.toggleShortcodeGizmo( "remove" );
 
 					},
-					resize: function( event, ui ){
-						var elementId 	= that.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + that.el.getAttribute( 'data-element-key' );
-						that.renderCss( "#" + elementId + "" , 'padding-top', ui.size.height + 'px' , that.currentDevice());
+					resize: function( event, UI ){
+
+						var elementId 	= that.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + that.el.getAttribute( 'data-element-key' ),
+						value = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
+						that.renderCss( "#" + elementId + "" , 'padding-top', value , that.currentDevice());
 
 					}
 				};
