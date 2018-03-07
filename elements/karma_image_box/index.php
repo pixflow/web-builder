@@ -50,7 +50,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'titletag'			=>'h6',
 				'descriptiontag'	=>'h4',
 				'textposition'		=>'bottom-left',
-				'textlink'			=>'https://www.google.com/',
+				'textlink'			=>'#',
 				'target'			=>'_self',
 				'topspacepadding'	=> '10',
 				'radiusbox'			=>'0',

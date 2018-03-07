@@ -48,7 +48,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'titletag'			=>'h6',
 			'descriptiontag'	=>'h4',
 			'textposition'		=>'bottom-left',
-			'textlink'			=>'https://www.google.com/',
+			'textlink'			=>'#',
 			'target'			=>'_self',
 			'videourl'			=>'https://www.youtube.com/watch?v=GnQ9eDyjri4',
 			'coloroverlay'		=>'rgba(0, 0, 0, 0)',
