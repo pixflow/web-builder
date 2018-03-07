@@ -19,7 +19,8 @@
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
-			'karma/after/clickElement'							: 'updateHiddenGizmoStatus'
+			'karma/after/clickElement'							: 'updateHiddenGizmoStatus',
+			'karma/finish/dropElement'							: 'createDefaultResponsiveSpace'
 
 
 
@@ -40,6 +41,7 @@
 		+ '<div class="karma-right-alignment-placeholder" data-element-align="right" >'
 		+ '</div>',
 
+		resizeId : 0 ,
 
 		initialize : function( options ) {
 
@@ -51,9 +53,36 @@
 				this.model.bind( 'destroy', this.destroy );
 			}
 			this.gizmoParams = options.gizmoParams;
+			this.callFunctionsOnResize();
 			this.toolTipHtml();
 			this.karmaLinksDocumentClick();
 			this.initSortable();
+
+		},
+
+		/**
+		 * @summary Update column helper on window resize
+		 *
+		 * @since 2.0
+		 *
+		 * @returns {void}
+		 */
+		//@TODO change setTimeout to request animation frame  + make this function automatically
+		callFunctionsOnResize: function (){
+
+			var that = this;
+			window.addEventListener( 'resize', function (){
+
+				clearTimeout( that.resizeId );
+				that.resizeId = setTimeout( function (){
+					$('.karma-builder-element[data-name="karma_column"]').each(function (){
+						var column = $(this).find('.karma-column');
+						$(this).find('.ui-resizable.karma-right-spacing').css({ width : column.css('padding-right') });
+						$(this).find('.ui-resizable.karma-left-spacing').css({ width : column.css('padding-left') })
+					});
+				}, 200 );
+
+			} );
 
 		},
 
@@ -189,6 +218,23 @@
 
 			var that = this ;
 			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( ['topspacepadding'] ).topspacepadding + 'px' );
+
+
+		},
+
+		/**
+		 * @summary set padding top for element function
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace : function () {
+
+			var that = this;
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'topspacepadding' ] ).topspacepadding + 'px' );
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'tablettopspacepadding' ] ).tablettopspacepadding + 'px', 'tablet' );
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'mobiletopspacepadding' ] ).mobiletopspacepadding + 'px', 'mobile' );
+
 		},
 
 		/**
@@ -695,7 +741,6 @@
 
 			var model               = this.model,
 				shortcodeAttributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
-
 			shortcodeAttributes.changed = {};
 			for ( var attr in newAttributes ){
 				shortcodeAttributes[ attr ] = newAttributes[ attr ];
@@ -814,9 +859,148 @@
 		 *
 		 * @returns { void }
 		 */
-		renderCss: function ( selector, attribute, value ){
+		renderCss: function ( selector, attribute, value, device ){
 
-			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
+			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value, device );
+
+		},
+
+		/**
+		 * @summary get mobile or tablet css from style
+		 *
+		 * @param    { string }    content  Css selector
+		 * @param    { string }    device   mobile or tablet
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { object }  CSS content and device regex
+		 */
+		getDeviceStyle: function ( content, device ) {
+
+			if ( 'tablet' == device ) {
+				var deviceRegex = /\/\*tablet-start\*\/(.*?)\/\*tablet-finish\*\//ig;
+			} else if ( 'mobile' == device ) {
+				var deviceRegex = /\/\*mobile-start\*\/(.*?)\/\*mobile-finish\*\//ig;
+			}
+			var result = deviceRegex.exec( content );
+			if ( null == result ) {
+				content = '';
+			} else {
+				content = result[ 1 ];
+			}
+
+			var cssObject = {};
+			cssObject.content = content;
+			cssObject.deviceRegex = deviceRegex;
+			return cssObject;
+
+		},
+
+		/**
+		 * @summary split responsive device css and main css
+		 *
+		 * @param    { string }    content  Css selector
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { object }  contains responsive device CSS and main css
+		 */
+		splitDeviceStyle: function ( content ) {
+
+			var deviceRegex = /@media.*?-finish\*\/}/ig,
+				responsiveStyle = '';
+			while ( (result = deviceRegex.exec( content )) !== null ) {
+				// This is necessary to avoid infinite loops with zero-width matches
+				if ( result.index === deviceRegex.lastIndex ) {
+					deviceRegex.lastIndex++;
+				}
+
+				// The result can be accessed through the `m`-variable.
+				responsiveStyle = responsiveStyle + result[ 0 ];
+			}
+
+			content = content.replace( deviceRegex, '' );
+			var splitContent = {};
+			splitContent.responsive = responsiveStyle;
+			splitContent.mainContent = content;
+			splitContent.deviceRegex = deviceRegex;
+			return splitContent;
+
+		},
+
+		/**
+		 * @summary get CSS content from style tag
+		 *
+		 * @param    { string }    device   device name
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { object }  contains responsive device CSS and main css
+		 */
+		getCss: function ( device ) {
+
+			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
+				responsiveStyle = '',
+				addMediaQuery = false,
+				deviceRegex = '';
+			originalStyle = oldStyle;
+			if ( 'tablet' == device || 'mobile' == device ) {
+				var result = this.getDeviceStyle( oldStyle, device );
+				oldStyle = result.content;
+				deviceRegex = result.deviceRegex;
+				if ( '' == oldStyle ) {
+					addMediaQuery = true;
+				}
+			} else {
+				var splitContent = this.splitDeviceStyle( oldStyle );
+				responsiveStyle = splitContent.responsive;
+				oldStyle = splitContent.mainContent;
+				deviceRegex = splitContent.deviceRegex;
+			}
+
+			var cssObject = {};
+			cssObject.deviceRegex = deviceRegex;
+			cssObject.responsiveStyle = responsiveStyle;
+			cssObject.oldStyle = oldStyle;
+			cssObject.originalStyle = originalStyle;
+			cssObject.addMediaQuery = addMediaQuery;
+			return cssObject;
+
+		},
+
+		/**
+		 * @summary put CSS content to style tag
+		 *
+		 * @param    { object }    cssObject    Css object
+		 * @param    { string }    device       device name
+		 * @param    { string }    newStyle     CSS selector
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { string }  contains responsive device CSS and main css
+		 */
+		putResponsiveCss: function ( cssObject, device, newStyle ) {
+
+			if ( 'tablet' == device || 'mobile' == device ) {
+				if ( cssObject.addMediaQuery ) {
+					var deviceMediaQueryPrefix = '',
+						deviceMediaQueryPostfix = '';
+					if ( 'tablet' == device ) {
+						deviceMediaQueryPrefix = '@media screen and (max-width: 768px) { /*tablet-start*/';
+						deviceMediaQueryPostfix = '/*tablet-finish*/}';
+					} else if ( 'mobile' == device ) {
+						deviceMediaQueryPrefix = '@media screen and (max-width: 430px) { /*mobile-start*/';
+						deviceMediaQueryPostfix = '/*mobile-finish*/}';
+					}
+					newStyle = cssObject.originalStyle + deviceMediaQueryPrefix + newStyle + deviceMediaQueryPostfix;
+				} else {
+					newStyle = cssObject.originalStyle.replace( cssObject.deviceRegex, '/*' + device + '-start*/' + newStyle + '/*' + device + '-finish*/' )
+				}
+			} else {
+				newStyle = newStyle + cssObject.responsiveStyle;
+			}
+
+			return newStyle;
 
 		},
 
@@ -832,49 +1016,48 @@
 		 *
 		 * @returns { string } new style of element to insert inside style tag
 		 */
-		generateNewStyle: function ( selector, attribute, value ){
+		generateNewStyle: function ( selector, attribute, value, device ) {
 
-			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
-				regex    = /(.*?){(.*?)}/g,
-				pattern  = new RegExp( regex ),
+			var regex = /(.*?){(.*?)}/g,
+				pattern = new RegExp( regex ),
 				selector = selector.trim(),
-				content  = '',
+				content = '',
 				result;
 
-			if ( '' != oldStyle ){
-				while ( ( result = pattern.exec( oldStyle ) ) !== null ){
+			var cssObject = this.getCss( device );
+
+			if ( '' != cssObject.oldStyle ) {
+				while ( ( result = pattern.exec( cssObject.oldStyle ) ) !== null ) {
 					// This is necessary to avoid infinite loops with zero-width matches
-					if ( result.index === regex.lastIndex ){
+					if ( result.index === regex.lastIndex ) {
 						regex.lastIndex++;
 					}
 
-					if ( result[ 1 ].trim() == selector ){
+					if ( result[ 1 ].trim() == selector ) {
 						content = result[ 2 ];
 						break;
 					}
 				}
 			}
 
+			var cssProperty = {};
+			if ( '' != content ) {
+				var splitContent = content.split( ';' );
 
-			if ( '' != content ){
-				var splitContent = content.split( ';' ),
-					cssProperty  = {};
-
-				_.each( splitContent, function ( property ){
-					var cssString = property.split(/(.*?)(:([^\/]))/g);
-					if ( "" != cssString[ 1 ] &&  undefined != cssString[ 1 ] ){
-						cssProperty[ cssString[ 1 ] ] = cssString[ 3 ] + cssString[ 4 ] ;
+				_.each( splitContent, function ( property ) {
+					var cssString = property.split( /(.*?)(:([^\/]))/g );
+					if ( "" != cssString[ 1 ] && undefined != cssString[ 1 ] ) {
+						cssProperty[ cssString[ 1 ] ] = cssString[ 3 ] + cssString[ 4 ];
 					}
 				} );
 
-				cssProperty[ attribute ] = value;
-				oldStyle = this.removeOldSelector( selector, oldStyle );
-				return oldStyle + this.generateStyleString( selector, cssProperty );
-			}else{
-				var cssProperty = {};
-				cssProperty[ attribute ] = value;
-				return oldStyle + this.generateStyleString( selector, cssProperty );
+				cssObject.oldStyle = this.removeOldSelector( selector, cssObject.oldStyle );
 			}
+			cssProperty[ attribute ] = value;
+			var newStyle = cssObject.oldStyle + this.generateStyleString( selector, cssProperty );
+
+			newStyle = this.putResponsiveCss( cssObject, device, newStyle );
+			return newStyle;
 
 		},
 

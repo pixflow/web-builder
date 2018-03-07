@@ -43,21 +43,23 @@ class Karma_Image extends Karma_Shortcode_Base {
 	static function get_element_default_attributes(){
 
 		return 	array(
-			'element_key'   	=> 'kb' ,
-			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-			'action'        	=> 'none' ,
-			'linkurl'       	=> get_site_url(),
-			'linktarget'    	=> '_blank' ,
-			'alt'          		=> get_bloginfo( 'name' ) ,
-			'scale'				=> 'fill',
-			'position'			=> 'center-center',
-			'width'				=> '514',
-			'height'			=> '386',
-			'resizing'			=> false,
-			'naturalwidth'		=> '514',
-			'naturalheight' 	=> '386',
-			'topspacepadding'	=> '10',
-			'elementalign'		=> 'center',
+			'element_key'   			=> 'kb' ,
+			'imgurl'					=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
+			'action'        			=> 'none' ,
+			'linkurl'       			=> get_site_url(),
+			'linktarget'    			=> '_blank' ,
+			'alt'          				=> get_bloginfo( 'name' ) ,
+			'scale'						=> 'fill',
+			'position'					=> 'center-center',
+			'width'						=> '514',
+			'height'					=> '386',
+			'resizing'					=> false,
+			'naturalwidth'				=> '514',
+			'naturalheight' 			=> '386',
+			'topspacepadding'			=> '10',
+			'tablettopspacepadding'		=> '5',
+			'mobiletopspacepadding'		=> '5',
+			'elementalign'				=> 'center',
 		);
 
 	}
@@ -191,6 +193,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 			array(
 				'property'		=> array(
 					'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 				)
 			)
 		);

@@ -17,6 +17,7 @@ body.karma-builder{
 	background-color: #fff;
 	box-shadow: 0 2px 12px 0 rgba(57,73,89,0.1);
 	position: relative;
+	z-index: 1;
 
 	.karma-header-container{
 		display: flex;

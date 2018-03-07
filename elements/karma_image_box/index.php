@@ -63,7 +63,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'visibleondesktop'	=> 'on',
 				'visibleonmobile'	=> 'on',
 				'visibleontablet'	=> 'on',
-
+				'tablettopspacepadding'	=> '10',
+				'mobiletopspacepadding'	=> '10',
 		);
 
 	}
@@ -183,6 +184,12 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 					array(
 						'property'		=> array(
 								'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+						),
+						'tablet_property' => array(
+							'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+						),
+						'mobile_property' => array(
+							'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 						)
 					),
 					array(
@@ -192,6 +199,12 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 							'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
 							'height'			=> self::$element_attributes[ 'imageheight' ] . 'px',
 							'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
+						),
+						'tablet_property' => array(
+							'min-height'		=> ( ( self::$element_attributes[ 'imageheight' ] * 70 ) / 100 ). 'px',
+						),
+						'mobile_property' => array(
+							'min-height'		=> ( ( self::$element_attributes[ 'imageheight' ]* 70 ) / 100 ). 'px',
 						)
 					),
 					array(

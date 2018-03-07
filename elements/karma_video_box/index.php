@@ -64,7 +64,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
             'generalcolor'		=> '#fff',
             'textcolor'			=> '#000',
 			'elementalign'		=> 'left',
-
+			'tablettopspacepadding'	=> '10',
+			'mobiletopspacepadding'	=> '10',
 		);
 
 	}
@@ -191,6 +192,12 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			array(
 				'property'		=> array(
 						'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 				)
 			),
 			array(
@@ -200,6 +207,12 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 					'height'			=> 	 self::$element_attributes[ 'videoheight' ] . 'px',
 					'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
 					'background-color'	=>  self::$element_attributes[ 'colorbackground' ],
+				),
+				'tablet_property' => array(
+						'min-height'		=> ( ( self::$element_attributes[ 'videoheight' ] * 70 ) / 100 ). 'px',
+				),
+				'mobile_property' => array(
+						'min-height'		=> ( ( self::$element_attributes[ 'videoheight' ]* 70 ) / 100 ). 'px',
 				)
 			),
 			array(

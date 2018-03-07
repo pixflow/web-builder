@@ -354,11 +354,28 @@
 		space: function () {
 
 			var padding	= this.getAttributes( ['space'] ).space + 'px';
-			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
-			this.$el.find('.karma-section').css({
-				'padding-top'      : padding,
-				'padding-bottom'   : padding
-			});
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', padding );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', padding );
+
+		},
+
+		/**
+		 * @summary create default responsive space
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace: function () {
+
+			// Tablet
+			var tabletPadding = this.getAttributes( [ 'tabletspace' ] ).tabletspace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', tabletPadding, 'tablet' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', tabletPadding, 'tablet' );
+
+			// Mobile
+			var mobilePadding = this.getAttributes( [ 'mobilespace' ] ).mobilespace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', mobilePadding, 'mobile' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', mobilePadding, 'mobile' );
 
 		},
 
@@ -408,8 +425,7 @@
 		 */
 		backgroundcolor: function () {
 
-			var elementId = this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
-			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
 
 		},
 
@@ -440,10 +456,9 @@
 		 */
 		columnspace : function () {
 
-			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
-			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-left', margin );
-			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-right', margin );
+			var margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-column-margin', 'margin-left', margin );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-column-margin', 'margin-right', margin );
 
 		},
 
@@ -457,7 +472,6 @@
 		backgroundimage : function () {
 
 			var imageAddress = this.getAttributes( [ 'backgroundimage' ] ),
-				elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				imageUrl = '' ;
 
 			if( 'none' == imageAddress.backgroundimage ){
@@ -465,7 +479,7 @@
 			}else{
 				imageUrl = 'url('+ imageAddress.backgroundimage  +')';
 			}
-			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
 
 
 		},

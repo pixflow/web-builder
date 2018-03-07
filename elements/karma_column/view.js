@@ -153,6 +153,28 @@
 		},
 
 		/**
+		 * @summary create default responsive space
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace: function () {
+
+			// Tablet
+			var tabletPaddingRight = this.getAttributes( [ 'tabletrightspace' ] ).tabletrightspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-right', tabletPaddingRight, 'tablet' );
+			var tabletPaddingLeft = this.getAttributes( [ 'tabletleftspace' ] ).tabletleftspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-left', tabletPaddingLeft, 'tablet' );
+
+			// Mobile
+			var mobilePaddingRight = this.getAttributes( [ 'mobilerightspace' ] ).mobilerightspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-right', mobilePaddingRight, 'mobile' );
+			var mobilePaddingLeft = this.getAttributes( [ 'mobileleftspace' ] ).mobileleftspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-left', mobilePaddingLeft, 'mobile' );
+
+		},
+
+		/**
 		 *@summary extra class field changes. Add class to the column
 		 *
 		 * @since 0.1.0

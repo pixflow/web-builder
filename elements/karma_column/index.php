@@ -27,6 +27,10 @@ class Karma_Column extends Karma_Shortcode_Base {
 			'extraclass'		=> '',
 			'rightspace'		=> '10',
 			'leftspace'			=> '10',
+			'tabletleftspace'	=> '8',
+			'mobileleftspace'	=> '8',
+			'tabletrightspace'	=> '8',
+			'mobilerightspace'	=> '8',
 			'visibleonmobile'	=> 'on',
 			'visibleontablet'	=> 'on',
 
@@ -98,6 +102,14 @@ class Karma_Column extends Karma_Shortcode_Base {
 				'property'        => array(
 					'padding-left' => self::$element_attributes[ 'leftspace' ] . "px" ,
 					'padding-right' => self::$element_attributes[ 'rightspace' ] . "px",
+				),
+				'tablet_property' => array(
+						'padding-left'  => self::$element_attributes[ 'tabletleftspace' ] . 'px',
+						'padding-right'  => self::$element_attributes[ 'tabletrightspace' ] . 'px'
+				),
+				'mobile_property' => array(
+						'padding-left'  => self::$element_attributes[ 'mobileleftspace' ] . 'px',
+						'padding-right'  => self::$element_attributes[ 'mobilerightspace' ] . 'px'
 				)
 			)
 		);

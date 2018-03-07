@@ -1483,14 +1483,16 @@ body {
   pointer-events: none !important; }
 
 #karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6.p {
-  margin: 0; }
+  margin: 1230; }
 
 @media screen and (max-width: 768px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
-    padding: 4vh !important; }
+    padding: 35px !important; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
+      min-width: 80%; }
 
   .karma-builder-element[data-name="karma_video_box"] .karma-image-text-box {
-    padding: 4vh !important; }
+    padding: 35px !important; }
 
   #karma-builder-layout h1 {
     font-size: 42px;
@@ -1514,6 +1516,14 @@ body {
     font-size: 14px;
     line-height: 24px; } }
 @media screen and (max-width: 575px) {
+  .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
+    padding: 29px !important; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
+      min-width: 80%; }
+
+  .karma-builder-element[data-name="karma_video_box"] .karma-image-text-box {
+    padding: 29px !important; }
+
   #karma-builder-layout h1 {
     font-size: 30px;
     line-height: 40px; }
@@ -1563,7 +1573,10 @@ html {
     max-width: 95%; } }
 @media (max-width: 768px) {
   .karma-container {
-    max-width: 720px; } }
+    max-width: 720px; }
+
+  .container {
+    width: 100%; } }
 @media (max-width: 992px) {
   .karma-container {
     max-width: 960px; } }
@@ -3153,7 +3166,8 @@ html {
     display: flex;
     padding: 6vh;
     position: relative;
-    width: 100%; }
+    width: 100%;
+    box-sizing: border-box; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-real {
       background-size: auto; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-fill {
@@ -3250,7 +3264,8 @@ html {
       position: absolute;
       top: 0; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
-      width: fit-content; }
+      width: fit-content;
+      max-width: 70%; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag,
@@ -3430,6 +3445,7 @@ html {
     width: 100% !important; }
   .karma-builder-element[data-name="karma_video_box"] .karma-video-box {
     background-repeat: no-repeat;
+    box-sizing: border-box;
     display: flex;
     padding: 6vh;
     position: relative;
@@ -3763,6 +3779,7 @@ body.karma-builder {
   background-color: #fff;
   box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.1);
   position: relative;
+  z-index: 1;
   backface-visibility: hidden; }
   .karma-builder-toolbar .karma-header-container {
     display: flex;
@@ -6526,7 +6543,9 @@ div.karma-element-content .karma-top-spacing {
   display: flex;
   height: 100%;
   justify-content: center;
-  width: 100%; }
+  position: relative;
+  width: 100%;
+  z-index: 0; }
   .karma-builder .karma-builder-iframe-container .karma-builder-responsive-frame {
     width: 100%;
     height: 100%;
@@ -6896,7 +6915,8 @@ div.karma-element-content .karma-top-spacing {
   display: flex;
   text-align: center;
   flex-direction: row;
-  font-family: "HelveticaNeue"; }
+  font-family: "HelveticaNeue";
+  min-height: 100vh; }
   .karma-blank-page-container > div {
     width: 487px;
     height: 643px;
@@ -6954,37 +6974,45 @@ div.karma-element-content .karma-top-spacing {
 
 body.karma-device-mode-desktop iframe {
   border: none; }
-body.karma-device-mode-tablet .text-gizmo-group,
-body.karma-device-mode-tablet .image-gizmo-group,
-body.karma-device-mode-tablet .image-box-gizmo-group,
-body.karma-device-mode-tablet .video-box-gizmo-group,
-body.karma-device-mode-tablet .image-text-gizmo-group,
-body.karma-device-mode-tablet .karma-image-text-box-description-gizmo,
-body.karma-device-mode-tablet .karma-image-text-box-link-gizmo,
-body.karma-device-mode-tablet .video-text-gizmo-group,
-body.karma-device-mode-tablet .karma-video-box-description-gizmo,
-body.karma-device-mode-tablet .karma-video-box-link-gizmo,
-body.karma-device-mode-tablet .element-name-text-gizmo,
-body.karma-device-mode-tablet .karma-title-gizmo-template, body.karma-device-mode-mobile .text-gizmo-group,
-body.karma-device-mode-mobile .image-gizmo-group,
-body.karma-device-mode-mobile .image-box-gizmo-group,
-body.karma-device-mode-mobile .video-box-gizmo-group,
-body.karma-device-mode-mobile .image-text-gizmo-group,
-body.karma-device-mode-mobile .karma-image-text-box-description-gizmo,
-body.karma-device-mode-mobile .karma-image-text-box-link-gizmo,
-body.karma-device-mode-mobile .video-text-gizmo-group,
-body.karma-device-mode-mobile .karma-video-box-description-gizmo,
-body.karma-device-mode-mobile .karma-video-box-link-gizmo,
-body.karma-device-mode-mobile .element-name-text-gizmo,
-body.karma-device-mode-mobile .karma-title-gizmo-template {
+body.karma-device-mode-tablet #karma-builder-layout .text-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .image-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .image-box-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .video-box-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .image-text-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-text-box-description-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-text-box-link-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .video-text-gizmo-group,
+body.karma-device-mode-tablet #karma-builder-layout .karma-video-box-description-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .karma-video-box-link-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .element-name-text-gizmo,
+body.karma-device-mode-tablet #karma-builder-layout .karma-title-gizmo-template,
+body.karma-device-mode-tablet #karma-builder-layout .karma-new-section-icon,
+body.karma-device-mode-tablet #karma-builder-layout .button-gizmo-group, body.karma-device-mode-mobile #karma-builder-layout .text-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .image-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .image-box-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .video-box-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .image-text-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .karma-image-text-box-description-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .karma-image-text-box-link-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .video-text-gizmo-group,
+body.karma-device-mode-mobile #karma-builder-layout .karma-video-box-description-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .karma-video-box-link-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .element-name-text-gizmo,
+body.karma-device-mode-mobile #karma-builder-layout .karma-title-gizmo-template,
+body.karma-device-mode-mobile #karma-builder-layout .karma-new-section-icon,
+body.karma-device-mode-mobile #karma-builder-layout .button-gizmo-group {
   display: none !important; }
-body.karma-device-mode-tablet .resize-handler, body.karma-device-mode-mobile .resize-handler {
+body.karma-device-mode-tablet #karma-builder-layout .resize-handler, body.karma-device-mode-mobile #karma-builder-layout .resize-handler {
   pointer-events: none !important; }
-body.karma-device-mode-tablet .karma-image-resize .ui-resizable-handle, body.karma-device-mode-mobile .karma-image-resize .ui-resizable-handle {
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-resize .ui-resizable-handle, body.karma-device-mode-mobile #karma-builder-layout .karma-image-resize .ui-resizable-handle {
   display: none; }
-body.karma-device-mode-tablet #karma-builder-layout, body.karma-device-mode-mobile #karma-builder-layout {
+body.karma-device-mode-tablet #karma-builder-layout .karma-image-text-box, body.karma-device-mode-mobile #karma-builder-layout .karma-image-text-box {
+  height: auto; }
+body.karma-device-mode-tablet #karma-builder-layout .karma-video-box, body.karma-device-mode-mobile #karma-builder-layout .karma-video-box {
+  height: auto; }
+body #karma-builder-layout {
   cursor: auto; }
-  body.karma-device-mode-tablet #karma-builder-layout .karma-builder-element[data-name="karma_section"], body.karma-device-mode-mobile #karma-builder-layout .karma-builder-element[data-name="karma_section"] {
+  body #karma-builder-layout .karma-builder-element[data-name="karma_section"] {
     cursor: auto; }
 
 @media (max-width: 768px) {

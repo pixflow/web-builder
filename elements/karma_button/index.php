@@ -48,9 +48,11 @@ class Karma_Button extends Karma_Shortcode_Base {
 			'element_key'   			=> 'kb' ,
 			'type'						=> 'fill' ,
 			'linkurl'       			=> '#',
-			'target'	    			=> '_blank' ,
+			'target'	    			=> '_self' ,
 			'linkcontent'				=> esc_attr__( "Explore more", 'karma' ),
 			'topspacepadding'			=> '10',
+			'tablettopspacepadding'		=> '15',
+			'mobiletopspacepadding'		=> '15',
 			'generalcolor'				=> '#419CF8',
 			'textcolor'					=> '#fff',
 			'fillbuttonborderradius'	=> '3px',
@@ -141,6 +143,12 @@ class Karma_Button extends Karma_Shortcode_Base {
 			array(
 				'property'		=> array(
 				'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 				)
 			),
 

@@ -280,36 +280,27 @@
 					handles 	: {},
 					cursor		: 's-resize',
 					scroll 		: true ,
-					start: function ( event ) {
+					start: function ( event, UI ) {
+
 						karmaSection.addClass( "karma-resizable-active" );
 						that.showMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "200px";
+						that.updateGizmoValue( UI, that.el.querySelector('.karma-section'), 'padding-top' );
+
 					},
 					stop : function ( event, ui ) {
+
+						that.updateElementModel( 'space', ui.element.height() );
 						karmaSection.removeClass( "karma-resizable-active" );
-						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
 						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
 
 					},
-					resize: function( event, ui ){
-
-						var padding = ui.size.height + 'px';
-						if( ui.size.height >= 0){
-							karmaSection.find('.karma-section').css( {
-								paddingTop 		: padding,
-								paddingBottom	: padding
-							});
-						}else{
-							karmaSection.find('.karma-section').css( {
-								paddingTop 		: "0",
-								paddingBottom	: "0"
-							});
-						}
-
-
-
+					resize: function( event, UI ){
+						var padding = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
+						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-top', padding, that.currentDevice() );
+						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-bottom', padding, that.currentDevice() );
 					}
 				};
 
@@ -317,7 +308,50 @@
 			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
 			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
 			this.$el.find( '.karma-bottom-spacing' ).resizable( options );
+		},
 
+		/**
+		 * @summary Update live gizmo value with
+		 * its value of the current device
+		 *
+		 * @param	{object} UI
+		 * @param	{object} element javascript element
+		 * @param	{string} property css property
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		updateGizmoValue : function ( UI, element, property ){
+
+			var newSize =  window.getComputedStyle( element ).getPropertyValue( property );
+			newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
+			if ( 'padding-left' == property || 'padding-right' == property ){
+				UI.originalSize.width = parseInt( newSize );
+				UI.helper[ 0 ].setAttribute( 'style', 'width: ' + UI.size.width + 'px' );
+			} else if ( 'padding-top' == property || 'padding-bottom' == property ){
+				UI.originalSize.height = parseInt( newSize );
+				UI.helper[ 0 ].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+			}
+
+		},
+
+		/**
+		 * @summary Create object containing list of shortcode property
+		 * based on device to call set attributes function
+		 *
+		 * @param	{string} property CSS property
+		 * @param	{string} value new value of CSS
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		updateElementModel : function ( property, value ){
+
+			var newAttr = {};
+			newAttr[ this.currentDevice() + property ] = parseInt( value );
+			this.setAttributes( newAttr, true );
 
 		},
 
@@ -356,28 +390,31 @@
 					maxHeight   : 700,
 					minHeight   : 0,
 					handles : {},
-					start: function ( event ) {
+					start: function ( event, UI ) {
 						that.showMouseToolTip( event );
 						that.toggleShortcodeGizmo( "add" );
+						that.updateGizmoValue( UI, that.el, 'padding-top' );
+
 					},
-					stop : function ( event, ui ) {
+					stop : function ( event, UI ) {
 
 						that.removeMouseToolTip( event );
-						that.setAttributes( { topspacepadding : parseInt( ui.element.height() ) }, false );
+						that.updateElementModel( 'topspacepadding', UI.element.height());
 						that.toggleShortcodeGizmo( "remove" );
 
 					},
-					resize: function( event, ui ){
+					resize: function( event, UI ){
 
-						var currentSection = that.el;
-						currentSection.style.paddingTop = ui.size.height + 'px';
+						var elementId 	= that.elementSelector(),
+						value = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
+						that.renderCss( "#" + elementId + "" , 'padding-top', value , that.currentDevice());
 
 					}
 				};
 
-			options.handles.s = $gizmo.find( '.ui-resizable-s' );
-			this.$el.find( '.karma-top-spacing' ).css( "height", this.getAttributes(['topspacepadding']).topspacepadding + "px" );
-			this.$el.find( '.karma-top-spacing' ).resizable( options );
+				options.handles.s = $gizmo.find( '.ui-resizable-s' );
+				this.$el.find( '.karma-top-spacing' ).css( "height", this.getAttributes(['topspacepadding']).topspacepadding + "px" );
+				this.$el.find( '.karma-top-spacing' ).resizable( options );
 
 		},
 
@@ -429,22 +466,28 @@
 					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
-					start : function( event ){
+					start : function( event , UI ){
 
 						that.$el.find( '.karma-image-resize' ).css( {'width': ''});
+						if ('padding-left' == paddingDirection) {
+							that.updateGizmoValue( UI, that.el.querySelector('.karma-column'), 'padding-left' );
+						}else{
+							that.updateGizmoValue( UI, that.el.querySelector('.karma-column'), 'padding-right' );
+						}
 						that.showMouseToolTip( event );
 						that.el.classList.add( 'karma-resizing-padding' );
 						KarmaView.removeActiveElement();
+
 
 					},
 
 					stop : function ( event, ui ) {
 
 						var value = ( parseInt( ui.element.width() ) < 0 ) ? 0 : parseInt( ui.element.width() );
-						if ( 'padding-left' == paddingDirection ){
-							that.setAttributes( { 'leftspace' : value }, true );
-						}else {
-							that.setAttributes( { 'rightspace' : value }, true );
+						if ('padding-left' == paddingDirection) {
+							that.updateElementModel( 'leftspace', value );
+						} else {
+							that.updateElementModel( 'rightspace', value );
 						}
 						that.removeMouseToolTip( event );
 						that.el.classList.remove( 'karma-resizing-padding' );
@@ -456,7 +499,7 @@
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
 						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
-						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px');
+						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px', that.currentDevice() );
 
 					}
 				};
@@ -566,6 +609,25 @@
 			that.$el.attr( 'data-direction', 'left' );
 			options.handles.w = $gizmo.find(  '.ui-resizable-w' );
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
+
+		},
+
+		/**
+		 * @summary return device mode
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {string} name of device
+		 */
+		currentDevice : function () {
+
+			if( document.body.classList.contains( 'karma-device-mode-desktop' ) ){
+				return	'';
+			}else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
+				return	'tablet';
+			}else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
+				return	'mobile';
+			}
 
 		},
 

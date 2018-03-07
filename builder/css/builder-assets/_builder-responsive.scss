@@ -7,30 +7,41 @@ body{
 		}
 	}
 
-	&.karma-device-mode-tablet,
-	&.karma-device-mode-mobile{
+		&.karma-device-mode-tablet,
+		&.karma-device-mode-mobile {
+			#karma-builder-layout {
+				.text-gizmo-group,
+				.image-gizmo-group,
+				.image-box-gizmo-group,
+				.video-box-gizmo-group,
+				.image-text-gizmo-group,
+				.karma-image-text-box-description-gizmo,
+				.karma-image-text-box-link-gizmo,
+				.video-text-gizmo-group,
+				.karma-video-box-description-gizmo,
+				.karma-video-box-link-gizmo,
+				.element-name-text-gizmo,
+				.karma-title-gizmo-template,
+				.karma-new-section-icon,
+				.button-gizmo-group {
+					display: none !important;
+				}
+				.resize-handler {
+					pointer-events: none !important;
+				}
+				.karma-image-resize {
 
-		.text-gizmo-group,
-		.image-gizmo-group,
-		.image-box-gizmo-group,
-		.video-box-gizmo-group,
-		.image-text-gizmo-group,
-		.karma-image-text-box-description-gizmo,
-		.karma-image-text-box-link-gizmo,
-		.video-text-gizmo-group,
-		.karma-video-box-description-gizmo,
-		.karma-video-box-link-gizmo,
-		.element-name-text-gizmo,
-		.karma-title-gizmo-template{
-			display: none !important;
-		}
-		.resize-handler{
-			pointer-events: none !important;
-		}
-		.karma-image-resize{
+					.ui-resizable-handle {
+						display: none;
+					}
+				}
 
-			.ui-resizable-handle{
-				display: none;
+				.karma-image-text-box {
+					height: auto;
+				}
+				.karma-video-box {
+					height: auto;
+				}
 			}
 		}
 		#karma-builder-layout{
@@ -40,7 +51,6 @@ body{
 				cursor: auto;
 			}
 		}
-	}
 }
 @media (max-width: 768px){
 	.karma-builder-environment {

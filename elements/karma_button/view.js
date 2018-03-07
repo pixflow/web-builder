@@ -85,9 +85,10 @@
 			var content = this.el.querySelector( '.karma-button-link span' );
 
 			if( null != content ){
-				content.focus();
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.focus();
+				}
 			}
-
 			this.showElementGizmo( e );
 
 		},

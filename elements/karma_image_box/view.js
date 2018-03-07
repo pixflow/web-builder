@@ -386,6 +386,8 @@
 				imageHeight	= this.getAttributes( ['imageheight'] );
 
 			this.renderCss( "#" + elementId + " .karma-image-text-box ", 'height', imageHeight.imageheight + "px"  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box ", 'min-height', ( ( imageHeight.imageheight*70 )/100 ) + "px" , 'tablet' );
+			this.renderCss( "#" + elementId + " .karma-image-text-box ", 'min-height', ( ( imageHeight.imageheight*70 )/100 )  + "px" , 'mobile' );
 
 		},
 
