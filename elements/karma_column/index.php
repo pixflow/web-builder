@@ -108,7 +108,6 @@ class Karma_Column extends Karma_Shortcode_Base {
 	/**
 	 * Load JS
 	 *
-	 *
 	 * @since   0.1.0
 	 * @access  public
 	 * @return    void
@@ -117,7 +116,8 @@ class Karma_Column extends Karma_Shortcode_Base {
 
 	//	$block = File_System::file_get_content();
 		$instance = File_System::get_instance();
-		$block = $instance->file_get_content( KARMA_BUILDER_URL . 'elements/karma_column/script.js' );
+		//@TODO it should load script files automate
+		$block = $instance->file_get_content( KARMA_BUILDER_URL . 'elements/karma_column/script.min.js' );
 		return $block;
 
 	}
