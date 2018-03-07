@@ -1446,7 +1446,7 @@ body {
     width: 100%;
     transition: .4s;
     will-change: contents; }
-  body div {
+  body div.karma-element-content {
     font-size: initial; }
   body .karma-full-separator {
     width: 100%;
@@ -1483,7 +1483,7 @@ body {
   pointer-events: none !important; }
 
 #karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6.p {
-  margin: 1230; }
+  margin: 0; }
 
 @media screen and (max-width: 768px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {

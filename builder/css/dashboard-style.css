@@ -572,7 +572,7 @@ body {
     width: 100%;
     transition: .4s;
     will-change: contents; }
-  body div {
+  body div.karma-element-content {
     font-size: initial; }
   body .karma-full-separator {
     width: 100%;

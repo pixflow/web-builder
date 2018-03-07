@@ -18,9 +18,10 @@ body {
 
 	}
 	//have issue in top padding gizmo position in some theme
-	div {
+	div.karma-element-content {
 		font-size: initial;
 	}
+
 
 	font-family: $builder-normal-font;
 	.karma-full-separator {
