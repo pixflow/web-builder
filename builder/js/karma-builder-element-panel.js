@@ -731,6 +731,7 @@
 				buttonTypeDevice = buttonType.getAttribute( 'data-mode' ),
 				contentEdtibaleList = karmaBuilderEnviroment.getIframe().document.querySelectorAll( '[contenteditable]' ),
 				draggableEelement = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-element-content' ),
+				activeColumn = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-active-column' ),
 				sortableSection = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( "#karma-builder-layout" );
 
 			_.each( contentEdtibaleList, function ( editableNode ) {
@@ -738,10 +739,12 @@
 					editableNode.contentEditable = true;
 					draggableEelement.draggable( 'enable' );
 					sortableSection.sortable( "option", "disabled", false );
+					activeColumn.removeClass( 'karma-active-column' );
 				}else{
 					editableNode.contentEditable = false;
 					draggableEelement.draggable( 'disable' );
 					sortableSection.sortable( "option", "disabled", true );
+					activeColumn.removeClass( 'karma-active-column' );
 				}
 			});
 
