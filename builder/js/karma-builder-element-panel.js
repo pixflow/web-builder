@@ -707,6 +707,7 @@
 			 	regex = new RegExp('(?:^|\\s)karma-device-mode-(.*?)(?!\\S)'),
 				builderEnvirmont = karmaBuilderEnviroment.getIframe().document.querySelector('.karma-builder-environment');
 
+			this.checkContentEditable( e );
 			document.querySelector('body').className = document.querySelector('body').className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
 			builderEnvirmont.setAttribute( "karma-device-mode" , button.getAttribute('data-mode'));
 			builderEnvirmont.className = builderEnvirmont.className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
@@ -724,7 +725,7 @@
 		 * @since   2.0
 		 * @returns { void }
 		 */
-		checkContentEditable : function () {
+		checkContentEditable : function ( e ) {
 
 			var buttonType = e.target.closest( '.karma-responsive-button' ),
 				buttonTypeDevice = buttonType.getAttribute( 'data-mode' ),
