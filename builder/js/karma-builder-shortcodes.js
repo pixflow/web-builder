@@ -1005,7 +1005,8 @@
 		},
 
 		/**
-		 * @summary renders the css of model inside style tag
+		 * @summary renders the css of
+		 * model inside style tag
 		 *
 		 * @param    { string }    selector    Css selector
 		 * @param    { string }    attribute    CSS attribute

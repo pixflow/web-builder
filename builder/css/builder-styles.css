@@ -1434,8 +1434,6 @@ div#karma-builder-layout img {
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
   will-change: contents;
   font-family: "HelveticaNeue"; }
   body button {
@@ -3276,7 +3274,7 @@ html {
           text-decoration: none;
           word-break: keep-all; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag {
-          min-width: 150px; }
+          min-width: 140px; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag.karma-image-box-description-opacity {
           display: none; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag.karma-image-box-title-opacity {

@@ -702,11 +702,12 @@
 		 * @returns { void }
 		 */
 		changeDevice : function ( e ){
-			
+
 			var button = e.target.closest('.karma-responsive-button'),
 			 	regex = new RegExp('(?:^|\\s)karma-device-mode-(.*?)(?!\\S)'),
 				builderEnvirmont = karmaBuilderEnviroment.getIframe().document.querySelector('.karma-builder-environment');
 
+			this.checkContentEditable( e );
 			document.querySelector('body').className = document.querySelector('body').className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
 			builderEnvirmont.setAttribute( "karma-device-mode" , button.getAttribute('data-mode'));
 			builderEnvirmont.className = builderEnvirmont.className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
@@ -716,6 +717,35 @@
 			}
 
 		},
+
+		/**
+		 * @summary set active responsive button
+		 * @param event
+		 *
+		 * @since   2.0
+		 * @returns { void }
+		 */
+		checkContentEditable : function ( e ) {
+
+			var buttonType = e.target.closest( '.karma-responsive-button' ),
+				buttonTypeDevice = buttonType.getAttribute( 'data-mode' ),
+				contentEdtibaleList = karmaBuilderEnviroment.getIframe().document.querySelectorAll( '[contenteditable]' ),
+				draggableEelement = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-element-content' ),
+				sortableSection = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( "#karma-builder-layout" );
+
+			_.each( contentEdtibaleList, function ( editableNode ) {
+				if( 'desktop' == buttonTypeDevice ) {
+					editableNode.contentEditable = true;
+					draggableEelement.draggable( 'enable' );
+					sortableSection.sortable( "option", "disabled", false );
+				}else{
+					editableNode.contentEditable = false;
+					draggableEelement.draggable( 'disable' );
+					sortableSection.sortable( "option", "disabled", true );
+				}
+			});
+
+		}
 
 	});
 

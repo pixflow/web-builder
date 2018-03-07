@@ -539,7 +539,7 @@
 							'height'		: UI.size.height,
 							'resizing'	: that.el.querySelector( 'img' ).classList.contains( 'karma-image-both-resize' )
 						}, true );
-						that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width);
+						that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width );
 
 					},
 					

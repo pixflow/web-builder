@@ -19,6 +19,7 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector( '.karma-button-link span' ).contentEditable = true ;
 
 		},
 
@@ -85,11 +86,9 @@
 
 			if( null != content ){
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					content.contentEditable = true;
 					content.focus();
 				}
 			}
-
 			this.showElementGizmo( e );
 
 		},

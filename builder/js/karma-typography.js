@@ -224,17 +224,16 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		/**
 		 * @summary range slider in typography manager
 		 *
-		 * @since 0.1.0
+		 * @since 2.0
 		 *
 		 */
+		changingSlider : 0,
 		updateRangeSliderInput: function ( e ) {
 			var element = e.target,
-				that = this,
-				changingSlider,
 				$karmaRangeSlider = $( element.closest( '.karma-range-slider-content' ) ).find( '.karma-range-slider-range' );
 
-			clearTimeout( changingSlider );
-			changingSlider = setTimeout( function () {
+			clearTimeout( this.changingSlider );
+			this.changingSlider = setTimeout( function () {
 				$( $karmaRangeSlider ).val( element.value ).change();
 			}, 300 );
 		},
@@ -369,10 +368,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				result = true ;
 			} else {
 				var that = this,
-					diff = $(this.model.fonts[ fontFamily ]).not(arr).get();
+					diff = $( this.model.fonts[ fontFamily ] ).not( arr ).get();
 
 				if ( diff.length ){
-					diff.forEach(function ( key ){
+					diff.forEach( function ( key ){
 						that.model.fonts[ fontFamily ].splice( that.model.fonts[ fontFamily ].indexOf( key ), 1);
 						result = true ;
 					})

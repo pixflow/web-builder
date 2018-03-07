@@ -36,37 +36,33 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 	static function get_element_default_attributes(){
 
 		return 	array(
-
-				'element_key'   			=> 'kb' ,
-				'imgurl'					=>  KARMA_BUILDER_URL . 'builder/media/default-img-text.jpg',
-				'overlaycolor'      		=> 'rgba(0, 0, 0, 0)',
-				'backgroundcolor'			=> 'rgba(0, 0, 0, 0)',
-				'titletext'          	   => esc_attr__( 'Great idea', 'karma' ),
-				'descriptiontext'    	   => esc_attr__( 'Live Text Editor', 'karma' ),
-				'linktext'          	    => esc_attr__( 'Explore more', 'karma' ),
-				'backgroundsize'			=> 'fill',
-				'backgroundposition'		=> 'center-center',
-				'titlecolor'				=> '#000',
-				'descriptioncolor'			=> '#000',
-				'titletag'					=>'h6',
-				'descriptiontag'			=>'h4',
-				'textposition'				=>'bottom-left',
-				'textlink'					=>'https://www.google.com/',
-				'target'					=>'_self',
-				'topspacepadding'			=> '10',
-				'tablettopspacepadding'		=> '15',
-				'mobiletopspacepadding'		=> '15',
-				'radiusbox'					=>'0',
-				'imageheight'				=>'500',
-				'type'						=> 'fill' ,
-				'rangemodel'        		=>'0',
-                'generalcolor'				=> '#8FB440',
-                'textcolor'					=> '#fff',
-				'elementalign'				=> 'left',
-				'visibleondesktop'			=> 'on',
-				'visibleonmobile'			=> 'on',
-				'visibleontablet'			=> 'on',
-
+				'element_key'   	=> 'kb' ,
+				'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-img-text.jpg',
+				'overlaycolor'      => 'rgba(0, 0, 0, 0)',
+				'backgroundcolor'	=> 'rgba(0, 0, 0, 0)',
+				'titletext'			=> esc_attr__( 'Great idea', 'karma' ),
+				'descriptiontext'	=> esc_attr__( 'Live Text Editor', 'karma' ),
+				'linktext'			=> esc_attr__( 'Explore more', 'karma' ),
+				'backgroundsize'	=> 'fill',
+				'backgroundposition'=> 'center-center',
+				'titlecolor'		=> '#000',
+				'descriptioncolor'	=> '#000',
+				'titletag'			=>'h6',
+				'descriptiontag'	=>'h4',
+				'textposition'		=>'bottom-left',
+				'textlink'			=>'#',
+				'target'			=>'_self',
+				'topspacepadding'	=> '10',
+				'radiusbox'			=>'0',
+				'imageheight'		=>'500',
+				'type'				=> 'fill' ,
+				'rangemodel'        =>'0',
+                'generalcolor'		=> '#8FB440',
+                'textcolor'			=> '#fff',
+				'elementalign'		=> 'left',
+				'visibleondesktop'	=> 'on',
+				'visibleonmobile'	=> 'on',
+				'visibleontablet'	=> 'on',
 		);
 
 	}
@@ -147,7 +143,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				.'<#} else { #>'
 				.'<# className = \'karma-button-link \'  #>'
 				.'<# }#>'
-
+				. '<# var display = ( "" ==  data.attributes.shortcode_attributes.linktext ) ? "none" : "block" ; #>'
 				 . '<div class="karma-image-text-box karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
 				 . '<div class="karma-image-text-box-overlay"></div>'
 				 . '<div class="karma-image-text-box-text-container">'
@@ -159,8 +155,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				 . '</div>'
                  . '<div class="karma-image-text-box-link-content">'
 				 . '<div  class="karma-image-text-box-link {{className}} {{visibleDesktop}} {{visibleMobile}}  {{ visibleTablet }}" visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}"  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
-				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.target }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
-				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
+				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.target }}}" class="karma-image-text-box-link-tag" > {{{ data.attributes.shortcode_attributes.linktext }}} </a>'
+				 . '<div class="karma-image-text-box-link-shape" style="display : {{ display }}" >' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
 				 . '</div>'
 				 . '</div>'
 				 . '</div>'

@@ -47,7 +47,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 
 			'element_key'   			=> 'kb' ,
 			'type'						=> 'fill' ,
-			'linkurl'       			=> get_site_url(),
+			'linkurl'       			=> '#',
 			'target'	    			=> '_blank' ,
 			'linkcontent'				=> esc_attr__( "Explore more", 'karma' ),
 			'topspacepadding'			=> '10',

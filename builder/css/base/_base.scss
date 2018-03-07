@@ -1,8 +1,6 @@
 /* _-_-_- base/BASE -_-_-_ */
 body {
 	margin: 0;
-	display: flex;
-	flex-direction: column;
 	will-change : contents;
 	
 	button{
@@ -126,6 +124,7 @@ body {
 	.karma-builder-element[data-name="karma_video_box"] .karma-image-text-box{
 		padding: 29px !important;
 	}
+
 	#karma-builder-layout {
 		h1 {
 			font-size: 30px;

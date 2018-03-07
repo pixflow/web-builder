@@ -11,13 +11,13 @@
 			'mousedown .karma-image-text-box-description-tag '	: 'changeImageDescription',
 			'keypress .karma-image-text-box-description-tag'	: 'changeClassImageDescription',
 			'keyup .karma-image-text-box-link-tag'				: 'checkEmptyLink',
-			'mousedown .karma-image-text-box-link-tag'			: 'changeTextLink',
 			'click .karma-image-text-box-title'					: 'titleEditable',
 			'click .karma-image-text-box-description'			: 'titleDescription',
 			'click .karma-image-text-box-link'					: 'titleLink',
 			'keypress .karma-image-text-box-link'				: 'deactiveEnter'
 
 		},
+		
 
 		initialize: function ( options ) {
 
@@ -27,6 +27,10 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+
+			this.el.querySelector('.karma-image-text-box-link-tag').contentEditable = true ;
+			this.el.querySelector('.karma-image-text-box-description-tag ').contentEditable = true ;
+			this.el.querySelector('.karma-image-text-box-title-tag').contentEditable = true ;
 
 		},
 
@@ -55,7 +59,6 @@
 
 			if( null != content ){
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
@@ -118,7 +121,6 @@
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
 					content.innerText = "";
-					content.contentEditable = true;
 				}
 			}
 
@@ -178,7 +180,6 @@
 			if ( "Great idea" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
 					content.innerText = "";
-					content.contentEditable = true;
 				}
 			}
 
@@ -224,23 +225,6 @@
 			this.setAttributes( { 'linktext' : contentData },  true );
 		},
 
-		/**
-		 * @summary change link text
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		changeTextLink : function () {
-
-			var content 	= this.el.querySelector( '.karma-image-text-box-link-tag' ),
-				contentData = content.innerHTML;
-
-			if( "Explore more" == contentData.trim() ){
-				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.innerText = "";
-				}
-			}
-		},
 
 		/**
 		 * @summary Active editable description
@@ -254,7 +238,6 @@
 
 			if( null != content ){
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
@@ -274,7 +257,6 @@
 
 			if( null != content ){
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
