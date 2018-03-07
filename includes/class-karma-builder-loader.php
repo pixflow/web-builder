@@ -434,6 +434,10 @@ class Karma_Builder_Loader {
 	 */
 	public function create_builder_element_model( $output, $tag, $attr ){
 
+		if ( !$this->is_karma_shortcode($tag) ) {
+			return $output;
+		}
+
 		$shortcode_info = array(
 			'shortcode_name' 	=> $tag,
 			'attributes'		=> $attr,
@@ -480,6 +484,9 @@ class Karma_Builder_Loader {
 	 */
 	public function render_assets( $output, $tag, $attr ){
 
+		if ( !$this->is_karma_shortcode($tag) ) {
+			return $output;
+		}
 		$shortcode_info = array(
 			'shortcode_name' 	=> $tag,
 			'attributes'		=> $attr,
@@ -488,6 +495,24 @@ class Karma_Builder_Loader {
 		$shortcode_info[ 'attributes' ] = $this->add_default_attributes( $tag, $attr );
 		do_action( 'karma/before/shortcode/apply/' . $tag, $shortcode_info );
 		return $output;
+
+	}
+
+	/**
+	 * Check is karma shortcode or not
+	 *
+	 * @param    string $tag shortcode tag
+	 *
+	 * @since     2.0
+	 * @return    boolean    true if shortcode is karma type
+	 */
+	public function is_karma_shortcode( $tag ) {
+
+		if ( strpos( $tag, 'karma_' ) === 0 ) {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
