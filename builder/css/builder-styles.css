@@ -1434,8 +1434,6 @@ div#karma-builder-layout img {
 /* _-_-_- base/BASE -_-_-_ */
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
   will-change: contents;
   font-family: "HelveticaNeue"; }
   body button {
