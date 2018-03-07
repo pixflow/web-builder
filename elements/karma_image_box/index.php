@@ -63,6 +63,8 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'visibleondesktop'	=> 'on',
 				'visibleonmobile'	=> 'on',
 				'visibleontablet'	=> 'on',
+				'tablettopspacepadding'	=> '10',
+				'mobiletopspacepadding'	=> '10',
 		);
 
 	}
