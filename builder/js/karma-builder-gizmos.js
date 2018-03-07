@@ -405,7 +405,7 @@
 					},
 					resize: function( event, UI ){
 
-						var elementId 	= that.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + that.el.getAttribute( 'data-element-key' ),
+						var elementId 	= that.elementSelector(),
 						value = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
 						that.renderCss( "#" + elementId + "" , 'padding-top', value , that.currentDevice());
 

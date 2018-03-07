@@ -60,11 +60,19 @@
 
 		},
 
+		/**
+		 * @summary Update column helper on window resize
+		 *
+		 * @since 2.0
+		 *
+		 * @returns {void}
+		 */
+		//@TODO change setTimeout to request animation frame  + make this function automatically
 		callFunctionsOnResize: function (){
 
 			var that = this;
 			window.addEventListener( 'resize', function (){
-				
+
 				clearTimeout( that.resizeId );
 				that.resizeId = setTimeout( function (){
 					$('.karma-builder-element[data-name="karma_column"]').each(function (){
@@ -77,6 +85,7 @@
 			} );
 
 		},
+
 		/**
 		 * @summary Call blur inside sortable elements
 		 * jQuery stops the default functionality of the browser when sorting a list,
