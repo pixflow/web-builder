@@ -216,7 +216,7 @@
 		/**
 		 * @summary set padding top for element function
 		 *
-		 * @since   0.1.0
+		 * @since   2.0
 		 * @returns {void}
 		 */
 		createDefaultResponsiveSpace : function () {
@@ -960,7 +960,7 @@
 		},
 
 		/**
-		 * @summary get CSS content from style tag
+		 * @summary put CSS content to style tag
 		 *
 		 * @param    { object }    cssObject    Css object
 		 * @param    { string }    device       device name
