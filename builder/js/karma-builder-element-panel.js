@@ -729,13 +729,19 @@
 
 			var buttonType = e.target.closest( '.karma-responsive-button' ),
 				buttonTypeDevice = buttonType.getAttribute( 'data-mode' ),
-				contentEdtibaleList = karmaBuilderEnviroment.getIframe().document.querySelectorAll( '[contenteditable]' );
+				contentEdtibaleList = karmaBuilderEnviroment.getIframe().document.querySelectorAll( '[contenteditable]' ),
+				draggableEelement = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-element-content' ),
+				sortableSection = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( "#karma-builder-layout" );
 
 			_.each( contentEdtibaleList, function ( editableNode ) {
 				if( 'desktop' == buttonTypeDevice ) {
 					editableNode.contentEditable = true;
+					draggableEelement.draggable( 'enable' );
+					sortableSection.sortable( "option", "disabled", false );
 				}else{
 					editableNode.contentEditable = false;
+					draggableEelement.draggable( 'disable' );
+					sortableSection.sortable( "option", "disabled", true );
 				}
 			});
 
