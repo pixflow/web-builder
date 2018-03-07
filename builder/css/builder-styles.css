@@ -6982,6 +6982,10 @@ body.karma-device-mode-tablet .resize-handler, body.karma-device-mode-mobile .re
   pointer-events: none !important; }
 body.karma-device-mode-tablet .karma-image-resize .ui-resizable-handle, body.karma-device-mode-mobile .karma-image-resize .ui-resizable-handle {
   display: none; }
+body.karma-device-mode-tablet #karma-builder-layout, body.karma-device-mode-mobile #karma-builder-layout {
+  cursor: auto; }
+  body.karma-device-mode-tablet #karma-builder-layout .karma-builder-element[data-name="karma_section"], body.karma-device-mode-mobile #karma-builder-layout .karma-builder-element[data-name="karma_section"] {
+    cursor: auto; }
 
 @media (max-width: 768px) {
   .karma-builder-environment {

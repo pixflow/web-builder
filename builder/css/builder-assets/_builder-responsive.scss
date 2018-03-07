@@ -33,6 +33,13 @@ body{
 				display: none;
 			}
 		}
+		#karma-builder-layout{
+			cursor: auto;
+
+			.karma-builder-element[data-name="karma_section"]{
+				cursor: auto;
+			}
+		}
 	}
 }
 @media (max-width: 768px){
