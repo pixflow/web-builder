@@ -26,6 +26,9 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector('.karma-video-box-link-tag').contentEditable = true ;
+			this.el.querySelector('.karma-video-box-description-tag').contentEditable = true ;
+			this.el.querySelector('.karma-video-box-title-tag').contentEditable = true ;
 		},
 
 		/**
@@ -67,7 +70,6 @@
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
 					content.innerText = "";
-					content.contentEditable = true;
 				}
 			}
 
@@ -140,7 +142,6 @@
 			if ( "Great idea" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
 					content.innerText = "";
-					content.contentEditable = true;
 				}
 			}
 
@@ -251,7 +252,6 @@
 
 			if( null != content ){
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				};
 
@@ -271,7 +271,6 @@
 			if( null != content ){
 
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
@@ -293,7 +292,6 @@
 			if( null != content ){
 
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				}
 

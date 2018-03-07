@@ -17,6 +17,7 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector('.karma-text-content').contentEditable = true;
 
 		},
 
@@ -30,6 +31,7 @@
 
 			var source = this.template( this.model );
 			this.el.querySelector('.karma-element-content').innerHTML = source;
+
 
 		},
 
@@ -83,9 +85,7 @@
 				newTag = document.createElement( tagAttr.tag );
 			newTag.innerHTML = element.innerHTML;
 			newTag.classList.add( 'karma-text-tag', 'karma-document-click', 'karma-editable-content' );
-			if(document.body.classList.contains('karma-device-mode-desktop')) {
-				newTag.contentEditable = true;
-			}
+
 			element.parentNode.replaceChild( newTag, element );
 
 		},
@@ -137,10 +137,6 @@
 				content.innerText = "";
 			}
 			if( false == focusElement.classList.contains( 'focus' ) ){
-
-				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					focusElement.contentEditable = true;
-				}
 				focusElement.classList.add( 'karma-text-element-focus' );
 				focusElement.focus();
 			}

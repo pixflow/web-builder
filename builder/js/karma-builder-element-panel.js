@@ -702,7 +702,7 @@
 		 * @returns { void }
 		 */
 		changeDevice : function ( e ){
-			
+
 			var button = e.target.closest('.karma-responsive-button'),
 			 	regex = new RegExp('(?:^|\\s)karma-device-mode-(.*?)(?!\\S)'),
 				builderEnvirmont = karmaBuilderEnviroment.getIframe().document.querySelector('.karma-builder-environment');
@@ -716,6 +716,29 @@
 			}
 
 		},
+
+		/**
+		 * @summary set active responsive button
+		 * @param event
+		 *
+		 * @since   2.0
+		 * @returns { void }
+		 */
+		checkContentEditable : function () {
+
+			var buttonType = e.target.closest( '.karma-responsive-button' ),
+				buttonTypeDevice = buttonType.getAttribute( 'data-mode' ),
+				contentEdtibaleList = karmaBuilderEnviroment.getIframe().document.querySelectorAll( '[contenteditable]' );
+
+			_.each( contentEdtibaleList, function ( editableNode ) {
+				if( 'desktop' == buttonTypeDevice ) {
+					editableNode.contentEditable = true;
+				}else{
+					editableNode.contentEditable = false;
+				}
+			});
+
+		}
 
 	});
 

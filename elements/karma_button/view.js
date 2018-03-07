@@ -19,6 +19,7 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector( '.karma-button-link span' ).contentEditable = true ;
 
 		},
 
@@ -84,7 +85,6 @@
 			var content = this.el.querySelector( '.karma-button-link span' );
 
 			if( null != content ){
-				content.contentEditable = true ;
 				content.focus();
 			}
 
