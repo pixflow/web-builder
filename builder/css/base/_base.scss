@@ -15,6 +15,11 @@ body {
 		width: 100%;
 		transition: .4s;
 		will-change : contents;
+
+	}
+	//have issue in top padding gizmo position in some theme
+	div {
+		font-size: initial;
 	}
 
 	font-family: $builder-normal-font;
