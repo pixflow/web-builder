@@ -975,7 +975,7 @@ var karmaBuilder = karmaBuilder || {};
 			this.removePlaceHolders();
 			if ( ( event.clientY + scrollTop ) < elementHalf && null == blankPage ) {
 				/* Users drag at the top of element */
-				$( targetElement ).prev( '.karma-insert-between-sections-placeholder' ).addClass( 'karma-show-placeholder' );
+				$( targetElement ).prevAll( '.karma-insert-between-sections-placeholder' ).first().addClass( 'karma-show-placeholder' );
 			} else {
 				/* Users drag at the bottom of element */
 				$( targetElement ).nextAll( '.karma-insert-between-sections-placeholder' ).first().addClass( 'karma-show-placeholder' );

@@ -507,8 +507,7 @@
 		beforeDeleteElements: function (){
 
 			// REMOVE THE PLACEHOLDER
-			this.$el.next( '.karma-insert-between-elements-placeholder' ).remove();
-
+			this.$el.nextAll( '.karma-insert-between-elements-placeholder' ).first().remove();
 			if ( 'karma_section' == this.model.get( 'shortcode_name' ) ){
 				this.$el.next( '.karma-new-section' ).remove();
 			}
