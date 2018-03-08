@@ -6974,6 +6974,8 @@ div.karma-element-content .karma-top-spacing {
 
 body.karma-device-mode-desktop iframe {
   border: none; }
+body.karma-device-mode-tablet .karma-builder-element[data-name="karma_text"].karma-active-element .karma-text, body.karma-device-mode-mobile .karma-builder-element[data-name="karma_text"].karma-active-element .karma-text {
+  box-shadow: 0 0 0 1px #419CF8; }
 body.karma-device-mode-tablet #karma-builder-layout .text-gizmo-group,
 body.karma-device-mode-tablet #karma-builder-layout .image-gizmo-group,
 body.karma-device-mode-tablet #karma-builder-layout .image-box-gizmo-group,

@@ -9,6 +9,14 @@ body{
 
 		&.karma-device-mode-tablet,
 		&.karma-device-mode-mobile {
+
+			.karma-builder-element[data-name="karma_text"]{
+				&.karma-active-element{
+					.karma-text{
+						box-shadow: 0 0 0 1px #419CF8;
+					}
+				}
+			}
 			#karma-builder-layout {
 				.text-gizmo-group,
 				.image-gizmo-group,
