@@ -819,7 +819,6 @@ var karmaBuilder = karmaBuilder || {};
 		 */
 		createStyleSheetForElements : function( models, elementView ){
 
-
 			_.each( models, function ( value, model ) {
 				if( 'function' == typeof elementView[ model ] ){
 					if( elementView[ model ].toString().match(/this.renderCss\(/i) ){

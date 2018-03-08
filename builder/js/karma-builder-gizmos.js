@@ -967,18 +967,14 @@
 					newGrid = JSON.parse(domNode.getAttribute( 'data-value' ) ),
 					placeholder = document.querySelectorAll( '.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
 					elementName = 'karma_section';
-				if ( 1 === that.model.get( 'order' ) ) {
 
-					if ( placeholder.length > 1 ) {
-						placeholder = placeholder[ 1 ];
-					}else if ( !( placeholder instanceof HTMLElement ) ){
-						placeholder = placeholder[ 0 ];
-					}
+				if ( 1 === that.model.get( 'order' ) ) {
+					placeholder = placeholder[ 1 ];
 				} else {
 					placeholder = placeholder[ 0 ];
 				}
 
-				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName  );
+				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName , { order : ( that.model.get( 'order' ) + 1 ) } );
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 				KarmaView.reorderSections();
