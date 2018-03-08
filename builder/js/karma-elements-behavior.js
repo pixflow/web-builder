@@ -361,6 +361,7 @@ var karmaBuilder = karmaBuilder || {};
 
 			var element = element.helper,
 				toolbarHeight = 150;
+
 			this.scrollToDown( element, toolbarHeight, event );
 			this.scrollToTop( element, event );
 
@@ -405,7 +406,9 @@ var karmaBuilder = karmaBuilder || {};
 					if( window.innerHeight + window.scrollY >= document.body.offsetHeight ){
 						clearInterval( that.flyScroll );
 					}
-					that.keepElementPosition( element, 'down' );
+					if( event.target.classList.contains('karma-element-content') || event.target.classList.contains('ui-sortable') ){
+						that.keepElementPosition( element, 'down' );
+					}
 					$( window ).scrollTop( $( window ).scrollTop() + 5 );
 				}, 1 );
 			} else {
@@ -433,7 +436,9 @@ var karmaBuilder = karmaBuilder || {};
 					if( $( window ).scrollTop() == 0  ){
 						clearInterval( that.flyScroll );
 					}
-					that.keepElementPosition( element, 'up' );
+					if( event.target.classList.contains('karma-element-content') || event.target.classList.contains('ui-sortable') ){
+						that.keepElementPosition( element, 'up' );
+					}
 					$( window ).scrollTop( $( window ).scrollTop() - 5 );
 				}, 1 );
 			}
@@ -484,6 +489,8 @@ var karmaBuilder = karmaBuilder || {};
 			UI.helper.get( 0 ).style.display = 'none';
 			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
 			if ( undefined ==  targetElement ){
+				overlay.style.display = 'block';
+				UI.helper.get( 0 ).style.display = 'flex' ;
 				return false;
 			} else if ( targetElement.classList.contains( 'karma-spacing' ) ) {
 				if ( targetElement.classList.contains( 'karma-top-spacing' ) ) {
@@ -713,6 +720,7 @@ var karmaBuilder = karmaBuilder || {};
 						newSec = $( UI.item[ 0 ] ).next();
 					}
 					document.body.style.overflowX = 'hidden';
+
 				},
 				sort: function ( event, UI ) {
 
@@ -862,7 +870,7 @@ var karmaBuilder = karmaBuilder || {};
 			var that = this,
 				columnsInSection = newView.el.querySelectorAll('.karma-builder-element'),
 				index = 0 ;
-
+			
 			_.each( columns, function ( column ) {
 
 				var parentKey = columnsInSection[ index ].getAttribute('data-element-key'),
