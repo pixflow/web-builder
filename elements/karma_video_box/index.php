@@ -64,8 +64,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
             'generalcolor'		=> '#fff',
             'textcolor'			=> '#000',
 			'elementalign'		=> 'left',
-			'tablettopspacepadding'	=> '10',
-			'mobiletopspacepadding'	=> '10',
+			'tablettopspacepadding'	=> '16',
+			'mobiletopspacepadding'	=> '16',
 		);
 
 	}

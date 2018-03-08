@@ -709,6 +709,9 @@ html {
 @media (max-width: 1200px) {
   .karma-container {
     max-width: 1140px; } }
+@media (min-width: 1200px) {
+  .karma-container {
+    max-width: 1200px; } }
 .karma-builder-element .karma-column[class*="col-"] {
   flex-basis: 100%;
   max-width: 100%;
