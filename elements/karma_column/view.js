@@ -146,9 +146,9 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px';
 
-			this.$el.trigger('karma/finish/modifyColumns');
 			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-left', padding );
 			this.el.querySelector('.karma-left-spacing').style.width = padding ;
+			this.$el.trigger('karma/finish/modifyColumns');
 
 		},
 
@@ -428,7 +428,7 @@
 		 * @summary show and hide column white hide gizmo in mobile
 		 *
 		 *
-		 * @since 0.1.0
+		 * @since 0.1.1
 		 * @return {void}
 		 */
 		visibleonmobile : function () {

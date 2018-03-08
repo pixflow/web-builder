@@ -793,6 +793,7 @@ var karmaBuilder = karmaBuilder || {};
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
 				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
+				delete newView.block ;
 
 			} else if( 'karma_section' != elementName && 'karma_column' != elementName ){
 

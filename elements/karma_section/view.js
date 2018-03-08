@@ -17,6 +17,7 @@
 				this.render();
 			}
 			this.setSortable();
+
 		},
 
 		/**
@@ -274,14 +275,14 @@
 			
 			counter = ( counter ) ? parseInt( counter ) + 1 : 0;
 			var order = ( columnKey ) ? ( karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes.order + 1 ) : 1,
-				that = this;
+				that = this,
+				columnModel = $( document ).triggerHandler( 'karma/before/createElement/karma_column' ),
+				model = columnModel ;
 
-			//TODo: refine for column render for blocks
-			if( 'undefined' === typeof that.block ){
-				var model =  $( document ).triggerHandler( 'karma/before/createElement/karma_column' );
-			}else{
-				var model = that.block.childes[counter].parent.shortcode_attributes;
+			if( 'undefined' !== typeof that.block ){
+				model = jQuery.extend( columnModel, that.block.childes[ counter ].parent.shortcode_attributes );
 			}
+
 			for( counter; counter < newLayout.length; counter++ ){
 
 				var newModel = {
@@ -301,10 +302,7 @@
 				var columnModel = karmaBuilder.karmaModels.add( newModel );
 				$( '[data-element-key="' + columnModel.get('parent_key') + '"] .karma-row' ).append( KarmaView.createBuilderModel( columnModel ) );
 				var elementView = KarmaView.createNewElement( 'column', columnModel );
-				if( 'undefined' != typeof that.block ){
-					elementView.leftspace();
-					elementView.rightspace();
-				}
+				KarmaView.createStyleSheetForElements( elementView.model.attributes.shortcode_attributes, elementView );
 
 			}
 
