@@ -182,7 +182,6 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', KARMA_BUILDER_URL . 'builder/js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', KARMA_BUILDER_URL . 'builder/js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-slider-and-radio-button', KARMA_BUILDER_URL . 'builder/js/gizmos/slider-and-radio-button.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
-			wp_enqueue_script( $this->plugin_name . '-gizmos-multi-drop-down', KARMA_BUILDER_URL . 'builder/js/gizmos/multi-drop-down.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-hidden', KARMA_BUILDER_URL . 'builder/js/gizmos/hidden.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-color', KARMA_BUILDER_URL . 'builder/js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-shortcodes', KARMA_BUILDER_URL . 'builder/js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );

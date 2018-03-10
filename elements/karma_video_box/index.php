@@ -50,7 +50,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'textposition'		=>'bottom-left',
 			'textlink'			=>'#',
 			'target'			=>'_self',
-			'videourl'			=>'https://www.youtube.com/embed/oKH7S0T0nTc',
+			'videourl'			=>'https://www.youtube.com/watch?v=GnQ9eDyjri4',
 			'coloroverlay'		=>'rgba(0, 0, 0, 0)',
 			'colorbackground'	=>'rgba(0, 0, 0, 0)',
 			'radiusbox'			=>'0',
