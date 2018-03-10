@@ -187,6 +187,28 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 						)
 					),
 
+					array(
+						'type'      => 'multiDropDown',
+						'icon'		=>'',
+						'params'	=> array(
+							array(
+								'icon'	=>"",
+								'text'	=>'none',
+								'model' =>'none'
+							),
+							array(
+								'icon'	=>"",
+								'text'	=>'shadow',
+								'model' =>'shadowModel'
+							),
+							array(
+								'icon'	=>"",
+								'text'	=>'shadow with animation',
+								'model' =>'shadowAnimationModel'
+							),
+						)
+					)
+
 				)
 			),
 			array(
