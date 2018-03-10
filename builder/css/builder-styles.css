@@ -851,7 +851,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     background-color: #fff;
     min-height: 309px;
     max-height: 70vh;
-    max-width: 60vw;
+    max-width: 58.4vw;
     opacity: 0;
     min-width: 550px; }
   #karma-video-popup-opened.karma-close-video-popup {
@@ -3268,7 +3268,7 @@ html {
       top: 0; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
       width: fit-content;
-      max-width: 70%; }
+      max-width: 90%; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag,
@@ -3279,7 +3279,7 @@ html {
           text-decoration: none;
           word-break: keep-all; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag {
-          min-width: 140px; }
+          min-width: 15vw; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag.karma-image-box-description-opacity {
           display: none; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag.karma-image-box-title-opacity {

@@ -192,7 +192,7 @@
 
 			.karma-image-text-box-text-container {
 				width: fit-content;
-				max-width: 70% ;
+				max-width: 90% ;
 				> div {
 					position: relative;
 					.karma-image-text-box-title-tag,
@@ -204,7 +204,7 @@
 						word-break: keep-all;
 					}
 					.karma-image-text-box-description-tag{
-						min-width: 140px;
+						min-width: 15vw;
 					}
 					.karma-image-text-box-description-tag.karma-image-box-description-opacity{
 						display: none;
