@@ -145,6 +145,7 @@ class Karma_Builder {
 		$typography = Karma_Typography::get_instance();
 		add_filter( 'upload_mimes', array( $typography, 'allow_upload_fonts' ), 1, 1 );
 
+
 	}
 
 	/**
@@ -170,6 +171,11 @@ class Karma_Builder {
 		 * The class responsible for work and manage file and directory in plugin
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-file-system.php';
+
+		/**
+		 * The class responsible for manage page and templates.
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-base-manager.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the

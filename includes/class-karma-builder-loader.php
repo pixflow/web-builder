@@ -5,6 +5,8 @@ namespace KarmaBuilder\BuilderLoader ;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
+use KarmaBuilder\BaseManager\Karma_Base_Manager as Base_Manager;
+
 
 
 /**
@@ -30,7 +32,7 @@ use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
  */
 
 
-class Karma_Builder_Loader {
+class Karma_Builder_Loader extends Base_Manager{
 
 
 	/**
@@ -80,6 +82,7 @@ class Karma_Builder_Loader {
 
 		$this->plugin_name = 'karma-builder';
 		$this->load_core();
+		$this->init_templates();
 
 	}
 

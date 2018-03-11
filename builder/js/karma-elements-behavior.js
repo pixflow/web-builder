@@ -909,7 +909,7 @@ var karmaBuilder = karmaBuilder || {};
 		preventFromScrollingOnParent : function( selector ) {
 
 			//FF doesn't recognize mousewheel as of FF3.x
-			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) )? "DOMMouseScroll" : "mousewheel"
+			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) ) ? "DOMMouseScroll" : "mousewheel"
 			selector.on( mouseWheelEvent, function ( e ) {
 
 				var event = e.originalEvent,
