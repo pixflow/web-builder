@@ -350,25 +350,26 @@ class Karma_Section_Describe extends Karma_Section {
 				"type"		=> "newSectionButton",
 				'icon'		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus-new.svg' ),
 			),
-			/*array(
+
+
+			array(
 				"type"		=> "innerGizmo",
 				"className"	=> "section-gizmo-group-responsive",
 				"params"	=> 	array(
+
 					array(
-						'type'   	=> 'icon',
+
+						'type'   => 'responsiveLayout',
 						'form'   	=> 'responsive-layout',
 						'className' => 'karma-layout-option',
 						"params" => array(
-							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-layout.svg' ),
-						)
-					),
-					array(
-						'type'   	=> 'icon',
-						'form'   	=> 'visibility',
-						'className' => 'karma-visibility-option',
-						"params" => array(
-							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/visibility.svg' ),
-						)
+							'defaultIcon'    => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-layout.svg' ),
+							'oneColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-1-column.svg' ),
+							'twoColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-2-column.svg' ),
+							'threeColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/responsive-3-column.svg' ),
+							'fourColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/responsive-4-column.svg' ),
+						),
+
 					),
 					array(
 						'type'		=> 'text',
@@ -379,7 +380,7 @@ class Karma_Section_Describe extends Karma_Section {
 						)
 					),
 				),
-			),*/
+			),
 		);
 
 		return $controllers;
