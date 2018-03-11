@@ -187,6 +187,29 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 						)
 					),
 
+					array(
+								'type'      => 'multiDropDown',
+								'icon'		=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/magic.svg' ),
+								'model'		=>'animation',
+								'params'	=> array(
+										array(
+												'icon'	=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ),
+												'text'	=>'none',
+												'value' =>'none'
+										),
+										array(
+												'icon'	=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ),
+												'text'	=>'shadow',
+												'value' =>'shadowModel'
+										),
+										array(
+												'icon'	=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ),
+												'text'	=>'shadow with animation',
+												'value' =>'shadowAnimationModel'
+										),
+								)
+						)
+
 				)
 			),
 			array(

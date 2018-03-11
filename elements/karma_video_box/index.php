@@ -66,6 +66,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			'elementalign'		=> 'left',
 			'tablettopspacepadding'	=> '16',
 			'mobiletopspacepadding'	=> '16',
+			'animation'			=> ''
 		);
 
 	}

@@ -4604,6 +4604,14 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           background-position: center;
           background-repeat: no-repeat;
           background-size: contain; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-gizmo-multi-drop-down-content .karma-gizmo-multi-drop-down-content-box > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-gizmo-multi-drop-down-content .karma-gizmo-multi-drop-down-content-box .karma-gizmo-multi-drop-down-text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo {
         display: flex; }
         .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.open-drop-down-gizmo .karma-gizmo-position-content-box {

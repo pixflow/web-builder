@@ -533,7 +533,7 @@ body:not(.karma-builder-environment) {
 					position: absolute;
 					top: -6px;
 				}
-
+				
 				button {
 					@include box( 30px, auto );
 					background-color: inherit;
@@ -562,6 +562,22 @@ body:not(.karma-builder-environment) {
 						background-size: contain;
 					}
 
+				}
+
+				&.karma-gizmo-multi-drop-down-content{
+					.karma-gizmo-multi-drop-down-content-box{
+						> div{
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+
+						}
+						.karma-gizmo-multi-drop-down-text{
+							font-size: 14px;
+							font-weight: 500;
+							line-height: 17px;
+						}
+					}
 				}
 				&.open-drop-down-gizmo {
 					display: flex;

@@ -616,6 +616,17 @@
 					this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-mobile" );
 				}
 
+			},
+
+			/**
+			 * @summary  animation functionality
+			 *
+			 *
+			 * @since 0.1.0
+			 * @return {void}
+			 */
+			animation : function () {
+
 			}
 
 	});
