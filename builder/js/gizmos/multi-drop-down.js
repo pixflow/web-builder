@@ -10,13 +10,13 @@
 		/**
 		 * Build html for position gizmo
 		 */
-		template: ' <button class="karma-drop-down-icon karma-multi-drop-down-gizmo"><div class="karma-default-icon"  >{{{ data.icon }}}</div> </button> '
+		template: ' <button class="karma-drop-down-icon karma-multi-drop-down-gizmo" ><div class="karma-default-icon"  >{{{ data.icon }}}</div> </button> '
 		+ '<div class="karma-gizmo-multi-drop-down-content karma-drop-down-box">'
 		+ '<div class="karma-gizmo-multi-drop-down-content-box">'
 		+ ' <# _.each( data.params, function( params ){  #>'
 		+ '<div class="karma-gizmo-multi-drop-down-box" data-drop-down-value="{{params.value}}">'
 		+"<# if(!('' == params.icon || undefined == params.icon) ){ #>"
-		+ '<div class="karma-gizmo-multi-drop-down-icon">{{{ params.icon }}}'
+		+ '<div class="karma-gizmo-multi-drop-down-icon" style="background-image: url( {{ params.icon }})">'
 		+ '</div>'
 		+'<# } #>'
 		+"<# if(!('' == params.text || undefined == params.text) ){ #>"
