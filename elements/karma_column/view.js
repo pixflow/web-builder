@@ -53,13 +53,14 @@
 		/**
 		 * @summery update images width  on their column resize
 		 *
+		 * @param {object}  specificImage   Just execute for specific image
 		 * @since 0.1.0
 		 *
 		 * @return {void}
 		 */
-		updateImageSize : function () {
+		updateImageSize : function ( e, specificImage ) {
 
-			var imageLinks =  this.el.querySelectorAll('.karma-builder-element[data-name="karma_image"]') ;
+			var imageLinks =  ( 'undefined' == typeof specificImage ) ? this.el.querySelectorAll('.karma-builder-element[data-name="karma_image"]') : [ specificImage ] ;
 
 			_.each( imageLinks, function( image ){
 

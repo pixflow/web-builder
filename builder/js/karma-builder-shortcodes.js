@@ -302,18 +302,19 @@
 		 */
 		sortElement: function ( viewObject, dropArea, newParentKey ){
 
-			var htmlOBJ = viewObject.$el;
-			viewObject.el.parentNode.removeChild( viewObject.el.nextElementSibling );
+			var htmlOBJ = viewObject.$el,
+				placeholders = document.querySelectorAll('.karma-element-placeholder-' + viewObject.model.get('element_key') ),
+				placeholder = ( 2 == placeholders.length ) ? placeholders[1] : placeholders[0];
+
+			$( placeholder ).remove();
 			viewObject.el.outerHTML = '';
 			$( dropArea ).replaceWith( htmlOBJ );
 			viewObject.el.classList.remove( 'karma-self-placeholder' );
 			viewObject.model.set( { 'parent_key': newParentKey, 'order': 1 }, { silent: true } );
 			viewObject.createPlaceHolders();
 			if ( "karma_image" == viewObject.model.get( 'shortcode_name' ) ){
-				var elementWidth = viewObject.el.closest( '.karma-column-margin' ).offsetWidth + 'px';
-				viewObject.el.querySelector( '.karma-image-resize' ).style.width = elementWidth;
-				viewObject.el.querySelector( '.karma-image-resize-crop' ).style.width = elementWidth;
-				viewObject.el.querySelector( '.karma-image' ).setAttribute( 'width', elementWidth );
+				var columnInstance = viewObject.$el.closest( '.karma-builder-element[data-name="karma_column"]' ).backboneView();
+				columnInstance.$el.trigger( 'karma/finish/modifyColumns', [ viewObject.el ] );
 			}
 
 		},
