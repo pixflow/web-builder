@@ -255,7 +255,7 @@ class Karma_Builder {
 	private function constants() {
 
 		define( 'KARMA_BUILDER_NAME', 'karma-builder' );
-		define( 'KARMA_BUILDER_VERSION', '0.1.0' );
+		define( 'KARMA_BUILDER_VERSION', '2.0' );
 
 		define( 'KARMA_BUILDER_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
 		define( 'KARMA_BUILDER_URL', plugin_dir_url( dirname( __FILE__ ) ) );

@@ -6,6 +6,7 @@ namespace KarmaBuilder\PublicArea ;
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
 
 /**
  * The public-facing functionality of the plugin.
@@ -121,7 +122,7 @@ class Karma_Builder_Public {
     	if( '' != $link ){
 		    wp_enqueue_style( "karma-google-font-link", $link , array(), $this->version, 'all' );
 	    }
-        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_FILE_URL, array(), $this->version, 'all' );
+        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_FILE_URL, array(), Karma_Typography::get_instance()->get_modify_date(), 'all' );
 
     }
 

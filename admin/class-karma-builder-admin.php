@@ -153,9 +153,14 @@ class Karma_Builder_Admin {
 			$fonts      = sanitize_text_field ( json_encode( $_POST[ 'fonts' ] ) );
 			$typography = sanitize_text_field( json_encode( $_POST[ 'typography' ] ) );
 			$custom_fonts = isset( $_POST[ 'customFonts' ] ) ? sanitize_text_field( json_encode( $_POST[ 'customFonts' ] ) ) : '[]';
-			$typography_manager->save_typography_font_formats( $typography )->save_fonts( $fonts )->save_custom_fonts( $custom_fonts );
+			$typography_manager
+				->save_typography_font_formats( $typography )
+				->save_fonts( $fonts )
+				->save_custom_fonts( $custom_fonts )
+				->set_publish_date();
 			$file = File_System::get_instance();
 			$file->delete_file( KARMA_GLOBAL_STYLE_FILE_PATH );
+
 		}
 
 		wp_die();
