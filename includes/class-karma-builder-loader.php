@@ -437,7 +437,7 @@ class Karma_Builder_Loader extends Base_Manager{
 	 */
 	public function create_builder_element_model( $output, $tag, $attr ){
 
-		if ( !$this->is_karma_shortcode($tag) ) {
+		if ( ! $this->is_karma_shortcode( $tag ) ) {
 			return $output;
 		}
 
@@ -487,7 +487,7 @@ class Karma_Builder_Loader extends Base_Manager{
 	 */
 	public function render_assets( $output, $tag, $attr ){
 
-		if ( !$this->is_karma_shortcode($tag) ) {
+		if ( ! $this->is_karma_shortcode( $tag ) ) {
 			return $output;
 		}
 		$shortcode_info = array(
@@ -511,7 +511,7 @@ class Karma_Builder_Loader extends Base_Manager{
 	 */
 	public function is_karma_shortcode( $tag ) {
 
-		if ( strpos( $tag, 'karma_' ) === 0 ) {
+		if ( 0 === strpos( $tag, 'karma_' ) ) {
 			return true;
 		} else {
 			return false;
