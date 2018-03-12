@@ -565,6 +565,11 @@ body:not(.karma-builder-environment) {
 				}
 
 				&.karma-gizmo-multi-drop-down-content{
+
+					.karma-active-multi-drop-down{
+						background-color: rgba(65,156,248,0.1);
+						color: $builder-accent-color;
+					}
 					left:11px;
 					.karma-gizmo-multi-drop-down-content-box{
 

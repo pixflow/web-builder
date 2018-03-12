@@ -65,6 +65,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				'visibleontablet'	=> 'on',
 				'tablettopspacepadding'	=> '16',
 				'mobiletopspacepadding'	=> '16',
+				'animation'			=> 'none'
 		);
 
 	}

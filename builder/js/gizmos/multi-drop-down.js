@@ -14,7 +14,8 @@
 		+ '<div class="karma-gizmo-multi-drop-down-content karma-drop-down-box">'
 		+ '<div class="karma-gizmo-multi-drop-down-content-box">'
 		+ ' <# _.each( data.params, function( params ){  #>'
-		+ '<div class="karma-gizmo-multi-drop-down-box" data-drop-down-value="{{params.value}}">'
+		+ '<# var selected = ( data.defaultValue == params.value  ) ? "karma-active-multi-drop-down" : "" #>'
+		+ '<div class="karma-gizmo-multi-drop-down-box {{selected}}" data-drop-down-value="{{params.value}}">'
 		+"<# if(!('' == params.icon || undefined == params.icon) ){ #>"
 		+ '<div class="karma-gizmo-multi-drop-down-icon" style="background-image: url( {{ params.icon }})">'
 		+ '</div>'
@@ -62,6 +63,7 @@
 		 * @returns {void}
 		 */
 		update: function () {
+			this.data.defaultValue = this.elementView.getAttributes( [ this.data.model ] )[this.data.model];
 			this.el.innerHTML = KarmaView.getUnderscoreTemplate( this.template, this.data );
 
 		},
@@ -74,12 +76,17 @@
 		 */
 		changeValue: function ( e ) {
 
-			var content = e.target.closest( '.karma-gizmo-multi-drop-down-box' ).getAttribute( 'data-drop-down-value' );
+			var content = e.target.closest( '.karma-gizmo-multi-drop-down-box' ),
+				contentDataValue = content.getAttribute( 'data-drop-down-value' );
 
-			if ( "" !== content  ) {
+			this.$el.find( '.karma-gizmo-multi-drop-down-box' ).removeClass('karma-active-multi-drop-down');
+			content.classList.add('karma-active-multi-drop-down');
+
+			if ( "" !== contentDataValue  ) {
 				var dataModel = {};
 
-				dataModel[ this.data.model ] = content;this.elementView.setAttributes( dataModel ,  false );
+				dataModel[ this.data.model ] = contentDataValue;
+				this.elementView.setAttributes( dataModel ,  false );
 			}
 
 		}
