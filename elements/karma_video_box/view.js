@@ -32,7 +32,7 @@
 		},
 
 		/**
-		 * @summary Save the description of video box
+		 * Save the description of video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -56,7 +56,7 @@
 		},
 
 		/**
-		 * @summary change the description of video  text box
+		 * change the description of video  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -76,7 +76,7 @@
 		},
 
 		/**
-		 * @summary change class title of image  text box
+		 * change class title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -92,7 +92,7 @@
 		},
 
 			/**
-			 * @summary  Deactivate enter in link text
+			 *  Deactivate enter in link text
 			 *
 			 * @since 0.1.1
 			 * @return {number}
@@ -105,7 +105,7 @@
 
 
 			/**
-		 * @summary Save the title of video box
+		 * Save the title of video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -129,7 +129,7 @@
 		},
 
 		/**
-		 * @summary change the title of image  text box
+		 * change the title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -148,7 +148,7 @@
 		},
 
 		/**
-		 * @summary change class title of image  text box
+		 * change class title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -164,7 +164,7 @@
 		},
 
 		/**
-		 * @summary check empty link text
+		 * check empty link text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -185,7 +185,7 @@
 		},
 
 		/**
-		 * @summary change link text
+		 * change link text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -197,7 +197,7 @@
 			},
 
 		 /**
-		 * @summary Render video element
+		 * Render video element
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -211,7 +211,7 @@
 		},
 
 		/**
-		 * @summary open video url
+		 * open video url
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -228,7 +228,7 @@
 		},
 
 		/**
-		 * @summary get data url
+		 * get data url
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -241,7 +241,7 @@
 		},
 
 		/**
-		 * @summary Active editable title
+		 * Active editable title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -259,7 +259,7 @@
 		},
 			
 		/**
-		 * @summary Active editable description
+		 * Active editable description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -279,7 +279,7 @@
 		},
 
 		/**
-		 * @summary Active editable link
+		 * Active editable link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -299,7 +299,7 @@
 		},
 
 		/**
-		 * @summary change image URL
+		 * change image URL
 		 *
 		 * @since 0.1.1
 		 *
@@ -315,7 +315,7 @@
 		},
 
 		/**
-		 * @summary Set color for title
+		 * Set color for title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -331,7 +331,7 @@
 		},
 
 		/**
-		 * @summary Set color for description
+		 * Set color for description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -347,7 +347,7 @@
 		},
 
 		/**
-		 * @summary set link for text
+		 * set link for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -361,7 +361,7 @@
 		},
 
 		/**
-		 * @summary set link target for text
+		 * set link target for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -375,7 +375,7 @@
 		},
 
 		/**
-		 * @summary get title typography and change innerHtml of title
+		 * get title typography and change innerHtml of title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -393,7 +393,7 @@
 		},
 
 		/**
-		 * @summary get description typography and change innerHtml of description
+		 * get description typography and change innerHtml of description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -411,7 +411,7 @@
 		},
 
 		/**
-		 * @summary get link typography and change innerHtml of link
+		 * get link typography and change innerHtml of link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -429,7 +429,7 @@
 		},
 
 		/**
-		 * @summary change position of text box in image
+		 * change position of text box in image
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -445,7 +445,7 @@
 
 
 		/**
-		 * @summary Set border radius for video box
+		 * Set border radius for video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -459,7 +459,7 @@
 		},
 
 		/**
-		 * @summary Set height for video box
+		 * Set height for video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -476,7 +476,7 @@
 		},
 
 		/**
-		 * @summary Set color for overlay
+		 * Set color for overlay
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -491,7 +491,7 @@
 		},
 
 		/**
-		 * @summary Set color for overlay
+		 * Set color for overlay
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -528,7 +528,7 @@
 		} ,
 			
 		/**
-		 * @summary Set color for link
+		 * Set color for link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -543,7 +543,7 @@
 		},
 
 		/**
-		 * @summary Set color for link
+		 * Set color for link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -563,7 +563,7 @@
 
 		},
 		/**
-		 * @summary show and hide button with hide gizmo in desktop
+		 * show and hide button with hide gizmo in desktop
 		 *
 		 *
 		 * @since 0.1.0
@@ -581,7 +581,7 @@
 
 		},
 			/**
-			 * @summary  show and hide button with hide gizmo in tablet
+			 *  show and hide button with hide gizmo in tablet
 			 *
 			 *
 			 * @since 0.1.0
@@ -600,7 +600,7 @@
 			},
 
 			/**
-			 * @summary  show and hide button with hide gizmo in mobile
+			 * show and hide button with hide gizmo in mobile
 			 *
 			 *
 			 * @since 0.1.0
@@ -619,7 +619,7 @@
 			},
 
 			/**
-			 * @summary  animation functionality
+			 * animation functionality
 			 *
 			 *
 			 * @since 0.1.0

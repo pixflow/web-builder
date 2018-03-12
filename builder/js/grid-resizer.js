@@ -180,7 +180,7 @@
 	};
 
 	/**
-	 * @summary Do drag while mouse is moving
+	 * Do drag while mouse is moving
 	 *
 	 * @returns {boolean}
 	 */
@@ -266,7 +266,7 @@
 	};
 
 	/**
-	 * @summary Stop dragging after mouseup
+	 * Stop dragging after mouseup
 	 *
 	 * @returns {boolean}
 	 */

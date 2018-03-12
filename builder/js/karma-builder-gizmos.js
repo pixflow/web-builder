@@ -45,7 +45,7 @@
 
 
 		/**
-		 *  @summary Build html for gizmo resizeable for top & bottom
+		 *  Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing karma-both-top-spacing karma-top-spacing  " data-direction="both"  >'
@@ -67,7 +67,7 @@
 		+ '</div>' ,
 
 		/**
-		 *  @summary Build html for gizmo resizeable for left
+		 *  Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing  ui-resizable-handle ui-resizable-e karma-left-spacing " data-direction="left" style="width:{{ data.leftspace}}px">'
@@ -80,7 +80,7 @@
 		+ '</div>' ,
 
 		/**
-		 *  @summary Build html for gizmo resizeable for right
+		 *  Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing karma-right-spacing ui-resizable-w" data-direction="right" style="width:{{ data.rightspace }}px">'
@@ -93,7 +93,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeably for top
+		 * Build html for gizmo resizeably for top
 		 */
 		topSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
@@ -106,7 +106,7 @@
 
 
 		/**
-		 * @summary Build html for Gizmo crop
+		 * Build html for Gizmo crop
 		 */
 		cropGizmoTemplate : '<div class="left-crop {{ data.className }} karma-crop-container">'
 		+ '<div class="karma-crop karma-left-crop " data-direction="left" >'
@@ -139,7 +139,7 @@
 
 
 		/**
-		 * @summary Build html for Gizmo resize
+		 * Build html for Gizmo resize
 		 */
 		imageResizeGizmoTemplate : '',
 
@@ -163,7 +163,7 @@
 		titleGizmoTemplate: '<div class="karma-title-gizmo-template karma-gizmo-container"></div>',
 
 		/**
-		 * @summary Set Gizmo Events
+		 * Set Gizmo Events
 		 *
 		 * @param {object}  gizmoParams     gizmo params of view
 		 *
@@ -188,7 +188,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo controller of elements base on params given
+		 * Build gizmo controller of elements base on params given
 		 *
 		 * @param	{ object }	gizmoParams	Gizmo params
 		 *
@@ -241,7 +241,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo controller
+		 * Build gizmo controller
 		 *
 		 * @since 0.1.0
 		 *
@@ -263,7 +263,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeable for top and bottom
+		 * Build gizmo resizeable for top and bottom
 		 *
 		 * @param { object } $gizmo section gizmo
 		 * @since 0.1.0
@@ -311,7 +311,7 @@
 		},
 
 		/**
-		 * @summary Update live gizmo value with
+		 * Update live gizmo value with
 		 * its value of the current device
 		 *
 		 * @param	{object} UI
@@ -337,7 +337,7 @@
 		},
 
 		/**
-		 * @summary Create object containing list of shortcode property
+		 * Create object containing list of shortcode property
 		 * based on device to call set attributes function
 		 *
 		 * @param	{string} property CSS property
@@ -356,7 +356,7 @@
 		},
 
 		/**
-		 * @summary show and hide element gizmo
+		 * show and hide element gizmo
 		 * @param	{string} mode of action
 		 *
 		 * @since 0.1.0
@@ -376,7 +376,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeably for top
+		 * Build gizmo resizeably for top
 		 * @param {object}  $gizmo     gizmo params of view
 		 *
 		 * @since 0.1.0
@@ -577,7 +577,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeable for left
+		 * Build gizmo resizeable for left
 		 *
 		 * @param {object} $gizmo left spacing gizmo of column
 		 * @since 0.1.0
@@ -595,7 +595,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeable for right
+		 * Build gizmo resizeable for right
 		 *
 		 * @param {object} $gizmo  right spacing gizmo of column
 		 * @since 0.1.0
@@ -613,7 +613,7 @@
 		},
 
 		/**
-		 * @summary return device mode
+		 * return device mode
 		 *
 		 * @since 0.1.0
 		 *
@@ -651,7 +651,7 @@
 		},
 
 		/**
-		 * @summary show spacing tooltip on mouse down
+		 * show spacing tooltip on mouse down
 		 *
 		 * @since   0.1.0
 		 *
@@ -677,7 +677,7 @@
 		},
 
 		/**
-		 * @summary move spacing tooltip on mouse move
+		 * move spacing tooltip on mouse move
 		 *
 		 * @param {object} that element view
 		 * @param {string} direction Spacing gizmo which is resizing
@@ -733,7 +733,7 @@
 		},
 
 		/**
-		 *@summary remove mouse tooltip in spacing
+		 *remove mouse tooltip in spacing
 		 *
 		 * @since 0.1.0
 		 *
@@ -752,7 +752,7 @@
 		},
 
 		/**
-		 *@summary create html fot tooltip
+		 *create html fot tooltip
 		 *
 		 * @since 0.1.0
 		 *
@@ -768,7 +768,7 @@
 		},
 
 		/**
-		 * @summary Set the listener on build gizmo
+		 * Set the listener on build gizmo
 		 *
 		 * @param   {string}    tempName      Name of gizmo
 		 * @param   {string}    gizmoParam    Gizmo options
@@ -799,7 +799,7 @@
 		},
 
 		/**
-		 * @summary Set the active element gizmo
+		 * Set the active element gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -825,7 +825,7 @@
 		},
 
 		/**
-		 * @summary Show element gizmo
+		 * Show element gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -858,7 +858,7 @@
 		},
 
 		/**
-		 * @summary close more sub menu when click in document
+		 * close more sub menu when click in document
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -879,7 +879,7 @@
 		},
 
 		/**
-		 * @summary show and hide options under more in gizmo panel
+		 * show and hide options under more in gizmo panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -916,7 +916,7 @@
 		},
 
 		/**
-		 * @summary open dropDown in gizmo
+		 * open dropDown in gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -936,7 +936,7 @@
 		},
 
 		/**
-		 * @summary Close dropDown in gizmo
+		 * Close dropDown in gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -951,7 +951,7 @@
 		},
 
 		/**
-		 * @summary Add new section
+		 * Add new section
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -988,7 +988,7 @@
 
 
 		/**
-		 * @summary close new section Dropdown
+		 * close new section Dropdown
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -1007,7 +1007,7 @@
 		},
 
 		/**
-		 * @summary open and close new section Dropdown
+		 * open and close new section Dropdown
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -1025,7 +1025,7 @@
 		},
 
 		/**
-		 * @summary update dropDown gizmo and add class to active item
+		 * update dropDown gizmo and add class to active item
 		 * @param {object}  event
 		 *
 		 * @since 0.1.0

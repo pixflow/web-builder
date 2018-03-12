@@ -35,7 +35,7 @@
 		},
 
 		/**
-		 * @summary Render image element
+		 * Render image element
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -48,7 +48,7 @@
 		},
 
 		/**
-		 * @summary Active editable title
+		 * Active editable title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -67,7 +67,7 @@
 		},
 
 		/**
-		 * @summary  Deactivate enter in link text
+		 *  Deactivate enter in link text
 		 *
 		 * @since 0.1.1
 		 * @return {number}
@@ -80,7 +80,7 @@
 
 
 		/**
-		 * @summary Save the description of image text box
+		 * Save the description of image text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -107,7 +107,7 @@
 		},
 
 		/**
-		 * @summary change the description of image  text box
+		 * change the description of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -127,7 +127,7 @@
 		},
 
 		/**
-		 * @summary change class title of image  text box
+		 * change class title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -143,7 +143,7 @@
 		},
 
 		/**
-		 * @summary Save the title of image  text box
+		 * Save the title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -167,7 +167,7 @@
 		},
 
 		/**
-		 * @summary change the title of image  text box
+		 * change the title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -186,7 +186,7 @@
 		},
 
 		/**
-		 * @summary change class title of image  text box
+		 * change class title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -205,7 +205,7 @@
 
 
 		/**
-		 * @summary check empty link text
+		 * check empty link text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -227,7 +227,7 @@
 
 
 		/**
-		 * @summary Active editable description
+		 * Active editable description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -246,7 +246,7 @@
 		},
 
 		/**
-		 * @summary Active editable link
+		 * Active editable link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -265,7 +265,7 @@
 		},
 
 		/**
-		 * @summary change background size to cover and contain
+		 * change background size to cover and contain
 		 *
 		 * @since 0.1.1
 		 *
@@ -282,7 +282,7 @@
 		},
 
 		/**
-		 * @summary change position of background image
+		 * change position of background image
 		 *
 		 * @since 0.1.1
 		 *
@@ -298,7 +298,7 @@
 		},
 
 		/**
-		 * @summary change image URL
+		 * change image URL
 		 *
 		 * @since 0.1.1
 		 *
@@ -314,7 +314,7 @@
 		},
 
 		/**
-		 * @summary Set color for title
+		 * Set color for title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -329,7 +329,7 @@
 		},
 
 		/**
-		 * @summary Set color for description
+		 * Set color for description
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -344,7 +344,7 @@
 		},
 
 		/**
-		 * @summary Set color for link
+		 * Set color for link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -359,7 +359,7 @@
 		},
 
 		/**
-		 * @summary Set border radius for Image box
+		 * Set border radius for Image box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -375,7 +375,7 @@
 		},
 
 		/**
-		 * @summary Set height for Image box
+		 * Set height for Image box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -392,7 +392,7 @@
 		},
 
 		/**
-		 * @summary set link for text
+		 * set link for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -406,7 +406,7 @@
 		},
 
 		/**
-		 * @summary set link target for text
+		 * set link target for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -420,7 +420,7 @@
 		},
 
 		/**
-		 * @summary get title typography and change innerHtml of title
+		 * get title typography and change innerHtml of title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -438,7 +438,7 @@
 		},
 
 		/**
-		 * @summary get description typography and change innerHtml of description
+		 * get description typography and change innerHtml of description
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -456,7 +456,7 @@
 		},
 
 		/**
-		 * @summary get link typography and change innerHtml of link
+		 * get link typography and change innerHtml of link
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -474,7 +474,7 @@
 		},
 
 		/**
-		 * @summary change position of text box in image
+		 * change position of text box in image
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -489,7 +489,7 @@
 		},
 
 		/**
-		 * @summary background color changes. change background color
+		 * background color changes. change background color
 		 *
 		 * @since 0.1.0
 		 *
@@ -503,7 +503,7 @@
 		},
 
 		/**
-		 * @summary overlay color changes. change overlay color
+		 * overlay color changes. change overlay color
 		 *
 		 * @since 0.1.0
 		 *
@@ -538,7 +538,7 @@
 
 		} ,
         /**
-         * @summary Set color for link
+         * Set color for link
          *
          * @since 0.1.1
          * @return {void}
@@ -553,7 +553,7 @@
         },
 
         /**
-         * @summary Set color for link
+         * Set color for link
          *
          * @since 0.1.1
          * @return {void}
@@ -572,7 +572,7 @@
 
         },
 		/**
-		 * @summary show and hide button with hide gizmo in desktop
+		 * show and hide button with hide gizmo in desktop
 		 *
 		 *
 		 * @since 0.1.0
@@ -591,7 +591,7 @@
 		},
 
 		/**
-		 * @summary show and hide column white hide gizmo in tablet
+		 * show and hide column white hide gizmo in tablet
 		 *
 		 *
 		 * @since 0.1.0
@@ -611,7 +611,7 @@
 
 
 		/**
-		 * @summary show and hide column white hide gizmo in mobile
+		 * show and hide column white hide gizmo in mobile
 		 *
 		 *
 		 * @since 0.1.0

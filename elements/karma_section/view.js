@@ -21,7 +21,7 @@
 		},
 
 		/**
-		 * @summary Add specific class for empty columns
+		 *  Add specific class for empty columns
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -44,7 +44,7 @@
 		},
 
 		/**
-		 * @summary Add section to sortable sections
+		 *  Add section to sortable sections
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -57,7 +57,7 @@
 
 
 		/**
-		 * @summary Close element setting panel and Close element panel
+		 *  Close element setting panel and Close element panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -71,7 +71,7 @@
 		},
 
 		/**
-		 * @summary Set the active row with specific class
+		 *  Set the active row with specific class
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -95,7 +95,7 @@
 		},
 
 		/**
-		 * @summary Get the if of all row columns
+		 *  Get the if of all row columns
 		 *
 		 * @since 0.1.0
 		 * @returns {Array}	Contain the ids
@@ -111,7 +111,7 @@
 		},
 
 		/**
-		 * @summary return current layout grid
+		 *  return current layout grid
 		 *
 		 * @since 0.1.0
 		 *
@@ -131,7 +131,7 @@
 		},
 
 		/**
-		 * @summary Calculate new layout grid after append nw column
+		 *  Calculate new layout grid after append nw column
 		 *
 		 * @since 0.1.0
 		 *
@@ -154,7 +154,7 @@
 		},
 
 		/**
-		 * @summary Delete The column id
+		 *  Delete The column id
 		 *
 		 * @param {number}	columnKey		The column id
 		 * @param {number}	lastColumnKey	The last column in row id
@@ -171,7 +171,7 @@
 		},
 
 		/**
-		 * @summary Sum the numbers
+		 *  Sum the numbers
 		 *
 		 * @param {number}	total	The total number
 		 * @param {number}	num		The new number
@@ -186,7 +186,7 @@
 		},
 
 		/**
-		 * @summary Check the grid given is equal 12
+		 *  Check the grid given is equal 12
 		 *
 		 * @param {array}	grid	The grid layout
 		 *
@@ -204,7 +204,7 @@
 		},
 
 		/**
-		 * @summary Update the column model by id given.
+		 *  Update the column model by id given.
 		 * Function just update size of column
 		 *
 		 * @param {number}	columnKey		The column id
@@ -224,7 +224,7 @@
 		},
 
 		/**
-		 * @summary Change the layout of row grid
+		 *  Change the layout of row grid
 		 *
 		 * @param {array}	newLayout The grid layout
 		 *
@@ -262,7 +262,7 @@
 		},
 
 		/**
-		 * @summary Create new column
+		 *  Create new column
 		 *
 		 * @param {number}	counter			Columns that should be created
 		 * @param {array}	newLayout		New layout
@@ -310,7 +310,7 @@
 
 
 		/**
-		 * @summary create html fot tooltip
+		 *  create html fot tooltip
 		 *
 		 * @since 0.1.0
 		 *
@@ -326,7 +326,7 @@
 		},
 
 		/**
-		 * @summary structure field changes. Change Container of Section instead of render
+		 *  structure field changes. Change Container of Section instead of render
 		 *
 		 * @since 0.1.0
 		 *
@@ -343,7 +343,7 @@
 		},
 
 		/**
-		 * @summary space field changes. It updates the space of section
+		 *  space field changes. It updates the space of section
 		 *
 		 * @since 0.1.0
 		 *
@@ -358,7 +358,7 @@
 		},
 
 		/**
-		 * @summary create default responsive space
+		 *  create default responsive space
 		 *
 		 * @since   2.0
 		 * @returns {void}
@@ -378,7 +378,7 @@
 		},
 
 		/**
-		 * @summary extra class field changes. Add class to the element instead of render
+		 *  extra class field changes. Add class to the element instead of render
 		 *
 		 * @since 0.1.0
 		 *
@@ -394,7 +394,7 @@
 		},
 
 		/**
-		 * @summary background type changes. change background type
+		 *  background type changes. change background type
 		 *
 		 * @since 0.1.0
 		 *
@@ -415,7 +415,7 @@
 		},
 
 		/**
-		 * @summary background color changes. change background color
+		 *  background color changes. change background color
 		 *
 		 * @since 0.1.0
 		 *
@@ -428,7 +428,7 @@
 		},
 
 		/**
-		 * @summary Change the grid layout
+		 *  Change the grid layout
 		 *
 		 * @since 0.1.0
 		 *
@@ -446,7 +446,7 @@
 		},
 
 		/**
-		 * @summary extra class field changes. Add class to the element instead of render
+		 *  extra class field changes. Add class to the element instead of render
 		 *
 		 * @since 0.1.0
 		 *
@@ -461,7 +461,7 @@
 		},
 
 		/**
-		 * @summary fire on change background image controller
+		 *  fire on change background image controller
 		 *
 		 * @since 0.1.0
 		 *
@@ -483,7 +483,7 @@
 		},
 
 		/**
-		 * @summary change background size to cover and contain
+		 *  change background size to cover and contain
 		 *
 		 * @since 0.1.0
 		 *
@@ -500,7 +500,7 @@
 		},
 
 		/**
-		 * @summary change position of background image
+		 *  change position of background image
 		 *
 		 * @since 0.1.0
 		 *
@@ -516,7 +516,7 @@
 		},
 
 		/**
-		 * @summary show and hide section white hide gizmo in tablet
+		 *  show and hide section white hide gizmo in tablet
 		 *
 		 *
 		 * @since 0.1.0
@@ -535,7 +535,7 @@
 		},
 
 		/**
-		 * @summary show and hide section white hide gizmo in mobile
+		 *  show and hide section white hide gizmo in mobile
 		 *
 		 *
 		 * @since 0.1.0

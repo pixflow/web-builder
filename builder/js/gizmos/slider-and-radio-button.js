@@ -39,7 +39,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary initialize alignment
+		 * initialize alignment
 		 *
 		 * @since 0.1.1
 		 *
@@ -52,7 +52,7 @@
 		},
 
 		/**
-		 * @summary render alignment
+		 * render alignment
 		 *
 		 * @since 0.1.1
 		 *
@@ -76,7 +76,7 @@
 		},
 
 		/**
-		 * @summary loading range slider
+		 * loading range slider
 		 *
 		 * @since 0.1.1
 		 *
@@ -93,7 +93,7 @@
 		},
 
 		/**
-		 * @summary check radio checked
+		 * check radio checked
 		 *
 		 * @since 0.1.1
 		 *
@@ -112,7 +112,7 @@
 		},
 
 		/**
-		 * @summary change classes in radio button
+		 * change classes in radio button
 		 *
 		 * @since 0.1.1
 		 *
@@ -132,7 +132,7 @@
 		},
 
 		/**
-		 * @summary render alignment
+		 * render alignment
 		 *
 		 * @since 0.1.1
 		 *
@@ -162,7 +162,7 @@
 
 
 		/**
-		 * @summary Change slider value
+		 * Change slider value
 		 *
 		 * @since 0.1.1
 		 *
@@ -182,7 +182,7 @@
 		},
 
 		/**
-		 * @summary Update model
+		 * Update model
 		 *
 		 * @since 0.1.1
 		 *

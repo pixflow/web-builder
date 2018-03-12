@@ -8,7 +8,7 @@ window.addEventListener( 'resize', function (){
 } );
 
 /**
- * @summary Call functions after window resizing
+ * Call functions after window resizing
  *
  * @since   2.0
  * @returns {void}
@@ -18,7 +18,7 @@ function doneResizing(){
 }
 
 /**
- * @summary Update image size in window update
+ * Update image size in window update
  *
  * @since   2.0
  * @returns {void}

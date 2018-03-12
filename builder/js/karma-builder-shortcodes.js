@@ -61,7 +61,7 @@
 		},
 
 		/**
-		 * @summary Update column helper on window resize
+		 * Update column helper on window resize
 		 *
 		 * @since 2.0
 		 *
@@ -87,7 +87,7 @@
 		},
 
 		/**
-		 * @summary Call blur inside sortable elements
+		 * Call blur inside sortable elements
 		 * jQuery stops the default functionality of the browser when sorting a list,
 		 * so the blur is never called
 		 *
@@ -104,7 +104,7 @@
 		},
 
 		/**
-		 * @summary Init sortable on elements
+		 * Init sortable on elements
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -169,7 +169,7 @@
 
 		},
 		/**
-		 * @summary If drop area of element is alignment drop area set the element alignment
+		 * If drop area of element is alignment drop area set the element alignment
 		 *
 		 * @param   {object}    originalElement Sortable element
 		 * @param   {object}    dropArea        DOM node
@@ -192,7 +192,7 @@
 		},
 
 		/**
-		 * @summary set Element alignment to element
+		 * set Element alignment to element
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -209,7 +209,7 @@
 		},
 
 		/**
-		 * @summary set padding top for element function
+		 * set padding top for element function
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -223,7 +223,7 @@
 		},
 
 		/**
-		 * @summary set padding top for element function
+		 * set padding top for element function
 		 *
 		 * @since   2.0
 		 * @returns {void}
@@ -238,7 +238,7 @@
 		},
 
 		/**
-		 * @summary Removes active elements
+		 * Removes active elements
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -253,7 +253,7 @@
 		},
 
 		/**
-		 * @summary Sort elements
+		 * Sort elements
 		 *
 		 * @param   {object}    dropArea        DOM node
 		 * @param   {object}    originalElement Sortable element
@@ -291,7 +291,7 @@
 		},
 
 		/**
-		 * @summary Sort elements
+		 * Sort elements
 		 *
 		 * @param   {object}    viewObject      Instance of sortable element view
 		 * @param   {object}    dropArea        DOM node
@@ -320,7 +320,7 @@
 		},
 
 		/**
-		 * @summary trigger document click on links which have karma-document-click class
+		 * trigger document click on links which have karma-document-click class
 		 *
 		 * @since 0.1.0
 		 *
@@ -337,7 +337,7 @@
 		},
 
 		/**
-		 * @summary Call necessary function after init any elements
+		 * Call necessary function after init any elements
 		 *
 		 * @since 0.1.0
 		 *
@@ -353,7 +353,7 @@
 		},
 
 		/**
-		 * @summary Create placeholders for each elements as drop area
+		 * Create placeholders for each elements as drop area
 		 * The function skip column and section for creating placeholders
 		 *
 		 * @since 0.1.0
@@ -396,7 +396,7 @@
 		},
 
 		/**
-		 * @summary Create placeholders for each elements as alignment
+		 * Create placeholders for each elements as alignment
 		 *
 		 * @since 0.1.0
 		 *
@@ -415,7 +415,7 @@
 		},
 
 		/**
-		 * @summary call element method related to the changed attribute
+		 * call element method related to the changed attribute
 		 *
 		 * @param    {object}    model    updated element model.
 		 *
@@ -437,7 +437,7 @@
 		},
 
 		/**
-		 * @summary Render elements
+		 * Render elements
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -449,7 +449,7 @@
 		},
 
 		/**
-		 * @summary Delete elements model and html
+		 * Delete elements model and html
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -483,7 +483,7 @@
 		},
 
 		/**
-		 * @summary load blank page when content is empty
+		 * load blank page when content is empty
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -500,7 +500,7 @@
 		},
 
 		/**
-		 * @summary Remove element placeholders after delete element
+		 * Remove element placeholders after delete element
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -516,7 +516,7 @@
 		},
 
 		/**
-		 * @summary Reorder elements after delete
+		 * Reorder elements after delete
 		 *
 		 * @param {string}  parentKey       Element key of parent element
 		 *
@@ -535,7 +535,7 @@
 		},
 
 		/**
-		 * @summary Do some extra work after delete element
+		 * Do some extra work after delete element
 		 * If all elements remove in specific column this function create placeholder for that empty column
 		 *
 		 * @param {string}  parentKey       Element key of parent element
@@ -560,7 +560,7 @@
 		},
 
 		/**
-		 * @summary If All columns are empty in section add Class Empty to them
+		 * If All columns are empty in section add Class Empty to them
 		 *
 		 * @param { object }  section       Element key of parent element
 		 *
@@ -577,7 +577,7 @@
 		},
 
 		/**
-		 * @summary Duplicate elements
+		 * Duplicate elements
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -597,7 +597,7 @@
 		},
 
 		/**
-		 * @summary Returns child of elements which passed to the function
+		 * Returns child of elements which passed to the function
 		 *
 		 * @param {string} parentElementKey   Element key to return its child(ren)
 		 * @since 0.1.0
@@ -622,7 +622,7 @@
 		},
 
 		/**
-		 * @summary open box of delete element
+		 * open box of delete element
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -650,7 +650,7 @@
 
 
 		/**
-		 * @summary cancel delete element on click in cancel box
+		 * cancel delete element on click in cancel box
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -670,7 +670,7 @@
 		},
 
 		/**
-		 * @summary  delete element on click in delete box
+		 *  delete element on click in delete box
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -693,7 +693,7 @@
 		},
 
 		/**
-		 * @summary stop click in delete box container
+		 * stop click in delete box container
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -705,7 +705,7 @@
 		},
 
 		/**
-		 * @summary Remove script and style tag of element
+		 * Remove script and style tag of element
 		 *
 		 * @param   {string}    elementID
 		 *
@@ -728,7 +728,7 @@
 		},
 
 		/**
-		 * @summary Update attribute(s) of element
+		 * Update attribute(s) of element
 		 *
 		 * @param    {Object}    newAttributes list of new attribute
 		 * @param    {boolean}    silent model in silent mode
@@ -752,7 +752,7 @@
 		},
 
 		/**
-		 * @summary GET Specific attribute(s) of element
+		 * GET Specific attribute(s) of element
 		 * @example getAttributes ( ['space', 'slow'] ) // returns { space : 200, slow : false }
 		 *
 		 *
@@ -778,7 +778,7 @@
 		},
 
 		/**
-		 * @summary find children of model
+		 * find children of model
 		 *
 		 * @since 0.1.0
 		 *
@@ -791,7 +791,7 @@
 		},
 
 		/**
-		 * @summary Open setting panel of each Element
+		 * Open setting panel of each Element
 		 *
 		 * @since 0.1.0
 		 *
@@ -816,7 +816,7 @@
 		},
 
 		/**
-		 * @summary Remove Class from javascript element
+		 * Remove Class from javascript element
 		 *
 		 * @param    {object}    el        element to remove Class
 		 * @param    {string}    className   name of class to remove
@@ -836,7 +836,7 @@
 		},
 
 		/**
-		 * @summary returns the element name with its key
+		 * returns the element name with its key
 		 *
 		 * @since 0.1.0
 		 *
@@ -849,7 +849,7 @@
 		},
 
 		/**
-		 * @summary renders the css of model inside style tag
+		 * renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector     Css selector
 		 * @param    { string }    attribute    CSS attribute
@@ -866,7 +866,7 @@
 		},
 
 		/**
-		 * @summary get mobile or tablet css from style
+		 * get mobile or tablet css from style
 		 *
 		 * @param    { string }    content  Css selector
 		 * @param    { string }    device   mobile or tablet
@@ -897,7 +897,7 @@
 		},
 
 		/**
-		 * @summary split responsive device css and main css
+		 * split responsive device css and main css
 		 *
 		 * @param    { string }    content  Css selector
 		 *
@@ -929,7 +929,7 @@
 		},
 
 		/**
-		 * @summary get CSS content from style tag
+		 * get CSS content from style tag
 		 *
 		 * @param    { string }    device   device name
 		 *
@@ -969,7 +969,7 @@
 		},
 
 		/**
-		 * @summary put CSS content to style tag
+		 * put CSS content to style tag
 		 *
 		 * @param    { object }    cssObject    Css object
 		 * @param    { string }    device       device name
@@ -1005,7 +1005,7 @@
 		},
 
 		/**
-		 * @summary renders the css of
+		 * renders the css of
 		 * model inside style tag
 		 *
 		 * @param    { string }    selector    Css selector
@@ -1062,7 +1062,7 @@
 		},
 
 		/**
-		 * @summary Remove old style string
+		 * Remove old style string
 		 *
 		 * @param    { string }    selector        CSS attribute
 		 * @param    { string }    oldStyle        Old css string
@@ -1081,7 +1081,7 @@
 		},
 
 		/**
-		 * @summary renders the css of model inside style tag
+		 * renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector        CSS attribute
 		 * @param    { object }    cssProperty     CSS value

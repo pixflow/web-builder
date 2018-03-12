@@ -30,7 +30,7 @@
 		+ '</div>',
 
 		/**
-		 * @summary initialize position
+		 *  initialize position
 		 *
 		 * @since 2.0
 		 *
@@ -43,7 +43,7 @@
 		},
 
 		/**
-		 * @summary render position
+		 *  render position
 		 *
 		 * @since 2.0
 		 *
@@ -56,7 +56,7 @@
 		},
 
 		/**
-		 * @summary update position
+		 *  update position
 		 *
 		 * @since 2.0
 		 *
@@ -68,7 +68,7 @@
 
 		},
 		/**
-		 * @summary change model
+		 *  change model
 		 *
 		 * @since 2.0
 		 *

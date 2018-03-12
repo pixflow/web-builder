@@ -24,7 +24,7 @@
 		},
 
 		/**
-		 * @summary Add specific class for empty columns
+		 * Add specific class for empty columns
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -38,7 +38,7 @@
 
 
 		/**
-		 * @summary Render column element
+		 * Render column element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -80,7 +80,7 @@
 		},
 
 		/**
-		 * @summary Close element setting panel and Close element panel
+		 * Close element setting panel and Close element panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -95,7 +95,7 @@
 
 
 		/**
-		 * @summary Set the active row with specific class
+		 * Set the active row with specific class
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -119,7 +119,7 @@
 		},
 
 		/**
-		 * @summary spacing of column setting panel
+		 * spacing of column setting panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -137,7 +137,7 @@
 		},
 
 		/**
-		 * @summary spacing of column setting panel
+		 * spacing of column setting panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -154,7 +154,7 @@
 		},
 
 		/**
-		 * @summary create default responsive space
+		 * create default responsive space
 		 *
 		 * @since   2.0
 		 * @returns {void}
@@ -176,7 +176,7 @@
 		},
 
 		/**
-		 *@summary extra class field changes. Add class to the column
+		 *extra class field changes. Add class to the column
 		 *
 		 * @since 0.1.0
 		 *
@@ -192,7 +192,7 @@
 		},
 
 		/**
-		 *@summary apply live change grid on column
+		 *apply live change grid on column
 		 *
 		 * @since 0.1.0
 		 *
@@ -235,7 +235,7 @@
 		},
 
 		/**
-		 * @summary calculate new parent section grid and update grid
+		 * calculate new parent section grid and update grid
 		 *
 		 * @since 0.1.0
 		 *
@@ -253,7 +253,7 @@
 		},
 
 		/**
-		 * @summary Change column class names by type
+		 * Change column class names by type
 		 *
 		 * @param {string}  gridType    Grid type of column ( ex: lg || sm )
 		 * @param {number}  newCol      New column grid value
@@ -273,7 +273,7 @@
 		},
 
 		/**
-		 * @summary Change column LG size
+		 * Change column LG size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -286,7 +286,7 @@
 		},
 
 		/**
-		 * @summary Change column MD size
+		 * Change column MD size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -299,7 +299,7 @@
 		},
 
 		/**
-		 * @summary Change column XL size
+		 * Change column XL size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -312,7 +312,7 @@
 		},
 
 		/**
-		 * @summary Change column SM size
+		 * Change column SM size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -325,7 +325,7 @@
 		},
 
 		/**
-		 * @summary Update the size of columns
+		 * Update the size of columns
 		 *
 		 * @param {number}	value   New value
 		 *
@@ -346,7 +346,7 @@
 		},
 
 		/**
-		 * @summary Delete column completely
+		 * Delete column completely
 		 * Before delete column,it move all content in the last column in same row
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
@@ -378,7 +378,7 @@
 		} ,
 
 		/**
-		 * @summary Move the content from column to another column
+		 * Move the content from column to another column
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
 		 * @param {object}  model           Element model
@@ -406,7 +406,7 @@
 		},
 
 		/**
-		 * @summary show and hide column white hide gizmo in tablet
+		 * show and hide column white hide gizmo in tablet
 		 *
 		 *
 		 * @since 0.1.0
@@ -426,7 +426,7 @@
 
 
 		/**
-		 * @summary show and hide column white hide gizmo in mobile
+		 * show and hide column white hide gizmo in mobile
 		 *
 		 *
 		 * @since 0.1.1

@@ -44,7 +44,7 @@
 
 
 		/**
-		 * @summary Call draggable on elements in add new elements item;
+		 * Call draggable on elements in add new elements item;
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -56,7 +56,7 @@
 		},
 
 		/**
-		 * @summary close panel when click in panel
+		 * close panel when click in panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -77,7 +77,7 @@
 		},
 
 		/**
-		 * @summary functionality for element panel tab
+		 * functionality for element panel tab
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -96,7 +96,7 @@
 		},
 
 		/**
-		 * @summary get the clicked element and show its related tab
+		 * get the clicked element and show its related tab
 		 *
 		 * @param  { object } originalSelector active category filter
 		 * @since   0.1.0
@@ -122,7 +122,7 @@
 		},
 
 		/**
-		 *@summary create add element panel with import template
+		 *create add element panel with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -138,7 +138,7 @@
 		},
 
 		/**
-		 *@summary create Templates panel with import template
+		 *create Templates panel with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -151,7 +151,7 @@
 		},
 
 		/**
-		 *@summary create Unsplash with import template
+		 *create Unsplash with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -164,7 +164,7 @@
 		},
 
 		/**
-		 *@summary create Upgrade with import template
+		 *create Upgrade with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -177,7 +177,7 @@
 		},
 
 		/**
-		 *@summary close add element panel
+		 *close add element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -202,7 +202,7 @@
 		},
 
 		/**
-		 * @summary use niceScroll for element panel
+		 * use niceScroll for element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -222,7 +222,7 @@
 		},
 
 		/**
-		 * @summary check if premium load premium template
+		 * check if premium load premium template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -240,7 +240,7 @@
 		},
 
 		/**
-		 * @summary Search in elements
+		 * Search in elements
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -274,7 +274,7 @@
 		},
 
 		/**
-		 * @summary when active category filter get class
+		 * when active category filter get class
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -300,7 +300,7 @@
 		},
 
 		/**
-		 * @summary after click in each category set the price filter on all items
+		 * after click in each category set the price filter on all items
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -325,7 +325,7 @@
 		},
 
 		/**
-		 * @summary initialize quicksand on add element panel
+		 * initialize quicksand on add element panel
 		 *
 		 * @param 	{ array } $elementToFilter set of elements to filter
 		 * @since   0.1.0
@@ -342,7 +342,7 @@
 		},
 
 		/**
-		 * @summary filter elements an add element panel items
+		 * filter elements an add element panel items
 		 *
 		 * @param   { string }    priceFilter     price category to filter
 		 * @param   { string }    categoryFilter  element category to filter
@@ -380,7 +380,7 @@
 		},
 
 		/**
-		 * @summary open category dropdown on click hamburger menu
+		 * open category dropdown on click hamburger menu
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -398,7 +398,7 @@
 		},
 
 		/**
-		 * @summary sorting elements with category filter
+		 * sorting elements with category filter
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -420,7 +420,7 @@
 		},
 
 		/**
-		 * @summary filtering price filter
+		 * filtering price filter
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -445,7 +445,7 @@
 		},
 
 		/**
-		 * @summary Close gather menu panel
+		 * Close gather menu panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -459,7 +459,7 @@
 		},
 
 		/**
-		 * @summary clear input of search when click close icon
+		 * clear input of search when click close icon
 		 * @param {object}  event DOM Events
 		 *
 		 * @since   0.1.0
@@ -479,7 +479,7 @@
 		},
 
 		/**
-		 * @summary add class to show search bar in element panel
+		 * add class to show search bar in element panel
 		 * @param { object }  event DOM Events
 		 *
 		 * @since   0.1.0
@@ -497,7 +497,7 @@
 		},
 
 		/**
-		 * @summary Close search bar when click document
+		 * Close search bar when click document
 		 *
 		 * @since   0.1.0
 		 * @returns { void }
@@ -518,7 +518,7 @@
 		},
 
 		/**
-		 * @summary show and hide close icon in search box in element panel
+		 * show and hide close icon in search box in element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -531,7 +531,7 @@
 		},
 
 		/**
-		 *@summary open element panel for each button
+		 *open element panel for each button
 		 * @param event
 		 *
 		 * @since   0.1.0
@@ -571,7 +571,7 @@
 		},
 
 		/**
-		 * @summary get list of blocks and load
+		 * get list of blocks and load
 		 *
 		 * @since   0.1.1
 		 * @returns {void}
@@ -601,7 +601,7 @@
 		},
 
 		/**
-		 * @summary Call draggable on blocks
+		 * Call draggable on blocks
 		 *
 		 * @since 0.1.1
 		 * @returns {void}
@@ -614,7 +614,7 @@
 
 
 		/**
-		 *@summary show responsive buttons
+		 *show responsive buttons
 		 * @param event
 		 *
 		 * @since   0.1.0
@@ -634,7 +634,7 @@
 		},
 
 		/**
-		 * @summary hide responsive buttons
+		 * hide responsive buttons
 		 *
 		 * @param event
 		 *
@@ -654,7 +654,7 @@
 
 
 		/**
-		 *@summary change builder mode to responsive or desktop
+		 *change builder mode to responsive or desktop
 		 * @param event
 		 *
 		 * @since   0.1.0
@@ -674,7 +674,7 @@
 
 
 		/**
-		 * @summary hide responsive buttons
+		 * hide responsive buttons
 		 *
 		 * @param event
 		 *
@@ -695,7 +695,7 @@
 
 
 		/**
-		 * @summary set active responsive button
+		 * set active responsive button
 		 * @param event
 		 *
 		 * @since   0.1.0
@@ -719,7 +719,7 @@
 		},
 
 		/**
-		 * @summary set active responsive button
+		 * set active responsive button
 		 * @param event
 		 *
 		 * @since   2.0

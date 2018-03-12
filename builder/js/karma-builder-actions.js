@@ -31,7 +31,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 *@summary Add grab style for elements
+		 *Add grab style for elements
 		 *
 		 * @param   {object}    UI  ui object of dragged element in jqueryUI
 		 * @since   0.1.0
@@ -48,7 +48,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Remove grab style for elements
+		 * Remove grab style for elements
 		 *
 		 * @param   {object}    UI  ui object of dragged element in jqueryUI
 		 * @since   0.1.0
@@ -66,7 +66,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary append template of setting panel to body
+		 * append template of setting panel to body
 		 *
 		 * @since   0.1.0
 		 * @returns void
@@ -79,7 +79,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Create overlay element to prevent from other mouse events while dragging
+		 * Create overlay element to prevent from other mouse events while dragging
 		 * or blocking if exists
 		 *
 		 * @since   0.1.0
@@ -99,7 +99,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Bind jquery tooltip plugin
+		 * Bind jquery tooltip plugin
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -147,7 +147,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 
 		/**
-		 * @summary Set display none for overlay
+		 * Set display none for overlay
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -160,7 +160,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Enable draggable functionality on any item element
+		 * Enable draggable functionality on any item element
 		 *
 		 * @param    {string}    selector    An element CSS selector to set draggable.
 		 *
@@ -210,7 +210,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary return builder elements info
+		 * return builder elements info
 		 *
 		 * @param {string}  name    The name of element
 		 * If the param dose not pass to the function, the function returns all element info
@@ -233,7 +233,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
+		 * Open WordPress Media library and handle choose image from media library instead of unsplash
 		 *
 		 * @param {Object}         addImgLink    Selector dom object
 		 * @param {function}     callBack      callback function
@@ -284,7 +284,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Returns builder Iframe
+		 * Returns builder Iframe
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -299,7 +299,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Publish content on click in publish button
+		 * Publish content on click in publish button
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -317,7 +317,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Animate publish animation button
+		 * Animate publish animation button
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -343,7 +343,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Enable draggable functionality on blocks
+		 * Enable draggable functionality on blocks
 		 *
 		 * @param    {string}    selector    blocks CSS selector to set draggable.
 		 *
@@ -400,7 +400,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary render block
+		 * render block
 		 *
 		 * @param    {int}      blockID     block id
 		 * @param    {object}   dropArea    drop area placeholder

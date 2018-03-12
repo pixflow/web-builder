@@ -26,7 +26,7 @@
 			+ '</div>' ,
 
 		/**
-		 * @summary initialize alignment
+		 * initialize alignment
 		 *
 		 * @since 0.1.0
 		 *
@@ -39,7 +39,7 @@
 		},
 
 		/**
-		 * @summary render alignment
+		 * render alignment
 		 *
 		 * @since 0.1.0
 		 *
@@ -68,7 +68,7 @@
 		},
 
 		/**
-		 * @summary align left for text element
+		 * align left for text element
 		 *
 		 * @since 0.1.0
 		 *
@@ -89,7 +89,7 @@
 		},
 
 		/**
-		 * @summary align center for text element
+		 * align center for text element
 		 *
 		 * @since 0.1.0
 		 *
@@ -110,7 +110,7 @@
 		},
 
 		/**
-		 * @summary align right for text shortcode
+		 * align right for text shortcode
 		 *
 		 * @since 0.1.0
 		 *
