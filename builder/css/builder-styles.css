@@ -3165,37 +3165,49 @@ html {
   .karma-builder-element[data-name="karma_image_box"] div.karma-element-content {
     width: 100% !important; }
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
-    background-repeat: no-repeat;
+    box-sizing: border-box;
     display: flex;
     padding: 6vh;
     position: relative;
-    width: 100%;
-    box-sizing: border-box; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-real {
+    width: 100%; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-real .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-real .karma-element-blur-effect {
       background-size: auto; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-fill {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-fill .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-fill .karma-element-blur-effect {
       background-size: cover; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-contain {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-contain .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-contain .karma-element-blur-effect {
       background-size: auto; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-cover {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-cover .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-background-size-cover .karma-element-blur-effect {
       background-size: cover; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-left {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-left .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-left .karma-element-blur-effect {
       background-position: top left; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-center {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-center .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-center .karma-element-blur-effect {
       background-position: top center; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-right {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-right .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-top-right .karma-element-blur-effect {
       background-position: top right; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-left {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-left .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-left .karma-element-blur-effect {
       background-position: center left; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-center {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-center .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-center .karma-element-blur-effect {
       background-position: center center; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-right {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-right .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-center-right .karma-element-blur-effect {
       background-position: center right; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-left {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-left .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-left .karma-element-blur-effect {
       background-position: bottom left; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-center {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-center .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-center .karma-element-blur-effect {
       background-position: bottom center; }
-    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-right {
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-right .karma-image-box-background,
+    .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-position-bottom-right .karma-element-blur-effect {
       background-position: bottom right; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box.karma-image-text-box-content-position-top-left {
       align-items: flex-start;
@@ -3267,8 +3279,8 @@ html {
       position: absolute;
       top: 0; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
-      width: fit-content;
-      max-width: 90%; }
+      max-width: 90%;
+      width: fit-content; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag,
@@ -3279,7 +3291,7 @@ html {
           text-decoration: none;
           word-break: keep-all; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag {
-          min-width: 15vw; }
+          min-width: 11vw; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-description-tag.karma-image-box-description-opacity {
           display: none; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag.karma-image-box-title-opacity {
@@ -3417,6 +3429,80 @@ html {
     display: none; }
   .karma-builder-element[data-name="karma_image_box"] div.karma-image-text-box-text-container div.karma-image-text-box-link-content .tablet-display-none {
     display: none; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow .karma-image-box-background-container,
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow .karma-element-blur-effect {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow .karma-image-box-background-container {
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transform: scale(1) translateZ(0);
+    transition: transform .28s ease;
+    backface-visibility: hidden; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow .karma-image-box-background {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    height: 100%;
+    transform: scale(1.13) translateZ(0);
+    transition: transform .28s ease;
+    backface-visibility: hidden; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow .karma-element-blur-effect {
+    filter: blur(35px);
+    opacity: 0;
+    transform: translateY(38px);
+    transition: opacity .28s ease;
+    z-index: -1; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow:hover {
+    transition-delay: 0s !important;
+    z-index: 3; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow:hover .karma-image-box-background-container,
+    .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow:hover .karma-element-blur-effect {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0; }
+    .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow:hover .karma-image-box-background-container {
+      backface-visibility: hidden;
+      transform: scale(1.08) translateZ(0); }
+    .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow:hover .karma-image-box-background {
+      backface-visibility: hidden;
+      transform: scale(1) translateZ(0); }
+    .karma-builder-element[data-name="karma_image_box"] .karma-box-element-hover-shadow:hover .karma-element-blur-effect {
+      opacity: 0.7; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-shadow .karma-image-box-background-container,
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-shadow .karma-element-shadow-effect {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-shadow .karma-image-box-background-container {
+    backface-visibility: hidden;
+    overflow: hidden; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-shadow .karma-image-box-background {
+    background-repeat: no-repeat;
+    height: 100%; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-shadow .karma-element-shadow-effect {
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.25); }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-no-animation .karma-image-box-background-container {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-no-animation .karma-image-box-background-container {
+    background-color: transparent;
+    backface-visibility: hidden;
+    overflow: hidden; }
+  .karma-builder-element[data-name="karma_image_box"] .karma-box-element-no-animation .karma-image-box-background {
+    background-repeat: no-repeat;
+    height: 100%; }
 
 .karma-builder-environment .desktop-display-none {
   display: inherit !important; }
@@ -3447,38 +3533,12 @@ html {
   .karma-builder-element[data-name="karma_video_box"] div.karma-element-content {
     width: 100% !important; }
   .karma-builder-element[data-name="karma_video_box"] .karma-video-box {
-    background-repeat: no-repeat;
+    background: transparent !important;
     box-sizing: border-box;
     display: flex;
     padding: 6vh;
     position: relative;
     width: 100%; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-background-size-real {
-      background-size: auto; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-background-size-fill {
-      background-size: cover; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-background-size-contain {
-      background-size: auto; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-background-size-cover {
-      background-size: cover; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-top-left {
-      background-position: top left; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-top-center {
-      background-position: top center; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-top-right {
-      background-position: top right; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-center-left {
-      background-position: center left; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-center-center {
-      background-position: center center; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-center-right {
-      background-position: center right; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-bottom-left {
-      background-position: bottom left; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-bottom-center {
-      background-position: bottom center; }
-    .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-position-bottom-right {
-      background-position: bottom right; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box.karma-video-box-content-position-top-left {
       align-items: flex-start;
       justify-content: flex-start; }
@@ -3684,6 +3744,7 @@ html {
         transition-duration: .5s;
         fill: #fff; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box-container-player .karma-video-box-player:hover {
+      backface-visibility: hidden;
       transform: scale(1.2);
       transition-duration: .3s; }
       .karma-builder-element[data-name="karma_video_box"] .karma-video-box-container-player .karma-video-box-player:hover svg path {
@@ -3698,6 +3759,89 @@ html {
     height: 14px; }
   .karma-builder-element[data-name="karma_video_box"] .karma-builder-environment .desktop-display-none {
     display: inherit; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow .karma-video-box-background-container,
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow .karma-element-blur-effect {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow .karma-video-box-background-container {
+    background-color: transparent;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transform: scale(1) translateZ(0);
+    transition: transform .28s ease;
+    backface-visibility: hidden; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow .karma-video-box-background {
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    transform: scale(1.13) translateZ(0);
+    transition: transform .28s ease;
+    backface-visibility: hidden; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow .karma-element-blur-effect {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(35px);
+    opacity: 0;
+    transform: translateY(38px);
+    transition: opacity .28s ease;
+    z-index: -1; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow:hover {
+    transition-delay: 0s !important;
+    z-index: 3; }
+    .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow:hover .karma-video-box-background-container,
+    .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow:hover .karma-element-blur-effect {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0; }
+    .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow:hover .karma-video-box-background-container {
+      backface-visibility: hidden;
+      transform: scale(1.08) translateZ(0); }
+    .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow:hover .karma-video-box-background {
+      backface-visibility: hidden;
+      transform: scale(1) translateZ(0); }
+    .karma-builder-element[data-name="karma_video_box"] .karma-box-element-hover-shadow:hover .karma-element-blur-effect {
+      opacity: 0.7; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-shadow .karma-video-box-background-container,
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-shadow .karma-element-shadow-effect {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-shadow .karma-video-box-background-container {
+    backface-visibility: hidden;
+    overflow: hidden; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-shadow .karma-video-box-background {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-shadow .karma-element-shadow-effect {
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.25); }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-no-animation .karma-video-box-background-container {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-no-animation .karma-video-box-background-container {
+    background-color: transparent;
+    backface-visibility: hidden;
+    overflow: hidden; }
+  .karma-builder-element[data-name="karma_video_box"] .karma-box-element-no-animation .karma-video-box-background {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; }
 
 .karma-builder-environment .karma-video-box-title-tag,
 .karma-builder-environment .karma-video-box-description-tag,

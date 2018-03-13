@@ -76,18 +76,23 @@
 		 */
 		changeValue: function ( e ) {
 
-			var content = e.target.closest( '.karma-gizmo-multi-drop-down-box' ),
-				contentDataValue = content.getAttribute( 'data-drop-down-value' );
+			if( 'undefined' == this.data.model ){
+					console.error("Model Should Be Define In Describe Php");
+			}else{
+				var content = e.target.closest( '.karma-gizmo-multi-drop-down-box' ),
+					contentDataValue = content.getAttribute( 'data-drop-down-value' );
 
-			this.$el.find( '.karma-gizmo-multi-drop-down-box' ).removeClass('karma-active-multi-drop-down');
-			content.classList.add('karma-active-multi-drop-down');
+				this.$el.find( '.karma-gizmo-multi-drop-down-box' ).removeClass('karma-active-multi-drop-down');
+				content.classList.add('karma-active-multi-drop-down');
 
-			if ( "" !== contentDataValue  ) {
-				var dataModel = {};
+				if ( "" !== contentDataValue  ) {
+					var dataModel = {};
 
-				dataModel[ this.data.model ] = contentDataValue;
-				this.elementView.setAttributes( dataModel ,  false );
+					dataModel[ this.data.model ] = contentDataValue;
+					this.elementView.setAttributes( dataModel ,  false );
+				}
 			}
+
 
 		}
 

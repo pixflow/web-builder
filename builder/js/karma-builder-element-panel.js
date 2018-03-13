@@ -720,7 +720,6 @@
 
 		/**
 		 * set active responsive button
-		 * @param event
 		 *
 		 * @since   2.0
 		 * @returns { void }
@@ -733,6 +732,7 @@
 				draggableEelement = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-element-content' ),
 				activeColumn = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-active-column' ),
 				sortableSection = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( "#karma-builder-layout" );
+
 
 			_.each( contentEdtibaleList, function ( editableNode ) {
 				if( 'desktop' == buttonTypeDevice ) {

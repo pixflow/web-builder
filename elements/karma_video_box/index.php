@@ -100,10 +100,23 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
         $visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
 		$visible_mobile 	= ( 'on' == $attributes['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
 		$visible_tablet 	= ( 'on' == $attributes['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
+		$animation_class 	= 'karma-box-element-no-animation';
+		$animation_effect   = 'karma-element-no-effect';
+		if ( 'shadowwithanimation' == $attributes['animation'] ){
+			$animation_class 	= 'karma-box-element-hover-shadow';
+			$animation_effect   = 'karma-element-blur-effect';
+		}else if( 'simpleshadow' == $attributes['animation'] ){
+			$animation_class 	= 'karma-box-element-shadow';
+			$animation_effect   = 'karma-element-shadow-effect';
+		}
 		ob_start();
 		?>
-		<div data-url="<?php echo esc_attr( $attributes['videourl'] ); ?>" class="karma-video-box karma-video-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-video-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-video-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-video-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
-			<div class="karma-video-box-overlay"></div>
+		<div data-url="<?php echo esc_attr( $attributes['videourl'] ); ?>" class="karma-video-box <?php echo esc_attr( $animation_class ); ?> karma-video-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-video-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-video-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-video-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
+			<div class="karma-video-box-background-container">
+				<div class="karma-video-box-background"></div>
+				<div class="karma-video-box-overlay"></div>
+			</div>
+			<div class="karma-element-effect <?php echo esc_attr( $animation_effect ); ?>"></div>
 			<div class="karma-video-box-container-player">
 				<div class="karma-video-box-player">
 					<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/player.svg' ); ?>
@@ -117,7 +130,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 					<?php echo $description_content; ?>
 				</div>
 				<div class="karma-video-box-link-content">
-                    <div class="karma-video-box-link <?php echo $visible_desktop  ?> <?php echo $visible_tablet  ?> <?php echo $visible_mobile  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ] ?>"   visibe-on-tablet="<?php echo $attributes[ 'visibleontablet' ] ?>"  visibe-on-mobile="<?php echo $attributes[ 'visibleonmobile' ] ?>">
+                    <div class="karma-video-box-link <?php echo $visible_desktop;  ?> <?php echo $visible_tablet;  ?> <?php echo $visible_mobile;  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ]; ?>"   visibe-on-tablet="<?php echo $attributes[ 'visibleontablet' ]; ?>"  visibe-on-mobile="<?php echo $attributes[ 'visibleonmobile' ]; ?>">
 					    <?php echo $link_content; ?>
 					    <div class="karma-video-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
 				    </div>
@@ -144,15 +157,26 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 		$js_template = '<# var visibleDesktop = ( \'on\' == data.attributes.shortcode_attributes.visibleondesktop  ) ? \'\' : \'desktop-display-none karma-deactive-on-desktop\';  #>'
 			 . "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
 			 . "<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibleontablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
-			 .'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'
+			 . "<# var animationClass = 'karma-box-element-no-animation';  #>"
+			 . "<# var animationEffect   = 'karma-element-no-effect';  #>"
+		     .'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'
 			 .'<# var className = \'karma-button-fill \' #>'
 			 .'<#}else if( \'outline\'  ==  data.attributes.shortcode_attributes.type ) { #>'
 			 .'<#  className = \'karma-button-outline \' #>'
 			 .'<#} else { #>'
 			 .'<# className = \'karma-button-link \'  #>'
 			 .'<# }#>'
-			. '<div data-url="{{ data.attributes.shortcode_attributes.videourl}} " class="karma-video-box karma-video-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-video-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-video-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-video-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
-			. '<div class="karma-video-box-overlay"></div>'
+			 .'<# if ( \'shadowwithanimation\' == data.attributes.shortcode_attributes.animation ) { #>'
+			 .'<# animationClass = \'karma-box-element-hover-shadow\'; animationEffect = \'karma-element-blur-effect\'; #>'
+			 .'<# }else if ( \'simpleshadow\' == data.attributes.shortcode_attributes.animation ) { #>'
+			 .'<# animationClass = \'karma-box-element-shadow\'; animationEffect = \'karma-element-shadow-effect\'; #>'
+			 .'<# } #>'
+			. '<div data-url="{{ data.attributes.shortcode_attributes.videourl}} " class="karma-video-box {{ animationClass }} karma-video-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-video-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-video-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-video-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
+			. '<div class="karma-video-box-background-container">'
+			. '<div class="karma-video-box-background"></div>'
+			.'<div class="karma-video-box-overlay"></div>'
+			.'</div>'
+			.'<div class="karma-element-effect {{animationEffect}}"></div>'
 			. '<div class="karma-video-box-container-player">'
 			. '<div class="karma-video-box-player">'. Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/player.svg' ). '</div>'
 			. '</div>'
@@ -204,10 +228,8 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 			array(
 				'postfix' => ' .karma-video-box',
 				'property' => array(
-					'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
 					'height'			=> 	 self::$element_attributes[ 'videoheight' ] . 'px',
 					'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
-					'background-color'	=>  self::$element_attributes[ 'colorbackground' ],
 				),
 				'tablet_property' => array(
 						'min-height'		=> ( ( self::$element_attributes[ 'videoheight' ] * 70 ) / 100 ). 'px',
@@ -215,6 +237,27 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 				'mobile_property' => array(
 						'min-height'		=> ( ( self::$element_attributes[ 'videoheight' ]* 70 ) / 100 ). 'px',
 				)
+			),
+			array(
+				'postfix'	=> ' .karma-video-box-background',
+				'property'	=> array(
+					'background-color'	=>  self::$element_attributes[ 'colorbackground' ]  ,
+					'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
+				),
+			),
+			array(
+				'postfix'	=> ' .karma-element-blur-effect',
+				'property'	=> array(
+					'background-color'	=>  self::$element_attributes[ 'colorbackground' ]  ,
+					'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
+					'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
+				),
+			),
+			array(
+				'postfix'	=> ' .karma-video-box-container-player',
+				'property'	=> array(
+					'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
+				),
 			),
 			array(
 				'postfix' => ' .karma-video-box-overlay',

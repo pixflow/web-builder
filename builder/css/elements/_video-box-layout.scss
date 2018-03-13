@@ -29,64 +29,12 @@
 		}
 
 		.karma-video-box {
-			background-repeat: no-repeat;
+			background: transparent !important;
 			box-sizing: border-box;
 			display: flex;
 			padding: 6vh;
 			position: relative;
 			width: 100%;
-
-			&.karma-video-box-background-size-real {
-				background-size: auto;
-			}
-
-			&.karma-video-box-background-size-fill {
-				background-size: cover;
-			}
-
-			&.karma-video-box-background-size-contain {
-				background-size: auto;
-			}
-
-			&.karma-video-box-background-size-cover {
-				background-size: cover;
-			}
-
-			&.karma-video-box-position-top-left {
-				background-position: top left;
-			}
-
-			&.karma-video-box-position-top-center {
-				background-position: top center;
-			}
-
-			&.karma-video-box-position-top-right {
-				background-position: top right;
-			}
-
-			&.karma-video-box-position-center-left {
-				background-position: center left;
-			}
-
-			&.karma-video-box-position-center-center {
-				background-position: center center;
-			}
-
-			&.karma-video-box-position-center-right {
-				background-position: center right;
-			}
-
-			&.karma-video-box-position-bottom-left {
-				background-position: bottom left;
-			}
-
-			&.karma-video-box-position-bottom-center {
-				background-position: bottom center;
-			}
-
-			&.karma-video-box-position-bottom-right {
-				background-position: bottom right;
-			}
 
 			&.karma-video-box-content-position-top-left {
 				@include justify-align(flex-start, flex-start);
@@ -220,6 +168,7 @@
 				top: 0;
 
 			}
+
 			.karma-video-box-text-container {
 				width: fit-content;
 
@@ -250,6 +199,7 @@
 					}
 				}
 			}
+
 			.karma-video-box-link-content{
 				display: flex;
 				margin-top: 10px;
@@ -258,6 +208,7 @@
 					margin-top: 8px;
 				}
 			}
+
 			.karma-video-box-link {
 				display: flex;
 				white-space: nowrap;
@@ -385,6 +336,7 @@
 			}
 
 		}
+
 		.karma-image-position-content.karma-drop-down-box.open-drop-down-gizmo {
 			@include box( 110px, 110px );
 			left: 14px;
@@ -412,6 +364,7 @@
 			}
 
 			.karma-video-box-player:hover {
+				backface-visibility: hidden;
 				transform: scale(1.2);
 				transition-duration: .3s;
 
@@ -445,12 +398,124 @@
 			}
 		}
 
+		.karma-box-element-hover-shadow{
 
+			.karma-video-box-background-container,
+			.karma-element-blur-effect{
+				@include box( 100% );
+				background-repeat: no-repeat;
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
 
+			.karma-video-box-background-container{
+				background-color: transparent;
+				border: 1px solid transparent;
+				overflow: hidden;
+				transform: scale(1) translateZ(0);
+				transition: transform .28s ease;
+				backface-visibility: hidden;
+
+			}
+
+			.karma-video-box-background{
+				background-color: transparent;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;;
+				height: 100%;
+				transform: scale(1.13) translateZ(0);
+				transition: transform .28s ease;
+				backface-visibility: hidden;
+
+			}
+
+			.karma-element-blur-effect{
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				filter: blur(35px);
+				opacity: 0;
+				transform: translateY(38px);
+				transition: opacity .28s ease;
+				z-index: -1;
+			}
+
+			&:hover {
+				transition-delay: 0s !important;
+				z-index: 3;
+
+				.karma-video-box-background-container,
+				.karma-element-blur-effect {
+					@include box(100%);
+					left: 0;
+					position: absolute;
+					top: 0;
+				}
+				.karma-video-box-background-container {
+					backface-visibility: hidden;
+					transform: scale(1.08) translateZ(0);
+				}
+				.karma-video-box-background {
+					backface-visibility: hidden;
+					transform: scale(1) translateZ(0);
+				}
+				.karma-element-blur-effect {
+					opacity: 0.7;
+				}
+			}
+
+		}
+
+		.karma-box-element-shadow{
+			.karma-video-box-background-container,
+			.karma-element-shadow-effect{
+				@include box( 100% );
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+
+			.karma-video-box-background-container{
+				backface-visibility: hidden;
+				overflow: hidden;
+			}
+
+			.karma-video-box-background{
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+
+			.karma-element-shadow-effect{
+				box-shadow: 0 20px 30px 0 rgba(0,0,0,0.25);
+			}
+
+		}
+
+		.karma-box-element-no-animation{
+			.karma-video-box-background-container{
+				@include box( 100% );
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+			.karma-video-box-background-container{
+				background-color: transparent;
+				backface-visibility: hidden;
+				overflow: hidden;
+			}
+			.karma-video-box-background{
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+		}
 	}
-
 }
-
 .karma-builder-environment {
 	
 	.karma-video-box-title-tag,

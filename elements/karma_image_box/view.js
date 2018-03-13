@@ -309,7 +309,8 @@
 			var imageAddress	= this.getAttributes( [ 'imgurl' ] ),
 				elementId		= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
-			this.renderCss( '#' + elementId + ' .karma-image-text-box' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			this.renderCss( '#' + elementId + ' .karma-image-box-background' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'url('+ imageAddress.imgurl +')' );
 
 		},
 
@@ -369,8 +370,8 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				radiusBox	= this.getAttributes( ['radiusbox'] );
 
-			this.renderCss( "#" + elementId + " .karma-image-text-box", 'border-radius', radiusBox.radiusbox + "px"  );
-			this.renderCss( "#" + elementId + " .karma-image-text-box-overlay", 'border-radius', radiusBox.radiusbox + "px"  );
+			this.renderCss( "#" + elementId + " .karma-image-box-background-container", 'border-radius', radiusBox.radiusbox + "px"  );
+			this.renderCss( "#" + elementId + " .karma-element-effect", 'border-radius', radiusBox.radiusbox + "px"  );
 
 		},
 
@@ -498,7 +499,7 @@
 		backgroundcolor: function () {
 
 			var elementId = this.elementSelector();
-			this.renderCss( '#' + elementId + ' .karma-image-text-box', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
+			this.renderCss( '#' + elementId + ' .karma-image-box-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
 
 		},
 
@@ -627,8 +628,92 @@
 				this.el.querySelector( '.karma-image-text-box-link' ).classList.add( "karma-deactive-on-mobile" );
 			}
 
-		}
+		},
 
+		/**
+		 * @summary  Remove animation on element
+		 *
+		 * @param   {object}    element
+		 * @param   {string}    elementEffect
+		 *
+		 * @since 0.2
+		 * @return {void}
+		 */
+		removeAnimation : function( element, elementEffect ){
+
+			element.remove('karma-box-element-shadow');
+			element.remove('karma-box-element-hover-shadow');
+			element.add('karma-box-element-no-animation');
+			elementEffect.remove('karma-element-shadow-effect');
+			elementEffect.remove('karma-element-blur-effect');
+			elementEffect.add('karma-element-no-effect');
+
+		},
+
+		/**
+		 * Remove simple shadow on element
+		 *
+		 * @param   {object}    element
+		 * @param   {string}    elementEffect
+		 *
+		 * @since 0.2
+		 * @return {void}
+		 */
+		addSimpleShadow : function ( element, elementEffect ) {
+
+			element.remove('karma-box-element-hover-shadow');
+			element.remove('karma-box-element-no-animation');
+			element.add('karma-box-element-shadow');
+			elementEffect.remove('karma-element-blur-effect');
+			elementEffect.remove('karma-element-no-effect');
+			elementEffect.add('karma-element-shadow-effect');
+
+		},
+
+		/**
+		 * Remove animation with shadow on element
+		 *
+		 * @param   {object}    element
+		 * @param   {string}    elementEffect
+		 *
+		 * @since 0.2
+		 * @return {void}
+		 */
+		addShahdowWithAnimation : function ( element, elementEffect ) {
+
+			element.remove('karma-box-element-shadow');
+			element.remove('karma-box-element-no-animation');
+			element.add('karma-box-element-hover-shadow');
+			elementEffect.remove('karma-element-shadow-effect');
+			elementEffect.remove('karma-element-no-effect');
+			elementEffect.add('karma-element-blur-effect');
+
+
+		},
+
+		/**
+		 * Animation functionality
+		 *
+		 *
+		 * @since 2.0
+		 * @return {void}
+		 */
+		animation : function () {
+
+			var animationEffect = this.getAttributes( ['animation'] ).animation,
+				element = this.el.querySelector('.karma-image-text-box').classList,
+				elementEffect = this.el.querySelector('.karma-element-effect').classList;
+
+			if ( 'none' == animationEffect ){
+				this.removeAnimation( element, elementEffect );
+			}else if ( 'simpleshadow' == animationEffect ){
+				this.addSimpleShadow( element, elementEffect );
+			}else if( 'shadowwithanimation' == animationEffect ){
+				this.addShahdowWithAnimation( element, elementEffect );
+
+			}
+
+		}
 
 
     });

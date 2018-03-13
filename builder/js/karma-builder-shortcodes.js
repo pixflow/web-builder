@@ -859,6 +859,7 @@
 		 *
 		 * @returns { void }
 		 */
+		//@TODO: add multiple selector
 		renderCss: function ( selector, attribute, value, device ){
 
 			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value, device );

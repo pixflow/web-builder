@@ -182,28 +182,27 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 						)
 					),
 					array(
-								'type'      => 'multiDropDown',
-								'icon'		=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/magic.svg' ),
-								'model'		=>'animation',
-								'params'	=> array(
-										array(
-												'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
-												'text'	=>esc_attr( 'None', 'karma' ),
-												'value' =>'none'
-										),
-										array(
-												'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/boxshadow.svg' ,
-												'text'	=>esc_attr( 'Shadow', 'karma' ),
-												'value' =>'shadowModel'
-										),
-										array(
-												'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/boxshadow-with-animation.svg' ,
-												'text'	=>esc_attr( 'Shadow with animation', 'karma' ),
-												'value' =>'shadowAnimationModel'
-										),
-								)
-						),
-
+						'type'      => 'multiDropDown',
+						'icon'		=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/magic.svg' ),
+						'model'		=>'animation',
+						'params'	=> array(
+							array(
+								'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
+								'text'	=>esc_attr( 'None', 'karma' ),
+								'value' =>'none'
+							),
+							array(
+								'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
+								'text'	=>esc_attr( 'Shadow', 'karma' ),
+								'value' =>'simpleshadow'
+							),
+							array(
+								'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
+								'text'	=>esc_attr( 'Shadow with animation', 'karma' ),
+								'value' =>'shadowwithanimation',
+							),
+						)
+					),
 					array(
 						'type'   => 'position',
 						"params" => array(
@@ -223,7 +222,6 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 
 				)
 			),
-
 			array(
 				"type"      => "titleGizmo",
 				'selector' 	=> '.karma-element-content',
