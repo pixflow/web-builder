@@ -584,6 +584,9 @@
 				position: absolute;
 				transition-duration: .3s;
 				z-index: 2;
+				.karma-hover-container{
+					color:#fff;
+				}
 
 				.karma-section-hover-icon{
 					@include box( 40px, 15px );

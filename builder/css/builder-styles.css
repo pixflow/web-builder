@@ -6515,6 +6515,8 @@ div.karma-element-content .karma-top-spacing {
         position: absolute;
         transition-duration: .3s;
         z-index: 2; }
+        #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element .karma-section-hover .karma-hover-container {
+          color: #fff; }
         #karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element .karma-section-hover .karma-section-hover-icon {
           width: 40px;
           height: 15px;
