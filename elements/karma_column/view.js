@@ -327,21 +327,26 @@
 		/**
 		 * Update the size of columns
 		 *
-		 * @param {number}	value   New value
+		 * @param {object}    newSize   New column sizes
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
-		updateWidthColumn : function ( value ) {
+		updateWidthColumn: function ( newSize ) {
 
-			var newAttributes = {
-				'sm_size' : value ,
-				'lg_size' : value ,
-				'md_size' : value ,
-				'xl_size' : value ,
+			var defaultSize = {
+				'sm_size': 12,
+				'md_size': 12,
+				'lg_size': 12,
+				'xl_size': 12
 			};
 
-			this.setAttributes( newAttributes, false);
+			var newAttributes = {};
+			for ( var i in defaultSize ) {
+				newAttributes[ i ] = ( newSize.hasOwnProperty( i ) ) ? newSize[ i ] : defaultSize[ i ];
+			}
+
+			this.setAttributes( newAttributes, false );
 
 		},
 

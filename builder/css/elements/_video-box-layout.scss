@@ -171,7 +171,7 @@
 
 			.karma-video-box-text-container {
 				width: fit-content;
-
+				max-width: 91% ;
 				> div {
 					position: relative;
 
@@ -181,7 +181,6 @@
 						margin: 0;
 						min-width: 30px;
 						text-decoration: none;
-						word-break: keep-all;
 					}
 					.karma-video-box-description-tag{
 						min-width: 150px;

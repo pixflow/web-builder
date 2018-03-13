@@ -117,14 +117,13 @@
 		 *
 		 * @returns {Array} - current layout of section
 		 */
-		currentGrid : function( ) {
-			//@TODO responsiveTool
+		currentGrid : function() {
+
 			var childrenModels = this.findChildren();
 
 			var currentGrid = [];
 			for (var i = 0, len = childrenModels.length; i < len; i++) {
-				//@TODO change sm_size to whatever may apply on responsive tool :)
-				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.sm_size ) )
+				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.lg_size ) );
 			}
 			return currentGrid;
 
@@ -208,17 +207,19 @@
 		 * Function just update size of column
 		 *
 		 * @param {number}	columnKey		The column id
-		 * @param {number}	parentId		The row id
 		 * @param {number}	newWidth		The new width of column
+		 * @param {number}	newGridColumns	The count of columns in new grid
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
-		updateColumnModel : function ( columnKey, parentId, newWidth ) {
+		updateColumnModel : function ( columnKey, newWidth, newGridColumns ) {
 
-			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ) ,
-				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
-			columnInstance.updateWidthColumn( newWidth );
+			var model = karmaBuilder.karmaModels.findWhere( { 'element_key': columnKey } ),
+				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView(),
+				mdSize = this.calcMediumWidthColumn( newGridColumns ),
+				newSize = { lg_size: newWidth, xl_size: newWidth, md_size: mdSize };
+			columnInstance.updateWidthColumn( newSize );
 			columnInstance.$el.trigger('karma/finish/modifyColumns');
 
 		},
@@ -238,13 +239,12 @@
 			}
 
 			var currentGrid = this.currentGrid(),
-				parentKey = this.model.attributes.element_key,
 				lastColumn ,
 				columns = this.getColumnsKey();
 
 			for ( var counter in currentGrid ){
 				if ( newLayout[ counter ] ){
-					this.updateColumnModel( columns[ counter ], parentKey, newLayout[ counter ] );
+					this.updateColumnModel( columns[ counter ], newLayout[ counter ], newLayout.length );
 					lastColumn = counter ;
 				} else {
 					this.deleteColumnModel( columns[ counter ], columns[ lastColumn ] );
@@ -295,9 +295,9 @@
 				 }
 				order++;
 				newModel.shortcode_attributes.lg_size = newLayout[ counter ];
-				newModel.shortcode_attributes.sm_size = newLayout[ counter ];
+				newModel.shortcode_attributes.sm_size = 12;
 				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
-				newModel.shortcode_attributes.md_size = newLayout[ counter ];
+				newModel.shortcode_attributes.md_size = this.calcMediumWidthColumn( newLayout.length );
 
 				var columnModel = karmaBuilder.karmaModels.add( newModel );
 				$( '[data-element-key="' + columnModel.get('parent_key') + '"] .karma-row' ).append( KarmaView.createBuilderModel( columnModel ) );
@@ -551,7 +551,58 @@
 				this.el.querySelector( 'section' ).classList.add( "karma-deactive-on-mobile" );
 			}
 
-		}
+		},
+
+		/**
+		 * @summary update column responsive sizes and change class
+		 *
+		 * @param {number}    newLayout The grid layout
+		 *
+		 * @since 2.0
+		 * @return {void}
+		 */
+		changeColumnResponsive: function ( newSize ) {
+
+			var currentGrid = this.currentGrid(),
+				columns = this.getColumnsKey();
+
+			for ( var counter in currentGrid ) {
+
+				var model = karmaBuilder.karmaModels.findWhere( { 'element_key': columns[ counter ] } ),
+					columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
+				var newColumnSize = {
+					lg_size: model.attributes.shortcode_attributes.lg_size
+					, xl_size: model.attributes.shortcode_attributes.xl_size
+					, md_size: newSize
+				};
+				columnInstance.updateWidthColumn( newColumnSize );
+				columnInstance.$el.trigger( 'karma/finish/modifyColumns' );
+
+			}
+
+		},
+
+		/**
+		 * @summary return the medium size of column base on columns count
+		 *
+		 * @param {number}    columnsCount   no of columns
+		 *
+		 * @since 2.0
+		 * @returns {number}
+		 */
+		calcMediumWidthColumn: function ( columnsCount ) {
+
+			var mdSize = 12;
+			if ( 1 === columnsCount || 3 == columnsCount ) {
+				mdSize = 12;
+			} else if ( 2 === columnsCount || 4 == columnsCount ) {
+				mdSize = 6;
+			} else if ( 6 === columnsCount ) {
+				mdSize = 4;
+			}
+			return mdSize;
+
+		},
 
 	} );
 

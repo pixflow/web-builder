@@ -371,6 +371,7 @@ class Karma_Section_Describe extends Karma_Section {
 						),
 
 					),
+
 					array(
 						'type'		=> 'text',
 						'form'		=> 'row-responsive-panel',

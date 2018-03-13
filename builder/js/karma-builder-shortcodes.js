@@ -61,7 +61,7 @@
 		},
 
 		/**
-		 * Update column helper on window resize
+		 * ]Update column helper on window resize
 		 *
 		 * @since 2.0
 		 *
@@ -987,7 +987,7 @@
 					var deviceMediaQueryPrefix = '',
 						deviceMediaQueryPostfix = '';
 					if ( 'tablet' == device ) {
-						deviceMediaQueryPrefix = '@media screen and (max-width: 768px) { /*tablet-start*/';
+						deviceMediaQueryPrefix = '@media screen and (max-width: 1020px) { /*tablet-start*/';
 						deviceMediaQueryPostfix = '/*tablet-finish*/}';
 					} else if ( 'mobile' == device ) {
 						deviceMediaQueryPrefix = '@media screen and (max-width: 430px) { /*mobile-start*/';

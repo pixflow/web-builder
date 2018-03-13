@@ -63,7 +63,7 @@ class Karma_Stylesheet {
 
 		}
 
-		$css_block .= ( '' != $tablet_block ) ? '@media screen and (max-width: 768px) { /*tablet-start*/' . $tablet_block . '/*tablet-finish*/}' : '';
+		$css_block .= ( '' != $tablet_block ) ? '@media screen and (max-width: 1020px) { /*tablet-start*/' . $tablet_block . '/*tablet-finish*/}' : '';
 		$css_block .= ( '' != $mobile_block ) ? '@media screen and (max-width: 430px) { /*mobile-start*/' . $mobile_block . '/*mobile-finish*/}' : '';
 		return $css_block;
 
