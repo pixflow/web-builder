@@ -177,17 +177,17 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 						'params'	=> array(
 								array(
 										'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg',
-										'text'	=>'None',
+										'text'	=>esc_attr( 'None', 'karma' ),
 										'value' =>'none'
 								),
 								array(
 										'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/boxshadow.svg' ,
-										'text'	=>'Shadow',
+										'text'	=>esc_attr( 'Shadow', 'karma' ),
 										'value' =>'shadowModel'
 								),
 								array(
 										'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/boxshadow-with-animation.svg' ,
-										'text'	=>'Shadow with animation',
+										'text'	=>esc_attr( 'Shadow with animation', 'karma' ),
 										'value' =>'shadowAnimationModel'
 								),
 						)
