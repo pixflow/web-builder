@@ -2222,7 +2222,7 @@ html {
               color: #419CF8;
               display: flex;
               font-family: "HelveticaNeue";
-              justify-content: end;
+              justify-content: flex-start;
               padding: 16px 10px 6px 10px;
               text-decoration: none; }
               #karma-typography-setting #karma-typography-manager .karma-typography-font .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-add-font a:after, #karma-typography-setting #karma-typography-manager .karma-typography-font #karma-typography-manager .karma-dropdown-body .karma-dropdown-add-font a:after {
