@@ -3279,9 +3279,8 @@ html {
       position: absolute;
       top: 0; }
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
-      max-width: 90%;
-      width: fit-content;
-      max-width: 91%; }
+      max-width: 85%;
+      width: fit-content; }
       .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container > div .karma-image-text-box-title-tag,
@@ -3618,7 +3617,7 @@ html {
       top: 0; }
     .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container {
       width: fit-content;
-      max-width: 91%; }
+      max-width: 85%; }
       .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div {
         position: relative; }
         .karma-builder-element[data-name="karma_video_box"] .karma-video-box .karma-video-box-text-container > div .karma-video-box-title-tag,
