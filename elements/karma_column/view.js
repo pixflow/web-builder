@@ -394,7 +394,7 @@
 		moveContent : function ( lastColumnKey, model ) {
 
 			var viewObject = $('[data-element-key="' + model.get('element_key') + '"]').backboneView() ,
-				elementID = model.get('shortcode_name').replace( '_', '-' ) + '-' + model.get('element_key'),
+				elementID = model.get('shortcode_name').replace( /_/g, '-' ) + '-' + model.get('element_key'),
 				moveToColumn = $( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column-margin'),
 				columnPlaceholder = moveToColumn.find( '.karma-column-placeholder' ),
 				script = $( '#script-' + elementID ).clone(),
