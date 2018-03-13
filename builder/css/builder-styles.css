@@ -3909,6 +3909,8 @@ html {
 /* _-_-_- layout/HEADER -_-_-_ */
 #karma-builder-layout a {
   border: none; }
+#karma-builder-layout [contenteditable] {
+  text-transform: none !important; }
 
 .ui-helper-hidden-accessible {
   display: none; }

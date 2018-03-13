@@ -3,6 +3,9 @@
 	a{
 		border: none;
 	}
+	[contenteditable] {
+		text-transform: none !important;
+	}
 }
 .ui-helper-hidden-accessible{
 	display: none;
