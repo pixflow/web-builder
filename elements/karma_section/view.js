@@ -406,9 +406,14 @@
 		extraclass: function(){
 
 			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.get('element_key'),
-				defaultClasses =  elementClass + " karma-section  "  + this.getAttributes( ['extraclass'] ).extraclass;
+				defaultClasses =  elementClass + " karma-section  "  + this.getAttributes( ['extraclass'] ).extraclass,
+				section = this.el.querySelector('.karma-section');
 
-			this.el.querySelector('.karma-section').setAttribute( 'class', defaultClasses );
+			if ( section.classList.contains('karma-fit-to-screen') ){
+				defaultClasses += ' karma-fit-to-screen'
+			}
+
+			section.setAttribute( 'class', defaultClasses );
 
 		},
 
