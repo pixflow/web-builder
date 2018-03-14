@@ -192,12 +192,12 @@ class Karma_Image_Box_Describe extends Karma_Image_Box {
 								'value' =>'none'
 							),
 							array(
-								'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
+								'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/boxshadow.svg' ,
 								'text'	=>esc_attr( 'Shadow', 'karma' ),
 								'value' =>'simpleshadow'
 							),
 							array(
-								'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
+								'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/boxshadow-with-animation.svg' ,
 								'text'	=>esc_attr( 'Shadow with animation', 'karma' ),
 								'value' =>'shadowwithanimation',
 							),

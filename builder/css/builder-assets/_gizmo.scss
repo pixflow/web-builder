@@ -571,6 +571,7 @@ body:not(.karma-builder-environment) {
 						color: $builder-accent-color;
 					}
 					left:11px;
+					padding-bottom: 0;
 					.karma-gizmo-multi-drop-down-content-box{
 
 						> div{
@@ -601,7 +602,7 @@ body:not(.karma-builder-environment) {
 							padding-left: 15px;
 						}
 						.karma-gizmo-multi-drop-down-icon{
-							@include box(22px,18px);
+							@include box(24px,18px);
 							background-position: center;
 							background-repeat: no-repeat;
 						}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>z213</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-45.9%" y="-45.9%" width="191.8%" height="191.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="1.8359375" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="z216" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1.000000, -8.000000)">
+        <g id="z213" transform="translate(4.813708, 9.000000)" fill="#419CF8">
+            <rect id="z212" fill-opacity="0.499943388" filter="url(#filter-1)" x="0" y="3" width="12" height="12" rx="2"></rect>
+            <rect id="z2011" x="3" y="0" width="12" height="12" rx="2"></rect>
+        </g>
+    </g>
+</svg>
