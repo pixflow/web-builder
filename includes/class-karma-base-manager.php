@@ -133,11 +133,18 @@ abstract class Karma_Base_Manager{
 				'title' => __('Edit With Karma', 'karma'),
 				'href' => ( $builder_url == strtok( $builder_url, '?' ) ) ? $builder_url . '?load_builder=true' : $builder_url . '&load_builder=true',
 		);
+		$karma_add_new_button = array(
+				'id' => 'karma_customizer_add_new_button',
+				'title' => __('Add New', 'karma'),
+				'href' => ( $builder_url == strtok( $builder_url, '?' ) ) ? $builder_url . '?builder-page=karma-page-manager' : $builder_url . '&builder-page=karma-page-manager',
+		);
 
 		if ( ! is_admin() ) {
 			$wp_admin_bar->add_node( $karma_edit_button );
+			$wp_admin_bar->add_node( $karma_add_new_button );
 		}
 	}
 
 
 }
+
