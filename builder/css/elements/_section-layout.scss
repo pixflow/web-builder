@@ -2,6 +2,10 @@
 
 	&[ data-name="karma_section" ] {
 		position: relative;
+		.karma-fit-to-screen{
+			@include flexbox( center, center, center );
+			min-height: 100vh;
+		}
 	}
 
 }
@@ -11,6 +15,7 @@
 
 		&[ data-name="karma_section" ] {
 			cursor: all-scroll;
+
 		}
 
 	}
@@ -64,3 +69,4 @@
 	}
 
 }
+

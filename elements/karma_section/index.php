@@ -32,6 +32,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'backgroundtype'		=> 'color',
 			'visibleonmobile'		=> 'on',
 			'visibleontablet'		=> 'on',
+			'fittoheight'			=> 'false'
 
 		);
 
@@ -46,6 +47,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$container_class 	= ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
 		$visible_mobile 	= '';//( 'on' == $atts['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
 		$visible_tablet 	= '';//( 'on' == $atts['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
+		$fit_to_height = ( 'true' == $atts['fittoheight'] ) ? ' karma-fit-to-screen': '' ;
 		ob_start();
 		?>
 
@@ -53,7 +55,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				class="karma-section-container karma-background-section <?php echo $visible_tablet ?> <?php echo $visible_mobile ?> <?php echo esc_attr( $this->background_classes( $atts ) ); ?>"
 				visibe-on-tablet="<?php echo $atts[ 'visibleontablet' ] ?>"
 				visibe-on-mobile="<?php echo $atts[ 'visibleonmobile' ] ?>">
-			<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'>
+			<div class='<?php echo $fit_to_height; ?> karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'>
 				<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 					<?php echo do_shortcode( $content ); ?>
 				</div>
@@ -71,9 +73,10 @@ class Karma_Section extends Karma_Shortcode_Base {
 		       . "<# var visibleMobile = '';//( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
 		       . "<# var visibleTablet = '';//( 'on' == data.attributes.shortcode_attributes.visibletablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
 		       . "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
+		       . "<# var fittoscreen = ( 'true' == data.attributes.shortcode_attributes.fittoheight ) ? ' karma-fit-to-screen' : '' ; #>"
 		       . "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-' + data.attributes.shortcode_attributes.backgroundsize + ' karma-background-position-' + data.attributes.shortcode_attributes.backgroundposition ; #>"
 		       . '<section class="karma-section-container karma-background-section {{ backgroundClasses }} {{visibleMobile}}  {{ visibleTablet }}"  visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}" >'
-		       . "<div class='karma-section karma-section-{{ data.attributes.element_key }} {{ data.attributes.shortcode_attributes.extra_class }}'>"
+		       . "<div class='{{fittoscreen}} karma-section karma-section-{{ data.attributes.element_key }} {{ data.attributes.shortcode_attributes.extra_class }}'>"
 		       . "<div class='{{ rowContainer }} karma-row karma-no-gutters'>"
 		       . "</div>"
 		       . "</div>"

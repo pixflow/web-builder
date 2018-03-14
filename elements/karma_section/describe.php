@@ -41,7 +41,7 @@ class Karma_Section_Describe extends Karma_Section {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "384",
+				"height" => "431",
 				"params" => array(
 					array(
 						"name"	=> "structure",
@@ -49,6 +49,7 @@ class Karma_Section_Describe extends Karma_Section {
 						"label"	=> esc_attr__( "Grid options", 'karma' ),
 						'value'	=> "full",
 						"class" => "radio-image-border-hover",
+						"separator" => "container",
 						"field"	=> array(
 
 							array(
@@ -61,11 +62,20 @@ class Karma_Section_Describe extends Karma_Section {
 								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
 								'style' => 'padding-left: 19px; padding-right: 38px; ',
 								'title'	=> "Container",
-								'value'	=> "container"
-							),
+								'value'	=> "container",
 
+							),
 						)
+
 					),
+
+					array(
+						"name"	=>"fittoheight",
+						"type"	=>Karma_Builder_Setting_Panel::CHECK_BOX,
+						"label"	=> esc_attr__( "Fit to screen", 'karma' ),
+
+					),
+
 					array(
 						"name"	=> "title",
 						"type"	=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,

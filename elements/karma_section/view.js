@@ -310,7 +310,7 @@
 
 
 		/**
-		 *  create html fot tooltip
+		 *  create html for tooltip
 		 *
 		 * @since 0.1.0
 		 *
@@ -324,6 +324,25 @@
 			}
 
 		},
+
+
+
+		/**
+		 *  fit to screen option for section
+		 *
+		 * @since 2.0
+		 *
+		 */
+		fittoheight : function () {
+			
+			if( this.el.querySelector('.karma-section').classList.contains('karma-fit-to-screen') ){
+				this.el.querySelector('.karma-section').classList.remove('karma-fit-to-screen');
+			}else{
+				this.el.querySelector('.karma-section').classList.add('karma-fit-to-screen');
+			}
+
+		},
+
 
 		/**
 		 *  structure field changes. Change Container of Section instead of render

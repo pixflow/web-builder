@@ -1491,7 +1491,7 @@ body {
     .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box .karma-image-text-box-text-container {
       min-width: 80%; }
 
-  .karma-builder-element[data-name="karma_video_box"] .karma-image-text-box {
+  .karma-builder-element[data-name="karma_video_box"] .karma-video-box {
     padding: 35px !important; }
 
   #karma-builder-layout h1 {
@@ -3078,6 +3078,12 @@ html {
 
 .karma-builder-element[data-name="karma_section"] {
   position: relative; }
+  .karma-builder-element[data-name="karma_section"] .karma-fit-to-screen {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    min-height: 100vh; }
 
 .karma-builder-environment .karma-builder-element[data-name="karma_section"] {
   cursor: all-scroll; }
@@ -5674,7 +5680,7 @@ div.karma-element-content .karma-top-spacing {
       margin-right: 10px; }
 
 .karma-check-box-controller {
-  padding: 11px 20px 0;
+  padding: 20px;
   position: relative; }
   .karma-check-box-controller .check-box-controller-template {
     align-items: center;
