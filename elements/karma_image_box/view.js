@@ -433,6 +433,7 @@
 				newTag	= document.createElement( tagAttr.titletag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-image-text-box-title-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
@@ -451,6 +452,7 @@
 				newTag	= document.createElement( tagAttr.descriptiontag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-image-text-box-description-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
@@ -469,6 +471,7 @@
 				newTag	= document.createElement( tagAttr.linktag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-image-text-box-link-tag' );
 			element.parentNode.replaceChild( newTag, element );
 

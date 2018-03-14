@@ -83,9 +83,10 @@
 			var element = this.el.querySelector( '.karma-text-tag' ),
 				tagAttr = this.getAttributes( ['tag'] ),
 				newTag = document.createElement( tagAttr.tag );
-			newTag.innerHTML = element.innerHTML;
-			newTag.classList.add( 'karma-text-tag', 'karma-document-click', 'karma-editable-content' );
 
+			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
+			newTag.classList.add( 'karma-text-tag', 'karma-document-click', 'karma-editable-content' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},

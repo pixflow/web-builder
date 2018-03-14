@@ -10,7 +10,6 @@
 			'mousedown .karma-video-box-description-tag'	: 'changeVideoDescription',
 			'keypress .karma-video-box-description-tag'		: 'changeClassVideoDescription',
 			'keyup .karma-video-box-link-tag'				: 'saveVideoLink',
-			'mousedown .karma-video-box-link-tag'			: 'changeTextLink',
 			'click .karma-video-box-title'					: 'titleEditable',
 			'click .karma-video-box-description'			: 'titleDescription',
 			'click .karma-video-box-link'					: 'titleLink',
@@ -140,7 +139,7 @@
 				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
 
 			if ( "Great idea" == contentData.trim() ) {
-				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
 					content.innerText = "";
 				}
 			}
@@ -184,17 +183,6 @@
 
 		},
 
-		/**
-		 * change link text
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		changeTextLink : function () {
-
-			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
-				contentData = content.innerHTML;
-			},
 
 		 /**
 		 * Render video element
@@ -371,6 +359,7 @@
 
 			var elementId 	= this.$el,
 				linktarget  = this.getAttributes( ['target'] );
+
 			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.target );
 
 		},
@@ -388,6 +377,7 @@
 				newTag = document.createElement( tagAttr.titletag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-video-box-title-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
@@ -406,6 +396,7 @@
 				newTag = document.createElement( tagAttr.descriptiontag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-video-box-description-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
@@ -424,6 +415,7 @@
 				newTag = document.createElement( tagAttr.linktag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-video-box-link-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
