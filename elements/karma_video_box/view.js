@@ -45,6 +45,7 @@
 				content.innerText = "Live Text Editor";
 				content.classList.add('karma-video-box-description-opacity');
 			}
+			content.style.minWidth = "0";
 
 			if( '' == contentData ){
 				this.setAttributes( { 'descriptiontext' : "Live Text Editor" },  true );
@@ -68,6 +69,7 @@
 
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.style.minWidth = "200px";
 					content.innerText = "";
 				}
 			}

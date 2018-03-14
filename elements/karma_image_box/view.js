@@ -94,6 +94,7 @@
 				content.innerText = "Live Text Editor";
 				content.classList.add('karma-image-box-description-opacity');
 			}
+			content.style.minWidth = "0";
 
 
 			if( '' == contentData ){
@@ -120,6 +121,7 @@
 
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.style.minWidth = "200px";
 					content.innerText = "";
 				}
 			}
