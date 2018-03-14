@@ -44,7 +44,7 @@ abstract class Karma_Base_Manager{
 
 		$this->add_page_support();
 		$this->register_page_templates();
-		add_filter( 'template_include', [ $this, 'load_template' ] );
+		add_filter( 'template_include', array( $this, 'load_template' ) );
 
 	}
 
@@ -118,5 +118,26 @@ abstract class Karma_Base_Manager{
 		}
 
 	}
+
+	/**
+	 * Add custom button in admin bar.
+	 * @param object $wp_admin_bar word press admin bar
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	public function karma_custom_toolbar_link( $wp_admin_bar ){
+		$builder_url =  get_permalink();
+		$karma_edit_button = array(
+				'id' => 'karma_customizer_button',
+				'title' => __('Edit With Karma', 'karma'),
+				'href' => ( $builder_url == strtok( $builder_url, '?' ) ) ? $builder_url . '?load_builder=true' : $builder_url . '&load_builder=true',
+		);
+
+		if ( ! is_admin() ) {
+			$wp_admin_bar->add_node( $karma_edit_button );
+		}
+	}
+
 
 }
