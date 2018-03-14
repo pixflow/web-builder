@@ -7279,7 +7279,12 @@ body #karma-builder-layout {
         .karma-builder-environment .karma-builder-element.karma-active-column .karma-gizmo-template.karma-inner-gizmo-template.column-gizmo-group-responsive .karma-builder-gizmo-text:hover {
           color: #394959; }
     .karma-builder-environment .karma-builder-element.karma-active-column .column-gizmo-group {
-      display: none; } }
+      display: none; }
+    .karma-builder-environment *:not(#karma-builder-layout) {
+      visibility: hidden !important; }
+    .karma-builder-environment #karma-show-parent,
+    .karma-builder-environment #karma-builder-layout *[class*="karma"] {
+      visibility: visible !important; } }
 #wpadminbar #wp-admin-bar-karma_customizer_button {
   background-image: url(../media/svg/wordpress-nav-edit-karma.svg);
   background-position: left 0px bottom 9px;

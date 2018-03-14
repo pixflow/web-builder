@@ -419,6 +419,23 @@ var karmaBuilderActions = karmaBuilderActions || {};
 				this.getIframe().$( '.karma-blank-page-container' ).remove();
 			}
 
+		},
+
+		/**
+		 * Hide all elements in document
+		 * insteadof #karma-builder-layout and its children
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		hideNonKarmaElements : function (){
+
+			var containers = this.getIframe().$('#karma-builder-layout').parents( ':not(html):not(body)' );
+			for ( var i = containers.length - 1; i >= 0; i-- ){
+				if( undefined != containers[ i ].querySelector('#karma-builder-layout') ){
+					containers[ i ].setAttribute( 'id', 'karma-show-parent' );
+				}
+			}
 		}
 
 	});

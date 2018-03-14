@@ -4,6 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Iframe model</title>
 	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
+	<style>
+		.karma-builder-environment *:not( #karma-builder-layout ){
+			visibility: hidden !important;
+		}
+		.karma-builder-environment #karma-show-parent,
+		.karma-builder-environment #karma-builder-layout *[ class *= "karma" ]{
+			visibility: visible !important;
+		}
+	</style>
 	<script src="../../../../../wp-includes/js/jquery/jquery.js"></script>
 	<script type="text/javascript">
 		var builderParams = '{"ajaxUrl":"test.txt"}';

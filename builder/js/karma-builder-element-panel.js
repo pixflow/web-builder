@@ -665,9 +665,13 @@
 			var elementPanel = $('#karma-add-element');
 			this.closeElementPanel();
 			if ( ! elementPanel.hasClass( 'karma-show-responsive-buttons' ) ){
+
 				this.showResponsiveButtons( e );
+				karmaBuilderEnviroment.hideNonKarmaElements();
+
 			}else{
 				this.hideResponsiveButtons( e );
+				$('.karma-show-parent, .karma-hide-child').removeClass('karma-show-parent karma-hide-child');
 			}
 		},
 

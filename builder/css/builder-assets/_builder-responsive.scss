@@ -141,7 +141,6 @@ body{
 			}
 		}
 
-
 		/* _-_-_- column Responsive Gizmo Style -_-_-_ */
 		.karma-builder-element.karma-active-column {
 			.karma-gizmo-template.karma-inner-gizmo-template {
@@ -183,6 +182,14 @@ body{
 			.column-gizmo-group{
 				display: none;
 			}
+		}
+
+		*:not( #karma-builder-layout ){
+			visibility: hidden !important;
+		}
+		#karma-show-parent,
+		#karma-builder-layout *[ class *= "karma" ]{
+			visibility: visible !important;
 		}
 	}
 }
