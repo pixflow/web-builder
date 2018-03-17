@@ -35,6 +35,28 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 
 	};
 
+
 	openMediaLibrary();
+
+	/**
+	 * cancel button for upload image
+	 *
+	 * @since 2.0
+	 * @returns {void}
+	 */
+	function removeImage() {
+
+		document.querySelector(".karma-cancel-image-button").addEventListener( "click", function(){
+			var input = document.querySelector( '.karma-upload-image-input' ),
+				content = document.querySelector( '.karma-upload-image-content' );
+
+			input.value = 'none';
+			content.style.backgroundImage = "none";
+			jQuery( input ).trigger( 'input' );
+		});
+		
+	}
+
+	removeImage();
 
 });

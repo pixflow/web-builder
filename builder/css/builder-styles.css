@@ -1073,7 +1073,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-typography-box-style, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-gizmo-multi-drop-down-content .karma-gizmo-multi-drop-down-content-box .karma-gizmo-multi-drop-down-text, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-upload-image-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
+.karma-builder-title-3, .karma-typography-box-style, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-gizmo-multi-drop-down-content .karma-gizmo-multi-drop-down-content-box .karma-gizmo-multi-drop-down-text, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-image-buttons, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
   font-size: 14px;
   line-height: 16px; }
 
@@ -1102,7 +1102,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box, .sp-color, .sp-val, .sp-val .sp-dragger, .sp-container.sp-light, .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
   border-radius: 5px; }
 
-.karma-button-padding, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-upload-image-content .karma-upload-image-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button {
+.karma-button-padding, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-upload-image-content .karma-image-buttons, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button {
   padding: 0 20px; }
 
 .karma-hide {
@@ -1556,7 +1556,7 @@ body {
   .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize {
     max-width: 100%;
     width: auto !important; }
-    .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize .karma-image-resize-crp {
+    .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize .karma-image-resize-crop {
       max-width: 100%;
       width: auto !important; } }
 @-ms-viewport {
@@ -6045,7 +6045,7 @@ div.karma-element-content .karma-top-spacing {
   background-size: cover;
   height: 115px;
   position: relative; }
-  .karma-upload-image-content .karma-upload-image-button {
+  .karma-upload-image-content .karma-image-buttons {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -6056,13 +6056,16 @@ div.karma-element-content .karma-top-spacing {
     height: 36px;
     cursor: pointer;
     text-transform: none;
-    transition: background-color .2s; }
-    .karma-upload-image-content .karma-upload-image-button:hover {
+    transition: background-color .2s;
+    padding: 0 20px; }
+    .karma-upload-image-content .karma-image-buttons:hover {
       background-color: #FFF; }
   .karma-upload-image-content a {
     z-index: 100; }
     .karma-upload-image-content a:hover {
       text-decoration: none; }
+  .karma-upload-image-content .karma-cancel-image-button {
+    padding: 0 0 0 11px; }
 
 .karma-upload-image-has-image:after {
   background-color: rgba(0, 0, 0, 0.2);

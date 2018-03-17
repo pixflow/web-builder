@@ -300,8 +300,14 @@
 			var imageAddress = this.getAttributes( [ 'imgurl' ] ),
 				elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
-			this.renderCss( '#' + elementId + ' .karma-video-box-background' , 'background-image', 'url('+ imageAddress.imgurl +')' );
-			this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			if( 'none' == imageAddress.imgurl ){
+				this.renderCss( '#' + elementId + ' .karma-video-box-background' , 'background-image', 'none' );
+				this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'none' );
+			}else{
+				this.renderCss( '#' + elementId + ' .karma-video-box-background' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+				this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			}
+
 
 		},
 
