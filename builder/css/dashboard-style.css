@@ -640,7 +640,14 @@ body {
     line-height: 26px; }
   #karma-builder-layout p {
     font-size: 14px;
-    line-height: 24px; } }
+    line-height: 24px; }
+
+  .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize {
+    max-width: 100%;
+    width: auto !important; }
+    .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize .karma-image-resize-crop {
+      max-width: 100%;
+      width: auto !important; } }
 @media screen and (max-width: 575px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
     padding: 29px !important; }
@@ -670,7 +677,14 @@ body {
     line-height: 25px; }
   #karma-builder-layout p {
     font-size: 14px;
-    line-height: 24px; } }
+    line-height: 24px; }
+
+  .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize {
+    max-width: 100%;
+    width: auto !important; }
+    .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize .karma-image-resize-crop {
+      max-width: 100%;
+      width: auto !important; } }
 @-ms-viewport {
   width: device-width; }
 html {

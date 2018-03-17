@@ -116,6 +116,17 @@ body {
 		}
 	}
 
+	.karma-builder-element[data-name="karma_image"] .karma-image-container{
+		.karma-image-resize{
+			max-width: 100%;
+			width: auto !important;
+			.karma-image-resize-crop{
+				max-width: 100%;
+				width: auto !important;
+			}
+		}
+	}
+
 }
 
 @media screen and (max-width: 575px) {
@@ -159,6 +170,16 @@ body {
 		p {
 			font-size: 14px;
 			line-height: 24px;
+		}
+	}
+	.karma-builder-element[data-name="karma_image"] .karma-image-container{
+		.karma-image-resize{
+			max-width: 100%;
+			width: auto !important;
+			.karma-image-resize-crop{
+				max-width: 100%;
+				width: auto !important;
+			}
 		}
 	}
 

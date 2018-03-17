@@ -1514,7 +1514,14 @@ body {
     line-height: 26px; }
   #karma-builder-layout p {
     font-size: 14px;
-    line-height: 24px; } }
+    line-height: 24px; }
+
+  .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize {
+    max-width: 100%;
+    width: auto !important; }
+    .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize .karma-image-resize-crop {
+      max-width: 100%;
+      width: auto !important; } }
 @media screen and (max-width: 575px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
     padding: 29px !important; }
@@ -1544,7 +1551,14 @@ body {
     line-height: 25px; }
   #karma-builder-layout p {
     font-size: 14px;
-    line-height: 24px; } }
+    line-height: 24px; }
+
+  .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize {
+    max-width: 100%;
+    width: auto !important; }
+    .karma-builder-element[data-name="karma_image"] .karma-image-container .karma-image-resize .karma-image-resize-crp {
+      max-width: 100%;
+      width: auto !important; } }
 @-ms-viewport {
   width: device-width; }
 html {
@@ -4254,6 +4268,7 @@ div.media-modal {
           #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg svg * {
             stroke: #747F8A; }
     #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content {
+      max-height: 70vh;
       overflow: hidden; }
       #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-content #karma-Builder-form {
         transition: all 0.3s cubic-bezier(0.2, 0.32, 0.07, 1.01); }
