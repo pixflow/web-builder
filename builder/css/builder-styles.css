@@ -7301,7 +7301,7 @@ body #karma-builder-layout {
           color: #394959; }
     .karma-builder-environment .karma-builder-element.karma-active-column .column-gizmo-group {
       display: none; }
-    .karma-builder-environment *:not(#karma-builder-layout) {
+    .karma-builder-environment *:not(#karma-builder-layout):not(.tooltip-div) {
       visibility: hidden !important; }
     .karma-builder-environment #karma-show-parent,
     .karma-builder-environment #karma-builder-layout *[class*="karma"] * {
