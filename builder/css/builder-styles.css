@@ -7304,7 +7304,7 @@ body #karma-builder-layout {
     .karma-builder-environment *:not(#karma-builder-layout) {
       visibility: hidden !important; }
     .karma-builder-environment #karma-show-parent,
-    .karma-builder-environment #karma-builder-layout *[class*="karma"] {
+    .karma-builder-environment #karma-builder-layout *[class*="karma"] * {
       visibility: visible !important; } }
 #wpadminbar #wp-admin-bar-karma_customizer_button {
   background-image: url(../media/svg/wordpress-nav-edit-karma.svg);

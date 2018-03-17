@@ -188,7 +188,7 @@ body{
 			visibility: hidden !important;
 		}
 		#karma-show-parent,
-		#karma-builder-layout *[ class *= "karma" ]{
+		#karma-builder-layout *[ class *= "karma" ] *{
 			visibility: visible !important;
 		}
 	}

@@ -88,7 +88,7 @@
 		saveImageDescription : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-description-tag' ),
-				contentData = content.innerHTML;
+				contentData = content.innerText;
 
 			if ( "" == contentData.trim() ) {
 				content.innerText = "Live Text Editor";
@@ -116,7 +116,7 @@
 		changeImageDescription : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-description-tag' ),
-					contentData = content.innerHTML;
+					contentData = content.innerText;
 
 
 			if ( "Live Text Editor" == contentData.trim() ) {
@@ -153,7 +153,7 @@
 		saveImageTitle : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerText;
 
 			if ( "" == contentData.trim() ) {
 				content.innerText = "Great idea";
@@ -177,7 +177,7 @@
 		changeImageTitle : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerText;
 
 			if ( "Great idea" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
@@ -214,7 +214,7 @@
 		 */
 		checkEmptyLink : function () {
 			var content 	= this.el.querySelector( '.karma-image-text-box-link-tag' ),
-				contentData = content.innerHTML;
+				contentData = content.innerText;
 
 			if ( "" == contentData.trim() ) {
 				content.innerHTML = "&nbsp;";

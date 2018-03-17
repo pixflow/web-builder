@@ -39,8 +39,8 @@
 		saveVideoDescription : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-description-tag' ),
-				contentData = content.innerHTML;
-
+				contentData = content.innerText;
+			
 			if ( "" == contentData.trim() ) {
 				content.innerText = "Live Text Editor";
 				content.classList.add('karma-video-box-description-opacity');
@@ -64,8 +64,7 @@
 		changeVideoDescription : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-description-tag' ),
-				contentData = content.innerHTML;
-
+				contentData = content.innerText;
 
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
@@ -114,9 +113,9 @@
 		saveVideoTitle : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerText;
 
-			if ( "" == contentData.trim() ) {
+			if ( "" == contentData.trim()) {
 				content.innerText = "Great idea";
 				content.classList.add('karma-video-box-title-opacity');
 			}
@@ -138,7 +137,7 @@
 		changeVideoTitle : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerText;
 
 			if ( "Great idea" == contentData.trim() ) {
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
@@ -173,7 +172,7 @@
 		saveVideoLink : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
-				contentData = content.innerHTML;
+				contentData = content.innerText;
 
 			if ( "" == contentData.trim() ) {
 				content.innerHTML = "&nbsp;";
