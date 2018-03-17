@@ -1482,8 +1482,11 @@ body {
 .ui-draggable-dragging {
   pointer-events: none !important; }
 
-#karma-builder-layou h1, #karma-builder-layou h2, #karma-builder-layou h3, #karma-builder-layou h4, #karma-builder-layou h5, #karma-builder-layou h6, #karma-builder-layou p {
-  margin: 0; }
+#karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6, #karma-builder-layout p, #karma-builder-layout a {
+  margin: 0;
+  word-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.2em; }
 
 @media screen and (max-width: 768px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
