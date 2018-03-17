@@ -135,7 +135,7 @@
 				focusElement = this.el.querySelector( '.karma-editable-content' );
 
 			if ( "Write down something cool" == contentValue.trim() ) {
-				content.innerText = "";
+				content.innerHTML = "&nbsp;";
 			}
 			if( false == focusElement.classList.contains( 'focus' ) ){
 				focusElement.classList.add( 'karma-text-element-focus' );

@@ -122,7 +122,7 @@
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
 					content.style.minWidth = "200px";
-					content.innerText = "";
+					content.innerHTML = "&nbsp;";
 				}
 			}
 
@@ -181,7 +181,7 @@
 
 			if ( "Great idea" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					content.innerText = "";
+					content.innerHTML = "&nbsp;";
 				}
 			}
 
@@ -217,7 +217,7 @@
 				contentData = content.innerHTML;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+				content.innerHTML = "&nbsp;";
 				this.el.querySelector( '.karma-image-text-box-link-shape' ).style.display = 'none';
 			}else{
 				this.el.querySelector( '.karma-image-text-box-link-shape' ).style.display = 'block';
