@@ -1485,8 +1485,7 @@ body {
 #karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6, #karma-builder-layout p, #karma-builder-layout a {
   margin: 0;
   word-wrap: break-word;
-  word-break: break-word;
-  line-height: 1.2em; }
+  word-break: break-word; }
 
 @media screen and (max-width: 768px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
@@ -4651,7 +4650,8 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
     max-width: 100%; }
   .karma-builder-environment .karma-builder-element .karma-text *:focus {
     min-width: 20px;
-    outline: #419CF8 solid 1px; }
+    box-shadow: 0px 0px 0px 1px #419CF8;
+    outline: none; }
   .karma-builder-environment .karma-builder-element .karma-inner-gizmo-template {
     top: 17px;
     right: 17px;
@@ -5414,7 +5414,7 @@ div.karma-element-content .karma-top-spacing {
     cursor: ew-resize; }
   div.karma-element-content .karma-top-spacing .karma-spacing-dot-container {
     position: absolute;
-    top: calc(100% - 12px); }
+    top: calc(100% - 11.5px); }
 
 /* _-_-_- modules/THUMBNAILS -_-_-_ */
 #karma-element-setting-panel-container .karma-text-input-controller {

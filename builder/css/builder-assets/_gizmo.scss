@@ -424,7 +424,8 @@ body:not(.karma-builder-environment) {
 		.karma-text {
 			*:focus {
 				min-width: 20px;
-				outline: $builder-accent-color solid 1px;
+				box-shadow:0px 0px 0px 1px #419CF8;
+				outline: none;
 			}
 		}
 
@@ -1378,7 +1379,7 @@ div.karma-element-content {
 
 		.karma-spacing-dot-container {
 			position: absolute;
-			top: calc(100% - 12px);
+			top: calc(100% - 11.5px);
 		}
 	}
 }

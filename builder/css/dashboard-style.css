@@ -611,8 +611,7 @@ body {
 #karma-builder-layout h1, #karma-builder-layout h2, #karma-builder-layout h3, #karma-builder-layout h4, #karma-builder-layout h5, #karma-builder-layout h6, #karma-builder-layout p, #karma-builder-layout a {
   margin: 0;
   word-wrap: break-word;
-  word-break: break-word;
-  line-height: 1.2em; }
+  word-break: break-word; }
 
 @media screen and (max-width: 768px) {
   .karma-builder-element[data-name="karma_image_box"] .karma-image-text-box {
