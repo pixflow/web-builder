@@ -526,7 +526,7 @@ function getModelsAttributes(models) {
 
 	});
 
-	QUnit.test("Hide Header and footer ", function (assert) {
+	QUnit.test("hideNonKarmaElements(), Hide Header and footer ", function (assert) {
 		window.top.karmaBuilderEnviroment.hideNonKarmaElements();
 		var nonElements = 0;
 		function getVisible( selector ){
@@ -539,7 +539,7 @@ function getModelsAttributes(models) {
 				}
 			}
 		}
-		getVisible( document.getElementById('karma-builder-iframe').contentWindow.window.$('#karma-builder-layout') );
+		getVisible( $('#karma-builder-layout') );
 		assert.equal( nonElements, $('#karma-builder-layout').parents().length - 1 );
 	});
 
