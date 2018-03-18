@@ -302,7 +302,7 @@
 				newModel.shortcode_attributes.lg_size = newLayout[ counter ];
 				newModel.shortcode_attributes.sm_size = 12;
 				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
-				newModel.shortcode_attributes.md_size = this.calcMediumWidthColumn( newLayout.length );
+				newModel.shortcode_attributes.md_size = ( 'undefined' !== typeof that.block ) ?  model.md_size : this.calcMediumWidthColumn( newLayout.length );
 
 				var columnModel = karmaBuilder.karmaModels.add( newModel );
 				$( '[data-element-key="' + columnModel.get('parent_key') + '"] .karma-row' ).append( KarmaView.createBuilderModel( columnModel ) );

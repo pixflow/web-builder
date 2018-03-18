@@ -790,7 +790,7 @@ var karmaBuilder = karmaBuilder || {};
 			var elementName = elementModel.parent.shortcode_name;
 
 			if ( 'karma_section' == elementName ){
-
+				elementModel.parent.order = 1 ;
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementModel.grid;
 
