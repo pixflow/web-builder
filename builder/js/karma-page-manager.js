@@ -90,11 +90,6 @@ var karmaBuilderPageManager = karmaBuilderPageManager  || {};
 
 			var previewTemplate = _.template( this.previewTemplate, this.templateSettings );
 			$( 'body' ).append( previewTemplate( { previewUrl: previewUrl, templateID: templateID } ) );
-
-			$( '.karma-preview-template-iframe iframe' ).load( function () {
-				document.querySelector( '.karma-preview-template-iframe iframe' ).classList.add( 'karma-preview-template-iframe-show' )
-			} );
-
 			setTimeout( function () {
 				document.querySelector( '.karma-preview-template-container' ).classList.add( 'karma-preview-template-container-show' );
 			}, 100 );
