@@ -33,10 +33,12 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 				"title"  => esc_attr__( "Video Box Setting", 'karma' ),
 				"params" => array(
 					array(
-						"name"  => "imgurl",
-						"type"  => Karma_Builder_Setting_Panel::UPLOAD_IMAGE,
-						"label" => esc_attr__( "Change image", 'karma' ),
-						"value" => "",
+						"name"  		=> "imgurl",
+						"type" 			=> Karma_Builder_Setting_Panel::UPLOAD_IMAGE,
+						"label"			=> esc_attr__( "Change image", 'karma' ),
+						"value" 		=> "",
+						"icon"			=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/close-icon.svg' ),
+						'cancelButton'	=> esc_attr__( "true", 'karma' ),
 					),
 
 					array(
@@ -61,6 +63,21 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 						"params" => array(
 							'opacity'           => true,
 							'multiColor'        => false,
+							'presetColors'      => 'rgba(20, 20, 20, 0.1)-'
+													. 'rgba(45, 155, 240, 0.1)-'
+													. 'rgba(81, 96, 254, 0.1)-'
+													. 'rgba(251, 0, 83, 0.1)-'
+													. 'rgba(20, 20, 20, 0.2)-'
+													. 'rgba(45, 155, 240, 0.2)-'
+													. 'rgba(81, 96, 254, 0.2)-'
+													. 'rgba(251, 0, 83, 0.2)-'
+													. 'rgba(20, 20, 20, 0.5)-'
+													. 'rgba(45, 155, 240, 0.5)-'
+													. 'rgba(81, 96, 254, 0.5)-'
+													. 'rgba(251, 0, 83, 0.5)-'
+													. 'rgba(20, 20, 20, 0.8)-'
+													. 'rgba(45, 155, 240, 0.8)-'
+													. 'rgba(81, 96, 254, 0.8)'
 
 						)
 					),
@@ -156,9 +173,33 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 					),
 
 					array(
+						'type'      => 'multiDropDown',
+						'icon'		=>Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/magic.svg' ),
+						'model'		=>'animation',
+						'params'	=> array(
+							array(
+								'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/none-animation.svg' ,
+								'text'	=>esc_attr( 'None', 'karma' ),
+								'value' =>'none'
+							),
+							array(
+								'icon'	=> KARMA_BUILDER_URL . 'builder/media/svg/boxshadow.svg' ,
+								'text'	=>esc_attr( 'Shadow', 'karma' ),
+								'value' =>'simpleshadow'
+							),
+							array(
+								'icon'	=>KARMA_BUILDER_URL . 'builder/media/svg/boxshadow-with-animation.svg' ,
+								'text'	=>esc_attr( 'Shadow with animation', 'karma' ),
+								'value' =>'shadowwithanimation',
+							),
+							)
+					),
+
+					array(
 						'type'   => 'position',
 						"params" => array(
-							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/position.svg' )
+							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/position.svg' ),
+							'model' => 'textposition'
 						)
 					),
 
@@ -170,7 +211,6 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 							'icon' => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/video-setting.svg' ),
 						)
 					),
-
 				)
 			),
 			array(
@@ -254,24 +294,56 @@ class Karma_Video_Box_Describe extends Karma_Video_Box {
 			),
 			array(
 				"type"      => "outerGizmo",
-				"selector" 	=> '.karma-video-box-link',
+				"selector" 	=> '.karma-video-box-link-content',
 				"className" => "karma-video-box-link-gizmo",
 				"params"    => array(
-					array(
-						'type'      => 'color',
-						'className' => esc_attr( 'karma-color-picker-gizmo' ),
-						"params"    => array(
-							'opacity'			=> false,
-							'multiColor'		=> true,
-							'firstColorTitle'	=>'Overlay',
-							'secondColorTitle'	=>'Background',
-							'model'				=> 'linkcolor'
-						)
-					),
+                    array(
+                        'type'   	=> 'hidden',
+						'device' => 'karma-desktop'
+                    ),
+                    array(
+                        'type'      => 'color',
+                        'className' => esc_attr( 'karma-color-picker-gizmo' ),
+                        "params"    => array(
+                            'opacity'           => false,
+                            'multiColor'        => true,
+                            'firstColorTitle'   => 'General',
+                            'secondColorTitle'  => 'Text',
+                            'model'             => 'generalcolor',
+                            'secondColorModel'  => 'textcolor'
+                        )
+                    ),
 					array(
 						'type'		=>'link',
 						"params" => array(
 							'defaultIcon'  		=> KARMA_BUILDER_URL . 'builder/media/svg/gizmo-link.svg',
+						)
+					),
+					array(
+						'type'		=>'sliderAndRadioButton',
+						"params" 	=> array(
+							'defaultIcon'  		=> KARMA_BUILDER_URL . 'builder/media/svg/border-radius.svg',
+							'value'			=> '0',
+							'min'			=> '0',
+							'max'			=> '20',
+							'unit'			=>'px',
+							'rangeModel' 	=> 'rangemodel' ,
+							'type' 			=> 'type',
+							"field"			=> array(
+									array(
+											'text'	=> "Fill",
+											'value' => "fill",
+									),
+									array(
+											'text'	=> "Outline",
+											'value' => "outline",
+									),
+									array(
+											'text'	=> "Link",
+											'value' => "link",
+									),
+							),
+
 						)
 					),
 				)

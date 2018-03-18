@@ -34,8 +34,10 @@ class Karma_Views {
 	 */
 	private $environment_templates = array(
 		'header',
+		'code-editor',
 		'main',
 		'footer',
+
 	);
 
 	/**
@@ -48,7 +50,21 @@ class Karma_Views {
 		'header',
 		'typography',
 		'footer',
-		'delete-message-box'
+		'delete-message-box',
+	);
+
+	/**
+	 * The list of environment template names for page manager
+	 *
+	 * @since    2.0
+	 * @access   private
+	 */
+	private $page_manager_environment_templates = array(
+		'header',
+		'second-header-page-manager',
+		'page-manager',
+		'footer',
+		'create-page-popup'
 	);
 
 	/**
@@ -61,6 +77,7 @@ class Karma_Views {
 		'element-panel-add-element',
 		'element-panel-templates',
 		'element-panel-section',
+		'element-panel-blocks',
 		'element-panel-unsplash',
 		'element-panel-upgrade',
 		'element-panel-list',
@@ -84,7 +101,7 @@ class Karma_Views {
 	private $builder_iframe_templates = array(
 		'delete-message-box',
 		'new-section',
-		'blank-page'
+		'blank-page',
 
 	);
 
@@ -112,6 +129,19 @@ class Karma_Views {
 	public function load_typography_environment(){
 
 		foreach ( $this->typography_environment_templates as $temp ){
+			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
+		}
+
+	}
+
+	/*
+	 * Print page manager content
+	 *
+	 * @return	void
+	 */
+	public function load_page_manager_environment() {
+
+		foreach ( $this->page_manager_environment_templates as $temp ) {
 			include KARMA_BUILDER_DIR . 'builder/templates/environment/' . $temp . '-template.php';
 		}
 

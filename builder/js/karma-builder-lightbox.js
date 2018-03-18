@@ -11,7 +11,7 @@
 
 
 /**
- * @summary karmaImageLightbox manager
+ * karmaImageLightbox manager
  * The resources that add lightbox to images
  *
  * @param {string}  selector image link selector
@@ -29,7 +29,7 @@ var karmaImageLightbox = function ( selector ) {
 
 
 /**
- * @summary init lightbox on images with selector class
+ * init lightbox on images with selector class
  *
  * @since 0.1.0
  * @returns {void}
@@ -44,7 +44,7 @@ karmaImageLightbox.prototype.init = function () {
 };
 
 /**
- * @summary create and load lightbox
+ * create and load lightbox
  *
  * @since 0.1.0
  * @returns {void}
@@ -68,7 +68,7 @@ karmaImageLightbox.prototype.openLightbox = function ( e ) {
 };
 
 /**
- * @summary close and delete lightbox HTML
+ * close and delete lightbox HTML
  *
  * @since 0.1.0
  * @returns {void}
@@ -87,7 +87,7 @@ karmaImageLightbox.prototype.closeLightbox = function () {
 };
 
 /**
- * @summary create lightbox html and append to body
+ * create lightbox html and append to body
  *
  * @param {string}  url image URL
  *

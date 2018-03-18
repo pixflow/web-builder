@@ -11,6 +11,10 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			'click .builder-publish'                    : 'karmaPublish',
 			'karma/finish/animation'                    : 'publishAnimation',
 			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml',
+			'click .builder-code-editor-link'           : 'openCodeEditor',
+			'click .karma-code-editor-container'        : 'closeCodeEditor',
+			'click .karma-dropdown-header '             : 'openDropdown',
+			'click body:not( .karma-dropdown-body )'    : 'closeCodeEditorDropDown'
 
 		},
 
@@ -27,11 +31,11 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 *
 		 */
 		initialize : function () {
-
+			this.initCodeEditor();
 		},
 
 		/**
-		 *@summary Add grab style for elements
+		 *Add grab style for elements
 		 *
 		 * @param   {object}    UI  ui object of dragged element in jqueryUI
 		 * @since   0.1.0
@@ -48,7 +52,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Remove grab style for elements
+		 * Remove grab style for elements
 		 *
 		 * @param   {object}    UI  ui object of dragged element in jqueryUI
 		 * @since   0.1.0
@@ -66,7 +70,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary append template of setting panel to body
+		 * append template of setting panel to body
 		 *
 		 * @since   0.1.0
 		 * @returns void
@@ -79,7 +83,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Create overlay element to prevent from other mouse events while dragging
+		 * Create overlay element to prevent from other mouse events while dragging
 		 * or blocking if exists
 		 *
 		 * @since   0.1.0
@@ -99,7 +103,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Bind jquery tooltip plugin
+		 * Bind jquery tooltip plugin
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -147,7 +151,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 
 		/**
-		 * @summary Set display none for overlay
+		 * Set display none for overlay
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -160,7 +164,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Enable draggable functionality on any item element
+		 * Enable draggable functionality on any item element
 		 *
 		 * @param    {string}    selector    An element CSS selector to set draggable.
 		 *
@@ -210,7 +214,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary return builder elements info
+		 * return builder elements info
 		 *
 		 * @param {string}  name    The name of element
 		 * If the param dose not pass to the function, the function returns all element info
@@ -233,7 +237,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
+		 * Open WordPress Media library and handle choose image from media library instead of unsplash
 		 *
 		 * @param {Object}         addImgLink    Selector dom object
 		 * @param {function}     callBack      callback function
@@ -284,7 +288,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Returns builder Iframe
+		 * Returns builder Iframe
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -299,7 +303,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Publish content on click in publish button
+		 * Publish content on click in publish button
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -317,7 +321,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		},
 
 		/**
-		 * @summary Animate publish animation button
+		 * Animate publish animation button
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -340,8 +344,183 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 			}, 2400 );
 
-		}
+		},
 
+		/**
+		 * Enable draggable functionality on blocks
+		 *
+		 * @param    {string}    selector    blocks CSS selector to set draggable.
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		initBlocksDraggable: function ( selector ) {
+
+			var that = this;
+			$( selector ).draggable( {
+				appendTo: "body",
+				containment: 'document',
+				cursorAt: { top: 40, left: 40 },
+				helper: 'clone',
+				start: function ( event, UI ) {
+
+					$( ".karma-add-element-inactive-container" ).getNiceScroll().remove();
+					this.classList.add( 'karma-start-blocks-dragging' );
+					that.createOverlay();
+					that.addGrabHandler( event, UI );
+					if ( null != that.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {
+						var placeholder = that.getIframe().document.createElement( 'div' );
+						placeholder.setAttribute( 'class', 'karma-insert-between-sections-placeholder karma-blank-page-placeholder' );
+						that.getIframe().document.getElementById( 'karma-builder-layout' ).appendChild( placeholder );
+					}
+
+				},
+
+				drag: function ( event, UI ) {
+
+					that.getIframe().KarmaView.scroll( UI, event );
+					that.getIframe().KarmaView.detectBlocksDropAreas( event, UI );
+
+				},
+
+				stop: function ( event, UI ) {
+
+					this.classList.remove( 'karma-start-blocks-dragging' );
+					that.removeGrabHandler( event, UI );
+					clearInterval( that.flyScroll );
+					that.removeOverlay();
+					var dropArea = that.getIframe().document.querySelector( '.karma-show-placeholder' );
+					if ( null != dropArea && 'IFRAME' == document.elementFromPoint( event.clientX, event.clientY ).nodeName ) {
+						that.renderBlock( UI.helper.data( "block-id" ), dropArea );
+						 that.getIframe().KarmaView.$el.trigger('karma/after/sortSections');
+					}
+					that.getIframe().KarmaView.removePlaceHolders();
+					window.karmaElementPanel.scrollElementPanel();
+
+				}
+
+			} );
+
+		},
+
+		/**
+		 * render block
+		 *
+		 * @param    {int}      blockID     block id
+		 * @param    {object}   dropArea    drop area placeholder
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		renderBlock: function ( blockID, dropArea ) {
+
+			var blocks = karmaElementPanel.blocks[ blockID ].content;
+			for ( var block in blocks ) {
+				var newView = this.getIframe().KarmaView.renderElements( dropArea, JSON.parse( blocks[ block ] ), true );
+				dropArea = newView.$el.nextAll( '.karma-insert-between-sections-placeholder' ).first()[ 0 ];
+			}
+			if ( null != this.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {
+				this.getIframe().$( '.karma-blank-page-container' ).remove();
+			}
+
+		},
+
+		/**
+		 * Hide all elements in document
+		 * insteadof #karma-builder-layout and its children
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		hideNonKarmaElements : function (){
+
+			var containers = this.getIframe().$('#karma-builder-layout').parents( ':not(html):not(body)' );
+			for ( var i = containers.length - 1; i >= 0; i-- ){
+				if( undefined != containers[ i ].querySelector('#karma-builder-layout') ){
+					var oldID = containers[ i ].getAttribute( 'id' );
+					containers[ i ].setAttribute( 'id', oldID + ' karma-show-parent' );
+				}
+			}
+		},
+
+		/**
+		 * initialize code editor
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		initCodeEditor: function () {
+
+			var javascriptFlask = new CodeFlask;
+
+			javascriptFlask.run( '.karma-custom-js', {
+				language: 'javascript'
+			} );
+
+			var cssFlask = new CodeFlask;
+			cssFlask.run( '.karma-custom-css', {
+				language: 'css'
+			} );
+
+		},
+
+		/**
+		 * open code editor
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		openCodeEditor: function ( e ) {
+
+			var codeEditorContainer = document.querySelector( '.karma-code-editor-container' );
+			var lang = e.currentTarget.dataset.script;
+			$( '.karma-code-editor' ).css( 'display', 'none' );
+			$( '.karma-custom-' + lang ).css( 'display', 'block' );
+			if ( !codeEditorContainer.classList.contains( 'active' ) ) {
+				codeEditorContainer.classList.add( 'active' );
+			}
+
+		},
+
+		openDropdown : function ( e ){
+
+			e.stopPropagation();
+			var target = $( e.target ),
+				element = ( target.hasClass('karma-dropdown-header') ) ? target : target.closest('.karma-dropdown-header'),
+				optionsContainer =  element.siblings( '.karma-dropdown-options' );
+			$( 'header .karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
+			optionsContainer.addClass( 'karma-doropdown-opened' );
+
+		},
+
+		/**
+		 * close code editor
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		closeCodeEditor: function ( e ) {
+
+			if ( e.target.classList.contains( 'karma-code-editor-container' ) ) {
+				var codeEditorContainer = document.querySelector( '.karma-code-editor-container' );
+				if ( codeEditorContainer.classList.contains( 'active' ) ) {
+					codeEditorContainer.classList.remove( 'active' )
+				}
+			}
+
+		},
+
+		/**
+		 * close code editor drop down
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		closeCodeEditorDropDown: function () {
+
+			$( '.karma-dropdown-body > .karma-dropdown-options' ).removeClass( 'karma-doropdown-opened' );
+
+		}
 
 	});
 

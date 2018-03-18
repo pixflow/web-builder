@@ -81,24 +81,23 @@
 					margin: 0;
 
 					.karma-dropdown-add-font {
-
 						order: 10;
+
 						a {
 							box-shadow: none;
 							color: #419CF8;
 							display: flex;
 							font-family: $builder-normal-font;
-							justify-content: end;
+							justify-content: flex-start;
 							padding: 16px 10px 6px 10px;
 							text-decoration: none;
 							&:after {
+								@include box( 100%, 1px );
 								background-color: $builder-accent-color-3;
 								bottom: 38px;
 								content: '';
-								height: 1px;
 								left: 0;
 								position: absolute;
-								width: 100%;
 							}
 
 						}
@@ -190,13 +189,13 @@
 	}
 }
 
-.karma-builder .karma-delete-message-box {
+.karma-builder .karma-delete-message-box{
 	display: none;
 }
 
-@media only screen and (max-width: 1280px) {
-	#karma-typography-setting #karma-typography-manager,
-	#karma-typography-setting #karma-font-manager{
-		margin-top: 85px;
+
+@media only screen and (max-width: 1366px) {
+	#karma-typography-setting .karma-typography-container{
+		margin-top: 200px;
 	}
 }

@@ -111,7 +111,7 @@ class Karma_Helper_Utility{
 
 		$image = $image_url;
 		$get = wp_remote_get( $image, array(
-				'timeout'   => 90,
+				'timeout'   => 120,
 				'sslverify' => true,
 			)
 		);
@@ -163,11 +163,12 @@ class Karma_Helper_Utility{
 		$i = 0;
 		$unsplash_images = array();
 		foreach ( $images as $image ) {
+			$original_url = $image;
 			$parsed = parse_url( $image );
 			parse_str( parse_url( '?' . $parsed[ 'query' ], PHP_URL_QUERY ), $params );
 			$type = $params[ 'fm' ];
 			$unsplash_images[ $i ][ 'type' ] = $type;
-			$unsplash_images[ $i ][ 'image' ] = $image;
+			$unsplash_images[ $i ][ 'image' ] = $original_url;
 			$i++;
 		}
 		return $unsplash_images;
@@ -175,17 +176,48 @@ class Karma_Helper_Utility{
 	}
 
 	/**
-	 * Check content for unsplash images and download them and store in WordPress Media library,
-	 * then replace unsplash images URL with downloaded images
+	 * Find pixflow blocks images and return images as array
+	 *
+	 * @param   string $content - content
+	 *
+	 * @return array returns unsplash images
+	 * @since 0.1.1
+	 */
+	public static function karma_find_pixflow_images( $content ) {
+
+		$images = array();
+		$result = preg_match_all( "/http:\/\/pixflow.net[a-z0-9\-\.\/]+\.(?:jpe?g|png|gif)/Ui", $content, $matches );
+		if ( $result ) {
+			$images = $matches[ 0 ];
+			$images = array_unique( $images );
+		}
+		$i              = 0;
+		$pixflow_images = array();
+		foreach ( $images as $image ) {
+			$type = pathinfo( $image, PATHINFO_EXTENSION );
+			$pixflow_images[ $i ][ 'type' ] = $type;
+			$pixflow_images[ $i ][ 'image' ] = $image;
+			$i ++;
+		}
+
+		return $pixflow_images;
+
+	}
+
+	/**
+	 * Check content for external images and download them and store in WordPress Media library,
+	 * then replace external images URL with downloaded images
 	 *
 	 * @param   string $content - content
 	 *
 	 * @return string returns content with downloaded images URL
 	 * @since 0.1.0
 	 */
-	public static function karma_save_unsplash_images( $content ) {
+	public static function karma_save_external_images( $content ) {
 
-		$images = self::karma_find_unsplash_images( $content );
+		$unsplash_images = self::karma_find_unsplash_images( $content );
+		$pixflow_images  = self::karma_find_pixflow_images( $content );
+		$images          = array_merge( $pixflow_images, $unsplash_images );
 		if ( count( $images ) ) {
 			foreach ( $images as $key => $image ) {
 				$image_id = self::karma_save_remote_images( $image[ 'image' ], $image[ 'type' ] );
@@ -195,6 +227,52 @@ class Karma_Helper_Utility{
 			}
 		}
 		return $content;
+
+	}
+
+	/*
+	 * Return current page title
+	 *
+	 * @since   2.0
+	 * @return  string      Title of page
+	 */
+	public static function get_current_page_title_by_url(){
+
+		$title = '';
+		$back_id = url_to_postid( ( isset( $_SERVER['HTTPS'] ) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" );
+		if( $back_id > 0 ) {
+			return  get_the_title( $back_id );
+		}
+		return $title ;
+
+	}
+
+	/**
+	 * Add custom class to body tag
+	 *
+	 *
+	 * @since     0.1.0
+	 * @return    string	New list of body class
+	 */
+	public static function add_body_class(){
+
+		$classes = array();
+		$page = isset( $_GET['builder-page'] ) ? isset( $_GET['builder-page'] )  : '' ;
+
+		switch ( $page ){
+			case 'karma-typography-page' :
+				$classes[] = 'karma-typography-page' ;
+				break;
+			case 'karma-page-manager' :
+				$classes[] = 'karma-page-manager' ;
+				break;
+			default:
+				$classes[] = 'karma-main-page' ;
+				break;
+		}
+
+
+		return implode( ' ', $classes );
 
 	}
 	

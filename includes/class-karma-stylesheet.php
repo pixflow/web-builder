@@ -5,7 +5,6 @@ namespace KarmaBuilder\Stylesheet ;
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
-use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -49,15 +48,23 @@ class Karma_Stylesheet {
 		if( empty( $element_attributes['css'] ) ){
 			return '';
 		}
-		$css_block = '' ;
+		$css_block = $tablet_block = $mobile_block = '' ;
 		foreach ( $element_attributes['css'] as $element_style ){
+
 			$prefix = isset( $element_style["prefix"] ) ? $element_style["prefix"] : '' ;
 			$postfix = isset( $element_style["postfix"] ) ? $element_style["postfix"] : '' ;
 			$selector = $this->create_selector( $element_attributes['selector'], $prefix, $postfix );
 			$property = $this->parse_property( $element_style['property'] );
 			$css_block .= $selector . '{' . $property . '}';
+			$tablet_property = ( isset( $element_style[ 'tablet_property' ] ) ) ? $this->parse_property( $element_style[ 'tablet_property' ] ) : '';
+			$tablet_block .= ( '' != $tablet_property ) ? $selector . '{' . $tablet_property . '}' : '';
+			$mobile_property = ( isset( $element_style[ 'mobile_property' ] ) ) ? $this->parse_property( $element_style[ 'mobile_property' ] ) : '';
+			$mobile_block .= ( '' != $mobile_property ) ? $selector . '{' . $mobile_property . '}' : '';
+
 		}
 
+		$css_block .= ( '' != $tablet_block ) ? '@media screen and (max-width: 1020px) { /*tablet-start*/' . $tablet_block . '/*tablet-finish*/}' : '';
+		$css_block .= ( '' != $mobile_block ) ? '@media screen and (max-width: 430px) { /*mobile-start*/' . $mobile_block . '/*mobile-finish*/}' : '';
 		return $css_block;
 
 	}
@@ -186,15 +193,18 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		$headings_min_size_in_responsive = array(
-			'h1'    => '35',
-			'h2'    => '30',
-			'h3'    => '25',
-			'h4'    => '23',
-			'h5'    => '21',
-			'h6'    => '17',
-			'p'     => '15',
+			'h1'    => '40',
+			'h2'    => '33',
+			'h3'    => '23',
+			'h4'    => '21',
+			'h5'    => '19',
+			'h6'    => '16',
+			'p'     => '14',
 		);
 		foreach ( $headings as $tag => $info ){
+			if ( 'p' == $tag ){
+				$headings_style .= '.karma-builder-environment a,';
+			}
 			$headings_style .= $tag . '[class *= "tag" ]{' ;
 			foreach ( $info as $property => $value ){
 				if( 'font-varients' == $property  ){
@@ -205,7 +215,7 @@ class Karma_Stylesheet {
 					}
 				}else if ( 'font-size' == $property ) {
 					$headings_style .= $property . ':';
-					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 300px) / (1920 - 300)));';
+					$headings_style .= 'calc( ' . $headings_min_size_in_responsive[ $tag ] . 'px + (' . $value . ' - ' . $headings_min_size_in_responsive[ $tag ] . ') * ((100vw - 768px) / (1920 - 768)));';
 				}else{
 					$headings_style .= $property . ':' . $value . ';' ;
 				}
@@ -224,7 +234,7 @@ class Karma_Stylesheet {
      * @return string CSS string
      *
      */
-    //@TODO - refine ( Use built0in PHP function )
+    //@TODO - refine ( Use built-in PHP function )
     public function create_google_font_link(){
 
         $typography = Karma_Typography::get_instance();
@@ -279,6 +289,7 @@ class Karma_Stylesheet {
             $link_font = str_replace(' ', '+', $link_font);
             $link  .= $link_font;
             $variant_link = ':';
+
             foreach( $variant as $index => $key ){
 
                 $font_variant = explode( " ", $key );

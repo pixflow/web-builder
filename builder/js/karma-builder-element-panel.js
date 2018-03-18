@@ -2,20 +2,27 @@
 
 	karmaBuilderActions.elementPanel = Backbone.View.extend({
 
+
+		blocks: '',
+
 		events : {
 
-			"click.stopClickInPanel" 										            : "stopClickInPanel",
-			'mousedown .karma-element-panel-list .karma-element-single-element'        	: "addGrabHandler" ,
-			'mouseup .karma-element-panel-list .karma-element-single-element'          	: "removeGrabHandler" ,
-			"click li.karma-addcontent"													: "elementPanelTab",
+			"click.stopClickInPanel"                                                    : "stopClickInPanel",
+			'mousedown .karma-element-panel-list .karma-element-single-element'         : "addGrabHandler" ,
+			'mouseup .karma-element-panel-list .karma-element-single-element'           : "removeGrabHandler" ,
+			"click li.karma-addcontent"                                                 : "elementPanelTab",
 			"input .karma-builder-search-text"                                          : "searchInElements",
 			"click .karma-builder-addcontent ul li"                                     : "categoryFilterActive",
-			"click .karma-element-panel-price-filter ul li "							: "elementPanelPriceFilter",
-			"click .karma-builder-element-panel-gather-menu"							: "openCategoryMenu" ,
-			"click .karma-search-close-icon"											: "clearElementPanelSearchBar" ,
-			"click .karma-builder-search-text"											: "showElementPanelSearchBar" ,
-			"click .element-panel-button"												: "openElementPanel",
-			"click .karma-search-close-icon"											: "elementPanelCloseSearchBar"
+			"click .karma-builder-addcontent ul li[data-tab='element-panel-section']"   : "loadBlocks",
+			"click .karma-element-panel-price-filter ul li "                            : "elementPanelPriceFilter",
+			"click .karma-builder-element-panel-gather-menu"                            : "openCategoryMenu" ,
+			"click .karma-search-close-icon"                                            : "clearElementPanelSearchBar" ,
+			"click .karma-search-close-icon"                                            : "elementPanelCloseSearchBar",
+			"click .karma-builder-search-text"                                          : "showElementPanelSearchBar" ,
+			"click .element-panel-button"                                               : "openElementPanel",
+			"click .element-panel-button:not(.karma-responsive-panel)"					: "openElementPanel",
+			"click .karma-responsive-panel"												: "openResponsiveMode",
+			"click .karma-responsive-button"											: "changeDevice"
 
 		},
 
@@ -37,7 +44,7 @@
 
 
 		/**
-		 * @summary Call draggable on elements in add new elements item;
+		 * Call draggable on elements in add new elements item;
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -49,7 +56,7 @@
 		},
 
 		/**
-		 * @summary close panel when click in panel
+		 * close panel when click in panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -70,7 +77,7 @@
 		},
 
 		/**
-		 * @summary functionality for element panel tab
+		 * functionality for element panel tab
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -89,7 +96,7 @@
 		},
 
 		/**
-		 * @summary get the clicked element and show its related tab
+		 * get the clicked element and show its related tab
 		 *
 		 * @param  { object } originalSelector active category filter
 		 * @since   0.1.0
@@ -115,7 +122,7 @@
 		},
 
 		/**
-		 *@summary create add element panel with import template
+		 *create add element panel with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -124,13 +131,14 @@
 
 			var templateParams = {} ;
 			templateParams['elementInfo'] = karmaBuilderEnviroment.getElementInfo();
+			templateParams['blocks'] = this.blocks;
 			var template = '<div>' + karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( 'karma-element-panel-add-element', templateParams, 1 ) + '</div>';
 			this.el.appendChild( $( template )[ 0 ] );
 
 		},
 
 		/**
-		 *@summary create Templates panel with import template
+		 *create Templates panel with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -143,7 +151,7 @@
 		},
 
 		/**
-		 *@summary create Unsplash with import template
+		 *create Unsplash with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -156,7 +164,7 @@
 		},
 
 		/**
-		 *@summary create Upgrade with import template
+		 *create Upgrade with import template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -169,7 +177,7 @@
 		},
 
 		/**
-		 *@summary close add element panel
+		 *close add element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -194,7 +202,7 @@
 		},
 
 		/**
-		 * @summary use niceScroll for element panel
+		 * use niceScroll for element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -214,7 +222,7 @@
 		},
 
 		/**
-		 * @summary check if premium load premium template
+		 * check if premium load premium template
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -231,10 +239,8 @@
 
 		},
 
-
-
 		/**
-		 * @summary Search in elements
+		 * Search in elements
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -268,7 +274,7 @@
 		},
 
 		/**
-		 * @summary when active category filter get class
+		 * when active category filter get class
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -294,7 +300,7 @@
 		},
 
 		/**
-		 * @summary after click in each category set the price filter on all items
+		 * after click in each category set the price filter on all items
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -319,7 +325,7 @@
 		},
 
 		/**
-		 * @summary initialize quicksand on add element panel
+		 * initialize quicksand on add element panel
 		 *
 		 * @param 	{ array } $elementToFilter set of elements to filter
 		 * @since   0.1.0
@@ -336,7 +342,7 @@
 		},
 
 		/**
-		 * @summary filter elements an add element panel items
+		 * filter elements an add element panel items
 		 *
 		 * @param   { string }    priceFilter     price category to filter
 		 * @param   { string }    categoryFilter  element category to filter
@@ -374,7 +380,7 @@
 		},
 
 		/**
-		 * @summary open category dropdown on click hamburger menu
+		 * open category dropdown on click hamburger menu
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -392,7 +398,7 @@
 		},
 
 		/**
-		 * @summary sorting elements with category filter
+		 * sorting elements with category filter
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -414,7 +420,7 @@
 		},
 
 		/**
-		 * @summary filtering price filter
+		 * filtering price filter
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -438,9 +444,8 @@
 
 		},
 
-
 		/**
-		 * @summary Close gather menu panel
+		 * Close gather menu panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -454,7 +459,7 @@
 		},
 
 		/**
-		 * @summary clear input of search when click close icon
+		 * clear input of search when click close icon
 		 * @param {object}  event DOM Events
 		 *
 		 * @since   0.1.0
@@ -474,7 +479,7 @@
 		},
 
 		/**
-		 * @summary add class to show search bar in element panel
+		 * add class to show search bar in element panel
 		 * @param { object }  event DOM Events
 		 *
 		 * @since   0.1.0
@@ -492,7 +497,7 @@
 		},
 
 		/**
-		 * @summary Close search bar when click document
+		 * Close search bar when click document
 		 *
 		 * @since   0.1.0
 		 * @returns { void }
@@ -513,7 +518,7 @@
 		},
 
 		/**
-		 * @summary show and hide close icon in search box in element panel
+		 * show and hide close icon in search box in element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -526,7 +531,7 @@
 		},
 
 		/**
-		 *@summary open element panel for each button
+		 *open element panel for each button
 		 * @param event
 		 *
 		 * @since   0.1.0
@@ -557,11 +562,197 @@
 						addElement.classList.add( "element-panel-show" );
 					}
 				}
-
 				this.scrollElementPanel();
+
+				this.setActiveTab( document.querySelector( ".karma-addcontent-active" ) );
+				this.loadBlocks();
 			}
 
 		},
+
+		/**
+		 * get list of blocks and load
+		 *
+		 * @since   0.1.1
+		 * @returns {void}
+		 */
+		loadBlocks:function () {
+
+			var that = this;
+			if ( '' != this.blocks ) {
+				return;
+			}
+			$.ajax( {
+				type: "GET",
+				dataType: "json",
+				url: "http://pixflow.net/products/karma/blocks-api/karma-blocks.api.php",
+				success: function ( blocks ) {
+					var templateParams = {};
+					templateParams[ 'blocks' ] = blocks;
+					that.blocks = blocks;
+					var blocksHTML = karmaBuilderEnviroment.getIframe().KarmaView.getWpTemplate( 'karma-element-panel-blocks', templateParams, 1 );
+					document.querySelector( '.karma-blocks-container' ).innerHTML = blocksHTML;
+					that.makeBlocksDraggable();
+					that.scrollElementPanel();
+
+				}
+			} );
+
+		},
+
+		/**
+		 * Call draggable on blocks
+		 *
+		 * @since 0.1.1
+		 * @returns {void}
+		 */
+		makeBlocksDraggable: function () {
+
+			karmaBuilderEnviroment.initBlocksDraggable( '#karma-add-element .element-panel-section-container.element-panel-deactive-part .karma-section-element' );
+
+		},
+
+
+		/**
+		 *show responsive buttons
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		showResponsiveButtons : function ( e ){
+	
+			var that = e.target,
+				elementPanel = $('#karma-add-element');
+
+			elementPanel.addClass('karma-show-responsive-buttons');
+			setTimeout(function (){
+				$( that ).closest('.karma-panel-templates-container ').addClass('animate-device-buttons');
+				$('.karma-responsive-tablet').click();
+			}, 500 );
+
+		},
+
+		/**
+		 * hide responsive buttons
+		 *
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		hideResponsiveButtons : function ( e ){
+
+			var that = e.target,
+				elementPanel = $('#karma-add-element');
+
+			$(that).closest('.karma-panel-templates-container ').removeClass('animate-device-buttons');
+			setTimeout(function (){
+				elementPanel.removeClass('karma-show-responsive-buttons');
+			}, 500 );
+		},
+
+
+		/**
+		 *change builder mode to responsive or desktop
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		openResponsiveMode : function ( e ){
+
+			var elementPanel = $('#karma-add-element');
+			this.closeElementPanel();
+			if ( ! elementPanel.hasClass( 'karma-show-responsive-buttons' ) ){
+
+				this.showResponsiveButtons( e );
+				karmaBuilderEnviroment.hideNonKarmaElements();
+
+			}else{
+				this.hideResponsiveButtons( e );
+				$('.karma-show-parent, .karma-hide-child').removeClass('karma-show-parent karma-hide-child');
+			}
+		},
+
+
+
+		/**
+		 * hide responsive buttons
+		 *
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		hideResponsiveButtons : function ( e ){
+
+			var that = e.target,
+				elementPanel = $('#karma-add-element');
+
+			$(that).closest('.karma-panel-templates-container ').removeClass('animate-device-buttons');
+			setTimeout(function (){
+				elementPanel.removeClass('karma-show-responsive-buttons');
+			}, 500 );
+		},
+
+
+
+		/**
+		 * set active responsive button
+		 * @param event
+		 *
+		 * @since   0.1.0
+		 * @returns { void }
+		 */
+		changeDevice : function ( e ){
+
+			var button = e.target.closest('.karma-responsive-button'),
+			 	regex = new RegExp('(?:^|\\s)karma-device-mode-(.*?)(?!\\S)'),
+				builderEnvirmont = karmaBuilderEnviroment.getIframe().document.querySelector('.karma-builder-environment');
+
+			this.checkContentEditable( e );
+			document.querySelector('body').className = document.querySelector('body').className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
+			builderEnvirmont.setAttribute( "karma-device-mode" , button.getAttribute('data-mode'));
+			builderEnvirmont.className = builderEnvirmont.className.replace( regex, " karma-device-mode-" + button.getAttribute('data-mode') );
+			$('.karma-active-responsive-device').removeClass('karma-active-responsive-device');
+			if ( ! button.classList.contains('karma-responsive-panel') ){
+				button.classList.add('karma-active-responsive-device');
+			}
+
+		},
+
+		/**
+		 * set active responsive button
+		 *
+		 * @since   2.0
+		 * @returns { void }
+		 */
+		checkContentEditable : function ( e ) {
+
+			var buttonType = e.target.closest( '.karma-responsive-button' ),
+				buttonTypeDevice = buttonType.getAttribute( 'data-mode' ),
+				contentEdtibaleList = karmaBuilderEnviroment.getIframe().document.querySelectorAll( '[contenteditable]' ),
+				draggableEelement = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-element-content' ),
+				activeColumn = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( '.karma-active-column' ),
+				sortableSection = karmaBuilderEnviroment.getIframe().KarmaView.$el.find( "#karma-builder-layout" );
+
+
+			_.each( contentEdtibaleList, function ( editableNode ) {
+				if( 'desktop' == buttonTypeDevice ) {
+					editableNode.contentEditable = true;
+					draggableEelement.draggable( 'enable' );
+					sortableSection.sortable( "option", "disabled", false );
+					activeColumn.removeClass( 'karma-active-column' );
+				}else{
+					editableNode.contentEditable = false;
+					draggableEelement.draggable( 'disable' );
+					sortableSection.sortable( "option", "disabled", true );
+					activeColumn.removeClass( 'karma-active-column' );
+				}
+			});
+
+		}
 
 	});
 

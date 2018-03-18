@@ -1,6 +1,15 @@
 <?php
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
 // Get the list of headings
+$headings_range = [
+		'h1' => array( 'min'=>'60', 'max'=>'120' ),
+		'h2' => array( 'min'=>'45', 'max'=>'60' ),
+		'h3' => array( 'min'=>'38', 'max'=>'45' ),
+		'h4' => array( 'min'=>'28', 'max'=>'38' ),
+		'h5' => array( 'min'=>'20', 'max'=>'28' ),
+		'h6' => array( 'min'=>'15', 'max'=>'22' ),
+		'p'  => array( 'min'=>'10', 'max'=>'16' ),
+];
 $typography = Karma_Typography::get_instance();
 $headings = $typography->typography_model->headings ;
 $font_list = $typography->typography_model->fonts ;
@@ -13,27 +22,27 @@ $heading_default_text = array(
 	),
 	'h2'    => array(
 		'title'  => 'Heading 2' ,
-		'text'   => 'Typography is the art and technique' ,
+		'text'   => esc_attr__( 'Typography is the art and technique', 'karma' ),
 	),
 	'h3'    => array(
 		'title'  => 'Heading 3' ,
-		'text'   => 'Typography is the work of typesetters, typographers' ,
+		'text'   => esc_attr__( 'Typography is the work of typesetters, typographers', 'karma' ) ,
 	),
 	'h4'    => array(
 		'title'  => 'Heading 4' ,
-		'text'   => 'Typically drawings by humans may be called typography.' ,
+		'text'   => esc_attr__( 'Typically drawings by humans may be called typography.', 'karma' ) ,
 	),
 	'h5'    => array(
 		'title'  => 'Heading 5' ,
-		'text'   => 'The design of typefaces has developed alongside the development of typesetting systems.' ,
+		'text'   => esc_attr__( 'The design of typefaces has developed alongside the development of typesetting systems.', 'karma' ),
 	),
 	'h6'    => array(
 		'title'  => 'Heading 6' ,
-		'text'   => 'Type may be combined with negative space and images, forming relationships and dialog between the words and images for special effects.' ,
+		'text'   => esc_attr__( 'Type may be combined with negative space and images, forming relationships and dialog between the words and images for special effects.', 'karma' ),
 	),
 	'p'     => array(
 		'title'  => 'Paragraph' ,
-		'text'   => 'Three fundamental aspects of typography are legibility, readability, and aesthetics. Though in a non-technical sense "legible" and "readable" are often used synonymously, typographically they are separate but related concepts.' ,
+		'text'   => esc_attr__('Three fundamental aspects of typography are legibility, readability, and aesthetics. Though in a non-technical sense "legible" and "readable" are often used synonymously, typographically they are separate but related concepts.', 'karma' ),
 	),
 
 );
@@ -141,12 +150,12 @@ $heading_default_text = array(
 					<div class="karma-range-slider-container controller-separator">
 						<div class='karma-range-slider-container'>
 							<div class="karma-range-slider-content">
-								<input type="range" class="karma-range-slider-range no-trigger" value="<?php echo $info['font-size']; ?>" min="10"
-								       max="150">
+								<input type="range" class="karma-range-slider-range no-trigger" value="<?php echo $info['font-size']; ?>" min="<?php echo $headings_range[ $tag ][ 'min' ]; ?>"
+								       max="<?php echo $headings_range[ $tag ][ 'max' ]; ?>">
 								<div class="karma-range-slider-number">
 									<input type="number"
 									       class="karma-range-slider-input karma-input-number-type-input"
-									       name="typography-input" value="<?php echo $info['font-size']; ?>" min="10" max="150">
+									       name="typography-input" value="<?php echo $info['font-size']; ?>" min="<?php echo $headings_range[ $tag ][ 'min' ]; ?>" max="<?php echo $headings_range[ $tag ][ 'max' ]; ?>">
 									<label class="karma-unit karma-input-number-type-unit">px</label>
 								</div>
 							</div>

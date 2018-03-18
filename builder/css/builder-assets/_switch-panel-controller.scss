@@ -31,6 +31,12 @@
 				transform: rotate(45deg);
 				transition-duration: .3s;
 			}
+
+			&.karma-switch-panel-button{
+				svg *{
+					stroke: $builder-main-color;
+				}
+			}
 		}
 	}
 }

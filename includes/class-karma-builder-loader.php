@@ -5,6 +5,8 @@ namespace KarmaBuilder\BuilderLoader ;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
+use KarmaBuilder\BaseManager\Karma_Base_Manager as Base_Manager;
+
 
 
 /**
@@ -30,8 +32,13 @@ use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
  */
 
 
-class Karma_Builder_Loader {
+class Karma_Builder_Loader extends Base_Manager{
 
+
+	const CUSTOM_CSS_OPTION =  'karma_custom_css';
+
+
+	const CUSTOM_JS_OPTION =  'karma_custom_js';
 
 	/**
 	 * The Core that's core of the builder
@@ -80,6 +87,9 @@ class Karma_Builder_Loader {
 
 		$this->plugin_name = 'karma-builder';
 		$this->load_core();
+		$this->init_templates();
+		add_action('admin_bar_menu', array( $this, 'karma_custom_toolbar_link' ), 999 );
+		add_action('admin_bar_menu', array( $this, 'karma_custom_toolbar_add_new_link' ), 999 );
 
 	}
 
@@ -160,6 +170,7 @@ class Karma_Builder_Loader {
 	public function prepare_builder(){
 
 		if( 'true' == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
+			$this->load_user_custom_style_and_script();
 			remove_filter( 'the_content', 'wpautop' );
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
@@ -182,12 +193,55 @@ class Karma_Builder_Loader {
 		$builder_views->load_builder_iframe_templates();
 		$stylesheet = Karma_Factory_Pattern::$stylesheet;
 		$stylesheet->create_default_styles();
+		$this->load_user_custom_style_and_script();
 
 		// Apply filter
 		add_filter('body_class', array( $this ,'add_custom_body_classes') );
 
 	}
 
+	/**
+	 * Get custom script and style
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	public function get_custom_assets_value(){
+
+		return array(
+			'style' => Cache_Manager::minify_css( get_option( $this::CUSTOM_CSS_OPTION, '' ) ),
+			'script' => stripslashes( Cache_Manager::minify_js ( get_option( $this::CUSTOM_JS_OPTION, '' ) ) ),
+		);
+
+	}
+
+	/**
+	 * Print custom script and style in builder and front end
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	private function load_user_custom_style_and_script(){
+
+		$asset_values = self::get_custom_assets_value();
+		ob_start();
+		?>
+		<style id="karma-custom-style">
+			<?php echo $asset_values['style']; ?>
+		</style>
+		<script id="karma-custom-script">
+			try{
+				<?php echo $asset_values['script'] ; ?>
+			}catch ( error ){
+				console.group( 'Karma-Builder - Syntax error found in custom js.' );
+				console.error( error.message  );
+				console.groupEnd();
+			}
+		</script>
+		<?php
+		return ob_get_flush();
+
+	}
 
 	/**
 	 * Add custom class to body tag
@@ -199,7 +253,7 @@ class Karma_Builder_Loader {
 	 */
 	function add_custom_body_classes( $classes ) {
 
-		$classes[] = 'karma-builder-environment';
+		$classes[] = 'karma-builder-environment karma-device-mode-desktop';
 		return $classes;
 	}
 
@@ -434,6 +488,10 @@ class Karma_Builder_Loader {
 	 */
 	public function create_builder_element_model( $output, $tag, $attr ){
 
+		if ( ! $this->is_karma_shortcode( $tag ) ) {
+			return $output;
+		}
+
 		$shortcode_info = array(
 			'shortcode_name' 	=> $tag,
 			'attributes'		=> $attr,
@@ -480,6 +538,9 @@ class Karma_Builder_Loader {
 	 */
 	public function render_assets( $output, $tag, $attr ){
 
+		if ( ! $this->is_karma_shortcode( $tag ) ) {
+			return $output;
+		}
 		$shortcode_info = array(
 			'shortcode_name' 	=> $tag,
 			'attributes'		=> $attr,
@@ -488,6 +549,24 @@ class Karma_Builder_Loader {
 		$shortcode_info[ 'attributes' ] = $this->add_default_attributes( $tag, $attr );
 		do_action( 'karma/before/shortcode/apply/' . $tag, $shortcode_info );
 		return $output;
+
+	}
+
+	/**
+	 * Check is karma shortcode or not
+	 *
+	 * @param    string $tag shortcode tag
+	 *
+	 * @since     2.0
+	 * @return    boolean    true if shortcode is karma type
+	 */
+	public function is_karma_shortcode( $tag ) {
+
+		if ( 0 === strpos( $tag, 'karma_' ) ) {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 

@@ -43,21 +43,23 @@ class Karma_Image extends Karma_Shortcode_Base {
 	static function get_element_default_attributes(){
 
 		return 	array(
-			'element_key'   	=> 'kb' ,
-			'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-			'action'        	=> 'none' ,
-			'linkurl'       	=> get_site_url(),
-			'linktarget'    	=> '_blank' ,
-			'alt'          		=> get_bloginfo( 'name' ) ,
-			'scale'				=> 'fill',
-			'position'			=> 'center-center',
-			'width'				=> '514',
-			'height'			=> '386',
-			'resizing'			=> false,
-			'naturalwidth'		=> '514',
-			'naturalheight' 	=> '386',
-			'topspacepadding'	=> '10',
-			'elementalign'		=> 'left',
+			'element_key'   			=> 'kb' ,
+			'imgurl'					=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
+			'action'        			=> 'none' ,
+			'linkurl'       			=> get_site_url(),
+			'linktarget'    			=> '_blank' ,
+			'alt'          				=> get_bloginfo( 'name' ) ,
+			'scale'						=> 'fill',
+			'position'					=> 'center-center',
+			'width'						=> '514',
+			'height'					=> '386',
+			'resizing'					=> false,
+			'naturalwidth'				=> '514',
+			'naturalheight' 			=> '386',
+			'topspacepadding'			=> '10',
+			'tablettopspacepadding'		=> '16',
+			'mobiletopspacepadding'		=> '16',
+			'elementalign'				=> 'center',
 		);
 
 	}
@@ -90,7 +92,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 
 		ob_start();
 		?>
-		<div class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
+		<div data-width="<?php echo esc_attr( $elem_width  ); ?>" data-height="<?php echo esc_attr( $elem_height  ); ?>" class='karma-image karma-image-<?php echo esc_attr( $attributes['element_key'] ); ?>'>
 			<div class="karma-image-container <?php echo $image_extra['class']; ?>">
 				<a class="karma-image-link karma-document-click" href="<?php echo $image_extra['link']; ?>"
 				   target="<?php echo $attributes['linktarget']; ?>">
@@ -125,7 +127,7 @@ class Karma_Image extends Karma_Shortcode_Base {
 		   	. '<# var elemWidth =  data.attributes.shortcode_attributes.width + "px"; #>'
 		   	. '<# var elemHeight =  data.attributes.shortcode_attributes.height + "px"; #>'
 		    . '<# var elemStyle = " width:" + elemWidth +";height:" + elemHeight +";" #>'
-			. '<div class="karma-image karma-image-{{ data.attributes.element_key }} " >'
+			. '<div data-width="{{data.attributes.shortcode_attributes.width}}" data-height="{{data.attributes.shortcode_attributes.height}}" class="karma-image karma-image-{{ data.attributes.element_key }} " >'
 			. '<div class="karma-image-container {{ data.attributes.shortcode_attributes.extraclass }}">'
 			. '<a class="karma-image-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.linktarget }}" >'
 		    . '<div class="karma-image-resize karma-position-{{ data.attributes.shortcode_attributes.position }}" style="{{ elemStyle }}" >'
@@ -191,6 +193,12 @@ class Karma_Image extends Karma_Shortcode_Base {
 			array(
 				'property'		=> array(
 					'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 				)
 			)
 		);

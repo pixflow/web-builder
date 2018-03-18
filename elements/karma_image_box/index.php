@@ -37,26 +37,36 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 
 		return 	array(
 				'element_key'   	=> 'kb' ,
-				'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/defult-img.png',
-				'overlaycolor'      => 'rgba(0, 0, 0, 0.2)',
-				'backgroundcolor'	=> '#000',
-				'titletext'			=> 'This is title',
-				'descriptiontext'	=> 'This is description',
-				'linktext'			=> 'This is link',
-				'backgroundsize'	=> 'cover',
+				'imgurl'			=>  KARMA_BUILDER_URL . 'builder/media/default-img-text.jpg',
+				'overlaycolor'      => 'rgba(0, 0, 0, 0)',
+				'backgroundcolor'	=> 'rgba(0, 0, 0, 0)',
+				'animation'			=> 'none',
+				'titletext'			=> esc_attr__( 'Great idea', 'karma' ),
+				'descriptiontext'	=> esc_attr__( 'Live Text Editor', 'karma' ),
+				'linktext'			=> esc_attr__( 'Explore more', 'karma' ),
+				'backgroundsize'	=> 'fill',
 				'backgroundposition'=> 'center-center',
-				'titlecolor'		=> '#fff',
-				'descriptioncolor'	=> '#fff',
-				'linkcolor'			=> '#fff',
-				'titletag'			=>'h3',
-				'descriptiontag'	=>'h5',
+				'titlecolor'		=> '#000',
+				'descriptioncolor'	=> '#000',
+				'titletag'			=>'h6',
+				'descriptiontag'	=>'h4',
 				'textposition'		=>'bottom-left',
-				'textlink'			=>'https://www.google.com/',
-				'opennewtab'		=>'_self',
+				'textlink'			=>'#',
+				'target'			=>'_self',
 				'topspacepadding'	=> '10',
 				'radiusbox'			=>'0',
-				'imageheight'		=>'400',
+				'imageheight'		=>'500',
+				'type'				=> 'fill' ,
+				'rangemodel'        =>'0',
+                'generalcolor'		=> '#8FB440',
+                'textcolor'			=> '#fff',
 				'elementalign'		=> 'left',
+				'visibleondesktop'	=> 'on',
+				'visibleonmobile'	=> 'on',
+				'visibleontablet'	=> 'on',
+				'tablettopspacepadding'	=> '16',
+				'mobiletopspacepadding'	=> '16',
+				'animation'			=> 'none'
 		);
 
 	}
@@ -80,15 +90,33 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				$this->get_element_default_attributes(),
 				$attributes
 		);
-
-		$title_content		= '<' . $attributes['titletag'] . ' class="karma-image-text-box-title-tag ">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
-		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
-		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['opennewtab']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
+		$title_class 		= ( '' == $attributes['titletext'] || 'Great idea' == $attributes['titletext'] ) ? 'karma-image-box-title-opacity' : '';
+		$description_class  = ( '' == $attributes['descriptiontext'] || 'Live Text Editor' == $attributes['descriptiontext'] ) ? 'karma-image-box-description-opacity' : '';
+		$title_content		= '<' . $attributes['titletag'] . ' class="karma-image-text-box-title-tag ' .  $title_class .'">' .  $attributes['titletext']  . '</' . $attributes['titletag'] . '>';
+		$description_content = '<' . $attributes['descriptiontag'] . ' class="karma-image-text-box-description-tag '.$description_class.' ">' .  $attributes['descriptiontext']  . '</' . $attributes['descriptiontag'] . '>';
+		$link_content		= '<a href=' .  $attributes['textlink']  . ' target='.  $attributes['target']  . ' class="karma-image-text-box-link-tag ">' .  $attributes['linktext']  .  '</a>';
 		$display			= ( "" ==  $attributes['linktext'] ) ? 'none' : 'block' ;
+		$visible_desktop 	= ( 'on' == $attributes['visibleondesktop'] ) ? '' : 'desktop-display-none karma-deactive-on-desktop';
+		$visible_mobile 	= ( 'on' == $attributes['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
+		$visible_tablet 	= ( 'on' == $attributes['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
+		$animation_class 	= 'karma-box-element-no-animation';
+		$animation_effect   = 'karma-element-no-effect';
+		if ( 'shadowwithanimation' == $attributes['animation'] ){
+			$animation_class 	= 'karma-box-element-hover-shadow';
+			$animation_effect   = 'karma-element-blur-effect';
+		}else if( 'simpleshadow' == $attributes['animation'] ){
+			$animation_class 	= 'karma-box-element-shadow';
+			$animation_effect   = 'karma-element-shadow-effect';
+		}
+
 		ob_start();
 		?>
-		<div class="karma-image-text-box karma-image-text-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-image-text-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-image-text-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-image-text-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
-			<div class="karma-image-text-box-overlay"></div>
+		<div class="karma-image-text-box <?php echo esc_attr( $animation_class ); ?> karma-image-text-box-<?php echo esc_attr( $attributes['element_key'] ); ?> karma-image-text-box-background-size-<?php echo esc_attr( $attributes['backgroundsize'] ); ?> karma-image-text-box-position-<?php echo esc_attr( $attributes['backgroundposition'] ); ?> karma-image-text-box-content-position-<?php echo esc_attr( $attributes['textposition'] ); ?>";  >
+			<div class="karma-image-box-background-container">
+				<div class="karma-image-box-background"></div>
+				<div class="karma-image-text-box-overlay"></div>
+			</div>
+			<div class="karma-element-effect <?php echo esc_attr( $animation_effect ); ?>"></div>
 			<div class="karma-image-text-box-text-container">
 				<div class="karma-image-text-box-title">
 					<?php echo $title_content; ?>
@@ -96,9 +124,11 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				<div class="karma-image-text-box-description">
 					<?php echo $description_content; ?>
 				</div>
-				<div class="karma-image-text-box-link">
-					<?php echo $link_content; ?>
-					<div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
+                <div class="karma-image-text-box-link-content">
+                    <div class="karma-image-text-box-link <?php echo $visible_tablet;  ?> <?php echo $visible_mobile;  ?> <?php echo $visible_desktop;  ?> <?php echo esc_attr( $this->change_classes( $attributes ) ); ?>"  visibe-on-desktop="<?php echo $attributes[ 'visibleondesktop' ]; ?>" visibe-on-tablet="<?php echo $attributes[ 'visibleontablet' ]; ?>"  visibe-on-mobile="<?php echo $attributes[ 'visibleonmobile' ]; ?>">
+                        <?php echo $link_content; ?>
+                        <div class="karma-image-text-box-link-shape" style="display : <?php echo $display; ?>"><?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ); ?></div>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -120,21 +150,44 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		$js_template =
-				 '<div class="karma-image-text-box karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
-				 . '<div class="karma-image-text-box-overlay"></div>'
-				 . '<div class="karma-image-text-box-text-container">'
-				 . '<div  class="karma-image-text-box-title">'
-				 . '<{{{ data.attributes.shortcode_attributes.titletag }}} class="karma-image-text-box-title-tag" > {{ data.attributes.shortcode_attributes.titletext }} </{{{  data.attributes.shortcode_attributes.titletag }}}>'
-				 . '</div>'
-				 . '<div class="karma-image-text-box-description">'
-				 . '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-image-text-box-description-tag" > {{ data.attributes.shortcode_attributes.descriptiontext }} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
-				 . '</div>'
-				 . '<div  class="karma-image-text-box-link">'
-				 . '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.opennewtab }}}" class="karma-image-text-box-link-tag" > {{ data.attributes.shortcode_attributes.linktext }} </a>'
-				 . '<div class="karma-image-text-box-link-shape">' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
-				 . '</div>'
-				 . '</div>'
-
+				"<# var visibleDesktop = ( 'on' == data.attributes.shortcode_attributes.visibleondesktop  ) ? '' : 'desktop-display-none karma-deactive-on-desktop';  #>"
+				. "<# var visibleMobile = ( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
+				. "<# var visibleTablet = ( 'on' == data.attributes.shortcode_attributes.visibleontablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
+				. "<# var animationClass = 'karma-box-element-no-animation';  #>"
+				. "<# var animationEffect   = 'karma-element-no-effect';  #>"
+				.'<# if ( \'fill\'  ==  data.attributes.shortcode_attributes.type ) { #>'
+				.'<# var className = \'karma-button-fill \' #>'
+				.'<#}else if( \'outline\'  ==  data.attributes.shortcode_attributes.type ) { #>'
+				.'<#  className = \'karma-button-outline \' #>'
+				.'<#} else { #>'
+				.'<# className = \'karma-button-link \'  #>'
+				.'<# }#>'
+				.'<# if ( \'shadowwithanimation\' == data.attributes.shortcode_attributes.animation ) { #>'
+				.'<# animationClass = \'karma-box-element-hover-shadow\'; animationEffect = \'karma-element-blur-effect\'; #>'
+				.'<# }else if ( \'simpleshadow\' == data.attributes.shortcode_attributes.animation ) { #>'
+				.'<# animationClass = \'karma-box-element-shadow\'; animationEffect = \'karma-element-shadow-effect\'; #>'
+				.'<# } #>'
+				. '<# var display = ( "" ==  data.attributes.shortcode_attributes.linktext ) ? "none" : "block" ; #>'
+				. '<div class="karma-image-text-box {{ animationClass }} karma-image-text-box-{{ data.attributes.shortcode_attributes.element_key }}  karma-image-text-box-background-size-{{ data.attributes.shortcode_attributes.backgroundsize }} karma-image-text-box-content-position-{{ data.attributes.shortcode_attributes.textposition }} karma-image-text-box-position-{{ data.attributes.shortcode_attributes.backgroundposition }}" >'
+				. '<div class="karma-image-box-background-container">'
+				. '<div class="karma-image-box-background"></div>'
+				.'<div class="karma-image-text-box-overlay"></div>'
+				.'</div>'
+				.'<div class="karma-element-effect {{animationEffect}}"></div>'
+				. '<div class="karma-image-text-box-text-container">'
+				. '<div  class="karma-image-text-box-title">'
+				. '<{{{ data.attributes.shortcode_attributes.titletag }}} class="karma-image-text-box-title-tag" > {{{ data.attributes.shortcode_attributes.titletext }}} </{{{  data.attributes.shortcode_attributes.titletag }}}>'
+				. '</div>'
+				. '<div class="karma-image-text-box-description">'
+				. '<{{{ data.attributes.shortcode_attributes.descriptiontag }}} class="karma-image-text-box-description-tag" > {{{ data.attributes.shortcode_attributes.descriptiontext }}} </{{{  data.attributes.shortcode_attributes.descriptiontag }}}>'
+				. '</div>'
+                . '<div class="karma-image-text-box-link-content">'
+				. '<div  class="karma-image-text-box-link {{className}} {{visibleDesktop}} {{visibleMobile}}  {{ visibleTablet }}" visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}"  visibe-on-desktop="{{ data.attributes.shortcode_attributes.visibleondesktop }}">'
+				. '<a href="{{{ data.attributes.shortcode_attributes.textlink }}}" target="{{{ data.attributes.shortcode_attributes.target }}}" class="karma-image-text-box-link-tag" > {{{ data.attributes.shortcode_attributes.linktext }}} </a>'
+				. '<div class="karma-image-text-box-link-shape" style="display : {{ display }}" >' .  Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/bottom-arrow.svg' ) .' </div>'
+				. '</div>'
+				. '</div>'
+				. '</div>'
 				. '</div>';
 
 		return $js_template;
@@ -153,53 +206,111 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 	public static function get_css_attributes() {
 
 		$styles = array(
-					array(
-						'property'		=> array(
-								'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
-						)
-					),
-					array(
-						'postfix'	=> ' .karma-image-text-box',
-						'property'	=> array(
-							'background-color'	=>  self::$element_attributes[ 'backgroundcolor' ]  ,
-							'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
-							'height'			=> self::$element_attributes[ 'imageheight' ] . 'px',
-							'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
-						)
-					),
-					array(
-						'postfix'	=> ' .karma-image-text-box-overlay',
-						'property'	=> array(
-							'background-color'		=>  self::$element_attributes[ 'overlaycolor' ],
-							'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
-						)
-					),
-					array(
-						'postfix'	=> ' .karma-image-text-box-title .karma-image-text-box-title-tag',
-						'property'	=> array(
-								'color'		=> self::$element_attributes[ 'titlecolor' ],
-						)
-					),
-					array(
-							'postfix'	=> ' .karma-image-text-box-description .karma-image-text-box-description-tag',
-							'property'	=> array(
-									'color'		=> self::$element_attributes[ 'descriptioncolor' ],
-							)
-					),
-					array(
-							'postfix'	=> ' .karma-image-text-box-link .karma-image-text-box-link-tag',
-							'property'	=> array(
-									'color'		=> self::$element_attributes[ 'linkcolor' ],
-
-							)
-					),
-
-					array(
-							'postfix'	=> ' .karma-image-text-box-link .karma-image-text-box-link-shape svg *',
-							'property'	=> array(
-									'stroke'	=> self::$element_attributes[ 'linkcolor' ],
-							)
+			array(
+				'property'		=> array(
+						'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
+				)
+			),
+			array(
+				'postfix'	=> ' .karma-image-text-box',
+				'property'	=> array(
+					'height'			=> self::$element_attributes[ 'imageheight' ] . 'px',
+				),
+				'tablet_property' => array(
+					'min-height'		=> ( ( self::$element_attributes[ 'imageheight' ] * 70 ) / 100 ). 'px',
+				),
+				'mobile_property' => array(
+					'min-height'		=> ( ( self::$element_attributes[ 'imageheight' ]* 70 ) / 100 ). 'px',
+				)
+			),
+			array(
+				'postfix'	=> ' .karma-image-box-background-container',
+				'property'	=> array(
+					'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
+				),
+			),
+			array(
+				'postfix'	=> ' .karma-image-box-background',
+				'property'	=> array(
+					'background-color'	=>  self::$element_attributes[ 'backgroundcolor' ]  ,
+					'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
+				),
+			),
+			array(
+				'postfix'	=> ' .karma-element-blur-effect',
+				'property'	=> array(
+					'background-color'	=>  self::$element_attributes[ 'backgroundcolor' ]  ,
+					'background-image'	=> ( 'none' ==  self::$element_attributes[ 'imgurl' ] ) ? "none" : "url(" . self::$element_attributes[ 'imgurl' ] . ")",
+					'border-radius'		=> self::$element_attributes[ 'radiusbox' ]. 'px',
+				),
+			),
+			array(
+				'postfix'	=> ' .karma-image-text-box-overlay',
+				'property'	=> array(
+					'background-color'		=>  self::$element_attributes[ 'overlaycolor' ],
+				)
+			),
+			array(
+				'postfix'	=> ' .karma-image-text-box-title .karma-image-text-box-title-tag',
+				'property'	=> array(
+						'color'		=> self::$element_attributes[ 'titlecolor' ],
+				)
+			),
+			array(
+					'postfix'	=> ' .karma-image-text-box-description .karma-image-text-box-description-tag',
+					'property'	=> array(
+							'color'		=> self::$element_attributes[ 'descriptioncolor' ],
 					)
+			),
+			array(
+					'postfix'	=> ' .karma-image-text-box-link.karma-button-link .karma-image-text-box-link-tag',
+					'property'	=> array(
+						'color'		=> self::$element_attributes[ 'generalcolor' ],
+					)
+			),
+			array(
+					'postfix'	=> ' .karma-image-text-box-link .karma-image-text-box-link-shape svg *',
+					'property'	=> array(
+						'stroke'	=> self::$element_attributes[ 'generalcolor' ],
+					)
+			),
+			array(
+					'postfix'	=> ' .karma-image-text-box-link',
+					'property'	=> array(
+						'border-radius'	=> self::$element_attributes[ 'rangemodel' ] . 'px',
+					)
+			),
+			array(
+				'postfix'	=> ' .karma-image-text-box-link.karma-button-fill',
+				'property'	=> array(
+					'background-color'	=> self::$element_attributes[ 'generalcolor' ],
+					'border-color'	=> self::$element_attributes[ 'generalcolor' ],
+				)
+			),
+			array(
+				'postfix'	=> ' .karma-image-text-box-link.karma-button-outline',
+				'property'	=> array(
+					'border-color'	=> self::$element_attributes[ 'generalcolor' ],
+				)
+			),
+			array(
+				'postfix'  => ' .karma-button-outline .karma-image-text-box-link-tag ',
+				'property' => array(
+					'color' => self::$element_attributes[ 'generalcolor' ],
+				)
+			),
+			array(
+				'postfix'	=> ' .karma-button-fill .karma-image-text-box-link-tag  ',
+				'property'	=> array(
+					'color'		=> self::$element_attributes[ 'textcolor' ],
+				)
+			),
 
 		);
 		return $styles;
@@ -234,6 +345,20 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 		);
 
 		return $dependencies ;
+
+	}
+
+	public function change_classes( $attributes ) {
+
+		if( 'fill' == $attributes['type'] ){
+			$class_name = 'karma-button-fill';
+		}elseif ( 'outline' == $attributes['type'] ){
+			$class_name = 'karma-button-outline';
+		}else{
+			$class_name = 'karma-button-link';
+		}
+
+		return $class_name;
 
 	}
 

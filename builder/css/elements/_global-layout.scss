@@ -183,3 +183,8 @@
 	@include delete-message-box( 297px, 190px  );
 
 }
+
+.karma-grab-element{
+	z-index: $level-30;
+	cursor: -webkit-grab;
+}

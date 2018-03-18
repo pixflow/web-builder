@@ -126,6 +126,27 @@ class Karma_Column_Describe extends Karma_Column {
 				"type"		=> "leftSpacingGizmo",
 				"className"	=> "section-left-spacing",
 			),
+			array(
+				"type"		=> "innerGizmo",
+				"className"	=> "column-gizmo-group-responsive",
+				"params"	=> 	array(
+
+					array(
+						'type' => 'hidden',
+						'form' => 'visibility',
+						'device' => 'karma-responsive'
+					),
+					array(
+						'type'		=> 'text',
+						'form'		=> 'column-responsive-panel',
+						'className'	=> 'column-responsive-setting',
+						'params'=> array(
+							'value'		=> esc_attr( 'Column', 'karma' ),
+							'mode'		=> 'count',
+						)
+					),
+				),
+			),
 		);
 
 		return $controllers;

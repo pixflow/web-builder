@@ -1,0 +1,27 @@
+#wpadminbar #wp-admin-bar-karma_customizer_button{
+	background-image: url(../media/svg/wordpress-nav-edit-karma.svg) ;
+	background-position: left 0px bottom 9px ;
+	background-repeat: no-repeat ;
+	padding-left: 10px ;
+	margin-left: 6px;
+	&:hover{
+		a{
+			background-color:inherit ;
+			color:#419cf8  ;
+		}
+	}
+}
+#wpadminbar #wp-admin-bar-karma_customizer_add_new_button{
+	background-image: url(../media/svg/wordpress-nav-add-new.svg) ;
+	background-position: left 0px bottom 9px ;
+	background-repeat: no-repeat;
+	padding-left: 16px;
+	margin-left: 6px;
+	&:hover{
+		a{
+			color: #1dc9ab ;
+			background-color:inherit ;
+		}
+	}
+}
+

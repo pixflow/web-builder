@@ -45,10 +45,10 @@
 
 
 		/**
-		 *  @summary Build html for gizmo resizeable for top & bottom
+		 *  Build html for gizmo resizeable for top & bottom
 		 */
 		bothSpacingGizmoTemplate : '<div class="{{ data.className }} karma-spacing-container">'
-		+ '<div class="karma-spacing karma-top-spacing   " data-direction="both"  >'
+		+ '<div class="karma-spacing karma-both-top-spacing karma-top-spacing  " data-direction="both"  >'
 		+ '<div class="karma-both-spacing-handler karma-both-spacing-handler-top ui-resizable-handle ui-resizable-s">'
 		+ '<div class="karma-spacing-dot-container karma-top-spacing-height ">'
 		+ '<div class="spacing-dot"></div>'
@@ -67,7 +67,7 @@
 		+ '</div>' ,
 
 		/**
-		 *  @summary Build html for gizmo resizeable for left
+		 *  Build html for gizmo resizeable for left
 		 */
 		leftSpacingGizmoTemplate :'<div class="left-resizing {{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing  ui-resizable-handle ui-resizable-e karma-left-spacing " data-direction="left" style="width:{{ data.leftspace}}px">'
@@ -80,7 +80,7 @@
 		+ '</div>' ,
 
 		/**
-		 *  @summary Build html for gizmo resizeable for right
+		 *  Build html for gizmo resizeable for right
 		 */
 		rightSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing karma-right-spacing ui-resizable-w" data-direction="right" style="width:{{ data.rightspace }}px">'
@@ -93,7 +93,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary Build html for gizmo resizeably for top
+		 * Build html for gizmo resizeably for top
 		 */
 		topSpacingGizmoTemplate :'<div class="{{ data.className }} karma-spacing-container">'
 		+ '<div class="karma-spacing karma-top-spacing ui-resizable-handle ui-resizable-s ui-resizable-n " data-direction="top" style="height:{{ data.spaceing }}px">'
@@ -106,7 +106,7 @@
 
 
 		/**
-		 * @summary Build html for Gizmo crop
+		 * Build html for Gizmo crop
 		 */
 		cropGizmoTemplate : '<div class="left-crop {{ data.className }} karma-crop-container">'
 		+ '<div class="karma-crop karma-left-crop " data-direction="left" >'
@@ -139,7 +139,7 @@
 
 
 		/**
-		 * @summary Build html for Gizmo resize
+		 * Build html for Gizmo resize
 		 */
 		imageResizeGizmoTemplate : '',
 
@@ -163,7 +163,7 @@
 		titleGizmoTemplate: '<div class="karma-title-gizmo-template karma-gizmo-container"></div>',
 
 		/**
-		 * @summary Set Gizmo Events
+		 * Set Gizmo Events
 		 *
 		 * @param {object}  gizmoParams     gizmo params of view
 		 *
@@ -188,7 +188,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo controller of elements base on params given
+		 * Build gizmo controller of elements base on params given
 		 *
 		 * @param	{ object }	gizmoParams	Gizmo params
 		 *
@@ -241,7 +241,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo controller
+		 * Build gizmo controller
 		 *
 		 * @since 0.1.0
 		 *
@@ -263,7 +263,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeable for top and bottom
+		 * Build gizmo resizeable for top and bottom
 		 *
 		 * @param { object } $gizmo section gizmo
 		 * @since 0.1.0
@@ -280,31 +280,27 @@
 					handles 	: {},
 					cursor		: 's-resize',
 					scroll 		: true ,
-					start: function ( event ) {
+					start: function ( event, UI ) {
+
 						karmaSection.addClass( "karma-resizable-active" );
 						that.showMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "200px";
+						that.updateGizmoValue( UI, that.el.querySelector('.karma-section'), 'padding-top' );
+
 					},
 					stop : function ( event, ui ) {
+
+						that.updateElementModel( 'space', ui.element.height() );
 						karmaSection.removeClass( "karma-resizable-active" );
-						that.setAttributes( { space: parseInt( ui.element.height() ) }, true );
 						that.removeMouseToolTip( event );
 						document.querySelector('#karma-builder-layout').style.paddingBottom = "0";
-						that.el.querySelector( '.karma-top-spacing').style.height = ui.element.height() +"px";
+						that.el.querySelector( '.karma-both-top-spacing ').style.height = ui.element.height() +"px";
 
 					},
-					resize: function( event, ui ){
-
-						var padding = ui.size.height + 'px';
-						karmaSection.find('.karma-section').css( {
-							paddingTop 		: padding,
-							paddingBottom	: padding
-						});
-
-						karmaSection.find('.karma-top-spacing').css( {
-							height 	: padding
-						});
-
+					resize: function( event, UI ){
+						var padding = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
+						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-top', padding, that.currentDevice() );
+						that.renderCss('#' + that.elementSelector() + ' .karma-section', 'padding-bottom', padding, that.currentDevice() );
 					}
 				};
 
@@ -312,12 +308,55 @@
 			options.handles.s = $gizmo.find( '.ui-resizable-s' ).eq(0);
 			options.handles.n = $gizmo.find( '.ui-resizable-s' ).eq(1);
 			this.$el.find( '.karma-bottom-spacing' ).resizable( options );
+		},
 
+		/**
+		 * Update live gizmo value with
+		 * its value of the current device
+		 *
+		 * @param	{object} UI
+		 * @param	{object} element javascript element
+		 * @param	{string} property css property
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		updateGizmoValue : function ( UI, element, property ){
+
+			var newSize =  window.getComputedStyle( element ).getPropertyValue( property );
+			newSize = ( newSize.indexOf('px') > -1 ) ? newSize.replace( 'px', '' ) : newSize;
+			if ( 'padding-left' == property || 'padding-right' == property ){
+				UI.originalSize.width = parseInt( newSize );
+				UI.helper[ 0 ].setAttribute( 'style', 'width: ' + UI.size.width + 'px' );
+			} else if ( 'padding-top' == property || 'padding-bottom' == property ){
+				UI.originalSize.height = parseInt( newSize );
+				UI.helper[ 0 ].setAttribute( 'style', 'height: ' + UI.size.height + 'px' );
+			}
 
 		},
 
 		/**
-		 * @summary show and hide element gizmo
+		 * Create object containing list of shortcode property
+		 * based on device to call set attributes function
+		 *
+		 * @param	{string} property CSS property
+		 * @param	{string} value new value of CSS
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {void}
+		 */
+		updateElementModel : function ( property, value ){
+
+			var newAttr = {};
+			newAttr[ this.currentDevice() + property ] = parseInt( value );
+			this.setAttributes( newAttr, true );
+
+		},
+
+		/**
+		 * show and hide element gizmo
 		 * @param	{string} mode of action
 		 *
 		 * @since 0.1.0
@@ -337,7 +376,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeably for top
+		 * Build gizmo resizeably for top
 		 * @param {object}  $gizmo     gizmo params of view
 		 *
 		 * @since 0.1.0
@@ -351,28 +390,60 @@
 					maxHeight   : 700,
 					minHeight   : 0,
 					handles : {},
-					start: function ( event ) {
+					start: function ( event, UI ) {
 						that.showMouseToolTip( event );
 						that.toggleShortcodeGizmo( "add" );
+						that.updateGizmoValue( UI, that.el, 'padding-top' );
+
 					},
-					stop : function ( event, ui ) {
+					stop : function ( event, UI ) {
 
 						that.removeMouseToolTip( event );
-						that.setAttributes( { topspacepadding : parseInt( ui.element.height() ) }, false );
+						that.updateElementModel( 'topspacepadding', UI.element.height());
 						that.toggleShortcodeGizmo( "remove" );
 
 					},
-					resize: function( event, ui ){
+					resize: function( event, UI ){
 
-						var currentSection = that.el;
-						currentSection.style.paddingTop = ui.size.height + 'px';
+						var elementId 	= that.elementSelector(),
+						value = ( UI.size.height <= 0 ) ? 0 : UI.size.height + 'px';
+						that.renderCss( "#" + elementId + "" , 'padding-top', value , that.currentDevice());
 
 					}
 				};
 
-			options.handles.s = $gizmo.find( '.ui-resizable-s' );
-			this.$el.find( '.karma-top-spacing' ).css( "height", this.getAttributes(['topspacepadding']).topspacepadding + "px" );
-			this.$el.find( '.karma-top-spacing' ).resizable( options );
+				options.handles.s = $gizmo.find( '.ui-resizable-s' );
+				this.$el.find( '.karma-top-spacing' ).css( "height", this.getAttributes(['topspacepadding']).topspacepadding + "px" );
+				this.$el.find( '.karma-top-spacing' ).resizable( options );
+
+		},
+
+		/**
+		 *@summery update hidden gizmo status
+		 *
+		 * @since 0.1.1
+		 *
+		 * @return {void}
+		 */
+		updateHiddenGizmoStatus : function () {
+
+			var hiddenGizmo = this.$el.find( ' > .karma-gizmo-template .karma-visibility-option' ),
+				mode = document.body.getAttribute( 'karma-device-mode' );
+
+			if( null == hiddenGizmo ){
+				return ;
+			}
+			var visibilty = this.getAttributes( ['visibleon' + mode ] )['visibleon' + mode ] ;
+
+			if( 'undefined' == typeof visibilty ){
+				return ;
+			}
+
+			if( 'off' == visibilty ){
+				hiddenGizmo.addClass( 'visibility-line' );
+			}else{
+				hiddenGizmo.removeClass( 'visibility-line' );
+			}
 
 		},
 
@@ -395,22 +466,28 @@
 					maxWidth   : maxWidth,
 					minWidth   : 0,
 					handles : {},
-					start : function( event ){
+					start : function( event , UI ){
 
 						that.$el.find( '.karma-image-resize' ).css( {'width': ''});
+						if ('padding-left' == paddingDirection) {
+							that.updateGizmoValue( UI, that.el.querySelector('.karma-column'), 'padding-left' );
+						}else{
+							that.updateGizmoValue( UI, that.el.querySelector('.karma-column'), 'padding-right' );
+						}
 						that.showMouseToolTip( event );
 						that.el.classList.add( 'karma-resizing-padding' );
 						KarmaView.removeActiveElement();
+
 
 					},
 
 					stop : function ( event, ui ) {
 
 						var value = ( parseInt( ui.element.width() ) < 0 ) ? 0 : parseInt( ui.element.width() );
-						if ( 'padding-left' == paddingDirection ){
-							that.setAttributes( { 'leftspace' : value }, true );
-						}else {
-							that.setAttributes( { 'rightspace' : value }, true );
+						if ('padding-left' == paddingDirection) {
+							that.updateElementModel( 'leftspace', value );
+						} else {
+							that.updateElementModel( 'rightspace', value );
 						}
 						that.removeMouseToolTip( event );
 						that.el.classList.remove( 'karma-resizing-padding' );
@@ -422,7 +499,7 @@
 						var calculating = that.calculateMaxWidthSpacing( spacingSelector );
 						ui.element.resizable( "option", "maxWidth", calculating );
 						var value = ( ui.size.width < 0 ) ? 0 : parseInt( ui.size.width );
-						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px');
+						that.renderCss( '.karma-no-gutters > #' + that.elementSelector() + '> .karma-column', paddingDirection, value + 'px', that.currentDevice() );
 
 					}
 				};
@@ -462,6 +539,7 @@
 							'height'		: UI.size.height,
 							'resizing'	: that.el.querySelector( 'img' ).classList.contains( 'karma-image-both-resize' )
 						}, true );
+						that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width );
 
 					},
 					
@@ -490,6 +568,7 @@
 
 				UI.element.resizable( "option", "maxWidth", that.el.closest( '.karma-column-margin' ).clientWidth );
 				$(this).parent().css( 'width' , UI.size.width + 'px' );
+				that.el.querySelector( '.karma-image' ).setAttribute( 'width', UI.size.width );
 				$(this).parent().css( 'height' , 'auto' );
 
 			}
@@ -498,7 +577,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeable for left
+		 * Build gizmo resizeable for left
 		 *
 		 * @param {object} $gizmo left spacing gizmo of column
 		 * @since 0.1.0
@@ -516,7 +595,7 @@
 		},
 
 		/**
-		 * @summary Build gizmo resizeable for right
+		 * Build gizmo resizeable for right
 		 *
 		 * @param {object} $gizmo  right spacing gizmo of column
 		 * @since 0.1.0
@@ -530,6 +609,25 @@
 			that.$el.attr( 'data-direction', 'left' );
 			options.handles.w = $gizmo.find(  '.ui-resizable-w' );
 			this.$el.find( '.karma-right-spacing' ).resizable( options );
+
+		},
+
+		/**
+		 * return device mode
+		 *
+		 * @since 0.1.0
+		 *
+		 * @returns {string} name of device
+		 */
+		currentDevice : function () {
+
+			if( document.body.classList.contains( 'karma-device-mode-desktop' ) ){
+				return	'';
+			}else if( document.body.classList.contains( 'karma-device-mode-tablet' ) ){
+				return	'tablet';
+			}else if( document.body.classList.contains( 'karma-device-mode-mobile' ) ){
+				return	'mobile';
+			}
 
 		},
 
@@ -553,7 +651,7 @@
 		},
 
 		/**
-		 * @summary show spacing tooltip on mouse down
+		 * show spacing tooltip on mouse down
 		 *
 		 * @since   0.1.0
 		 *
@@ -579,7 +677,7 @@
 		},
 
 		/**
-		 * @summary move spacing tooltip on mouse move
+		 * move spacing tooltip on mouse move
 		 *
 		 * @param {object} that element view
 		 * @param {string} direction Spacing gizmo which is resizing
@@ -635,7 +733,7 @@
 		},
 
 		/**
-		 *@summary remove mouse tooltip in spacing
+		 *remove mouse tooltip in spacing
 		 *
 		 * @since 0.1.0
 		 *
@@ -654,7 +752,7 @@
 		},
 
 		/**
-		 *@summary create html fot tooltip
+		 *create html fot tooltip
 		 *
 		 * @since 0.1.0
 		 *
@@ -670,7 +768,7 @@
 		},
 
 		/**
-		 * @summary Set the listener on build gizmo
+		 * Set the listener on build gizmo
 		 *
 		 * @param   {string}    tempName      Name of gizmo
 		 * @param   {string}    gizmoParam    Gizmo options
@@ -701,7 +799,7 @@
 		},
 
 		/**
-		 * @summary Set the active element gizmo
+		 * Set the active element gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -709,7 +807,6 @@
 		showElementGizmo: function ( e ) {
 
 			e.stopPropagation();
-
 			var lastActiveElement = document.querySelector( '.karma-active-element' );
 			this.removeElementChildGizmo();
 
@@ -721,13 +818,14 @@
 			}
 
 			KarmaView.$el.trigger( 'karma/callParent', [ this.el, [ 'activeColumn' ] , 1  ] );
+			this.$el.trigger( 'karma/after/clickElement' );
 			this.el.classList.add( 'karma-active-element' );
 			KarmaView.closeElementPanel().removeSettingPanel();
 
 		},
 
 		/**
-		 * @summary Show element gizmo
+		 * Show element gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -760,7 +858,7 @@
 		},
 
 		/**
-		 * @summary close more sub menu when click in document
+		 * close more sub menu when click in document
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -781,7 +879,7 @@
 		},
 
 		/**
-		 * @summary show and hide options under more in gizmo panel
+		 * show and hide options under more in gizmo panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -818,7 +916,7 @@
 		},
 
 		/**
-		 * @summary open dropDown in gizmo
+		 * open dropDown in gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -838,7 +936,7 @@
 		},
 
 		/**
-		 * @summary Close dropDown in gizmo
+		 * Close dropDown in gizmo
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -853,7 +951,7 @@
 		},
 
 		/**
-		 * @summary Add new section
+		 * Add new section
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -867,13 +965,20 @@
 				
 				var domNode = $( this )[0],
 					newGrid = JSON.parse(domNode.getAttribute( 'data-value' ) ),
-					placeholder = document.querySelector('.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
+					placeholder = document.querySelectorAll( '.karma-section-placeholder-' + that.model.get( 'element_key' ) ),
 					elementName = 'karma_section';
 
-				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName  );
+				if ( 1 === that.model.get( 'order' ) ) {
+					placeholder = placeholder[ 1 ];
+				} else {
+					placeholder = placeholder[ 0 ];
+				}
+
+				var newSection = KarmaView.createKarmaElement( [ placeholder , 'after' ], elementName , { order : ( that.model.get( 'order' ) + 1 ) } );
 				newSection.changeRowLayout( newGrid );
 				KarmaView.createStyleSheetForElements( newSection.model.attributes.shortcode_attributes, newSection );
 				KarmaView.reorderSections();
+				KarmaView.$el.trigger('karma/after/sortSections');
 				that.closeNewSectionPanel();
 				newSection.showBorder( e );
 
@@ -883,7 +988,7 @@
 
 
 		/**
-		 * @summary close new section Dropdown
+		 * close new section Dropdown
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -902,7 +1007,7 @@
 		},
 
 		/**
-		 * @summary open and close new section Dropdown
+		 * open and close new section Dropdown
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -920,7 +1025,7 @@
 		},
 
 		/**
-		 * @summary update dropDown gizmo and add class to active item
+		 * update dropDown gizmo and add class to active item
 		 * @param {object}  event
 		 *
 		 * @since 0.1.0

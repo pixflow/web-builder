@@ -48,7 +48,7 @@
 			+ '</div>' ,
 
 		/**
-		 * @summary initialize typography
+		 * initialize typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -61,7 +61,7 @@
 		},
 
 		/**
-		 * @summary render typography
+		 * render typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -90,7 +90,7 @@
 		},
 
 		/**
-		 * @summary functionality of h1 typography
+		 * functionality of h1 typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -112,7 +112,7 @@
 		},
 
 		/**
-		 * @summary functionality of h2 typography
+		 * functionality of h2 typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -134,7 +134,7 @@
 		},
 
 		/**
-		 * @summary functionality of h3 typography
+		 * functionality of h3 typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -155,7 +155,7 @@
 		},
 
 		/**
-		 * @summary functionality of h4 typography
+		 * functionality of h4 typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -176,7 +176,7 @@
 		},
 
 		/**
-		 * @summary functionality of h5 typography
+		 * functionality of h5 typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -197,7 +197,7 @@
 		},
 
 		/**
-		 * @summary functionality of h6 typography
+		 * functionality of h6 typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -218,7 +218,7 @@
 		},
 
 		/**
-		 * @summary functionality of p typography
+		 * functionality of p typography
 		 *
 		 * @since 0.1.0
 		 *
@@ -239,7 +239,7 @@
 		},
 
 		/**
-		 * @summary set  typography for text element
+		 * set  typography for text element
 		 *
 		 * @since 0.1.0
 		 *

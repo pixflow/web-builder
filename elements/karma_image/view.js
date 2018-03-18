@@ -20,7 +20,7 @@
 		},
 
 		/**
-		 * @summary Render image element
+		 * Render image element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -36,7 +36,7 @@
 		},
 
 		/**
-		 * @summary set Image width and height attribute of image
+		 * set Image width and height attribute of image
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -65,7 +65,7 @@
 		},
 
 		/**
-		 * @summary stop image to call its parent
+		 * stop image to call its parent
 		 *
 		 * @since 0.1.0
 		 *
@@ -78,7 +78,7 @@
 		},
 
 		/**
-		 * @summary change image URL
+		 * change image URL
 		 *
 		 * @since 0.1.0
 		 *
@@ -93,7 +93,7 @@
 		},
 
 		/**
-		 * @summary set image to fill or real according to user selection
+		 * set image to fill or real according to user selection
 		 *
 		 * @since 0.1.0
 		 *
@@ -108,7 +108,7 @@
 		},
 
 		/**
-		 * @summary change position of image
+		 * change position of image
 		 *
 		 * @since 0.1.0
 		 *
@@ -123,7 +123,7 @@
 		},
 
 		/**
-		 * @summary change image alt attribute on change alt field in advanced option
+		 * change image alt attribute on change alt field in advanced option
 		 *
 		 * @since 0.1.0
 		 *
@@ -137,7 +137,7 @@
 		},
 
 		/**
-		 * @summary set image url attribute on change url field
+		 * set image url attribute on change url field
 		 *
 		 * @since 0.1.0
 		 *
@@ -151,7 +151,7 @@
 		},
 
 		/**
-		 * @summary set image target attribute on change target field
+		 * set image target attribute on change target field
 		 *
 		 * @since 0.1.0
 		 *
@@ -165,7 +165,7 @@
 		},
 
 		/**
-		 * @summary open media library
+		 * open media library
 		 *
 		 * @since 0.1.0
 		 *
@@ -182,7 +182,7 @@
 		},
 
 		/**
-		 * @summary change image url
+		 * change image url
 		 *
 		 * @since 0.1.0
 		 *
@@ -197,7 +197,7 @@
 		},
 		
 		/**
-		 * @summary change image click action
+		 * change image click action
 		 *
 		 * @since 0.1.0
 		 *

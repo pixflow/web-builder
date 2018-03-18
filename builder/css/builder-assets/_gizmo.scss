@@ -262,6 +262,7 @@ img {
 	bottom: 3px;
 	cursor: pointer;
 	left: 50%;
+	margin-left: 30px;
 	opacity: 0;
 	position: absolute;
 	transform: translateX(-50%);
@@ -288,7 +289,6 @@ img {
 		justify-content: space-between;
 		max-width: 1040px;
 		opacity: 0;
-		transform: translateY(50px);
 		transition: opacity 0.2s , translate 0.2s;
 		visibility: hidden;
 		width: 100%;
@@ -370,13 +370,18 @@ body:not(.karma-builder-environment) {
 .karma-builder-environment {
 	.karma-builder-element {
 		position: relative;
-
 		.karma-element-content {
 			position: relative;
 			width: fit-content;
 			width: -moz-fit-content;
 			.karma-spacing-dot-container {
 				display: none;
+			}
+		}
+
+		&.karma-first-section{
+			.karma-inner-gizmo-template{
+				top: 110px;
 			}
 		}
 
@@ -418,7 +423,9 @@ body:not(.karma-builder-environment) {
 
 		.karma-text {
 			*:focus {
-				outline: $builder-accent-color solid 1px;
+				min-width: 20px;
+				box-shadow:0px 0px 0px 1px #419CF8;
+				outline: none;
 			}
 		}
 
@@ -445,6 +452,31 @@ body:not(.karma-builder-environment) {
 			padding: 0 7px;
 			position: absolute;
 			z-index: $level-20;
+			&:not(.section-gizmo-group){
+				left:0;
+				right: auto;
+			}
+			&.column-gizmo-group-responsive{
+				left:auto;
+				right: 0;
+			}
+
+			.karma-visibility-option{
+				@include box( 18px, 12px );
+				background-image: url(../media/svg/visibility.svg);
+				background-repeat: no-repeat;
+				background-size: contain;
+				cursor: pointer;
+				margin: 0 7px;
+
+				&.visibility-line{
+					@include box( 18px, 17px );
+					background-image: url(../media/svg/visible-line.svg);
+					background-size: contain;
+					cursor: pointer;
+					margin: 0 7px;
+				}
+			}
 
 			&.text-gizmo-group > div {
 
@@ -456,8 +488,10 @@ body:not(.karma-builder-environment) {
 
 			.karma-drop-down-icon {
 				background-color: inherit;
+				background-image: none;
 				border: none;
 				box-shadow: none;
+				display: flex;
 				margin: 0;
 				min-width: initial;
 				outline: none;
@@ -473,11 +507,23 @@ body:not(.karma-builder-environment) {
 					}
 				}
 				div {
-					@include box( 18px, 13px );
+					@include box( 18px, 14px );
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
 				}
+				&.karma-multi-drop-down-gizmo{
+					&:hover{
+						svg{
+							*{
+								transition-duration: 0.1s;
+								fill: $builder-accent-color;
+							}
+						}
+					}
+
+				}
+
 			}
 			.karma-drop-down-box {
 				@extend .karma-builder-shadow-box-2;
@@ -506,6 +552,7 @@ body:not(.karma-builder-environment) {
 					background-color: inherit;
 					border: none;
 					border-radius: 3px;
+					box-shadow: none;
 					height: auto;
 					line-height: 0;
 					margin-bottom: 0;
@@ -529,11 +576,58 @@ body:not(.karma-builder-environment) {
 					}
 
 				}
+
+				&.karma-gizmo-multi-drop-down-content{
+
+					.karma-active-multi-drop-down{
+						background-color: rgba(65,156,248,0.1);
+						color: $builder-accent-color;
+					}
+					left:11px;
+					padding-bottom: 0;
+					.karma-gizmo-multi-drop-down-content-box{
+
+						> div{
+							@include flexbox($align-item:center);
+							cursor: pointer;
+							flex-direction: row;
+							margin-bottom: 8px;
+							padding: 9px 16px 9px 9px;
+							transition-duration: .2s;
+							white-space: nowrap;
+
+							&:first-child{
+								margin-top: 7px;
+							}
+
+							&:hover{
+								background-color: rgba(65,156,248,0.1);
+								transition-duration: .2s;
+
+								.karma-gizmo-multi-drop-down-text{
+									color: $builder-accent-color;
+								}
+							}
+						}
+						.karma-gizmo-multi-drop-down-text{
+							@extend .karma-builder-title-3;
+							font-weight: 500;
+							padding-left: 15px;
+						}
+						.karma-gizmo-multi-drop-down-icon{
+							@include box(24px,18px);
+							background-position: center;
+							background-repeat: no-repeat;
+
+
+						}
+					}
+				}
 				&.open-drop-down-gizmo {
 					display: flex;
 
-					.karma-image-position-content-box{
-						@include box( 75px, 83px );
+					.karma-gizmo-position-content-box{
+						@include box( 72px, 75px );
 						display: flex;
 						flex-wrap: wrap;
 						justify-content: space-between;
@@ -541,28 +635,36 @@ body:not(.karma-builder-environment) {
 				}
 
 				&.karma-slider-and-drop-down {
-					@include box( 190px, 125px );
 					justify-content: inherit;
 					left: -147px;
 					padding: 0 15px;
 					position: absolute;
+					width: 190px;
 					z-index: $level-10;
 					&:after{
 						left: 86%;
 					}
+
 					.karma-range-slider-number input {
 						border: none;
+						margin-bottom: 0;
+						margin-bottom: 0;
+						max-height: 30px;
 						max-width: 30px;
 					}
 					.karma-check-box-contain{
 
+						align-items: center;
 						display: flex;
 						flex-direction: row-reverse;
-						justify-content: space-between;
+						padding: 4px 0;
+						position: relative;
 						.karma-link-open-new-tab-text{
 							color: $builder-main-color;
 							font-size: 14px;
+							left: 0;
 							line-height: 28px;
+							position: absolute;
 						}
 					}
 					&.karma-range-slider-container {
@@ -574,12 +676,16 @@ body:not(.karma-builder-environment) {
 							padding: 0;
 						}
 						.karma-input-number-type-unit{
-							padding: 2px 0 0 2px;
+
+							padding: 0 0 0 2px;
 						}
 
 						.karma-range-slider-content {
-							border-bottom: 1px solid rgba( 57,73,89,0.1 );
-							padding: 7px 0px 9px 9px;
+
+							border-bottom: 1px solid rgba( $builder-main-color, 0.1 );
+							margin-bottom: -3px;
+							margin-top: 12px;
+							padding: 0 0 7px 9px;
 						}
 						.karma-drop-down-radio{
 							padding: 10px 0;
@@ -588,12 +694,11 @@ body:not(.karma-builder-environment) {
 
 							.check-box-circle{
 								@include check-box-button;
-								height: 17px;
-								width: 17px;
+								@include box( 17px, 17px );
 
 								.karma-slider-and-drop-down-radio{
-									width: 187px;
 									left: 0;
+									width: 187px;
 								}
 
 								input{
@@ -601,8 +706,7 @@ body:not(.karma-builder-environment) {
 								}
 							}
 							.check-box-circle label{
-								height: 7px;
-								width: 7px;
+								@include box( 7px, 7px );
 							}
 
 						}
@@ -620,14 +724,13 @@ body:not(.karma-builder-environment) {
 						.check-box-circle{
 							@include flexbox( center, center, center );
 							@include box( 100%, 100% );
-
 						}
 					}
 					input.karma-text-link {
 						@include box( 168px, 28px );
 						@extend .karma-builder-title-4;
 						border-radius: 4px;
-						color: $builder-main-color-2;
+						color: #000;
 						margin-bottom: 10px;
 					}
 
@@ -657,9 +760,105 @@ body:not(.karma-builder-environment) {
 
 			}
 
-			.karma-image-position-content{
-				padding: 7px;
-				width:90px;
+			//position gizmo
+			.karma-gizmo-position-container{
+				align-items: center;
+				justify-content: center;
+				position: relative;
+
+				.karma-all-controller-title{
+					@extend .karma-builder-title-3;
+					color: $builder-main-color;
+					padding: $builder-red-space $builder-blue-space 7px;
+				}
+
+			}
+
+			.karma-gizmo-position-content{
+
+				.hidden-input{
+					display: none;
+				}
+
+				.karma-gizmo-position-box {
+					@include box( 22px,22px );
+					background-color: $builder-accent-color-3;
+					border-radius: 2px;
+					cursor: pointer;
+					display: flex;
+					margin-bottom: 3px;
+
+					&:hover{
+						background-color: $builder-accent-color-2;
+					}
+
+					&.karma-gizmo-position-top-left-dot{
+						align-items: flex-start;
+						justify-content: flex-start;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-top-right-dot{
+						align-items: flex-start;
+						justify-content: flex-end;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-top-center-dot{
+						align-items: flex-start;
+						justify-content: center;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-left-dot{
+						align-items: flex-end;
+						justify-content: flex-start;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-right-dot{
+						align-items: flex-end;
+						justify-content: flex-end;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-center-dot{
+						align-items: flex-end;
+						justify-content: center;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-center-left-dot{
+						align-items:center;
+						justify-content: flex-start;
+						padding: 4px;
+						text-align: center;
+					}
+
+					&.karma-gizmo-position-center-right-dot{
+						align-items:center;
+						justify-content: flex-end;
+						padding: 4px;
+						text-align: center;
+					}
+
+					&.karma-gizmo-position-center-center-dot{
+						align-items:center;
+						justify-content: center;
+						text-align: center;
+					}
+
+					.karma-gizmo-position-dot{
+						@include box( 5px, 5px );
+						background-color: $builder-main-color-5;
+						border-radius: 19px;
+						opacity: 0.76;
+					}
+				}
+
+			}
+
+			.karma-gizmo-position-selected-item{
+				background-color: $builder-accent-color-1 !important;
+			}
+			
+			.karma-gizmo-position-content{
+				left: 21px;
+				padding: 7px 7px 5px 7px;
 			}
 			.karma-typography-drop-down {
 				flex-direction: column;
@@ -667,6 +866,7 @@ body:not(.karma-builder-environment) {
 				padding: 0;
 
 				button {
+					box-shadow: none;
 					margin-left: 6px;
 					padding: 11px 7px;
 					width: 35px;
@@ -1046,8 +1246,8 @@ body:not(.karma-builder-environment) {
 
 		&.karma-active-column {
 
-			.karma-gizmo-template {
-
+			> .karma-gizmo-template:not(.column-gizmo-group-responsive) {
+				display: flex;
 				&.karma-outer-gizmo-template {
 
 					&.karma-gizmo-container {
@@ -1057,7 +1257,7 @@ body:not(.karma-builder-environment) {
 				}
 			}
 
-			.column-gizmo-group {
+			.column-gizmo-group{
 				background-color: $builder-main-color-2;
 				cursor: pointer;
 				display: block;
@@ -1193,7 +1393,7 @@ div.karma-element-content {
 
 		.karma-spacing-dot-container {
 			position: absolute;
-			top: calc(100% - 12px);
+			top: calc(100% - 11.5px);
 		}
 	}
 }

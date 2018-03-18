@@ -176,8 +176,8 @@ class Karma_Cache_Manager{
 		$css_file_name = self::get_cache_file_dir( $this->post_ID, 'css' );
 		$js_file_name = self::get_cache_file_dir( $this->post_ID, 'js' );
 		$file = File_System::get_instance();
-		if( $file->create_file( $css_file_name, $this->minify_css( self::$css_blocks ) )
-			&&  $file->create_file( $js_file_name, $this->minify_js( self::$js_blocks ) ) ){
+		if( $file->create_file( $css_file_name, self::minify_css( self::$css_blocks ) )
+			&&  $file->create_file( $js_file_name, self::minify_js( self::$js_blocks ) ) ){
 			return true;
 		}
 		return false;
@@ -313,7 +313,7 @@ class Karma_Cache_Manager{
 	 *
 	 * @return mixed
 	 */
-	private function minify_css( $content ) {
+	public static function minify_css( $content ) {
 
 		return preg_replace(
 			array(
@@ -348,6 +348,7 @@ class Karma_Cache_Manager{
 			'$1$2$3',
 			'$1$2'
 		), trim( $content ) );
+
 	}
 
 
@@ -358,7 +359,7 @@ class Karma_Cache_Manager{
 	 *
 	 * @return string
 	 */
-	private function minify_js( $content ) {
+	public static function minify_js( $content ) {
 
 		// uniform line endings, make them all line feed
 		$content = str_replace( array( "\r\n", "\r" ), "\n", $content );

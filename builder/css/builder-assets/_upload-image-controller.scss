@@ -7,10 +7,11 @@
 	height: 115px;
 	position: relative;
 
-	.karma-upload-image-button{
+	.karma-image-buttons{
 	    @include oval-button();
 		text-transform: none;
 		transition: background-color .2s;
+		padding:0 20px;
 
 		&:hover{
 			background-color: #FFF;
@@ -21,7 +22,12 @@
 
 		&:hover {
 			text-decoration: none;
+
 		}
+	}
+	.karma-cancel-image-button{
+		padding: 0 0 0 11px;
+
 	}
 
 }

@@ -1,7 +1,5 @@
 <?php
 
-use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core;
-use KarmaBuilder\SettingPanel\Karma_Builder_Setting_Panel as Karma_Builder_Setting_Panel;
 /**
  * test
  *
@@ -14,7 +12,7 @@ class Tests_Core extends WP_UnitTestCase
 
 	public function setUp()
 	{
-		karma_run_builder();
+		run_karma_builder();
 		$this->builder = Karma_Builder_Core::get_instance();
 	}
 

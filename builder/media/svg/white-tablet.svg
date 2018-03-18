@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="20px" viewBox="0 0 16 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M3,0 L13,0 C14.6568542,-3.04359188e-16 16,1.34314575 16,3 L16,17 C16,18.6568542 14.6568542,20 13,20 L3,20 C1.34314575,20 2.02906125e-16,18.6568542 0,17 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z" id="wTablet-path-1"></path>
+    </defs>
+    <g id="wTablet-Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-466.000000, -246.000000)">
+        <g id="wTablet-c340" transform="translate(466.000000, 246.000000)">
+            <mask id="wTablet-mask-2" fill="white">
+                <use xlink:href="#wTablet-path-1"></use>
+            </mask>
+            <use id="wTablet-c339" fill="#FFFFFF" xlink:href="#wTablet-path-1"></use>
+            <path d="M2,2 L13,2 C13.5522847,2 14,2.44771525 14,3 L14,15 C14,15.5522847 13.5522847,16 13,16 L3,16 C2.44771525,16 2,15.5522847 2,15 L2,2 Z" id="wTablet-c338" fill="#C2C4FF"></path>
+            <polygon id="wTablet-c337" fill="#FFFFFF" points="2 11.5 2 2 11 2"></polygon>
+            <circle id="wTablet-c336" fill="#C2C4FF" cx="8" cy="18" r="1"></circle>
+        </g>
+    </g>
+</svg>

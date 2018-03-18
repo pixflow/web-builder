@@ -3,12 +3,17 @@
 		karmaBuilder.videobox = karmaBuilder.shortcodes.extend({
 
 		events: {
-			'blur .karma-video-box-title-tag '      : 'saveVideoTitle',
-			'blur .karma-video-box-description-tag' : 'saveVideoDescription',
-			'keyup .karma-video-box-link-tag'		: 'saveVideoLink',
-			'click .karma-video-box-title'			: 'titleEditable',
-			'click .karma-video-box-description'	: 'titleDescription',
-			'click .karma-video-box-link'			: 'titleLink',
+			'blur .karma-video-box-title-tag '      		: 'saveVideoTitle',
+			'mousedown .karma-video-box-title-tag '			: 'changeVideoTitle',
+			'keypress .karma-video-box-title-tag ' 			: 'changeClassVideoTitle',
+			'blur .karma-video-box-description-tag' 		: 'saveVideoDescription',
+			'mousedown .karma-video-box-description-tag'	: 'changeVideoDescription',
+			'keypress .karma-video-box-description-tag'		: 'changeClassVideoDescription',
+			'keyup .karma-video-box-link-tag'				: 'saveVideoLink',
+			'click .karma-video-box-title'					: 'titleEditable',
+			'click .karma-video-box-description'			: 'titleDescription',
+			'click .karma-video-box-link'					: 'titleLink',
+			'keypress .karma-video-box-link'				: 'deactiveEnter'
 
 		},
 
@@ -20,10 +25,13 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector('.karma-video-box-link-tag').contentEditable = true ;
+			this.el.querySelector('.karma-video-box-description-tag').contentEditable = true ;
+			this.el.querySelector('.karma-video-box-title-tag').contentEditable = true ;
 		},
 
 		/**
-		 * @summary Save the description of video box
+		 * Save the description of video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -31,18 +39,73 @@
 		saveVideoDescription : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-description-tag' ),
-				contentData = content.innerHTML;
-
+				contentData = content.innerText;
+			
 			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+				content.innerText = "Live Text Editor";
+				content.classList.add('karma-video-box-description-opacity');
 			}
+			content.style.minWidth = "0";
 
-			this.setAttributes( { 'descriptiontext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'descriptiontext' : "Live Text Editor" },  true );
+			}else{
+				this.setAttributes( { 'descriptiontext' : contentData },  true );
+			}
 
 		},
 
 		/**
-		 * @summary Save the title of video box
+		 * change the description of video  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeVideoDescription : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-description-tag' ),
+				contentData = content.innerText;
+
+			if ( "Live Text Editor" == contentData.trim() ) {
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.style.minWidth = "200px";
+					content.innerHTML = "&nbsp;";
+				}
+			}
+
+		},
+
+		/**
+		 * change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassVideoDescription : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-description-tag' );
+
+			if( content.classList.contains( 'karma-video-box-description-opacity' ) ) {
+				content.className = content.className.replace( "karma-video-box-description-opacity", "" );
+			}
+
+		},
+
+			/**
+			 *  Deactivate enter in link text
+			 *
+			 * @since 0.1.1
+			 * @return {number}
+			 */
+			deactiveEnter : function ( e ) {
+
+				return e.which != 13;
+
+			},
+
+
+			/**
+		 * Save the title of video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -50,18 +113,58 @@
 		saveVideoTitle : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerText;
 
-			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+			if ( "" == contentData.trim()) {
+				content.innerText = "Great idea";
+				content.classList.add('karma-video-box-title-opacity');
 			}
 
-			this.setAttributes( { 'titletext' : contentData },  true );
+			if( '' == contentData ){
+				this.setAttributes( { 'titletext' : "Great idea" },  true );
+			}else{
+				this.setAttributes( { 'titletext' : contentData },  true );
+			}
 
 		},
 
 		/**
-		 * @summary check empty link text
+		 * change the title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeVideoTitle : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-title-tag' ),
+				contentData = this.el.querySelector( '.karma-video-box-title-tag' ).innerText;
+
+			if ( "Great idea" == contentData.trim() ) {
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.innerHTML = "&nbsp;";
+				}
+			}
+
+		},
+
+		/**
+		 * change class title of image  text box
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		changeClassVideoTitle : function () {
+
+			var content = this.el.querySelector( '.karma-video-box-title-tag' );
+
+			if( content.classList.contains( 'karma-video-box-title-opacity' ) ) {
+				content.className = content.className.replace( "karma-video-box-title-opacity", "" );
+			}
+
+		},
+
+		/**
+		 * check empty link text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -69,10 +172,10 @@
 		saveVideoLink : function () {
 
 			var content = this.el.querySelector( '.karma-video-box-link-tag' ),
-				contentData = content.innerHTML;
+				contentData = content.innerText;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+				content.innerHTML = "&nbsp;";
 				this.el.querySelector( '.karma-video-box-link-shape' ).style.display = 'none';
 			}else{
 				this.el.querySelector( '.karma-video-box-link-shape' ).style.display = 'block';
@@ -81,8 +184,9 @@
 
 		},
 
+
 		 /**
-		 * @summary Render video element
+		 * Render video element
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -96,7 +200,7 @@
 		},
 
 		/**
-		 * @summary open video url
+		 * open video url
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -113,7 +217,7 @@
 		},
 
 		/**
-		 * @summary get data url
+		 * get data url
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -126,7 +230,7 @@
 		},
 
 		/**
-		 * @summary Active editable title
+		 * Active editable title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -136,13 +240,15 @@
 			var content = this.el.querySelector( '.karma-video-box-title-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.focus();
+				};
+
 			}
 		},
 			
 		/**
-		 * @summary Active editable description
+		 * Active editable description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -152,14 +258,17 @@
 			var content = this.el.querySelector( '.karma-video-box-description-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.focus();
+				}
+
 			}
 
 		},
 
 		/**
-		 * @summary Active editable link
+		 * Active editable link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -170,13 +279,16 @@
 			var content = this.el.querySelector( '.karma-video-box-link-tag' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+
+				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
+					content.focus();
+				}
+
 			}
 		},
 
 		/**
-		 * @summary change image URL
+		 * change image URL
 		 *
 		 * @since 0.1.1
 		 *
@@ -187,12 +299,19 @@
 			var imageAddress = this.getAttributes( [ 'imgurl' ] ),
 				elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
-			this.renderCss( '#' + elementId + ' .karma-video-box' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			if( 'none' == imageAddress.imgurl ){
+				this.renderCss( '#' + elementId + ' .karma-video-box-background' , 'background-image', 'none' );
+				this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'none' );
+			}else{
+				this.renderCss( '#' + elementId + ' .karma-video-box-background' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+				this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			}
+
 
 		},
 
 		/**
-		 * @summary Set color for title
+		 * Set color for title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -208,7 +327,7 @@
 		},
 
 		/**
-		 * @summary Set color for description
+		 * Set color for description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -224,24 +343,7 @@
 		},
 
 		/**
-		 * @summary Set color for link
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		linkcolor : function () {
-
-			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				colorValue = this.getAttributes( ['linkcolor'] );
-
-			this.renderCss( "#" + elementId + " .karma-video-box-link .karma-video-box-link-tag", 'color', colorValue.linkcolor  );
-			this.renderCss( "#" + elementId + " .karma-video-box-link .karma-video-box-link-shape svg * ", 'stroke', colorValue.linkcolor  );
-
-
-		},
-
-		/**
-		 * @summary set link for text
+		 * set link for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -255,21 +357,22 @@
 		},
 
 		/**
-		 * @summary set link target for text
+		 * set link target for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
 		 */
-		opennewtab: function () {
+		target: function () {
 
 			var elementId 	= this.$el,
-				linktarget  = this.getAttributes( ['opennewtab'] );
-			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.opennewtab );
+				linktarget  = this.getAttributes( ['target'] );
+
+			elementId.find( '.karma-video-box-link-tag ' ).attr( "target", linktarget.target );
 
 		},
 
 		/**
-		 * @summary get title typography and change innerHtml of title
+		 * get title typography and change innerHtml of title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -281,13 +384,14 @@
 				newTag = document.createElement( tagAttr.titletag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-video-box-title-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary get description typography and change innerHtml of description
+		 * get description typography and change innerHtml of description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -299,13 +403,14 @@
 				newTag = document.createElement( tagAttr.descriptiontag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-video-box-description-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary get link typography and change innerHtml of link
+		 * get link typography and change innerHtml of link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -317,13 +422,14 @@
 				newTag = document.createElement( tagAttr.linktag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-video-box-link-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary change position of text box in image
+		 * change position of text box in image
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -339,7 +445,7 @@
 
 
 		/**
-		 * @summary Set border radius for video box
+		 * Set border radius for video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -347,13 +453,13 @@
 		radiusbox : function () {
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				radiusBox  = this.getAttributes( ['radiusbox'] );
+			this.renderCss( "#" + elementId + " .karma-video-box-background-container", 'border-radius', radiusBox.radiusbox + "px"  );
+			this.renderCss( "#" + elementId + " .karma-element-effect", 'border-radius', radiusBox.radiusbox + "px"  );
 
-			this.renderCss( "#" + elementId + " .karma-video-box", 'border-radius', radiusBox.radiusbox + "px"  );
-			this.renderCss( "#" + elementId + " .karma-video-box-overlay", 'border-radius', radiusBox.radiusbox + "px"  );
 		},
 
 		/**
-		 * @summary Set height for video box
+		 * Set height for video box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -364,11 +470,13 @@
 				videoHeight  = this.getAttributes( ['videoheight'] );
 
 			this.renderCss( "#" + elementId + " .karma-video-box ", 'height', videoHeight.videoheight + "px"  );
+			this.renderCss( "#" + elementId + " .karma-video-box ", 'min-height', ( ( videoHeight.videoheight*70 )/100 ) + "px" , 'tablet' );
+			this.renderCss( "#" + elementId + " .karma-video-box ", 'min-height', ( ( videoHeight.videoheight*70 )/100 )  + "px" , 'mobile' );
 
 		},
 
 		/**
-		 * @summary Set color for overlay
+		 * Set color for overlay
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -383,7 +491,7 @@
 		},
 
 		/**
-		 * @summary Set color for overlay
+		 * Set color for overlay
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -393,9 +501,206 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				colorValue  = this.getAttributes( ['colorbackground'] );
 
-			this.renderCss( "#" + elementId + " .karma-video-box ", 'background-color', colorValue.colorbackground  );
+			this.renderCss( "#" + elementId + " .karma-video-box-background ", 'background-color', colorValue.colorbackground  );
 
 		},
+
+		type : function () {
+
+			var className = this.getAttributes(['type']).type;
+			if( 'outline' == className ) {
+				this.$el.find('.karma-video-box-link').removeClass('karma-button-fill karma-button-link').addClass('karma-button-outline');
+			}else if('fill' == className ){
+				this.$el.find('.karma-video-box-link').addClass('karma-button-fill').removeClass('karma-button-outline karma-button-link');
+			}else{
+				this.$el.find('.karma-video-box-link').addClass('karma-button-link').removeClass('karma-button-outline karma-button-fill');
+			}
+		},
+
+		rangemodel : function () {
+
+			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
+					border		= this.getAttributes(['rangemodel']);
+
+			this.renderCss( "#" + elementId + " .karma-video-box-link", 'border-radius', border.rangemodel + "px"  );
+
+
+		} ,
+			
+		/**
+		 * Set color for link
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		textcolor : function () {
+
+			var elementId 	= this.elementSelector(),
+				colorValue  = this.getAttributes( ['textcolor'] );
+
+			this.renderCss( "#" + elementId + " .karma-button-fill .karma-video-box-link-tag ", 'color', colorValue.textcolor  );
+
+		},
+
+		/**
+		 * Set color for link
+		 *
+		 * @since 0.1.1
+		 * @return {void}
+		 */
+		generalcolor : function () {
+
+			var elementId 	= this.elementSelector(),
+				colorValue  = this.getAttributes( ['generalcolor'] );
+
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-fill", 'background-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-button-outline .karma-video-box-link-tag", 'color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-outline", 'border-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-fill", 'border-color', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link .karma-video-box-link-shape svg *", 'stroke', colorValue.generalcolor  );
+			this.renderCss( "#" + elementId + " .karma-video-box-link.karma-button-link .karma-video-box-link-tag", 'color', colorValue.generalcolor  );
+
+
+		},
+		/**
+		 * show and hide button with hide gizmo in desktop
+		 *
+		 *
+		 * @since 0.1.0
+		 * @return {void}
+		 */
+		visibleondesktop : function () {
+
+			var desktopVisible = this.getAttributes( ['visibleondesktop'] ).visibleondesktop;
+
+			if( "on" == desktopVisible ){
+				this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-desktop" );
+			}else{
+				this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-desktop" );
+			}
+
+		},
+			/**
+			 *  show and hide button with hide gizmo in tablet
+			 *
+			 *
+			 * @since 0.1.0
+			 * @return {void}
+			 */
+			visibleontablet : function () {
+
+				var tabletVisible = this.getAttributes( ['visibleontablet'] ).visibleontablet;
+
+				if( "on" == tabletVisible ){
+					this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-tablet" );
+				}else{
+					this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-tablet" );
+				}
+
+			},
+
+			/**
+			 * show and hide button with hide gizmo in mobile
+			 *
+			 *
+			 * @since 0.1.0
+			 * @return {void}
+			 */
+			visibleonmobile : function () {
+
+				var mobileVisible = this.getAttributes( ['visibeonmobile'] ).visibleonmobile;
+
+				if( "on" == mobileVisible ){
+					this.el.querySelector( '.karma-video-box-link' ).classList.remove( "karma-deactive-on-mobile" );
+				}else{
+					this.el.querySelector( '.karma-video-box-link' ).classList.add( "karma-deactive-on-mobile" );
+				}
+
+			},
+
+			/**
+			 * Remove animation on element
+			 *
+			 * @param   {object}    element
+			 * @param   {string}    elementEffect
+			 *
+			 * @since 0.2
+			 * @return {void}
+			 */
+			removeAnimation : function( element, elementEffect ){
+
+				element.remove('karma-box-element-shadow');
+				element.remove('karma-box-element-hover-shadow');
+				element.add('karma-box-element-no-animation');
+				elementEffect.remove('karma-element-shadow-effect');
+				elementEffect.remove('karma-element-blur-effect');
+				elementEffect.add('karma-element-no-effect');
+
+			},
+
+			/**
+			 * Remove simple shadow on element
+			 *
+			 * @param   {object}    element
+			 * @param   {string}    elementEffect
+			 *
+			 * @since 0.2
+			 * @return {void}
+			 */
+			addSimpleShadow : function ( element, elementEffect ) {
+
+				element.remove('karma-box-element-hover-shadow');
+				element.remove('karma-box-element-no-animation');
+				element.add('karma-box-element-shadow');
+				elementEffect.remove('karma-element-blur-effect');
+				elementEffect.remove('karma-element-no-effect');
+				elementEffect.add('karma-element-shadow-effect');
+
+			},
+
+			/**
+			 * Remove animation with shadow on element
+			 *
+			 * @param   {object}    element
+			 * @param   {string}    elementEffect
+			 *
+			 * @since 0.2
+			 * @return {void}
+			 */
+			addShahdowWithAnimation : function ( element, elementEffect ) {
+
+				element.remove('karma-box-element-shadow');
+				element.remove('karma-box-element-no-animation');
+				element.add('karma-box-element-hover-shadow');
+				elementEffect.remove('karma-element-shadow-effect');
+				elementEffect.remove('karma-element-no-effect');
+				elementEffect.add('karma-element-blur-effect');
+
+
+			},
+
+			/**
+			 * Animation functionality
+			 *
+			 *
+			 * @since 2.0
+			 * @return {void}
+			 */
+			animation : function () {
+
+				var animationEffect = this.getAttributes( ['animation'] ).animation,
+					element = this.el.querySelector('.karma-video-box').classList,
+					elementEffect = this.el.querySelector('.karma-element-effect').classList;
+
+				if ( 'none' == animationEffect ){
+					this.removeAnimation( element, elementEffect );
+				}else if ( 'simpleshadow' == animationEffect ){
+					this.addSimpleShadow( element, elementEffect );
+				}else if( 'shadowwithanimation' == animationEffect ){
+					this.addShahdowWithAnimation( element, elementEffect );
+				}
+
+			}
 
 	});
 

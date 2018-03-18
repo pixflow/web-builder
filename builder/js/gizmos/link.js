@@ -31,7 +31,7 @@
 		+ '</div>' ,
 
 		/**
-		 * @summary initialize alignment
+		 * initialize alignment
 		 *
 		 * @since 0.1.0
 		 *
@@ -44,7 +44,7 @@
 		},
 
 		/**
-		 * @summary render alignment
+		 * render alignment
 		 *
 		 * @since 0.1.0
 		 *
@@ -63,7 +63,7 @@
 
 		},
 		/**
-		 * @summary link functionality and update model
+		 * link functionality and update model
 		 *
 		 * @since 0.1.0
 		 *
@@ -84,7 +84,7 @@
 		},
 
 		/**
-		 * @summary link button stop
+		 * link button stop
 		 * @param {event}  event
 		 *
 		 * @since 0.1.0
@@ -98,7 +98,7 @@
 		},
 
 		/**
-		 * @summary link target functionality and update model
+		 * link target functionality and update model
 		 *
 		 * @since 0.1.0
 		 *
@@ -109,7 +109,7 @@
 			var input = this.elementView.el.querySelector( '#karma-input-checkbox-controller' ).checked,
 				target = ( true == input ) ? '_blank' : '_self' ;
 
-				this.elementView.setAttributes( { 'opennewtab' : target }, false );
+				this.elementView.setAttributes( { 'target' : target }, false );
 
 
 		},

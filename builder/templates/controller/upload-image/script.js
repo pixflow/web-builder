@@ -4,7 +4,7 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 		return ;
 	}
 	/**
-	 * @summary When an image is selected in the media frame and change background
+	 * When an image is selected in the media frame and change background
 	 * @param {object} give view of element
 	 *
 	 * @since 0.1.0
@@ -23,7 +23,7 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 	};
 
 	/**
-	 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
+	 * Open WordPress Media library and handle choose image from media library instead of unsplash
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -35,6 +35,31 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 
 	};
 
+
 	openMediaLibrary();
+
+	/**
+	 * cancel button for upload image
+	 *
+	 * @since 2.0
+	 * @returns {void}
+	 */
+	function removeImage() {
+
+		if( null != document.querySelector( ".karma-cancel-image-button" ) ){
+			document.querySelector(".karma-cancel-image-button").addEventListener( "click", function(){
+
+				var input = document.querySelector( '.karma-upload-image-input' ),
+					content = document.querySelector( '.karma-upload-image-content' );
+
+				input.value = 'none';
+				content.style.backgroundImage = "none";
+				jQuery( input ).trigger( 'input' );
+			});
+		}
+		
+	}
+
+	removeImage();
 
 });

@@ -15,6 +15,7 @@ jQuery(document).off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_for
 
 	$( '.karma-setting-panel-group-button' ).click( function () {
 
+		var that = $(this);
 		if( 0 == toggle ){
 			settingPanel.setAttribute( 'style', 'height:' + settingPanelFullHeight + 'px' );
 			$( this ).next(".karma-group-panel" ).slideDown(100);
@@ -26,6 +27,12 @@ jQuery(document).off( 'karma_finish_form_builder.groups' ).on( 'karma_finish_for
 		}
 		$( this ).find('.karma-group-button-shape').toggleClass('karma-group-button-shape-rotate');
 		$( this ).toggleClass('karma-group-border-radius');
+		setTimeout(function (){
+			var container = that.closest( '.karma-element-setting-panel-content' ),
+			height = ( toggle ) ? settingPanelFullHeight : settingPanelHeight;
+			container.css( 'overflow-y', '' ).css( 'overflow-y', 'hidden' );
+			container.animate( { scrollTop: height }, 200 );
+		 }, 300 );
 
 	} );
 

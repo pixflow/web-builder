@@ -8,6 +8,7 @@ use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
 use KarmaBuilder\FileSystem\Karma_File_System as File_System;
+use KarmaBuilder\BaseManager\Karma_Base_Manager as Base_Manager;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -29,7 +30,7 @@ use KarmaBuilder\FileSystem\Karma_File_System as File_System;
  * @subpackage Karma_Builder/admin
  * @author     Pixflow <info@pixflow.net>
  */
-class Karma_Builder_Admin {
+class Karma_Builder_Admin extends Base_Manager {
 
 	/**
 	 * Initialize the class and set its properties.
@@ -127,6 +128,9 @@ class Karma_Builder_Admin {
 		} else {
 			$models =  $_POST['models'];
 			$id = sanitize_text_field( $_POST['id'] );
+			$custom_css = ( isset( $_POST[ 'customCSS' ] ) ) ? $_POST[ 'customCSS' ] : '';
+			$custom_js = ( isset( $_POST[ 'customJS' ] ) ) ? $_POST[ 'customJS' ] : '';
+			$this->update_custom_script( $custom_css, $custom_js );
 			$builder_core = Karma_Builder_Core::get_instance();
 			$models = json_decode( stripslashes( $models ), true );
 			if ( $builder_core->publish_post( $models, $id ) ) {
@@ -138,6 +142,23 @@ class Karma_Builder_Admin {
 			Cache_Manager::remove_cache_file( $id );
 		}
 		wp_die();
+	}
+
+	/**
+	 * update custom script
+	 *
+	 * @param   string $custom_css custom css
+	 * @param   string $custom_js custom js
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	public function update_custom_script( $custom_css, $custom_js ) {
+
+		$constants = Karma_Factory_Pattern::$builder_loader;
+		update_option( $constants::CUSTOM_CSS_OPTION, $custom_css );
+		update_option( $constants::CUSTOM_JS_OPTION, $custom_js );
+
 	}
 
 	/**
@@ -153,9 +174,14 @@ class Karma_Builder_Admin {
 			$fonts      = sanitize_text_field ( json_encode( $_POST[ 'fonts' ] ) );
 			$typography = sanitize_text_field( json_encode( $_POST[ 'typography' ] ) );
 			$custom_fonts = isset( $_POST[ 'customFonts' ] ) ? sanitize_text_field( json_encode( $_POST[ 'customFonts' ] ) ) : '[]';
-			$typography_manager->save_typography_font_formats( $typography )->save_fonts( $fonts )->save_custom_fonts( $custom_fonts );
+			$typography_manager
+				->save_typography_font_formats( $typography )
+				->save_fonts( $fonts )
+				->save_custom_fonts( $custom_fonts )
+				->set_publish_date();
 			$file = File_System::get_instance();
 			$file->delete_file( KARMA_GLOBAL_STYLE_FILE_PATH );
+
 		}
 
 		wp_die();
@@ -203,20 +229,5 @@ class Karma_Builder_Admin {
 
 	}
 
-	/**
-	 * get post ID and return karma builder URL for post
-	 *
-	 * @param   integer $post_id    post ID
-	 *
-	 * @since   0.1.0
-	 * @return  string      URL that open Karma to edit post
-	 */
 
-	public function generate_builder_url( $post_id ){
-
-		$builder_url = get_permalink( $post_id );
-		$builder_url .= ( false === strpos( $builder_url, '?' ) ) ? '?load_builder=true' : '&load_builder=true' ;
-		return $builder_url;
-
-	}
 }

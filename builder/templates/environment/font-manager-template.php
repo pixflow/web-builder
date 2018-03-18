@@ -77,8 +77,9 @@ $font_list = array_merge( $font_list, $custom_font_list );
 						<ul style="font-family: <?php echo $font_name ; ?>">
 							<?php
 								foreach( $variants as $variant ):
+									$result = explode( " ", $variant );
 									?>
-										<li> <?php echo $variant; ?> </li>
+										<li data-font-style="<?php echo strtolower( $result[1] ); ?>" data-font-weight="<?php echo $result[0]; ?>"> <?php echo $variant; ?> </li>
 									<?php
 								endforeach;;
 							?>

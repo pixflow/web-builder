@@ -376,6 +376,7 @@
 	input{
 		@include flexbox( $text-align: right );
 		@extend .karma-builder-title-4;
+		border:none;
 		color: #000;
 		background: transparent;
 		padding: 0;
@@ -556,9 +557,13 @@
 
 @keyframes load_delete_overlay {
 	00% {
+		opacity:0;
+		visibility: hidden;
 		background-color: transparent;
 	}
 	100% {
+		opacity: 1;
+		visibility: visible;
 		background-color: rgba( #000 , 0.3 );
 	}
 }
