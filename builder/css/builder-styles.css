@@ -7590,6 +7590,8 @@ body #karma-builder-layout {
     /* _-_-_- column Responsive Gizmo Style -_-_-_ */ }
     .karma-builder-environment .karma-active-section .section-gizmo-group {
       display: none; }
+    .karma-builder-environment #karma-builder-layout[style*="top"] {
+      position: relative; }
     .karma-builder-environment .karma-builder-element.karma-active-section .karma-gizmo-template.karma-inner-gizmo-template.section-gizmo-group-responsive {
       display: flex; }
       .karma-builder-environment .karma-builder-element.karma-active-section .karma-gizmo-template.karma-inner-gizmo-template.section-gizmo-group-responsive.karma-gizmo-container {
@@ -7667,7 +7669,9 @@ body #karma-builder-layout {
       visibility: hidden !important; }
     .karma-builder-environment #karma-show-parent,
     .karma-builder-environment #karma-builder-layout *[class*="karma"] * {
-      visibility: visible !important; } }
+      visibility: visible !important; }
+    .karma-builder-environment .karma-element-hide {
+      display: none !important; } }
 .karma-builder-environment.karma-device-mode-mobile *:not(#karma-builder-layout):not(.tooltip-div) {
   visibility: hidden !important; }
 .karma-builder-environment.karma-device-mode-mobile #karma-show-parent,
