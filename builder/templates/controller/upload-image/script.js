@@ -46,14 +46,17 @@ jQuery( document ).off( 'karma_finish_form_builder.uploadImages' ).on( 'karma_fi
 	 */
 	function removeImage() {
 
-		document.querySelector(".karma-cancel-image-button").addEventListener( "click", function(){
-			var input = document.querySelector( '.karma-upload-image-input' ),
-				content = document.querySelector( '.karma-upload-image-content' );
+		if( null != document.querySelector( ".karma-cancel-image-button" ) ){
+			document.querySelector(".karma-cancel-image-button").addEventListener( "click", function(){
 
-			input.value = 'none';
-			content.style.backgroundImage = "none";
-			jQuery( input ).trigger( 'input' );
-		});
+				var input = document.querySelector( '.karma-upload-image-input' ),
+					content = document.querySelector( '.karma-upload-image-content' );
+
+				input.value = 'none';
+				content.style.backgroundImage = "none";
+				jQuery( input ).trigger( 'input' );
+			});
+		}
 		
 	}
 
