@@ -127,6 +127,9 @@ class Karma_Builder_Admin {
 		} else {
 			$models =  $_POST['models'];
 			$id = sanitize_text_field( $_POST['id'] );
+			$custom_css = ( isset( $_POST[ 'customCSS' ] ) ) ? $_POST[ 'customCSS' ] : '';
+			$custom_js = ( isset( $_POST[ 'customJS' ] ) ) ? $_POST[ 'customJS' ] : '';
+			$this->update_custom_script( $custom_css, $custom_js );
 			$builder_core = Karma_Builder_Core::get_instance();
 			$models = json_decode( stripslashes( $models ), true );
 			if ( $builder_core->publish_post( $models, $id ) ) {
@@ -138,6 +141,23 @@ class Karma_Builder_Admin {
 			Cache_Manager::remove_cache_file( $id );
 		}
 		wp_die();
+	}
+
+	/**
+	 * update custom script
+	 *
+	 * @param   string $custom_css custom css
+	 * @param   string $custom_js custom js
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	public function update_custom_script( $custom_css, $custom_js ) {
+
+		$constants = Karma_Factory_Pattern::$builder_loader;
+		update_option( $constants::CUSTOM_CSS_OPTION, $custom_css );
+		update_option( $constants::CUSTOM_JS_OPTION, $custom_js );
+
 	}
 
 	/**

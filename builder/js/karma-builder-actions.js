@@ -8,9 +8,13 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		events : {
 
-			'click .builder-publish'                    : 'karmaPublish',
-			'karma/finish/animation'                    : 'publishAnimation',
-			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml',
+			'click .builder-publish'                        : 'karmaPublish',
+			'karma/finish/animation'                        : 'publishAnimation',
+			'karma/finish/iframeInit.settingPanelHtml'      : 'settingPanelHtml',
+			'click .builder-code-editor-link'               : 'openCodeEditor',
+			'click .karma-code-editor-container'            : 'closeCodeEditor',
+			'click .karma-dropdown-header '       		    : 'openDropdown',
+			'mousedown body:not( .karma-dropdown-body )'    : 'closeCodeEditorDropDown'
 
 		},
 
@@ -27,7 +31,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 		 *
 		 */
 		initialize : function () {
-
+			this.initCodeEditor();
 		},
 
 		/**
@@ -436,6 +440,84 @@ var karmaBuilderActions = karmaBuilderActions || {};
 					containers[ i ].setAttribute( 'id', 'karma-show-parent' );
 				}
 			}
+		},
+
+		/*
+		 * initialize code editor
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		initCodeEditor: function () {
+
+			var javascriptFlask = new CodeFlask;
+
+			javascriptFlask.run( '.karma-custom-js', {
+				language: 'javascript'
+			} );
+
+			var cssFlask = new CodeFlask;
+			cssFlask.run( '.karma-custom-css', {
+				language: 'css'
+			} );
+
+		},
+
+		/**
+		 * open code editor
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		openCodeEditor: function ( e ) {
+
+			var codeEditorContainer = document.querySelector( '.karma-code-editor-container' );
+			var lang = e.currentTarget.dataset.script;
+			$( '.karma-code-editor' ).css( 'display', 'none' );
+			$( '.karma-custom-' + lang ).css( 'display', 'block' );
+			if ( !codeEditorContainer.classList.contains( 'active' ) ) {
+				codeEditorContainer.classList.add( 'active' );
+			}
+
+		},
+
+		openDropdown : function ( e ){
+
+			var target = $( e.target ),
+				element = ( target.hasClass('karma-dropdown-header') ) ? target : target.closest('.karma-dropdown-header'),
+				optionsContainer =  element.siblings( '.karma-dropdown-options' );
+			$( 'header .karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
+			optionsContainer.addClass( 'karma-doropdown-opened' );
+
+		},
+
+		/**
+		 * close code editor
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		closeCodeEditor: function ( e ) {
+
+			if ( e.target.classList.contains( 'karma-code-editor-container' ) ) {
+				var codeEditorContainer = document.querySelector( '.karma-code-editor-container' );
+				if ( codeEditorContainer.classList.contains( 'active' ) ) {
+					codeEditorContainer.classList.remove( 'active' )
+				}
+			}
+
+		},
+
+		/**
+		 * close code editor drop down
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		closeCodeEditorDropDown: function () {
+
+			$( '.karma-dropdown-body > .karma-dropdown-options' ).removeClass( 'karma-doropdown-opened' );
+
 		}
 
 	});

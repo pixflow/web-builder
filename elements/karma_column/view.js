@@ -103,7 +103,7 @@
 		activeColumn: function ( e ) {
 
 			e.stopPropagation();
-
+			window.top.karmaBuilderEnviroment.closeCodeEditorDropDown();
 			if( this.$el.hasClass('karma-active-column') ){
 				return;
 			}

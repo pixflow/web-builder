@@ -541,8 +541,22 @@ class Karma_Builder {
 		wp_enqueue_style( 'karma-builder-styles', KARMA_BUILDER_URL . 'builder/css/builder-styles.css', KARMA_BUILDER_VERSION, false );
 		wp_enqueue_media();
 
+		$this->enqueue_code_editor_assets();
 		$this->load_templates();
 
+	}
+
+	/**
+	 * Enqueue Custom Scripts styles and scripts to top iFrame
+	 *
+	 * @since    0.1.0
+	 *
+	 * @return void
+	 */
+	public function enqueue_code_editor_assets(){
+
+		wp_enqueue_style( 'karma-code-editor-style', KARMA_BUILDER_URL . 'builder/css/vendors/code-editor.min.css', KARMA_BUILDER_VERSION, false );
+		wp_enqueue_script( 'karma-code-editor-script' , KARMA_BUILDER_URL .'builder/js/code-editor.min.js', array(), KARMA_BUILDER_VERSION, false );
 
 	}
 

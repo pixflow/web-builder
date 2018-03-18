@@ -79,6 +79,7 @@
 		showBorder: function ( e ) {
 
 			e.stopPropagation();
+			window.top.karmaBuilderEnviroment.closeCodeEditorDropDown();
 			this.$el.trigger( 'karma/after/clickElement' );
 			this.removeDropDownGizmo();
 			this.removeMoreSubmenu();

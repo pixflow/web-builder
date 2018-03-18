@@ -47,7 +47,7 @@ body.karma-builder{
 			margin: 0;
 			padding: 0;
 
-			li {
+			>li {
 				@include flexbox( $text-align:inherit, $align-item:center, $justify-content:center );
 				@extend .karma-builder-title-3;
 				color: $builder-main-color-2;
@@ -55,10 +55,22 @@ body.karma-builder{
 				margin-left: 39px;
 				margin-right: 0;
 				margin-top: inherit;
+				position: relative;
+
+				&.builder-devtool{
+					.karma-dropdown-options{
+						position: absolute;
+					}
+				}
 
 				> div:not( .builder-upgrade-icon ){
 					transition: color .1s;
 					Cursor : no-drop;
+					padding-left: 0;
+					padding-right: 0;
+					.karma-dropdown-body{
+						margin-bottom: 11px;
+					}
 				}
 
 				&:hover > div {

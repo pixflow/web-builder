@@ -186,6 +186,7 @@
 			this.removeActiveSection();
 			this.removeSettingPanel();
 			this.closeElementPanel();
+			window.top.karmaBuilderEnviroment.closeCodeEditorDropDown();
 
 		},
 
@@ -306,7 +307,9 @@
 				data = {
 				models	: that.prepareModels(),
 				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
-				action  : 'publish'
+				action  : 'publish' ,
+				customJS : window.top.$('.karma-custom-js').text().trim() ,
+				customCSS : window.top.$('.karma-custom-css').text().trim()
 			};
 
 			this.prepareAjax( 'publish', data ).done( function ( response ) {

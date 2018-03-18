@@ -35,6 +35,11 @@ use KarmaBuilder\BaseManager\Karma_Base_Manager as Base_Manager;
 class Karma_Builder_Loader extends Base_Manager{
 
 
+	const CUSTOM_CSS_OPTION =  'karma_custom_css';
+
+
+	const CUSTOM_JS_OPTION =  'karma_custom_js';
+
 	/**
 	 * The Core that's core of the builder
 	 *
@@ -165,6 +170,7 @@ class Karma_Builder_Loader extends Base_Manager{
 	public function prepare_builder(){
 
 		if( 'true' == get_post_meta( get_the_ID(), 'karma_page' , true ) ){
+			$this->load_user_custom_style_and_script();
 			remove_filter( 'the_content', 'wpautop' );
 			add_filter( 'the_content',  array( $this, 'change_the_content' ), -1 );
 			$this->load_cache_file();
@@ -187,12 +193,55 @@ class Karma_Builder_Loader extends Base_Manager{
 		$builder_views->load_builder_iframe_templates();
 		$stylesheet = Karma_Factory_Pattern::$stylesheet;
 		$stylesheet->create_default_styles();
+		$this->load_user_custom_style_and_script();
 
 		// Apply filter
 		add_filter('body_class', array( $this ,'add_custom_body_classes') );
 
 	}
 
+	/**
+	 * Get custom script and style
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	public function get_custom_assets_value(){
+
+		return array(
+			'style' => Cache_Manager::minify_css( get_option( $this::CUSTOM_CSS_OPTION, '' ) ),
+			'script' => stripslashes( Cache_Manager::minify_js ( get_option( $this::CUSTOM_JS_OPTION, '' ) ) ),
+		);
+
+	}
+
+	/**
+	 * Print custom script and style in builder and front end
+	 *
+	 * @since     2.0
+	 * @return    void
+	 */
+	private function load_user_custom_style_and_script(){
+
+		$asset_values = self::get_custom_assets_value();
+		ob_start();
+		?>
+		<style id="karma-custom-style">
+			<?php echo $asset_values['style']; ?>
+		</style>
+		<script id="karma-custom-script">
+			try{
+				<?php echo $asset_values['script'] ; ?>
+			}catch ( error ){
+				console.group( 'Karma-Builder - Syntax error found in custom js.' );
+				console.error( error.message  );
+				console.groupEnd();
+			}
+		</script>
+		<?php
+		return ob_get_flush();
+
+	}
 
 	/**
 	 * Add custom class to body tag

@@ -34,6 +34,7 @@ class Karma_Views {
 	 */
 	private $environment_templates = array(
 		'header',
+		'code-editor',
 		'main',
 		'footer',
 	);
