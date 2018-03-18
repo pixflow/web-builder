@@ -58,9 +58,14 @@ body.karma-builder{
 				position: relative;
 
 				&.builder-devtool{
-					.karma-dropdown-options{
-						position: absolute;
+					cursor: pointer;
+					div.karma-dropdown-controller{
+						cursor: pointer;
+						.karma-dropdown-options{
+							position: absolute;
+						}
 					}
+
 				}
 
 				> div:not( .builder-upgrade-icon ){

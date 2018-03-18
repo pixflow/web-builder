@@ -8,13 +8,13 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		events : {
 
-			'click .builder-publish'                        : 'karmaPublish',
-			'karma/finish/animation'                        : 'publishAnimation',
-			'karma/finish/iframeInit.settingPanelHtml'      : 'settingPanelHtml',
-			'click .builder-code-editor-link'               : 'openCodeEditor',
-			'click .karma-code-editor-container'            : 'closeCodeEditor',
-			'click .karma-dropdown-header '       		    : 'openDropdown',
-			'mousedown body:not( .karma-dropdown-body )'    : 'closeCodeEditorDropDown'
+			'click .builder-publish'                    : 'karmaPublish',
+			'karma/finish/animation'                    : 'publishAnimation',
+			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml',
+			'click .builder-code-editor-link'           : 'openCodeEditor',
+			'click .karma-code-editor-container'        : 'closeCodeEditor',
+			'click .karma-dropdown-header '             : 'openDropdown',
+			'click body:not( .karma-dropdown-body )'    : 'closeCodeEditorDropDown'
 
 		},
 
@@ -483,6 +483,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		openDropdown : function ( e ){
 
+			e.stopPropagation();
 			var target = $( e.target ),
 				element = ( target.hasClass('karma-dropdown-header') ) ? target : target.closest('.karma-dropdown-header'),
 				optionsContainer =  element.siblings( '.karma-dropdown-options' );
