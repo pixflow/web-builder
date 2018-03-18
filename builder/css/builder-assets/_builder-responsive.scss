@@ -65,6 +65,9 @@ body{
 		.karma-active-section .section-gizmo-group{
 			display: none;
 		}
+		#karma-builder-layout[style *= "top"]{
+			position: relative;
+		}
 
 		/* _-_-_- Section Responsive Gizmo Style -_-_-_ */
 		.karma-builder-element.karma-active-section {
@@ -191,6 +194,10 @@ body{
 		#karma-show-parent,
 		#karma-builder-layout *[ class *= "karma" ] *{
 			visibility: visible !important;
+		}
+
+		.karma-element-hide{
+			display: none !important;
 		}
 	}
 }

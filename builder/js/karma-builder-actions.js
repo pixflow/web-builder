@@ -441,6 +441,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 					containers[ i ].setAttribute( 'id', oldID + ' karma-show-parent' );
 				}
 			}
+			this.getIframe().$('#karma-builder-layout').css({top: this.getIframe().$('#karma-builder-layout').offset().top * -1 })
 		},
 
 		/**
