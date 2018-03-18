@@ -13,7 +13,8 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml',
 			'click .builder-code-editor-link'           : 'openCodeEditor',
 			'click .karma-code-editor-container'        : 'closeCodeEditor',
-			'click .karma-dropdown-header '             : 'openDropdown',
+			'mouseenter .karma-dropdown-header '        : 'openDropdown',
+			'mouseleave .builder-devtool '        		: 'closeDropdown',
 			'click body:not( .karma-dropdown-body )'    : 'closeCodeEditorDropDown'
 
 		},
@@ -483,6 +484,12 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		},
 
+		/**
+		 * open header dropdown on hover
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
 		openDropdown : function ( e ){
 
 			e.stopPropagation();
@@ -491,6 +498,20 @@ var karmaBuilderActions = karmaBuilderActions || {};
 				optionsContainer =  element.siblings( '.karma-dropdown-options' );
 			$( 'header .karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
 			optionsContainer.addClass( 'karma-doropdown-opened' );
+
+		},
+		/**
+		 * close header dropdown on hover
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		closeDropdown : function ( e ){
+
+			var target = $( e.target ),
+				element = ( target.hasClass('builder-devtool') ) ? target : target.closest('.builder-devtool'),
+				optionsContainer =  element.find( '.karma-dropdown-options' );
+			optionsContainer.removeClass( 'karma-doropdown-opened' );
 
 		},
 
