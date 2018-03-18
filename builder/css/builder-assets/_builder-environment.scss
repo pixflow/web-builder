@@ -1,4 +1,19 @@
 /* _-_-_- layout/HEADER -_-_-_ */
+
+
+body.karma-page-manager ,
+body.karma-typography-page {
+	#karma-dont-show-in-page{
+		display : none ;
+	}
+}
+
+body.karma-main-page{
+	#karma-dont-show-in-builder{
+		display : none ;
+	}
+}
+
 #karma-builder-layout{
 	a{
 		border: none;
@@ -27,12 +42,10 @@ body.karma-builder{
 		justify-content: space-between;
 		width: 100%;
 	}
-	.builder-Typography-label{
-		a{
-			color:$builder-main-color-2;
-			text-decoration: none;
-		}
 
+	a{
+		color:$builder-main-color-2;
+		text-decoration: none;
 	}
 
 	.karma-builder-left {
@@ -70,7 +83,6 @@ body.karma-builder{
 
 				> div:not( .builder-upgrade-icon ){
 					transition: color .1s;
-					Cursor : no-drop;
 					padding-left: 0;
 					padding-right: 0;
 					.karma-dropdown-body{

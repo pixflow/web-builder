@@ -3137,8 +3137,6 @@ html {
   cursor: pointer;
   background-image: url("../media/blank.png");
   background-size: auto; }
-  .karma-page-manager .karma-templates-container .karma-premade-page-template.karma-blank-page-template .karma-page-screenshot-container:hover {
-    background-image: url("../media/blank-hover.png"); }
 
 /* _-_-_- pages/dashboard -_-_-_ */
 /* _-_-_- pages/HOME -_-_-_ */

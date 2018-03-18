@@ -229,6 +229,52 @@ class Karma_Helper_Utility{
 		return $content;
 
 	}
+
+	/*
+	 * Return current page title
+	 *
+	 * @since   2.0
+	 * @return  string      Title of page
+	 */
+	public static function get_current_page_title_by_url(){
+
+		$title = '';
+		$back_id = url_to_postid( ( isset( $_SERVER['HTTPS'] ) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" );
+		if( $back_id > 0 ) {
+			return  get_the_title( $back_id );
+		}
+		return $title ;
+
+	}
+
+	/**
+	 * Add custom class to body tag
+	 *
+	 *
+	 * @since     0.1.0
+	 * @return    string	New list of body class
+	 */
+	public static function add_body_class(){
+
+		$classes = array();
+		$page = isset( $_GET['builder-page'] ) ? isset( $_GET['builder-page'] )  : '' ;
+
+		switch ( $page ){
+			case 'karma-typography-page' :
+				$classes[] = 'karma-typography-page' ;
+				break;
+			case 'karma-page-manager' :
+				$classes[] = 'karma-page-manager' ;
+				break;
+			default:
+				$classes[] = 'karma-main-page' ;
+				break;
+		}
+
+
+		return implode( ' ', $classes );
+
+	}
 	
 	
 }

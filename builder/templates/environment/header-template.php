@@ -12,7 +12,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 	<link rel="preconnect" href="https://fonts.typonine.com/" crossorigin>
 	<?php wp_head(); ?>
 </head>
-<body class="karma-builder karma-device-mode-desktop">
+<body class="karma-builder karma-device-mode-desktop <?php echo Karma_Helper_Utility::add_body_class(); ?> ">
 <style>
 	@font-face {
 		font-family: HelveticaNeue;
@@ -33,24 +33,26 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 					<li class="builder-brand">
 						<?php print Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/Karma-logo.svg' ); ?>
 					</li>
-					<li class="builder-pages">
-						<div class="builder-page-label"><?php  _e('Pages:', 'karma-builder'); ?> </div>
-						<div class="builder-page-name">Home</div>
+					<li class="builder-pages" id="karma-dont-show-in-page" >
+						<div class="builder-page-label"><?php  _e('Pages: ', 'karma-builder'); ?> </div>
+						<div class="builder-page-name"> <?php echo Karma_Helper_Utility::get_current_page_title_by_url(); ?> </div>
 					</li>
-					<li class="builder-sites-setting">
-						<div class="builder-setting-label"><?php  _e('Setting', 'karma-builder'); ?></div>
-					</li>
-					<li class="builder-sites-setting">
+					<li class="builder-sites-setting" id="karma-dont-show-in-page" >
 						<div class="builder-Typography-label"><a href="<?php echo get_home_url() . '/?builder-page=karma-typography-page' ?>" target="_blank" > <?php  _e( 'Typography', 'karma-builder' ); ?> </a></div>
 					</li>
-					<li class="builder-upgrade">
-						<div class="builder-upgrade-text"><?php  _e( 'Upgrade', 'karma-builder' ); ?></div>
+					<li class="builder-upgrade"  >
+						<div class="builder-upgrade-text"><a href="<?php echo admin_url('update-core.php'); ?>" target="_blank" > <?php  _e( 'Upgrade', 'karma-builder' ); ?> </a> </div>
 					</li>
-					<li class="builder-devtool">
+
+					<li class="builder-dashboard" id="karma-dont-show-in-builder" >
+						<div class="builder-dashboard-text"><a href="<?php echo admin_url(); ?>" target="_blank" > <?php  _e( 'Dashboard', 'karma-builder' ); ?> </a> </div>
+					</li>
+
+					<li class="builder-devtool" id="karma-dont-show-in-page" >
 						<div class="karma-dropdown-controller">
 							<div class="karma-dropdown-body">
 								<div class="karma-dropdown-header">
-									<div class="karma-dropdown-selected-item"><?php  _e( 'Developer Tools', 'karma-builder' ); ?></div>
+									<div class="karma-dropdown-selected-item"><?php  _e( 'Custom Code', 'karma-builder' ); ?></div>
 								</div>
 								<div class="karma-dropdown-options">
 									<div class="karma-dropdown-option builder-code-editor-link custom-css" data-script="css" >

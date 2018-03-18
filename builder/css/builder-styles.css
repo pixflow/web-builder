@@ -3196,10 +3196,6 @@ html {
   .karma-preview-template-container .karma-preview-template-iframe {
     background-color: #dadada;
     padding-top: 58px; }
-    .karma-preview-template-container .karma-preview-template-iframe iframe {
-      transition-duration: .3s; }
-      .karma-preview-template-container .karma-preview-template-iframe iframe.karma-preview-template-iframe-show {
-        transition-duration: .3s; }
 
 .karma-editable-content {
   display: inline-block; }
@@ -4268,6 +4264,13 @@ html {
         outline: none; }
 
 /* _-_-_- layout/HEADER -_-_-_ */
+body.karma-page-manager #karma-dont-show-in-page,
+body.karma-typography-page #karma-dont-show-in-page {
+  display: none; }
+
+body.karma-main-page #karma-dont-show-in-builder {
+  display: none; }
+
 #karma-builder-layout a {
   border: none; }
 #karma-builder-layout [contenteditable] {
@@ -4295,7 +4298,7 @@ body.karma-builder {
     display: flex;
     justify-content: space-between;
     width: 100%; }
-  .karma-builder-toolbar .builder-Typography-label a {
+  .karma-builder-toolbar a {
     color: #9CA4AC;
     text-decoration: none; }
   .karma-builder-toolbar .karma-builder-left {
@@ -4335,7 +4338,6 @@ body.karma-builder {
               position: absolute; }
         .karma-builder-toolbar .karma-builder-left ul > li > div:not(.builder-upgrade-icon) {
           transition: color .1s;
-          Cursor: no-drop;
           padding-left: 0;
           padding-right: 0; }
           .karma-builder-toolbar .karma-builder-left ul > li > div:not(.builder-upgrade-icon) .karma-dropdown-body {

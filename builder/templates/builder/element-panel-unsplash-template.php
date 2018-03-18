@@ -15,7 +15,7 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 				<?php
 				$href = get_site_url() . '?builder-page=karma-page-manager' ;
 				?>
-				<a class="element-panel-part-button" href="<?php echo $href ?>">Add New Page Template</a>
+				<a class="element-panel-part-button" target="_blank" href="<?php echo $href ?>">Add New Page Template</a>
 			</div>
 		</div>
 	</div>
