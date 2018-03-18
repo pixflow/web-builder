@@ -3138,8 +3138,11 @@ html {
         .karma-page-manager .karma-templates-container .karma-premade-page-template .karma-template-description-container .karma-page-lock {
           width: 33px;
           height: 33px;
+          align-items: center;
           background-color: #EBECEE;
-          border-radius: 50px; }
+          border-radius: 50px;
+          display: flex;
+          justify-content: center; }
       .karma-page-manager .karma-templates-container .karma-premade-page-template:hover .karma-screenshot-overlay {
         opacity: 1; }
 

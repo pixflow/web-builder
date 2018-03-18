@@ -1,5 +1,6 @@
 <?php
 use KarmaBuilder\PageManager\Karma_Page_Manager as Karma_Page_Manager;
+use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 
 // Get the list of templates
 $page_manager = Karma_Page_Manager::get_instance();
@@ -23,7 +24,7 @@ $templates    = $page_manager->templates_list();
 				</div>
 				<div class="karma-template-description-container">
 					<p class="karma-page-template-title" ><?php echo esc_attr( $template[ 'title' ] ); ?></p>
-					<div class="karma-page-lock"></div>
+					<div class="karma-page-lock"><?php echo Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/lock.svg' ) ?></div>
 				</div>
 			</div>
 
