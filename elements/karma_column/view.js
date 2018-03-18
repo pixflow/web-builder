@@ -127,12 +127,14 @@
 		rightspace: function () {
 			
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px';
+				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px',
+				rightSpace = this.el.querySelector('.karma-right-spacing');
 
 			this.$el.trigger('karma/finish/modifyColumns');
 			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-right', padding );
-			this.el.querySelector('.karma-right-spacing').style.width = padding ;
-
+			if( null != rightSpace ) {
+				rightSpace.style.width = padding;
+			}
 
 		},
 
@@ -145,10 +147,15 @@
 		leftspace: function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px';
+				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px',
+				leftSpace = this.el.querySelector('.karma-left-spacing');
 
 			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-left', padding );
-			this.el.querySelector('.karma-left-spacing').style.width = padding ;
+
+			if( null != leftSpace ){
+				leftSpace.style.width = padding ;
+			}
+
 			this.$el.trigger('karma/finish/modifyColumns');
 
 		},

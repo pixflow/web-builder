@@ -51,7 +51,11 @@
 		 */
 		setSortable: function () {
 
-			$( "#karma-builder-layout" ).sortable( "refresh" );
+			try{
+				$( "#karma-builder-layout" ).sortable( "refresh" );
+			}catch( error ){
+				console.warn('cannot call methods on sortable prior to initialization; attempted to call method refresh');
+			}
 
 		},
 
