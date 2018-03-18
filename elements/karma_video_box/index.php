@@ -254,7 +254,7 @@ class Karma_Video_Box extends Karma_Shortcode_Base {
 				),
 			),
 			array(
-				'postfix'	=> ' .karma-video-box-container-player',
+				'postfix'	=> ' .karma-video-box-background-container',
 				'property'	=> array(
 					'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
 				),

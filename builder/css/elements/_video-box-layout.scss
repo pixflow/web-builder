@@ -407,7 +407,6 @@
 
 			.karma-video-box-background-container{
 				background-color: transparent;
-				border: 1px solid transparent;
 				overflow: hidden;
 				transform: scale(1) translateZ(0);
 				transition: transform .28s ease;
@@ -438,30 +437,34 @@
 				z-index: -1;
 			}
 
-			&:hover {
-				transition-delay: 0s !important;
-				z-index: 3;
+		}
 
-				.karma-video-box-background-container,
-				.karma-element-blur-effect {
-					@include box(100%);
-					left: 0;
-					position: absolute;
-					top: 0;
-				}
-				.karma-video-box-background-container {
-					backface-visibility: hidden;
-					transform: scale(1.08) translateZ(0);
-				}
-				.karma-video-box-background {
-					backface-visibility: hidden;
-					transform: scale(1) translateZ(0);
-				}
-				.karma-element-blur-effect {
-					opacity: 0.7;
+		&:not(.karma-active-element){
+			.karma-box-element-hover-shadow {
+				&:hover {
+					transition-delay: 0s !important;
+					z-index: 3;
+
+					.karma-video-box-background-container,
+					.karma-element-blur-effect {
+						@include box(100%);
+						left: 0;
+						position: absolute;
+						top: 0;
+					}
+					.karma-video-box-background-container {
+						backface-visibility: hidden;
+						transform: scale(1.08) translateZ(0);
+					}
+					.karma-video-box-background {
+						backface-visibility: hidden;
+						transform: scale(1) translateZ(0);
+					}
+					.karma-element-blur-effect {
+						opacity: 0.7;
+					}
 				}
 			}
-
 		}
 
 		.karma-box-element-shadow{

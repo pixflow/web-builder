@@ -230,7 +230,7 @@ class Karma_Image_Box extends Karma_Shortcode_Base {
 				)
 			),
 			array(
-				'postfix'	=> ' .karma-image-box-container',
+				'postfix'	=> ' .karma-image-box-background-container',
 				'property'	=> array(
 					'border-radius'			=> self::$element_attributes[ 'radiusbox' ]. 'px',
 				),
