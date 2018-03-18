@@ -13,7 +13,8 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			'karma/finish/iframeInit.settingPanelHtml'  : 'settingPanelHtml',
 			'click .builder-code-editor-link'           : 'openCodeEditor',
 			'click .karma-code-editor-container'        : 'closeCodeEditor',
-			'click .karma-dropdown-header '             : 'openDropdown',
+			'mouseenter .karma-dropdown-header '        : 'openDropdown',
+			'mouseleave .builder-devtool '        		: 'closeDropdown',
 			'click body:not( .karma-dropdown-body )'    : 'closeCodeEditorDropDown'
 
 		},
@@ -392,7 +393,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 					var dropArea = that.getIframe().document.querySelector( '.karma-show-placeholder' );
 					if ( null != dropArea && 'IFRAME' == document.elementFromPoint( event.clientX, event.clientY ).nodeName ) {
 						that.renderBlock( UI.helper.data( "block-id" ), dropArea );
-						 that.getIframe().KarmaView.$el.trigger('karma/after/sortSections');
+						that.getIframe().KarmaView.$el.trigger('karma/after/sortSections');
 					}
 					that.getIframe().KarmaView.removePlaceHolders();
 					window.karmaElementPanel.scrollElementPanel();
@@ -421,6 +422,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			}
 			if ( null != this.getIframe().document.querySelector( '.karma-blank-page-container' ) ) {
 				this.getIframe().$( '.karma-blank-page-container' ).remove();
+				this.getIframe().$( '.karma-blank-page-placeholder' ).remove();
 			}
 
 		},
@@ -441,7 +443,7 @@ var karmaBuilderActions = karmaBuilderActions || {};
 					containers[ i ].setAttribute( 'id', oldID + ' karma-show-parent' );
 				}
 			}
-			this.getIframe().$('#karma-builder-layout').css({top: this.getIframe().$('#karma-builder-layout').offset().top * -1 })
+
 		},
 
 		/**
@@ -483,6 +485,12 @@ var karmaBuilderActions = karmaBuilderActions || {};
 
 		},
 
+		/**
+		 * open header dropdown on hover
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
 		openDropdown : function ( e ){
 
 			e.stopPropagation();
@@ -491,6 +499,20 @@ var karmaBuilderActions = karmaBuilderActions || {};
 				optionsContainer =  element.siblings( '.karma-dropdown-options' );
 			$( 'header .karma-doropdown-opened' ).removeClass( 'karma-doropdown-opened' );
 			optionsContainer.addClass( 'karma-doropdown-opened' );
+
+		},
+		/**
+		 * close header dropdown on hover
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		closeDropdown : function ( e ){
+
+			var target = $( e.target ),
+				element = ( target.hasClass('builder-devtool') ) ? target : target.closest('.builder-devtool'),
+				optionsContainer =  element.find( '.karma-dropdown-options' );
+			optionsContainer.removeClass( 'karma-doropdown-opened' );
 
 		},
 

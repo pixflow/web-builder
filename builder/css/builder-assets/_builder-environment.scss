@@ -78,6 +78,15 @@ body.karma-builder{
 							position: absolute;
 						}
 					}
+					&:after {
+						content: "";
+						height: 10px;
+						width: 250px;
+						position: absolute;
+						top: 44px;
+						left: 0;
+						z-index: 9999;
+					}
 
 				}
 

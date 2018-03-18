@@ -4340,6 +4340,14 @@ body.karma-builder {
             cursor: pointer; }
             .karma-builder-toolbar .karma-builder-left ul > li.builder-devtool div.karma-dropdown-controller .karma-dropdown-options {
               position: absolute; }
+          .karma-builder-toolbar .karma-builder-left ul > li.builder-devtool:after {
+            content: "";
+            height: 10px;
+            width: 250px;
+            position: absolute;
+            top: 44px;
+            left: 0;
+            z-index: 9999; }
         .karma-builder-toolbar .karma-builder-left ul > li > div:not(.builder-upgrade-icon) {
           transition: color .1s;
           padding-left: 0;
