@@ -253,9 +253,11 @@
 				} else {
 					if( undefined === groupHtml_group[ elementParams.params[counter].group] ){
 						groupHtml_group[ elementParams.params[counter].group ] = {
-							items: [],
-							title: elementParams.params[counter].group
+							items	: [],
+							title	: elementParams.params[counter].group ,
+							name	: elementParams.params[counter].group.replace( / /g, '-' ),
 						};
+
 					}
 					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + elementParams.params[counter].type + '-controller', elementParams.params[counter], 1 );
 					var html = this.setGeneralContainer( controllerSource, elementParams.params[counter] );
