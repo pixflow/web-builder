@@ -9,7 +9,7 @@
  */
 
 /**
- * @summary karmaVideoPopup manager
+ * karmaVideoPopup manager
  * The resources that add popup to video
  *
  * @param {string}  selector video link
@@ -26,7 +26,7 @@ var karmaVideoPopup = function ( selector ) {
 };
 
 /**
- * @summary close and delete lightbox HTML
+ * close and delete lightbox HTML
  *
  * @since 0.1.0
  * @returns {void}
@@ -43,7 +43,7 @@ karmaVideoPopup.prototype.closeVideoPopup = function () {
 
 };
 /**
- * @summary create video popup html and append to body
+ * create video popup html and append to body
  *
  * @param {string}  url video URL
  *

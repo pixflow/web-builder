@@ -24,7 +24,7 @@
 		+ '</div>',
 
 		/**
-		 * @summary initialize position
+		 * initialize position
 		 *
 		 * @since 0.1.0
 		 *
@@ -37,7 +37,7 @@
 		},
 
 		/**
-		 * @summary render position
+		 * render position
 		 *
 		 * @since 0.1.0
 		 *
@@ -56,7 +56,7 @@
 		},
 
 		/**
-		 * @summary update position
+		 * update position
 		 *
 		 * @since 0.1.0
 		 *
@@ -69,7 +69,7 @@
 		},
 
 		/**
-		 * @summary functional for position gizmo
+		 * functional for position gizmo
 		 * @param {event} event
 		 *
 		 * @since 0.1.0
@@ -96,5 +96,4 @@
 
 	});
 } )( jQuery, karmaBuilder );
-
 

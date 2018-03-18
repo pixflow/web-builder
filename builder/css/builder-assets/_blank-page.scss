@@ -2,6 +2,7 @@
 	@include flexbox( center, center, center );
 	flex-direction: row;
 	font-family: $builder-normal-font;
+	min-height: 100vh;
 
 	> div{
 		@include box( 487px, 643px );

@@ -15,11 +15,13 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 *
 	 * @return array
 	 */
-	static function get_element_default_attributes(){
+	static function get_element_default_attributes() {
 
 		return 	array(
 			'structure'				=> 'container',
 			'space'					=> '70',
+			'tabletspace'			=> '50',
+			'mobilespace'			=> '35',
 			'element_key'			=> '',
 			'extraclass'			=> '',
 			'columnspace'  			=> '0',
@@ -30,6 +32,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			'backgroundtype'		=> 'color',
 			'visibleonmobile'		=> 'on',
 			'visibleontablet'		=> 'on',
+			'fittoheight'			=> 'false'
 
 		);
 
@@ -44,12 +47,15 @@ class Karma_Section extends Karma_Shortcode_Base {
 		$container_class 	= ( $atts[ 'structure' ] == 'container' ) ? "karma-container" : "karma-container-fluid";
 		$visible_mobile 	= '';//( 'on' == $atts['visibleonmobile'] ) ? '' : 'mobile-display-none karma-deactive-on-mobile';
 		$visible_tablet 	= '';//( 'on' == $atts['visibleontablet'] ) ? '' : 'tablet-display-none karma-deactive-on-tablet';
+		$fit_to_height = ( 'true' == $atts['fittoheight'] ) ? ' karma-fit-to-screen': '' ;
 		ob_start();
 		?>
 
-		<section class="karma-section-container karma-background-section <?php echo $visible_tablet  ?> <?php echo $visible_mobile  ?> <?php echo esc_attr( $this->background_classes( $atts ) ); ?>" visibe-on-tablet="<?php echo $atts[ 'visibleontablet' ] ?>"  visibe-on-mobile="<?php echo $atts[ 'visibleonmobile' ] ?>">
-			<div class='karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'
-			     style="padding-top:<?php echo esc_attr( $atts['space'] );?>px;padding-bottom:<?php echo esc_attr( $atts['space'] ); ?>px;">
+		<section
+				class="karma-section-container karma-background-section <?php echo $visible_tablet ?> <?php echo $visible_mobile ?> <?php echo esc_attr( $this->background_classes( $atts ) ); ?>"
+				visibe-on-tablet="<?php echo $atts[ 'visibleontablet' ] ?>"
+				visibe-on-mobile="<?php echo $atts[ 'visibleonmobile' ] ?>">
+			<div class='<?php echo $fit_to_height; ?> karma-section karma-section-<?php echo esc_attr( $atts[ 'element_key' ] ); ?> <?php echo esc_attr( $atts[ 'extraclass' ] ); ?>'>
 				<div class='<?php echo esc_attr( $container_class ); ?> karma-row karma-no-gutters'>
 					<?php echo do_shortcode( $content ); ?>
 				</div>
@@ -64,19 +70,19 @@ class Karma_Section extends Karma_Shortcode_Base {
 	public function js_render() {
 
 		return "<# var rowContainer = ('container' == data.attributes.shortcode_attributes.structure ) ? 'karma-container' : 'karma-container-fluid'; #>"
-			. "<# var visibleMobile = '';//( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
-			. "<# var visibleTablet = '';//( 'on' == data.attributes.shortcode_attributes.visibletablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
-			. "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
-			. "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-' + data.attributes.shortcode_attributes.backgroundsize + ' karma-background-position-' + data.attributes.shortcode_attributes.backgroundposition ; #>"
-			. '<section class="karma-section-container karma-background-section {{ backgroundClasses }} {{visibleMobile}}  {{ visibleTablet }}"  visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}" >'
-			. "<div class='karma-section karma-section-{{ data.attributes.element_key }} {{ data.attributes.shortcode_attributes.extraclass }}' style='padding-bottom:{{ data.attributes.shortcode_attributes.space }}px;padding-top:{{ data.attributes.shortcode_attributes.space }}px;'>"
-			. "<div class='{{ rowContainer }} karma-row karma-no-gutters'>"
-			. "</div>"
-			. "</div>"
-			. '</section>' ;
+		       . "<# var visibleMobile = '';//( 'on' == data.attributes.shortcode_attributes.visibleonmobile  ) ? '' : 'mobile-display-none karma-deactive-on-mobile';  #>"
+		       . "<# var visibleTablet = '';//( 'on' == data.attributes.shortcode_attributes.visibletablet  ) ? '' : 'tablet-display-none karma-deactive-on-tablet';  #>"
+		       . "<# var backgroundType = data.attributes.shortcode_attributes.backgroundtype; #>"
+		       . "<# var fittoscreen = ( 'true' == data.attributes.shortcode_attributes.fittoheight ) ? ' karma-fit-to-screen' : '' ; #>"
+		       . "<# var backgroundClasses = ( 'color' == backgroundType ) ? 'karma-section-color-background' : 'karma-section-image-background karma-background-image-' + data.attributes.shortcode_attributes.backgroundsize + ' karma-background-position-' + data.attributes.shortcode_attributes.backgroundposition ; #>"
+		       . '<section class="karma-section-container karma-background-section {{ backgroundClasses }} {{visibleMobile}}  {{ visibleTablet }}"  visibe-on-tablet="{{ data.attributes.shortcode_attributes.visibleontablet }}"   visibe-on-mobile="{{ data.attributes.shortcode_attributes.visibleonmobile }}" >'
+		       . "<div class='{{fittoscreen}} karma-section karma-section-{{ data.attributes.element_key }} {{ data.attributes.shortcode_attributes.extra_class }}'>"
+		       . "<div class='{{ rowContainer }} karma-row karma-no-gutters'>"
+		       . "</div>"
+		       . "</div>"
+		       . '</section>';
 
 	}
-
 
 	/**
 	 * Return CSS property
@@ -87,14 +93,29 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 * @access  public
 	 * @return  array The style property of element
 	 */
-	public static function get_css_attributes(){
+	public static function get_css_attributes() {
 
 		$styles = array(
 			array(
-				'postfix' => ' .karma-column-margin',
+				'postfix'  => ' .karma-section',
 				'property' => array(
-					'margin-left' => self::$element_attributes['columnspace'] . 'px',
-					'margin-right' => self::$element_attributes['columnspace'] . 'px',
+					'padding-top'  => self::$element_attributes[ 'space' ] . 'px',
+					'padding-bottom'  => self::$element_attributes[ 'space' ] . 'px'
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tabletspace' ] . 'px',
+					'padding-bottom'  => self::$element_attributes[ 'tabletspace' ] . 'px'
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobilespace' ] . 'px',
+					'padding-bottom'  => self::$element_attributes[ 'mobilespace' ] . 'px'
+				)
+			),
+			array(
+				'postfix'  => ' .karma-column-margin',
+				'property' => array(
+					'margin-left'  => self::$element_attributes[ 'columnspace' ] . 'px',
+					'margin-right' => self::$element_attributes[ 'columnspace' ] . 'px',
 				)
 			),
 			array(
@@ -110,6 +131,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 				)
 			)
 		);
+
 		return $styles;
 
 	}
@@ -124,7 +146,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 */
 	public function render_script() {
 
-		$block = '' ;
+		$block = '';
 		return $block;
 
 	}
@@ -137,14 +159,14 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 * @access  public
 	 * @return  array
 	 */
-	public function get_style_script_dependencies(){
+	public function get_style_script_dependencies() {
 
 		$dependencies = array(
-			'css' => array() ,
-			'js' => array()
+			'css' => array(),
+			'js'  => array()
 		);
 
-		return $dependencies ;
+		return $dependencies;
 
 	}
 
@@ -152,6 +174,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 	 * return background class base on background type
 	 *
 	 * @param    array $attributes section attributes
+	 *
 	 * @since   0.1.0
 	 * @access  public
 	 * @return  string the list of classes of background
@@ -171,6 +194,7 @@ class Karma_Section extends Karma_Shortcode_Base {
 			default:
 				$background_classes = 'karma-section-color-background';
 		}
+
 		return $background_classes;
 
 	}

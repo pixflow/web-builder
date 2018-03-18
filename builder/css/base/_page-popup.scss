@@ -1,0 +1,291 @@
+.karma-page-popup-overlay{
+	@include element_direction( $top:0, $left:0 );
+	@include box( 100vw, 100vh );
+	@include flexbox( center, center, center );
+	opacity: 0;
+	background-color: rgba(#000 , 0.3);
+	position: fixed;
+	z-index: $level-30;
+	visibility: hidden;
+	background-color: inherit;
+	transition-duration: .5s;
+
+	&.karma-page-popup-overlay-show{
+		transition-duration: .5s;
+		background-color: rgba( #000 , 0.5 );
+		opacity: 1;
+		visibility: visible;
+	}
+
+}
+.karma-page-popup-container{
+	opacity:0;
+	left: 32%;
+	position: absolute;
+	top: 30%;
+	transform: scale(.9);
+	transition-duration: 150ms ;
+	visibility: hidden;
+	
+	&.karma-page-popup-container-show{
+		visibility: visible;
+		opacity: 1;
+		transform: scale(1);
+		transition-duration: 150ms ;
+	}
+	.karma-page-popup-content{
+		@include box(621px,369px);
+		background-color: #FFFFFF;
+		border-radius: 4px;
+		box-shadow: 0 4px 15px 3px rgba(57,73,89,0.2);
+		display: flex;
+		flex-basis: auto;
+
+		.karma-page-popup-image{
+			@include flexbox($align-item:center, $justify-content:flex-end );
+			background-color: #ECF5FE;
+			flex-basis: 52%;
+			position: relative;
+
+			.karma-page-popup-image-close-icon{
+				@include box(15px,14px);
+				background-image: url("../media/svg/close.svg");
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				cursor: pointer;
+				position: absolute;
+				right: 14px;
+				top: 14px;
+
+			}
+		}
+		.karma-page-popup-add-new{
+			flex-basis: 50%;
+			padding: 35px 37px;
+			text-align: left;
+			input{
+				@include box(100%);
+				border: 0;
+				box-shadow: none;
+				outline: none;
+			}
+			.karma-dropdown-selected-item{
+				@include box(100%);
+				border: 0;
+				box-shadow: none;
+				outline: none;
+			}
+			input.karma-page-popup-hidden-input{
+				display: none;
+			}
+			.karma-page-popup-title{
+				font-size: 20px;
+				line-height: 24px;
+			}
+			.karma-page-popup-name-tiltle{
+				color: rgba(57,73,89,0.5);
+				font-size: 12px;
+				line-height: 14px;
+				padding-top: 31px;
+			}
+			.karma-page-popup-name-input{
+				@include box(234px,40px);
+				border: 1px solid rgba(57,73,89,0.2);
+				border-radius: 4px;
+				margin-top: 7px;
+				input{
+					color: #394959;
+					font-size: 13px;
+					line-height: 16px;
+					padding-left: 15px;
+				}
+			}
+			.karma-dropdown-body{
+				margin-bottom: 0;
+			}
+			.karma-page-popup-layout-title{
+				@extend .karma-page-popup-name-tiltle;
+				padding-top: 18px;
+			}
+			.karma-page-popup-layout-input{
+				@extend .karma-page-popup-name-input;
+
+				.karma-dropdown-selected-item{
+					@extend .karma-builder-title-3;
+					color: $builder-main-color;
+					padding-left: 15px;
+					padding-top: 12px;
+					white-space: nowrap;
+					overflow-x: hidden;
+				}
+			}
+			.karma-page-popup-layout-description{
+				align-items: center;
+				color: $builder-main-color;
+				display: flex;
+				flex-direction: row;
+				font-size: 10px;
+				line-height: 12px;
+				padding-top: 11px;
+
+				div{
+					@include box(4px);
+					background-color: $builder-accent-color;
+					border-radius: 50%;
+					margin-right: 4px;
+
+				}
+			}
+			.karma-page-popup-button{
+				display: flex;
+				flex-direction: row;
+				padding-top: 38px;
+
+				.karma-page-popup-create-button{
+					@include box(83px,40px);
+					@include fill-button( #fff, #FF243F );
+					background-color: $builder-accent-color;
+					border-radius: 2px;
+					color: #fff;
+				}
+				.karma-page-popup-cancel-button{
+					@extend .karma-builder-title-3;
+					color: $builder-main-color;
+					cursor: pointer;
+					cursor: pointer;
+					padding: 12px 21px;
+					transition-duration: .3s ;
+
+					&:hover{
+						color:$builder-main-color-2;
+						transition-duration: .3s ;
+					}
+				}
+			}
+		}
+	}
+	.karma-dropdown-body{
+
+
+		cursor: pointer;
+		margin-bottom: $builder-orange-space;
+		margin-top: $builder-light-orange-space;
+		position: relative;
+
+		.karma-dropdown-header{
+
+			@extend .space-between;
+			align-items: center;
+
+			.karma-dropdown-icon{
+
+				@include dropdown-button;
+				border: none;
+				svg *{
+					stroke: #394959;;
+				}
+
+			}
+		}
+
+		.karma-dropdown-options{
+			@include box( 250px, 0 );
+			background-color: #fff;
+			box-shadow: 0 2px 12px 0 rgba($builder-main-color , 0.20);
+			display: none;
+			flex-direction: column;
+			left: 0;
+			list-style: none;
+			overflow: hidden;
+			padding: 7px;
+			position: fixed;
+			top: 36px;
+			z-index: $level-minus-5;
+
+			.karma-dropdown-option-title{
+				font-size: 14px;
+			}
+
+			&.karma-doropdown-opened{
+				display: flex;
+				height: auto;
+				z-index: $level-20;
+			}
+
+		}
+
+	}
+}
+
+@keyframes load_page_popup_box {
+	0% {
+		visibility: hidden;
+		opacity: 0;
+		transform: scale(.7);
+	}
+	30% {
+		opacity: .3;
+		transform: scale(.8);
+	}
+	60% {
+		opacity: .6;
+		transform: scale(.9);
+	}
+	90% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		visibility: visible;
+		opacity: 1;
+		transform: scale(1);
+
+	}
+}
+
+@keyframes close_page_popup_box {
+	00% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	25% {
+		opacity: .8;
+		transform: scale(1);
+	}
+	50% {
+		opacity: .6;
+		transform: scale(.9);
+	}
+	75% {
+		opacity: .3;
+		transform: scale(.8);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(.7);
+
+	}
+}
+
+@keyframes load_age_popup_overlay {
+	00% {
+		opacity:0;
+		visibility: hidden;
+		background-color: transparent;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		background-color: rgba( #000 , 0.5 );
+	}
+}
+
+@keyframes close_age_popup_overlay {
+	00% {
+		background-color: rgba( #000 , 0.5 );
+	}
+	100% {
+		background-color: transparent;
+	}
+}

@@ -7,54 +7,83 @@ body{
 		}
 	}
 
-	&.karma-device-mode-tablet,
-	&.karma-device-mode-mobile{
+		&.karma-device-mode-tablet,
+		&.karma-device-mode-mobile {
 
-		.text-gizmo-group,
-		.image-gizmo-group,
-		.image-box-gizmo-group,
-		.video-box-gizmo-group,
-		.image-text-gizmo-group,
-		.karma-image-text-box-description-gizmo,
-		.karma-image-text-box-link-gizmo,
-		.video-text-gizmo-group,
-		.karma-video-box-description-gizmo,
-		.karma-video-box-link-gizmo,
-		.element-name-text-gizmo,
-		.karma-title-gizmo-template{
-			display: none !important;
-		}
-		.resize-handler{
-			pointer-events: none !important;
-		}
-		.karma-image-resize{
+			.karma-builder-element[data-name="karma_text"]{
+				&.karma-active-element{
+					.karma-text{
+						box-shadow: 0 0 0 1px $builder-accent-color;
+					}
+				}
+			}
+			#karma-builder-layout {
+				.text-gizmo-group,
+				.image-gizmo-group,
+				.image-box-gizmo-group,
+				.video-box-gizmo-group,
+				.image-text-gizmo-group,
+				.karma-image-text-box-description-gizmo,
+				.karma-image-text-box-link-gizmo,
+				.video-text-gizmo-group,
+				.karma-video-box-description-gizmo,
+				.karma-video-box-link-gizmo,
+				.element-name-text-gizmo,
+				.karma-title-gizmo-template,
+				.karma-new-section-icon,
+				.button-gizmo-group {
+					display: none !important;
+				}
+				.resize-handler {
+					pointer-events: none !important;
+				}
+				.karma-image-resize {
 
-			.ui-resizable-handle{
-				display: none;
+					.ui-resizable-handle {
+						display: none;
+					}
+				}
+
+				.karma-image-text-box {
+					height: auto;
+				}
+				.karma-video-box {
+					height: auto;
+				}
 			}
 		}
-	}
+		#karma-builder-layout{
+			cursor: auto;
+
+			.karma-builder-element[data-name="karma_section"]{
+				cursor: auto;
+			}
+		}
 }
 @media (max-width: 768px){
 	.karma-builder-environment {
 		.karma-active-section .section-gizmo-group{
 			display: none;
 		}
+		#karma-builder-layout[style *= "top"]{
+			position: relative;
+		}
 
 		/* _-_-_- Section Responsive Gizmo Style -_-_-_ */
-	/*	.karma-builder-element.karma-active-section{
-			.karma-gizmo-template.karma-inner-gizmo-template{
-				&.section-gizmo-group-responsive{
+		.karma-builder-element.karma-active-section {
+			.karma-gizmo-template.karma-inner-gizmo-template {
+				&.section-gizmo-group-responsive {
 					display: flex;
-					&.karma-gizmo-container{
-						@include box( 96px, 22px );
+					&.karma-gizmo-container {
+						@include box(77px, 22px);
 						background-color: $builder-accent-color;
 						left: 0;
 						top: 0;
 						padding-right: 3px;
+						border-radius: 0;
 					}
 					.karma-builder-gizmo-text {
-						color:#fff;
+						color: #fff;
 						border: none;
 						padding: 0 5px;
 						margin: 0;
@@ -63,10 +92,11 @@ body{
 							color: #fff;
 						}
 					}
-					.karma-builder-gizmo-icon {
-						padding: 11px 5px;
-						svg{
-							*{
+					.karma-responsive-layout-drop-down-gizmo {
+						padding: 7px;
+
+						svg {
+							* {
 								fill: #fff;
 							}
 						}
@@ -79,9 +109,40 @@ body{
 							}
 						}
 					}
+
 				}
 			}
-		}*/
+			.karma-responsive-layout-drop-down {
+				top: 33px;
+				right: -8px;
+				&:after{
+					left:30%;
+				}
+				button {
+					padding: 6px 5px;
+					transition: 0.2s;
+					&:hover {
+						background-color: transparent;
+						svg {
+							* {
+								fill: $builder-accent-color;
+								opacity: 1;
+								transition: 0.2s;
+							}
+						}
+					}
+					&.karma-drop-down-active-item{
+						background-color: transparent;
+						svg {
+							* {
+								fill: $builder-accent-color;
+								opacity: 1;
+							}
+						}
+					}
+				}
+			}
+		}
 
 		/* _-_-_- column Responsive Gizmo Style -_-_-_ */
 		.karma-builder-element.karma-active-column {
@@ -125,5 +186,29 @@ body{
 				display: none;
 			}
 		}
+
+		*:not( #karma-builder-layout ):not( .tooltip-div ){
+			visibility: hidden !important;
+		}
+
+		#karma-show-parent,
+		#karma-builder-layout *[ class *= "karma" ] *{
+			visibility: visible !important;
+		}
+
+		.karma-element-hide{
+			display: none !important;
+		}
+	}
+}
+
+.karma-builder-environment.karma-device-mode-mobile{
+	*:not( #karma-builder-layout ):not( .tooltip-div ){
+		visibility: hidden !important;
+	}
+
+	#karma-show-parent,
+	#karma-builder-layout *[ class *= "karma" ] *{
+		visibility: visible !important;
 	}
 }

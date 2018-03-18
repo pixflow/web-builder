@@ -41,7 +41,7 @@ class Karma_Section_Describe extends Karma_Section {
 		$map = array(
 			'setting-panel'    => array(
 				"title"	=> esc_attr__( "Section Setting", 'karma' ),
-				"height" => "384",
+				"height" => "449",
 				"params" => array(
 					array(
 						"name"	=> "structure",
@@ -49,6 +49,7 @@ class Karma_Section_Describe extends Karma_Section {
 						"label"	=> esc_attr__( "Grid options", 'karma' ),
 						'value'	=> "full",
 						"class" => "radio-image-border-hover",
+						"separator" => "container",
 						"field"	=> array(
 
 							array(
@@ -61,11 +62,20 @@ class Karma_Section_Describe extends Karma_Section {
 								'image'	=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/section_full.svg' ),
 								'style' => 'padding-left: 19px; padding-right: 38px; ',
 								'title'	=> "Container",
-								'value'	=> "container"
-							),
+								'value'	=> "container",
 
+							),
 						)
+
 					),
+
+					array(
+						"name"	=>"fittoheight",
+						"type"	=>Karma_Builder_Setting_Panel::CHECK_BOX,
+						"label"	=> esc_attr__( "Fit to screen", 'karma' ),
+
+					),
+
 					array(
 						"name"	=> "title",
 						"type"	=> Karma_Builder_Setting_Panel::TITLE_WITH_BACKGROUND,
@@ -350,26 +360,28 @@ class Karma_Section_Describe extends Karma_Section {
 				"type"		=> "newSectionButton",
 				'icon'		=> Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/plus-new.svg' ),
 			),
-			/*array(
+
+
+			array(
 				"type"		=> "innerGizmo",
 				"className"	=> "section-gizmo-group-responsive",
 				"params"	=> 	array(
+
 					array(
-						'type'   	=> 'icon',
+
+						'type'   => 'responsiveLayout',
 						'form'   	=> 'responsive-layout',
 						'className' => 'karma-layout-option',
 						"params" => array(
-							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-layout.svg' ),
-						)
+							'defaultIcon'    => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-layout.svg' ),
+							'oneColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-1-column.svg' ),
+							'twoColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/responsive-2-column.svg' ),
+							'threeColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/responsive-3-column.svg' ),
+							'fourColumn'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL .'builder/media/svg/responsive-4-column.svg' ),
+						),
+
 					),
-					array(
-						'type'   	=> 'icon',
-						'form'   	=> 'visibility',
-						'className' => 'karma-visibility-option',
-						"params" => array(
-							'icon'      => Karma_Helper_Utility::karma_load_svg( KARMA_BUILDER_URL . 'builder/media/svg/visibility.svg' ),
-						)
-					),
+
 					array(
 						'type'		=> 'text',
 						'form'		=> 'row-responsive-panel',
@@ -379,7 +391,7 @@ class Karma_Section_Describe extends Karma_Section {
 						)
 					),
 				),
-			),*/
+			),
 		);
 
 		return $controllers;

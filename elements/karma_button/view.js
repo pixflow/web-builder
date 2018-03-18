@@ -19,12 +19,13 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector( '.karma-button-link span' ).contentEditable = true ;
 
 		},
 
 
 		/**
-		 * @summary Render button element
+		 * Render button element
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -38,7 +39,7 @@
 
 
 		/**
-		 * @summary  Deactivate enter in link text
+		 *  Deactivate enter in link text
 		 *
 		 * @since 0.1.1
 		 * @return {number}
@@ -51,7 +52,7 @@
 
 
 		/**
-		 * @summary check empty link text
+		 * check empty link text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -72,7 +73,7 @@
 
 
 		/**
-		 * @summary Active editable link
+		 * Active editable link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -84,17 +85,17 @@
 			var content = this.el.querySelector( '.karma-button-link span' );
 
 			if( null != content ){
-				content.contentEditable = true ;
-				content.focus();
+				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
+					content.focus();
+				}
 			}
-
 			this.showElementGizmo( e );
 
 		},
 
 
 		/**
-		 * @summary Save the title of button
+		 * Save the title of button
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -113,7 +114,7 @@
 		},
 		
 		/**
-		 * @summary Set color for link
+		 * Set color for link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -132,7 +133,7 @@
 		},
 
 		/**
-		 * @summary Set color for link
+		 * Set color for link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -148,7 +149,7 @@
 
 
 		/**
-		 * @summary Set border radius for button
+		 * Set border radius for button
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -163,7 +164,7 @@
 		} ,
 
 		/**
-		 * @summary set link for text
+		 * set link for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -177,7 +178,7 @@
 		},
 
 		/**
-		 * @summary set link target for text
+		 * set link target for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -192,7 +193,7 @@
 
 
 		/**
-		 * @summary background color changes
+		 * background color changes
 		 *
 		 * @since 0.1.0
 		 *
@@ -207,7 +208,7 @@
 
 
 		/**
-		 * @summary Update type of element
+		 * Update type of element
 		 *
 		 * @since 0.1.0
 		 *

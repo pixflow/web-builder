@@ -28,7 +28,7 @@
 		},
 
 		/**
-		 * @summary	Create the Object of params for all element
+		 * Create the Object of params for all element
 		 * Find the given element name param
 		 *
 		 * @param	{String}	elementName	The name of element
@@ -48,7 +48,7 @@
 		},
 
 		/**
-		 * @summary Element setting panel draggable event
+		 * Element setting panel draggable event
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -81,7 +81,7 @@
 		},
 
 		/**
-		 * @summary Make element stop calling its parent
+		 * Make element stop calling its parent
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -94,7 +94,7 @@
 		},
 
 		/**
-		 * @summary On click removes element
+		 * On click removes element
 		 *
 		 * @since 0.1.0
 		 *
@@ -110,7 +110,7 @@
 		},
 
 		/**
-		 * @summary On click open element setting panel
+		 * On click open element setting panel
 		 *
 		 * @param	{string}	form of element
 		 *
@@ -144,7 +144,7 @@
 		},
 
 		/**
-		 * @summary update each param value with its model
+		 * update each param value with its model
 		 *
 		 * @param	{object} 	model			model of clicked element.
 		 * @param	{object} 	elementParam	default controllers value in define.
@@ -176,7 +176,7 @@
 		},
 
 		/**
-		 *@summary create form builder html
+		 *create form builder html
 		 *
 		 * @param	{string}	form	of element
 		 *
@@ -186,17 +186,21 @@
 		 */
 		formBuilder : function( form ) {
 
-			var elementModel = this.model.attributes ,
+			var elementModel = this.model.attributes,
 				elementParams = this.getElementMap( elementModel.shortcode_name, form );
 
 			if( null == elementParams ){
 				return;
 			}
 			var popup = document.createElement('div'),
-				settingPanelHeight = elementParams.height,
-				karmaFormHtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
-				formBuilderContents = this.formBuilderContentHtml( form );
+				settingPanelHeight = elementParams.height;
 
+			if( undefined == settingPanelHeight ){
+				var	karmaFormHtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">';
+			}else{
+				var	karmaFormHtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">';
+			}
+			var formBuilderContents = this.formBuilderContentHtml( form );
 			karmaFormHtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
 			popup.innerHTML = karmaFormHtml ;
 			return { content: popup.innerHTML, title: elementParams.title };
@@ -204,7 +208,7 @@
 		},
 
 		/**
-		 * @summary create form builder content html
+		 * create form builder content html
 		 *
 		 * @param	{string}    form	        The name of from
 		 *
@@ -222,7 +226,7 @@
 		},
 		
 		/**
-		 * @summary form builder content action to create  html
+		 * form builder content action to create  html
 		 *
 		 * @param	{object}	elementParams model attribute
 		 *
@@ -253,9 +257,11 @@
 				} else {
 					if( undefined === groupHtml_group[ elementParams.params[counter].group] ){
 						groupHtml_group[ elementParams.params[counter].group ] = {
-							items: [],
-							title: elementParams.params[counter].group
+							items	: [],
+							title	: elementParams.params[counter].group ,
+							name	: elementParams.params[counter].group.replace( / /g, '-' ),
 						};
+
 					}
 					controllerSource = this.KarmaView.getWpTemplate( 'karma-' + elementParams.params[counter].type + '-controller', elementParams.params[counter], 1 );
 					var html = this.setGeneralContainer( controllerSource, elementParams.params[counter] );
@@ -269,7 +275,7 @@
 		},
 
 		/**
-		 * @summary create form builder html
+		 * create form builder html
 		 *
 		 * @param	{object}	all controller in group
 		 *
@@ -289,7 +295,7 @@
 		},
 
 		/**
-		 * @summary remove setting panel
+		 * remove setting panel
 		 *
 		 * @since 0.1.0
 		 *
@@ -315,7 +321,7 @@
 		},
 
 		/**
-		 * @summary form builder content action to create  html
+		 * form builder content action to create  html
 		 *
 		 * @param	{String}    source             get model attribute
 		 * @param   {Object}    dependencyParams    Dependency params
@@ -338,7 +344,7 @@
 		},
 
 		/**
-		 * @summary Apply dependencies to the element setting panel
+		 * Apply dependencies to the element setting panel
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -361,7 +367,7 @@
 		},
 
 		/**
-		 * @summary Apply dependencies to the element setting panel when the html created
+		 * Apply dependencies to the element setting panel when the html created
 		 *
 		 * @param {Object}  dependentElement    Dependent element
 		 * @param {Object}  dependencyInfo      Dependent element info
@@ -378,7 +384,7 @@
 		},
 
 		/**
-		 * @summary Apply dependencies to the element setting panel when the html created
+		 * Apply dependencies to the element setting panel when the html created
 		 *
 		 * @param {Object}  dependentElement    Dependent element
 		 * @param {String}  dependentValue      Value of input
@@ -403,7 +409,7 @@
 		},
 
 		/**
-		 * @summary Apply dependencies to the child dependent element
+		 * Apply dependencies to the child dependent element
 		 *
 		 * @param   {Object}  dependentElement    Dependent element
 		 * @param   {boolean} isHide              Should show or hide dependent on parent depend element
@@ -444,7 +450,7 @@
 		},
 
 		/**
-		 * @summary update model attribute from setting panel
+		 * update model attribute from setting panel
 		 *
 		 * @since 0.1.0
 		 *
@@ -462,7 +468,7 @@
 		},
 
 		/**
-		 * @summary use niceScroll for setting panel
+		 * use niceScroll for setting panel
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -480,7 +486,7 @@
 		},
 
 		/**
-		 * @summary call niceScroll on content panel resize
+		 * call niceScroll on content panel resize
 		 *
 		 * @since   0.1.0
 		 * @returns {void}

@@ -100,7 +100,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary In creating this view calls render
+		 * In creating this view calls render
 		 *
 		 * @since 0.1.0
 		 *
@@ -115,7 +115,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Stop scrolling when dropdown open
+		 * Stop scrolling when dropdown open
 		 *
 		 * @since 0.1.1
 		 *
@@ -131,7 +131,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Create font varient list
+		 * Create font varient list
 		 *
 		 * @since 0.1.1
 		 * @returns void
@@ -151,7 +151,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Create font varient list html
+		 * Create font varient list html
 		 *
 		 * @param   {object}    fontVarient Font varient list
 		 *
@@ -186,7 +186,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Choose font varient
+		 * Choose font varient
 		 *
 		 * @since 0.1.1
 		 * @returns void
@@ -204,7 +204,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary range slider in typography manager
+		 * range slider in typography manager
 		 *
 		 * @since 0.1.0
 		 *
@@ -222,25 +222,24 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary range slider in typography manager
+		 * range slider in typography manager
 		 *
-		 * @since 0.1.0
+		 * @since 2.0
 		 *
 		 */
+		changingSlider : 0,
 		updateRangeSliderInput: function ( e ) {
 			var element = e.target,
-				that = this,
-				changingSlider,
 				$karmaRangeSlider = $( element.closest( '.karma-range-slider-content' ) ).find( '.karma-range-slider-range' );
 
-			clearTimeout( changingSlider );
-			changingSlider = setTimeout( function () {
+			clearTimeout( this.changingSlider );
+			this.changingSlider = setTimeout( function () {
 				$( $karmaRangeSlider ).val( element.value ).change();
 			}, 300 );
 		},
 
 		/**
-		 * @summary render google fonts dropdown
+		 * render google fonts dropdown
 		 *
 		 * @since 0.1.0
 		 *
@@ -269,7 +268,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary After click on add to library button
+		 * After click on add to library button
 		 * font list added to fonts list panel
 		 *
 		 * @since 0.1.1
@@ -315,7 +314,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 
 
 		/**
-		 * @summary Add added google font to heading drop down
+		 * Add added google font to heading drop down
 		 *
 		 * @param {string}  font    Font family name
 		 * @param {object}  weights Font varients list
@@ -334,7 +333,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Call font and load it.
+		 * Call font and load it.
 		 *
 		 * @since   0.1.1
 		 * @returns {void}
@@ -350,7 +349,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update typography models
+		 * Update typography models
 		 *
 		 * @param {string}  fontFamily
 		 * @param {Array}   arr         Array of object contains font-weight and font-style
@@ -369,10 +368,10 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 				result = true ;
 			} else {
 				var that = this,
-					diff = $(this.model.fonts[ fontFamily ]).not(arr).get();
+					diff = $( this.model.fonts[ fontFamily ] ).not( arr ).get();
 
 				if ( diff.length ){
-					diff.forEach(function ( key ){
+					diff.forEach( function ( key ){
 						that.model.fonts[ fontFamily ].splice( that.model.fonts[ fontFamily ].indexOf( key ), 1);
 						result = true ;
 					})
@@ -393,7 +392,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary create font list html
+		 * create font list html
 		 *
 		 * @param fontFamily {string}
 		 * @param fontWeight {Array} Array of object contains font-weight and font-style
@@ -412,7 +411,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Move 3 popular fonts to beginning
+		 * Move 3 popular fonts to beginning
 		 *
 		 * @since 0.1.0
 		 *
@@ -430,7 +429,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Show list of google fonts
+		 * Show list of google fonts
 		 *
 		 * @param {number}  searchResult
 		 * @param {string}  inputValue      Search value
@@ -451,7 +450,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Show list of google fonts
+		 * Show list of google fonts
 		 *
 		 * @param {number}  beforeIndex
 		 * @param {string}  inputValue  Search value
@@ -472,7 +471,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Show list of google fonts
+		 * Show list of google fonts
 		 *
 		 * @since 0.1.1
 		 * @returns {void}
@@ -500,7 +499,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Show list of google fonts
+		 * Show list of google fonts
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -521,7 +520,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Close karma google font
+		 * Close karma google font
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -538,7 +537,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Init range slider
+		 * Init range slider
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -561,7 +560,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update font size in range slider
+		 * Update font size in range slider
 		 *
 		 * @param   {object}    element
 		 * @param   {number}    value
@@ -580,7 +579,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Show/Hide font details
+		 * Show/Hide font details
 		 *
 		 * @since 0.1.0
 		 *
@@ -603,7 +602,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Drop down for typography manager page(font-family and font-weight)
+		 * Drop down for typography manager page(font-family and font-weight)
 		 *
 		 * @since 0.1.0
 		 *
@@ -628,7 +627,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update font list
+		 * Update font list
 		 *
 		 * @param {object}  element
 		 *
@@ -646,7 +645,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update font varient and add it to fonts model
+		 * Update font varient and add it to fonts model
 		 *
 		 * @param {object}  element
 		 *
@@ -672,7 +671,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update font varient list in dropdown
+		 * Update font varient list in dropdown
 		 *
 		 * @param   {Object}    element
 		 * @param   {String}    fontName    Selected Font name
@@ -706,7 +705,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update font name and add it to fonts model
+		 * Update font name and add it to fonts model
 		 *
 		 * @param {object}  element
 		 *
@@ -726,7 +725,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Fire on click in drop down list
+		 * Fire on click in drop down list
 		 *
 		 * @since 0.1.1
 		 */
@@ -742,7 +741,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Open dropdowm
+		 * Open dropdowm
 		 *
 		 * @since 0.1.1
 		 */
@@ -776,7 +775,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary check if element is in viewport
+		 * check if element is in viewport
 		 *
 		 * @param {object} el jquery object
 		 * @since 0.1.1
@@ -800,7 +799,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Switch between font manager and typography with animation
+		 * Switch between font manager and typography with animation
 		 *
 		 * @since 0.1.1
 		 * @returns { void }
@@ -836,7 +835,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Calls after page moves
+		 * Calls after page moves
 		 *
 		 * @param { object } $panelContainer panel witch contains sections
 		 * @param { object } $panels  Panels of tab
@@ -854,7 +853,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Update navigation after switching panels
+		 * Update navigation after switching panels
 		 *
 		 * @since 0.1.0
 		 *@returns { void }
@@ -871,7 +870,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Searching JavaScript arrays with a binary search
+		 * Searching JavaScript arrays with a binary search
 		 *
 		 * @param {string}  search  Search value
 		 *
@@ -906,7 +905,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Save typography model
+		 * Save typography model
 		 *
 		 * @since   0.1.1
 		 * @returns {void}
@@ -941,7 +940,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary save button animation
+		 * save button animation
 		 *
 		 * @since   0.1.1
 		 * @returns {void}
@@ -967,7 +966,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary open media library to upload custom fonts
+		 * open media library to upload custom fonts
 		 *
 		 * @since   0.1.1
 		 * @returns {void}
@@ -980,7 +979,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary When a font is selected in the media frame and update model
+		 * When a font is selected in the media frame and update model
 		 * @param {object} frame media library frame object
 		 * @param {object} view
 		 *
@@ -1010,7 +1009,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Open WordPress Media library
+		 * Open WordPress Media library
 		 *
 		 * @param {Object}      uploadCustomFont    Selector dom object
 		 * @param {function}    callBack      callback function
@@ -1052,7 +1051,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary open box of delete element
+		 * open box of delete element
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -1083,7 +1082,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary cancel delete element on click in cancel box
+		 * cancel delete element on click in cancel box
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -1107,7 +1106,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary  delete element on click in delete box
+		 *  delete element on click in delete box
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -1130,7 +1129,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary  delete font from model
+		 *  delete font from model
 		 *
 		 * @param {string} font Font name
 		 *
@@ -1157,7 +1156,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary stop click in delete box container
+		 * stop click in delete box container
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -1169,7 +1168,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Separate Google fonts from fonts that user choose
+		 * Separate Google fonts from fonts that user choose
 		 *
 		 * @since 0.1.0
 		 * @returns {object}
@@ -1189,7 +1188,7 @@ var karmaBuilderTypography = karmaBuilderTypography || {};
 		},
 
 		/**
-		 * @summary Select font weight of fonts that user has chosen before on
+		 * Select font weight of fonts that user has chosen before on
 		 * opening dropdown
 		 *
 		 * @param { string } fontName

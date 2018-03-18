@@ -159,6 +159,7 @@
 					.element-panel-part-button {
 
 						@include fill-button();
+						text-decoration: none;
 
 					}
 
@@ -466,6 +467,7 @@
 			}
 			.element-panel-part-button {
 				@include fill-button();
+				text-decoration: none;
 			}
 
 		}
@@ -557,20 +559,6 @@
 			}
 		}
 
-		.karma-blocks-container{
-			.karma-blocks-preloader{
-				@include box(24px, 24px);
-				background-image: url(../media/svg/loading.svg);
-				background-repeat: no-repeat;
-				background-size: 24px;
-				left: 50%;
-				margin: 0 auto;
-				position: absolute;
-				top: 50%;
-				transform: translate(-50%);
-			}
-		}
-
 		.deactivate-title {
 			@extend .karma-coming-soon-typo;
 		}
@@ -598,6 +586,9 @@
 				position: absolute;
 				transition-duration: .3s;
 				z-index: 2;
+				.karma-hover-container{
+					color:#fff;
+				}
 
 				.karma-section-hover-icon{
 					@include box( 40px, 15px );
@@ -892,30 +883,30 @@
 		display: flex;
 		height: 100%;
 		justify-content: center;
+		position: relative;
 		width: 100%;
+		z-index: 0;
 
 		.karma-builder-responsive-frame {
+			@include box(100%);
 			align-items: center;
 			background-color: #fff;
 			border-radius: 50px;
 			box-shadow: 0px 13px 83px rgba(68, 83, 99, 0.12);
 			display: flex;
 			flex-direction: column;
-			height: 100%;
 			margin-top: 63px;
 			padding: 48px 22px 5px 22px;
 			transform: translateZ(0) translate3d(0, 0, 0);
 			transition: all .5s ease-out 0s;
-			width: 100%;
 			.karma-builder-responsive-frame-shape{
 				display: flex;
 				padding-bottom: 30px;
 				.karma-builder-responsive-frame-shape-circle{
+					@include box(7px);
 					background-color: #F9F9F9;
 					border-radius: 50%;
-					height: 7px;
 					margin-right: 10px;
-					width: 7px;
 				}
 				.karma-builder-responsive-frame-shape-line{
 					background-color: #F9F9F9;
@@ -943,7 +934,7 @@
 
 	&.karma-device-mode-tablet{
 		.karma-builder-responsive-frame {
-			width: 768px;
+			width: 816px;
 		}
 	}
 

@@ -47,10 +47,12 @@ class Karma_Button extends Karma_Shortcode_Base {
 
 			'element_key'   			=> 'kb' ,
 			'type'						=> 'fill' ,
-			'linkurl'       			=> get_site_url(),
-			'target'	    			=> '_blank' ,
+			'linkurl'       			=> '#',
+			'target'	    			=> '_self' ,
 			'linkcontent'				=> esc_attr__( "Explore more", 'karma' ),
 			'topspacepadding'			=> '10',
+			'tablettopspacepadding'		=> '16',
+			'mobiletopspacepadding'		=> '16',
 			'generalcolor'				=> '#419CF8',
 			'textcolor'					=> '#fff',
 			'fillbuttonborderradius'	=> '3px',
@@ -115,7 +117,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 			. '<div class="karma-button karma-button-{{ data.attributes.element_key }} " >'
 			. '<div class="karma-button-container {{ newClass }}">'
 			. '<a class="karma-button-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.target }}" >'
-			. '<span class="karma-button-editable" > {{ data.attributes.shortcode_attributes.linkcontent }}'
+			. '<span class="karma-button-editable" > {{{ data.attributes.shortcode_attributes.linkcontent }}}'
 			. '</span>'
 			. '</a>'
 			. '</div>'
@@ -141,6 +143,12 @@ class Karma_Button extends Karma_Shortcode_Base {
 			array(
 				'property'		=> array(
 				'padding-top' 	=> self::$element_attributes[ 'topspacepadding' ] . "px",
+				),
+				'tablet_property' => array(
+					'padding-top'  => self::$element_attributes[ 'tablettopspacepadding' ] . 'px',
+				),
+				'mobile_property' => array(
+					'padding-top'  => self::$element_attributes[ 'mobiletopspacepadding' ] . 'px',
 				)
 			),
 

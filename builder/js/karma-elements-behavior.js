@@ -11,12 +11,11 @@ var karmaBuilder = karmaBuilder || {};
 		/** All element info */
 		elementInfo: {},
 
-
 		initialize : function (){
 		},
 
 		/**
-		 * @summary Call specific function on parent element
+		 * Call specific function on parent element
 		 *
 		 * @param   {Dom Node}  element     Child element
 		 * @param   {array}     functions   Functions that need to be run
@@ -41,7 +40,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary create new section functionality in blank page
+		 * create new section functionality in blank page
 		 *
 		 * @param {event}  event
 		 *
@@ -66,7 +65,7 @@ var karmaBuilder = karmaBuilder || {};
 
 
 		/**
-		 * @summary Create unique id for each element of drop
+		 * Create unique id for each element of drop
 		 *
 		 * @since 0.1.0
 		 *
@@ -83,7 +82,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Create random string
+		 * Create random string
 		 *
 		 * @param	{number}	length	The length of random string that need to be produce
 		 *
@@ -105,7 +104,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Create new element
+		 * Create new element
 		 *
 		 * @param	{string}    elementName     The element name wants to create
 		 * @param	{model}     model           The model of new element
@@ -133,7 +132,7 @@ var karmaBuilder = karmaBuilder || {};
 		} ,
 
 		/**
-		 * @summary Create builder model html
+		 * Create builder model html
 		 * If model param did not set, it automatically set by current model( this.model )
 		 *
 		 * @param	{object}    model   model of specific element
@@ -181,7 +180,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Set filter before create builder html
+		 * Set filter before create builder html
 		 *
 		 * @param {object}  atts    The attribute of element
 		 *
@@ -200,7 +199,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Prepare elements before drop
+		 * Prepare elements before drop
 		 *
 		 * @param {object}  whereToDrop     DOM node
 		 * @param {string}  elementName 	Element name
@@ -231,7 +230,7 @@ var karmaBuilder = karmaBuilder || {};
 
 
 		/**
-		 * @summary Create element
+		 * Create element
 		 *
 		 * @param   {object}  	placeholder
 		 * @param   {string}  	elementName
@@ -278,12 +277,13 @@ var karmaBuilder = karmaBuilder || {};
 			elementName = elementName.replace( /_/g, '' );
 			elementName = elementName.replace( 'karma', '' );
 			var viewObject = this.createNewElement( elementName, backboneModel, true );
+			viewObject.$el.trigger('karma/finish/dropElement');
 			return viewObject;
 
 		},
 
 		/**
-		 * @summary Return validate model for initialize new element
+		 * Return validate model for initialize new element
 		 *
 		 * @param {object}  whereToDrop     DOM node
 		 * @param {string}  elementName 	Element name
@@ -315,7 +315,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Order elements after drop or sortable
+		 * Order elements after drop or sortable
 		 *
 		 * @param {string}  parentKey   Element key of parent element
 		 *
@@ -335,7 +335,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Remove empty class for columns
+		 * Remove empty class for columns
 		 *
 		 * @param {string}  parentKey   Element key of parent element
 		 *
@@ -350,7 +350,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Scroll the browser down or up on dragging element
+		 * Scroll the browser down or up on dragging element
 		 *
 		 * @param {object} element  Jquery helper
 		 *
@@ -361,13 +361,14 @@ var karmaBuilder = karmaBuilder || {};
 
 			var element = element.helper,
 				toolbarHeight = 150;
+
 			this.scrollToDown( element, toolbarHeight, event );
 			this.scrollToTop( element, event );
 
 		},
 
 		/**
-		 * @summary Keep element position while dragging and scrolling
+		 * Keep element position while dragging and scrolling
 		 *
 		 * @param   {object}    element        Helper element
 		 * @param   {string}    direction      Scroll direction
@@ -385,7 +386,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Scroll the browser down  dragging element
+		 * Scroll the browser down  dragging element
 		 *
 		 * @param   {object}    element        Helper element
 		 * @param   {number}    toolbarHeight  Height of builder toolbar
@@ -405,7 +406,9 @@ var karmaBuilder = karmaBuilder || {};
 					if( window.innerHeight + window.scrollY >= document.body.offsetHeight ){
 						clearInterval( that.flyScroll );
 					}
-					that.keepElementPosition( element, 'down' );
+					if( event.target.classList.contains('karma-element-content') || event.target.classList.contains('ui-sortable') ){
+						that.keepElementPosition( element, 'down' );
+					}
 					$( window ).scrollTop( $( window ).scrollTop() + 5 );
 				}, 1 );
 			} else {
@@ -415,7 +418,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Scroll the browser up on dragging element
+		 * Scroll the browser up on dragging element
 		 *
 		 * @param   {object}    element        Helper element
 		 *
@@ -433,7 +436,9 @@ var karmaBuilder = karmaBuilder || {};
 					if( $( window ).scrollTop() == 0  ){
 						clearInterval( that.flyScroll );
 					}
-					that.keepElementPosition( element, 'up' );
+					if( event.target.classList.contains('karma-element-content') || event.target.classList.contains('ui-sortable') ){
+						that.keepElementPosition( element, 'up' );
+					}
 					$( window ).scrollTop( $( window ).scrollTop() - 5 );
 				}, 1 );
 			}
@@ -441,7 +446,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary None ro block overlay for detecting true elements
+		 * None ro block overlay for detecting true elements
 		 *
 		 * @param {object}  element   Droppable elements
 		 *
@@ -464,7 +469,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary None ro block overlay for detecting true elements
+		 * None ro block overlay for detecting true elements
 		 *
 		 * @param {object}  event   DOM events
 		 * @param {object}  UI      Dragging element
@@ -484,6 +489,8 @@ var karmaBuilder = karmaBuilder || {};
 			UI.helper.get( 0 ).style.display = 'none';
 			var targetElement = document.elementFromPoint( event.clientX, event.clientY );
 			if ( undefined ==  targetElement ){
+				overlay.style.display = 'block';
+				UI.helper.get( 0 ).style.display = 'flex' ;
 				return false;
 			} else if ( targetElement.classList.contains( 'karma-spacing' ) ) {
 				if ( targetElement.classList.contains( 'karma-top-spacing' ) ) {
@@ -500,7 +507,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Remove drop area placeholders while dragging
+		 * Remove drop area placeholders while dragging
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -521,7 +528,7 @@ var karmaBuilder = karmaBuilder || {};
 		,
 
 		/**
-		 * @summary Detect and show drop area placeholders while dragging
+		 * Detect and show drop area placeholders while dragging
 		 *
 		 * @param {object}  event   DOM events
 		 * @param {object}  UI      Dragging element
@@ -568,7 +575,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Set the alignment of element
+		 * Set the alignment of element
 		 *
 		 * @param {object}  target	DOM node
 		 * @param {object}  event	DOM events
@@ -595,7 +602,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Check if current drop area is its element drop area or not
+		 * Check if current drop area is its element drop area or not
 		 *
 		 * @param {object}  targetElement   DOM node
 		 * @param {object}  helperOBJ       Dragging element
@@ -618,7 +625,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Detect and show drop area placeholders while dragging
+		 * Detect and show drop area placeholders while dragging
 		 * for elements ( Not for section and column )
 		 *
 		 * @param {object}  event           DOM events
@@ -645,7 +652,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Create overlay element to prevent from other mouse events while dragging
+		 * Create overlay element to prevent from other mouse events while dragging
 		 * or blocking if exists
 		 *
 		 * @since   0.1.0
@@ -665,7 +672,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Set display none for overlay
+		 * Set display none for overlay
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -678,7 +685,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Make sections sortable
+		 * Make sections sortable
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -713,6 +720,7 @@ var karmaBuilder = karmaBuilder || {};
 						newSec = $( UI.item[ 0 ] ).next();
 					}
 					document.body.style.overflowX = 'hidden';
+
 				},
 				sort: function ( event, UI ) {
 
@@ -743,7 +751,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Get the correct placeholder
+		 * Get the correct placeholder
 		 *
 		 * @param   {object}    elementView
 		 *
@@ -768,7 +776,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Render elements and their children
+		 * Render elements and their children
 		 *
 		 * @param   {object}    placeholder
 		 * @param   {object}    elementsModel
@@ -782,7 +790,7 @@ var karmaBuilder = karmaBuilder || {};
 			var elementName = elementModel.parent.shortcode_name;
 
 			if ( 'karma_section' == elementName ){
-
+				elementModel.parent.order = 1 ;
 				var newView = this.createKarmaElement( [ placeholder, 'after' ], elementName, elementModel.parent ),
 					oldGrid = elementModel.grid;
 
@@ -793,6 +801,7 @@ var karmaBuilder = karmaBuilder || {};
 				this.reorderSections();
 				this.createColumnsChild( elementModel.childes, newView );
 				newView.checkIfColumnsEmpty( newView.el.querySelector( '.karma-section' ) );
+				delete newView.block ;
 
 			} else if( 'karma_section' != elementName && 'karma_column' != elementName ){
 
@@ -807,7 +816,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary create style tag for models of page
+		 * create style tag for models of page
 		 * This function just call the specify model that need to call render_css model
 		 *
 		 * @param   {object}    models
@@ -817,7 +826,6 @@ var karmaBuilder = karmaBuilder || {};
 		 * @returns {void}
 		 */
 		createStyleSheetForElements : function( models, elementView ){
-
 
 			_.each( models, function ( value, model ) {
 				if( 'function' == typeof elementView[ model ] ){
@@ -830,7 +838,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Render elements and their childes
+		 * Render elements and their childes
 		 *
 		 * @param   {object}    children    Children models in column
 		 *
@@ -849,7 +857,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Render elements and their childes
+		 * Render elements and their childes
 		 *
 		 * @param   {object}    columns List of all child section columns
 		 * @param   {object}    newView
@@ -862,7 +870,7 @@ var karmaBuilder = karmaBuilder || {};
 			var that = this,
 				columnsInSection = newView.el.querySelectorAll('.karma-builder-element'),
 				index = 0 ;
-
+			
 			_.each( columns, function ( column ) {
 
 				var parentKey = columnsInSection[ index ].getAttribute('data-element-key'),
@@ -892,7 +900,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Prevent from scrolling parent element when scrolling on child element
+		 * Prevent from scrolling parent element when scrolling on child element
 		 *
 		 * @param {Object}  selector    Javascript selector
 		 *
@@ -901,7 +909,7 @@ var karmaBuilder = karmaBuilder || {};
 		preventFromScrollingOnParent : function( selector ) {
 
 			//FF doesn't recognize mousewheel as of FF3.x
-			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) )? "DOMMouseScroll" : "mousewheel"
+			var mouseWheelEvent = (/Firefox/i.test( navigator.userAgent ) ) ? "DOMMouseScroll" : "mousewheel"
 			selector.on( mouseWheelEvent, function ( e ) {
 
 				var event = e.originalEvent,
@@ -915,7 +923,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Order sections after drop or sortable
+		 * Order sections after drop or sortable
 		 * This function call on makeSectionsSortable() function
 		 *
 		 * @since   0.1.0
@@ -934,7 +942,7 @@ var karmaBuilder = karmaBuilder || {};
 		},
 
 		/**
-		 * @summary Detect and show blocks drop area placeholders while dragging
+		 * Detect and show blocks drop area placeholders while dragging
 		 *
 		 * @param {object}  event   DOM events
 		 * @param {object}  UI      Dragging element
@@ -975,7 +983,7 @@ var karmaBuilder = karmaBuilder || {};
 			this.removePlaceHolders();
 			if ( ( event.clientY + scrollTop ) < elementHalf && null == blankPage ) {
 				/* Users drag at the top of element */
-				$( targetElement ).prev( '.karma-insert-between-sections-placeholder' ).addClass( 'karma-show-placeholder' );
+				$( targetElement ).prevAll( '.karma-insert-between-sections-placeholder' ).first().addClass( 'karma-show-placeholder' );
 			} else {
 				/* Users drag at the bottom of element */
 				$( targetElement ).nextAll( '.karma-insert-between-sections-placeholder' ).first().addClass( 'karma-show-placeholder' );

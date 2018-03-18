@@ -11,13 +11,13 @@
 			'mousedown .karma-image-text-box-description-tag '	: 'changeImageDescription',
 			'keypress .karma-image-text-box-description-tag'	: 'changeClassImageDescription',
 			'keyup .karma-image-text-box-link-tag'				: 'checkEmptyLink',
-			'mousedown .karma-image-text-box-link-tag'			: 'changeTextLink',
 			'click .karma-image-text-box-title'					: 'titleEditable',
 			'click .karma-image-text-box-description'			: 'titleDescription',
 			'click .karma-image-text-box-link'					: 'titleLink',
 			'keypress .karma-image-text-box-link'				: 'deactiveEnter'
 
 		},
+		
 
 		initialize: function ( options ) {
 
@@ -28,10 +28,14 @@
 				this.render();
 			}
 
+			this.el.querySelector('.karma-image-text-box-link-tag').contentEditable = true ;
+			this.el.querySelector('.karma-image-text-box-description-tag ').contentEditable = true ;
+			this.el.querySelector('.karma-image-text-box-title-tag').contentEditable = true ;
+
 		},
 
 		/**
-		 * @summary Render image element
+		 * Render image element
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -44,7 +48,7 @@
 		},
 
 		/**
-		 * @summary Active editable title
+		 * Active editable title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -55,7 +59,6 @@
 
 			if( null != content ){
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
@@ -64,7 +67,7 @@
 		},
 
 		/**
-		 * @summary  Deactivate enter in link text
+		 *  Deactivate enter in link text
 		 *
 		 * @since 0.1.1
 		 * @return {number}
@@ -77,7 +80,7 @@
 
 
 		/**
-		 * @summary Save the description of image text box
+		 * Save the description of image text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -85,12 +88,13 @@
 		saveImageDescription : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-description-tag' ),
-				contentData = content.innerHTML;
+				contentData = content.innerText;
 
 			if ( "" == contentData.trim() ) {
 				content.innerText = "Live Text Editor";
 				content.classList.add('karma-image-box-description-opacity');
 			}
+			content.style.minWidth = "0";
 
 
 			if( '' == contentData ){
@@ -104,7 +108,7 @@
 		},
 
 		/**
-		 * @summary change the description of image  text box
+		 * change the description of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -112,20 +116,20 @@
 		changeImageDescription : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-description-tag' ),
-				contentData = content.innerHTML;
+					contentData = content.innerText;
 
 
 			if ( "Live Text Editor" == contentData.trim() ) {
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.innerText = "";
-					content.contentEditable = true;
+					content.style.minWidth = "200px";
+					content.innerHTML = "&nbsp;";
 				}
 			}
 
 		},
 
 		/**
-		 * @summary change class title of image  text box
+		 * change class title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -141,7 +145,7 @@
 		},
 
 		/**
-		 * @summary Save the title of image  text box
+		 * Save the title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -149,7 +153,7 @@
 		saveImageTitle : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerText;
 
 			if ( "" == contentData.trim() ) {
 				content.innerText = "Great idea";
@@ -165,7 +169,7 @@
 		},
 
 		/**
-		 * @summary change the title of image  text box
+		 * change the title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -173,19 +177,18 @@
 		changeImageTitle : function () {
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' ),
-				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerHTML;
+				contentData = this.el.querySelector( '.karma-image-text-box-title-tag' ).innerText;
 
 			if ( "Great idea" == contentData.trim() ) {
 				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					content.innerText = "";
-					content.contentEditable = true;
+					content.innerHTML = "&nbsp;";
 				}
 			}
 
 		},
 
 		/**
-		 * @summary change class title of image  text box
+		 * change class title of image  text box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -194,25 +197,27 @@
 
 			var content 	= this.el.querySelector( '.karma-image-text-box-title-tag' );
 
-			if( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
-				content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+			if( null != content ) {
+				if ( content.classList.contains( 'karma-image-box-title-opacity' ) ) {
+					content.className = content.className.replace( "karma-image-box-title-opacity", "" );
+				}
 			}
 
 		},
 
 
 		/**
-		 * @summary check empty link text
+		 * check empty link text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
 		 */
 		checkEmptyLink : function () {
 			var content 	= this.el.querySelector( '.karma-image-text-box-link-tag' ),
-				contentData = content.innerHTML;
+				contentData = content.innerText;
 
 			if ( "" == contentData.trim() ) {
-				content.innerText = "";
+				content.innerHTML = "&nbsp;";
 				this.el.querySelector( '.karma-image-text-box-link-shape' ).style.display = 'none';
 			}else{
 				this.el.querySelector( '.karma-image-text-box-link-shape' ).style.display = 'block';
@@ -222,20 +227,9 @@
 			this.setAttributes( { 'linktext' : contentData },  true );
 		},
 
-		/**
-		 * @summary change link text
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		changeTextLink : function () {
-
-			var content 	= this.el.querySelector( '.karma-image-text-box-link-tag' ),
-				contentData = content.innerHTML;
-		},
 
 		/**
-		 * @summary Active editable description
+		 * Active editable description
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -246,7 +240,6 @@
 
 			if( null != content ){
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
@@ -255,7 +248,7 @@
 		},
 
 		/**
-		 * @summary Active editable link
+		 * Active editable link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -266,7 +259,6 @@
 
 			if( null != content ){
 				if( document.body.classList.contains( 'karma-device-mode-desktop' ) ) {
-					content.contentEditable = true;
 					content.focus();
 				}
 
@@ -275,7 +267,7 @@
 		},
 
 		/**
-		 * @summary change background size to cover and contain
+		 * change background size to cover and contain
 		 *
 		 * @since 0.1.1
 		 *
@@ -292,7 +284,7 @@
 		},
 
 		/**
-		 * @summary change position of background image
+		 * change position of background image
 		 *
 		 * @since 0.1.1
 		 *
@@ -308,7 +300,7 @@
 		},
 
 		/**
-		 * @summary change image URL
+		 * change image URL
 		 *
 		 * @since 0.1.1
 		 *
@@ -319,12 +311,19 @@
 			var imageAddress	= this.getAttributes( [ 'imgurl' ] ),
 				elementId		= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
 
-			this.renderCss( '#' + elementId + ' .karma-image-text-box' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+
+			if( 'none' == imageAddress.imgurl ){
+				this.renderCss( '#' + elementId + ' .karma-image-box-background' , 'background-image', 'none' );
+				this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'none' );
+			}else{
+				this.renderCss( '#' + elementId + ' .karma-image-box-background' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+				this.renderCss( '#' + elementId + ' .karma-element-effect.karma-element-blur-effect' , 'background-image', 'url('+ imageAddress.imgurl +')' );
+			}
 
 		},
 
 		/**
-		 * @summary Set color for title
+		 * Set color for title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -339,7 +338,7 @@
 		},
 
 		/**
-		 * @summary Set color for description
+		 * Set color for description
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -354,7 +353,7 @@
 		},
 
 		/**
-		 * @summary Set color for link
+		 * Set color for link
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -369,7 +368,7 @@
 		},
 
 		/**
-		 * @summary Set border radius for Image box
+		 * Set border radius for Image box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -379,13 +378,13 @@
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				radiusBox	= this.getAttributes( ['radiusbox'] );
 
-			this.renderCss( "#" + elementId + " .karma-image-text-box", 'border-radius', radiusBox.radiusbox + "px"  );
-			this.renderCss( "#" + elementId + " .karma-image-text-box-overlay", 'border-radius', radiusBox.radiusbox + "px"  );
+			this.renderCss( "#" + elementId + " .karma-image-box-background-container", 'border-radius', radiusBox.radiusbox + "px"  );
+			this.renderCss( "#" + elementId + " .karma-element-effect", 'border-radius', radiusBox.radiusbox + "px"  );
 
 		},
 
 		/**
-		 * @summary Set height for Image box
+		 * Set height for Image box
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -396,11 +395,13 @@
 				imageHeight	= this.getAttributes( ['imageheight'] );
 
 			this.renderCss( "#" + elementId + " .karma-image-text-box ", 'height', imageHeight.imageheight + "px"  );
+			this.renderCss( "#" + elementId + " .karma-image-text-box ", 'min-height', ( ( imageHeight.imageheight*70 )/100 ) + "px" , 'tablet' );
+			this.renderCss( "#" + elementId + " .karma-image-text-box ", 'min-height', ( ( imageHeight.imageheight*70 )/100 )  + "px" , 'mobile' );
 
 		},
 
 		/**
-		 * @summary set link for text
+		 * set link for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -414,7 +415,7 @@
 		},
 
 		/**
-		 * @summary set link target for text
+		 * set link target for text
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -428,7 +429,7 @@
 		},
 
 		/**
-		 * @summary get title typography and change innerHtml of title
+		 * get title typography and change innerHtml of title
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -440,13 +441,14 @@
 				newTag	= document.createElement( tagAttr.titletag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-image-text-box-title-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary get description typography and change innerHtml of description
+		 * get description typography and change innerHtml of description
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -458,13 +460,14 @@
 				newTag	= document.createElement( tagAttr.descriptiontag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-image-text-box-description-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary get link typography and change innerHtml of link
+		 * get link typography and change innerHtml of link
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -476,13 +479,14 @@
 				newTag	= document.createElement( tagAttr.linktag );
 
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-image-text-box-link-tag' );
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary change position of text box in image
+		 * change position of text box in image
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -497,7 +501,7 @@
 		},
 
 		/**
-		 * @summary background color changes. change background color
+		 * background color changes. change background color
 		 *
 		 * @since 0.1.0
 		 *
@@ -506,12 +510,12 @@
 		backgroundcolor: function () {
 
 			var elementId = this.elementSelector();
-			this.renderCss( '#' + elementId + ' .karma-image-text-box', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
+			this.renderCss( '#' + elementId + ' .karma-image-box-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
 
 		},
 
 		/**
-		 * @summary overlay color changes. change overlay color
+		 * overlay color changes. change overlay color
 		 *
 		 * @since 0.1.0
 		 *
@@ -539,48 +543,48 @@
 		rangemodel : function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( /_/g, '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				border		= this.getAttributes(['rangemodel']);
+					border		= this.getAttributes(['rangemodel']);
 
 			this.renderCss( "#" + elementId + " .karma-image-text-box-link", 'border-radius', border.rangemodel + "px"  );
 
 
 		} ,
+        /**
+         * Set color for link
+         *
+         * @since 0.1.1
+         * @return {void}
+         */
+        textcolor : function () {
+
+            var elementId 	= this.elementSelector(),
+                colorValue  = this.getAttributes( ['textcolor'] );
+
+            this.renderCss( "#" + elementId + " .karma-button-fill .karma-image-text-box-link-tag ", 'color', colorValue.textcolor  );
+
+        },
+
+        /**
+         * Set color for link
+         *
+         * @since 0.1.1
+         * @return {void}
+         */
+        generalcolor : function () {
+
+            var elementId 	= this.elementSelector(),
+                colorValue  = this.getAttributes( ['generalcolor'] );
+
+            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'background-color', colorValue.generalcolor  );
+            this.renderCss( "#" + elementId + " .karma-button-outline .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
+            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-outline", 'border-color', colorValue.generalcolor  );
+            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'border-color', colorValue.generalcolor  );
+            this.renderCss( "#" + elementId + " .karma-image-text-box-link .karma-image-text-box-link-shape svg *", 'stroke', colorValue.generalcolor  );
+            this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-link .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
+
+        },
 		/**
-		 * @summary Set color for link
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		textcolor : function () {
-
-			var elementId 	= this.elementSelector(),
-				colorValue  = this.getAttributes( ['textcolor'] );
-
-			this.renderCss( "#" + elementId + " .karma-button-fill .karma-image-text-box-link-tag ", 'color', colorValue.textcolor  );
-
-		},
-
-		/**
-		 * @summary Set color for link
-		 *
-		 * @since 0.1.1
-		 * @return {void}
-		 */
-		generalcolor : function () {
-
-			var elementId 	= this.elementSelector(),
-				colorValue  = this.getAttributes( ['generalcolor'] );
-
-			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'background-color', colorValue.generalcolor  );
-			this.renderCss( "#" + elementId + " .karma-button-outline .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
-			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-outline", 'border-color', colorValue.generalcolor  );
-			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-fill", 'border-color', colorValue.generalcolor  );
-			this.renderCss( "#" + elementId + " .karma-image-text-box-link .karma-image-text-box-link-shape svg *", 'stroke', colorValue.generalcolor  );
-			this.renderCss( "#" + elementId + " .karma-image-text-box-link.karma-button-link .karma-image-text-box-link-tag", 'color', colorValue.generalcolor  );
-
-		},
-		/**
-		 * @summary show and hide button with hide gizmo in desktop
+		 * show and hide button with hide gizmo in desktop
 		 *
 		 *
 		 * @since 0.1.0
@@ -599,7 +603,7 @@
 		},
 
 		/**
-		 * @summary show and hide column white hide gizmo in tablet
+		 * show and hide column white hide gizmo in tablet
 		 *
 		 *
 		 * @since 0.1.0
@@ -619,7 +623,7 @@
 
 
 		/**
-		 * @summary show and hide column white hide gizmo in mobile
+		 * show and hide column white hide gizmo in mobile
 		 *
 		 *
 		 * @since 0.1.0
@@ -635,10 +639,94 @@
 				this.el.querySelector( '.karma-image-text-box-link' ).classList.add( "karma-deactive-on-mobile" );
 			}
 
+		},
+
+		/**
+		 * @summary  Remove animation on element
+		 *
+		 * @param   {object}    element
+		 * @param   {string}    elementEffect
+		 *
+		 * @since 0.2
+		 * @return {void}
+		 */
+		removeAnimation : function( element, elementEffect ){
+
+			element.remove('karma-box-element-shadow');
+			element.remove('karma-box-element-hover-shadow');
+			element.add('karma-box-element-no-animation');
+			elementEffect.remove('karma-element-shadow-effect');
+			elementEffect.remove('karma-element-blur-effect');
+			elementEffect.add('karma-element-no-effect');
+
+		},
+
+		/**
+		 * Remove simple shadow on element
+		 *
+		 * @param   {object}    element
+		 * @param   {string}    elementEffect
+		 *
+		 * @since 0.2
+		 * @return {void}
+		 */
+		addSimpleShadow : function ( element, elementEffect ) {
+
+			element.remove('karma-box-element-hover-shadow');
+			element.remove('karma-box-element-no-animation');
+			element.add('karma-box-element-shadow');
+			elementEffect.remove('karma-element-blur-effect');
+			elementEffect.remove('karma-element-no-effect');
+			elementEffect.add('karma-element-shadow-effect');
+
+		},
+
+		/**
+		 * Remove animation with shadow on element
+		 *
+		 * @param   {object}    element
+		 * @param   {string}    elementEffect
+		 *
+		 * @since 0.2
+		 * @return {void}
+		 */
+		addShahdowWithAnimation : function ( element, elementEffect ) {
+
+			element.remove('karma-box-element-shadow');
+			element.remove('karma-box-element-no-animation');
+			element.add('karma-box-element-hover-shadow');
+			elementEffect.remove('karma-element-shadow-effect');
+			elementEffect.remove('karma-element-no-effect');
+			elementEffect.add('karma-element-blur-effect');
+
+
+		},
+
+		/**
+		 * Animation functionality
+		 *
+		 *
+		 * @since 2.0
+		 * @return {void}
+		 */
+		animation : function () {
+
+			var animationEffect = this.getAttributes( ['animation'] ).animation,
+				element = this.el.querySelector('.karma-image-text-box').classList,
+				elementEffect = this.el.querySelector('.karma-element-effect').classList;
+
+			if ( 'none' == animationEffect ){
+				this.removeAnimation( element, elementEffect );
+			}else if ( 'simpleshadow' == animationEffect ){
+				this.addSimpleShadow( element, elementEffect );
+			}else if( 'shadowwithanimation' == animationEffect ){
+				this.addShahdowWithAnimation( element, elementEffect );
+
+			}
+
 		}
 
 
-
-	});
+    });
 
 })( jQuery, karmaBuilder );

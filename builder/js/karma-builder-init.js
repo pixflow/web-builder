@@ -50,7 +50,7 @@
 		},
 
 		/**
-		 * @summary Notify developers or user that how to use Karma when they opening developer tools
+		 *  Notify developers or user that how to use Karma when they opening developer tools
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -64,7 +64,7 @@
 
 
 		/**
-		 * @summary return builder params value
+		 *  return builder params value
 		 *
 		 * @param {string}  name    The name of param
 		 *
@@ -83,7 +83,7 @@
 
 
 		/**
-		 * @summary return gizmo params option
+		 *  return gizmo params option
 		 *
 		 * @param {string}  name    The name of element
 		 *
@@ -122,7 +122,7 @@
 		},
 
 		/**
-		 * @summary paste as plain text for pasting in text shortcode
+		 *  paste as plain text for pasting in text shortcode
 		 *
 		 * @param   {Object}    event
 		 *
@@ -139,7 +139,7 @@
 
 
 		/**
-		 * @summary open section panel in blank page
+		 *  open section panel in blank page
 		 *
 		 * @param {event}  event
 		 *
@@ -174,7 +174,7 @@
 		},
 
 		/**
-		 * @summary bind functions on document click
+		 *  bind functions on document click
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -186,11 +186,12 @@
 			this.removeActiveSection();
 			this.removeSettingPanel();
 			this.closeElementPanel();
+			window.top.karmaBuilderEnviroment.closeCodeEditorDropDown();
 
 		},
 
 		/**
-		 * @summary Remove all active elements
+		 *  Remove all active elements
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -209,7 +210,7 @@
 		},
 
 		/**
-		 * @summary Remove active column
+		 *  Remove active column
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -226,7 +227,7 @@
 		},
 
 		/**
-		 * @summary Remove element setting panel
+		 *  Remove element setting panel
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -242,7 +243,7 @@
 		},
 
 		/**
-		 * @summary Close element panel
+		 *  Close element panel
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -258,7 +259,7 @@
 		},
 
 		/**
-		 * @summary Remove active section
+		 *  Remove active section
 		 *
 		 * @since   0.1.0
 		 * @returns {object}
@@ -275,7 +276,7 @@
 		},
 
 		/**
-		 * @summary Create and send ajax
+		 *  Create and send ajax
 		 *
 		 * @param	{object} 	action	Action using in the wordpress backend to know the request.
 		 * @param	{object} 	data	The data which will be send to the backend.
@@ -295,7 +296,7 @@
 		},
 
 		/**
-		 * @summary Save element model and html
+		 *  Save element model and html
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -306,7 +307,9 @@
 				data = {
 				models	: that.prepareModels(),
 				id		: $( 'meta[name="post-id"]' ).attr( 'content' ),
-				action  : 'publish'
+				action  : 'publish' ,
+				customJS : window.top.$('.karma-custom-js').text().trim() ,
+				customCSS : window.top.$('.karma-custom-css').text().trim()
 			};
 
 			this.prepareAjax( 'publish', data ).done( function ( response ) {
@@ -320,7 +323,7 @@
 		},
 
 		/**
-		 * @summary Save element model and html
+		 *  Save element model and html
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -343,7 +346,7 @@
 		},
 
 		/**
-		 * @summary Remove changed value in element attributes
+		 *  Remove changed value in element attributes
 		 *
 		 * @since 0.1.0
 		 * @returns { string }    Validated models
@@ -362,7 +365,7 @@
 
 
 		/**
-		 * @summary Fetch a JavaScript template for an id
+		 *  Fetch a JavaScript template for an id
 		 *
 		 * @param  	{string} 	templateName	A string that corresponds to a DOM element with an id prefixed with "tmpl-".
 		 * @param 	{object}	templateParams	Data value for template
@@ -388,7 +391,7 @@
 		},
 
 		/**
-		 * @summary Fetch a Underscore ( JS ) template for an specific name
+		 *  Fetch a Underscore ( JS ) template for an specific name
 		 *
 		 * @param	{string}	templateName	A string that corresponds for template.
 		 * @param	{object}	params			Data value for template
@@ -406,7 +409,7 @@
 		},
 
 		/**
-		 * @summary set the first section of builder 
+		 *  set the first section of builder 
 		 *
 		 * @since 0.1.1
 		 * @return {void}
@@ -447,48 +450,6 @@
 		window.KarmaView = new karmaBuilder.view( { collection : karmaBuilder.karmaModels, el : $( document ) } );
 		KarmaView.render();
 		window.top.karmaBuilderEnviroment.$el.trigger('karma/finish/iframeInit');
-		setTimeout(function () {
-			var template =  KarmaView.getWpTemplate( 'karma-feedback-popup' ) ;
-			$('body').append( template );
-
-			setTimeout(function () {
-				$(".feedback-popup").addClass('show-popup show-popup2');
-				$('.feedback-icon').addClass('bounce-effect');
-				setTimeout(function () {
-					$('.feedback-icon').removeClass('bounce-effect');
-				},500)
-			},5000);
-
-			setInterval(function () {
-
-				if(!($('.feedback-popup').hasClass('show-popup'))){
-					$('.feedback-icon').addClass('bounce-effect');
-					setTimeout(function () {
-						$('.feedback-icon').removeClass('bounce-effect');
-					},500)
-				}
-			},5000);
-
-			$('.feedback-icon').click(function () {
-
-				$('.feedback-popup').toggleClass('show-popup');
-				$('.feedback-popup').toggleClass('show-popup2');
-
-			})
-
-			$('.feedback-close svg').click(function () {
-				$('.feedback-popup').toggleClass('show-popup');
-				$('.feedback-popup').toggleClass('show-popup2');
-			})
-
-		},100);
-
-		//deactive header link
-		$('.site-header a').click(function (e) {
-
-			e.preventDefault();
-
-		})
 
 	});
 

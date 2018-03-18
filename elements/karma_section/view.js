@@ -17,10 +17,11 @@
 				this.render();
 			}
 			this.setSortable();
+
 		},
 
 		/**
-		 * @summary Add specific class for empty columns
+		 *  Add specific class for empty columns
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -43,20 +44,24 @@
 		},
 
 		/**
-		 * @summary Add section to sortable sections
+		 *  Add section to sortable sections
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
 		setSortable: function () {
 
-			$( "#karma-builder-layout" ).sortable( "refresh" );
+			try{
+				$( "#karma-builder-layout" ).sortable( "refresh" );
+			}catch( error ){
+				console.warn('cannot call methods on sortable prior to initialization; attempted to call method refresh');
+			}
 
 		},
 
 
 		/**
-		 * @summary Close element setting panel and Close element panel
+		 *  Close element setting panel and Close element panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -70,7 +75,7 @@
 		},
 
 		/**
-		 * @summary Set the active row with specific class
+		 *  Set the active row with specific class
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -78,6 +83,7 @@
 		showBorder: function ( e ) {
 
 			e.stopPropagation();
+			window.top.karmaBuilderEnviroment.closeCodeEditorDropDown();
 			this.$el.trigger( 'karma/after/clickElement' );
 			this.removeDropDownGizmo();
 			this.removeMoreSubmenu();
@@ -94,7 +100,7 @@
 		},
 
 		/**
-		 * @summary Get the if of all row columns
+		 *  Get the if of all row columns
 		 *
 		 * @since 0.1.0
 		 * @returns {Array}	Contain the ids
@@ -110,27 +116,26 @@
 		},
 
 		/**
-		 * @summary return current layout grid
+		 *  return current layout grid
 		 *
 		 * @since 0.1.0
 		 *
 		 * @returns {Array} - current layout of section
 		 */
-		currentGrid : function( ) {
-			//@TODO responsiveTool
+		currentGrid : function() {
+
 			var childrenModels = this.findChildren();
 
 			var currentGrid = [];
 			for (var i = 0, len = childrenModels.length; i < len; i++) {
-				//@TODO change sm_size to whatever may apply on responsive tool :)
-				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.sm_size ) )
+				currentGrid.push( parseInt( childrenModels[i].attributes.shortcode_attributes.lg_size ) );
 			}
 			return currentGrid;
 
 		},
 
 		/**
-		 * @summary Calculate new layout grid after append nw column
+		 *  Calculate new layout grid after append nw column
 		 *
 		 * @since 0.1.0
 		 *
@@ -153,7 +158,7 @@
 		},
 
 		/**
-		 * @summary Delete The column id
+		 *  Delete The column id
 		 *
 		 * @param {number}	columnKey		The column id
 		 * @param {number}	lastColumnKey	The last column in row id
@@ -170,7 +175,7 @@
 		},
 
 		/**
-		 * @summary Sum the numbers
+		 *  Sum the numbers
 		 *
 		 * @param {number}	total	The total number
 		 * @param {number}	num		The new number
@@ -185,7 +190,7 @@
 		},
 
 		/**
-		 * @summary Check the grid given is equal 12
+		 *  Check the grid given is equal 12
 		 *
 		 * @param {array}	grid	The grid layout
 		 *
@@ -203,27 +208,29 @@
 		},
 
 		/**
-		 * @summary Update the column model by id given.
+		 *  Update the column model by id given.
 		 * Function just update size of column
 		 *
 		 * @param {number}	columnKey		The column id
-		 * @param {number}	parentId		The row id
 		 * @param {number}	newWidth		The new width of column
+		 * @param {number}	newGridColumns	The count of columns in new grid
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
-		updateColumnModel : function ( columnKey, parentId, newWidth ) {
+		updateColumnModel : function ( columnKey, newWidth, newGridColumns ) {
 
-			var model = karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ) ,
-				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
-			columnInstance.updateWidthColumn( newWidth );
+			var model = karmaBuilder.karmaModels.findWhere( { 'element_key': columnKey } ),
+				columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView(),
+				mdSize = this.calcMediumWidthColumn( newGridColumns ),
+				newSize = { lg_size: newWidth, xl_size: newWidth, md_size: mdSize };
+			columnInstance.updateWidthColumn( newSize );
 			columnInstance.$el.trigger('karma/finish/modifyColumns');
 
 		},
 
 		/**
-		 * @summary Change the layout of row grid
+		 *  Change the layout of row grid
 		 *
 		 * @param {array}	newLayout The grid layout
 		 *
@@ -237,13 +244,12 @@
 			}
 
 			var currentGrid = this.currentGrid(),
-				parentKey = this.model.attributes.element_key,
 				lastColumn ,
 				columns = this.getColumnsKey();
 
 			for ( var counter in currentGrid ){
 				if ( newLayout[ counter ] ){
-					this.updateColumnModel( columns[ counter ], parentKey, newLayout[ counter ] );
+					this.updateColumnModel( columns[ counter ], newLayout[ counter ], newLayout.length );
 					lastColumn = counter ;
 				} else {
 					this.deleteColumnModel( columns[ counter ], columns[ lastColumn ] );
@@ -261,7 +267,7 @@
 		},
 
 		/**
-		 * @summary Create new column
+		 *  Create new column
 		 *
 		 * @param {number}	counter			Columns that should be created
 		 * @param {array}	newLayout		New layout
@@ -274,14 +280,14 @@
 			
 			counter = ( counter ) ? parseInt( counter ) + 1 : 0;
 			var order = ( columnKey ) ? ( karmaBuilder.karmaModels.findWhere( { 'element_key' : columnKey } ).attributes.order + 1 ) : 1,
-				that = this;
+				that = this,
+				columnModel = $( document ).triggerHandler( 'karma/before/createElement/karma_column' ),
+				model = columnModel ;
 
-			//TODo: refine for column render for blocks
-			if( 'undefined' === typeof that.block ){
-				var model =  $( document ).triggerHandler( 'karma/before/createElement/karma_column' );
-			}else{
-				var model = that.block.childes[counter].parent.shortcode_attributes;
+			if( 'undefined' !== typeof that.block ){
+				model = jQuery.extend( columnModel, that.block.childes[ counter ].parent.shortcode_attributes );
 			}
+
 			for( counter; counter < newLayout.length; counter++ ){
 
 				var newModel = {
@@ -294,17 +300,14 @@
 				 }
 				order++;
 				newModel.shortcode_attributes.lg_size = newLayout[ counter ];
-				newModel.shortcode_attributes.sm_size = newLayout[ counter ];
+				newModel.shortcode_attributes.sm_size = 12;
 				newModel.shortcode_attributes.xl_size = newLayout[ counter ];
-				newModel.shortcode_attributes.md_size = newLayout[ counter ];
+				newModel.shortcode_attributes.md_size = ( 'undefined' !== typeof that.block ) ?  model.md_size : this.calcMediumWidthColumn( newLayout.length );
 
 				var columnModel = karmaBuilder.karmaModels.add( newModel );
 				$( '[data-element-key="' + columnModel.get('parent_key') + '"] .karma-row' ).append( KarmaView.createBuilderModel( columnModel ) );
 				var elementView = KarmaView.createNewElement( 'column', columnModel );
-				if( 'undefined' != typeof that.block ){
-					elementView.leftspace();
-					elementView.rightspace();
-				}
+				KarmaView.createStyleSheetForElements( elementView.model.attributes.shortcode_attributes, elementView );
 
 			}
 
@@ -312,7 +315,7 @@
 
 
 		/**
-		 * @summary create html fot tooltip
+		 *  create html for tooltip
 		 *
 		 * @since 0.1.0
 		 *
@@ -327,8 +330,27 @@
 
 		},
 
+
+
 		/**
-		 * @summary structure field changes. Change Container of Section instead of render
+		 *  fit to screen option for section
+		 *
+		 * @since 2.0
+		 *
+		 */
+		fittoheight : function () {
+			
+			if( this.el.querySelector('.karma-section').classList.contains('karma-fit-to-screen') ){
+				this.el.querySelector('.karma-section').classList.remove('karma-fit-to-screen');
+			}else{
+				this.el.querySelector('.karma-section').classList.add('karma-fit-to-screen');
+			}
+
+		},
+
+
+		/**
+		 *  structure field changes. Change Container of Section instead of render
 		 *
 		 * @since 0.1.0
 		 *
@@ -345,7 +367,7 @@
 		},
 
 		/**
-		 * @summary space field changes. It updates the space of section
+		 *  space field changes. It updates the space of section
 		 *
 		 * @since 0.1.0
 		 *
@@ -354,16 +376,33 @@
 		space: function () {
 
 			var padding	= this.getAttributes( ['space'] ).space + 'px';
-			this.$el.find('.karma-bottom-spacing').css( 'height', padding )
-			this.$el.find('.karma-section').css({
-				'padding-top'      : padding,
-				'padding-bottom'   : padding
-			});
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', padding );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', padding );
 
 		},
 
 		/**
-		 * @summary extra class field changes. Add class to the element instead of render
+		 *  create default responsive space
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace: function () {
+
+			// Tablet
+			var tabletPadding = this.getAttributes( [ 'tabletspace' ] ).tabletspace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', tabletPadding, 'tablet' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', tabletPadding, 'tablet' );
+
+			// Mobile
+			var mobilePadding = this.getAttributes( [ 'mobilespace' ] ).mobilespace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-top', mobilePadding, 'mobile' );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-section', 'padding-bottom', mobilePadding, 'mobile' );
+
+		},
+
+		/**
+		 *  extra class field changes. Add class to the element instead of render
 		 *
 		 * @since 0.1.0
 		 *
@@ -372,14 +411,19 @@
 		extraclass: function(){
 
 			var elementClass = this.model.get( 'shortcode_name' ).replace( '_', '-' ) + '-' + this.model.get('element_key'),
-				defaultClasses =  elementClass + " karma-section  "  + this.getAttributes( ['extraclass'] ).extraclass;
+				defaultClasses =  elementClass + " karma-section  "  + this.getAttributes( ['extraclass'] ).extraclass,
+				section = this.el.querySelector('.karma-section');
 
-			this.el.querySelector('.karma-section').setAttribute( 'class', defaultClasses );
+			if ( section.classList.contains('karma-fit-to-screen') ){
+				defaultClasses += ' karma-fit-to-screen'
+			}
+
+			section.setAttribute( 'class', defaultClasses );
 
 		},
 
 		/**
-		 * @summary background type changes. change background type
+		 *  background type changes. change background type
 		 *
 		 * @since 0.1.0
 		 *
@@ -400,7 +444,7 @@
 		},
 
 		/**
-		 * @summary background color changes. change background color
+		 *  background color changes. change background color
 		 *
 		 * @since 0.1.0
 		 *
@@ -408,13 +452,12 @@
 		 */
 		backgroundcolor: function () {
 
-			var elementId = this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' );
-			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-background-section.karma-section-color-background', 'background-color', this.getAttributes( [ 'backgroundcolor' ] ).backgroundcolor );
 
 		},
 
 		/**
-		 * @summary Change the grid layout
+		 *  Change the grid layout
 		 *
 		 * @since 0.1.0
 		 *
@@ -432,7 +475,7 @@
 		},
 
 		/**
-		 * @summary extra class field changes. Add class to the element instead of render
+		 *  extra class field changes. Add class to the element instead of render
 		 *
 		 * @since 0.1.0
 		 *
@@ -440,15 +483,14 @@
 		 */
 		columnspace : function () {
 
-			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
-			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-left', margin );
-			this.renderCss( '#' + elementId + ' .karma-column-margin', 'margin-right', margin );
+			var margin = this.getAttributes( ['columnspace'] ).columnspace + 'px';
+			this.renderCss( '#' + this.elementSelector() + ' .karma-column-margin', 'margin-left', margin );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-column-margin', 'margin-right', margin );
 
 		},
 
 		/**
-		 * @summary fire on change background image controller
+		 *  fire on change background image controller
 		 *
 		 * @since 0.1.0
 		 *
@@ -457,7 +499,6 @@
 		backgroundimage : function () {
 
 			var imageAddress = this.getAttributes( [ 'backgroundimage' ] ),
-				elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
 				imageUrl = '' ;
 
 			if( 'none' == imageAddress.backgroundimage ){
@@ -465,13 +506,13 @@
 			}else{
 				imageUrl = 'url('+ imageAddress.backgroundimage  +')';
 			}
-			this.renderCss( '#' + elementId + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
+			this.renderCss( '#' + this.elementSelector() + ' .karma-background-section.karma-section-image-background', 'background-image', imageUrl );
 
 
 		},
 
 		/**
-		 * @summary change background size to cover and contain
+		 *  change background size to cover and contain
 		 *
 		 * @since 0.1.0
 		 *
@@ -488,7 +529,7 @@
 		},
 
 		/**
-		 * @summary change position of background image
+		 *  change position of background image
 		 *
 		 * @since 0.1.0
 		 *
@@ -504,7 +545,7 @@
 		},
 
 		/**
-		 * @summary show and hide section white hide gizmo in tablet
+		 *  show and hide section white hide gizmo in tablet
 		 *
 		 *
 		 * @since 0.1.0
@@ -523,7 +564,7 @@
 		},
 
 		/**
-		 * @summary show and hide section white hide gizmo in mobile
+		 *  show and hide section white hide gizmo in mobile
 		 *
 		 *
 		 * @since 0.1.0
@@ -539,7 +580,58 @@
 				this.el.querySelector( 'section' ).classList.add( "karma-deactive-on-mobile" );
 			}
 
-		}
+		},
+
+		/**
+		 * @summary update column responsive sizes and change class
+		 *
+		 * @param {number}    newLayout The grid layout
+		 *
+		 * @since 2.0
+		 * @return {void}
+		 */
+		changeColumnResponsive: function ( newSize ) {
+
+			var currentGrid = this.currentGrid(),
+				columns = this.getColumnsKey();
+
+			for ( var counter in currentGrid ) {
+
+				var model = karmaBuilder.karmaModels.findWhere( { 'element_key': columns[ counter ] } ),
+					columnInstance = $( '[data-element-key="' + model.attributes.element_key + '"]' ).backboneView();
+				var newColumnSize = {
+					lg_size: model.attributes.shortcode_attributes.lg_size
+					, xl_size: model.attributes.shortcode_attributes.xl_size
+					, md_size: newSize
+				};
+				columnInstance.updateWidthColumn( newColumnSize );
+				columnInstance.$el.trigger( 'karma/finish/modifyColumns' );
+
+			}
+
+		},
+
+		/**
+		 * @summary return the medium size of column base on columns count
+		 *
+		 * @param {number}    columnsCount   no of columns
+		 *
+		 * @since 2.0
+		 * @returns {number}
+		 */
+		calcMediumWidthColumn: function ( columnsCount ) {
+
+			var mdSize = 12;
+			if ( 1 === columnsCount || 3 == columnsCount ) {
+				mdSize = 12;
+			} else if ( 2 === columnsCount || 4 == columnsCount ) {
+				mdSize = 6;
+			} else if ( 6 === columnsCount ) {
+				mdSize = 4;
+			}
+			return mdSize;
+
+		},
 
 	} );
 

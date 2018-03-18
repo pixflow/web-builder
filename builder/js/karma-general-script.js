@@ -5,8 +5,4 @@ window.addEventListener("DOMContentLoaded", function (){
 		bodyElem.classList.add('karma-responsive-mode');
 	}
 
-	if ( 'function' == typeof updateImageAfterWindowResize ){
-		updateImageAfterWindowResize();
-	}
-
 }, false );

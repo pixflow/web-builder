@@ -1,4 +1,5 @@
 var orginalHtml = document.getElementById('karma-tests').innerHTML;
+var $ = jQuery;
 
 //insert default html to karma test
 function addHtml() {
@@ -523,6 +524,23 @@ function getModelsAttributes(models) {
 		});
 		karmaBuilder.karmaModels.reset();
 
+	});
+
+	QUnit.test("hideNonKarmaElements(), Hide Header and footer ", function (assert) {
+		window.top.karmaBuilderEnviroment.hideNonKarmaElements();
+		var nonElements = 0;
+		function getVisible( selector ){
+			if( "BODY" == selector[ 0 ].tagName ){
+				return nonElements;
+			}else{
+				getVisible( selector.parent() );
+				if( "visible" == selector.css('visibility') ){
+					nonElements++;
+				}
+			}
+		}
+		getVisible( $('#karma-builder-layout') );
+		assert.equal( nonElements, $('#karma-builder-layout').parents().length - 1 );
 	});
 
 	QUnit.done(function( details ) {

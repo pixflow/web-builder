@@ -125,7 +125,7 @@ class Karma_Image_Describe extends Karma_Image {
 						)
 					),
 					array(
-						"name"  => "Alternative text",
+						"name"  => "alt",
 						"type"  => Karma_Builder_Setting_Panel::TEXT,
 						"label" => __( "Alternative text", 'karma' ),
 						"group" => "Advance option"

@@ -29,13 +29,16 @@ html {
 
 @media (max-width: 576px) {
 	.karma-container {
-		max-width: 540px;
+		max-width: 95%;
 	}
 }
 
 @media (max-width: 768px) {
 	.karma-container {
 		max-width: 720px;
+	}
+	.container{
+		width:100%;
 	}
 }
 
@@ -48,6 +51,12 @@ html {
 @media (max-width: 1200px) {
 	.karma-container {
 		max-width: 1140px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.karma-container {
+		max-width: 1200px;
 	}
 }
 

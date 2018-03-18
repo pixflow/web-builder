@@ -24,7 +24,7 @@
 		},
 
 		/**
-		 * @summary Add specific class for empty columns
+		 * Add specific class for empty columns
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -38,7 +38,7 @@
 
 
 		/**
-		 * @summary Render column element
+		 * Render column element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -53,13 +53,14 @@
 		/**
 		 * @summery update images width  on their column resize
 		 *
+		 * @param {object}  specificImage   Just execute for specific image
 		 * @since 0.1.0
 		 *
 		 * @return {void}
 		 */
-		updateImageSize : function () {
+		updateImageSize : function ( e, specificImage ) {
 
-			var imageLinks =  this.el.querySelectorAll('.karma-builder-element[data-name="karma_image"]') ;
+			var imageLinks =  ( 'undefined' == typeof specificImage ) ? this.el.querySelectorAll('.karma-builder-element[data-name="karma_image"]') : [ specificImage ] ;
 
 			_.each( imageLinks, function( image ){
 
@@ -79,7 +80,7 @@
 		},
 
 		/**
-		 * @summary Close element setting panel and Close element panel
+		 * Close element setting panel and Close element panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -94,7 +95,7 @@
 
 
 		/**
-		 * @summary Set the active row with specific class
+		 * Set the active row with specific class
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -102,7 +103,7 @@
 		activeColumn: function ( e ) {
 
 			e.stopPropagation();
-
+			window.top.karmaBuilderEnviroment.closeCodeEditorDropDown();
 			if( this.$el.hasClass('karma-active-column') ){
 				return;
 			}
@@ -118,7 +119,7 @@
 		},
 
 		/**
-		 * @summary spacing of column setting panel
+		 * spacing of column setting panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -126,17 +127,19 @@
 		rightspace: function () {
 			
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px';
+				padding		= this.model.attributes.shortcode_attributes.rightspace + 'px',
+				rightSpace = this.el.querySelector('.karma-right-spacing');
 
 			this.$el.trigger('karma/finish/modifyColumns');
 			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-right', padding );
-			this.el.querySelector('.karma-right-spacing').style.width = padding ;
-
+			if( null != rightSpace ) {
+				rightSpace.style.width = padding;
+			}
 
 		},
 
 		/**
-		 * @summary spacing of column setting panel
+		 * spacing of column setting panel
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -144,16 +147,43 @@
 		leftspace: function () {
 
 			var elementId 	= this.el.getAttribute( 'data-name' ).replace( '_', '-' ) + '-' + this.el.getAttribute( 'data-element-key' ),
-				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px';
+				padding		= this.model.attributes.shortcode_attributes.leftspace + 'px',
+				leftSpace = this.el.querySelector('.karma-left-spacing');
+
+			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-left', padding );
+
+			if( null != leftSpace ){
+				leftSpace.style.width = padding ;
+			}
 
 			this.$el.trigger('karma/finish/modifyColumns');
-			this.renderCss( '.karma-no-gutters > #' + elementId + '> .karma-column', 'padding-left', padding );
-			this.el.querySelector('.karma-left-spacing').style.width = padding ;
 
 		},
 
 		/**
-		 *@summary extra class field changes. Add class to the column
+		 * create default responsive space
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace: function () {
+
+			// Tablet
+			var tabletPaddingRight = this.getAttributes( [ 'tabletrightspace' ] ).tabletrightspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-right', tabletPaddingRight, 'tablet' );
+			var tabletPaddingLeft = this.getAttributes( [ 'tabletleftspace' ] ).tabletleftspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-left', tabletPaddingLeft, 'tablet' );
+
+			// Mobile
+			var mobilePaddingRight = this.getAttributes( [ 'mobilerightspace' ] ).mobilerightspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-right', mobilePaddingRight, 'mobile' );
+			var mobilePaddingLeft = this.getAttributes( [ 'mobileleftspace' ] ).mobileleftspace + 'px';
+			this.renderCss( '.karma-no-gutters > #' + this.elementSelector() + '> .karma-column', 'padding-left', mobilePaddingLeft, 'mobile' );
+
+		},
+
+		/**
+		 *extra class field changes. Add class to the column
 		 *
 		 * @since 0.1.0
 		 *
@@ -169,7 +199,7 @@
 		},
 
 		/**
-		 *@summary apply live change grid on column
+		 *apply live change grid on column
 		 *
 		 * @since 0.1.0
 		 *
@@ -212,7 +242,7 @@
 		},
 
 		/**
-		 * @summary calculate new parent section grid and update grid
+		 * calculate new parent section grid and update grid
 		 *
 		 * @since 0.1.0
 		 *
@@ -230,7 +260,7 @@
 		},
 
 		/**
-		 * @summary Change column class names by type
+		 * Change column class names by type
 		 *
 		 * @param {string}  gridType    Grid type of column ( ex: lg || sm )
 		 * @param {number}  newCol      New column grid value
@@ -250,7 +280,7 @@
 		},
 
 		/**
-		 * @summary Change column LG size
+		 * Change column LG size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -263,7 +293,7 @@
 		},
 
 		/**
-		 * @summary Change column MD size
+		 * Change column MD size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -276,7 +306,7 @@
 		},
 
 		/**
-		 * @summary Change column XL size
+		 * Change column XL size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -289,7 +319,7 @@
 		},
 
 		/**
-		 * @summary Change column SM size
+		 * Change column SM size
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -302,28 +332,33 @@
 		},
 
 		/**
-		 * @summary Update the size of columns
+		 * Update the size of columns
 		 *
-		 * @param {number}	value   New value
+		 * @param {object}    newSize   New column sizes
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
 		 */
-		updateWidthColumn : function ( value ) {
+		updateWidthColumn: function ( newSize ) {
 
-			var newAttributes = {
-				'sm_size' : value ,
-				'lg_size' : value ,
-				'md_size' : value ,
-				'xl_size' : value ,
+			var defaultSize = {
+				'sm_size': 12,
+				'md_size': 12,
+				'lg_size': 12,
+				'xl_size': 12
 			};
 
-			this.setAttributes( newAttributes, false);
+			var newAttributes = {};
+			for ( var i in defaultSize ) {
+				newAttributes[ i ] = ( newSize.hasOwnProperty( i ) ) ? newSize[ i ] : defaultSize[ i ];
+			}
+
+			this.setAttributes( newAttributes, false );
 
 		},
 
 		/**
-		 * @summary Delete column completely
+		 * Delete column completely
 		 * Before delete column,it move all content in the last column in same row
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
@@ -355,7 +390,7 @@
 		} ,
 
 		/**
-		 * @summary Move the content from column to another column
+		 * Move the content from column to another column
 		 *
 		 * @param {number}  lastColumnKey   Element key of before the last column
 		 * @param {object}  model           Element model
@@ -366,7 +401,7 @@
 		moveContent : function ( lastColumnKey, model ) {
 
 			var viewObject = $('[data-element-key="' + model.get('element_key') + '"]').backboneView() ,
-				elementID = model.get('shortcode_name').replace( '_', '-' ) + '-' + model.get('element_key'),
+				elementID = model.get('shortcode_name').replace( /_/g, '-' ) + '-' + model.get('element_key'),
 				moveToColumn = $( '[data-element-key="' + lastColumnKey + '"]' ).find('.karma-column-margin'),
 				columnPlaceholder = moveToColumn.find( '.karma-column-placeholder' ),
 				script = $( '#script-' + elementID ).clone(),
@@ -383,7 +418,7 @@
 		},
 
 		/**
-		 * @summary show and hide column white hide gizmo in tablet
+		 * show and hide column white hide gizmo in tablet
 		 *
 		 *
 		 * @since 0.1.0
@@ -403,10 +438,10 @@
 
 
 		/**
-		 * @summary show and hide column white hide gizmo in mobile
+		 * show and hide column white hide gizmo in mobile
 		 *
 		 *
-		 * @since 0.1.0
+		 * @since 0.1.1
 		 * @return {void}
 		 */
 		visibleonmobile : function () {

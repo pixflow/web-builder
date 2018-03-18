@@ -19,7 +19,8 @@
 			'click .karma-delete-message-box'   			    : 'cancelDeleteElement',
 			'click .karma-delete-message-container'   			: 'deleteBoxStopPropagation',
 			'click .karma-new-section-button'   				: 'newSectionDropDown',
-			'karma/after/clickElement'							: 'updateHiddenGizmoStatus'
+			'karma/after/clickElement'							: 'updateHiddenGizmoStatus',
+			'karma/finish/dropElement'							: 'createDefaultResponsiveSpace'
 
 
 
@@ -40,6 +41,7 @@
 		+ '<div class="karma-right-alignment-placeholder" data-element-align="right" >'
 		+ '</div>',
 
+		resizeId : 0 ,
 
 		initialize : function( options ) {
 
@@ -51,6 +53,7 @@
 				this.model.bind( 'destroy', this.destroy );
 			}
 			this.gizmoParams = options.gizmoParams;
+			this.callFunctionsOnResize();
 			this.toolTipHtml();
 			this.karmaLinksDocumentClick();
 			this.initSortable();
@@ -58,7 +61,33 @@
 		},
 
 		/**
-		 * @summary Call blur inside sortable elements
+		 * ]Update column helper on window resize
+		 *
+		 * @since 2.0
+		 *
+		 * @returns {void}
+		 */
+		//@TODO change setTimeout to request animation frame  + make this function automatically
+		callFunctionsOnResize: function (){
+
+			var that = this;
+			window.addEventListener( 'resize', function (){
+
+				clearTimeout( that.resizeId );
+				that.resizeId = setTimeout( function (){
+					$('.karma-builder-element[data-name="karma_column"]').each(function (){
+						var column = $(this).find('.karma-column');
+						$(this).find('.ui-resizable.karma-right-spacing').css({ width : column.css('padding-right') });
+						$(this).find('.ui-resizable.karma-left-spacing').css({ width : column.css('padding-left') })
+					});
+				}, 200 );
+
+			} );
+
+		},
+
+		/**
+		 * Call blur inside sortable elements
 		 * jQuery stops the default functionality of the browser when sorting a list,
 		 * so the blur is never called
 		 *
@@ -75,7 +104,7 @@
 		},
 
 		/**
-		 * @summary Init sortable on elements
+		 * Init sortable on elements
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -140,7 +169,7 @@
 
 		},
 		/**
-		 * @summary If drop area of element is alignment drop area set the element alignment
+		 * If drop area of element is alignment drop area set the element alignment
 		 *
 		 * @param   {object}    originalElement Sortable element
 		 * @param   {object}    dropArea        DOM node
@@ -163,7 +192,7 @@
 		},
 
 		/**
-		 * @summary set Element alignment to element
+		 * set Element alignment to element
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -180,7 +209,7 @@
 		},
 
 		/**
-		 * @summary set padding top for element function
+		 * set padding top for element function
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -189,10 +218,27 @@
 
 			var that = this ;
 			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( ['topspacepadding'] ).topspacepadding + 'px' );
+
+
 		},
 
 		/**
-		 * @summary Removes active elements
+		 * set padding top for element function
+		 *
+		 * @since   2.0
+		 * @returns {void}
+		 */
+		createDefaultResponsiveSpace : function () {
+
+			var that = this;
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'topspacepadding' ] ).topspacepadding + 'px' );
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'tablettopspacepadding' ] ).tablettopspacepadding + 'px', 'tablet' );
+			this.renderCss( '#' + that.elementSelector(), 'padding-top', that.getAttributes( [ 'mobiletopspacepadding' ] ).mobiletopspacepadding + 'px', 'mobile' );
+
+		},
+
+		/**
+		 * Removes active elements
 		 *
 		 * @since   0.1.0
 		 * @returns {void}
@@ -207,7 +253,7 @@
 		},
 
 		/**
-		 * @summary Sort elements
+		 * Sort elements
 		 *
 		 * @param   {object}    dropArea        DOM node
 		 * @param   {object}    originalElement Sortable element
@@ -245,7 +291,7 @@
 		},
 
 		/**
-		 * @summary Sort elements
+		 * Sort elements
 		 *
 		 * @param   {object}    viewObject      Instance of sortable element view
 		 * @param   {object}    dropArea        DOM node
@@ -256,24 +302,25 @@
 		 */
 		sortElement: function ( viewObject, dropArea, newParentKey ){
 
-			var htmlOBJ = viewObject.$el;
-			viewObject.el.parentNode.removeChild( viewObject.el.nextElementSibling );
+			var htmlOBJ = viewObject.$el,
+				placeholders = document.querySelectorAll('.karma-element-placeholder-' + viewObject.model.get('element_key') ),
+				placeholder = ( 2 == placeholders.length ) ? placeholders[1] : placeholders[0];
+
+			$( placeholder ).remove();
 			viewObject.el.outerHTML = '';
 			$( dropArea ).replaceWith( htmlOBJ );
 			viewObject.el.classList.remove( 'karma-self-placeholder' );
 			viewObject.model.set( { 'parent_key': newParentKey, 'order': 1 }, { silent: true } );
 			viewObject.createPlaceHolders();
 			if ( "karma_image" == viewObject.model.get( 'shortcode_name' ) ){
-				var elementWidth = viewObject.el.closest( '.karma-column-margin' ).offsetWidth + 'px';
-				viewObject.el.querySelector( '.karma-image-resize' ).style.width = elementWidth;
-				viewObject.el.querySelector( '.karma-image-resize-crop' ).style.width = elementWidth;
-				viewObject.el.querySelector( '.karma-image' ).setAttribute( 'width', elementWidth );
+				var columnInstance = viewObject.$el.closest( '.karma-builder-element[data-name="karma_column"]' ).backboneView();
+				columnInstance.$el.trigger( 'karma/finish/modifyColumns', [ viewObject.el ] );
 			}
 
 		},
 
 		/**
-		 * @summary trigger document click on links which have karma-document-click class
+		 * trigger document click on links which have karma-document-click class
 		 *
 		 * @since 0.1.0
 		 *
@@ -290,7 +337,7 @@
 		},
 
 		/**
-		 * @summary Call necessary function after init any elements
+		 * Call necessary function after init any elements
 		 *
 		 * @since 0.1.0
 		 *
@@ -306,7 +353,7 @@
 		},
 
 		/**
-		 * @summary Create placeholders for each elements as drop area
+		 * Create placeholders for each elements as drop area
 		 * The function skip column and section for creating placeholders
 		 *
 		 * @since 0.1.0
@@ -349,7 +396,7 @@
 		},
 
 		/**
-		 * @summary Create placeholders for each elements as alignment
+		 * Create placeholders for each elements as alignment
 		 *
 		 * @since 0.1.0
 		 *
@@ -368,7 +415,7 @@
 		},
 
 		/**
-		 * @summary call element method related to the changed attribute
+		 * call element method related to the changed attribute
 		 *
 		 * @param    {object}    model    updated element model.
 		 *
@@ -390,7 +437,7 @@
 		},
 
 		/**
-		 * @summary Render elements
+		 * Render elements
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -402,7 +449,7 @@
 		},
 
 		/**
-		 * @summary Delete elements model and html
+		 * Delete elements model and html
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -436,7 +483,7 @@
 		},
 
 		/**
-		 * @summary load blank page when content is empty
+		 * load blank page when content is empty
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -453,7 +500,7 @@
 		},
 
 		/**
-		 * @summary Remove element placeholders after delete element
+		 * Remove element placeholders after delete element
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -461,8 +508,7 @@
 		beforeDeleteElements: function (){
 
 			// REMOVE THE PLACEHOLDER
-			this.$el.next( '.karma-insert-between-elements-placeholder' ).remove();
-
+			this.$el.nextAll( '.karma-insert-between-elements-placeholder' ).first().remove();
 			if ( 'karma_section' == this.model.get( 'shortcode_name' ) ){
 				this.$el.next( '.karma-new-section' ).remove();
 			}
@@ -470,7 +516,7 @@
 		},
 
 		/**
-		 * @summary Reorder elements after delete
+		 * Reorder elements after delete
 		 *
 		 * @param {string}  parentKey       Element key of parent element
 		 *
@@ -489,7 +535,7 @@
 		},
 
 		/**
-		 * @summary Do some extra work after delete element
+		 * Do some extra work after delete element
 		 * If all elements remove in specific column this function create placeholder for that empty column
 		 *
 		 * @param {string}  parentKey       Element key of parent element
@@ -514,7 +560,7 @@
 		},
 
 		/**
-		 * @summary If All columns are empty in section add Class Empty to them
+		 * If All columns are empty in section add Class Empty to them
 		 *
 		 * @param { object }  section       Element key of parent element
 		 *
@@ -531,7 +577,7 @@
 		},
 
 		/**
-		 * @summary Duplicate elements
+		 * Duplicate elements
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -551,7 +597,7 @@
 		},
 
 		/**
-		 * @summary Returns child of elements which passed to the function
+		 * Returns child of elements which passed to the function
 		 *
 		 * @param {string} parentElementKey   Element key to return its child(ren)
 		 * @since 0.1.0
@@ -576,7 +622,7 @@
 		},
 
 		/**
-		 * @summary open box of delete element
+		 * open box of delete element
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -604,7 +650,7 @@
 
 
 		/**
-		 * @summary cancel delete element on click in cancel box
+		 * cancel delete element on click in cancel box
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -624,7 +670,7 @@
 		},
 
 		/**
-		 * @summary  delete element on click in delete box
+		 *  delete element on click in delete box
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -647,7 +693,7 @@
 		},
 
 		/**
-		 * @summary stop click in delete box container
+		 * stop click in delete box container
 		 *
 		 * @since 0.1.0
 		 * @returns {void}
@@ -659,7 +705,7 @@
 		},
 
 		/**
-		 * @summary Remove script and style tag of element
+		 * Remove script and style tag of element
 		 *
 		 * @param   {string}    elementID
 		 *
@@ -682,7 +728,7 @@
 		},
 
 		/**
-		 * @summary Update attribute(s) of element
+		 * Update attribute(s) of element
 		 *
 		 * @param    {Object}    newAttributes list of new attribute
 		 * @param    {boolean}    silent model in silent mode
@@ -695,7 +741,6 @@
 
 			var model               = this.model,
 				shortcodeAttributes = JSON.parse( JSON.stringify( model.attributes.shortcode_attributes ) );
-
 			shortcodeAttributes.changed = {};
 			for ( var attr in newAttributes ){
 				shortcodeAttributes[ attr ] = newAttributes[ attr ];
@@ -707,7 +752,7 @@
 		},
 
 		/**
-		 * @summary GET Specific attribute(s) of element
+		 * GET Specific attribute(s) of element
 		 * @example getAttributes ( ['space', 'slow'] ) // returns { space : 200, slow : false }
 		 *
 		 *
@@ -733,7 +778,7 @@
 		},
 
 		/**
-		 * @summary find children of model
+		 * find children of model
 		 *
 		 * @since 0.1.0
 		 *
@@ -746,7 +791,7 @@
 		},
 
 		/**
-		 * @summary Open setting panel of each Element
+		 * Open setting panel of each Element
 		 *
 		 * @since 0.1.0
 		 *
@@ -771,7 +816,7 @@
 		},
 
 		/**
-		 * @summary Remove Class from javascript element
+		 * Remove Class from javascript element
 		 *
 		 * @param    {object}    el        element to remove Class
 		 * @param    {string}    className   name of class to remove
@@ -791,7 +836,7 @@
 		},
 
 		/**
-		 * @summary returns the element name with its key
+		 * returns the element name with its key
 		 *
 		 * @since 0.1.0
 		 *
@@ -804,7 +849,7 @@
 		},
 
 		/**
-		 * @summary renders the css of model inside style tag
+		 * renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector     Css selector
 		 * @param    { string }    attribute    CSS attribute
@@ -814,14 +859,155 @@
 		 *
 		 * @returns { void }
 		 */
-		renderCss: function ( selector, attribute, value ){
+		//@TODO: add multiple selector
+		renderCss: function ( selector, attribute, value, device ){
 
-			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value );
+			document.querySelector( '#style-' + this.elementSelector() ).innerHTML = this.generateNewStyle( selector, attribute, value, device );
 
 		},
 
 		/**
-		 * @summary renders the css of model inside style tag
+		 * get mobile or tablet css from style
+		 *
+		 * @param    { string }    content  Css selector
+		 * @param    { string }    device   mobile or tablet
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { object }  CSS content and device regex
+		 */
+		getDeviceStyle: function ( content, device ) {
+
+			if ( 'tablet' == device ) {
+				var deviceRegex = /\/\*tablet-start\*\/(.*?)\/\*tablet-finish\*\//ig;
+			} else if ( 'mobile' == device ) {
+				var deviceRegex = /\/\*mobile-start\*\/(.*?)\/\*mobile-finish\*\//ig;
+			}
+			var result = deviceRegex.exec( content );
+			if ( null == result ) {
+				content = '';
+			} else {
+				content = result[ 1 ];
+			}
+
+			var cssObject = {};
+			cssObject.content = content;
+			cssObject.deviceRegex = deviceRegex;
+			return cssObject;
+
+		},
+
+		/**
+		 * split responsive device css and main css
+		 *
+		 * @param    { string }    content  Css selector
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { object }  contains responsive device CSS and main css
+		 */
+		splitDeviceStyle: function ( content ) {
+
+			var deviceRegex = /@media.*?-finish\*\/}/ig,
+				responsiveStyle = '';
+			while ( (result = deviceRegex.exec( content )) !== null ) {
+				// This is necessary to avoid infinite loops with zero-width matches
+				if ( result.index === deviceRegex.lastIndex ) {
+					deviceRegex.lastIndex++;
+				}
+
+				// The result can be accessed through the `m`-variable.
+				responsiveStyle = responsiveStyle + result[ 0 ];
+			}
+
+			content = content.replace( deviceRegex, '' );
+			var splitContent = {};
+			splitContent.responsive = responsiveStyle;
+			splitContent.mainContent = content;
+			splitContent.deviceRegex = deviceRegex;
+			return splitContent;
+
+		},
+
+		/**
+		 * get CSS content from style tag
+		 *
+		 * @param    { string }    device   device name
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { object }  contains responsive device CSS and main css
+		 */
+		getCss: function ( device ) {
+
+			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
+				responsiveStyle = '',
+				addMediaQuery = false,
+				deviceRegex = '';
+			originalStyle = oldStyle;
+			if ( 'tablet' == device || 'mobile' == device ) {
+				var result = this.getDeviceStyle( oldStyle, device );
+				oldStyle = result.content;
+				deviceRegex = result.deviceRegex;
+				if ( '' == oldStyle ) {
+					addMediaQuery = true;
+				}
+			} else {
+				var splitContent = this.splitDeviceStyle( oldStyle );
+				responsiveStyle = splitContent.responsive;
+				oldStyle = splitContent.mainContent;
+				deviceRegex = splitContent.deviceRegex;
+			}
+
+			var cssObject = {};
+			cssObject.deviceRegex = deviceRegex;
+			cssObject.responsiveStyle = responsiveStyle;
+			cssObject.oldStyle = oldStyle;
+			cssObject.originalStyle = originalStyle;
+			cssObject.addMediaQuery = addMediaQuery;
+			return cssObject;
+
+		},
+
+		/**
+		 * put CSS content to style tag
+		 *
+		 * @param    { object }    cssObject    Css object
+		 * @param    { string }    device       device name
+		 * @param    { string }    newStyle     CSS selector
+		 *
+		 * @since 2.0
+		 *
+		 * @returns { string }  contains responsive device CSS and main css
+		 */
+		putResponsiveCss: function ( cssObject, device, newStyle ) {
+
+			if ( 'tablet' == device || 'mobile' == device ) {
+				if ( cssObject.addMediaQuery ) {
+					var deviceMediaQueryPrefix = '',
+						deviceMediaQueryPostfix = '';
+					if ( 'tablet' == device ) {
+						deviceMediaQueryPrefix = '@media screen and (max-width: 1020px) { /*tablet-start*/';
+						deviceMediaQueryPostfix = '/*tablet-finish*/}';
+					} else if ( 'mobile' == device ) {
+						deviceMediaQueryPrefix = '@media screen and (max-width: 430px) { /*mobile-start*/';
+						deviceMediaQueryPostfix = '/*mobile-finish*/}';
+					}
+					newStyle = cssObject.originalStyle + deviceMediaQueryPrefix + newStyle + deviceMediaQueryPostfix;
+				} else {
+					newStyle = cssObject.originalStyle.replace( cssObject.deviceRegex, '/*' + device + '-start*/' + newStyle + '/*' + device + '-finish*/' )
+				}
+			} else {
+				newStyle = newStyle + cssObject.responsiveStyle;
+			}
+
+			return newStyle;
+
+		},
+
+		/**
+		 * renders the css of
+		 * model inside style tag
 		 *
 		 * @param    { string }    selector    Css selector
 		 * @param    { string }    attribute    CSS attribute
@@ -831,54 +1017,53 @@
 		 *
 		 * @returns { string } new style of element to insert inside style tag
 		 */
-		generateNewStyle: function ( selector, attribute, value ){
+		generateNewStyle: function ( selector, attribute, value, device ) {
 
-			var oldStyle = document.querySelector( '#style-' + this.elementSelector() ).innerHTML,
-				regex    = /(.*?){(.*?)}/g,
-				pattern  = new RegExp( regex ),
+			var regex = /(.*?){(.*?)}/g,
+				pattern = new RegExp( regex ),
 				selector = selector.trim(),
-				content  = '',
+				content = '',
 				result;
 
-			if ( '' != oldStyle ){
-				while ( ( result = pattern.exec( oldStyle ) ) !== null ){
+			var cssObject = this.getCss( device );
+
+			if ( '' != cssObject.oldStyle ) {
+				while ( ( result = pattern.exec( cssObject.oldStyle ) ) !== null ) {
 					// This is necessary to avoid infinite loops with zero-width matches
-					if ( result.index === regex.lastIndex ){
+					if ( result.index === regex.lastIndex ) {
 						regex.lastIndex++;
 					}
 
-					if ( result[ 1 ].trim() == selector ){
+					if ( result[ 1 ].trim() == selector ) {
 						content = result[ 2 ];
 						break;
 					}
 				}
 			}
 
+			var cssProperty = {};
+			if ( '' != content ) {
+				var splitContent = content.split( ';' );
 
-			if ( '' != content ){
-				var splitContent = content.split( ';' ),
-					cssProperty  = {};
-
-				_.each( splitContent, function ( property ){
-					var cssString = property.split(/(.*?)(:([^\/]))/g);
-					if ( "" != cssString[ 1 ] &&  undefined != cssString[ 1 ] ){
-						cssProperty[ cssString[ 1 ] ] = cssString[ 3 ] + cssString[ 4 ] ;
+				_.each( splitContent, function ( property ) {
+					var cssString = property.split( /(.*?)(:([^\/]))/g );
+					if ( "" != cssString[ 1 ] && undefined != cssString[ 1 ] ) {
+						cssProperty[ cssString[ 1 ] ] = cssString[ 3 ] + cssString[ 4 ];
 					}
 				} );
 
-				cssProperty[ attribute ] = value;
-				oldStyle = this.removeOldSelector( selector, oldStyle );
-				return oldStyle + this.generateStyleString( selector, cssProperty );
-			}else{
-				var cssProperty = {};
-				cssProperty[ attribute ] = value;
-				return oldStyle + this.generateStyleString( selector, cssProperty );
+				cssObject.oldStyle = this.removeOldSelector( selector, cssObject.oldStyle );
 			}
+			cssProperty[ attribute ] = value;
+			var newStyle = cssObject.oldStyle + this.generateStyleString( selector, cssProperty );
+
+			newStyle = this.putResponsiveCss( cssObject, device, newStyle );
+			return newStyle;
 
 		},
 
 		/**
-		 * @summary Remove old style string
+		 * Remove old style string
 		 *
 		 * @param    { string }    selector        CSS attribute
 		 * @param    { string }    oldStyle        Old css string
@@ -897,7 +1082,7 @@
 		},
 
 		/**
-		 * @summary renders the css of model inside style tag
+		 * renders the css of model inside style tag
 		 *
 		 * @param    { string }    selector        CSS attribute
 		 * @param    { object }    cssProperty     CSS value

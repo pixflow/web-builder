@@ -48,15 +48,23 @@ class Karma_Stylesheet {
 		if( empty( $element_attributes['css'] ) ){
 			return '';
 		}
-		$css_block = '' ;
+		$css_block = $tablet_block = $mobile_block = '' ;
 		foreach ( $element_attributes['css'] as $element_style ){
+
 			$prefix = isset( $element_style["prefix"] ) ? $element_style["prefix"] : '' ;
 			$postfix = isset( $element_style["postfix"] ) ? $element_style["postfix"] : '' ;
 			$selector = $this->create_selector( $element_attributes['selector'], $prefix, $postfix );
 			$property = $this->parse_property( $element_style['property'] );
 			$css_block .= $selector . '{' . $property . '}';
+			$tablet_property = ( isset( $element_style[ 'tablet_property' ] ) ) ? $this->parse_property( $element_style[ 'tablet_property' ] ) : '';
+			$tablet_block .= ( '' != $tablet_property ) ? $selector . '{' . $tablet_property . '}' : '';
+			$mobile_property = ( isset( $element_style[ 'mobile_property' ] ) ) ? $this->parse_property( $element_style[ 'mobile_property' ] ) : '';
+			$mobile_block .= ( '' != $mobile_property ) ? $selector . '{' . $mobile_property . '}' : '';
+
 		}
 
+		$css_block .= ( '' != $tablet_block ) ? '@media screen and (max-width: 1020px) { /*tablet-start*/' . $tablet_block . '/*tablet-finish*/}' : '';
+		$css_block .= ( '' != $mobile_block ) ? '@media screen and (max-width: 430px) { /*mobile-start*/' . $mobile_block . '/*mobile-finish*/}' : '';
 		return $css_block;
 
 	}
@@ -185,11 +193,11 @@ class Karma_Stylesheet {
 
 		$headings_style = '' ;
 		$headings_min_size_in_responsive = array(
-			'h1'    => '42',
-			'h2'    => '35',
-			'h3'    => '28',
-			'h4'    => '24',
-			'h5'    => '20',
+			'h1'    => '40',
+			'h2'    => '33',
+			'h3'    => '23',
+			'h4'    => '21',
+			'h5'    => '19',
 			'h6'    => '16',
 			'p'     => '14',
 		);

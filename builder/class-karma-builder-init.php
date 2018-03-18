@@ -6,6 +6,7 @@ namespace KarmaBuilder\PublicArea ;
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FileSystem\Karma_File_System as File_System;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
+use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
 
 /**
  * The public-facing functionality of the plugin.
@@ -121,7 +122,7 @@ class Karma_Builder_Public {
     	if( '' != $link ){
 		    wp_enqueue_style( "karma-google-font-link", $link , array(), $this->version, 'all' );
 	    }
-        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_FILE_URL, array(), $this->version, 'all' );
+        wp_enqueue_style( "karma-dynamic-style", KARMA_GLOBAL_STYLE_FILE_URL, array(), Karma_Typography::get_instance()->get_modify_date(), 'all' );
 
     }
 
@@ -182,9 +183,11 @@ class Karma_Builder_Public {
 			wp_enqueue_script( $this->plugin_name . '-gizmos-typography', KARMA_BUILDER_URL . 'builder/js/gizmos/typography.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-font-style', KARMA_BUILDER_URL . 'builder/js/gizmos/font-style.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-slider-and-radio-button', KARMA_BUILDER_URL . 'builder/js/gizmos/slider-and-radio-button.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-gizmos-multi-drop-down', KARMA_BUILDER_URL . 'builder/js/gizmos/multi-drop-down.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-hidden', KARMA_BUILDER_URL . 'builder/js/gizmos/hidden.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-gizmos-color', KARMA_BUILDER_URL . 'builder/js/gizmos/color.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 			wp_enqueue_script( $this->plugin_name . '-shortcodes', KARMA_BUILDER_URL . 'builder/js/karma-builder-shortcodes.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '-responsive-layout', KARMA_BUILDER_URL . 'builder/js/gizmos/responsive-layout.min.js', array( $this->plugin_name . '-gizmos' ), $this->version, false );
 
 		}else{
 

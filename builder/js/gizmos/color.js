@@ -18,7 +18,7 @@
 		},
 
 		/**
-		 * @summary Set event on input text colors
+		 * Set event on input text colors
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -74,7 +74,7 @@
 		},
 
 		/**
-		 * @summary init karma color picker plugin on color picker gizmo
+		 * init karma color picker plugin on color picker gizmo
 		 *
 		 * @since 0.1.0
 		 *

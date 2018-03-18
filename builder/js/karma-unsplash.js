@@ -26,7 +26,7 @@ window.requestAnimFrame = ( function(){
 
 (function ( $ ) {
 	/**
-	 * @summary KarmaUnsplash manager
+	 * KarmaUnsplash manager
 	 * The resources that make up the Unsplash JSON API
 	 *
 	 * @since 0.1.0
@@ -62,7 +62,7 @@ window.requestAnimFrame = ( function(){
 
 
 	/**
-	 * @summary Create unsplash images request url
+	 * Create unsplash images request url
 	 *
 	 * @param {string}  type        Link relations
 	 * @param {object}  queryParmas Query Parameters
@@ -81,7 +81,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Bind key behavior on Unsplash input
+	 * Bind key behavior on Unsplash input
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -112,7 +112,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Remove Html Unsplash results
+	 * Remove Html Unsplash results
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -127,7 +127,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Remove search mode and load photos
+	 * Remove search mode and load photos
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -144,7 +144,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Search specific photos in Unsplash
+	 * Search specific photos in Unsplash
 	 *
 	 * @param {object}  that    Karma Unsplash instance
 	 *
@@ -177,7 +177,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Read the last page surf from history
+	 * Read the last page surf from history
 	 *
 	 * @since 0.1.0
 	 * @returns {number} Last page surfed
@@ -189,7 +189,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Load images from Unsplash server or local storage
+	 * Load images from Unsplash server or local storage
 	 *
 	 * @param {number}  page        Page number to retrieve
 	 * @param {number}  perPage     Number of items per page
@@ -216,7 +216,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Check the data difference from last time that given images
+	 * Check the data difference from last time that given images
 	 * This function prevent from send repetitious request
 	 *
 	 * @since   0.1.0
@@ -242,7 +242,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Save JSON data from Unsplash to local storage
+	 * Save JSON data from Unsplash to local storage
 	 *
 	 * @param {number}  value  New images retrieved
 	 *
@@ -265,7 +265,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Create element for showing images
+	 * Create element for showing images
 	 *
 	 * @param {object}  images  Images retrieved
 	 * @param {object}  size    Type of image to load ( ex : small , large )
@@ -288,7 +288,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Execute functions on first init
+	 * Execute functions on first init
 	 *
 	 * @param {Object}  el      Parent Selector
 	 * @param {object}  images  Images retrieved
@@ -323,7 +323,7 @@ window.requestAnimFrame = ( function(){
 	}
 
 	/**
-	 * @summary Execute functions on first init
+	 * Execute functions on first init
 	 *
 	 * @param {Object}  el      Parent Selector
 	 *
@@ -340,7 +340,7 @@ window.requestAnimFrame = ( function(){
 	}
 
 	/**
-	 * @summary Append elements for showing images
+	 * Append elements for showing images
 	 *
 	 * @param {Object}  el      Parent Selector
 	 * @param {object}  images  Images retrieved
@@ -366,7 +366,7 @@ window.requestAnimFrame = ( function(){
 	}
 
 	/**
-	 * @summary Set infinity scroll for Unsplash image result element
+	 * Set infinity scroll for Unsplash image result element
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -397,7 +397,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Create and set event on each Unsplash element
+	 * Create and set event on each Unsplash element
 	 *
 	 * @param {object}  img     IMG info
 	 * @param {string}  size    Type of image to load ( ex : small , large )
@@ -437,7 +437,7 @@ window.requestAnimFrame = ( function(){
 
 	};
 	/**
-	 * @summary Make unsplash photo draggable in photo panel
+	 * Make unsplash photo draggable in photo panel
 	 *
 	 * @param {object}  newChild    New unsplash image
 	 * @param {string}  fullUrl		Url of image in regular size
@@ -457,7 +457,7 @@ window.requestAnimFrame = ( function(){
 	}
 
 	/**
-	 * @summary Set click event on images
+	 * Set click event on images
 	 *
 	 * @param {Object}  imageInput  Hidden input
 	 * @param {Object}  newChild    Unsplash item childes
@@ -493,7 +493,7 @@ window.requestAnimFrame = ( function(){
 	}
 
 	/**
-	 * @summary Process the response of XHR request
+	 * Process the response of XHR request
 	 *
 	 * @param {String}  response    response of XHR request
 	 *
@@ -518,7 +518,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Get a single page from the list of all photos
+	 * Get a single page from the list of all photos
 	 *
 	 * @param {string}  URL Request url
 	 *
@@ -555,7 +555,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary When an image is selected in the media frame and change background
+	 * When an image is selected in the media frame and change background
 	 *
 	 *  @param {object}  frame Wordpress media frame object
 	 *
@@ -579,7 +579,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Add tooltip to all images of unsplash
+	 * Add tooltip to all images of unsplash
 	 *
 	 *  @param {object} selector    Dom node
 	 *
@@ -619,7 +619,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Open WordPress Media library and handle choose image from media library instead of unsplash
+	 * Open WordPress Media library and handle choose image from media library instead of unsplash
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -635,7 +635,7 @@ window.requestAnimFrame = ( function(){
 	};
 
 	/**
-	 * @summary Scrolls to a particular set of coordinates in the document
+	 * Scrolls to a particular set of coordinates in the document
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -682,7 +682,7 @@ window.requestAnimFrame = ( function(){
 	}
 
 	/**
-	 * @summary Set event on scroll down arrow
+	 * Set event on scroll down arrow
 	 *
 	 * @since 0.1.0
 	 * @returns {void}

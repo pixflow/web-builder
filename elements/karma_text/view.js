@@ -17,11 +17,12 @@
 			if( this.options.renderStatus ){
 				this.render();
 			}
+			this.el.querySelector('.karma-text-content').contentEditable = true;
 
 		},
 
 		/**
-		 * @summary Render text element
+		 * Render text element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -31,10 +32,11 @@
 			var source = this.template( this.model );
 			this.el.querySelector('.karma-element-content').innerHTML = source;
 
+
 		},
 
 		/**
-		 * @summary Prevent from drop any HTML elements on editable content
+		 * Prevent from drop any HTML elements on editable content
 		 *
 		 * @since 0.1.0
 		 * @return {boolean}
@@ -48,7 +50,7 @@
 
 
 		/**
-		 * @summary Save the content of the text element
+		 * Save the content of the text element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -71,7 +73,7 @@
 		},
 
 		/**
-		 * @summary get text typography and change innerHtml of text
+		 * get text typography and change innerHtml of text
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -81,17 +83,16 @@
 			var element = this.el.querySelector( '.karma-text-tag' ),
 				tagAttr = this.getAttributes( ['tag'] ),
 				newTag = document.createElement( tagAttr.tag );
+
 			newTag.innerHTML = element.innerHTML;
+			newTag.contentEditable = true ;
 			newTag.classList.add( 'karma-text-tag', 'karma-document-click', 'karma-editable-content' );
-			if(document.body.classList.contains('karma-device-mode-desktop')) {
-				newTag.contentEditable = true;
-			}
 			element.parentNode.replaceChild( newTag, element );
 
 		},
 
 		/**
-		 * @summary get text element alignment
+		 * get text element alignment
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -107,7 +108,7 @@
 
 
 		/**
-		 * @summary Set color for text element
+		 * Set color for text element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -122,7 +123,7 @@
 
 
 		/**
-		 * @summary Active on editable elements and check inner text
+		 * Active on editable elements and check inner text
 		 *
 		 * @since 0.1.0
 		 * @return {boolean}
@@ -134,13 +135,9 @@
 				focusElement = this.el.querySelector( '.karma-editable-content' );
 
 			if ( "Write down something cool" == contentValue.trim() ) {
-				content.innerText = "";
+				content.innerHTML = "&nbsp;";
 			}
 			if( false == focusElement.classList.contains( 'focus' ) ){
-
-				if(document.body.classList.contains( 'karma-device-mode-desktop' )) {
-					focusElement.contentEditable = true;
-				}
 				focusElement.classList.add( 'karma-text-element-focus' );
 				focusElement.focus();
 			}
@@ -150,7 +147,7 @@
 		},
 
 		/**
-		 * @summary Update font styles for text element
+		 * Update font styles for text element
 		 *
 		 * @since 0.1.0
 		 * @return {void}
@@ -169,7 +166,7 @@
 		},
 
 		/**
-		 * @summary Update bold styles for text element
+		 * Update bold styles for text element
 		 *
 		 * @param   {Object}    computedObject  Selected DOM node.
 		 * @param   {tagName}   tagName         The tag name of Selected DOM node.
@@ -188,7 +185,7 @@
 		},
 
 		/**
-		 * @summary Update bold styles for text element
+		 * Update bold styles for text element
 		 *
 		 * @param   {Object}    computedObject  Selected DOM node.
 		 * @param   {tagName}   tagName         The tag name of Selected DOM node.
@@ -207,7 +204,7 @@
 		},
 
 		/**
-		 * @summary Update bold styles for text element
+		 * Update bold styles for text element
 		 *
 		 * @param   {Object}    computedObject  Selected DOM node.
 		 * @param   {tagName}   tagName         The tag name of Selected DOM node.
@@ -226,7 +223,7 @@
 		},
 
 		/**
-		 * @summary Return HTML of selected text
+		 * Return HTML of selected text
 		 *
 		 *
 		 * @since 0.1.0

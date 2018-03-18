@@ -1,0 +1,78 @@
+.karma-preview-template-container{
+	@include box( 100vw,100vh );
+	opacity: 0;
+	position: absolute;
+	top:0;
+	transform: scale(.9);
+	transition-duration: 400ms ;
+	visibility: hidden;
+	z-index: 10;
+
+	&.karma-preview-template-container-show{
+		opacity: 1;
+		transform: scale(1);
+		transition-duration: 400ms ;
+		visibility: visible;
+	}
+	.karma-preview-template-header{
+		@include box( 100%,58px );
+		@include flexbox( $align-item:center, $justify-content:space-between);
+		background-color: #FFFFFF;
+		box-shadow: 0 10px 20px 0 rgba(57,73,89,0.2);
+		flex-direction:row-reverse ;
+		padding: 0 12px 0 25px;
+		position: absolute;
+		top:0;
+	
+		.karma-preview-template-header-right{
+			display: flex;
+			flex-direction: row-reverse;
+			.karma-preview-template-cancel-btn{
+				@include border-button($color:$builder-main-color-1, $border:#EBECEE);
+				align-items: center;
+				cursor: pointer;
+				margin-left: 9px;
+				span{
+
+				}
+			}
+			.karma-preview-template-start-btn{
+				@include fill-button($background-color:$builder-accent-color);
+				cursor: pointer;
+				margin-left: 23px;
+				white-space: nowrap;
+				span{
+
+				}
+			}
+			.karma-preview-template-price{
+				@include flexbox( $align-item:center, $justify-content:center);
+				color: $builder-main-color-1;
+				@extend .karma-builder-title-3;
+				font-weight: 500;
+			}
+		}
+		.karma-preview-template-header-left{
+			align-items: center;
+			display: flex;
+			.karma-preview-template-logo{
+				img{
+					margin-right: 10px;
+				}
+
+			}
+			.karma-preview-template-preview-btn{
+				color: $builder-main-color;
+				cursor: context-menu;
+				font-size: 16px;
+				line-height: 18px;
+				padding-top: 5px;
+			}
+		}
+	}
+	.karma-preview-template-iframe{
+		background-color: #dadada;
+		padding-top: 58px;
+
+	}
+}

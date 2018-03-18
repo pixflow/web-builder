@@ -18,7 +18,7 @@ use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
  * Plugin Name:       Karma Website Builder
  * Plugin URI:        http://pixflow.net/products/karma/try-free
  * Description:       Visually create your website in fastest and easiest way with Fully Customized Karma Builder.
- * Version:           0.1.0
+ * Version:           2.7.0
  * Author:            Pixflow
  * Author URI:        http://pixflow.net
  * License:           GPL-2.0+

@@ -40,7 +40,7 @@
 		},
 
 		/**
-		 * @summary visibility of element in responsive
+		 * visibility of element in responsive
 		 *
 		 * @since 0.1.1
 		 * @returns {void}
@@ -85,7 +85,7 @@
 		},
 
 		/**
-		 * @summary visibility of element in responsive
+		 * visibility of element in responsive
 		 *
 		 * @since 0.1.1
 		 * @returns {void}

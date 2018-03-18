@@ -11,7 +11,7 @@
 
 
 /**
- * @summary karmaColorPicker manager
+ * karmaColorPicker manager
  * The resources that add karmaColorPicker to input
  *
  * @param {object}  options input css selector
@@ -58,7 +58,7 @@
 	};
 
 	/**
-	 * @summary generate uniqueID for color picker
+	 * generate uniqueID for color picker
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -77,7 +77,7 @@
 	};
 
 	/**
-	 * @summary convert all preset colors to rgb
+	 * convert all preset colors to rgb
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -92,7 +92,7 @@
 
 
 	/**
-	 * @summary init color picker on input with passed selector
+	 * init color picker on input with passed selector
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -111,7 +111,7 @@
 	};
 
 	/**
-	 * @summary create color circle icon to open color picker popup
+	 * create color circle icon to open color picker popup
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -141,7 +141,7 @@
 	};
 
 	/**
-	 * @summary create no color preset
+	 * create no color preset
 	 *
 	 * @param  {object} preset colors element
 	 * @since 0.1.1
@@ -159,7 +159,7 @@
 	};
 
 	/**
-	 * @summary create color picker popup
+	 * create color picker popup
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -222,7 +222,7 @@
 	};
 
 	/**
-	 * @summary apply preset colors events
+	 * apply preset colors events
 	 *
 	 * @param  {object} el element that need event to change color
 	 *
@@ -247,7 +247,7 @@
 	};
 
 	/**
-	 * @summary change color action
+	 * change color action
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -274,7 +274,7 @@
 	};
 
 	/**
-	 * @summary set main input value
+	 * set main input value
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -298,7 +298,7 @@
 	};
 
 	/**
-	 * @summary set choose color event
+	 * set choose color event
 	 *
 	 * @since 0.1.0
 	 * @returns {boolean}
@@ -321,7 +321,7 @@
 	};
 
 	/**
-	 * @summary add user color pallet
+	 * add user color pallet
 	 *
 	 * @param {string} color     color of new pallet
 	 * @param {bool}   addClass  Add extra class
@@ -344,7 +344,7 @@
 	};
 
 	/**
-	 * @summary update main input value
+	 * update main input value
 	 *
 	 * @param {string} newColor main color new value
 	 *
@@ -365,7 +365,7 @@
 	};
 
 	/**
-	 * @summary Save colors into local storage
+	 * Save colors into local storage
 	 *
 	 * @param {String} Color main color new value
 	 *
@@ -390,7 +390,7 @@
 	};
 
 	/**
-	 * @summary change color of elements
+	 * change color of elements
 	 *
 	 * @param {String}  color   Color selected in color picker
 	 *
@@ -413,7 +413,7 @@
 	}
 
 	/**
-	 * @summary init spectrum color picker
+	 * init spectrum color picker
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -469,7 +469,7 @@
 	};
 
 	/**
-	 * @summary Open Color Picker
+	 * Open Color Picker
 	 *
 	 * @since 0.1.0
 	 * @returns {void}
@@ -519,7 +519,7 @@
 	};
 
 	/**
-	 * @summary check if current color is not exist in pallets, add it
+	 * check if current color is not exist in pallets, add it
 	 *
 	 * @param {string} color
 	 * @param {string} type main or second color
@@ -552,7 +552,7 @@
 	};
 
 	/**
-	 * @summary convert hex color to rgb color
+	 * convert hex color to rgb color
 	 *
 	 * @param {string}	hex
 	 * @since 0.1.0

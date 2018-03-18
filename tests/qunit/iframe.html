@@ -4,6 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Iframe model</title>
 	<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
+	<style>
+		.karma-builder-environment *:not( #karma-builder-layout ){
+			visibility: hidden !important;
+		}
+		.karma-builder-environment #karma-show-parent,
+		.karma-builder-environment #karma-builder-layout *[ class *= "karma" ]{
+			visibility: visible !important;
+		}
+	</style>
 	<script src="../../../../../wp-includes/js/jquery/jquery.js"></script>
 	<script type="text/javascript">
 		var builderParams = '{"ajaxUrl":"test.txt"}';
@@ -73,34 +82,49 @@
 <div id="qunit"></div>
 <div id="qunit-fixture"></div>
 <div id="karma-tests" style="display: none;">
-	<div class="karma-builder-element " data-element-key="firtstrow_12312" data-name="karma_row" data-element-id="4">
-		<div class="karma-section karma_row_firtstrow_12312 ">
-			<div class="karma-container karma-row karma-no-gutters">
-				<div class="karma-builder-element karma-column_12a12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
-				     data-element-key="12a12" data-name="karma_column" data-element-id="1">
-					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
-						<div class="karma-column-margin">
-							test
+	<div class="layout-container">
+		<header>
+			<nav>
+				<ul>
+					<li></li>
+					<li></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div id="karma-builder-layout">
+			<div class="karma-builder-element " data-element-key="firtstrow_12312" data-name="karma_row" data-element-id="4">
+				<div class="karma-section karma_row_firtstrow_12312 ">
+					<div class="karma-container karma-row karma-no-gutters">
+						<div class="karma-builder-element karma-column_12a12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+							 data-element-key="12a12" data-name="karma_column" data-element-id="1">
+							<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+								<div class="karma-column-margin">
+									test
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="karma-builder-element karma-column_1r312 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
-				     data-element-key="1r312" data-name="karma_column" data-element-id="2">
-					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
-						<div class="karma-column-margin">
-							test
+						<div class="karma-builder-element karma-column_1r312 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+							 data-element-key="1r312" data-name="karma_column" data-element-id="2">
+							<div class="karma-left-spacing"></div>
+							<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+								<div class="karma-column-margin">
+									test
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="karma-builder-element karma-column_ssssscolumn_12g12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
-				     data-element-key="ssssscolumn_12g12" data-name="karma_column" data-element-id="3">
-					<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
-						<div class="karma-column-margin">
-							<div id="karma-text-kbovyroe" class="karma-builder-element karma-builder-child-elements"
-							     data-element-key="kbovyroe" data-name="karma_text">
-								<div class="karma-text karma-text-kbovyroe">
-									<p class="karma-text-content karma-text-tag karma-document-click karma-editable-content ">
-										Write down something cool</p>
+						<div class="karma-builder-element karma-column_ssssscolumn_12g12 karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4"
+							 data-element-key="ssssscolumn_12g12" data-name="karma_column" data-element-id="3">
+							<div class="karma-left-spacing"></div>
+							<div class="karma-column karma-col-sm-4 karma-col-md-4 karma-col-lg-4 karma-col-xl-4">
+								<div class="karma-column-margin">
+									<div id="karma-text-kbovyroe" class="karma-builder-element karma-builder-child-elements"
+										 data-element-key="kbovyroe" data-name="karma_text">
+										<div class="karma-text karma-text-kbovyroe">
+											<p class="karma-text-content karma-text-tag karma-document-click karma-editable-content ">
+												Write down something cool</p>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -108,6 +132,7 @@
 				</div>
 			</div>
 		</div>
+		<footer>copyright</footer>
 	</div>
 </div>
 
