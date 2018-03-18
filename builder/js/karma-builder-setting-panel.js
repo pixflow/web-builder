@@ -187,15 +187,20 @@
 		formBuilder : function( form ) {
 
 			var elementModel = this.model.attributes ,
+				formBuilderContents = this.formBuilderContentHtml( form ),
 				elementParams = this.getElementMap( elementModel.shortcode_name, form );
 
 			if( null == elementParams ){
 				return;
 			}
 			var popup = document.createElement('div'),
-				settingPanelHeight = elementParams.height,
-				karmaFormHtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">',
-				formBuilderContents = this.formBuilderContentHtml( form );
+				settingPanelHeight = elementParams.height;
+
+			if( undefined == settingPanelHeight ){
+				var	karmaFormHtml = '<form id="karma-Builder-form"  autocomplete="off" onsubmit="return false">';
+			}else{
+				var	karmaFormHtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">';
+			}
 
 			karmaFormHtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
 			popup.innerHTML = karmaFormHtml ;
