@@ -58,7 +58,23 @@
 
 					}
 				}
+				&:after{
+					background: linear-gradient(180deg, rgba(238, 238, 238, 0) 0%, rgba(57, 73, 89, 0.2) 100%);
+					bottom: 0;
+					content: ' ';
+					display: block;
+					height: 67px;
+					position: absolute;
+					width: 100%;
+				}
 
+			}
+			&.karma-blank-page-template{
+				.karma-page-screenshot-container{
+					&:after{
+						display: none;
+					}
+				}
 			}
 			.karma-template-description-container{
 				@include box( 100%, 75px );
@@ -76,6 +92,7 @@
 					background-color: #EBECEE;
 					border-radius: 50px;
 				}
+
 			}
 
 			&:hover{
