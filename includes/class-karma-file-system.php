@@ -202,7 +202,11 @@ class Karma_File_System{
 	 */
 	public function file_get_content( $path ){
 
-		return $this->file->get_contents( $path );
+		$content = $this->file->get_contents( $path );
+		if( false == $content || '' == $content ){
+			$content = file_get_contents($path);
+		}
+		return $content;
 
 	}
 

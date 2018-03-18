@@ -16,7 +16,7 @@ var karmaBuilderPageManager = karmaBuilderPageManager  || {};
 		+'<span>Cancel</span>'
 		+ '</div>'
 		+ '<div class="karma-preview-template-start-btn">'
-		+'<span data-id="{{ data.templateID }}">START EDITING</span>'
+		+'<span class="start-editing-button" data-id="{{ data.templateID }}">START EDITING</span>'
 		+ '</div>'
 		+ '<div class="karma-preview-template-price">'
 		+'<span>Price:</span>'
@@ -141,11 +141,12 @@ var karmaBuilderPageManager = karmaBuilderPageManager  || {};
 		 *
 		 */
 		openAddNewPopup: function ( e ) {
-			
-			var templateId = e.target.getAttribute( 'data-id' );
+
+			var target = ( e.target.classList.contains( 'start-editing-button' ) ) ? e.target : e.target.querySelector( '.start-editing-button' ),
+				templateId = target.getAttribute( 'data-id' );
 			document.querySelector( 'input[name="import-template"]' ).value = templateId;
-			document.querySelector('.karma-page-popup-container').classList.add('karma-page-popup-container-show');
-			document.querySelector('.karma-page-popup-overlay').classList.add('karma-page-popup-overlay-show');
+			document.querySelector( '.karma-page-popup-container' ).classList.add( 'karma-page-popup-container-show' );
+			document.querySelector( '.karma-page-popup-overlay' ).classList.add( 'karma-page-popup-overlay-show' );
 
 		},
 
