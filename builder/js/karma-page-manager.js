@@ -145,8 +145,10 @@ var karmaBuilderPageManager = karmaBuilderPageManager  || {};
 		 * @since 2.0
 		 *
 		 */
-		openAddNewPopup: function () {
-
+		openAddNewPopup: function ( e ) {
+			
+			var templateId = e.target.getAttribute( 'data-id' );
+			document.querySelector( 'input[name="import-template"]' ).value = templateId;
 			document.querySelector('.karma-page-popup-container').classList.add('karma-page-popup-container-show');
 			document.querySelector('.karma-page-popup-overlay').classList.add('karma-page-popup-overlay-show');
 
