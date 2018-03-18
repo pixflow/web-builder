@@ -4,6 +4,7 @@ namespace KarmaBuilder ;
 /** Importing, Aliases, and Name Resolution */
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern ;
 use KarmaBuilder\Core\Karma_Builder_Core as Karma_Builder_Core ;
+use KarmaBuilder\PageManager\Karma_Page_Manager as Karma_Page_Manager;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
 
 
@@ -217,6 +218,11 @@ class Karma_Builder {
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-typography.php';
 
 		/**
+		 * The class responsible for working with page manager
+		 */
+		require_once KARMA_BUILDER_DIR . 'includes/class-karma-page-manager.php';
+
+		/**
 		 * The class responsible for working with stylesheets
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-stylesheet.php';
@@ -231,7 +237,7 @@ class Karma_Builder {
 		 * The class responsible for define all elements controllers
 		 */
 		require_once KARMA_BUILDER_DIR . 'includes/class-karma-shortcode-base.php';
-		
+
 		/**
 		 * The class responsible for Loading templates in frontend
 		 */
@@ -353,21 +359,42 @@ class Karma_Builder {
 	}
 
 	/**
+	 * Check conditions to prevent load WordPress
+	 *
+	 * @since    2.0
+	 * @return    boolean    true if should prevent load otherwise false.
+	 */
+	public function check_prevent_load_wordpress() {
+
+		$prevent_load = false;
+		if ( is_user_logged_in() ) {
+			if ( self::is_in_builder() && isset( $_GET[ 'load_builder' ] ) ) {
+				$prevent_load = true;
+			}
+			if ( Karma_Typography::check_typography_page() ) { //Check is on typography manager page
+				$prevent_load = true;
+			} elseif ( Karma_Page_Manager::check_page_manager_page() ) { //Check is on page manager page
+				$prevent_load = true;
+			}
+		}
+		return $prevent_load;
+
+	}
+
+	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
 	 * @since    0.1.0
 	 */
 	public function run() {
 
-		if ( ( self::is_in_builder() && isset( $_GET[ 'load_builder' ] ) || Karma_Typography::check_typography_page() ) && is_user_logged_in() ) {
+		if ( $this->check_prevent_load_wordpress() ) {
 			$this->prevent_from_loading_wordpress();
 		}
 		$this->set_builder_status();
 		$this->loader->load_builder();
 
 	}
-
-
 
 	/**
 	 * Check for loading script and styles for builder
@@ -417,11 +444,22 @@ class Karma_Builder {
 		do_action( 'karma_before_load_builder_window' );
 
 		$this->modify_wordpress_action();
-		if( Karma_Typography::check_typography_page() ){
+		if ( Karma_Typography::check_typography_page() ) {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_typography_assets' ], 999999 );
 			$typography = Karma_Typography::get_instance();
 			$typography->load_page_templates();
-		}else{
+		} elseif ( Karma_Page_Manager::check_page_manager_page() ) {
+			$page_manager = Karma_Page_Manager::get_instance();
+			if ( $page_manager->check_import_template() ) {
+				$new_page_url = $page_manager->import_template();
+				if ( $new_page_url ) {
+					header( 'location:' . $new_page_url );
+				}
+			} else {
+				add_action( 'wp_enqueue_scripts', [ $page_manager, 'enqueue_assets' ], 999999 );
+				$page_manager->load_page_templates();
+			}
+		} else {
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_builder_assets' ], 999999 );
 			$builder_views = Karma_Factory_Pattern::$builder_views;
 			$builder_views->load_builder_environment();
@@ -470,6 +508,7 @@ class Karma_Builder {
 	 *
 	 * @return void
 	 */
+	// @TODO: must moved to typograpgy class
 	public function enqueue_typography_assets(){
 
 		wp_print_scripts( array( 'jquery', 'wp-util', 'backbone' ) );

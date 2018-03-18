@@ -997,8 +997,12 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  */
 @keyframes load_delete_overlay {
   00% {
+    opacity: 0;
+    visibility: hidden;
     background-color: transparent; }
   100% {
+    opacity: 1;
+    visibility: visible;
     background-color: rgba(0, 0, 0, 0.3); } }
 @keyframes close_delete_overlay {
   00% {
@@ -1042,12 +1046,12 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
  * @group helpers
  * @output publish button
  */
-.center-both-flex, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
+.center-both-flex, .karma-page-popup-container .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, .karma-builder-toolbar, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .revert-svg, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-svg .karma-setting-panel-close-svg, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-view-border .karma-add-column-view-add {
   align-items: center;
   display: flex;
   justify-content: center; }
 
-.space-between, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
+.space-between, .karma-page-popup-container .karma-dropdown-body .karma-dropdown-header, .karma-dropdown-controller .karma-dropdown-body .karma-dropdown-header {
   display: flex;
   justify-content: space-between; }
 
@@ -1073,7 +1077,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
   font-size: 16px;
   line-height: 28px; }
 
-.karma-builder-title-3, .karma-typography-box-style, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul > li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-gizmo-multi-drop-down-content .karma-gizmo-multi-drop-down-content-box .karma-gizmo-multi-drop-down-text, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-image-buttons, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
+.karma-builder-title-3, .karma-typography-box-style, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-input .karma-dropdown-selected-item, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-create-button, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-cancel-button, .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-cancel-btn, .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-start-btn, .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-price, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-cancel-button, .karma-builder-toolbar .karma-builder-left ul > li, .karma-builder-toolbar .karma-builder-right ul li, .karma-builder-toolbar .karma-builder-right ul li.builder-user-profile div, #karma-element-setting-panel-container .karma-element-setting-panel .karma-element-setting-panel-header .karma-element-setting-panel-header-title, .karma-dropdown-controller, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box.karma-gizmo-multi-drop-down-content .karma-gizmo-multi-drop-down-content-box .karma-gizmo-multi-drop-down-text, .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-gizmo-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-title-with-background-controller div.karma-title-with-background-field, .karma-title-controller div.karma-title-field, .karma-radio-image-controller .radio-image-controller-label, .karma-setting-panel-group-container button.karma-setting-panel-group-button p, .karma-range-slider-container .karma-range-slider-number label, .karma-slider-controller-title, #karma-element-setting-panel-container .grid-controller-template .karma-add-column-button button, .karma-check-box-controller .check-box-controller-template .karma-check-box-title, .karma-image-position-container .karma-all-controller-title, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button, #karma-element-setting-panel-container .karma-switch-panel-container .karma-switch-panel-button p, .karma-upload-image-content .karma-image-buttons, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-builder-addcontent-title, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-left .karma-addcontent-name, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button, #karma-add-element .karma-builder-element-panel-gather-menu ul, .karma-color-picker-controller .color-picker-controller-template .karma-color-picker-title {
   font-size: 14px;
   line-height: 16px; }
 
@@ -1102,7 +1106,7 @@ Files inside this folder can contain abstract settings, helpers or functions. Th
 .karma-colorpicker-style-border-radius-box, .sp-color, .sp-val, .sp-val .sp-dragger, .sp-container.sp-light, .sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
   border-radius: 5px; }
 
-.karma-button-padding, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-upload-image-content .karma-image-buttons, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button {
+.karma-button-padding, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-create-button, .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-cancel-btn, .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-start-btn, .karma-delete-message-box .karma-delete-message-container .karma-delete-message-box-buttons .karma-delete-message-box-delete-button, .karma-upload-image-content .karma-image-buttons, #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button, #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button {
   padding: 0 20px; }
 
 .karma-hide {
@@ -2855,6 +2859,357 @@ html {
     -ms-flex-item-align: stretch !important;
     align-self: stretch !important; } }
 /* _-_-_- base/TYPOGRAPHY -_-_-_ */
+.karma-page-popup-overlay {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 120;
+  visibility: hidden;
+  background-color: inherit;
+  transition-duration: .5s; }
+  .karma-page-popup-overlay.karma-page-popup-overlay-show {
+    transition-duration: .5s;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    visibility: visible; }
+
+.karma-page-popup-container {
+  opacity: 0;
+  left: 32%;
+  position: absolute;
+  top: 30%;
+  transform: scale(0.9);
+  transition-duration: 150ms;
+  visibility: hidden; }
+  .karma-page-popup-container.karma-page-popup-container-show {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transition-duration: 150ms; }
+  .karma-page-popup-container .karma-page-popup-content {
+    width: 621px;
+    height: 369px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px 3px rgba(57, 73, 89, 0.2);
+    display: flex;
+    flex-basis: auto; }
+    .karma-page-popup-container .karma-page-popup-content .karma-page-popup-image {
+      align-items: center;
+      justify-content: flex-end;
+      display: flex;
+      text-align: inherit;
+      background-color: #ECF5FE;
+      flex-basis: 52%;
+      position: relative; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-image .karma-page-popup-image-close-icon {
+        width: 15px;
+        height: 14px;
+        background-image: url("../media/svg/close.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        position: absolute;
+        right: 14px;
+        top: 14px; }
+    .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new {
+      flex-basis: 50%;
+      padding: 35px 37px;
+      text-align: left; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new input {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        box-shadow: none;
+        outline: none; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-dropdown-selected-item {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        box-shadow: none;
+        outline: none; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new input.karma-page-popup-hidden-input {
+        display: none; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-title {
+        font-size: 20px;
+        line-height: 24px; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-name-tiltle, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-title {
+        color: rgba(57, 73, 89, 0.5);
+        font-size: 12px;
+        line-height: 14px;
+        padding-top: 31px; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-name-input, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-input {
+        width: 234px;
+        height: 40px;
+        border: 1px solid rgba(57, 73, 89, 0.2);
+        border-radius: 4px;
+        margin-top: 7px; }
+        .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-name-input input, .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-input input {
+          color: #394959;
+          font-size: 13px;
+          line-height: 16px;
+          padding-left: 15px; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-dropdown-body {
+        margin-bottom: 0; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-title {
+        padding-top: 18px; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-input .karma-dropdown-selected-item {
+        color: #394959;
+        padding-left: 15px;
+        padding-top: 12px;
+        white-space: nowrap;
+        overflow-x: hidden; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-description {
+        align-items: center;
+        color: #394959;
+        display: flex;
+        flex-direction: row;
+        font-size: 10px;
+        line-height: 12px;
+        padding-top: 11px; }
+        .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-layout-description div {
+          width: 4px;
+          height: 4px;
+          background-color: #419CF8;
+          border-radius: 50%;
+          margin-right: 4px; }
+      .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button {
+        display: flex;
+        flex-direction: row;
+        padding-top: 38px; }
+        .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-create-button {
+          width: 83px;
+          height: 40px;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          text-align: center;
+          color: #fff;
+          background-color: #FF243F;
+          border-radius: 2px;
+          border: none;
+          cursor: pointer;
+          height: 40px;
+          transition-duration: .2s;
+          background-color: #419CF8;
+          border-radius: 2px;
+          color: #fff; }
+          .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-create-button:focus {
+            transition-duration: .2s; }
+          .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-create-button:hover {
+            transition-duration: 0.2s;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px 0 rgba(57, 73, 89, 0.2); }
+        .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-cancel-button {
+          color: #394959;
+          cursor: pointer;
+          cursor: pointer;
+          padding: 12px 21px;
+          transition-duration: 0.3s; }
+          .karma-page-popup-container .karma-page-popup-content .karma-page-popup-add-new .karma-page-popup-button .karma-page-popup-cancel-button:hover {
+            color: #9CA4AC;
+            transition-duration: 0.3s; }
+  .karma-page-popup-container .karma-dropdown-body {
+    cursor: pointer;
+    margin-bottom: 18px;
+    margin-top: 11px;
+    position: relative; }
+    .karma-page-popup-container .karma-dropdown-body .karma-dropdown-header {
+      align-items: center; }
+      .karma-page-popup-container .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 100px;
+        border: 1px solid #D7DBDE;
+        border: none; }
+        .karma-page-popup-container .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon span {
+          margin-top: -1px; }
+        .karma-page-popup-container .karma-dropdown-body .karma-dropdown-header .karma-dropdown-icon svg * {
+          stroke: #394959; }
+    .karma-page-popup-container .karma-dropdown-body .karma-dropdown-options {
+      width: 250px;
+      height: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 12px 0 rgba(57, 73, 89, 0.2);
+      display: none;
+      flex-direction: column;
+      left: 0;
+      list-style: none;
+      overflow: hidden;
+      padding: 7px;
+      position: fixed;
+      top: 36px;
+      z-index: -70; }
+      .karma-page-popup-container .karma-dropdown-body .karma-dropdown-options .karma-dropdown-option-title {
+        font-size: 14px; }
+      .karma-page-popup-container .karma-dropdown-body .karma-dropdown-options.karma-doropdown-opened {
+        display: flex;
+        height: auto;
+        z-index: 100; }
+
+@keyframes load_page_popup_box {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.7); }
+  30% {
+    opacity: .3;
+    transform: scale(0.8); }
+  60% {
+    opacity: .6;
+    transform: scale(0.9); }
+  90% {
+    opacity: 1;
+    transform: scale(1); }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1); } }
+@keyframes close_page_popup_box {
+  00% {
+    opacity: 1;
+    transform: scale(1); }
+  25% {
+    opacity: .8;
+    transform: scale(1); }
+  50% {
+    opacity: .6;
+    transform: scale(0.9); }
+  75% {
+    opacity: .3;
+    transform: scale(0.8); }
+  100% {
+    opacity: 0;
+    transform: scale(0.7); } }
+@keyframes load_age_popup_overlay {
+  00% {
+    opacity: 0;
+    visibility: hidden;
+    background-color: transparent; }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5); } }
+@keyframes close_age_popup_overlay {
+  00% {
+    background-color: rgba(0, 0, 0, 0.5); }
+  100% {
+    background-color: transparent; } }
+.karma-preview-template-container {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(0.9);
+  transition-duration: 400ms;
+  visibility: hidden;
+  z-index: 10; }
+  .karma-preview-template-container.karma-preview-template-container-show {
+    opacity: 1;
+    transform: scale(1);
+    transition-duration: 400ms;
+    visibility: visible; }
+    .karma-preview-template-container.karma-preview-template-container-show .karma-preview-template-iframe-show {
+      visibility: visible; }
+  .karma-preview-template-container .karma-preview-template-header {
+    width: 100%;
+    height: 58px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    text-align: inherit;
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 20px 0 rgba(57, 73, 89, 0.2);
+    flex-direction: row-reverse;
+    padding: 0 12px 0 25px;
+    position: absolute;
+    top: 0; }
+    .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right {
+      display: flex;
+      flex-direction: row-reverse; }
+      .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-cancel-btn {
+        align-items: inherit;
+        justify-content: inherit;
+        display: flex;
+        text-align: center;
+        color: #747F8A;
+        background-color: inherit;
+        border-radius: 2px;
+        border: 1px solid #EBECEE;
+        cursor: pointer;
+        height: 40px;
+        transition-duration: .2s;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 9px; }
+        .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-cancel-btn:focus {
+          transition-duration: .2s; }
+        .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-cancel-btn:hover {
+          transition-duration: 0.2s;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 15px 0 rgba(57, 73, 89, 0.2); }
+      .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-start-btn {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        color: #fff;
+        background-color: #419CF8;
+        border-radius: 2px;
+        border: none;
+        cursor: pointer;
+        height: 40px;
+        transition-duration: .2s;
+        cursor: pointer;
+        margin-left: 23px;
+        white-space: nowrap; }
+        .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-start-btn:focus {
+          transition-duration: .2s; }
+        .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-start-btn:hover {
+          transition-duration: 0.2s;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 15px 0 rgba(57, 73, 89, 0.2); }
+      .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-right .karma-preview-template-price {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        text-align: inherit;
+        color: #747F8A;
+        font-weight: 500; }
+    .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-left {
+      align-items: center;
+      display: flex; }
+      .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-left .karma-preview-template-logo img {
+        margin-right: 10px; }
+      .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-left .karma-preview-template-preview-btn {
+        color: #394959;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 18px;
+        padding-top: 5px; }
+  .karma-preview-template-container .karma-preview-template-iframe {
+    background-color: #dadada;
+    padding-top: 58px; }
+    .karma-preview-template-container .karma-preview-template-iframe iframe {
+      opacity: 0;
+      transition-duration: .3s;
+      visibility: hidden; }
+      .karma-preview-template-container .karma-preview-template-iframe iframe.karma-preview-template-iframe-show {
+        opacity: 1;
+        transition-duration: .3s; }
+
 .karma-editable-content {
   display: inline-block; }
 
@@ -4731,10 +5086,13 @@ body:not(.karma-builder-environment) .karma-element-content .karma-image-both-re
           fill: #747F8A; }
       .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-icon div {
         width: 18px;
-        height: 13px;
+        height: 20px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain; }
+      .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-icon.karma-multi-drop-down-gizmo:hover svg * {
+        transition-duration: 0.1s;
+        fill: #419CF8; }
     .karma-builder-environment .karma-builder-element .karma-gizmo-template .karma-drop-down-box {
       background-color: #fff;
       border-radius: 4px;

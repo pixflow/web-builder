@@ -162,6 +162,21 @@ abstract class Karma_Base_Manager{
 
 	}
 
+	/*
+	 * get post ID and return karma builder URL for post
+	 *
+	 * @param   integer $post_id post ID
+	 *
+	 * @since   0.1.0
+	 * @return  string      URL that open Karma to edit post
+	 */
+	public function generate_builder_url( $post_id ) {
+
+		$builder_url = get_permalink( $post_id );
+		$builder_url .= ( false === strpos( $builder_url, '?' ) ) ? '?load_builder=true' : '&load_builder=true';
+
+		return $builder_url;
+
+	}
 
 }
-

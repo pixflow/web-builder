@@ -507,11 +507,23 @@ body:not(.karma-builder-environment) {
 					}
 				}
 				div {
-					@include box( 18px, 13px );
+					@include box( 18px, 20px );
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
 				}
+				&.karma-multi-drop-down-gizmo{
+					&:hover{
+						svg{
+							*{
+								transition-duration: 0.1s;
+								fill: $builder-accent-color;
+							}
+						}
+					}
+
+				}
+
 			}
 			.karma-drop-down-box {
 				@extend .karma-builder-shadow-box-2;
@@ -606,6 +618,8 @@ body:not(.karma-builder-environment) {
 							@include box(24px,18px);
 							background-position: center;
 							background-repeat: no-repeat;
+
+
 						}
 					}
 				}

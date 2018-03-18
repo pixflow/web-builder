@@ -1,1 +1,96 @@
-/* _-_-_- pages/Page manager -_-_-_ */
+.karma-page-manager{
+
+	background-color: rgba(57, 73, 89, 0.1);
+	height: 90vh;
+	overflow-y: scroll;
+	width: 100vw;
+
+	.karma-templates-container{
+		@include flexbox( center, center, flex-start );
+		flex-wrap: wrap;
+		margin: 0 auto;
+		padding: 44px 0;
+		width: 1200px;
+
+		.karma-premade-page-template{
+
+			@include box( calc( 100% / 4 - 32px ), 420px );
+			background-color: #fff;
+			border-radius: 4px;
+			box-shadow: 0 4px 15px 4px rgba( 57, 73, 89, 0.1 );
+			margin: 18px 16px;
+			overflow: hidden;
+
+			.karma-page-screenshot-container{
+				@include box( 100%, calc( 100% - 75px ) );
+				background-color: transparent;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: relative;
+
+				.karma-screenshot-overlay{
+
+					@include flexbox( center, center, center );
+					@include box( 100% );
+					background-color: rgba( $builder-main-color, 0.9 );
+					left: 0;
+					opacity: 0;
+					position: absolute;
+					top: 0;
+					transition: opacity 200ms;
+
+					.karma-create-page-button{
+						@include box( 83px, 40px );
+						background-color: $builder-accent-color;
+						border-radius: 2px;
+						box-shadow: inset 0 1px 3px 0 rgba( 0, 0, 0, 0.5 ), 0 15px 15px 0 rgba( 57, 73, 89, 0.3 );
+						color: #fff;
+						cursor: pointer;
+						display: block;
+						font-family: $builder-medium-font;
+						font-size: 14px;
+						line-height: 40px;
+						transition: box-shadow 200ms;
+						&:hover{
+							box-shadow: inset 0 1px 3px 0 rgba( 0, 0, 0, 0 ), 0 15px 15px 0 rgba( 57, 73, 89, 0 );
+						}
+
+					}
+				}
+
+			}
+			.karma-template-description-container{
+				@include box( 100%, 75px );
+				@include flexbox( left, center, space-between );
+				padding: 20px;
+				&.karma-blank-template{
+					justify-content: center;
+				}
+				.karma-page-template-title{
+					color: $builder-main-color;
+					font-size: 14px;
+				}
+				.karma-page-lock{
+					@include box( 33px );
+					background-color: #EBECEE;
+					border-radius: 50px;
+				}
+			}
+
+			&:hover{
+				.karma-screenshot-overlay{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+.karma-page-manager .karma-templates-container .karma-premade-page-template.karma-blank-page-template .karma-page-screenshot-container{
+	cursor: pointer;
+	background-image: url("../media/blank.png");
+	background-size: auto;
+	&:hover{
+		background-image: url("../media/blank-hover.png");
+	}
+}

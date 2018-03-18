@@ -557,9 +557,13 @@
 
 @keyframes load_delete_overlay {
 	00% {
+		opacity:0;
+		visibility: hidden;
 		background-color: transparent;
 	}
 	100% {
+		opacity: 1;
+		visibility: visible;
 		background-color: rgba( #000 , 0.3 );
 	}
 }

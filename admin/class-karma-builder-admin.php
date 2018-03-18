@@ -8,6 +8,7 @@ use KarmaBuilder\CacheManager\Karma_Cache_Manager as Cache_Manager;
 use KarmaBuilder\FPD\Karma_Factory_Pattern as Karma_Factory_Pattern;
 use KarmaBuilder\TypographyManager\Karma_Typography as Karma_Typography;
 use KarmaBuilder\FileSystem\Karma_File_System as File_System;
+use KarmaBuilder\BaseManager\Karma_Base_Manager as Base_Manager;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -29,7 +30,7 @@ use KarmaBuilder\FileSystem\Karma_File_System as File_System;
  * @subpackage Karma_Builder/admin
  * @author     Pixflow <info@pixflow.net>
  */
-class Karma_Builder_Admin {
+class Karma_Builder_Admin extends Base_Manager {
 
 	/**
 	 * Initialize the class and set its properties.
@@ -228,20 +229,5 @@ class Karma_Builder_Admin {
 
 	}
 
-	/**
-	 * get post ID and return karma builder URL for post
-	 *
-	 * @param   integer $post_id    post ID
-	 *
-	 * @since   0.1.0
-	 * @return  string      URL that open Karma to edit post
-	 */
 
-	public function generate_builder_url( $post_id ){
-
-		$builder_url = get_permalink( $post_id );
-		$builder_url .= ( false === strpos( $builder_url, '?' ) ) ? '?load_builder=true' : '&load_builder=true' ;
-		return $builder_url;
-
-	}
 }
