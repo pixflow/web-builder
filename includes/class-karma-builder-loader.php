@@ -84,6 +84,7 @@ class Karma_Builder_Loader extends Base_Manager{
 		$this->load_core();
 		$this->init_templates();
 		add_action('admin_bar_menu', array( $this, 'karma_custom_toolbar_link' ), 999 );
+		add_action('admin_bar_menu', array( $this, 'karma_custom_toolbar_add_new_link' ), 999 );
 
 	}
 
