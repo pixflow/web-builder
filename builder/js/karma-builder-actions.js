@@ -437,12 +437,13 @@ var karmaBuilderActions = karmaBuilderActions || {};
 			var containers = this.getIframe().$('#karma-builder-layout').parents( ':not(html):not(body)' );
 			for ( var i = containers.length - 1; i >= 0; i-- ){
 				if( undefined != containers[ i ].querySelector('#karma-builder-layout') ){
-					containers[ i ].setAttribute( 'id', 'karma-show-parent' );
+					var oldID = containers[ i ].getAttribute( 'id' );
+					containers[ i ].setAttribute( 'id', oldID + ' karma-show-parent' );
 				}
 			}
 		},
 
-		/*
+		/**
 		 * initialize code editor
 		 *
 		 * @since   2.0
