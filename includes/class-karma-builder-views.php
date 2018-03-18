@@ -102,6 +102,7 @@ class Karma_Views {
 		'delete-message-box',
 		'new-section',
 		'blank-page',
+		'feedback'
 
 	);
 
