@@ -186,8 +186,7 @@
 		 */
 		formBuilder : function( form ) {
 
-			var elementModel = this.model.attributes ,
-				formBuilderContents = this.formBuilderContentHtml( form ),
+			var elementModel = this.model.attributes,
 				elementParams = this.getElementMap( elementModel.shortcode_name, form );
 
 			if( null == elementParams ){
@@ -201,7 +200,7 @@
 			}else{
 				var	karmaFormHtml = '<form id="karma-Builder-form" style="height :'+  settingPanelHeight +'px"  data-height ="'+  settingPanelHeight +'"  autocomplete="off" onsubmit="return false">';
 			}
-
+			var formBuilderContents = this.formBuilderContentHtml( form );
 			karmaFormHtml += '<div id="elementRow" >' + formBuilderContents  + '</div> </form>';
 			popup.innerHTML = karmaFormHtml ;
 			return { content: popup.innerHTML, title: elementParams.title };
