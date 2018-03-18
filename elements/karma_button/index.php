@@ -117,7 +117,7 @@ class Karma_Button extends Karma_Shortcode_Base {
 			. '<div class="karma-button karma-button-{{ data.attributes.element_key }} " >'
 			. '<div class="karma-button-container {{ newClass }}">'
 			. '<a class="karma-button-link karma-document-click" href="{{{ data.attributes.shortcode_attributes.linkurl }}}" target="{{ data.attributes.shortcode_attributes.target }}" >'
-			. '<span class="karma-button-editable" > {{ data.attributes.shortcode_attributes.linkcontent }}'
+			. '<span class="karma-button-editable" > {{{ data.attributes.shortcode_attributes.linkcontent }}}'
 			. '</span>'
 			. '</a>'
 			. '</div>'
