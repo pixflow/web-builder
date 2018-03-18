@@ -159,6 +159,7 @@
 					.element-panel-part-button {
 
 						@include fill-button();
+						text-decoration: none;
 
 					}
 
@@ -466,6 +467,7 @@
 			}
 			.element-panel-part-button {
 				@include fill-button();
+				text-decoration: none;
 			}
 
 		}

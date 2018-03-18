@@ -2321,7 +2321,7 @@ html {
         margin-right: 10px; }
       .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-left .karma-preview-template-preview-btn {
         color: #394959;
-        cursor: pointer;
+        cursor: context-menu;
         font-size: 16px;
         line-height: 18px;
         padding-top: 5px; }

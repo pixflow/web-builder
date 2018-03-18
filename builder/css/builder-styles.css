@@ -3195,7 +3195,7 @@ html {
         margin-right: 10px; }
       .karma-preview-template-container .karma-preview-template-header .karma-preview-template-header-left .karma-preview-template-preview-btn {
         color: #394959;
-        cursor: pointer;
+        cursor: context-menu;
         font-size: 16px;
         line-height: 18px;
         padding-top: 5px; }
@@ -6600,7 +6600,8 @@ div.karma-element-content .karma-top-spacing {
             border: none;
             cursor: pointer;
             height: 40px;
-            transition-duration: .2s; }
+            transition-duration: .2s;
+            text-decoration: none; }
             #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button:focus {
               transition-duration: .2s; }
             #karma-add-element .karma-element-panel-view.karma-element-panel-add-element-view .karma-element-panel-add-element-view-right .element-panel-section-container .element-panel-part-button:hover {
@@ -6824,7 +6825,8 @@ div.karma-element-content .karma-top-spacing {
         border: none;
         cursor: pointer;
         height: 40px;
-        transition-duration: .2s; }
+        transition-duration: .2s;
+        text-decoration: none; }
         #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button:focus {
           transition-duration: .2s; }
         #karma-add-element .karma-element-panel-view.karma-deactive-element-panel .element-panel-part-button:hover {

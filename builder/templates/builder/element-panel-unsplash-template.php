@@ -11,8 +11,11 @@ use KarmaBuilder\Helper\Karma_Helper_Utility as Karma_Helper_Utility;
 			<div class="element-panel-section-container element-panel-permium" >
 				<div class="element-panel-part-img"> <img  src="<?php  echo KARMA_BUILDER_URL . 'builder/media/unsplash_image.jpg' ; ?>"></div>
 				<div class="element-panel-part-title"><?php echo esc_attr__( "Templates Library", 'karma' );?></div>
-				<span><?php echo esc_attr__( "coming soon", 'karma' ); ?></span>
 				<div class="element-panel-part-description"><?php echo esc_attr__( "Choose from beautifully crafted premade pages designed for a vast variety of websites. These pages are perfect for every industry and field.", 'karma' );?> </div>
+				<?php
+				$href = get_site_url() . '?builder-page=karma-page-manager' ;
+				?>
+				<a class="element-panel-part-button" href="<?php echo $href ?>">Add New Page Template</a>
 			</div>
 		</div>
 	</div>
