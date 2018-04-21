@@ -209,7 +209,7 @@ class Karma_Builder_Loader extends Base_Manager{
 	public function get_custom_assets_value(){
 
 		return array(
-			'style' => Cache_Manager::minify_css( get_option( $this::CUSTOM_CSS_OPTION, '' ) ),
+			'style' => 	stripslashes( get_option( $this::CUSTOM_CSS_OPTION, '' ) ),
 			'script' => stripslashes( Cache_Manager::minify_js ( get_option( $this::CUSTOM_JS_OPTION, '' ) ) ),
 		);
 
